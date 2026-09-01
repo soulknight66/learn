@@ -1,0 +1,83 @@
+{
+  "classification": "agent-generated challenge pack bound to immutable source-derived catalog metadata",
+  "license_boundary": {
+    "catalog_license": "CC0-1.0",
+    "generated_material": "independently generated for personal educational use",
+    "linked_content_copied": false,
+    "linked_resource_license": "NOASSERTION"
+  },
+  "project": {
+    "category": "Operating System",
+    "concepts": [
+      "operating systems",
+      "processes",
+      "virtual memory",
+      "filesystems"
+    ],
+    "difficulty": 8.0,
+    "implementation_language": "C",
+    "metadata": {
+      "catalog_suffix": "",
+      "languages": [
+        "C"
+      ],
+      "linked_resource_license": "NOASSERTION",
+      "provenance": {
+        "adapter": "build_your_own_x",
+        "classification": "source-derived",
+        "content_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+        "extractor_version": "1.1",
+        "source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+        "source_file": "README.md",
+        "source_line": 286
+      },
+      "scoring": {
+        "basis": "category heuristic",
+        "classification": "inferred",
+        "priority_tier": 1
+      }
+    },
+    "priority_tier": 1,
+    "production_relevance": 8.5,
+    "project_id": "project_fc8ca1dbad4baba3bd2d54dbb42c1a98",
+    "slug": "build-a-minimal-multi-tasking-kernel-for-arm-from-scratch",
+    "source_format": "repository",
+    "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+    "title": "Build a minimal multi-tasking kernel for ARM from scratch",
+    "upstream_reference": "https://github.com/jserv/mini-arm-os"
+  },
+  "schema_version": 1,
+  "snapshot_sha256": "4c4ee1a12a83ca9b6e3e8dffc3ea228bff3b778ce3d90c615a9df70dc81fe02f",
+  "source": {
+    "active_at_factory_time": true,
+    "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989",
+    "ingested_at": 1788122856.9532762,
+    "license": "CC0-1.0",
+    "metadata": {
+      "adapter": "build_your_own_x",
+      "extractor_version": "1.1",
+      "head_ref": "master",
+      "last_ingestion": {
+        "at": 1788122856.9532762,
+        "course_units": 0,
+        "courses": 0,
+        "curriculum_edges": 0,
+        "projects": 359,
+        "warnings": []
+      },
+      "license_evidence": "explicit CC0 waiver declaration",
+      "license_file": "README.md#origins--license",
+      "license_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+      "license_source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+      "linked_resource_license": "NOASSERTION",
+      "snapshot_reader": "git-object-database",
+      "tree_hash": "12e788febc0575ae1bce1de8ad1fc28d7fff7c22",
+      "working_tree_dirty": false
+    },
+    "name": "Build Your Own X",
+    "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/build-your-own-x",
+    "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+    "type": "project_catalog",
+    "upstream_url": "git@github.com:codecrafters-io/build-your-own-x.git"
+  }
+}

@@ -1,6 +1,6 @@
 # Learning Factory checkpoint
 
-Generated: 2026-09-01T11:26:04.042320+00:00
+Generated: 2026-09-01T13:01:40.253891+00:00
 Paused: True
 
 ## Health
@@ -11,8 +11,8 @@ Paused: True
 | CANCELLED | 800 |
 | DISCOVERED | 459 |
 | FAILED | 8 |
-| READY | 466 |
-| SUCCEEDED | 220 |
+| READY | 465 |
+| SUCCEEDED | 221 |
 
 ## Corpus
 
@@ -23,9 +23,9 @@ Paused: True
 | course_units | 394 |
 | projects | 359 |
 | students | 3 |
-| artifacts | 220 |
-| validations | 1066 |
-| events | 9386 |
+| artifacts | 221 |
+| validations | 1082 |
+| events | 9424 |
 
 ## Scale-out coverage
 
@@ -51,7 +51,6 @@ None.
 
 ## Next ready work
 
-- `job_byox_repair_v1_g1_181f6f60b54291ceaeb6e746d627f9d9`: codex_task / reference_builder (priority 84.4)
 - `job_byox_repair_v1_g2_8ebb5db64a06a70cbce675c8060cbf35`: codex_task / reference_builder (priority 84.4)
 - `job_byox_repair_v1_g1_70c59d0180be35286cb449a00260246e`: codex_task / reference_builder (priority 83.6)
 - `job_byox_repair_v1_g1_06e0a3f8392a364385403808962b8132`: codex_task / reference_builder (priority 83.6)
@@ -61,10 +60,11 @@ None.
 - `job_byox_repair_v1_g1_5f6dfb8f08fe6732ade82d4a7e953d49`: codex_task / reference_builder (priority 83.6)
 - `job_byox_repair_v1_g1_9cba40396a55870db359e40fa91625f4`: codex_task / reference_builder (priority 83.6)
 - `job_byox_repair_v1_g1_de3fa920a8a38e476e2b1ed85d0c8966`: codex_task / reference_builder (priority 83.6)
+- `job_byox_repair_v1_g1_68de452e277a0add101cfddca6da2a4d`: codex_task / reference_builder (priority 83.6)
 
 ## Operational metrics
 
-- Persisted retries: 28
-- Median finished-job duration: 430.3742986917496
-- Completed by type: `{"allocator_vertical_slice": 1, "bytecode_vertical_slice": 1, "catalog_synthesis": 2, "codex_task": 204, "course_vertical_slice": 2, "event_service_vertical_slice": 1, "http_service_vertical_slice": 1, "project_vertical_slice": 2, "source_ingest": 6}`
-- Artifact labels: `{"BENCHMARKED": 6, "BUILDS": 8, "FUZZED": 5, "GENERATED": 220, "PARTIAL": 52, "REVIEWED": 4, "TESTED": 10, "TRANSFER_VERIFIED": 2}`
+- Persisted retries: 30
+- Median finished-job duration: 430.6975688934326
+- Completed by type: `{"allocator_vertical_slice": 1, "bytecode_vertical_slice": 1, "catalog_synthesis": 2, "codex_task": 205, "course_vertical_slice": 2, "event_service_vertical_slice": 1, "http_service_vertical_slice": 1, "project_vertical_slice": 2, "source_ingest": 6}`
+- Artifact labels: `{"BENCHMARKED": 6, "BUILDS": 8, "FUZZED": 5, "GENERATED": 221, "PARTIAL": 53, "REVIEWED": 4, "TESTED": 10, "TRANSFER_VERIFIED": 2}`

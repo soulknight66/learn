@@ -959,25 +959,32 @@ class BuildYourOwnXSourceTests(SourceTestCase):
             _fixture_git(standalone, "rev-parse", f"{pinned_commit}^{{tree}}"),
             vendored_tree,
         )
-        (monorepo / "SOURCE_PINS.json").write_text(
-            json.dumps(
-                {
-                    "schema_version": 1,
-                    "sources": {
-                        "build-your-own-x": {
-                            "commit_hash": pinned_commit,
-                            "head_ref": "master",
-                            "tree_hash": vendored_tree,
-                            "upstream_url": (
-                                "git@github.com:example/build-your-own-x.git"
-                            ),
-                        }
+        manifest_path = monorepo / "SOURCE_PINS.json"
+
+        def write_manifest(
+            *,
+            schema_version: object = 1,
+            upstream_url: str = "git@github.com:example/build-your-own-x.git",
+        ) -> None:
+            manifest_path.write_text(
+                json.dumps(
+                    {
+                        "schema_version": schema_version,
+                        "sources": {
+                            "build-your-own-x": {
+                                "commit_hash": pinned_commit,
+                                "head_ref": "master",
+                                "tree_hash": vendored_tree,
+                                "upstream_url": upstream_url,
+                            }
+                        },
                     },
-                },
-                sort_keys=True,
-            ),
-            encoding="utf-8",
-        )
+                    sort_keys=True,
+                ),
+                encoding="utf-8",
+            )
+
+        write_manifest()
         _fixture_git(monorepo, "add", "SOURCE_PINS.json")
         _fixture_git(monorepo, "commit", "--quiet", "-m", "lock source")
 
@@ -1007,10 +1014,53 @@ class BuildYourOwnXSourceTests(SourceTestCase):
         after_outer_change = adapter.describe(source)
         self.assertEqual(descriptor.source_id, after_outer_change.source_id)
         self.assertEqual(descriptor.commit_hash, after_outer_change.commit_hash)
+        self.assertEqual(descriptor.upstream_url, after_outer_change.upstream_url)
+        self.assertEqual(
+            descriptor.metadata["head_ref"],
+            after_outer_change.metadata["head_ref"],
+        )
         self.assertEqual(
             descriptor.metadata["tree_hash"],
             after_outer_change.metadata["tree_hash"],
         )
+        self.assertEqual(batch, adapter.extract(after_outer_change))
+
+        write_manifest(schema_version=True)
+        _fixture_git(monorepo, "add", "SOURCE_PINS.json")
+        _fixture_git(monorepo, "commit", "--quiet", "-m", "break pin schema")
+        with self.assertRaisesRegex(SourceFormatError, "invalid SOURCE_PINS"):
+            adapter.describe(source)
+
+        malformed_manifests = (
+            b"",
+            b"\xff",
+            b'{"schema_version":1,"schema_version":1,"sources":{}}',
+        )
+        for index, malformed_manifest in enumerate(malformed_manifests, 1):
+            with self.subTest(malformed_manifest=index):
+                manifest_path.write_bytes(malformed_manifest)
+                _fixture_git(monorepo, "add", "SOURCE_PINS.json")
+                _fixture_git(
+                    monorepo,
+                    "commit",
+                    "--quiet",
+                    "-m",
+                    f"malformed pin {index}",
+                )
+                with self.assertRaisesRegex(
+                    SourceFormatError, "malformed SOURCE_PINS"
+                ):
+                    adapter.describe(source)
+
+        write_manifest(upstream_url="https://[broken")
+        _fixture_git(monorepo, "add", "SOURCE_PINS.json")
+        _fixture_git(monorepo, "commit", "--quiet", "-m", "break pin URL")
+        with self.assertRaisesRegex(SourceFormatError, "invalid source-pin upstream URL"):
+            adapter.describe(source)
+
+        write_manifest()
+        _fixture_git(monorepo, "add", "SOURCE_PINS.json")
+        _fixture_git(monorepo, "commit", "--quiet", "-m", "restore pin")
 
         (source / "README.md").write_text(
             "Poisoned uncommitted worktree content.\n",
@@ -1018,7 +1068,7 @@ class BuildYourOwnXSourceTests(SourceTestCase):
         )
         dirty_descriptor = adapter.describe(source)
         self.assertTrue(dirty_descriptor.metadata["working_tree_dirty"])
-        self.assertEqual(4, len(adapter.extract(dirty_descriptor).projects))
+        self.assertEqual(batch, adapter.extract(dirty_descriptor))
 
         _fixture_git(monorepo, "add", "build-your-own-x/README.md")
         _fixture_git(monorepo, "commit", "--quiet", "-m", "drift source")

@@ -356,29 +356,45 @@ def _vendored_source_pin(repository: Path) -> _VendoredSourcePin | None:
             f"Git top level {top_level} does not contain source path {resolved}"
         ) from error
 
-    manifest_text = _git_text(
+    manifest_object = _git_text(
         top_level,
-        "show",
+        "rev-parse",
+        "--verify",
         f"HEAD:{_SOURCE_PIN_MANIFEST}",
         required=False,
     )
-    if manifest_text is None:
+    if manifest_object is None:
         return None
-    if len(manifest_text.encode("utf-8")) > _MAX_SOURCE_PIN_MANIFEST_BYTES:
+    manifest_object = _validated_git_object_id(
+        manifest_object,
+        label="source-pin manifest blob identifier",
+    )
+    manifest_raw = _git_bytes(
+        top_level,
+        "cat-file",
+        "blob",
+        manifest_object,
+    )
+    if len(manifest_raw) > _MAX_SOURCE_PIN_MANIFEST_BYTES:
         raise SourceFormatError(
             f"{_SOURCE_PIN_MANIFEST} exceeds "
             f"{_MAX_SOURCE_PIN_MANIFEST_BYTES} bytes"
         )
     try:
+        manifest_text = manifest_raw.decode("utf-8")
         manifest = json.loads(
             manifest_text,
             object_pairs_hook=unique_object,
         )
-    except (TypeError, ValueError) as error:
+    except (TypeError, UnicodeDecodeError, ValueError) as error:
         raise SourceFormatError(f"malformed {_SOURCE_PIN_MANIFEST}") from error
+    schema_version = (
+        manifest.get("schema_version") if isinstance(manifest, dict) else None
+    )
     if (
         not isinstance(manifest, dict)
-        or manifest.get("schema_version") != 1
+        or type(schema_version) is not int
+        or schema_version != 1
         or not isinstance(manifest.get("sources"), dict)
     ):
         raise SourceFormatError(f"invalid {_SOURCE_PIN_MANIFEST} envelope")
@@ -406,7 +422,12 @@ def _vendored_source_pin(repository: Path) -> _VendoredSourcePin | None:
             raise SourceFormatError(
                 f"invalid source-pin upstream URL for {source_prefix!r}"
             )
-        sanitized_url = sanitize_remote_url(upstream_url)
+        try:
+            sanitized_url = sanitize_remote_url(upstream_url)
+        except ValueError as error:
+            raise SourceFormatError(
+                f"invalid source-pin upstream URL for {source_prefix!r}"
+            ) from error
         if sanitized_url != upstream_url:
             raise SourceFormatError(
                 f"source-pin upstream URL is not canonical for {source_prefix!r}"

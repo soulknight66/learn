@@ -8,6 +8,7 @@ import shutil
 import signal
 import sqlite3
 import tempfile
+import time
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -238,6 +239,322 @@ class EndToEndWorkerTests(unittest.TestCase):
         self.assertEqual(
             run["reproducibility_digest"], json.loads(event["payload_json"])["digest"]
         )
+
+    def test_slow_workspace_setup_is_protected_by_claim_heartbeat(self) -> None:
+        job_id = self.jobs.create(
+            "fake",
+            "test",
+            {
+                "files": {"candidate/result.txt": "startup protected\n"},
+                "artifact_path": "e2e/workspace-startup-protected",
+            },
+            job_id="job_workspace_startup_protected",
+            max_attempts=1,
+        )
+        self.jobs.promote_eligible()
+        owner = "workspace-startup-owner"
+        claim = self.jobs.claim_next(
+            owner,
+            0.25,
+            max_total=1,
+            type_limits={"test": 1},
+        )
+        assert claim is not None
+        initial_expiry = float(self.jobs.get(job_id)["lease_expires_at"])
+        real_allocate = WorkspaceManager.allocate
+
+        def slow_allocate(
+            manager: WorkspaceManager, claimed_job_id: str, attempt: int
+        ) -> Path:
+            renewal_deadline = time.monotonic() + 3
+            while True:
+                observed = self.jobs.get(job_id)
+                assert observed is not None
+                if float(observed["lease_expires_at"]) > initial_expiry + 1:
+                    break
+                if time.monotonic() >= renewal_deadline:
+                    self.fail("heartbeat did not protect workspace allocation")
+                time.sleep(0.01)
+            time.sleep(max(0.0, initial_expiry - time.time() + 0.05))
+            return real_allocate(manager, claimed_job_id, attempt)
+
+        with patch.object(WorkspaceManager, "allocate", new=slow_allocate):
+            exit_code = run_worker(
+                job_id,
+                owner,
+                claim.lease_token,
+                self.config_path,
+            )
+
+        self.assertEqual(0, exit_code)
+        job = self.jobs.get(job_id)
+        assert job is not None
+        self.assertEqual("SUCCEEDED", job["state"])
+        self.assertEqual(1, job["attempt_count"])
+        with self.db.connect() as connection:
+            self.assertEqual(
+                0,
+                connection.execute(
+                    "SELECT COUNT(*) FROM events WHERE job_id=? AND type='LEASE_EXPIRED'",
+                    (job_id,),
+                ).fetchone()[0],
+            )
+
+    def test_slow_contended_provenance_keeps_first_attempt_lease_alive(self) -> None:
+        job_id = self.jobs.create(
+            "fake",
+            "test",
+            {
+                "files": {"candidate/result.txt": "startup protected\n"},
+                "artifact_path": "e2e/provenance-startup-protected",
+            },
+            job_id="job_provenance_startup_protected",
+            max_attempts=1,
+        )
+        self.jobs.promote_eligible()
+        owner = "provenance-startup-owner"
+        claim = self.jobs.claim_next(
+            owner,
+            0.45,
+            max_total=1,
+            type_limits={"test": 1},
+        )
+        assert claim is not None
+        initial_expiry = float(self.jobs.get(job_id)["lease_expires_at"])
+        writer = self.db.connect()
+        writer.execute("BEGIN IMMEDIATE")
+        real_capture = worker_module.capture_run_provenance
+        diagnostics: list[str] = []
+
+        def slow_contended_capture(*args: object, **kwargs: object) -> object:
+            time.sleep(0.16)
+            writer.rollback()
+            writer.close()
+            renewal_deadline = time.monotonic() + 3
+            while True:
+                observed = self.jobs.get(job_id)
+                assert observed is not None
+                if float(observed["lease_expires_at"]) > initial_expiry + 1:
+                    break
+                if time.monotonic() >= renewal_deadline:
+                    self.fail("startup heartbeat never renewed the contended claim")
+                time.sleep(0.01)
+            time.sleep(max(0.0, initial_expiry - time.time() + 0.05))
+            return real_capture(*args, **kwargs)  # type: ignore[arg-type]
+
+        try:
+            with patch(
+                "learnfactory.worker.capture_run_provenance",
+                side_effect=slow_contended_capture,
+            ), patch(
+                "learnfactory.worker._heartbeat_diagnostic",
+                side_effect=lambda event, **_kwargs: diagnostics.append(event),
+            ):
+                exit_code = run_worker(
+                    job_id,
+                    owner,
+                    claim.lease_token,
+                    self.config_path,
+                )
+        finally:
+            try:
+                writer.rollback()
+            except sqlite3.Error:
+                pass
+            writer.close()
+
+        self.assertEqual(0, exit_code)
+        job = self.jobs.get(job_id)
+        assert job is not None
+        self.assertEqual("SUCCEEDED", job["state"])
+        self.assertEqual(1, job["attempt_count"])
+        self.assertEqual(0, job["retry_allowance"])
+        self.assertIn("HEARTBEAT_DATABASE_CONTENTION", diagnostics)
+        self.assertIn("HEARTBEAT_RECOVERED", diagnostics)
+
+    def test_expiry_during_provenance_is_fenced_before_handler(self) -> None:
+        job_id = self.jobs.create(
+            "fake",
+            "test",
+            {
+                "files": {"candidate/result.txt": "must not publish\n"},
+                "artifact_path": "e2e/startup-expired",
+            },
+            job_id="job_startup_expired_during_provenance",
+            max_attempts=2,
+        )
+        self.jobs.promote_eligible()
+        owner = "startup-expiry-owner"
+        claim = self.jobs.claim_next(
+            owner,
+            0.35,
+            max_total=1,
+            type_limits={"test": 1},
+        )
+        assert claim is not None
+        initial_expiry = float(self.jobs.get(job_id)["lease_expires_at"])
+        writer = self.db.connect()
+        writer.execute("BEGIN IMMEDIATE")
+
+        def expire_during_capture(*_args: object, **_kwargs: object) -> object:
+            time.sleep(max(0.0, initial_expiry - time.time() + 0.08))
+            writer.rollback()
+            writer.close()
+            self.assertEqual(1, self.jobs.recover_expired())
+            raise RuntimeError("injected provenance failure after lease recovery")
+
+        try:
+            with patch(
+                "learnfactory.worker.capture_run_provenance",
+                side_effect=expire_during_capture,
+            ), patch.object(
+                JobHandlers,
+                "execute",
+                side_effect=AssertionError("expired startup reached handler"),
+            ) as execute:
+                exit_code = run_worker(
+                    job_id,
+                    owner,
+                    claim.lease_token,
+                    self.config_path,
+                )
+        finally:
+            try:
+                writer.rollback()
+            except sqlite3.Error:
+                pass
+            writer.close()
+
+        self.assertEqual(6, exit_code)
+        self.assertEqual(0, execute.call_count)
+        job = self.jobs.get(job_id)
+        assert job is not None
+        self.assertEqual("RETRY_WAIT", job["state"])
+        with self.db.connect() as connection:
+            self.assertEqual(
+                0,
+                connection.execute(
+                    "SELECT COUNT(*) FROM artifacts WHERE job_id=?", (job_id,)
+                ).fetchone()[0],
+            )
+            self.assertEqual(
+                0,
+                connection.execute(
+                    "SELECT COUNT(*) FROM job_runs WHERE job_id=?", (job_id,)
+                ).fetchone()[0],
+            )
+
+    def test_atomic_start_failure_leaves_no_open_worker_or_run(self) -> None:
+        job_id = self.jobs.create(
+            "fake",
+            "test",
+            {"files": {"candidate/result.txt": "must not run\n"}},
+            job_id="job_atomic_start_failure",
+            max_attempts=2,
+        )
+        self.jobs.promote_eligible()
+        owner = "atomic-start-owner"
+        claim = self.jobs.claim_next(
+            owner,
+            5,
+            max_total=1,
+            type_limits={"test": 1},
+        )
+        assert claim is not None
+
+        with patch.object(
+            JobRepository,
+            "start_in_transaction",
+            side_effect=RuntimeError("injected atomic start failure"),
+        ), patch.object(
+            JobHandlers,
+            "execute",
+            side_effect=AssertionError("failed start reached handler"),
+        ) as execute:
+            exit_code = run_worker(
+                job_id,
+                owner,
+                claim.lease_token,
+                self.config_path,
+            )
+
+        self.assertEqual(4, exit_code)
+        self.assertEqual(0, execute.call_count)
+        job = self.jobs.get(job_id)
+        assert job is not None
+        self.assertEqual("RETRY_WAIT", job["state"])
+        self.assertEqual("worker_startup_failure", job["failure_kind"])
+        with self.db.connect() as connection:
+            self.assertEqual(
+                0,
+                connection.execute(
+                    "SELECT COUNT(*) FROM workers WHERE current_job=?", (job_id,)
+                ).fetchone()[0],
+            )
+            self.assertEqual(
+                0,
+                connection.execute(
+                    "SELECT COUNT(*) FROM job_runs WHERE job_id=?", (job_id,)
+                ).fetchone()[0],
+            )
+
+    def test_cancel_between_startup_fence_and_atomic_start_uses_no_worker_id(
+        self,
+    ) -> None:
+        job_id = self.jobs.create(
+            "fake",
+            "test",
+            {"files": {"candidate/result.txt": "must not run\n"}},
+            job_id="job_atomic_start_cancel_race",
+            max_attempts=1,
+        )
+        self.jobs.promote_eligible()
+        owner = "atomic-cancel-owner"
+        claim = self.jobs.claim_next(
+            owner,
+            5,
+            max_total=1,
+            type_limits={"test": 1},
+        )
+        assert claim is not None
+        real_fence = worker_module._fence_worker_boundary
+
+        def cancel_after_provenance(*args: object, **kwargs: object) -> None:
+            real_fence(*args, **kwargs)  # type: ignore[arg-type]
+            if kwargs.get("boundary") == "during provenance capture":
+                self.jobs.cancel(job_id)
+
+        with patch(
+            "learnfactory.worker._fence_worker_boundary",
+            side_effect=cancel_after_provenance,
+        ), patch.object(
+            JobHandlers,
+            "execute",
+            side_effect=AssertionError("cancelled start reached handler"),
+        ) as execute:
+            exit_code = run_worker(
+                job_id,
+                owner,
+                claim.lease_token,
+                self.config_path,
+            )
+
+        self.assertEqual(4, exit_code)
+        self.assertEqual(0, execute.call_count)
+        self.assertEqual("CANCELLED", self.jobs.get(job_id)["state"])
+        with self.db.connect() as connection:
+            self.assertEqual(
+                0,
+                connection.execute(
+                    "SELECT COUNT(*) FROM workers WHERE current_job=?", (job_id,)
+                ).fetchone()[0],
+            )
+            self.assertEqual(
+                0,
+                connection.execute(
+                    "SELECT COUNT(*) FROM job_runs WHERE job_id=?", (job_id,)
+                ).fetchone()[0],
+            )
 
     def test_publication_dependency_failure_blocks_without_artifact(self) -> None:
         job_id = self.jobs.create(

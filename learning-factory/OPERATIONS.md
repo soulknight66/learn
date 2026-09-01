@@ -84,12 +84,19 @@ cancel command when termination is intended. `resume` atomically clears the fenc
 The rollback-journal database lives on NFS. Keep
 `factory.database_busy_timeout_seconds + factory.heartbeat_seconds < factory.lease_seconds`; invalid
 configurations fail at startup. The operated configuration is 60 + 5 < 120 seconds. The longer lease
-absorbs measured NFS launch-wave provenance, while the 60-second busy window lets controller-owned
-finalization serialize behind measured 20–40-second writer contention. Heartbeats still run every five
-seconds and dynamically stop waiting before their locally observed durable deadline. Worker stderr uses
+remains a canary margin for measured NFS launch-wave and finalization contention; the 60-second busy
+window lets controller-owned finalization serialize behind measured 20–40-second writer contention.
+Workers now begin de-synchronized claim heartbeats before workspace/provenance I/O, atomically bind their
+worker and run rows when entering `RUNNING`, and dynamically stop waiting before their non-decreasing
+locally observed durable deadline. Worker stderr uses
 JSON records whose `component` is `worker-heartbeat`; alert on `HEARTBEAT_LEASE_AT_RISK`,
 `HEARTBEAT_FATAL_DATABASE_ERROR`, and repeated `HEARTBEAT_DATABASE_CONTENTION`. A later
 `HEARTBEAT_RECOVERED` closes a transient contention episode.
+
+All controller and worker hosts must have tightly synchronized wall clocks. Lease tokens and monotonic
+worker deadlines prevent stale publication, but wall-clock skew between hosts can still cause early
+recovery or unnecessary attempt churn. Keep the 120-second operated margin until clock-skew telemetry and
+production canaries justify a separately reviewed reduction.
 
 Heartbeat/watchdog lease loss is a retryable local interruption, never evidence that an artifact may be
 published. The worker checks it after handling, validation, archive preparation, and once more after

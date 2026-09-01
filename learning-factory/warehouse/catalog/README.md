@@ -1,8 +1,38 @@
 # Learning artifact catalog
 
-Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 217.
+Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 220.
 
 The complete searchable records, concepts, languages, provenance, and validation labels are in `catalog.json`.
+
+## course-preparation — GENERATED
+
+- Artifact type: `course-preparation`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/catalog/mitweb-5d22b573/cohort-v1/preparation/job_csdiy_5d22b573e8385b32fa396f82de7212a7_prepare_v1/attempt-001`
+- SHA-256: `7d220302e616298f76f328596951ddb7d98f6b1b45dc515a4f303e3a25ea6d4b`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_csdiy_5d22b573e8385b32fa396f82de7212a7_prepare_v1` (codex_task/course_manager)
+
+## course-preparation — GENERATED
+
+- Artifact type: `course-preparation`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/catalog/nju-softwareanalysis-49a86391/cohort-v1/preparation/job_csdiy_49a86391a92911e935084a7a880787f7_prepare_v1/attempt-002`
+- SHA-256: `31ac7d1b516a3e641d18cf3e68d985cdbbfa98d40670d35d06ad23aa38e28072`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_csdiy_49a86391a92911e935084a7a880787f7_prepare_v1` (codex_task/course_manager)
+
+## course-preparation — GENERATED
+
+- Artifact type: `course-preparation`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/catalog/cs220-2b2bc9a2/cohort-v1/preparation/job_csdiy_2b2bc9a23b31ea8f547a356c68230ae5_prepare_v1/attempt-002`
+- SHA-256: `1ef94706b38b3419d3df994b2174eb26497825501b19ab253259f918acea42bf`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_csdiy_2b2bc9a23b31ea8f547a356c68230ae5_prepare_v1` (codex_task/course_manager)
 
 ## byox-remediated-challenge-pack — GENERATED+PARTIAL
 

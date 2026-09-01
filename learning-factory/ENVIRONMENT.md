@@ -60,7 +60,14 @@ logically quarantines inconsistent records.
 | CS Self-Learning / CSDIY | `../cs-self-learning` | `adce8e13789dc16aa6d1fbe163e9541736defae4` | `https://github.com/PKUFlyingPig/cs-self-learning` | MIT for repository-authored content |
 | Build Your Own X | `../build-your-own-x` | `aa17439b62f384511a5561ce308e9598b94d8989` | `https://github.com/codecrafters-io/build-your-own-x` | CC0 declaration in README; linked works retain their licenses |
 
-Both sources were clean at audit time. Base ingestion is local-only and does not fetch linked material.
-Adapters read each recorded commit from the Git object database. Dirty or untracked working-tree bytes
-therefore do not alter the normalized snapshot. The database retains superseded snapshots for
-provenance while exposing only one active commit per canonical source path to current consumers.
+Both sources were clean at audit time. They are ordinary vendored subtrees of the single top-level Git
+repository, with no nested `.git` directories or `.gitmodules`. The committed `../SOURCE_PINS.json`
+binds each subtree to its audited upstream commit, exact root-tree object, remote, and branch. The two
+recorded tree objects were independently checked against those upstream commits during consolidation.
+
+Base ingestion is local-only and does not fetch linked material. Adapters verify that the subtree in the
+outer repository's committed `HEAD` still has the locked tree object, then read its blobs from the Git
+object database while retaining the upstream commit identity. Dirty or untracked working-tree bytes
+therefore do not alter the normalized snapshot, and a committed subtree change without an updated audited
+pin fails closed. The database retains superseded snapshots for provenance while exposing only one active
+commit per canonical source path to current consumers.

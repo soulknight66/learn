@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import contextlib
 import hashlib
+import json
 import os
 import re
 import shutil
@@ -294,10 +295,12 @@ _GIT_OBJECT_ID_RE = re.compile(r"(?:[0-9a-fA-F]{40}|[0-9a-fA-F]{64})")
 _REGULAR_GIT_MODES = frozenset({"100644", "100755"})
 _MAX_SOURCE_BLOB_BYTES = 16 * 1024 * 1024
 _MAX_TREE_ENTRIES = 100_000
+_SOURCE_PIN_MANIFEST = "SOURCE_PINS.json"
+_MAX_SOURCE_PIN_MANIFEST_BYTES = 1024 * 1024
 
 
-def _validated_git_object_id(value: str, *, label: str) -> str:
-    if not _GIT_OBJECT_ID_RE.fullmatch(value):
+def _validated_git_object_id(value: object, *, label: str) -> str:
+    if not isinstance(value, str) or not _GIT_OBJECT_ID_RE.fullmatch(value):
         raise SourceFormatError(f"unexpected Git {label}: {value!r}")
     return value.lower()
 
@@ -315,6 +318,155 @@ def _validated_git_path(value: str) -> str:
     if parsed.as_posix() != value:
         raise SourceFormatError(f"non-canonical path in Git tree: {value!r}")
     return value
+
+
+@dataclass(frozen=True)
+class _VendoredSourcePin:
+    repository_root: Path
+    source_prefix: str
+    commit_hash: str
+    tree_hash: str
+    upstream_url: str | None
+    head_ref: str | None
+
+
+def _vendored_source_pin(repository: Path) -> _VendoredSourcePin | None:
+    """Resolve a committed source lock for a subtree in the outer repository."""
+
+    def unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        rendered: dict[str, Any] = {}
+        for key, value in pairs:
+            if key in rendered:
+                raise ValueError(f"duplicate JSON key: {key}")
+            rendered[key] = value
+        return rendered
+
+    resolved = repository.expanduser().resolve(strict=True)
+    top_level_raw = _git_text(resolved, "rev-parse", "--show-toplevel")
+    assert top_level_raw is not None
+    top_level = Path(top_level_raw).expanduser().resolve(strict=True)
+    if top_level == resolved:
+        return None
+    try:
+        source_prefix = _validated_git_path(
+            resolved.relative_to(top_level).as_posix()
+        )
+    except ValueError as error:
+        raise SourceFormatError(
+            f"Git top level {top_level} does not contain source path {resolved}"
+        ) from error
+
+    manifest_text = _git_text(
+        top_level,
+        "show",
+        f"HEAD:{_SOURCE_PIN_MANIFEST}",
+        required=False,
+    )
+    if manifest_text is None:
+        return None
+    if len(manifest_text.encode("utf-8")) > _MAX_SOURCE_PIN_MANIFEST_BYTES:
+        raise SourceFormatError(
+            f"{_SOURCE_PIN_MANIFEST} exceeds "
+            f"{_MAX_SOURCE_PIN_MANIFEST_BYTES} bytes"
+        )
+    try:
+        manifest = json.loads(
+            manifest_text,
+            object_pairs_hook=unique_object,
+        )
+    except (TypeError, ValueError) as error:
+        raise SourceFormatError(f"malformed {_SOURCE_PIN_MANIFEST}") from error
+    if (
+        not isinstance(manifest, dict)
+        or manifest.get("schema_version") != 1
+        or not isinstance(manifest.get("sources"), dict)
+    ):
+        raise SourceFormatError(f"invalid {_SOURCE_PIN_MANIFEST} envelope")
+    raw_pin = manifest["sources"].get(source_prefix)
+    if raw_pin is None:
+        return None
+    if not isinstance(raw_pin, dict) or set(raw_pin) != {
+        "commit_hash",
+        "head_ref",
+        "tree_hash",
+        "upstream_url",
+    }:
+        raise SourceFormatError(
+            f"invalid source pin for {source_prefix!r}"
+        )
+    commit_hash = _validated_git_object_id(
+        raw_pin["commit_hash"], label="source-pin commit identifier"
+    )
+    tree_hash = _validated_git_object_id(
+        raw_pin["tree_hash"], label="source-pin tree identifier"
+    )
+    upstream_url = raw_pin["upstream_url"]
+    if upstream_url is not None:
+        if not isinstance(upstream_url, str) or not upstream_url.strip():
+            raise SourceFormatError(
+                f"invalid source-pin upstream URL for {source_prefix!r}"
+            )
+        sanitized_url = sanitize_remote_url(upstream_url)
+        if sanitized_url != upstream_url:
+            raise SourceFormatError(
+                f"source-pin upstream URL is not canonical for {source_prefix!r}"
+            )
+    head_ref = raw_pin["head_ref"]
+    if head_ref is not None and (
+        not isinstance(head_ref, str)
+        or not head_ref
+        or len(head_ref) > 255
+        or any(ord(character) < 32 or ord(character) == 127 for character in head_ref)
+    ):
+        raise SourceFormatError(
+            f"invalid source-pin head ref for {source_prefix!r}"
+        )
+
+    raw_entry = _git_bytes(
+        top_level,
+        "ls-tree",
+        "-z",
+        "HEAD",
+        "--",
+        source_prefix,
+    )
+    records = [record for record in raw_entry.split(b"\x00") if record]
+    if len(records) != 1:
+        raise SourceFormatError(
+            f"source-pin path is absent or ambiguous at HEAD: {source_prefix}"
+        )
+    try:
+        header, raw_path = records[0].split(b"\t", 1)
+        mode_raw, type_raw, object_raw = header.split()
+        actual_path = raw_path.decode("utf-8")
+        actual_tree = _validated_git_object_id(
+            object_raw.decode("ascii"), label="vendored source tree identifier"
+        )
+    except (UnicodeDecodeError, ValueError) as error:
+        raise SourceFormatError(
+            f"malformed source-pin tree entry for {source_prefix!r}"
+        ) from error
+    if (
+        mode_raw != b"040000"
+        or type_raw != b"tree"
+        or actual_path != source_prefix
+    ):
+        raise SourceFormatError(
+            f"source-pin path is not a tracked directory: {source_prefix}"
+        )
+    if actual_tree != tree_hash:
+        raise SourceFormatError(
+            f"vendored source tree for {source_prefix!r} does not match "
+            f"pinned tree {tree_hash}"
+        )
+    return _VendoredSourcePin(
+        repository_root=top_level,
+        source_prefix=source_prefix,
+        commit_hash=commit_hash,
+        tree_hash=tree_hash,
+        upstream_url=upstream_url,
+        head_ref=head_ref,
+    )
 
 
 @dataclass(frozen=True)
@@ -394,6 +546,9 @@ def git_head_commit(repository: Path) -> str:
     resolved = repository.expanduser().resolve(strict=True)
     if not resolved.is_dir():
         raise SourceFormatError(f"source path is not a directory: {resolved}")
+    source_pin = _vendored_source_pin(resolved)
+    if source_pin is not None:
+        return source_pin.commit_hash
     commit = _git_text(resolved, "rev-parse", "--verify", "HEAD^{commit}")
     assert commit is not None
     return _validated_git_object_id(commit, label="commit identifier")
@@ -406,10 +561,26 @@ def git_snapshot(repository: Path, commit_hash: str) -> GitSnapshot:
     if not resolved.is_dir():
         raise SourceFormatError(f"source path is not a directory: {resolved}")
     commit = _validated_git_object_id(commit_hash, label="commit identifier")
-    tree = _git_text(resolved, "rev-parse", "--verify", f"{commit}^{{tree}}")
-    assert tree is not None
-    tree_hash = _validated_git_object_id(tree, label="tree identifier")
-    raw_tree = _git_bytes(resolved, "ls-tree", "-rlz", "--full-tree", commit)
+    source_pin = _vendored_source_pin(resolved)
+    if source_pin is not None:
+        if commit != source_pin.commit_hash:
+            raise SourceFormatError(
+                f"vendored source {source_pin.source_prefix!r} exposes only "
+                f"pinned commit {source_pin.commit_hash}"
+            )
+        tree_hash = source_pin.tree_hash
+        raw_tree = _git_bytes(
+            resolved,
+            "ls-tree",
+            "-rlz",
+            "--full-tree",
+            tree_hash,
+        )
+    else:
+        tree = _git_text(resolved, "rev-parse", "--verify", f"{commit}^{{tree}}")
+        assert tree is not None
+        tree_hash = _validated_git_object_id(tree, label="tree identifier")
+        raw_tree = _git_bytes(resolved, "ls-tree", "-rlz", "--full-tree", commit)
     records = raw_tree.split(b"\x00")
     if records and records[-1] == b"":
         records.pop()
@@ -538,18 +709,50 @@ class SourceAdapter(ABC):
         resolved = path.expanduser().resolve(strict=True)
         if not resolved.is_dir():
             raise SourceFormatError(f"source path is not a directory: {resolved}")
-        commit = git_head_commit(resolved)
+        source_pin = _vendored_source_pin(resolved)
+        commit = (
+            source_pin.commit_hash
+            if source_pin is not None
+            else git_head_commit(resolved)
+        )
         snapshot = git_snapshot(resolved, commit)
         if not self.detect_snapshot(snapshot):
             raise UnsupportedSourceError(
                 f"{self.adapter_name} does not recognize {resolved} at {commit}"
             )
-        remote = sanitize_remote_url(
-            _git_text(resolved, "config", "--get", "remote.origin.url", required=False)
+        remote = (
+            source_pin.upstream_url
+            if source_pin is not None
+            else sanitize_remote_url(
+                _git_text(
+                    resolved,
+                    "config",
+                    "--get",
+                    "remote.origin.url",
+                    required=False,
+                )
+            )
         )
-        head_ref = _git_text(resolved, "symbolic-ref", "--short", "-q", "HEAD", required=False)
+        head_ref = (
+            source_pin.head_ref
+            if source_pin is not None
+            else _git_text(
+                resolved,
+                "symbolic-ref",
+                "--short",
+                "-q",
+                "HEAD",
+                required=False,
+            )
+        )
         status = _git_text(
-            resolved, "status", "--porcelain", "--untracked-files=no", required=False
+            resolved,
+            "status",
+            "--porcelain",
+            "--untracked-files=no",
+            "--",
+            ".",
+            required=False,
         )
         license_name, license_metadata = _license_metadata(snapshot)
         source_id = stable_id("source", self.source_type, str(resolved), commit)
@@ -568,6 +771,14 @@ class SourceAdapter(ABC):
                 "working_tree_dirty": bool(status),
                 "snapshot_reader": "git-object-database",
                 "tree_hash": snapshot.tree_hash,
+                **(
+                    {
+                        "repository_layout": "vendored-subtree",
+                        "source_pin_manifest": _SOURCE_PIN_MANIFEST,
+                    }
+                    if source_pin is not None
+                    else {}
+                ),
                 **license_metadata,
             },
         )

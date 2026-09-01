@@ -931,6 +931,101 @@ class BuildYourOwnXSourceTests(SourceTestCase):
             batch.projects[0].metadata["provenance"]["content_sha256"],
         )
 
+    def test_vendored_subtree_uses_committed_source_pin_and_fails_on_drift(
+        self,
+    ) -> None:
+        standalone, pinned_commit = self._byox_fixture()
+        monorepo = self.root / "monorepo"
+        source = monorepo / "build-your-own-x"
+        shutil.copytree(
+            standalone,
+            source,
+            ignore=shutil.ignore_patterns(".git"),
+        )
+        _fixture_git(monorepo, "init", "--quiet")
+        _fixture_git(monorepo, "config", "user.name", "Learning Factory Tests")
+        _fixture_git(
+            monorepo,
+            "config",
+            "user.email",
+            "tests@example.invalid",
+        )
+        _fixture_git(monorepo, "add", ".")
+        _fixture_git(monorepo, "commit", "--quiet", "-m", "vendor source")
+        vendored_tree = _fixture_git(
+            monorepo, "rev-parse", "HEAD:build-your-own-x"
+        )
+        self.assertEqual(
+            _fixture_git(standalone, "rev-parse", f"{pinned_commit}^{{tree}}"),
+            vendored_tree,
+        )
+        (monorepo / "SOURCE_PINS.json").write_text(
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "sources": {
+                        "build-your-own-x": {
+                            "commit_hash": pinned_commit,
+                            "head_ref": "master",
+                            "tree_hash": vendored_tree,
+                            "upstream_url": (
+                                "git@github.com:example/build-your-own-x.git"
+                            ),
+                        }
+                    },
+                },
+                sort_keys=True,
+            ),
+            encoding="utf-8",
+        )
+        _fixture_git(monorepo, "add", "SOURCE_PINS.json")
+        _fixture_git(monorepo, "commit", "--quiet", "-m", "lock source")
+
+        adapter = BuildYourOwnXAdapter()
+        descriptor = adapter.describe(source)
+        batch = adapter.extract(descriptor)
+
+        self.assertEqual([monorepo / ".git"], list(monorepo.rglob(".git")))
+        self.assertEqual(pinned_commit, descriptor.commit_hash)
+        self.assertEqual(vendored_tree, descriptor.metadata["tree_hash"])
+        self.assertEqual(
+            "vendored-subtree", descriptor.metadata["repository_layout"]
+        )
+        self.assertEqual(
+            "git@github.com:example/build-your-own-x.git",
+            descriptor.upstream_url,
+        )
+        self.assertEqual("master", descriptor.metadata["head_ref"])
+        self.assertEqual(4, len(batch.projects))
+
+        (monorepo / "UNRELATED.txt").write_text(
+            "outer repository change\n",
+            encoding="utf-8",
+        )
+        _fixture_git(monorepo, "add", "UNRELATED.txt")
+        _fixture_git(monorepo, "commit", "--quiet", "-m", "change outer tree")
+        after_outer_change = adapter.describe(source)
+        self.assertEqual(descriptor.source_id, after_outer_change.source_id)
+        self.assertEqual(descriptor.commit_hash, after_outer_change.commit_hash)
+        self.assertEqual(
+            descriptor.metadata["tree_hash"],
+            after_outer_change.metadata["tree_hash"],
+        )
+
+        (source / "README.md").write_text(
+            "Poisoned uncommitted worktree content.\n",
+            encoding="utf-8",
+        )
+        dirty_descriptor = adapter.describe(source)
+        self.assertTrue(dirty_descriptor.metadata["working_tree_dirty"])
+        self.assertEqual(4, len(adapter.extract(dirty_descriptor).projects))
+
+        _fixture_git(monorepo, "add", "build-your-own-x/README.md")
+        _fixture_git(monorepo, "commit", "--quiet", "-m", "drift source")
+        self.assertFalse(adapter.detect(source))
+        with self.assertRaisesRegex(SourceFormatError, "does not match pinned tree"):
+            adapter.describe(source)
+
     @unittest.skipUnless(BYOX_SOURCE.is_dir(), "local Build-Your-Own-X source is unavailable")
     def test_pinned_local_catalog_has_359_entries_and_stable_categories(self) -> None:
         adapter = BuildYourOwnXAdapter()

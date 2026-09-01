@@ -139,7 +139,7 @@ def _fence_worker_boundary(
     job_id: str,
     owner: str,
     lease_token: str,
-    worker_id: str,
+    worker_id: str | None,
     stop_gate: _HeartbeatPublicationGate,
     supervisor_stop_event: threading.Event,
     boundary: str,
@@ -147,17 +147,27 @@ def _fence_worker_boundary(
     """Reconcile durable, supervisor, and local stop causes in that order."""
 
     if jobs.cancellation_requested(job_id):
-        jobs.finish_cancelled(job_id, owner, lease_token, worker_id)
+        try:
+            jobs.finish_cancelled(job_id, owner, lease_token, worker_id)
+        except JobError:
+            # Recovery may already have removed ownership from an expired
+            # cancelled claim. Cancellation still fences this process.
+            pass
         raise _WorkerBoundaryStop(130)
     stop_cause = stop_gate.stop_cause(supervisor_stop_event)
     if stop_cause == "supervisor":
-        interrupted_state = jobs.interrupt(
-            job_id,
-            owner,
-            lease_token,
-            worker_id,
-            reason=f"worker stopped by controller {boundary}",
-        )
+        try:
+            interrupted_state = jobs.interrupt(
+                job_id,
+                owner,
+                lease_token,
+                worker_id,
+                reason=f"worker stopped by controller {boundary}",
+            )
+        except JobError:
+            # An expired claim belongs to scheduler recovery. The delivered
+            # supervisor stop still prevents this process from doing work.
+            interrupted_state = None
         raise _WorkerBoundaryStop(
             130 if interrupted_state is JobState.CANCELLED else 143
         )
@@ -179,6 +189,16 @@ def _fence_worker_boundary(
         raise _WorkerBoundaryStop(
             130 if interrupted_state is JobState.CANCELLED else 6
         )
+
+
+def _startup_heartbeat_delay(
+    job_id: str, lease_token: str, heartbeat_seconds: float
+) -> float:
+    """Spread a launch wave's first lease writes over half an interval."""
+
+    digest = hashlib.sha256(f"{job_id}\0{lease_token}".encode("utf-8")).digest()
+    phase = int.from_bytes(digest[:8], "big") / float(2**64 - 1)
+    return heartbeat_seconds * (0.1 + 0.4 * phase)
 
 
 def run_worker(job_id: str, owner: str, lease_token: str, config_path: Path | None = None) -> int:
@@ -208,44 +228,123 @@ def run_worker(job_id: str, owner: str, lease_token: str, config_path: Path | No
         reasoning_effort=record["reasoning_effort"],
         lease_token=lease_token,
     )
-    manager = WorkspaceManager(settings.warehouse, db)
-    manager.initialize()
-    try:
-        workspace = manager.allocate(job_id, job.attempt_count)
-    except Exception as error:
-        jobs.fail(job_id, owner, lease_token, None, kind="workspace_failure", error=str(error), retryable=True)
-        return 3
-    log_dir = settings.warehouse / "logs" / job_id / f"attempt-{job.attempt_count:03d}"
-    log_dir.mkdir(parents=True, exist_ok=True)
     worker_id = new_id("worker")
     run_id = new_id("run")
-    # This nonce is an ephemeral capability independent of every durable ID.
-    # It is passed only to the runtime handler/backend and is never provenance.
-    result_channel = fresh_result_channel(
-        worker_result_transport_root(
-            settings.warehouse,
-            job_id=job_id,
-            attempt_number=job.attempt_count,
-        )
-    )
     effective_model = job.model or settings.backend.model
     effective_reasoning = job.reasoning_effort or settings.backend.reasoning_effort
     cancel_event = threading.Event()
     supervisor_stop_event = threading.Event()
     heartbeat_gate = _HeartbeatPublicationGate(cancel_event)
 
-    with db.connect() as connection:
-        dependency_job_ids = [
-            str(row["depends_on_job_id"])
-            for row in connection.execute(
-                """
-                SELECT depends_on_job_id FROM job_dependencies
-                WHERE job_id=? ORDER BY depends_on_job_id
-                """,
-                (job_id,),
-            )
-        ]
+    def request_stop(signum: int, frame: object) -> None:
+        heartbeat_gate.request_supervisor_cancel(supervisor_stop_event)
+
+    signal.signal(signal.SIGTERM, request_stop)
+    signal.signal(signal.SIGINT, request_stop)
+
+    claimed_lease_expires_at = record["lease_expires_at"]
+    lease_deadline = _LeaseDeadline(
+        claimed_lease_expires_at,
+        monotonic_clock=time.monotonic,
+        wall_clock=now,
+    )
+    # Protect the exact scheduler-issued claim before any workspace or
+    # provenance I/O touches the shared NFS filesystem.
+    heartbeat = threading.Thread(
+        target=_heartbeat_loop,
+        args=(
+            jobs,
+            job_id,
+            owner,
+            lease_token,
+            worker_id,
+            settings.lease_seconds,
+            settings.heartbeat_seconds,
+            claimed_lease_expires_at,
+            settings.database_busy_timeout_seconds,
+            cancel_event,
+        ),
+        kwargs={
+            "_publication_gate": heartbeat_gate,
+            "_lease_deadline": lease_deadline,
+            "initial_wait_seconds": _startup_heartbeat_delay(
+                job_id,
+                lease_token,
+                settings.heartbeat_seconds,
+            ),
+        },
+        daemon=True,
+        name=f"heartbeat-{job_id}",
+    )
+    heartbeat.start()
+
+    manager = WorkspaceManager(settings.warehouse, db)
     try:
+        manager.initialize()
+        workspace = manager.allocate(job_id, job.attempt_count)
+        log_dir = (
+            settings.warehouse
+            / "logs"
+            / job_id
+            / f"attempt-{job.attempt_count:03d}"
+        )
+        log_dir.mkdir(parents=True, exist_ok=True)
+        # This nonce is an ephemeral capability independent of every durable
+        # ID. It is passed only to the runtime handler/backend and is never
+        # provenance.
+        result_channel = fresh_result_channel(
+            worker_result_transport_root(
+                settings.warehouse,
+                job_id=job_id,
+                attempt_number=job.attempt_count,
+            )
+        )
+    except Exception as error:
+        heartbeat_gate.request_stop()
+        heartbeat.join()
+        try:
+            jobs.fail(
+                job_id,
+                owner,
+                lease_token,
+                None,
+                kind="workspace_failure",
+                error=str(error),
+                retryable=True,
+            )
+        except JobError:
+            pass
+        return 3
+
+    try:
+        _fence_worker_boundary(
+            jobs,
+            job_id=job_id,
+            owner=owner,
+            lease_token=lease_token,
+            worker_id=None,
+            stop_gate=heartbeat_gate,
+            supervisor_stop_event=supervisor_stop_event,
+            boundary="during workspace setup",
+        )
+    except _WorkerBoundaryStop as stopped:
+        heartbeat_gate.request_stop()
+        heartbeat.join()
+        # Preserve the existing pre-registration cancellation exit contract.
+        return 4 if stopped.exit_code == 130 else stopped.exit_code
+
+    try:
+        with db.connect() as connection:
+            dependency_job_ids = [
+                str(row["depends_on_job_id"])
+                for row in connection.execute(
+                    """
+                    SELECT depends_on_job_id FROM job_dependencies
+                    WHERE job_id=? ORDER BY depends_on_job_id
+                    """,
+                    (job_id,),
+                )
+            ]
         run_provenance = capture_run_provenance(
             settings,
             job_id=job_id,
@@ -271,107 +370,169 @@ def run_worker(job_id: str, owner: str, lease_token: str, config_path: Path | No
             "error": redact(str(error), 500),
         }
 
-    def request_stop(signum: int, frame: object) -> None:
-        heartbeat_gate.request_supervisor_cancel(supervisor_stop_event)
-
-    signal.signal(signal.SIGTERM, request_stop)
-    signal.signal(signal.SIGINT, request_stop)
-    with db.transaction(immediate=True) as connection:
-        connection.execute(
-            """
-            INSERT INTO workers(
-                worker_id,type,process_id,workspace,state,started_at,last_activity,current_job,hostname
-            ) VALUES (?,?,?,?,?,?,?,?,?)
-            """,
-            (worker_id, job.worker_type, os.getpid(), str(workspace), "STARTING", now(), now(), job_id, socket.gethostname()),
-        )
-        connection.execute(
-            """
-            INSERT INTO job_runs(
-                run_id,job_id,worker_id,attempt_number,backend,model,reasoning_effort,
-                process_id,started_at,stdout_path,stderr_path,provider,base_url,
-                wire_api,supports_websockets,reproducibility_digest,
-                reproducibility_path,reproducibility_json
-            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-            """,
-            (
-                run_id, job_id, worker_id, job.attempt_count,
-                settings.backend.name if job.type == "codex_task" else "pending",
-                effective_model,
-                effective_reasoning, os.getpid(), now(),
-                str(log_dir / "worker.stdout.log"), str(log_dir / "worker.stderr.log"),
-                settings.backend.provider if job.type == "codex_task" else None,
-                settings.backend.base_url if job.type == "codex_task" else None,
-                "responses" if job.type == "codex_task" else None,
-                int(settings.backend.supports_websockets)
-                if job.type == "codex_task"
-                else None,
-                run_provenance.digest,
-                str(run_provenance_path) if run_provenance_path is not None else None,
-                canonical_json(run_provenance.metadata),
-            ),
-        )
-        db.emit_event(
-            "worker",
-            "RUN_REPRODUCIBILITY_CAPTURED",
+    try:
+        _fence_worker_boundary(
+            jobs,
             job_id=job_id,
-            worker_id=worker_id,
-            payload={
-                "run_id": run_id,
-                "digest": run_provenance.digest,
-                "path": (
+            owner=owner,
+            lease_token=lease_token,
+            worker_id=None,
+            stop_gate=heartbeat_gate,
+            supervisor_stop_event=supervisor_stop_event,
+            boundary="during provenance capture",
+        )
+    except _WorkerBoundaryStop as stopped:
+        heartbeat_gate.request_stop()
+        heartbeat.join()
+        return 4 if stopped.exit_code == 130 else stopped.exit_code
+
+    run_registered = False
+    try:
+        with db.transaction(immediate=True) as connection:
+            connection.execute(
+                """
+                INSERT INTO workers(
+                    worker_id,type,process_id,workspace,state,started_at,last_activity,current_job,hostname
+                ) VALUES (?,?,?,?,?,?,?,?,?)
+                """,
+                (
+                    worker_id,
+                    job.worker_type,
+                    os.getpid(),
+                    str(workspace),
+                    "STARTING",
+                    now(),
+                    now(),
+                    job_id,
+                    socket.gethostname(),
+                ),
+            )
+            connection.execute(
+                """
+                INSERT INTO job_runs(
+                    run_id,job_id,worker_id,attempt_number,backend,model,reasoning_effort,
+                    process_id,started_at,stdout_path,stderr_path,provider,base_url,
+                    wire_api,supports_websockets,reproducibility_digest,
+                    reproducibility_path,reproducibility_json
+                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                """,
+                (
+                    run_id,
+                    job_id,
+                    worker_id,
+                    job.attempt_count,
+                    settings.backend.name
+                    if job.type == "codex_task"
+                    else "pending",
+                    effective_model,
+                    effective_reasoning,
+                    os.getpid(),
+                    now(),
+                    str(log_dir / "worker.stdout.log"),
+                    str(log_dir / "worker.stderr.log"),
+                    settings.backend.provider
+                    if job.type == "codex_task"
+                    else None,
+                    settings.backend.base_url
+                    if job.type == "codex_task"
+                    else None,
+                    "responses" if job.type == "codex_task" else None,
+                    int(settings.backend.supports_websockets)
+                    if job.type == "codex_task"
+                    else None,
+                    run_provenance.digest,
                     str(run_provenance_path)
                     if run_provenance_path is not None
-                    else None
+                    else None,
+                    canonical_json(run_provenance.metadata),
                 ),
-                "repository_status": run_provenance.metadata.get(
-                    "repository", {}
-                ).get("status"),
-            },
-            connection=connection,
-        )
-    try:
-        initial_lease_expires_at = jobs.start(
-            job_id,
-            owner,
-            lease_token,
-            worker_id,
-            str(workspace),
-            lease_seconds=settings.lease_seconds,
-        )
+            )
+            db.emit_event(
+                "worker",
+                "RUN_REPRODUCIBILITY_CAPTURED",
+                job_id=job_id,
+                worker_id=worker_id,
+                payload={
+                    "run_id": run_id,
+                    "digest": run_provenance.digest,
+                    "path": (
+                        str(run_provenance_path)
+                        if run_provenance_path is not None
+                        else None
+                    ),
+                    "repository_status": run_provenance.metadata.get(
+                        "repository", {}
+                    ).get("status"),
+                },
+                connection=connection,
+            )
+            running_lease_expires_at = jobs.start_in_transaction(
+                connection,
+                job_id,
+                owner,
+                lease_token,
+                worker_id,
+                str(workspace),
+                lease_seconds=settings.lease_seconds,
+            )
+        run_registered = True
     except Exception as error:
-        if jobs.cancellation_requested(job_id):
+        heartbeat_gate.request_stop()
+        heartbeat.join()
+        try:
+            if jobs.cancellation_requested(job_id):
+                jobs.finish_cancelled(
+                    job_id,
+                    owner,
+                    lease_token,
+                    worker_id if run_registered else None,
+                )
+            else:
+                jobs.fail(
+                    job_id,
+                    owner,
+                    lease_token,
+                    worker_id if run_registered else None,
+                    kind="worker_startup_failure",
+                    error=str(error),
+                    retryable=True,
+                )
+        except JobError:
+            # An expired or replaced lease belongs to scheduler recovery.
+            pass
+        if run_registered:
             try:
-                jobs.finish_cancelled(job_id, owner, lease_token, worker_id)
-            except JobError:
-                # An expired or replaced lease belongs to scheduler recovery.
+                _finish_worker(db, worker_id, "FAILED", str(error))
+                with db.transaction(immediate=True) as connection:
+                    connection.execute(
+                        "UPDATE job_runs SET finished_at=?,exit_code=? WHERE run_id=?",
+                        (now(), 4, run_id),
+                    )
+            except Exception:
+                # The durable job fence is authoritative. Startup evidence can
+                # be repaired by operator inspection if the database itself is
+                # unavailable during best-effort row finalization.
                 pass
-        _finish_worker(db, worker_id, "FAILED", str(error))
         return 4
-
-    heartbeat = threading.Thread(
-        target=_heartbeat_loop,
-        args=(
-            jobs,
-            job_id,
-            owner,
-            lease_token,
-            worker_id,
-            settings.lease_seconds,
-            settings.heartbeat_seconds,
-            initial_lease_expires_at,
-            settings.database_busy_timeout_seconds,
-            cancel_event,
-        ),
-        kwargs={"_publication_gate": heartbeat_gate},
-        daemon=True,
-        name=f"heartbeat-{job_id}",
-    )
-    heartbeat.start()
+    if not lease_deadline.renew(
+        running_lease_expires_at,
+        observed_at=time.monotonic(),
+    ):
+        heartbeat_gate.request_local_cancel()
     exit_code = 1
     prepared: PreparedArtifact | None = None
     archive_projection: Path | None = None
     try:
+        _fence_worker_boundary(
+            jobs,
+            job_id=job_id,
+            owner=owner,
+            lease_token=lease_token,
+            worker_id=worker_id,
+            stop_gate=heartbeat_gate,
+            supervisor_stop_event=supervisor_stop_event,
+            boundary="before handler execution",
+        )
         result = JobHandlers(
             settings,
             db,
@@ -889,8 +1050,12 @@ class _LeaseDeadline:
                 or proposed <= observed_at
             ):
                 return False
-            self._deadline = proposed
-            self._condition.notify_all()
+            # The startup thread and heartbeat thread can adopt independently
+            # committed renewals out of return order. A stale result remains
+            # valid evidence, but must never shorten a newer deadline.
+            if proposed > self._deadline:
+                self._deadline = proposed
+                self._condition.notify_all()
             return True
 
     def stop(self) -> None:
@@ -947,6 +1112,8 @@ def _heartbeat_loop(
     wall_clock: Callable[[], float] = now,
     _start_watchdog: bool = True,
     _publication_gate: _HeartbeatPublicationGate | None = None,
+    _lease_deadline: _LeaseDeadline | None = None,
+    initial_wait_seconds: float | None = None,
 ) -> None:
     request_local_cancel = (
         _publication_gate.request_local_cancel
@@ -963,23 +1130,26 @@ def _heartbeat_loop(
         if _publication_gate is not None
         else lambda: False
     )
-    try:
-        lease = _LeaseDeadline(
-            initial_lease_expires_at,
-            monotonic_clock=monotonic_clock,
-            wall_clock=wall_clock,
-        )
-    except ValueError:
-        _heartbeat_diagnostic(
-            "HEARTBEAT_FATAL_INTERNAL_ERROR",
-            job_id=job_id,
-            worker_id=worker_id,
-            duration_seconds=0,
-            consecutive_failures=0,
-            exception_type="InvalidLeaseExpiry",
-        )
-        request_local_cancel()
-        return
+    if _lease_deadline is None:
+        try:
+            lease = _LeaseDeadline(
+                initial_lease_expires_at,
+                monotonic_clock=monotonic_clock,
+                wall_clock=wall_clock,
+            )
+        except ValueError:
+            _heartbeat_diagnostic(
+                "HEARTBEAT_FATAL_INTERNAL_ERROR",
+                job_id=job_id,
+                worker_id=worker_id,
+                duration_seconds=0,
+                consecutive_failures=0,
+                exception_type="InvalidLeaseExpiry",
+            )
+            request_local_cancel()
+            return
+    else:
+        lease = _lease_deadline
     safety_lead = _lease_safety_lead(heartbeat_seconds)
     watchdog: threading.Thread | None = None
     if _start_watchdog:
@@ -996,7 +1166,11 @@ def _heartbeat_loop(
             name=f"lease-watchdog-{job_id}",
         )
         watchdog.start()
-    next_wait = heartbeat_seconds
+    next_wait = (
+        heartbeat_seconds
+        if initial_wait_seconds is None
+        else max(0.0, min(heartbeat_seconds, initial_wait_seconds))
+    )
     consecutive_contention = 0
     try:
         while True:

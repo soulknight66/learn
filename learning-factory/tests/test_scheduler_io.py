@@ -15,14 +15,16 @@ from unittest import mock
 from learnfactory import course_kickoff_revisions, course_progression
 from learnfactory.config import FactorySettings, load_settings
 from learnfactory.db import Database
-from learnfactory.jobs import JobRepository, JobState
+from learnfactory.jobs import JobError, JobRepository, JobState
 from learnfactory.scheduler import AUTO_COURSE_REFILL_INTERVAL_SECONDS, Scheduler
 from learnfactory.worker import (
     _HeartbeatPublicationGate,
+    _LeaseDeadline,
     _WorkerBoundaryStop,
     _fence_worker_boundary,
     _heartbeat_loop,
     _quiesced_heartbeat_publication,
+    _startup_heartbeat_delay,
 )
 from learnfactory.workspace import WorkspaceManager
 
@@ -364,6 +366,59 @@ class _ControlledEvent:
 
 
 class HeartbeatDiagnosticsTests(unittest.TestCase):
+    def test_startup_heartbeat_phase_is_deterministic_early_and_distributed(
+        self,
+    ) -> None:
+        values = {
+            _startup_heartbeat_delay(f"job-{index}", f"lease-{index}", 5.0)
+            for index in range(24)
+        }
+
+        self.assertEqual(
+            _startup_heartbeat_delay("job-1", "lease-1", 5.0),
+            _startup_heartbeat_delay("job-1", "lease-1", 5.0),
+        )
+        self.assertGreaterEqual(min(values), 0.5)
+        self.assertLessEqual(max(values), 2.5)
+        self.assertGreater(len(values), 20)
+
+    def test_out_of_order_renewal_cannot_shorten_shared_deadline(self) -> None:
+        deadline = _LeaseDeadline(
+            110.0,
+            monotonic_clock=lambda: 10.0,
+            wall_clock=lambda: 100.0,
+        )
+
+        self.assertTrue(deadline.renew(130.0, observed_at=11.0))
+        advanced = deadline.current()
+        self.assertTrue(deadline.renew(115.0, observed_at=12.0))
+
+        self.assertEqual(41.0, advanced)
+        self.assertEqual(advanced, deadline.current())
+
+    def test_recovered_cancellation_still_fences_without_owned_lease(self) -> None:
+        class Jobs:
+            def cancellation_requested(self, _job_id: str) -> bool:
+                return True
+
+            def finish_cancelled(self, *_args: object) -> None:
+                raise JobError("claim already recovered")
+
+        gate = _HeartbeatPublicationGate(threading.Event())
+        with self.assertRaises(_WorkerBoundaryStop) as raised:
+            _fence_worker_boundary(  # type: ignore[arg-type]
+                Jobs(),
+                job_id="job-recovered-cancel",
+                owner="old-owner",
+                lease_token="old-lease",
+                worker_id=None,
+                stop_gate=gate,
+                supervisor_stop_event=threading.Event(),
+                boundary="after recovery",
+            )
+
+        self.assertEqual(130, raised.exception.exit_code)
+
     def test_supervisor_wins_race_at_local_failure_classification(self) -> None:
         supervisor_stop = threading.Event()
 

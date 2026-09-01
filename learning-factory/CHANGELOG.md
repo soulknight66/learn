@@ -2,13 +2,23 @@
 
 ## Unreleased
 
+- Preserve immutable source provenance after consolidating the workspace under one top-level Git
+  repository. `SOURCE_PINS.json` binds each vendored source path to its audited upstream commit, tree,
+  remote, and branch; ingestion verifies the committed outer-repository subtree has the exact pinned tree
+  before reading blobs from Git, scopes dirty-state reporting to that source, and fails closed on drift.
+- Start a de-synchronized claim heartbeat before any worker workspace or provenance I/O, carry one
+  non-decreasing monotonic deadline across the claim/start boundary, and fence cancellation or lease loss
+  before handler execution. Atomically commit worker/run registration with `CLAIMED` to `RUNNING` so
+  recovery cannot expose a running worker for a claimed job or leave an open run after a lost start race.
+  Spawn the worker before controller-side NFS log-directory creation, and add real-lock, short-lease,
+  cancellation/recovery, out-of-order-renewal, and state-pair regressions.
 - Increase the operated lease from 30 to 120 seconds after the first 12-slot launch wave showed that
   concurrent provenance capture and NFS SQLite writer contention could consume the entire shorter claim
   lease before workers established steady heartbeats. The deterministic lease-loss fence correctly
   prevented publication and recovered every job. Increase the database busy timeout from 20 to 60 seconds
   after a valid course preparation then hit the shorter window during controller-owned finalization; the
-  heartbeat path still caps its own waits before durable expiry. These wider windows avoid retry churn while
-  a code-level startup-heartbeat regression fix is developed and independently validated.
+  heartbeat path still caps its own waits before durable expiry. Retain these wider windows while the new
+  startup protection is canaried at production scale; reducing them is a separate measured change.
 
 - Make CSDIY examiner results controller-owned and eliminate their local attack surface: project every
   verified candidate/rubric/prior-evaluation dependency through pinned no-follow descriptors into bounded,

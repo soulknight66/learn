@@ -1,6 +1,938 @@
 {
   "artifacts": [
     {
+      "artifact_id": "artifact_35a0ecb55b0d45748591dfe735449533",
+      "attempt_number": 1,
+      "checksum": "7d220302e616298f76f328596951ddb7d98f6b1b45dc515a4f303e3a25ea6d4b",
+      "checksum_algorithm": "tree-sha256-v2",
+      "created_at": 1788232863.452284,
+      "integrity_status": "VERIFIED_V2",
+      "job_id": "job_csdiy_5d22b573e8385b32fa396f82de7212a7_prepare_v1",
+      "job_type": "codex_task",
+      "metadata": {
+        "archive_projection": {
+          "mode": "complete-workspace",
+          "schema_version": 1,
+          "source_workspace_checksum": "7d220302e616298f76f328596951ddb7d98f6b1b45dc515a4f303e3a25ea6d4b",
+          "source_workspace_checksum_algorithm": "tree-sha256-v2"
+        },
+        "attempt": 1,
+        "catalog_snapshot": {
+          "course": {
+            "catalog_status": "DISCOVERED",
+            "course_id": "course_5d22b573e8385b32fa396f82de7212a7",
+            "description": "[Independent Activities Period](https://elo.mit.edu/iap/) (IAP) is a four-week period in January during which faculty and students are freed from the rigors of regularly scheduled classes for flexible teaching and learning and for independent study and research, and that's how this web development course was born.\n\nWithin a month, you will master the core content of designing, building, beautifying, and publishing a website from scratch, basically covering full-stack web development. If you don't need to learn web development systematically, but just want to add it to your toolkit out of interest, then this class will be perfect for you.",
+            "difficulty": 3.0,
+            "estimated_human_hours": null,
+            "institution": "MIT",
+            "prerequisites": [
+              "better if you are already proficient in a programming language"
+            ],
+            "slug": "mitweb",
+            "source_metadata": {
+              "fields": {
+                "assignments": "refer to the course website.",
+                "class hour": "Varying according to the learner",
+                "course website": "<https://weblab.mit.edu/schedule/>",
+                "difficulty": "🌟🌟🌟",
+                "offered by": "MIT",
+                "prerequisites": "better if you are already proficient in a programming language",
+                "programming languages": "JavaScript/HTML/CSS/NoSQL",
+                "recordings": "refer to the course website."
+              },
+              "language": "en",
+              "prerequisites_raw": "better if you are already proficient in a programming language",
+              "programming_languages_raw": "JavaScript/HTML/CSS/NoSQL",
+              "provenance": {
+                "adapter": "csdiy",
+                "classification": "source-derived",
+                "content_sha256": "5f02cb330f0cffe8b9b033ff3785c6089aae0a9390e593b9ffb2940244efb09f",
+                "extractor_version": "1.1",
+                "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                "source_file": "docs/Web开发/mitweb.en.md"
+              },
+              "resource_urls": [
+                "https://elo.mit.edu/iap/",
+                "https://weblab.mit.edu/schedule/"
+              ],
+              "source_stem": "mitweb"
+            },
+            "title": "MIT Web Development Crash Course",
+            "topic": "Web开发"
+          },
+          "normalized_resource_records": [
+            {
+              "dependencies": [],
+              "metadata": {
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "5f02cb330f0cffe8b9b033ff3785c6089aae0a9390e593b9ffb2940244efb09f",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/Web开发/mitweb.en.md"
+                },
+                "role": "catalog_overview"
+              },
+              "order": 0,
+              "source_reference": "docs/Web开发/mitweb.en.md",
+              "title": "Catalog overview and resource guide",
+              "type": "reading",
+              "unit_id": "unit_1d236670e322e009e369f609569c9dc3"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "LINKED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "5f02cb330f0cffe8b9b033ff3785c6089aae0a9390e593b9ffb2940244efb09f",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/Web开发/mitweb.en.md",
+                  "source_line": 17
+                },
+                "raw_value": "<https://weblab.mit.edu/schedule/>",
+                "urls": [
+                  "https://weblab.mit.edu/schedule/"
+                ]
+              },
+              "order": 17,
+              "source_reference": "docs/Web开发/mitweb.en.md#L17",
+              "title": "Course Website",
+              "type": "reading",
+              "unit_id": "unit_78bdcf3b65fa003bd4f18bd734dda1df"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "DESCRIBED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "5f02cb330f0cffe8b9b033ff3785c6089aae0a9390e593b9ffb2940244efb09f",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/Web开发/mitweb.en.md",
+                  "source_line": 18
+                },
+                "raw_value": "refer to the course website.",
+                "urls": []
+              },
+              "order": 18,
+              "source_reference": "docs/Web开发/mitweb.en.md#L18",
+              "title": "Recordings",
+              "type": "lecture",
+              "unit_id": "unit_93c577e81aadf0812b7db2eb6bae2148"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "DESCRIBED",
+                "official_course_unit": true,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "5f02cb330f0cffe8b9b033ff3785c6089aae0a9390e593b9ffb2940244efb09f",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/Web开发/mitweb.en.md",
+                  "source_line": 19
+                },
+                "raw_value": "refer to the course website.",
+                "urls": []
+              },
+              "order": 19,
+              "source_reference": "docs/Web开发/mitweb.en.md#L19",
+              "title": "Assignments",
+              "type": "assignment",
+              "unit_id": "unit_df79d416dc430b329e962e71a0d7a75e"
+            }
+          ],
+          "resource_record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+          "schema_version": 1,
+          "source": {
+            "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+            "license": "MIT",
+            "name": "CSDIY",
+            "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/cs-self-learning",
+            "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+            "type": "course_catalog",
+            "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git"
+          }
+        },
+        "catalog_snapshot_sha256": "b68f44b484e724004162696f1a4c0bffffe29fcae32ed3498a1aa59fe8729c47",
+        "classification": "immutable source-derived catalog snapshot plus agent-generated learning artifacts",
+        "factory_revision": {
+          "commit": "1c7d835d0f72a0f9695bb2f72deefa9da8866f6f",
+          "status": "RECORDED",
+          "tracked_worktree_clean": false
+        },
+        "job_id": "job_csdiy_5d22b573e8385b32fa396f82de7212a7_prepare_v1",
+        "policy_version": 1,
+        "prompt_contexts": [],
+        "removed_root_metadata": [
+          ".factory-workspace"
+        ],
+        "run_id": "run_6493a3d6f12d48b8ab3b62f71fa417be",
+        "run_reproducibility": {
+          "digest": "a41a4f63f67816bd1a9273aac57e9e3cf28d3e13928c657284b77211e899e366",
+          "record_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/logs/job_csdiy_5d22b573e8385b32fa396f82de7212a7_prepare_v1/attempt-001/RUN_PROVENANCE.json",
+          "schema": "learnfactory-run-provenance-v3"
+        },
+        "runtime_prompt": {
+          "effective_prompt": {
+            "content_stored": false,
+            "includes_leaf_worker_policy": true,
+            "sha256": "5f880c6c07ece051dbed9b61532ad082b6bf439530a7763760dc3dd29d91f74b",
+            "utf8_bytes": 6161
+          },
+          "job_prompt": {
+            "content_stored": false,
+            "sha256": "c37964a5f58308f8415cdc382c56001c7e25bb316e4bd78d9f488b1c4cafb760",
+            "utf8_bytes": 5813
+          },
+          "leaf_worker_policy": {
+            "content_stored": false,
+            "sha256": "61cfaab916fc8a696d7f1c798f8ef8fe1dea8ae235982996b695eea8b7ac44e7",
+            "utf8_bytes": 348
+          }
+        },
+        "sandbox_rule_manifest": {
+          "declared_outputs": [
+            "COURSE_MANIFEST.json",
+            "MATERIAL_AVAILABILITY.json",
+            "UNIT_GRAPH.json",
+            "examiner_only/RUBRIC.md",
+            "student_safe/COMPREHENSION.md",
+            "student_safe/COURSE_BRIEF.md",
+            "student_safe/STUDY_TASK.md"
+          ],
+          "result_channel": {
+            "content_stored_in_provenance": false,
+            "fixed_alias_stored": true,
+            "launch_namespace": "fixed-alias-only",
+            "nonce_hash_stored": false,
+            "nonce_stored": false,
+            "outer_cli_output_capability": "parent-procfd-readonly-hold",
+            "output_descriptor_inherited": false,
+            "post_exit_result_retention": "bounded-redacted-output",
+            "private_path_stored": false,
+            "runtime_fd_stored": false,
+            "schema_version": 3,
+            "transport": "outer-cli-parent-held-fixed-alias-inode"
+          },
+          "rules": [],
+          "schema_version": 1,
+          "sha256": "a28a961982758da31d30d9c9884e507a185f27db97c4a8598df7e192a64c1d7e",
+          "staged_inputs": [],
+          "tools_enabled": true,
+          "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_csdiy_5d22b573e8385b32fa396f82de7212a7_prepare_v1/attempt-001",
+          "workspace_access": "write"
+        },
+        "staged_inputs": [],
+        "validated_tree_sha256": "7d220302e616298f76f328596951ddb7d98f6b1b45dc515a4f303e3a25ea6d4b",
+        "validation_evidence": [
+          {
+            "evidence": {
+              "checked": [
+                "COURSE_MANIFEST.json",
+                "UNIT_GRAPH.json",
+                "MATERIAL_AVAILABILITY.json",
+                "student_safe/COURSE_BRIEF.md",
+                "student_safe/STUDY_TASK.md",
+                "student_safe/COMPREHENSION.md",
+                "examiner_only/RUBRIC.md"
+              ],
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-preparation-files"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-manifest-fields"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-unit-graph-fields"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-material-availability-fields"
+          }
+        ],
+        "validation_labels": [
+          "GENERATED"
+        ],
+        "validation_workspace_tree_sha256": "7d220302e616298f76f328596951ddb7d98f6b1b45dc515a4f303e3a25ea6d4b"
+      },
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/catalog/mitweb-5d22b573/cohort-v1/preparation/job_csdiy_5d22b573e8385b32fa396f82de7212a7_prepare_v1/attempt-001",
+      "type": "course-preparation",
+      "validation_labels": [
+        "GENERATED"
+      ],
+      "validation_status": "GENERATED",
+      "worker_type": "course_manager"
+    },
+    {
+      "artifact_id": "artifact_552f7a969bcf4666af95f266d7342420",
+      "attempt_number": 2,
+      "checksum": "31ac7d1b516a3e641d18cf3e68d985cdbbfa98d40670d35d06ad23aa38e28072",
+      "checksum_algorithm": "tree-sha256-v2",
+      "created_at": 1788232729.624761,
+      "integrity_status": "VERIFIED_V2",
+      "job_id": "job_csdiy_49a86391a92911e935084a7a880787f7_prepare_v1",
+      "job_type": "codex_task",
+      "metadata": {
+        "archive_projection": {
+          "mode": "complete-workspace",
+          "schema_version": 1,
+          "source_workspace_checksum": "31ac7d1b516a3e641d18cf3e68d985cdbbfa98d40670d35d06ad23aa38e28072",
+          "source_workspace_checksum_algorithm": "tree-sha256-v2"
+        },
+        "attempt": 2,
+        "catalog_snapshot": {
+          "course": {
+            "catalog_status": "DISCOVERED",
+            "course_id": "course_49a86391a92911e935084a7a880787f7",
+            "description": "- Learning Hours: 60 hours\n\nSoftware Analysis is a course jointly offered by Yue Li and Tian Tan of Nanjing University. It mainly introduces program analysis, which refers to the theory and practice of static analysis. The idea of static analysis is to obtain **approximate** answers about specific properties of the program without running it. This course starts with the abstract syntax tree, control flow graph and intermediate representation, then introduces the theory and practice of data flow analysis and pointer analysis, and finally introduces several advanced topics, such as IFDS.\n\nIn my opinion, there are two reasons why this course is worth learning:\n\n- Teaching. Program analysis is generally not easy to get started, but the two teachers are particularly meticulous in their lectures, and they will also guide you step by step through the process of an algorithm. Personally, I think that as long as you listen carefully in class, there is no problem that you can't understand.\n\n- Assignments. The assignments are based on the Java program analysis framework Tai-e created by the teachers. The eight assignments cover a variety of static analysis techniques, including compiler optimization (liveness analysis, constant propagation, dead code detection), basic program analysis (program call graph construction, non/context-sensitive pointer analysis), and the application of program analysis in software security (taint analysis). The course also provides an online evaluation system available to **everyone**, which is suitable for self-study.\n\nThe assignments are mainly to implement the pseudo-code algorithms in class, so as to better help you understand the knowledge taught in class. I feel that the difficulty is not particularly high, especially suitable for completing the corresponding experiments after class to test your mastery of the knowledge taught in class. However, it is still challenging to pass all the test cases of each assignment.",
+            "difficulty": 3.0,
+            "estimated_human_hours": null,
+            "institution": "Nanjing University",
+            "prerequisites": [
+              "Data Structures and Algorithms",
+              "familiar with at least one programming language"
+            ],
+            "slug": "nju-softwareanalysis",
+            "source_metadata": {
+              "fields": {
+                "course assignments": "[Homepage](https://tai-e.pascal-lab.net/intro/overview.html)",
+                "course textbook": "None",
+                "course video": "[Bilibili](https://www.bilibili.com/video/BV1b7411K7P4/?spm_id_from=333.999.0.0&vd_source=b58da8cd0259ee873ef3dc2c9aa36d74)",
+                "course website": "[Homepage](https://tai-e.pascal-lab.net/lectures.html)",
+                "difficulty": "🌟🌟🌟",
+                "learning hours": "60 hours",
+                "offered by": "Nanjing University",
+                "oj": "[OJ](https://oj.pascal-lab.net/problem)",
+                "prerequisite": "Data Structures and Algorithms, familiar with at least one programming language",
+                "programming languages": "Java"
+              },
+              "language": "en",
+              "prerequisites_raw": "Data Structures and Algorithms, familiar with at least one programming language",
+              "programming_languages_raw": "Java",
+              "provenance": {
+                "adapter": "csdiy",
+                "classification": "source-derived",
+                "content_sha256": "e4d7aa1dc1e6a980190057524b665cf9b3e12468a90c1d1d19a8f98ef9f459ed",
+                "extractor_version": "1.1",
+                "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                "source_file": "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md"
+              },
+              "resource_urls": [
+                "https://tai-e.pascal-lab.net/lectures.html",
+                "https://www.bilibili.com/video/BV1b7411K7P4/?spm_id_from=333.999.0.0&vd_source=b58da8cd0259ee873ef3dc2c9aa36d74",
+                "https://tai-e.pascal-lab.net/intro/overview.html",
+                "https://oj.pascal-lab.net/problem"
+              ],
+              "source_stem": "NJU-SoftwareAnalysis"
+            },
+            "title": "NJU Software Analysis",
+            "topic": "编程语言设计与分析"
+          },
+          "normalized_resource_records": [
+            {
+              "dependencies": [],
+              "metadata": {
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "e4d7aa1dc1e6a980190057524b665cf9b3e12468a90c1d1d19a8f98ef9f459ed",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md"
+                },
+                "role": "catalog_overview"
+              },
+              "order": 0,
+              "source_reference": "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md",
+              "title": "Catalog overview and resource guide",
+              "type": "reading",
+              "unit_id": "unit_160fa119252d441b50f9b7029ea80743"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "LINKED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "e4d7aa1dc1e6a980190057524b665cf9b3e12468a90c1d1d19a8f98ef9f459ed",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md",
+                  "source_line": 23
+                },
+                "raw_value": "[Homepage](https://tai-e.pascal-lab.net/lectures.html)",
+                "urls": [
+                  "https://tai-e.pascal-lab.net/lectures.html"
+                ]
+              },
+              "order": 23,
+              "source_reference": "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md#L23",
+              "title": "Course Website",
+              "type": "reading",
+              "unit_id": "unit_50cf2e120948e02276605a6101985cbf"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "LINKED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "e4d7aa1dc1e6a980190057524b665cf9b3e12468a90c1d1d19a8f98ef9f459ed",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md",
+                  "source_line": 24
+                },
+                "raw_value": "[Bilibili](https://www.bilibili.com/video/BV1b7411K7P4/?spm_id_from=333.999.0.0&vd_source=b58da8cd0259ee873ef3dc2c9aa36d74)",
+                "urls": [
+                  "https://www.bilibili.com/video/BV1b7411K7P4/?spm_id_from=333.999.0.0&vd_source=b58da8cd0259ee873ef3dc2c9aa36d74"
+                ]
+              },
+              "order": 24,
+              "source_reference": "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md#L24",
+              "title": "Course Video",
+              "type": "lecture",
+              "unit_id": "unit_1b08cc17a1b5722bc34ff68b2340bb4a"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "UNAVAILABLE",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "e4d7aa1dc1e6a980190057524b665cf9b3e12468a90c1d1d19a8f98ef9f459ed",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md",
+                  "source_line": 25
+                },
+                "raw_value": "None",
+                "urls": []
+              },
+              "order": 25,
+              "source_reference": "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md#L25",
+              "title": "Course Textbook",
+              "type": "reading",
+              "unit_id": "unit_beafc601752da3d57cf12292da935789"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "LINKED",
+                "official_course_unit": true,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "e4d7aa1dc1e6a980190057524b665cf9b3e12468a90c1d1d19a8f98ef9f459ed",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md",
+                  "source_line": 26
+                },
+                "raw_value": "[Homepage](https://tai-e.pascal-lab.net/intro/overview.html)",
+                "urls": [
+                  "https://tai-e.pascal-lab.net/intro/overview.html"
+                ]
+              },
+              "order": 26,
+              "source_reference": "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md#L26",
+              "title": "Course Assignments",
+              "type": "assignment",
+              "unit_id": "unit_53d4bd196e18ba8590d1df1ea5bb56c4"
+            }
+          ],
+          "resource_record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+          "schema_version": 1,
+          "source": {
+            "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+            "license": "MIT",
+            "name": "CSDIY",
+            "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/cs-self-learning",
+            "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+            "type": "course_catalog",
+            "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git"
+          }
+        },
+        "catalog_snapshot_sha256": "c4043149da5cb9ee8cfa3d2fc1de94aa799514539ceb943ca9f081658732f65c",
+        "classification": "immutable source-derived catalog snapshot plus agent-generated learning artifacts",
+        "factory_revision": {
+          "commit": "2bd099d14cb059dbe461fe54a030b5595ed34237",
+          "status": "RECORDED",
+          "tracked_worktree_clean": false
+        },
+        "job_id": "job_csdiy_49a86391a92911e935084a7a880787f7_prepare_v1",
+        "policy_version": 1,
+        "prompt_contexts": [],
+        "removed_root_metadata": [
+          ".factory-workspace"
+        ],
+        "run_id": "run_22b2205b0db5429f9de8911ff435a0e3",
+        "run_reproducibility": {
+          "digest": "31f90038597aabea1174ac1b3bf54b4dcb67d602d99ef45f863158cce8d3399d",
+          "record_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/logs/job_csdiy_49a86391a92911e935084a7a880787f7_prepare_v1/attempt-002/RUN_PROVENANCE.json",
+          "schema": "learnfactory-run-provenance-v3"
+        },
+        "runtime_prompt": {
+          "effective_prompt": {
+            "content_stored": false,
+            "includes_leaf_worker_policy": true,
+            "sha256": "ced22929fe2e736f4757e7d3150f0b5aca3d4af9ef5698cb5fe0aa34805091d5",
+            "utf8_bytes": 9211
+          },
+          "job_prompt": {
+            "content_stored": false,
+            "sha256": "21f1a736a428449e292d9e9adfda33527bd3ed7c813843e8b6f9522133bae06a",
+            "utf8_bytes": 8863
+          },
+          "leaf_worker_policy": {
+            "content_stored": false,
+            "sha256": "61cfaab916fc8a696d7f1c798f8ef8fe1dea8ae235982996b695eea8b7ac44e7",
+            "utf8_bytes": 348
+          }
+        },
+        "sandbox_rule_manifest": {
+          "declared_outputs": [
+            "COURSE_MANIFEST.json",
+            "MATERIAL_AVAILABILITY.json",
+            "UNIT_GRAPH.json",
+            "examiner_only/RUBRIC.md",
+            "student_safe/COMPREHENSION.md",
+            "student_safe/COURSE_BRIEF.md",
+            "student_safe/STUDY_TASK.md"
+          ],
+          "result_channel": {
+            "content_stored_in_provenance": false,
+            "fixed_alias_stored": true,
+            "launch_namespace": "fixed-alias-only",
+            "nonce_hash_stored": false,
+            "nonce_stored": false,
+            "outer_cli_output_capability": "parent-procfd-readonly-hold",
+            "output_descriptor_inherited": false,
+            "post_exit_result_retention": "bounded-redacted-output",
+            "private_path_stored": false,
+            "runtime_fd_stored": false,
+            "schema_version": 3,
+            "transport": "outer-cli-parent-held-fixed-alias-inode"
+          },
+          "rules": [],
+          "schema_version": 1,
+          "sha256": "7506e605eaf3086e0a6f826d96a92b2e482bbe500387e2815511f8a11365ca24",
+          "staged_inputs": [],
+          "tools_enabled": true,
+          "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_csdiy_49a86391a92911e935084a7a880787f7_prepare_v1/attempt-002",
+          "workspace_access": "write"
+        },
+        "staged_inputs": [],
+        "validated_tree_sha256": "31ac7d1b516a3e641d18cf3e68d985cdbbfa98d40670d35d06ad23aa38e28072",
+        "validation_evidence": [
+          {
+            "evidence": {
+              "checked": [
+                "COURSE_MANIFEST.json",
+                "UNIT_GRAPH.json",
+                "MATERIAL_AVAILABILITY.json",
+                "student_safe/COURSE_BRIEF.md",
+                "student_safe/STUDY_TASK.md",
+                "student_safe/COMPREHENSION.md",
+                "examiner_only/RUBRIC.md"
+              ],
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-preparation-files"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-manifest-fields"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-unit-graph-fields"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-material-availability-fields"
+          }
+        ],
+        "validation_labels": [
+          "GENERATED"
+        ],
+        "validation_workspace_tree_sha256": "31ac7d1b516a3e641d18cf3e68d985cdbbfa98d40670d35d06ad23aa38e28072"
+      },
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/catalog/nju-softwareanalysis-49a86391/cohort-v1/preparation/job_csdiy_49a86391a92911e935084a7a880787f7_prepare_v1/attempt-002",
+      "type": "course-preparation",
+      "validation_labels": [
+        "GENERATED"
+      ],
+      "validation_status": "GENERATED",
+      "worker_type": "course_manager"
+    },
+    {
+      "artifact_id": "artifact_14534244022d4b3a8e7f8a5c7acf1de5",
+      "attempt_number": 2,
+      "checksum": "1ef94706b38b3419d3df994b2174eb26497825501b19ab253259f918acea42bf",
+      "checksum_algorithm": "tree-sha256-v2",
+      "created_at": 1788232722.237357,
+      "integrity_status": "VERIFIED_V2",
+      "job_id": "job_csdiy_2b2bc9a23b31ea8f547a356c68230ae5_prepare_v1",
+      "job_type": "codex_task",
+      "metadata": {
+        "archive_projection": {
+          "mode": "complete-workspace",
+          "schema_version": 1,
+          "source_workspace_checksum": "1ef94706b38b3419d3df994b2174eb26497825501b19ab253259f918acea42bf",
+          "source_workspace_checksum_algorithm": "tree-sha256-v2"
+        },
+        "attempt": 2,
+        "catalog_snapshot": {
+          "course": {
+            "catalog_status": "DISCOVERED",
+            "course_id": "course_2b2bc9a23b31ea8f547a356c68230ae5",
+            "description": "[Jeehoon Kang](https://cp.kaist.ac.kr/jeehoon.kang) from KAIST and his [Concurrency and Parallelism Laboratory](https://cp.kaist.ac.kr/) appear to be strong advocates of the Rust programming language. Their contributions include [CS431](https://csdiy.wiki/%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/Rust/cs431/) and [CS420](https://csdiy.wiki/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/CS420/) in the csdiy curriculum. Naturally, they have developed an introductory course for Rust, which is this course. It covers most of the essential topics needed to get started with Rust.\n\nThis course does not have an official textbook. The course homepage recommends using the [Rust book](https://doc.rust-lang.org/book/) for learning and provides a structured learning path in the [slides](https://docs.google.com/presentation/d/17G3SwkE_tq0H3lTt9N0ysIbHhqDZBfHkoWD5LwwAKSo/edit#slide=id.p). Although there are no publicly available lecture videos, the comprehensive testing system makes this course an excellent resource for practicing Rust. Some exercises can serve as a great supplement to [CS110L](https://csdiy.wiki/%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/Rust/CS110L/). If you still feel the need for more practice after completing CS110L, this course is a good choice. Some exercises are quite challenging, and Jeehoon Kang encourages the use of AI-assisted programming. However, AI is not perfect, and the core work must still be done by yourself.",
+            "difficulty": 3.0,
+            "estimated_human_hours": 40.0,
+            "institution": "KAIST",
+            "prerequisites": [
+              "Any programming language"
+            ],
+            "slug": "cs220",
+            "source_metadata": {
+              "fields": {
+                "assignments": "[Github Repository](https://github.com/kaist-cp/cs220/tree/main/src/assignments)",
+                "class hour": "40 hours",
+                "course website": "[Github Repository](https://github.com/kaist-cp/cs220)",
+                "difficulty": "🌟🌟🌟",
+                "offered by": "KAIST",
+                "prerequisites": "Any programming language",
+                "programming languages": "Rust",
+                "recordings": "None",
+                "textbooks": "[slides](https://docs.google.com/presentation/d/17G3SwkE_tq0H3lTt9N0ysIbHhqDZBfHkoWD5LwwAKSo/edit#slide=id.p)"
+              },
+              "language": "en",
+              "prerequisites_raw": "Any programming language",
+              "programming_languages_raw": "Rust",
+              "provenance": {
+                "adapter": "csdiy",
+                "classification": "source-derived",
+                "content_sha256": "b789189343338418d8be1ec2317f8c1d61e1a8295c9dfd163095056c31993e96",
+                "extractor_version": "1.1",
+                "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                "source_file": "docs/编程入门/Rust/cs220.en.md"
+              },
+              "resource_urls": [
+                "https://cp.kaist.ac.kr/jeehoon.kang",
+                "https://cp.kaist.ac.kr/",
+                "https://csdiy.wiki/%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/Rust/cs431/",
+                "https://csdiy.wiki/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/CS420/",
+                "https://doc.rust-lang.org/book/",
+                "https://docs.google.com/presentation/d/17G3SwkE_tq0H3lTt9N0ysIbHhqDZBfHkoWD5LwwAKSo/edit#slide=id.p",
+                "https://csdiy.wiki/%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/Rust/CS110L/",
+                "https://github.com/kaist-cp/cs220",
+                "https://github.com/kaist-cp/cs220/tree/main/src/assignments",
+                "https://github.com/kaist-cp/cs220/issues"
+              ],
+              "source_stem": "cs220"
+            },
+            "title": "CS220: Programming Principles",
+            "topic": "编程入门 / Rust"
+          },
+          "normalized_resource_records": [
+            {
+              "dependencies": [],
+              "metadata": {
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "b789189343338418d8be1ec2317f8c1d61e1a8295c9dfd163095056c31993e96",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/编程入门/Rust/cs220.en.md"
+                },
+                "role": "catalog_overview"
+              },
+              "order": 0,
+              "source_reference": "docs/编程入门/Rust/cs220.en.md",
+              "title": "Catalog overview and resource guide",
+              "type": "reading",
+              "unit_id": "unit_3a4b81694c566cdf2e8e26719aa10e05"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "LINKED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "b789189343338418d8be1ec2317f8c1d61e1a8295c9dfd163095056c31993e96",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/编程入门/Rust/cs220.en.md",
+                  "source_line": 17
+                },
+                "raw_value": "[Github Repository](https://github.com/kaist-cp/cs220)",
+                "urls": [
+                  "https://github.com/kaist-cp/cs220"
+                ]
+              },
+              "order": 17,
+              "source_reference": "docs/编程入门/Rust/cs220.en.md#L17",
+              "title": "Course Website",
+              "type": "reading",
+              "unit_id": "unit_c4d2212f601498e6f5317c4dfad1dfcc"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "UNAVAILABLE",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "b789189343338418d8be1ec2317f8c1d61e1a8295c9dfd163095056c31993e96",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/编程入门/Rust/cs220.en.md",
+                  "source_line": 18
+                },
+                "raw_value": "None",
+                "urls": []
+              },
+              "order": 18,
+              "source_reference": "docs/编程入门/Rust/cs220.en.md#L18",
+              "title": "Recordings",
+              "type": "lecture",
+              "unit_id": "unit_ce6ba85d84f3089eb469d60e84000d5d"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "LINKED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "b789189343338418d8be1ec2317f8c1d61e1a8295c9dfd163095056c31993e96",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/编程入门/Rust/cs220.en.md",
+                  "source_line": 19
+                },
+                "raw_value": "[slides](https://docs.google.com/presentation/d/17G3SwkE_tq0H3lTt9N0ysIbHhqDZBfHkoWD5LwwAKSo/edit#slide=id.p)",
+                "urls": [
+                  "https://docs.google.com/presentation/d/17G3SwkE_tq0H3lTt9N0ysIbHhqDZBfHkoWD5LwwAKSo/edit#slide=id.p"
+                ]
+              },
+              "order": 19,
+              "source_reference": "docs/编程入门/Rust/cs220.en.md#L19",
+              "title": "Textbooks",
+              "type": "reading",
+              "unit_id": "unit_f064ecc90341cea36ef09073675e9a78"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "LINKED",
+                "official_course_unit": true,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "b789189343338418d8be1ec2317f8c1d61e1a8295c9dfd163095056c31993e96",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/编程入门/Rust/cs220.en.md",
+                  "source_line": 20
+                },
+                "raw_value": "[Github Repository](https://github.com/kaist-cp/cs220/tree/main/src/assignments)",
+                "urls": [
+                  "https://github.com/kaist-cp/cs220/tree/main/src/assignments"
+                ]
+              },
+              "order": 20,
+              "source_reference": "docs/编程入门/Rust/cs220.en.md#L20",
+              "title": "Assignments",
+              "type": "assignment",
+              "unit_id": "unit_e63616c0f7b870cc2f819284e6e5ea74"
+            }
+          ],
+          "resource_record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+          "schema_version": 1,
+          "source": {
+            "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+            "license": "MIT",
+            "name": "CSDIY",
+            "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/cs-self-learning",
+            "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+            "type": "course_catalog",
+            "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git"
+          }
+        },
+        "catalog_snapshot_sha256": "d80b49b4271654083b53a65eb7a05f9ef00ccb6c4a5a88537f9dff0e581e1d27",
+        "classification": "immutable source-derived catalog snapshot plus agent-generated learning artifacts",
+        "factory_revision": {
+          "commit": "2bd099d14cb059dbe461fe54a030b5595ed34237",
+          "status": "RECORDED",
+          "tracked_worktree_clean": false
+        },
+        "job_id": "job_csdiy_2b2bc9a23b31ea8f547a356c68230ae5_prepare_v1",
+        "policy_version": 1,
+        "prompt_contexts": [],
+        "removed_root_metadata": [
+          ".factory-workspace"
+        ],
+        "run_id": "run_4dc5a21c98444e699104b16780d4f3e7",
+        "run_reproducibility": {
+          "digest": "ff43974a07c79ee98b260f2019aed9079e505f977b559b45069b86665abfab22",
+          "record_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/logs/job_csdiy_2b2bc9a23b31ea8f547a356c68230ae5_prepare_v1/attempt-002/RUN_PROVENANCE.json",
+          "schema": "learnfactory-run-provenance-v3"
+        },
+        "runtime_prompt": {
+          "effective_prompt": {
+            "content_stored": false,
+            "includes_leaf_worker_policy": true,
+            "sha256": "f7c785919a9a9f786032870bea72a03220c1d1ff0562c254067b7ce3fd072816",
+            "utf8_bytes": 8388
+          },
+          "job_prompt": {
+            "content_stored": false,
+            "sha256": "fb2aa78a98fda77b429db2dc88f0badd90d15ddd5502d1a8716d280d439e26a7",
+            "utf8_bytes": 8040
+          },
+          "leaf_worker_policy": {
+            "content_stored": false,
+            "sha256": "61cfaab916fc8a696d7f1c798f8ef8fe1dea8ae235982996b695eea8b7ac44e7",
+            "utf8_bytes": 348
+          }
+        },
+        "sandbox_rule_manifest": {
+          "declared_outputs": [
+            "COURSE_MANIFEST.json",
+            "MATERIAL_AVAILABILITY.json",
+            "UNIT_GRAPH.json",
+            "examiner_only/RUBRIC.md",
+            "student_safe/COMPREHENSION.md",
+            "student_safe/COURSE_BRIEF.md",
+            "student_safe/STUDY_TASK.md"
+          ],
+          "result_channel": {
+            "content_stored_in_provenance": false,
+            "fixed_alias_stored": true,
+            "launch_namespace": "fixed-alias-only",
+            "nonce_hash_stored": false,
+            "nonce_stored": false,
+            "outer_cli_output_capability": "parent-procfd-readonly-hold",
+            "output_descriptor_inherited": false,
+            "post_exit_result_retention": "bounded-redacted-output",
+            "private_path_stored": false,
+            "runtime_fd_stored": false,
+            "schema_version": 3,
+            "transport": "outer-cli-parent-held-fixed-alias-inode"
+          },
+          "rules": [],
+          "schema_version": 1,
+          "sha256": "a6fb317b1ca6ff3fb2df1f19b6a275753d8ce11aaadf53693c97408ac0b1bf78",
+          "staged_inputs": [],
+          "tools_enabled": true,
+          "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_csdiy_2b2bc9a23b31ea8f547a356c68230ae5_prepare_v1/attempt-002",
+          "workspace_access": "write"
+        },
+        "staged_inputs": [],
+        "validated_tree_sha256": "1ef94706b38b3419d3df994b2174eb26497825501b19ab253259f918acea42bf",
+        "validation_evidence": [
+          {
+            "evidence": {
+              "checked": [
+                "COURSE_MANIFEST.json",
+                "UNIT_GRAPH.json",
+                "MATERIAL_AVAILABILITY.json",
+                "student_safe/COURSE_BRIEF.md",
+                "student_safe/STUDY_TASK.md",
+                "student_safe/COMPREHENSION.md",
+                "examiner_only/RUBRIC.md"
+              ],
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-preparation-files"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-manifest-fields"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-unit-graph-fields"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-material-availability-fields"
+          }
+        ],
+        "validation_labels": [
+          "GENERATED"
+        ],
+        "validation_workspace_tree_sha256": "1ef94706b38b3419d3df994b2174eb26497825501b19ab253259f918acea42bf"
+      },
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/catalog/cs220-2b2bc9a2/cohort-v1/preparation/job_csdiy_2b2bc9a23b31ea8f547a356c68230ae5_prepare_v1/attempt-002",
+      "type": "course-preparation",
+      "validation_labels": [
+        "GENERATED"
+      ],
+      "validation_status": "GENERATED",
+      "worker_type": "course_manager"
+    },
+    {
       "artifact_id": "artifact_1e298d2e81cb4762bb1a3525e597050f",
       "attempt_number": 2,
       "checksum": "8b9805d90b1e9eadf22a73d6e4bf0f20e0aba8a96aa9f5ca59ebc25fa8a3ff96",
@@ -76197,7 +77129,7 @@
       "topic": "软件工程"
     }
   ],
-  "generated_at": 1788232367.2989738,
+  "generated_at": 1788261964.4383013,
   "project_categories": [
     {
       "category": "Uncategorized",

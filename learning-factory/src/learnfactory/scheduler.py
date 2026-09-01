@@ -211,7 +211,6 @@ class Scheduler:
             / job_id
             / f"attempt-{attempt_count:03d}"
         )
-        log_dir.mkdir(parents=True, exist_ok=True)
         stdout_path = log_dir / "worker.stdout.log"
         stderr_path = log_dir / "worker.stderr.log"
         stdout_capture = BoundedBinaryCapture()
@@ -239,6 +238,9 @@ class Scheduler:
         )
         child: _ManagedChild | None = None
         try:
+            # Spawn first so the worker can protect its claim before this
+            # controller performs potentially slow NFS log-directory I/O.
+            log_dir.mkdir(parents=True, exist_ok=True)
             assert process.stdout is not None
             assert process.stderr is not None
             drain_tasks = (

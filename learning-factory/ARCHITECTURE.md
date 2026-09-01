@@ -159,8 +159,11 @@ its event atomically; every claim validates that value inside the same `BEGIN IM
 that would grant ownership. The scheduler also resamples after potentially slow refills and between
 launches. A pause does not terminate work that was already claimed.
 
-Starting a worker atomically renews the claim lease and returns its durable expiry. The heartbeat thread
-translates that expiry to a monotonic deadline. Each SQLite lock wait is dynamically capped to at most
+The worker starts a deterministically de-synchronized heartbeat from the scheduler-issued `CLAIMED`
+lease before creating workspace or provenance files on NFS. Worker registration, run registration, the
+`CLAIMED` to `RUNNING` transition, and the corresponding lease renewal then commit in one transaction.
+Claim and running renewals advance one shared monotonic deadline; out-of-order confirmations can never
+move it backward. Each SQLite lock wait is dynamically capped to at most
 one third of the remaining deadline budget and half a heartbeat interval, accounting for independent
 `BEGIN IMMEDIATE` and `COMMIT` waits. A separate condition-driven watchdog cancels useful work before
 the last durable expiry and refuses to adopt a renewal observed after that horizon, including a late

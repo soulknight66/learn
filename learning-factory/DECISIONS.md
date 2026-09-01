@@ -625,8 +625,26 @@ lease fix, one valid course preparation still exhausted the 20-second general da
 serializing its controller-owned finalization behind peak writer contention, so that window is 60 seconds.
 The heartbeat loop dynamically caps its own wait before the durable expiry. Thus 60 + 5 remains below
 120, preserving the required lease-margin invariant and providing headroom for measured launch/finalization
-waves without weakening owner/token/publication fences. It is an
-operational safeguard, not a substitute for moving initial heartbeat protection ahead of expensive
-provenance capture; that code-level change requires its own deterministic regression test and review
-before deployment. Concurrency remains bounded at twelve and will be reduced only if the longer lease
-still fails to reach steady heartbeats.
+waves without weakening owner/token/publication fences. ADR-036 moves initial heartbeat protection ahead
+of NFS startup work, but the wider operated margins remain until a production canary independently covers
+both launch and finalization contention. Concurrency remains bounded at twelve and will be reduced only if
+the longer lease still fails to reach steady heartbeats.
+
+## ADR-036: Protect the claimed lease before NFS startup work
+
+A worker begins a deterministically phased heartbeat immediately after validating its exact owner/token
+claim, before it creates an attempt workspace, log directory, result transport, or provenance record.
+The heartbeat and main thread share one monotonic deadline. Durable confirmations may return out of order,
+so adoption is non-decreasing and a confirmation observed after the previously safe horizon remains
+invalid. Cancellation, controller interruption, and local lease loss are reconciled after workspace setup,
+after provenance capture, and before handler execution.
+
+Worker registration, job-run registration, `CLAIMED` to `RUNNING`, worker `STARTING` to `RUNNING`, and the
+start-time lease renewal are one SQLite transaction. Claim heartbeats renew the job but do not advance a
+registered worker's state. This prevents recovery or cancellation between separate commits from leaving a
+`RUNNING` worker paired with a `CLAIMED` job or an unfinished run that never reached handler execution.
+
+This change does not make wall-clock leases independent across unsynchronized hosts and does not claim that
+catalog refill is globally coordinated across multiple controllers. Operated hosts must keep synchronized
+clocks, the 120-second/60-second margins remain during canarying, and a durable global refill/claim fence is
+a separate control-plane change.

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "build-your-own-x": {
+      "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989",
+      "head_ref": "master",
+      "tree_hash": "12e788febc0575ae1bce1de8ad1fc28d7fff7c22",
+      "upstream_url": "git@github.com:codecrafters-io/build-your-own-x.git"
+    },
+    "cs-self-learning": {
+      "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "head_ref": "master",
+      "tree_hash": "9a147dd87d5ec377eb8a38b83729d6eb0f76a6cf",
+      "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git"
+    }
+  }
+}

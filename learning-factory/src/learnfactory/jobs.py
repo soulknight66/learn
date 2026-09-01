@@ -821,35 +821,72 @@ class JobRepository:
         lease_seconds: float,
     ) -> float:
         with self.db.transaction(immediate=True) as connection:
-            timestamp = now()
-            lease_expires_at = timestamp + lease_seconds
-            changed = connection.execute(
-                """
-                UPDATE jobs SET state='RUNNING',workspace=?,heartbeat_at=?,
-                    lease_expires_at=?
-                WHERE job_id=? AND state='CLAIMED' AND owner=? AND lease_token=?
-                  AND cancel_requested=0 AND lease_expires_at >= ?
-                """,
-                (
-                    workspace,
-                    timestamp,
-                    lease_expires_at,
-                    job_id,
-                    owner,
-                    lease_token,
-                    timestamp,
-                ),
+            return self.start_in_transaction(
+                connection,
+                job_id,
+                owner,
+                lease_token,
+                worker_id,
+                workspace,
+                lease_seconds=lease_seconds,
             )
-            if changed.rowcount != 1:
-                raise JobError(f"cannot start unowned claim {job_id}")
-            self.db.emit_event(
-                "worker", "JOB_RUNNING", job_id=job_id, worker_id=worker_id,
-                payload={
-                    "workspace": workspace,
-                    "lease_expires_at": lease_expires_at,
-                },
-                connection=connection,
-            )
+
+    def start_in_transaction(
+        self,
+        connection: sqlite3.Connection,
+        job_id: str,
+        owner: str,
+        lease_token: str,
+        worker_id: str,
+        workspace: str,
+        *,
+        lease_seconds: float,
+    ) -> float:
+        """Atomically bind a registered worker to its claimed job."""
+
+        if not connection.in_transaction:
+            raise JobError("worker start requires an active transaction")
+        timestamp = now()
+        lease_expires_at = timestamp + lease_seconds
+        changed = connection.execute(
+            """
+            UPDATE jobs SET state='RUNNING',workspace=?,heartbeat_at=?,
+                lease_expires_at=?
+            WHERE job_id=? AND state='CLAIMED' AND owner=? AND lease_token=?
+              AND cancel_requested=0 AND lease_expires_at >= ?
+            """,
+            (
+                workspace,
+                timestamp,
+                lease_expires_at,
+                job_id,
+                owner,
+                lease_token,
+                timestamp,
+            ),
+        )
+        if changed.rowcount != 1:
+            raise JobError(f"cannot start unowned claim {job_id}")
+        worker_changed = connection.execute(
+            """
+            UPDATE workers SET state='RUNNING',last_activity=?
+            WHERE worker_id=? AND current_job=? AND state IN ('STARTING','RUNNING')
+            """,
+            (timestamp, worker_id, job_id),
+        )
+        if worker_changed.rowcount != 1:
+            raise JobError(f"cannot start unregistered worker {worker_id}")
+        self.db.emit_event(
+            "worker",
+            "JOB_RUNNING",
+            job_id=job_id,
+            worker_id=worker_id,
+            payload={
+                "workspace": workspace,
+                "lease_expires_at": lease_expires_at,
+            },
+            connection=connection,
+        )
         return lease_expires_at
 
     def heartbeat(
@@ -887,8 +924,12 @@ class JobRepository:
                     """
                     UPDATE workers SET last_activity=?,state='RUNNING'
                     WHERE worker_id=? AND current_job=? AND state IN ('STARTING','RUNNING')
+                      AND EXISTS (
+                        SELECT 1 FROM jobs
+                        WHERE job_id=? AND state='RUNNING'
+                      )
                     """,
-                    (timestamp, worker_id, job_id),
+                    (timestamp, worker_id, job_id, job_id),
                 )
             return lease_expires_at if changed.rowcount == 1 else None
 
@@ -1357,7 +1398,7 @@ class JobRepository:
         job_id: str,
         owner: str,
         lease_token: str,
-        worker_id: str,
+        worker_id: str | None,
         *,
         reason: str,
     ) -> JobState:
@@ -1444,7 +1485,13 @@ class JobRepository:
                 return
             self.db.emit_event("operator", event, job_id=job_id, connection=connection)
 
-    def finish_cancelled(self, job_id: str, owner: str, lease_token: str, worker_id: str) -> None:
+    def finish_cancelled(
+        self,
+        job_id: str,
+        owner: str,
+        lease_token: str,
+        worker_id: str | None,
+    ) -> None:
         with self.db.transaction(immediate=True) as connection:
             timestamp = now()
             changed = connection.execute(

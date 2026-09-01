@@ -3749,6 +3749,102 @@ class RecoveryAndValidationGateTests(DatabaseTestCase):
         self.assertEqual(130, renewed_until)
         self.assertEqual(130, self.jobs.get(job_id)["lease_expires_at"])
 
+    def test_claim_heartbeat_does_not_advance_registered_worker_before_start(
+        self,
+    ) -> None:
+        job_id = self._new_ready_job(job_id="job_claim_heartbeat_phase")
+        claimed = self.jobs.claim_next(
+            "phase-owner", 30, max_total=1, type_limits={}
+        )
+        assert claimed is not None
+        worker_id = "worker_claim_heartbeat_phase"
+        workspace = self.root / "phase-workspace"
+        workspace.mkdir()
+        timestamp = time.time()
+        with self.database.transaction(immediate=True) as connection:
+            connection.execute(
+                """
+                INSERT INTO workers(
+                    worker_id,type,state,started_at,last_activity,current_job,workspace
+                ) VALUES (?,?,?,?,?,?,?)
+                """,
+                (
+                    worker_id,
+                    "test",
+                    "STARTING",
+                    timestamp,
+                    timestamp,
+                    job_id,
+                    str(workspace),
+                ),
+            )
+
+        renewed = self.jobs.heartbeat(
+            job_id,
+            "phase-owner",
+            claimed.lease_token,
+            worker_id,
+            30,
+        )
+        self.assertIsNotNone(renewed)
+        with self.database.connect() as connection:
+            worker_state = connection.execute(
+                "SELECT state FROM workers WHERE worker_id=?", (worker_id,)
+            ).fetchone()["state"]
+        self.assertEqual("CLAIMED", self.jobs.get(job_id)["state"])
+        self.assertEqual("STARTING", worker_state)
+
+        self.jobs.start(
+            job_id,
+            "phase-owner",
+            claimed.lease_token,
+            worker_id,
+            str(workspace),
+            lease_seconds=30,
+        )
+        with self.database.connect() as connection:
+            worker_state = connection.execute(
+                "SELECT state FROM workers WHERE worker_id=?", (worker_id,)
+            ).fetchone()["state"]
+        self.assertEqual("RUNNING", self.jobs.get(job_id)["state"])
+        self.assertEqual("RUNNING", worker_state)
+
+    def test_start_transaction_rolls_back_worker_binding_with_claim(self) -> None:
+        job_id = self._new_ready_job(job_id="job_atomic_worker_start")
+        claimed = self.jobs.claim_next(
+            "atomic-owner", 30, max_total=1, type_limits={}
+        )
+        assert claimed is not None
+        worker_id = "worker_atomic_start_rollback"
+
+        with self.assertRaisesRegex(JobError, "cannot start unowned claim"):
+            with self.database.transaction(immediate=True) as connection:
+                connection.execute(
+                    """
+                    INSERT INTO workers(
+                        worker_id,type,state,started_at,last_activity,current_job,workspace
+                    ) VALUES (?,?,?,?,?,?,?)
+                    """,
+                    (worker_id, "test", "STARTING", 1, 1, job_id, "workspace"),
+                )
+                self.jobs.start_in_transaction(
+                    connection,
+                    job_id,
+                    "atomic-owner",
+                    "wrong-lease",
+                    worker_id,
+                    "workspace",
+                    lease_seconds=30,
+                )
+
+        self.assertEqual("CLAIMED", self.jobs.get(job_id)["state"])
+        with self.database.connect() as connection:
+            self.assertIsNone(
+                connection.execute(
+                    "SELECT 1 FROM workers WHERE worker_id=?", (worker_id,)
+                ).fetchone()
+            )
+
     def test_start_rejects_cancelled_or_expired_claim(self) -> None:
         cancelled = self._new_ready_job()
         cancelled_claim = self.jobs.claim_next(

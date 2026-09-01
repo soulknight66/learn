@@ -240,6 +240,65 @@ class EndToEndWorkerTests(unittest.TestCase):
             run["reproducibility_digest"], json.loads(event["payload_json"])["digest"]
         )
 
+    def test_exact_scheduler_runs_only_lower_priority_target_end_to_end(
+        self,
+    ) -> None:
+        target = self.jobs.create(
+            "fake",
+            "test",
+            {
+                "files": {"target.txt": "exact\n"},
+                "validators": [
+                    {
+                        "type": "required_paths",
+                        "name": "exact-target-output",
+                        "paths": ["target.txt"],
+                    }
+                ],
+                "artifact_path": "e2e/exact-target",
+            },
+            job_id="job_exact_e2e_target",
+            priority=1,
+            max_attempts=1,
+        )
+        unrelated = self.jobs.create(
+            "fake",
+            "test",
+            {"files": {"unrelated.txt": "must not run\n"}},
+            job_id="job_exact_e2e_unrelated",
+            priority=100,
+            max_attempts=1,
+        )
+        self.jobs.promote_eligible()
+
+        with patch.object(
+            Scheduler,
+            "_refill_catalogs",
+            side_effect=AssertionError("exact scheduler attempted a refill"),
+        ):
+            dispatched = asyncio.run(
+                run_scheduler(
+                    self.settings,
+                    self.db,
+                    target_job_id=target,
+                )
+            )
+
+        self.assertEqual(1, dispatched)
+        self.assertEqual("SUCCEEDED", self.jobs.get(target)["state"])
+        unrelated_record = self.jobs.get(unrelated)
+        self.assertEqual("READY", unrelated_record["state"])
+        self.assertEqual(0, unrelated_record["attempt_count"])
+        with self.db.connect() as connection:
+            artifact_count = connection.execute(
+                "SELECT COUNT(*) FROM artifacts WHERE job_id=?", (target,)
+            ).fetchone()[0]
+            unrelated_runs = connection.execute(
+                "SELECT COUNT(*) FROM job_runs WHERE job_id=?", (unrelated,)
+            ).fetchone()[0]
+        self.assertEqual(1, artifact_count)
+        self.assertEqual(0, unrelated_runs)
+
     def test_slow_workspace_setup_is_protected_by_claim_heartbeat(self) -> None:
         job_id = self.jobs.create(
             "fake",

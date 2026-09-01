@@ -40,6 +40,72 @@ class CliSafetyTests(unittest.TestCase):
             result = main(arguments)
         return result, stdout.getvalue(), stderr.getvalue()
 
+    def test_exact_run_forwards_one_target_and_reports_it(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="learnfactory-cli-") as raw:
+            root = Path(raw)
+            config = self._config(root)
+            self.assertEqual(0, self._run(["--config", str(config), "init"])[0])
+
+            scheduler = mock.AsyncMock(return_value=1)
+            with mock.patch(
+                "learnfactory.cli.run_scheduler", new=scheduler
+            ), mock.patch("learnfactory.cli.write_checkpoint"):
+                result, output, error = self._run(
+                    [
+                        "--config",
+                        str(config),
+                        "run",
+                        "--job",
+                        "job_exact_cli",
+                    ]
+                )
+
+            self.assertEqual(0, result, error)
+            self.assertEqual(
+                {"dispatched": 1, "job_id": "job_exact_cli"},
+                json.loads(output),
+            )
+            self.assertEqual(
+                "job_exact_cli",
+                scheduler.await_args.kwargs["target_job_id"],
+            )
+            self.assertIsNone(scheduler.await_args.kwargs["max_jobs"])
+            self.assertFalse(scheduler.await_args.kwargs["until_idle"])
+
+    def test_exact_run_rejects_conflicting_bounds_before_context_setup(self) -> None:
+        for conflicting in (["--max-jobs", "1"], ["--until-idle"]):
+            with self.subTest(conflicting=conflicting):
+                result, output, error = self._run(
+                    ["run", "--job", "job_exact_cli", *conflicting]
+                )
+                self.assertEqual(2, result)
+                self.assertEqual("", output)
+                self.assertIn("--job cannot be combined", error)
+
+    def test_exact_run_zero_dispatch_is_an_error_without_a_report(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="learnfactory-cli-") as raw:
+            root = Path(raw)
+            config = self._config(root)
+            self.assertEqual(0, self._run(["--config", str(config), "init"])[0])
+
+            with mock.patch(
+                "learnfactory.cli.run_scheduler", new=mock.AsyncMock(return_value=0)
+            ), mock.patch("learnfactory.cli.write_checkpoint") as report:
+                result, output, error = self._run(
+                    [
+                        "--config",
+                        str(config),
+                        "run",
+                        "--job",
+                        "job_missing_cli",
+                    ]
+                )
+
+            self.assertEqual(2, result)
+            self.assertEqual("", output)
+            self.assertIn("no job was dispatched", error)
+            report.assert_not_called()
+
     def test_read_only_status_refuses_to_create_or_migrate_a_fresh_database(self) -> None:
         with tempfile.TemporaryDirectory(prefix="learnfactory-cli-") as raw:
             root = Path(raw)

@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+- Add a one-shot exact-job scheduler mode, `run --job JOB_ID`. It bypasses
+  global READY priority without falling back to another job, suppresses all
+  catalog refills, retains pause/dependency/attempt/capacity/validator fences,
+  drains at most the one claimed worker, and records the exact target in
+  scheduler lifecycle events. This makes deliberate historical retries
+  operable without dispatching unrelated queued work.
+- Reap subreaper-adopted exited Codex descendants throughout long backend
+  calls while preserving exclusive `Popen` ownership of the primary wait
+  status. Cleanup now makes a final direct kill/reap attempt even when process
+  group signaling fails and fails closed if the primary cannot be proved
+  terminal before descendant reconciliation and subreaper restoration.
 - Preserve the initial catalog refill for unpaused bounded scheduler runs, including the intentional
   `--max-jobs 0` refill-only operation, but suppress that controller's periodic refills after it reaches
   a finite dispatch ceiling. This removes avoidable rollback-journal writer contention while the bounded

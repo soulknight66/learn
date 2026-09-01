@@ -63,6 +63,7 @@ Operate bounded work:
 ```bash
 PYTHONPATH=src python3 -m learnfactory run --until-idle
 PYTHONPATH=src python3 -m learnfactory run --max-jobs 10
+PYTHONPATH=src python3 -m learnfactory run --job JOB_ID
 PYTHONPATH=src python3 -m learnfactory pause
 PYTHONPATH=src python3 -m learnfactory resume
 PYTHONPATH=src python3 -m learnfactory retry JOB_ID
@@ -82,6 +83,15 @@ database-global refill fence: another controller or a manual seeding command can
 concurrently. Run bounded production canaries with one controller and no concurrent seeder.
 Starting another controller is safe with respect to duplicate claims and shared limits, but is normally
 unnecessary while the existing controller is healthy.
+
+`run --job JOB_ID` is a one-shot claim allowlist for deliberate operator work. It performs integrity
+reconciliation, dependency promotion, and expired-lease recovery, but never performs a catalog refill,
+never claims a different READY job, and exits after draining at most one attempt. It still respects the
+durable pause, dependency, attempt-budget, global/type-capacity, cancellation, and validator fences. The
+factory must therefore be resumed before the command; restore the pause afterward when operating a
+paused checkpoint. A concurrent ordinary controller can win the target's lease first, so use exact mode
+with no other controller when strict operator sequencing matters. Exact dispatch is not a claim that the
+attempt succeeded; inspect its durable result and validator evidence before continuing.
 
 `pause` commits the durable flag and audit event together. A claim that linearizes after that commit
 cannot acquire ownership, including after a slow catalog refill or between two capacity-filling
@@ -263,14 +273,21 @@ after its student dependency succeeds:
 
 ```bash
 PYTHONPATH=src python3 -m learnfactory retry STUDENT_JOB_ID
-PYTHONPATH=src python3 -m learnfactory run --until-idle
-PYTHONPATH=src python3 -m learnfactory retry EXAMINER_JOB_ID
-PYTHONPATH=src python3 -m learnfactory run --until-idle
+PYTHONPATH=src python3 -m learnfactory resume
+PYTHONPATH=src python3 -m learnfactory run --job STUDENT_JOB_ID
+PYTHONPATH=src python3 -m learnfactory pause
+PYTHONPATH=src python3 -m learnfactory inspect STUDENT_JOB_ID
+PYTHONPATH=src python3 -m learnfactory inspect EXAMINER_JOB_ID
+PYTHONPATH=src python3 -m learnfactory resume
+PYTHONPATH=src python3 -m learnfactory run --job EXAMINER_JOB_ID
+PYTHONPATH=src python3 -m learnfactory pause
 ```
 
 Manual retry preserves attempt history and grants one additional attempt. A successful capability gate
 proves this bounded invocation path, not unlimited capacity; retain configured concurrency limits and
-respect service throttling.
+respect service throttling. Dependency maintenance normally promotes a dependency-blocked examiner to
+`READY` after its student succeeds; issue `retry EXAMINER_JOB_ID` only if inspection shows it remains in a
+retryable `BLOCKED` state.
 
 ## Codex worker permission profile
 

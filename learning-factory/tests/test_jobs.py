@@ -1206,6 +1206,377 @@ class StateAndDependencyTests(DatabaseTestCase):
 
 
 class ClaimAndCapacityTests(DatabaseTestCase):
+    def test_claim_by_id_unknown_target_never_falls_back_or_opens_writer(
+        self,
+    ) -> None:
+        unrelated = self._new_ready_job(
+            job_id="job_exact_unknown_fallback", priority=100
+        )
+
+        with mock.patch.object(
+            self.database,
+            "transaction",
+            side_effect=AssertionError("unknown exact target opened a writer"),
+        ):
+            claimed = self.jobs.claim_by_id(
+                "job_exact_missing",
+                "unknown-exact-owner",
+                30,
+                max_total=1,
+                type_limits={"test": 1},
+            )
+
+        self.assertIsNone(claimed)
+        record = self.jobs.get(unrelated)
+        self.assertEqual("READY", record["state"])
+        self.assertEqual(0, record["attempt_count"])
+
+    def test_claim_by_id_claims_only_requested_job_and_preserves_live_lease(
+        self,
+    ) -> None:
+        target = self.jobs.create(
+            "target", "test", {}, job_id="job_exact_target", priority=-10
+        )
+        unrelated = self.jobs.create(
+            "unrelated", "test", {}, job_id="job_exact_higher", priority=100
+        )
+        self.jobs.promote_eligible()
+
+        claimed = self.jobs.claim_by_id(
+            target,
+            "exact-owner",
+            30,
+            max_total=2,
+            type_limits={"test": 2},
+        )
+
+        self.assertEqual(target, claimed.job_id if claimed else None)
+        self.assertEqual("READY", self.jobs.get(unrelated)["state"])
+        self.assertEqual(0, self.jobs.get(unrelated)["attempt_count"])
+        first_record = self.jobs.get(target)
+        self.assertEqual("CLAIMED", first_record["state"])
+        self.assertIsNone(
+            self.jobs.claim_by_id(
+                target,
+                "lease-stealing-owner",
+                30,
+                max_total=2,
+                type_limits={"test": 2},
+            )
+        )
+        second_record = self.jobs.get(target)
+        self.assertEqual("exact-owner", second_record["owner"])
+        self.assertEqual(first_record["lease_token"], second_record["lease_token"])
+        self.assertEqual(1, second_record["attempt_count"])
+
+    def test_claim_by_id_fenced_target_never_falls_back(self) -> None:
+        target = self.jobs.create(
+            "target",
+            "test",
+            {"validators": [{"type": "command", "argv": ["true"]}]},
+            job_id="job_exact_fenced",
+            priority=100,
+        )
+        unrelated = self.jobs.create(
+            "unrelated", "test", {}, job_id="job_exact_safe", priority=1
+        )
+        self.jobs.promote_eligible()
+
+        claimed = self.jobs.claim_by_id(
+            target,
+            "exact-fenced-owner",
+            30,
+            max_total=1,
+            type_limits={"test": 1},
+            blocked_validator_types=frozenset({"command"}),
+        )
+
+        self.assertIsNone(claimed)
+        for job_id in (target, unrelated):
+            record = self.jobs.get(job_id)
+            self.assertEqual("READY", record["state"])
+            self.assertEqual(0, record["attempt_count"])
+
+    def test_claim_by_id_decodes_invalid_payload_before_writer(self) -> None:
+        target = self._new_ready_job(job_id="job_exact_invalid_payload")
+        with self.database.transaction(immediate=True) as connection:
+            connection.execute(
+                "UPDATE jobs SET payload_json=? WHERE job_id=?",
+                ('{"duplicate":1,"duplicate":2}', target),
+            )
+
+        with mock.patch.object(
+            self.database,
+            "transaction",
+            side_effect=AssertionError("invalid payload opened a writer"),
+        ), self.assertRaisesRegex(JobError, "invalid or ambiguous payload JSON"):
+            self.jobs.claim_by_id(
+                target,
+                "invalid-payload-owner",
+                30,
+                max_total=1,
+                type_limits={"test": 1},
+            )
+
+        with self.database.connect() as connection:
+            record = connection.execute(
+                "SELECT state,attempt_count,owner FROM jobs WHERE job_id=?", (target,)
+            ).fetchone()
+        self.assertEqual("READY", record["state"])
+        self.assertEqual(0, record["attempt_count"])
+        self.assertIsNone(record["owner"])
+
+    def test_claim_by_id_payload_preflight_releases_shared_lock(self) -> None:
+        target = self._new_ready_job(job_id="job_exact_slow_payload")
+        parsing_started = threading.Event()
+        release_parser = threading.Event()
+        outcomes: list[object] = []
+        failures: list[BaseException] = []
+        original_fence = jobs_module._held_by_validator_fence
+
+        def slow_parse(raw: str, blocked: frozenset[str]) -> bool:
+            parsing_started.set()
+            if not release_parser.wait(timeout=5):
+                raise AssertionError("test did not release exact payload parser")
+            return original_fence(raw, blocked)
+
+        def claim() -> None:
+            try:
+                outcomes.append(
+                    self.jobs.claim_by_id(
+                        target,
+                        "slow-exact-owner",
+                        30,
+                        max_total=1,
+                        type_limits={"test": 1},
+                        blocked_validator_types=frozenset({"command"}),
+                    )
+                )
+            except BaseException as error:
+                failures.append(error)
+
+        with mock.patch(
+            "learnfactory.jobs._held_by_validator_fence", side_effect=slow_parse
+        ):
+            worker = threading.Thread(target=claim)
+            worker.start()
+            self.assertTrue(parsing_started.wait(timeout=5))
+            contender = Database(
+                self.database_path,
+                self.migrations,
+                busy_timeout_seconds=0.02,
+            )
+            try:
+                with contender.transaction(immediate=True) as connection:
+                    connection.execute(
+                        """
+                        INSERT INTO events(timestamp,actor,type,payload_json)
+                        VALUES (?,?,?,?)
+                        """,
+                        (time.time(), "test", "WRITER_DURING_EXACT_PARSE", "{}"),
+                    )
+            finally:
+                release_parser.set()
+            worker.join(timeout=10)
+
+        self.assertFalse(worker.is_alive())
+        self.assertEqual([], failures)
+        self.assertEqual(target, outcomes[0].job_id if outcomes[0] else None)
+
+    def test_claim_by_id_ignores_unrelated_claim_generation_change(self) -> None:
+        target = self._new_ready_job(job_id="job_exact_generation_target")
+        unrelated = self._new_ready_job(
+            job_id="job_exact_generation_unrelated", priority=1
+        )
+        original_select = self.jobs._select_claimable_by_id
+
+        def select_then_change_unrelated(*args: object, **kwargs: object) -> object:
+            selected = original_select(*args, **kwargs)  # type: ignore[arg-type]
+            with self.database.transaction(immediate=True) as connection:
+                connection.execute(
+                    "UPDATE jobs SET priority=priority+1 WHERE job_id=?",
+                    (unrelated,),
+                )
+            return selected
+
+        with mock.patch.object(
+            self.jobs,
+            "_select_claimable_by_id",
+            side_effect=select_then_change_unrelated,
+        ):
+            claimed = self.jobs.claim_by_id(
+                target,
+                "exact-generation-owner",
+                30,
+                max_total=1,
+                type_limits={"test": 1},
+            )
+
+        self.assertEqual(target, claimed.job_id if claimed else None)
+        self.assertEqual("READY", self.jobs.get(unrelated)["state"])
+
+    def test_claim_by_id_rejects_target_payload_change_after_preflight(self) -> None:
+        target = self._new_ready_job(job_id="job_exact_changed_payload")
+        original_select = self.jobs._select_claimable_by_id
+        changed_payload = '{"validators":[{"type":"command","argv":["true"]}]}'
+
+        def select_then_change_target(*args: object, **kwargs: object) -> object:
+            selected = original_select(*args, **kwargs)  # type: ignore[arg-type]
+            with self.database.transaction(immediate=True) as connection:
+                connection.execute(
+                    "UPDATE jobs SET payload_json=? WHERE job_id=?",
+                    (changed_payload, target),
+                )
+            return selected
+
+        with mock.patch.object(
+            self.jobs,
+            "_select_claimable_by_id",
+            side_effect=select_then_change_target,
+        ):
+            claimed = self.jobs.claim_by_id(
+                target,
+                "changed-payload-owner",
+                30,
+                max_total=1,
+                type_limits={"test": 1},
+                blocked_validator_types=frozenset({"command"}),
+            )
+
+        self.assertIsNone(claimed)
+        record = self.jobs.get(target)
+        self.assertEqual("READY", record["state"])
+        self.assertEqual(0, record["attempt_count"])
+        self.assertIsNone(
+            self.jobs.claim_by_id(
+                target,
+                "changed-payload-retry",
+                30,
+                max_total=1,
+                type_limits={"test": 1},
+                blocked_validator_types=frozenset({"command"}),
+            )
+        )
+
+    def test_claim_by_id_rechecks_pause_and_type_capacity_in_writer(self) -> None:
+        target = self._new_ready_job(job_id="job_exact_writer_fences")
+        original_select = self.jobs._select_claimable_by_id
+
+        def select_then_pause(*args: object, **kwargs: object) -> object:
+            selected = original_select(*args, **kwargs)  # type: ignore[arg-type]
+            self.database.set_system_value("paused", True)
+            return selected
+
+        with mock.patch.object(
+            self.jobs,
+            "_select_claimable_by_id",
+            side_effect=select_then_pause,
+        ):
+            self.assertIsNone(
+                self.jobs.claim_by_id(
+                    target,
+                    "paused-exact-owner",
+                    30,
+                    max_total=1,
+                    type_limits={"test": 1},
+                )
+            )
+        self.assertEqual(0, self.jobs.get(target)["attempt_count"])
+        self.database.set_system_value("paused", False)
+
+        capacity = self._new_ready_job(job_id="job_exact_capacity_consumer")
+
+        def select_then_fill_type(*args: object, **kwargs: object) -> object:
+            selected = original_select(*args, **kwargs)  # type: ignore[arg-type]
+            timestamp = time.time()
+            with self.database.transaction(immediate=True) as connection:
+                connection.execute(
+                    """
+                    UPDATE jobs SET state='CLAIMED',owner='capacity-owner',
+                        lease_token='lease_exact_capacity',lease_expires_at=?,
+                        heartbeat_at=?,attempt_count=attempt_count+1
+                    WHERE job_id=?
+                    """,
+                    (timestamp + 30, timestamp, capacity),
+                )
+            return selected
+
+        with mock.patch.object(
+            self.jobs,
+            "_select_claimable_by_id",
+            side_effect=select_then_fill_type,
+        ):
+            self.assertIsNone(
+                self.jobs.claim_by_id(
+                    target,
+                    "saturated-exact-owner",
+                    30,
+                    max_total=2,
+                    type_limits={"test": 1},
+                )
+            )
+        self.assertEqual(0, self.jobs.get(target)["attempt_count"])
+
+    def test_claim_by_id_rejects_unsatisfied_dependency_without_fallback(
+        self,
+    ) -> None:
+        parent = self.jobs.create(
+            "parent", "test", {}, job_id="job_exact_pending_parent"
+        )
+        child = self.jobs.create(
+            "child",
+            "test",
+            {},
+            dependencies=[parent],
+            job_id="job_exact_dependency_child",
+            priority=100,
+        )
+        unrelated = self._new_ready_job(
+            job_id="job_exact_dependency_unrelated", priority=1
+        )
+        with self.database.transaction(immediate=True) as connection:
+            connection.execute(
+                "UPDATE jobs SET state='READY' WHERE job_id=?", (child,)
+            )
+
+        claimed = self.jobs.claim_by_id(
+            child,
+            "dependency-exact-owner",
+            30,
+            max_total=1,
+            type_limits={"test": 1},
+        )
+
+        self.assertIsNone(claimed)
+        self.assertEqual("READY", self.jobs.get(child)["state"])
+        self.assertEqual(0, self.jobs.get(child)["attempt_count"])
+        self.assertEqual("READY", self.jobs.get(unrelated)["state"])
+
+    def test_concurrent_claim_by_id_grants_one_lease(self) -> None:
+        target = self._new_ready_job(job_id="job_exact_atomic")
+        contenders = 4
+        barrier = threading.Barrier(contenders)
+
+        def claim(index: int) -> str | None:
+            repository = JobRepository(Database(self.database_path, self.migrations))
+            barrier.wait(timeout=10)
+            result = repository.claim_by_id(
+                target,
+                f"exact-thread-owner-{index}",
+                30,
+                max_total=contenders,
+                type_limits={"test": contenders},
+            )
+            return result.job_id if result is not None else None
+
+        with ThreadPoolExecutor(max_workers=contenders) as executor:
+            results = list(executor.map(claim, range(contenders)))
+
+        self.assertEqual([target], [result for result in results if result is not None])
+        record = self.jobs.get(target)
+        self.assertEqual("CLAIMED", record["state"])
+        self.assertEqual(1, record["attempt_count"])
+
     def test_effective_attempt_budget_survives_restart_and_fences_claims(self) -> None:
         job_id = self.jobs.create(
             "retry-budget",

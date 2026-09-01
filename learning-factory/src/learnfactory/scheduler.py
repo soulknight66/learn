@@ -50,7 +50,21 @@ class Scheduler:
             else frozenset({"command"})
         )
 
-    async def run(self, *, until_idle: bool = False, max_jobs: int | None = None) -> int:
+    async def run(
+        self,
+        *,
+        until_idle: bool = False,
+        max_jobs: int | None = None,
+        target_job_id: str | None = None,
+    ) -> int:
+        if target_job_id is not None:
+            if not target_job_id:
+                raise ValueError("target_job_id must not be empty")
+            if until_idle or max_jobs is not None:
+                raise ValueError(
+                    "an exact-job run cannot be combined with until_idle or max_jobs"
+                )
+            max_jobs = 1
         completed_at_start: int | None = None
         dispatched = 0
         started = False
@@ -68,15 +82,20 @@ class Scheduler:
                 time.monotonic() + SCHEDULER_MAINTENANCE_INTERVAL_SECONDS
             )
             completed_at_start = self._terminal_count()
+            start_payload: dict[str, object] = {
+                "owner": self.owner,
+                "blocked_validator_types": sorted(
+                    self.blocked_validator_types
+                ),
+            }
+            if target_job_id is not None:
+                start_payload.update(
+                    {"mode": "exact", "target_job_id": target_job_id}
+                )
             self.db.emit_event(
                 "scheduler",
                 "SCHEDULER_STARTED",
-                payload={
-                    "owner": self.owner,
-                    "blocked_validator_types": sorted(
-                        self.blocked_validator_types
-                    ),
-                },
+                payload=start_payload,
             )
             started = True
             while not self.stop_requested.is_set():
@@ -92,6 +111,7 @@ class Scheduler:
                 paused = self._is_paused()
                 if (
                     not paused
+                    and target_job_id is None
                     and not dispatch_limit_reached
                     and monotonic_now >= next_refill_at
                 ):
@@ -104,10 +124,17 @@ class Scheduler:
                     # dispatch from the pause value sampled before that work.
                     paused = self._is_paused()
                 if not paused:
-                    dispatched = await self._fill_capacity(
-                        dispatched=dispatched,
-                        max_jobs=max_jobs,
-                    )
+                    if target_job_id is None:
+                        dispatched = await self._fill_capacity(
+                            dispatched=dispatched,
+                            max_jobs=max_jobs,
+                        )
+                    else:
+                        dispatched = await self._fill_capacity(
+                            dispatched=dispatched,
+                            max_jobs=max_jobs,
+                            target_job_id=target_job_id,
+                        )
                 # Preserve the initial refill for unpaused runs, including
                 # the intentional max_jobs=0 refill-only invocation. Once a
                 # finite run has spent its launch budget it can only drain its
@@ -116,7 +143,16 @@ class Scheduler:
                 dispatch_limit_reached = dispatch_limit_reached or (
                     max_jobs is not None and dispatched >= max_jobs
                 )
-                if max_jobs is not None and dispatched >= max_jobs and not self.children:
+                if (
+                    max_jobs is not None
+                    and dispatched >= max_jobs
+                    and not self.children
+                ):
+                    break
+                if target_job_id is not None and not self.children:
+                    # An exact invocation gets one transactional claim attempt.
+                    # If the target is unavailable, paused, or fenced, exit
+                    # without waiting or falling back to another READY job.
                     break
                 if until_idle and not self.children and not self._has_pending_work():
                     break
@@ -138,15 +174,20 @@ class Scheduler:
                         if completed_at_start is not None
                         else 0
                     )
+                    stop_payload: dict[str, object] = {
+                        "owner": self.owner,
+                        "dispatched": dispatched,
+                        "new_terminal_jobs": finished,
+                        "aborted": run_error is not None,
+                    }
+                    if target_job_id is not None:
+                        stop_payload.update(
+                            {"mode": "exact", "target_job_id": target_job_id}
+                        )
                     self.db.emit_event(
                         "scheduler",
                         "SCHEDULER_STOPPED",
-                        payload={
-                            "owner": self.owner,
-                            "dispatched": dispatched,
-                            "new_terminal_jobs": finished,
-                            "aborted": run_error is not None,
-                        },
+                        payload=stop_payload,
                     )
                 except BaseException as error:
                     if cleanup_error is None:
@@ -171,24 +212,39 @@ class Scheduler:
         return time.monotonic() + AUTO_COURSE_REFILL_INTERVAL_SECONDS
 
     async def _fill_capacity(
-        self, *, dispatched: int, max_jobs: int | None
+        self,
+        *,
+        dispatched: int,
+        max_jobs: int | None,
+        target_job_id: str | None = None,
     ) -> int:
         """Claim and launch work while rechecking the durable pause fence."""
 
         while len(self.children) < self.settings.max_concurrency:
             if max_jobs is not None and dispatched >= max_jobs:
                 break
-            # This closes the stale outer-loop window. claim_next repeats the
-            # check under BEGIN IMMEDIATE to linearize against operator pause.
+            # This closes the stale outer-loop window. Both repository claim
+            # paths repeat the check under BEGIN IMMEDIATE to linearize against
+            # operator pause.
             if self._is_paused():
                 break
-            claimed = self.jobs.claim_next(
-                self.owner,
-                self.settings.lease_seconds,
-                max_total=self.settings.max_concurrency,
-                type_limits=self.settings.limits,
-                blocked_validator_types=self.blocked_validator_types,
-            )
+            if target_job_id is None:
+                claimed = self.jobs.claim_next(
+                    self.owner,
+                    self.settings.lease_seconds,
+                    max_total=self.settings.max_concurrency,
+                    type_limits=self.settings.limits,
+                    blocked_validator_types=self.blocked_validator_types,
+                )
+            else:
+                claimed = self.jobs.claim_by_id(
+                    target_job_id,
+                    self.owner,
+                    self.settings.lease_seconds,
+                    max_total=self.settings.max_concurrency,
+                    type_limits=self.settings.limits,
+                    blocked_validator_types=self.blocked_validator_types,
+                )
             if claimed is None:
                 break
             try:

@@ -43,7 +43,7 @@ _CLAIM_SCAN_MAX_GENERATION_RESTARTS = 8
 
 
 def _held_by_validator_fence(
-    payload_json: str, blocked_validator_types: frozenset[str]
+    payload_json: str | bytes, blocked_validator_types: frozenset[str]
 ) -> bool:
     """Return whether a READY job must remain unclaimed under a validator fence.
 
@@ -115,6 +115,13 @@ class ClaimedJob:
 class _ClaimCandidate:
     job_id: str
     generation: int
+
+
+@dataclass(frozen=True)
+class _ExactClaimCandidate:
+    job_id: str
+    payload_json: str | bytes
+    payload: dict[str, Any]
 
 
 class JobError(RuntimeError):
@@ -497,27 +504,7 @@ class JobRepository:
             active_total = sum(active_by_type.values())
             if active_total >= max_total:
                 return None
-            row = connection.execute(
-                """
-                SELECT candidate.* FROM jobs candidate
-                WHERE candidate.job_id=? AND candidate.state='READY'
-                  AND candidate.cancel_requested=0
-                  AND candidate.attempt_count
-                      < candidate.max_attempts + candidate.retry_allowance
-                  AND NOT EXISTS (
-                    SELECT 1
-                    FROM job_dependencies dependency
-                    LEFT JOIN jobs prerequisite
-                      ON prerequisite.job_id=dependency.depends_on_job_id
-                    WHERE dependency.job_id=candidate.job_id
-                      AND (
-                        prerequisite.job_id IS NULL
-                        OR prerequisite.state <> 'SUCCEEDED'
-                      )
-                  )
-                """,
-                (selected.job_id,),
-            ).fetchone()
+            row = self._claimable_row(connection, selected.job_id)
             if row is None:
                 return None
             worker_type = str(row["worker_type"])
@@ -529,42 +516,194 @@ class JobRepository:
                 row["payload_json"], blocked_validator_types
             ):
                 return None
-            timestamp = now()
-            lease_expires = timestamp + lease_seconds
-            lease_token = new_id("lease")
-            updated = connection.execute(
-                """
-                UPDATE jobs
-                SET state='CLAIMED',owner=?,lease_token=?,lease_expires_at=?,heartbeat_at=?,
-                    attempt_count=attempt_count+1,started_at=COALESCE(started_at,?)
-                WHERE job_id=? AND state='READY'
-                  AND cancel_requested=0
-                  AND attempt_count < max_attempts + retry_allowance
-                  AND NOT EXISTS (
-                    SELECT 1
-                    FROM job_dependencies dependency
-                    LEFT JOIN jobs prerequisite
-                      ON prerequisite.job_id=dependency.depends_on_job_id
-                    WHERE dependency.job_id=jobs.job_id
-                      AND (
-                        prerequisite.job_id IS NULL
-                        OR prerequisite.state <> 'SUCCEEDED'
-                      )
-                  )
-                """,
-                (owner, lease_token, lease_expires, timestamp, timestamp, row["job_id"]),
+            return self._grant_claim(
+                connection,
+                row,
+                owner=owner,
+                lease_seconds=lease_seconds,
             )
-            if updated.rowcount != 1:
-                return None
-            row = connection.execute(
-                "SELECT * FROM jobs WHERE job_id=?", (row["job_id"],)
+
+    def claim_by_id(
+        self,
+        job_id: str,
+        owner: str,
+        lease_seconds: float,
+        *,
+        max_total: int,
+        type_limits: Mapping[str, int],
+        blocked_validator_types: frozenset[str] = frozenset(),
+    ) -> ClaimedJob | None:
+        """Claim only ``job_id`` without falling back to another READY job.
+
+        Validator JSON is parsed only after the preflight read transaction has
+        released its rollback-journal lock.  The writer then requires the exact
+        payload bytes used by that decision and repeats every mutable claim
+        fence.  Queue ordering and unrelated claim-generation changes are not
+        relevant to an explicit operator selection.
+        """
+
+        selected = self._select_claimable_by_id(
+            job_id,
+            max_total=max_total,
+            type_limits=type_limits,
+            blocked_validator_types=blocked_validator_types,
+        )
+        if selected is None:
+            return None
+        with self.db.transaction(immediate=True) as connection:
+            paused_row = connection.execute(
+                "SELECT value_json FROM system_state WHERE key='paused'"
             ).fetchone()
-            self.db.emit_event(
-                "scheduler", "JOB_CLAIMED", job_id=row["job_id"],
-                payload={"owner": owner, "attempt": row["attempt_count"], "lease_expires_at": lease_expires},
-                connection=connection,
+            if _durable_paused(
+                paused_row["value_json"] if paused_row is not None else None
+            ):
+                return None
+            active_by_type = self._active_by_type(connection)
+            if sum(active_by_type.values()) >= max_total:
+                return None
+            row = self._claimable_row(connection, selected.job_id)
+            if row is None:
+                return None
+            worker_type = str(row["worker_type"])
+            if active_by_type.get(worker_type, 0) >= type_limits.get(
+                worker_type, max_total
+            ):
+                return None
+            # This byte-exact comparison is the authoritative validator-fence
+            # recheck.  It keeps JSON parsing outside BEGIN IMMEDIATE while
+            # refusing any target whose validator envelope changed meanwhile.
+            if row["payload_json"] != selected.payload_json:
+                return None
+            return self._grant_claim(
+                connection,
+                row,
+                owner=owner,
+                lease_seconds=lease_seconds,
+                payload=selected.payload,
             )
-            return self._claimed(row)
+
+    def _select_claimable_by_id(
+        self,
+        job_id: str,
+        *,
+        max_total: int,
+        type_limits: Mapping[str, int],
+        blocked_validator_types: frozenset[str],
+    ) -> _ExactClaimCandidate | None:
+        """Preflight one exact target, releasing the read lock before parsing."""
+
+        with self.db.read_transaction() as connection:
+            paused_row = connection.execute(
+                "SELECT value_json FROM system_state WHERE key='paused'"
+            ).fetchone()
+            if _durable_paused(
+                paused_row["value_json"] if paused_row is not None else None
+            ):
+                return None
+            active_by_type = self._active_by_type(connection)
+            if sum(active_by_type.values()) >= max_total:
+                return None
+            row = self._claimable_row(connection, job_id)
+            if row is None:
+                return None
+            worker_type = str(row["worker_type"])
+            if active_by_type.get(worker_type, 0) >= type_limits.get(
+                worker_type, max_total
+            ):
+                return None
+            payload_json = row["payload_json"]
+
+        if _held_by_validator_fence(payload_json, blocked_validator_types):
+            return None
+        payload = self._decode_claim_payload(job_id, payload_json)
+        return _ExactClaimCandidate(job_id, payload_json, payload)
+
+    @staticmethod
+    def _claimable_row(
+        connection: sqlite3.Connection, job_id: str
+    ) -> sqlite3.Row | None:
+        return connection.execute(
+            """
+            SELECT candidate.* FROM jobs candidate
+            WHERE candidate.job_id=? AND candidate.state='READY'
+              AND candidate.cancel_requested=0
+              AND candidate.attempt_count
+                  < candidate.max_attempts + candidate.retry_allowance
+              AND NOT EXISTS (
+                SELECT 1
+                FROM job_dependencies dependency
+                LEFT JOIN jobs prerequisite
+                  ON prerequisite.job_id=dependency.depends_on_job_id
+                WHERE dependency.job_id=candidate.job_id
+                  AND (
+                    prerequisite.job_id IS NULL
+                    OR prerequisite.state <> 'SUCCEEDED'
+                  )
+              )
+            """,
+            (job_id,),
+        ).fetchone()
+
+    def _grant_claim(
+        self,
+        connection: sqlite3.Connection,
+        row: sqlite3.Row,
+        *,
+        owner: str,
+        lease_seconds: float,
+        payload: dict[str, Any] | None = None,
+    ) -> ClaimedJob | None:
+        """Atomically grant a previously fenced claim and record its event."""
+
+        timestamp = now()
+        lease_expires = timestamp + lease_seconds
+        lease_token = new_id("lease")
+        updated = connection.execute(
+            """
+            UPDATE jobs
+            SET state='CLAIMED',owner=?,lease_token=?,lease_expires_at=?,heartbeat_at=?,
+                attempt_count=attempt_count+1,started_at=COALESCE(started_at,?)
+            WHERE job_id=? AND state='READY'
+              AND cancel_requested=0
+              AND attempt_count < max_attempts + retry_allowance
+              AND NOT EXISTS (
+                SELECT 1
+                FROM job_dependencies dependency
+                LEFT JOIN jobs prerequisite
+                  ON prerequisite.job_id=dependency.depends_on_job_id
+                WHERE dependency.job_id=jobs.job_id
+                  AND (
+                    prerequisite.job_id IS NULL
+                    OR prerequisite.state <> 'SUCCEEDED'
+                  )
+              )
+            """,
+            (
+                owner,
+                lease_token,
+                lease_expires,
+                timestamp,
+                timestamp,
+                row["job_id"],
+            ),
+        )
+        if updated.rowcount != 1:
+            return None
+        claimed_row = connection.execute(
+            "SELECT * FROM jobs WHERE job_id=?", (row["job_id"],)
+        ).fetchone()
+        self.db.emit_event(
+            "scheduler",
+            "JOB_CLAIMED",
+            job_id=claimed_row["job_id"],
+            payload={
+                "owner": owner,
+                "attempt": claimed_row["attempt_count"],
+                "lease_expires_at": lease_expires,
+            },
+            connection=connection,
+        )
+        return self._claimed(claimed_row, payload=payload)
 
     @staticmethod
     def _active_by_type(connection: sqlite3.Connection) -> dict[str, int]:
@@ -1640,20 +1779,33 @@ class JobRepository:
         return result
 
     @staticmethod
-    def _claimed(row: sqlite3.Row) -> ClaimedJob:
+    def _decode_claim_payload(
+        job_id: str, raw_payload: str | bytes
+    ) -> dict[str, Any]:
         try:
-            payload = strict_json_loads(row["payload_json"])
+            payload = strict_json_loads(raw_payload)
         except StrictJsonError as error:
             raise JobError(
-                f"job {row['job_id']} has invalid or ambiguous payload JSON"
+                f"job {job_id} has invalid or ambiguous payload JSON"
             ) from error
         if not isinstance(payload, dict):
-            raise JobError(f"job {row['job_id']} payload JSON is not an object")
+            raise JobError(f"job {job_id} payload JSON is not an object")
+        return payload
+
+    @classmethod
+    def _claimed(
+        cls, row: sqlite3.Row, *, payload: dict[str, Any] | None = None
+    ) -> ClaimedJob:
+        decoded_payload = (
+            cls._decode_claim_payload(str(row["job_id"]), row["payload_json"])
+            if payload is None
+            else payload
+        )
         return ClaimedJob(
             job_id=row["job_id"],
             type=row["type"],
             worker_type=row["worker_type"],
-            payload=payload,
+            payload=decoded_payload,
             attempt_count=row["attempt_count"],
             workspace=row["workspace"],
             model=row["model"],

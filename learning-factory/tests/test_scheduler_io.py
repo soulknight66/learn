@@ -118,6 +118,87 @@ class SchedulerIoAndPauseTests(unittest.TestCase):
         self.assertEqual("READY", job["state"])
         self.assertEqual(0, job["attempt_count"])
 
+    def test_exact_run_skips_refills_and_never_falls_back_by_priority(self) -> None:
+        target = "job_exact_low_priority"
+        unrelated = "job_unrelated_high_priority"
+        self._ready(target, 1)
+        self._ready(unrelated, 100)
+        scheduler = Scheduler(self.settings, self.database)
+
+        async def launch(
+            job_id: str, _lease_token: str, _attempt_count: int
+        ) -> object:
+            self.assertEqual(target, job_id)
+            return object()
+
+        async def reap() -> int:
+            if scheduler.children:
+                scheduler.children.clear()
+                return 1
+            return 0
+
+        with mock.patch.object(
+            scheduler, "_refill_catalogs"
+        ) as refill, mock.patch.object(
+            scheduler.jobs,
+            "claim_next",
+            side_effect=AssertionError("exact run attempted a generic claim"),
+        ), mock.patch.object(
+            scheduler, "_launch", side_effect=launch
+        ) as launched, mock.patch.object(
+            scheduler, "_reap_children", side_effect=reap
+        ), mock.patch(
+            "learnfactory.scheduler.asyncio.sleep", new=mock.AsyncMock()
+        ):
+            dispatched = asyncio.run(scheduler.run(target_job_id=target))
+
+        self.assertEqual(1, dispatched)
+        self.assertEqual(1, launched.await_count)
+        refill.assert_not_called()
+        self.assertEqual("CLAIMED", self.jobs.get(target)["state"])
+        self.assertEqual("READY", self.jobs.get(unrelated)["state"])
+        with self.database.connect() as connection:
+            started = connection.execute(
+                """
+                SELECT payload_json FROM events
+                WHERE type='SCHEDULER_STARTED' ORDER BY event_id DESC LIMIT 1
+                """
+            ).fetchone()
+        self.assertEqual(
+            target,
+            json.loads(started["payload_json"])["target_job_id"],
+        )
+
+    def test_exact_run_exits_without_refill_or_fallback_when_paused(self) -> None:
+        target = "job_exact_paused"
+        self._ready(target, 1)
+        self.database.set_system_value("paused", True)
+        scheduler = Scheduler(self.settings, self.database)
+
+        with mock.patch.object(
+            scheduler, "_refill_catalogs"
+        ) as refill, mock.patch.object(scheduler, "_launch") as launch:
+            dispatched = asyncio.run(scheduler.run(target_job_id=target))
+
+        self.assertEqual(0, dispatched)
+        refill.assert_not_called()
+        launch.assert_not_awaited()
+        record = self.jobs.get(target)
+        self.assertEqual("READY", record["state"])
+        self.assertEqual(0, record["attempt_count"])
+
+    def test_exact_run_rejects_other_scheduler_bounds(self) -> None:
+        scheduler = Scheduler(self.settings, self.database)
+
+        with self.assertRaisesRegex(ValueError, "exact-job run"):
+            asyncio.run(
+                scheduler.run(target_job_id="job_exact", max_jobs=1)
+            )
+        with self.assertRaisesRegex(ValueError, "exact-job run"):
+            asyncio.run(
+                scheduler.run(target_job_id="job_exact", until_idle=True)
+            )
+
     def test_refill_deadline_is_sampled_only_after_refill_finishes(self) -> None:
         scheduler = Scheduler(self.settings, self.database)
         completed: list[str] = []

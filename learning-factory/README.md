@@ -46,6 +46,9 @@ by that controller invocation, not the factory's configured concurrent capacity.
 unpaused, a bounded invocation performs its initial catalog refill, then stops periodic refills after
 reaching its dispatch ceiling while its children drain. This mitigation is local to that controller and
 does not prevent another controller or manual seeder from writing concurrently.
+For deliberate retries, `run --job JOB_ID` bypasses global priority for that exact ID, suppresses catalog
+refills, and exits after at most one dispatch without falling back to unrelated READY work. It continues
+to enforce every normal claim and validation fence and requires the durable factory pause to be cleared.
 
 New Codex invocations use the named `factory-isolated` permission profile rather than the legacy
 `--sandbox` flag. The profile denies the filesystem root, grants write access only to the job workspace,

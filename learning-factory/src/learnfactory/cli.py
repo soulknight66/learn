@@ -245,13 +245,32 @@ def cmd_revalidate_byox_code(args: argparse.Namespace) -> int:
 
 
 def cmd_run(args: argparse.Namespace) -> int:
+    if args.job_id is not None and (
+        args.until_idle or args.max_jobs is not None
+    ):
+        raise ValueError(
+            "--job cannot be combined with --until-idle or --max-jobs"
+        )
     settings, db, _, workspaces = _context(args.config)
     workspaces.initialize()
     dispatched = asyncio.run(
-        run_scheduler(settings, db, until_idle=args.until_idle, max_jobs=args.max_jobs)
+        run_scheduler(
+            settings,
+            db,
+            until_idle=args.until_idle,
+            max_jobs=args.max_jobs,
+            target_job_id=args.job_id,
+        )
     )
+    if args.job_id is not None and dispatched != 1:
+        raise JobError(
+            f"exact job {args.job_id} was not claimable; no job was dispatched"
+        )
     write_checkpoint(db, settings.root / "reports", settings.warehouse)
-    print(json.dumps({"dispatched": dispatched}))
+    result: dict[str, object] = {"dispatched": dispatched}
+    if args.job_id is not None:
+        result["job_id"] = args.job_id
+    print(json.dumps(result))
     return 0
 
 
@@ -537,6 +556,12 @@ def build_parser() -> argparse.ArgumentParser:
     run = commands.add_parser("run", help="run bounded scheduler")
     run.add_argument("--until-idle", action="store_true")
     run.add_argument("--max-jobs", type=int)
+    run.add_argument(
+        "--job",
+        dest="job_id",
+        metavar="JOB_ID",
+        help="dispatch only this exact job once, without catalog refills",
+    )
     run.set_defaults(func=cmd_run)
     status = commands.add_parser("status", help="show health and progress")
     status.add_argument("--json", action="store_true")

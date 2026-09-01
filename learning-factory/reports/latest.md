@@ -1,6 +1,6 @@
 # Learning Factory checkpoint
 
-Generated: 2026-09-01T14:36:50.561241+00:00
+Generated: 2026-09-01T15:06:43.884840+00:00
 Paused: False
 
 ## Health
@@ -10,8 +10,8 @@ Paused: False
 | BLOCKED | 6 |
 | CANCELLED | 800 |
 | DISCOVERED | 455 |
-| FAILED | 10 |
-| READY | 461 |
+| FAILED | 11 |
+| READY | 460 |
 | SUCCEEDED | 228 |
 
 ## Corpus
@@ -25,7 +25,7 @@ Paused: False
 | students | 3 |
 | artifacts | 228 |
 | validations | 1117 |
-| events | 9561 |
+| events | 9571 |
 
 ## Scale-out coverage
 
@@ -38,6 +38,7 @@ None.
 
 ## Problems requiring attention
 
+- `job_examiner_cow_transfer_v2` [FAILED] (validation_failure): examiner learner evidence is invalid: examiner learner evidence requires exactly one matching JSON-schema validator
 - `job_byox_repair_v1_g1_d689a72b941a7dd2fa5515137acd843c` [FAILED] (timeout): Codex process timed out
 - `job_byox_repair_v1_g1_06e0a3f8392a364385403808962b8132` [FAILED] (timeout): Codex process timed out
 - `job_csdiy_0c0beb8e3224cbbc66b740fe95689163_student_target_v2` [FAILED] (timeout): Codex process timed out
@@ -47,7 +48,6 @@ None.
 - `job_byox_repair_v1_g1_dc2aaa99eb6a0d40872a0dbbbb6ae014` [FAILED] (timeout): Codex process timed out
 - `job_byox_repair_v1_g1_7e993d3fcc0fbdb66757b01854a8cecb` [FAILED] (timeout): Codex process timed out
 - `job_csdiy_247fa49f95f2021a5de3fb035ef6e0f8_student_target_v2` [FAILED] (timeout): Codex process timed out
-- `job_csdiy_aad609c682157cc0ec08cf8bbc70e729_student_target_v2` [FAILED] (timeout): Codex process timed out
 
 ## Next ready work
 
@@ -58,13 +58,13 @@ None.
 - `job_byox_repair_v1_g1_de3fa920a8a38e476e2b1ed85d0c8966`: codex_task / reference_builder (priority 83.6)
 - `job_byox_repair_v1_g1_68de452e277a0add101cfddca6da2a4d`: codex_task / reference_builder (priority 83.6)
 - `job_byox_repair_v1_g1_e6961df0be5a1b3666a34cbed0e6d564`: codex_task / reference_builder (priority 83.6)
-- `job_examiner_cow_transfer_v2`: codex_task / examiner (priority 83.0)
 - `job_byox_build_s2_0aadb1e25ccffd07eeb644fba4d16b87`: codex_task / reference_builder (priority 82.4)
 - `job_byox_build_s2_317d3714a9b3ace59a6419e4f3998f05`: codex_task / reference_builder (priority 82.4)
+- `job_byox_build_s2_3f46cbaf65ec2624f55f3185f63cade5`: codex_task / reference_builder (priority 82.4)
 
 ## Operational metrics
 
 - Persisted retries: 39
-- Median finished-job duration: 447.0993142127991
+- Median finished-job duration: 446.8744068145752
 - Completed by type: `{"allocator_vertical_slice": 1, "bytecode_vertical_slice": 1, "catalog_synthesis": 2, "codex_task": 212, "course_vertical_slice": 2, "event_service_vertical_slice": 1, "http_service_vertical_slice": 1, "project_vertical_slice": 2, "source_ingest": 6}`
 - Artifact labels: `{"BENCHMARKED": 6, "BUILDS": 8, "FUZZED": 5, "GENERATED": 228, "PARTIAL": 55, "REVIEWED": 4, "TESTED": 10, "TRANSFER_VERIFIED": 2}`

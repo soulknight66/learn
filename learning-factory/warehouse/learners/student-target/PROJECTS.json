@@ -402,6 +402,19 @@
       "task_id": "course_8975ea91a9f467fa6ab8278bdbb0841f-kickoff-v1",
       "task_type": "course-kickoff",
       "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/catalog/csapp-b5661d07/cohort-v1/student-target/kickoff/attempt-002/job_csdiy_kickoff_rev_v1_cf44ec3f6ef5e7627a4f72e9_student_target/attempt-001"
+    },
+    {
+      "attempt_id": "attempt_72c987513db8ebcca13bcf115f5221c3",
+      "attempt_number": 1,
+      "authority_status": "AUTHORITATIVE",
+      "end_time": 1788273407.4900987,
+      "invalidation_reason": null,
+      "replacement_policy": null,
+      "result": "REVISE",
+      "start_time": 1788273176.391155,
+      "task_id": "mit-6-s081-cow-transfer-design-v2",
+      "task_type": "transfer-design",
+      "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/mit-6-s081/cow-transfer/student-target-v2/job_student_target_cow_transfer_v2/attempt-004"
     }
   ],
   "student_id": "student-target"

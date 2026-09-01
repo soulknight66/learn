@@ -1,8 +1,18 @@
 # Learning artifact catalog
 
-Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 228.
+Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 229.
 
 The complete searchable records, concepts, languages, provenance, and validation labels are in `catalog.json`.
+
+## independent-evaluation — GENERATED
+
+- Artifact type: `independent-evaluation`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/evaluations/mit-6-s081/cow-transfer/student-target-v3-schema-repair/job_examiner_cow_transfer_v3_schema_repair/attempt-001`
+- SHA-256: `57d9f4fd43b32bac776c1276805fc0eb4e3c23a6d95273f5d8907586113fa1dc`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_examiner_cow_transfer_v3_schema_repair` (codex_task/examiner)
 
 ## student-attempt — GENERATED
 

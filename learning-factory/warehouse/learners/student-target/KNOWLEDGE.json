@@ -20,8 +20,25 @@
       ]
     },
     {
+      "concept": "concurrency-reasoning",
+      "confidence": 0.50625,
+      "evidence": [
+        {
+          "created_at": 1788273407.4900987,
+          "description": "Independent transfer-design evidence for synchronization hazards and coherent reference accounting. Independent examiner result REVISE with score 92. Observations: Private COW is specified correctly: fork copies PTE metadata and adds mapping owners without copying frame bytes; a private write clones only when another mapping owner remains, while zero-length and last-owner writes avoid unnecessary copies. | Intentional named sharing is preserved for unrelated processes and fork descendants because NAMED_SHARED writes never clone; per-PTE write permissions and access through mappings after unlink are explicit. | Frame lifetime is modeled with reciprocal mapping_owners and name_owners plus reclamation only when both sets are empty. The unmap, unlink, exec, and exit algorithms remove distinct ownership edges exactly once, and both private and named lifecycle traces account for reclamation. | Concurrency has a concrete single-mutex linearization model and enumerates legal outcomes for concurrent COW writers, map versus unlink, fork versus teardown, access versus exit, duplicate creation, shared writes, and stats snapshots. | Invalid operations have explicit ValueError or KeyError behavior, deterministic validation precedence, a no-mutation-on-failure requirement, and a readable deterministic test plan. | There is no executable implementation or test suite in the workspace: `find . -type f` found only `.factory-workspace`, `RUBRIC.md`, and `SUBMISSION.md`, and `PYTHONPATH=src python3 -m unittest discover -s tests -v` exited 1 because `tests` is not importable.",
+          "evidence_id": "evidence_cef2d8a706408b4cc5e4935f7ca5a2d1",
+          "kind": "independent-examiner",
+          "source_reference": "job_course_mit6s081_vertical_v2",
+          "weight": 0.05
+        }
+      ],
+      "invalidated_evidence_count": 0,
+      "last_updated": 1788273407.4900987,
+      "misconceptions": []
+    },
+    {
       "concept": "copy-on-write",
-      "confidence": 0.56875,
+      "confidence": 0.5795312499999999,
       "evidence": [
         {
           "created_at": 1788121785.7741845,
@@ -30,10 +47,35 @@
           "kind": "transfer-test",
           "source_reference": "job_course_mit6s081_vertical_v2",
           "weight": 0.55
+        },
+        {
+          "created_at": 1788273407.4900987,
+          "description": "Independent transfer-design evidence for private-page isolation and intentional sharing invariants. Independent examiner result REVISE with score 92. Observations: Private COW is specified correctly: fork copies PTE metadata and adds mapping owners without copying frame bytes; a private write clones only when another mapping owner remains, while zero-length and last-owner writes avoid unnecessary copies. | Intentional named sharing is preserved for unrelated processes and fork descendants because NAMED_SHARED writes never clone; per-PTE write permissions and access through mappings after unlink are explicit. | Frame lifetime is modeled with reciprocal mapping_owners and name_owners plus reclamation only when both sets are empty. The unmap, unlink, exec, and exit algorithms remove distinct ownership edges exactly once, and both private and named lifecycle traces account for reclamation. | Concurrency has a concrete single-mutex linearization model and enumerates legal outcomes for concurrent COW writers, map versus unlink, fork versus teardown, access versus exit, duplicate creation, shared writes, and stats snapshots. | Invalid operations have explicit ValueError or KeyError behavior, deterministic validation precedence, a no-mutation-on-failure requirement, and a readable deterministic test plan. | There is no executable implementation or test suite in the workspace: `find . -type f` found only `.factory-workspace`, `RUBRIC.md`, and `SUBMISSION.md`, and `PYTHONPATH=src python3 -m unittest discover -s tests -v` exited 1 because `tests` is not importable.",
+          "evidence_id": "evidence_6a1636ea895ba47f351304c7562b2409",
+          "kind": "independent-examiner",
+          "source_reference": "job_course_mit6s081_vertical_v2",
+          "weight": 0.1
         }
       ],
       "invalidated_evidence_count": 0,
-      "last_updated": 1788121785.7741845,
+      "last_updated": 1788273407.4900987,
+      "misconceptions": []
+    },
+    {
+      "concept": "failure-oriented-testing",
+      "confidence": 0.50625,
+      "evidence": [
+        {
+          "created_at": 1788273407.4900987,
+          "description": "Independent transfer-design evidence for concrete failure cases and a falsifiable test plan. Independent examiner result REVISE with score 92. Observations: Private COW is specified correctly: fork copies PTE metadata and adds mapping owners without copying frame bytes; a private write clones only when another mapping owner remains, while zero-length and last-owner writes avoid unnecessary copies. | Intentional named sharing is preserved for unrelated processes and fork descendants because NAMED_SHARED writes never clone; per-PTE write permissions and access through mappings after unlink are explicit. | Frame lifetime is modeled with reciprocal mapping_owners and name_owners plus reclamation only when both sets are empty. The unmap, unlink, exec, and exit algorithms remove distinct ownership edges exactly once, and both private and named lifecycle traces account for reclamation. | Concurrency has a concrete single-mutex linearization model and enumerates legal outcomes for concurrent COW writers, map versus unlink, fork versus teardown, access versus exit, duplicate creation, shared writes, and stats snapshots. | Invalid operations have explicit ValueError or KeyError behavior, deterministic validation precedence, a no-mutation-on-failure requirement, and a readable deterministic test plan. | There is no executable implementation or test suite in the workspace: `find . -type f` found only `.factory-workspace`, `RUBRIC.md`, and `SUBMISSION.md`, and `PYTHONPATH=src python3 -m unittest discover -s tests -v` exited 1 because `tests` is not importable.",
+          "evidence_id": "evidence_b36e9d3d15c6f544489ad3ba000d9e55",
+          "kind": "independent-examiner",
+          "source_reference": "job_course_mit6s081_vertical_v2",
+          "weight": 0.05
+        }
+      ],
+      "invalidated_evidence_count": 0,
+      "last_updated": 1788273407.4900987,
       "misconceptions": []
     },
     {
@@ -51,6 +93,23 @@
       ],
       "invalidated_evidence_count": 0,
       "last_updated": 1788121785.7741845,
+      "misconceptions": []
+    },
+    {
+      "concept": "resource-lifecycle",
+      "confidence": 0.5125,
+      "evidence": [
+        {
+          "created_at": 1788273407.4900987,
+          "description": "Independent transfer-design evidence for exact frame lifetime across unmap, unlink, exec, and exit. Independent examiner result REVISE with score 92. Observations: Private COW is specified correctly: fork copies PTE metadata and adds mapping owners without copying frame bytes; a private write clones only when another mapping owner remains, while zero-length and last-owner writes avoid unnecessary copies. | Intentional named sharing is preserved for unrelated processes and fork descendants because NAMED_SHARED writes never clone; per-PTE write permissions and access through mappings after unlink are explicit. | Frame lifetime is modeled with reciprocal mapping_owners and name_owners plus reclamation only when both sets are empty. The unmap, unlink, exec, and exit algorithms remove distinct ownership edges exactly once, and both private and named lifecycle traces account for reclamation. | Concurrency has a concrete single-mutex linearization model and enumerates legal outcomes for concurrent COW writers, map versus unlink, fork versus teardown, access versus exit, duplicate creation, shared writes, and stats snapshots. | Invalid operations have explicit ValueError or KeyError behavior, deterministic validation precedence, a no-mutation-on-failure requirement, and a readable deterministic test plan. | There is no executable implementation or test suite in the workspace: `find . -type f` found only `.factory-workspace`, `RUBRIC.md`, and `SUBMISSION.md`, and `PYTHONPATH=src python3 -m unittest discover -s tests -v` exited 1 because `tests` is not importable.",
+          "evidence_id": "evidence_bc5669a4b22482c0a6579cf8ab040b9c",
+          "kind": "independent-examiner",
+          "source_reference": "job_course_mit6s081_vertical_v2",
+          "weight": 0.1
+        }
+      ],
+      "invalidated_evidence_count": 0,
+      "last_updated": 1788273407.4900987,
       "misconceptions": []
     },
     {

@@ -1,6 +1,201 @@
 {
   "artifacts": [
     {
+      "artifact_id": "artifact_b00c12a4ee8242a28f6b89272fefc3be",
+      "attempt_number": 1,
+      "checksum": "57d9f4fd43b32bac776c1276805fc0eb4e3c23a6d95273f5d8907586113fa1dc",
+      "checksum_algorithm": "tree-sha256-v2",
+      "created_at": 1788277251.706368,
+      "integrity_status": "VERIFIED_V2",
+      "job_id": "job_examiner_cow_transfer_v3_schema_repair",
+      "job_type": "codex_task",
+      "metadata": {
+        "archive_projection": {
+          "mode": "complete-workspace",
+          "schema_version": 1,
+          "source_workspace_checksum": "57d9f4fd43b32bac776c1276805fc0eb4e3c23a6d95273f5d8907586113fa1dc",
+          "source_workspace_checksum_algorithm": "tree-sha256-v2"
+        },
+        "attempt": 1,
+        "classification": "agent-generated evaluation with an append-only canonical schema repair",
+        "course_job": "job_course_mit6s081_vertical_v2",
+        "evaluator_independence": "separate Codex process and workspace",
+        "factory_revision": {
+          "commit": "0e384657b267b94779188687bc8859de9593592c",
+          "status": "RECORDED",
+          "tracked_worktree_clean": true
+        },
+        "job_id": "job_examiner_cow_transfer_v3_schema_repair",
+        "prompt_contexts": [],
+        "removed_root_metadata": [
+          ".factory-workspace"
+        ],
+        "run_id": "run_6196b4dbd34c4699aad73db2be8a6263",
+        "run_reproducibility": {
+          "digest": "0b63c95a90ad127fccd78f9610d017e026ed05dbf40f0666134b556b043cb4c5",
+          "record_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/logs/job_examiner_cow_transfer_v3_schema_repair/attempt-001/RUN_PROVENANCE.json",
+          "schema": "learnfactory-run-provenance-v3"
+        },
+        "runtime_prompt": {
+          "effective_prompt": {
+            "content_stored": false,
+            "includes_leaf_worker_policy": true,
+            "sha256": "d9f303f5ce2ef0a01c7601725e1d3ee4d42c816fadf718c81716585c19d748e2",
+            "utf8_bytes": 749
+          },
+          "job_prompt": {
+            "content_stored": false,
+            "sha256": "03aec6edf0726ad75b1a2d65c14359dc309559ef91485541719f549d0cfbc152",
+            "utf8_bytes": 401
+          },
+          "leaf_worker_policy": {
+            "content_stored": false,
+            "sha256": "61cfaab916fc8a696d7f1c798f8ef8fe1dea8ae235982996b695eea8b7ac44e7",
+            "utf8_bytes": 348
+          }
+        },
+        "sandbox_rule_manifest": {
+          "declared_outputs": [
+            "evaluation.json",
+            "evaluation.md"
+          ],
+          "result_channel": {
+            "content_stored_in_provenance": false,
+            "fixed_alias_stored": true,
+            "launch_namespace": "fixed-alias-only",
+            "nonce_hash_stored": false,
+            "nonce_stored": false,
+            "outer_cli_output_capability": "parent-procfd-readonly-hold",
+            "output_descriptor_inherited": false,
+            "post_exit_result_retention": "bounded-redacted-output",
+            "private_path_stored": false,
+            "runtime_fd_stored": false,
+            "schema_version": 3,
+            "transport": "outer-cli-parent-held-fixed-alias-inode"
+          },
+          "rules": [
+            {
+              "access": "read",
+              "kind": "staged-input-ancestor",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_examiner_cow_transfer_v3_schema_repair/attempt-001"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_examiner_cow_transfer_v3_schema_repair/attempt-001/RUBRIC.md"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_examiner_cow_transfer_v3_schema_repair/attempt-001/SUBMISSION.md"
+            }
+          ],
+          "schema_version": 1,
+          "sha256": "10dc111f0554b21c71ea560c1b0c5320dfc3cb7a8ab4d9cd251a643d8c73ef76",
+          "staged_inputs": [
+            "RUBRIC.md",
+            "SUBMISSION.md"
+          ],
+          "tools_enabled": true,
+          "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_examiner_cow_transfer_v3_schema_repair/attempt-001",
+          "workspace_access": "write"
+        },
+        "schema_repair": {
+          "history_policy": "append-only; retain the attempted v2 definition and evidence",
+          "reason": "attempted v2 examiner lacked the canonical examiner-structured-evidence JSON-schema validator",
+          "supersedes_examiner_job_id": "job_examiner_cow_transfer_v2",
+          "version": 1
+        },
+        "staged_inputs": [
+          {
+            "artifact_attempt": 4,
+            "artifact_checksum": "7cef92166ca1620169c62a11adca8e6a8515271e1b3f650ff5724a8bd9defbba",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_685df9835c46427bb2335a9b106561ee",
+            "artifact_subpath": "submission.md",
+            "artifact_type": "student-attempt",
+            "checksum": "4db7f7a7a76fb03d4951068cacafd7b30ea5b4b747d71b6b5db404c30c4a8ff6",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "da0dc0bda67b4f44198ac33325750313383f10192eee82581d40da91ba309263",
+            "job_id": "job_student_target_cow_transfer_v2",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "SUBMISSION.md",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788277131477933251,
+            "root_device": 92,
+            "root_inode": 2896243579
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "caacd2b57e8562274d084920e1b125ad7f12519013e1f422624546b55c33e81d",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_4628e75858fa426ab3afe07007c62da0",
+            "artifact_subpath": "examiner_only/RUBRIC.md",
+            "artifact_type": "course_vertical_slice",
+            "checksum": "5deb2aff403776f795200e03586d02e6c3aab76711c84e898c0db1ec8ebf7a9e",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "65f3397dbd50c7b8e711648162f9ed1571921015c47f1bcd6e79fb582bc33469",
+            "job_id": "job_course_mit6s081_vertical_v2",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "RUBRIC.md",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788277131703894885,
+            "root_device": 92,
+            "root_inode": 2896243251
+          }
+        ],
+        "student_job": "job_student_target_cow_transfer_v2",
+        "validated_tree_sha256": "57d9f4fd43b32bac776c1276805fc0eb4e3c23a6d95273f5d8907586113fa1dc",
+        "validation_evidence": [
+          {
+            "evidence": {
+              "checked": [
+                "evaluation.json",
+                "evaluation.md"
+              ],
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "examiner-output-files"
+          },
+          {
+            "evidence": {
+              "error_count": 0,
+              "errors": []
+            },
+            "status": "PASS",
+            "validator": "examiner-structured-evidence"
+          },
+          {
+            "evidence": {
+              "checked": [
+                "SUBMISSION.md",
+                "RUBRIC.md"
+              ],
+              "mismatches": []
+            },
+            "status": "PASS",
+            "validator": "declared-inputs-remained-immutable"
+          }
+        ],
+        "validation_labels": [
+          "GENERATED"
+        ],
+        "validation_workspace_tree_sha256": "57d9f4fd43b32bac776c1276805fc0eb4e3c23a6d95273f5d8907586113fa1dc"
+      },
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/evaluations/mit-6-s081/cow-transfer/student-target-v3-schema-repair/job_examiner_cow_transfer_v3_schema_repair/attempt-001",
+      "type": "independent-evaluation",
+      "validation_labels": [
+        "GENERATED"
+      ],
+      "validation_status": "GENERATED",
+      "worker_type": "examiner"
+    },
+    {
       "artifact_id": "artifact_685df9835c46427bb2335a9b106561ee",
       "attempt_number": 4,
       "checksum": "7cef92166ca1620169c62a11adca8e6a8515271e1b3f650ff5724a8bd9defbba",
@@ -82032,7 +82227,7 @@
       "topic": "软件工程"
     }
   ],
-  "generated_at": 1788275204.227929,
+  "generated_at": 1788277313.292992,
   "project_categories": [
     {
       "category": "Uncategorized",

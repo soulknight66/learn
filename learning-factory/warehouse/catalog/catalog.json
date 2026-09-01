@@ -1,6 +1,225 @@
 {
   "artifacts": [
     {
+      "artifact_id": "artifact_685df9835c46427bb2335a9b106561ee",
+      "attempt_number": 4,
+      "checksum": "7cef92166ca1620169c62a11adca8e6a8515271e1b3f650ff5724a8bd9defbba",
+      "checksum_algorithm": "tree-sha256-v2",
+      "created_at": 1788273407.214393,
+      "integrity_status": "VERIFIED_V2",
+      "job_id": "job_student_target_cow_transfer_v2",
+      "job_type": "codex_task",
+      "metadata": {
+        "archive_projection": {
+          "mode": "complete-workspace",
+          "schema_version": 1,
+          "source_workspace_checksum": "7cef92166ca1620169c62a11adca8e6a8515271e1b3f650ff5724a8bd9defbba",
+          "source_workspace_checksum_algorithm": "tree-sha256-v2"
+        },
+        "attempt": 4,
+        "classification": "agent-generated attempt against the v2 student-safe contract",
+        "course_job": "job_course_mit6s081_vertical_v2",
+        "factory_revision": {
+          "commit": "a38f5d6411d368c1ac12ed6cf2558ec01e8cc33d",
+          "status": "RECORDED",
+          "tracked_worktree_clean": true
+        },
+        "job_id": "job_student_target_cow_transfer_v2",
+        "prompt_contexts": [],
+        "removed_root_metadata": [
+          ".factory-workspace"
+        ],
+        "run_id": "run_0c49779719e4423fa395e5723db44818",
+        "run_reproducibility": {
+          "digest": "ddaec3bd7be928c23379773992ce08d1f38d948ce60b1cdfb179c50ee171eaff",
+          "record_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/logs/job_student_target_cow_transfer_v2/attempt-004/RUN_PROVENANCE.json",
+          "schema": "learnfactory-run-provenance-v3"
+        },
+        "runtime_prompt": {
+          "effective_prompt": {
+            "content_stored": false,
+            "includes_leaf_worker_policy": true,
+            "sha256": "7edb024df9aa7802a4a55b09bbd5a67abfe403ce31a40b898d4834454a48772b",
+            "utf8_bytes": 802
+          },
+          "job_prompt": {
+            "content_stored": false,
+            "sha256": "3d6f935e177294b89a4a67054057af75f3b35611d20d526a6c4ae913d3fd9d5e",
+            "utf8_bytes": 454
+          },
+          "leaf_worker_policy": {
+            "content_stored": false,
+            "sha256": "61cfaab916fc8a696d7f1c798f8ef8fe1dea8ae235982996b695eea8b7ac44e7",
+            "utf8_bytes": 348
+          }
+        },
+        "sandbox_rule_manifest": {
+          "declared_outputs": [
+            "debugging-log.md",
+            "submission.md"
+          ],
+          "result_channel": {
+            "content_stored_in_provenance": false,
+            "fixed_alias_stored": true,
+            "launch_namespace": "fixed-alias-only",
+            "nonce_hash_stored": false,
+            "nonce_stored": false,
+            "outer_cli_output_capability": "parent-procfd-readonly-hold",
+            "output_descriptor_inherited": false,
+            "post_exit_result_retention": "bounded-redacted-output",
+            "private_path_stored": false,
+            "runtime_fd_stored": false,
+            "schema_version": 3,
+            "transport": "outer-cli-parent-held-fixed-alias-inode"
+          },
+          "rules": [
+            {
+              "access": "read",
+              "kind": "staged-input-ancestor",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_student_target_cow_transfer_v2/attempt-004"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_student_target_cow_transfer_v2/attempt-004/API.md"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_student_target_cow_transfer_v2/attempt-004/READING.md"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_student_target_cow_transfer_v2/attempt-004/TASK.md"
+            }
+          ],
+          "schema_version": 1,
+          "sha256": "c60c1db33f93a081643e6e2898cb0ad34ddb3118dee87175d4a6916b0056cc9d",
+          "staged_inputs": [
+            "API.md",
+            "READING.md",
+            "TASK.md"
+          ],
+          "tools_enabled": true,
+          "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_student_target_cow_transfer_v2/attempt-004",
+          "workspace_access": "write"
+        },
+        "staged_inputs": [
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "caacd2b57e8562274d084920e1b125ad7f12519013e1f422624546b55c33e81d",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_4628e75858fa426ab3afe07007c62da0",
+            "artifact_subpath": "student_safe/TASK.md",
+            "artifact_type": "course_vertical_slice",
+            "checksum": "9d9629db0c0fb36eedbfe5ba21413f839e6b91063853b008e60683932aa1e1be",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "91e19945d5c85d9a73600ca2fc7415f4f7345f5f23000e11c93956622922dfc1",
+            "job_id": "job_course_mit6s081_vertical_v2",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "TASK.md",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788273176600410019,
+            "root_device": 92,
+            "root_inode": 2762859689
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "caacd2b57e8562274d084920e1b125ad7f12519013e1f422624546b55c33e81d",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_4628e75858fa426ab3afe07007c62da0",
+            "artifact_subpath": "student_safe/API.md",
+            "artifact_type": "course_vertical_slice",
+            "checksum": "b5b2c4e95be214306c0f5dfc559d3f5695535302707a725e07514c02fe51ac6a",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "72337a8232746555b231229251c83b32a0aa75a11ff9d42499bb80a9e4273a4d",
+            "job_id": "job_course_mit6s081_vertical_v2",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "API.md",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788273176606409477,
+            "root_device": 92,
+            "root_inode": 2762859691
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "caacd2b57e8562274d084920e1b125ad7f12519013e1f422624546b55c33e81d",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_4628e75858fa426ab3afe07007c62da0",
+            "artifact_subpath": "student_safe/READING.md",
+            "artifact_type": "course_vertical_slice",
+            "checksum": "2801a1df4a46e78a06f7f3e74a3034fa7a779a5a60be7de3a4cf8f82180143e0",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "7d49383eada73050b390ec0b64f7c75f4fd0d98573b700dbefdb0f8b0fb0c8e6",
+            "job_id": "job_course_mit6s081_vertical_v2",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "READING.md",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788273176612407964,
+            "root_device": 92,
+            "root_inode": 2762859694
+          }
+        ],
+        "student": "student-target",
+        "validated_tree_sha256": "7cef92166ca1620169c62a11adca8e6a8515271e1b3f650ff5724a8bd9defbba",
+        "validation_evidence": [
+          {
+            "evidence": {
+              "checked": [
+                "submission.md",
+                "debugging-log.md"
+              ],
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "student-submission-files"
+          },
+          {
+            "evidence": {
+              "checked": [
+                "sealed",
+                "RUBRIC.md",
+                "reference"
+              ],
+              "present": []
+            },
+            "status": "PASS",
+            "validator": "student-sealed-boundary"
+          },
+          {
+            "evidence": {
+              "checked": [
+                "TASK.md",
+                "API.md",
+                "READING.md"
+              ],
+              "mismatches": []
+            },
+            "status": "PASS",
+            "validator": "declared-inputs-remained-immutable"
+          }
+        ],
+        "validation_labels": [
+          "GENERATED"
+        ],
+        "validation_workspace_tree_sha256": "7cef92166ca1620169c62a11adca8e6a8515271e1b3f650ff5724a8bd9defbba"
+      },
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/mit-6-s081/cow-transfer/student-target-v2/job_student_target_cow_transfer_v2/attempt-004",
+      "type": "student-attempt",
+      "validation_labels": [
+        "GENERATED"
+      ],
+      "validation_status": "GENERATED",
+      "worker_type": "student"
+    },
+    {
       "artifact_id": "artifact_7eeb245076f44259848563ca406996d4",
       "attempt_number": 2,
       "checksum": "4001c189725c3bc76d14b8ecf996c8d700cbebfcdb7c7ca5c09acde967d88d2f",
@@ -81813,7 +82032,7 @@
       "topic": "软件工程"
     }
   ],
-  "generated_at": 1788271684.0883925,
+  "generated_at": 1788273411.0316541,
   "project_categories": [
     {
       "category": "Uncategorized",

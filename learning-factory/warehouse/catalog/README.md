@@ -1,8 +1,18 @@
 # Learning artifact catalog
 
-Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 227.
+Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 228.
 
 The complete searchable records, concepts, languages, provenance, and validation labels are in `catalog.json`.
+
+## student-attempt — GENERATED
+
+- Artifact type: `student-attempt`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/mit-6-s081/cow-transfer/student-target-v2/job_student_target_cow_transfer_v2/attempt-004`
+- SHA-256: `7cef92166ca1620169c62a11adca8e6a8515271e1b3f650ff5724a8bd9defbba`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_student_target_cow_transfer_v2` (codex_task/student)
 
 ## byox-remediated-challenge-pack — GENERATED+PARTIAL
 

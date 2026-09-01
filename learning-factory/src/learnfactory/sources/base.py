@@ -398,9 +398,10 @@ def _vendored_source_pin(repository: Path) -> _VendoredSourcePin | None:
         or not isinstance(manifest.get("sources"), dict)
     ):
         raise SourceFormatError(f"invalid {_SOURCE_PIN_MANIFEST} envelope")
-    raw_pin = manifest["sources"].get(source_prefix)
-    if raw_pin is None:
+    sources = manifest["sources"]
+    if source_prefix not in sources:
         return None
+    raw_pin = sources[source_prefix]
     if not isinstance(raw_pin, dict) or set(raw_pin) != {
         "commit_hash",
         "head_ref",

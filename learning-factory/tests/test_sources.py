@@ -1031,6 +1031,21 @@ class BuildYourOwnXSourceTests(SourceTestCase):
         with self.assertRaisesRegex(SourceFormatError, "invalid SOURCE_PINS"):
             adapter.describe(source)
 
+        manifest_path.write_text(
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "sources": {"build-your-own-x": None},
+                },
+                sort_keys=True,
+            ),
+            encoding="utf-8",
+        )
+        _fixture_git(monorepo, "add", "SOURCE_PINS.json")
+        _fixture_git(monorepo, "commit", "--quiet", "-m", "null source pin")
+        with self.assertRaisesRegex(SourceFormatError, "invalid source pin"):
+            adapter.describe(source)
+
         malformed_manifests = (
             b"",
             b"\xff",

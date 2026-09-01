@@ -695,6 +695,97 @@ def _staged_input_record(path: Path, relative: str) -> dict[str, Any]:
     raise WorkspaceError(f"staged input is not a regular file or directory: {relative}")
 
 
+_CUTOVER_INPUT_SEMANTIC_FIELDS = (
+    "path",
+    "kind",
+    "checksum_algorithm",
+    "checksum",
+)
+_CUTOVER_INPUT_INODE_FIELDS = (
+    "fresh_inode_policy",
+    "root_device",
+    "root_inode",
+    "root_change_time_ns",
+    "regular_file_count",
+    "inode_manifest_sha256",
+)
+_CUTOVER_INPUT_FIELDS = frozenset(
+    (*_CUTOVER_INPUT_SEMANTIC_FIELDS, *_CUTOVER_INPUT_INODE_FIELDS)
+)
+
+
+def _observe_cutover_input_integrity(
+    workspace: Path, record: dict[str, Any]
+) -> dict[str, Any]:
+    raw_path = record.get("path") if isinstance(record, dict) else None
+    if not isinstance(raw_path, str) or set(record) != _CUTOVER_INPUT_FIELDS:
+        raise HandlerFailure(
+            "authoritative cutover input integrity record is malformed",
+            kind="unsafe_archive_projection",
+            retryable=False,
+        )
+    try:
+        relative = safe_relative(raw_path)
+        path = workspace / relative
+        if not contained(workspace, path):
+            raise WorkspaceError("cutover input escapes the workspace")
+        return _staged_input_record(path, relative.as_posix())
+    except (OSError, RuntimeError, WorkspaceError) as error:
+        raise HandlerFailure(
+            "authoritative cutover input cannot be observed safely",
+            kind="unsafe_archive_projection",
+            retryable=False,
+        ) from error
+
+
+def _verify_pre_cutover_input_integrity(
+    workspace: Path, records: list[dict[str, Any]]
+) -> None:
+    """Reject protected-input mutation before replacing the worker workspace."""
+
+    for record in records:
+        if _observe_cutover_input_integrity(workspace, record) != record:
+            raise HandlerFailure(
+                "protected input changed before authoritative cutover",
+                kind="unsafe_archive_projection",
+                retryable=False,
+            )
+
+
+def _rebind_cutover_input_integrity(
+    workspace: Path, records: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    """Bind runtime inode evidence to the installed authoritative snapshot.
+
+    Authoritative cutover deliberately replaces every workspace inode after the
+    Codex subprocess exits.  Preserve the checksum-bound staging identity while
+    rebinding only the inode evidence that the later validator must observe.
+    """
+
+    rebound: list[dict[str, Any]] = []
+    for record in records:
+        observed = _observe_cutover_input_integrity(workspace, record)
+        if any(
+            record[field] != observed[field]
+            for field in _CUTOVER_INPUT_SEMANTIC_FIELDS
+        ):
+            raise HandlerFailure(
+                "authoritative cutover changed a staged input binding",
+                kind="unsafe_archive_projection",
+                retryable=False,
+            )
+        rebound.append(
+            {
+                **record,
+                **{
+                    field: observed[field]
+                    for field in _CUTOVER_INPUT_INODE_FIELDS
+                },
+            }
+        )
+    return rebound
+
+
 def _copy_dependency_tree(
     source: Path,
     destination: Path,
@@ -3559,6 +3650,8 @@ class JobHandlers:
         repair_quarantined_outputs = None
         validation_cutover: dict[str, Any] | None = None
         if repair_archive_paths is not None and repair_projection is not None:
+            if input_integrity:
+                _verify_pre_cutover_input_integrity(workspace, input_integrity)
             repair_quarantined_outputs = _validate_byox_repair_outputs(
                 workspace,
                 repair_archive_paths,
@@ -3574,7 +3667,13 @@ class JobHandlers:
                 )
             validation_cutover = cutover_candidate
         elif has_byox_structural_gate or is_backend_capability_gate:
+            if input_integrity:
+                _verify_pre_cutover_input_integrity(workspace, input_integrity)
             validation_cutover = _cutover_byox_validation_workspace(workspace)
+        if validation_cutover is not None and input_integrity:
+            input_integrity = _rebind_cutover_input_integrity(
+                workspace, input_integrity
+            )
         if input_integrity:
             validators.append(
                 {

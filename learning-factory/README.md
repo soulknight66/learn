@@ -40,9 +40,12 @@ copied into it.
 
 The operated scheduler has a global ceiling of 12 concurrent jobs, further bounded to five reference
 builders, two course managers, two students, and three examiners (with separate lower limits for other
-roles). A continuous `run --until-idle` controller is active at this checkpoint. An earlier
-`--max-jobs 3` invocation was a deliberately bounded probe: `--max-jobs` limits total dispatches by that
-controller invocation, not the factory's configured concurrent capacity.
+roles). The continuous `run --until-idle` controller is currently paused/stopped at this checkpoint. An
+earlier `--max-jobs 3` invocation was a deliberately bounded probe: `--max-jobs` limits total dispatches
+by that controller invocation, not the factory's configured concurrent capacity. When dispatch is
+unpaused, a bounded invocation performs its initial catalog refill, then stops periodic refills after
+reaching its dispatch ceiling while its children drain. This mitigation is local to that controller and
+does not prevent another controller or manual seeder from writing concurrently.
 
 New Codex invocations use the named `factory-isolated` permission profile rather than the legacy
 `--sandbox` flag. The profile denies the filesystem root, grants write access only to the job workspace,

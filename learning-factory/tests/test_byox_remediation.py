@@ -2103,6 +2103,30 @@ class ByoxRemediationTests(unittest.TestCase):
         self.manager.discard_root_metadata(workspace, ".factory-workspace")
         return claim, workspace, staged, archive_paths, selection
 
+    @staticmethod
+    def _replace_with_same_bytes_and_mode(path: Path) -> None:
+        original = path.read_bytes()
+        original_mode = path.stat().st_mode & 0o777
+        original_identity = (path.stat().st_dev, path.stat().st_ino)
+        parent = path.parent
+        parent_mode = parent.stat().st_mode & 0o777
+        parent.chmod(parent_mode | 0o200)
+        replacement = parent / f".{path.name}.same-bytes-replacement"
+        try:
+            replacement.write_bytes(original)
+            replacement.chmod(original_mode)
+            replacement_identity = (
+                replacement.stat().st_dev,
+                replacement.stat().st_ino,
+            )
+            if replacement_identity == original_identity:
+                raise AssertionError("replacement must use a distinct inode")
+            os.replace(replacement, path)
+        finally:
+            if replacement.exists() or replacement.is_symlink():
+                replacement.unlink()
+            parent.chmod(parent_mode)
+
     def _published_repair_metadata(
         self,
         selection: dict[str, object],
@@ -5676,6 +5700,259 @@ class ByoxRemediationTests(unittest.TestCase):
             self.assertEqual(0, os.fstat(source_descriptor).st_nlink)
         finally:
             os.close(source_descriptor)
+
+    def test_pre_cutover_input_integrity_rejects_same_byte_inode_replacement(
+        self,
+    ) -> None:
+        _, pre_workspace, _, _, _ = self._materialized_repair_workspace(
+            "project-pre-cutover-input-integrity"
+        )
+        pre_integrity = [
+            handlers_module._staged_input_record(pre_workspace / name, name)
+            for name in ("PRIOR_BUILD", "PRIOR_REVIEW")
+        ]
+        handlers_module._verify_pre_cutover_input_integrity(
+            pre_workspace, pre_integrity
+        )
+        pre_tree_checksum = tree_sha256(pre_workspace / "PRIOR_BUILD")
+        self._replace_with_same_bytes_and_mode(
+            pre_workspace / "PRIOR_BUILD/starter/main.py"
+        )
+        self.assertEqual(
+            pre_tree_checksum, tree_sha256(pre_workspace / "PRIOR_BUILD")
+        )
+        with self.assertRaisesRegex(
+            HandlerFailure, "protected input changed before authoritative cutover"
+        ):
+            handlers_module._verify_pre_cutover_input_integrity(
+                pre_workspace, pre_integrity
+            )
+
+    def test_post_cutover_rebind_preserves_runtime_input_integrity(self) -> None:
+        _, workspace, staged, archive_paths, selection = (
+            self._materialized_repair_workspace(
+                "project-post-cutover-input-integrity"
+            )
+        )
+        integrity = [
+            handlers_module._staged_input_record(workspace / name, name)
+            for name in ("PRIOR_BUILD", "PRIOR_REVIEW")
+        ]
+        semantic_fields = ("path", "kind", "checksum_algorithm", "checksum")
+        semantic_bindings = [
+            {field: record[field] for field in semantic_fields}
+            for record in integrity
+        ]
+        root_identities = [
+            (record["root_device"], record["root_inode"])
+            for record in integrity
+        ]
+        staged_before = copy.deepcopy(staged)
+        handlers_module._verify_pre_cutover_input_integrity(workspace, integrity)
+        _validate_byox_repair_outputs(
+            workspace, archive_paths, selection, staged
+        )
+        cutover_bindings = copy.deepcopy(
+            selection["authoritative_cutover"]["staged_inputs"]
+        )
+
+        validator = Validator(self.database)
+        stale = validator._input_integrity(
+            "declared-inputs-remained-immutable",
+            workspace,
+            {"inputs": integrity, "require_fresh_inodes": True},
+        )
+        self.assertFalse(stale.passed)
+        self.assertEqual(
+            [
+                {"path": "PRIOR_BUILD", "reason": "inode-identity-mismatch"},
+                {"path": "PRIOR_REVIEW", "reason": "inode-identity-mismatch"},
+            ],
+            stale.evidence["mismatches"],
+        )
+
+        rebound = handlers_module._rebind_cutover_input_integrity(
+            workspace, integrity
+        )
+        self.assertEqual(
+            semantic_bindings,
+            [
+                {field: record[field] for field in semantic_fields}
+                for record in rebound
+            ],
+        )
+        self.assertTrue(
+            all(
+                before
+                != (after["root_device"], after["root_inode"])
+                for before, after in zip(root_identities, rebound, strict=True)
+            )
+        )
+        self.assertEqual(staged_before, staged)
+        self.assertEqual(
+            cutover_bindings,
+            selection["authoritative_cutover"]["staged_inputs"],
+        )
+        valid = validator._input_integrity(
+            "declared-inputs-remained-immutable",
+            workspace,
+            {"inputs": rebound, "require_fresh_inodes": True},
+        )
+        self.assertTrue(valid.passed)
+
+        prior_build_checksum = tree_sha256(workspace / "PRIOR_BUILD")
+        self._replace_with_same_bytes_and_mode(
+            workspace / "PRIOR_BUILD/starter/main.py"
+        )
+        self.assertEqual(
+            prior_build_checksum, tree_sha256(workspace / "PRIOR_BUILD")
+        )
+        tampered = validator._input_integrity(
+            "declared-inputs-remained-immutable",
+            workspace,
+            {"inputs": rebound, "require_fresh_inodes": True},
+        )
+        self.assertFalse(tampered.passed)
+        self.assertEqual(
+            [
+                {"path": "PRIOR_BUILD", "reason": "inode-identity-mismatch"}
+            ],
+            tampered.evidence["mismatches"],
+        )
+
+    def test_cutover_input_observation_fails_closed_on_symlink_loop(self) -> None:
+        workspace = self.root / "symlink-loop-workspace"
+        staged = workspace / "INPUT"
+        staged.mkdir(parents=True)
+        (staged / "input.txt").write_text("immutable\n", encoding="utf-8")
+        record = handlers_module._staged_input_record(staged, "INPUT")
+        shutil.rmtree(staged)
+        staged.symlink_to("INPUT")
+
+        with self.assertRaises(HandlerFailure) as caught:
+            handlers_module._observe_cutover_input_integrity(workspace, record)
+
+        self.assertEqual("unsafe_archive_projection", caught.exception.kind)
+        self.assertFalse(caught.exception.retryable)
+
+    def test_repair_codex_handler_appends_rebound_input_integrity(self) -> None:
+        project_id = "project-repair-handler-cutover-integrity"
+        self._base_graph(project_id, "REVISE")
+        seed_byox_remediation_jobs(
+            self.database,
+            self.jobs,
+            warehouse=self.settings.warehouse,
+            project_ids=[project_id],
+        )
+        repair_id = repair_builder_job_id(project_id, 1)
+        self.jobs.promote_eligible()
+        claim = self.jobs.claim_next(
+            "repair-handler-cutover-integrity",
+            30,
+            max_total=1,
+            type_limits={},
+        )
+        assert claim is not None and claim.job_id == repair_id
+        workspace = self.manager.allocate(repair_id, claim.attempt_count)
+        log_dir = self.root / "repair-handler-cutover-logs"
+        log_dir.mkdir()
+        backend_result = type(
+            "BackendResultDouble",
+            (),
+            {
+                "exit_code": 0,
+                "session_id": "repair-cutover-session",
+                "usage": {},
+                "timed_out": False,
+                "cancelled": False,
+                "stderr_tail": "",
+            },
+        )()
+
+        def fake_start(
+            _backend: object,
+            _prompt: str,
+            current_workspace: Path,
+            _logs: Path,
+            **_kwargs: object,
+        ) -> object:
+            prior = current_workspace / "PRIOR_BUILD"
+            for source in prior.iterdir():
+                target = current_workspace / source.name
+                if source.is_dir():
+                    shutil.copytree(source, target, dirs_exist_ok=True)
+                else:
+                    shutil.copy2(source, target)
+            for name in BYOX_CANONICAL_CHALLENGE_ROOTS:
+                target = current_workspace / name
+                if target.exists():
+                    continue
+                if name in BYOX_CANONICAL_DIRECTORY_ROOTS:
+                    target.mkdir()
+                else:
+                    target.write_text(f"generated {name}\n", encoding="utf-8")
+            return backend_result
+
+        handlers = JobHandlers(self.settings, self.database, self.manager)
+        with patch(
+            "learnfactory.handlers.ExecBackend.start_job", new=fake_start
+        ), patch.object(
+            handlers_module,
+            "_enforce_mass_seed_backend",
+        ), patch.object(
+            handlers_module,
+            "_verify_pre_cutover_input_integrity",
+            wraps=handlers_module._verify_pre_cutover_input_integrity,
+        ) as verify, patch.object(
+            handlers_module,
+            "_rebind_cutover_input_integrity",
+            wraps=handlers_module._rebind_cutover_input_integrity,
+        ) as rebind:
+            result = handlers._codex(
+                claim,
+                workspace,
+                log_dir,
+                threading.Event(),
+            )
+
+        verify.assert_called_once()
+        rebind.assert_called_once()
+        pre_cutover_records = rebind.call_args.args[1]
+        matching = [
+            specification
+            for specification in result.validators
+            if specification.get("name")
+            == "declared-inputs-remained-immutable"
+        ]
+        self.assertEqual(1, len(matching))
+        [integrity_validator] = matching
+        rebound_records = integrity_validator["inputs"]
+        semantic_fields = ("path", "kind", "checksum_algorithm", "checksum")
+        self.assertEqual(
+            [
+                {field: record[field] for field in semantic_fields}
+                for record in pre_cutover_records
+            ],
+            [
+                {field: record[field] for field in semantic_fields}
+                for record in rebound_records
+            ],
+        )
+        self.assertTrue(
+            all(
+                (before["root_device"], before["root_inode"])
+                != (after["root_device"], after["root_inode"])
+                for before, after in zip(
+                    pre_cutover_records, rebound_records, strict=True
+                )
+            )
+        )
+        validation = Validator(self.database)._input_integrity(
+            "declared-inputs-remained-immutable",
+            workspace,
+            integrity_validator,
+        )
+        self.assertTrue(validation.passed)
 
     def test_second_cutover_rename_failure_rolls_back_and_cleans_snapshot(self) -> None:
         _, workspace, staged, archive_paths, selection = (

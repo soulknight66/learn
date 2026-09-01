@@ -147,6 +147,112 @@ class SchedulerIoAndPauseTests(unittest.TestCase):
             125.0 + AUTO_COURSE_REFILL_INTERVAL_SECONDS, deadline
         )
 
+    def test_dispatch_cap_suppresses_due_refills_while_child_drains(self) -> None:
+        scheduler = Scheduler(self.settings, self.database)
+        refill_calls: list[int] = []
+        reap_calls = 0
+
+        def refill() -> float:
+            refill_calls.append(len(refill_calls) + 1)
+            return 0.0
+
+        async def fill_capacity(*, dispatched: int, max_jobs: int | None) -> int:
+            self.assertEqual(1, max_jobs)
+            if dispatched == 0:
+                scheduler.children["bounded-child"] = mock.Mock()
+                return 1
+            return dispatched
+
+        async def reap() -> int:
+            nonlocal reap_calls
+            reap_calls += 1
+            if reap_calls == 4:
+                scheduler.children.clear()
+                return 1
+            return 0
+
+        with mock.patch.object(
+            scheduler, "_refill_catalogs", side_effect=refill
+        ), mock.patch.object(
+            scheduler, "_fill_capacity", side_effect=fill_capacity
+        ), mock.patch.object(
+            scheduler, "_reap_children", side_effect=reap
+        ), mock.patch(
+            "learnfactory.scheduler.time.monotonic", return_value=10.0
+        ), mock.patch(
+            "learnfactory.scheduler.asyncio.sleep", new=mock.AsyncMock()
+        ):
+            dispatched = asyncio.run(scheduler.run(max_jobs=1))
+
+        self.assertEqual(1, dispatched)
+        self.assertEqual([1], refill_calls)
+        self.assertEqual(4, reap_calls)
+
+    def test_zero_cap_preserves_startup_refill_for_each_new_invocation(self) -> None:
+        refill_calls: list[int] = []
+
+        for _ in range(2):
+            scheduler = Scheduler(self.settings, self.database)
+
+            def refill() -> float:
+                refill_calls.append(len(refill_calls) + 1)
+                return 100.0
+
+            with mock.patch.object(
+                scheduler, "_refill_catalogs", side_effect=refill
+            ), mock.patch(
+                "learnfactory.scheduler.time.monotonic", return_value=10.0
+            ):
+                self.assertEqual(0, asyncio.run(scheduler.run(max_jobs=0)))
+
+        self.assertEqual([1, 2], refill_calls)
+
+    def test_zero_cap_while_paused_does_not_refill(self) -> None:
+        self.database.set_system_value("paused", True)
+        scheduler = Scheduler(self.settings, self.database)
+
+        with mock.patch.object(scheduler, "_refill_catalogs") as refill:
+            dispatched = asyncio.run(scheduler.run(max_jobs=0))
+
+        self.assertEqual(0, dispatched)
+        refill.assert_not_called()
+
+    def test_refills_remain_enabled_while_finite_run_is_below_cap(self) -> None:
+        scheduler = Scheduler(self.settings, self.database)
+        refill_calls: list[int] = []
+        fill_calls = 0
+
+        def refill() -> float:
+            refill_calls.append(len(refill_calls) + 1)
+            return 0.0
+
+        async def fill_capacity(*, dispatched: int, max_jobs: int | None) -> int:
+            nonlocal fill_calls
+            fill_calls += 1
+            self.assertEqual(2, max_jobs)
+            if fill_calls == 1:
+                scheduler.children["below-cap-child"] = mock.Mock()
+                return 1
+            scheduler.children.clear()
+            scheduler.request_stop()
+            return dispatched
+
+        with mock.patch.object(
+            scheduler, "_refill_catalogs", side_effect=refill
+        ), mock.patch.object(
+            scheduler, "_fill_capacity", side_effect=fill_capacity
+        ), mock.patch.object(
+            scheduler, "_reap_children", new=mock.AsyncMock(return_value=0)
+        ), mock.patch(
+            "learnfactory.scheduler.time.monotonic", return_value=10.0
+        ), mock.patch(
+            "learnfactory.scheduler.asyncio.sleep", new=mock.AsyncMock()
+        ):
+            dispatched = asyncio.run(scheduler.run(max_jobs=2))
+
+        self.assertEqual(1, dispatched)
+        self.assertEqual([1, 2], refill_calls)
+
     def test_course_group_helpers_scan_only_legacy_and_v2_namespaces(self) -> None:
         markers = {
             "job_csdiy_progress_v1_fixture": "progress-v1",

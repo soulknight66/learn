@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Preserve the initial catalog refill for unpaused bounded scheduler runs, including the intentional
+  `--max-jobs 0` refill-only operation, but suppress that controller's periodic refills after it reaches
+  a finite dispatch ceiling. This removes avoidable rollback-journal writer contention while the bounded
+  run drains its workers without claiming database-global coordination with other controllers or seeders.
+- Preserve protected-input integrity across authoritative BYOX workspace cutover. Verify the original
+  content and inode evidence before copying, require the installed snapshot to retain the exact semantic
+  bindings, and rebind only its intentionally fresh inode evidence for validation. Same-byte inode swaps
+  remain detectable both before and after cutover without falsely rejecting the controller's own copy.
 - Preserve immutable source provenance after consolidating the workspace under one top-level Git
   repository. `SOURCE_PINS.json` binds each vendored source path to its audited upstream commit, tree,
   remote, and branch; ingestion verifies the committed outer-repository subtree has the exact pinned tree

@@ -70,9 +70,16 @@ PYTHONPATH=src python3 -m learnfactory retry JOB_ID
 
 The live configuration permits 12 concurrent claims, subject to per-type ceilings: five
 `reference_builder`, two `course_manager`, two `student`, and three `examiner` jobs. Other roles retain
-their lower configured limits. A continuous `run --until-idle` controller is active at this checkpoint
-and fills only eligible slots. The earlier `run --max-jobs 3` was a three-dispatch safety probe;
-`--max-jobs` caps total launches by that invocation and should not be confused with `max_concurrency`.
+their lower configured limits. The continuous `run --until-idle` controller is currently paused/stopped
+at this checkpoint; when running, it fills only eligible slots. The earlier `run --max-jobs 3` was a
+three-dispatch safety probe; `--max-jobs` caps total launches by that invocation and should not be
+confused with `max_concurrency`.
+When dispatch is unpaused, every bounded invocation retains its initial catalog refill, so
+`--max-jobs 0` remains a refill-only operation. After a positive dispatch ceiling is reached, that
+controller suppresses later periodic refills while its launched children drain; a new unpaused
+invocation refills again at startup. This is a scheduler-local contention mitigation, not a
+database-global refill fence: another controller or a manual seeding command can still refill
+concurrently. Run bounded production canaries with one controller and no concurrent seeder.
 Starting another controller is safe with respect to duplicate claims and shared limits, but is normally
 unnecessary while the existing controller is healthy.
 

@@ -57,6 +57,7 @@ class Scheduler:
         run_error: BaseException | None = None
         next_refill_at = 0.0
         next_maintenance_at = 0.0
+        dispatch_limit_reached = False
         try:
             WorkspaceManager(
                 self.settings.warehouse, self.db
@@ -91,6 +92,7 @@ class Scheduler:
                 paused = self._is_paused()
                 if (
                     not paused
+                    and not dispatch_limit_reached
                     and monotonic_now >= next_refill_at
                 ):
                     next_refill_at = self._refill_catalogs()
@@ -106,6 +108,14 @@ class Scheduler:
                         dispatched=dispatched,
                         max_jobs=max_jobs,
                     )
+                # Preserve the initial refill for unpaused runs, including
+                # the intentional max_jobs=0 refill-only invocation. Once a
+                # finite run has spent its launch budget it can only drain its
+                # children, so periodic refill writers would add NFS SQLite
+                # contention without making another dispatch possible.
+                dispatch_limit_reached = dispatch_limit_reached or (
+                    max_jobs is not None and dispatched >= max_jobs
+                )
                 if max_jobs is not None and dispatched >= max_jobs and not self.children:
                     break
                 if until_idle and not self.children and not self._has_pending_work():

@@ -1,0 +1,135 @@
+{
+  "course_id": "course_c29906438d3f9fbda99661806d975b36",
+  "materials": [
+    {
+      "material_id": "provided_catalog_snapshot",
+      "title": "Provided CSDIY catalog snapshot",
+      "source_kind": "job_input",
+      "availability": "AVAILABLE_IN_WORKSPACE_CONTEXT",
+      "retrieved": true,
+      "content_scope": "catalog description, prerequisites, high-level metadata, and resource pointers only",
+      "official_course_content": false,
+      "permitted_use": "provenance, scope selection, and future retrieval planning"
+    },
+    {
+      "material_id": "unit_c429fb63575ba419492d10304fe8e080",
+      "title": "Catalog overview and resource guide",
+      "source_kind": "normalized_catalog_record",
+      "availability": "METADATA_PRESENT_IN_SNAPSHOT",
+      "retrieved": false,
+      "official_course_content": false,
+      "source_reference": "docs/计算机系统基础/CS110.en.md",
+      "note": "The referenced source file was not opened; only its supplied snapshot fields are available."
+    },
+    {
+      "material_id": "unit_dfd84e95b182994a703344ce1ab59434",
+      "title": "Winter 2020 course website",
+      "source_kind": "normalized_external_link",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "retrieved": false,
+      "official_course_content": "POSSIBLE_BUT_UNVERIFIED",
+      "url": "https://web.stanford.edu/class/archive/cs/cs110/cs110.1204/",
+      "note": "No page, syllabus, schedule, assignment, or access condition was inspected."
+    },
+    {
+      "material_id": "unit_0ce23f71f43fd9d0a65bd1add01d2104",
+      "title": "Spring 2019 lecture video playlist",
+      "source_kind": "normalized_external_link",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "retrieved": false,
+      "official_course_content": "POSSIBLE_BUT_UNVERIFIED",
+      "url": "https://www.youtube.com/playlist?list=PLai-xIlqf4JmTNR9aPCwIAOySs1GOm8sQ",
+      "note": "Video membership, titles, transcripts, ordering, and access were not inspected."
+    },
+    {
+      "material_id": "unit_3091f897555dc8ef43c7bc0be00f0525",
+      "title": "Computer Systems: A Programmer's Perspective PDF link",
+      "source_kind": "normalized_external_link",
+      "availability": "LINKED_NOT_RETRIEVED_RIGHTS_UNCHECKED",
+      "retrieved": false,
+      "official_course_content": false,
+      "url": "https://www.cs.sfu.ca/~ashriram/Courses/CS295/assets/books/CSAPP_2016.pdf",
+      "note": "The PDF was not fetched. Availability, edition, licensing, and permission for redistribution remain unverified."
+    },
+    {
+      "material_id": "unit_ea2af1b634a4480362b2710f460c31f1",
+      "title": "Seven labs and eight assignments",
+      "source_kind": "normalized_aggregate_description",
+      "availability": "DESCRIBED_ONLY",
+      "retrieved": false,
+      "official_course_content": true,
+      "url": null,
+      "note": "Only the aggregate count and claim that solutions/frameworks exist are present; no prompt, starter code, test framework, solution, title, or order is available."
+    },
+    {
+      "material_id": "unclassified_github_repository_pointer",
+      "title": "Stanford_CS110 GitHub repository pointer",
+      "source_kind": "unnormalized_catalog_url",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "retrieved": false,
+      "official_course_content": "UNKNOWN",
+      "url": "https://github.com/xuzheng465/Stanford_CS110",
+      "note": "The snapshot lists this URL but supplies no normalized record, ownership assertion, license, or content classification."
+    },
+    {
+      "material_id": "manager_kickoff_packet",
+      "title": "Manager-authored kickoff packet",
+      "source_kind": "local_generated_artifact",
+      "availability": "AVAILABLE_LOCAL",
+      "retrieved": false,
+      "official_course_content": false,
+      "paths": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "note": "Self-contained learning directions derived from catalog-level goals, not copied or reconstructed Stanford material."
+    }
+  ],
+  "blocked": [
+    {
+      "material": "official syllabus and unit sequence",
+      "block_type": "NOT_PRESENT_IN_SNAPSHOT",
+      "impact": "No official ordering or full-course graph can be asserted.",
+      "unblock_condition": "An authorized later job retrieves and validates a syllabus or equivalent official schedule."
+    },
+    {
+      "material": "individual lab and assignment prompts, starter code, and test frameworks",
+      "block_type": "DESCRIBED_BUT_NOT_PROVIDED",
+      "impact": "The aggregate assignment record cannot be scheduled or treated as completed coursework.",
+      "unblock_condition": "Inspect authorized source material, record provenance and license, and create separate learner-safe records."
+    },
+    {
+      "material": "lab and assignment solutions",
+      "block_type": "NOT_PROVIDED_AND_LEARNER_RESTRICTED",
+      "impact": "Solutions cannot be used as learner material or evidence in this kickoff.",
+      "unblock_condition": "If legitimately obtained for examiner use, store outside learner views with explicit access controls and provenance."
+    },
+    {
+      "material": "lecture contents and transcripts",
+      "block_type": "LINK_ONLY",
+      "impact": "No lecture-to-unit mapping or required viewing can be claimed.",
+      "unblock_condition": "An authorized later job verifies playlist contents, access, and applicable usage terms."
+    },
+    {
+      "material": "textbook contents",
+      "block_type": "RIGHTS_AND_ACCESS_UNVERIFIED",
+      "impact": "No textbook section is required or redistributed in this unit.",
+      "unblock_condition": "Use a lawfully accessible copy and cite only verified sections under applicable terms."
+    }
+  ],
+  "retrieval_policy": {
+    "external_retrieval_performed_for_this_packet": false,
+    "default_for_links": "A URL is a discovery lead, not proof of availability, authority, license, completeness, or unit status.",
+    "later_retrieval_requirements": [
+      "retrieve only within the explicit authority and network policy of the later job",
+      "do not bypass authentication, paywalls, robots controls, or other access restrictions",
+      "record final URL, retrieval result, provenance, content hash, access date, license or usage terms, and classification",
+      "inspect content before naming, ordering, or scheduling an official unit",
+      "keep solutions, hidden tests, examiner notes, and restricted content outside every learner-visible path",
+      "do not copy or redistribute content when rights are absent or unclear",
+      "preserve failed retrieval evidence rather than changing LINKED to AVAILABLE based on a prose claim"
+    ],
+    "promotion_rule": "Only validated, authorized, content-bearing records may become later schedulable units; external validators, not learner or worker prose, decide readiness."
+  }
+}

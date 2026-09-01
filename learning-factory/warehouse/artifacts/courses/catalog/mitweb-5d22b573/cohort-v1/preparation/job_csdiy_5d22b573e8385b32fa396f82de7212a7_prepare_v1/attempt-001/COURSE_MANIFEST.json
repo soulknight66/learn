@@ -1,0 +1,58 @@
+{
+  "course_id": "course_5d22b573e8385b32fa396f82de7212a7",
+  "title": "MIT Web Development Crash Course",
+  "status": "KICKOFF_UNIT_READY",
+  "unit": {
+    "unit_id": "kickoff_01_reliable_browser_vertical_slice",
+    "title": "A Reliable Browser Vertical Slice",
+    "position": 1,
+    "scope": "BOUNDED_FIRST_STUDY_UNIT",
+    "origin": "COURSE_MANAGER_AUTHORED",
+    "upstream_official_unit": false,
+    "estimated_human_hours": 6,
+    "prerequisite": "Proficiency in at least one programming language",
+    "learning_objectives": [
+      "Translate a small product brief into explicit, testable behavior.",
+      "Separate deterministic domain logic from browser DOM and storage effects.",
+      "Build an accessible HTML, CSS, and JavaScript vertical slice.",
+      "Test boundary cases and document reproducible verification evidence."
+    ],
+    "student_artifacts": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "examiner_artifact": "examiner_only/RUBRIC.md"
+  },
+  "completion_policy": {
+    "claim_scope": "UNIT_ONLY",
+    "course_completion_claimed": false,
+    "learner_self_report_is_sufficient": false,
+    "unit_completion_requires": [
+      "All required implementation and engineering-note deliverables in STUDY_TASK.md are present.",
+      "The learner records reproducible test and manual-check evidence.",
+      "The learner submits original responses to every prompt in COMPREHENSION.md.",
+      "A worker-harness-controlled validator applies examiner_only/RUBRIC.md and records a passing result."
+    ],
+    "promotion_authority": "WORKER_HARNESS_VALIDATOR_ONLY",
+    "on_pass": "Mark only kickoff_01_reliable_browser_vertical_slice complete; keep the course incomplete pending later, separately prepared units.",
+    "on_fail": "Preserve the attempt and its evidence for revision; do not infer course completion."
+  },
+  "provenance": {
+    "classification": "MANAGER_AUTHORED_KICKOFF_FROM_CATALOG_METADATA",
+    "prepared_date": "2026-08-31",
+    "catalog_source": {
+      "name": "CSDIY",
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "source_type": "course_catalog",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/Web开发/mitweb.en.md",
+      "content_sha256": "5f02cb330f0cffe8b9b033ff3785c6089aae0a9390e593b9ffb2940244efb09f",
+      "adapter": "csdiy",
+      "extractor_version": "1.1",
+      "license": "MIT"
+    },
+    "external_content_retrieved": false,
+    "scope_note": "The catalog snapshot establishes course identity and points to resources; it does not establish a complete official syllabus or completion of the course."
+  }
+}

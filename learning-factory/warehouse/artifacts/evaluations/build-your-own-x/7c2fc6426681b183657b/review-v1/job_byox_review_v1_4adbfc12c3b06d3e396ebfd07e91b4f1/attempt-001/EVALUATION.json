@@ -1,0 +1,37 @@
+{
+  "builder_job_id": "job_byox_build_v1_4adbfc12c3b06d3e396ebfd07e91b4f1",
+  "checks_run": [
+    "Complete submitted-file inventory and static review",
+    "Declared toolchain probe",
+    "Public suite against the learner starter baseline",
+    "Public and sealed suites against the sealed reference",
+    "Two clean reference builds and ELF/linkage/segment inspection",
+    "Reviewer-authored 627-case deterministic differential check",
+    "Input-boundary, delayed-feed, and closed-stdout observations",
+    "Benchmark harness execution and workload-size check",
+    "Strict manifest/provenance parsing and cross-binding checks",
+    "Filesystem-type, credential-pattern, and immutability checks"
+  ],
+  "evidence": [
+    "The documented learner baseline reproduced: the starter built, and its public run had 10 tests with the expected 8 failures and 2 passes.",
+    "The sealed reference passed all 10 public and 11 sealed test methods in an independent workspace copy.",
+    "The reference matched an independent requirements-based oracle in all 627 deterministic cases (seed 20260831; zero mismatches).",
+    "Two clean builds on the declared host produced identical SHA-256 d5832caaf9b900cc6ff78f6f0c53e4c31018fe6c6095a12be10475b547b99baf.",
+    "ELF inspection found x86-64 ELF64 EXEC, entry 0x4000e8, no dynamic section or undefined symbols, separate RX and RW load segments, and a non-executable stack.",
+    "The manifest honestly remains GENERATED/PARTIAL, requires independent validation, and sets productionized=false; the builder does not claim stronger labels.",
+    "The benchmark harness is not reproducible on the declared Python 3.6.8 host because time.perf_counter_ns is unavailable, and its default 10,000-operation program is 40,003 bytes despite the 4,095-byte accepted limit.",
+    "The submitted tree keeps evaluator-only reference code and hidden tests readable beside learner files; AGENTS.md prose is the only evidenced learner-view boundary.",
+    "Python test and benchmark subprocesses use timeouts and captured argv execution but do not create or clean up process groups.",
+    "Strict internal provenance bindings matched, no scanned credential pattern or special file was found, and the CANDIDATE content digest was unchanged after review."
+  ],
+  "limitations": [
+    "The source catalog snapshot and linked Jonesforth content were unavailable in the restricted workspace, so source-commit, license evidence, and no-copy claims could not be compared with external originals.",
+    "No student-view exporter, access-control configuration, or transfer record was supplied; out-of-band filtering of sealed paths is therefore inconclusive.",
+    "strace was installed but ptrace was prohibited by the sandbox, so syscall traces and deterministic confirmation of individual short-read boundaries were unavailable.",
+    "qemu-x86_64 and valgrind were unavailable; execution was native x86-64 only.",
+    "git and rg were unavailable; find, grep, sha256sum, and direct file inspection were used instead.",
+    "The 627-case differential check was bounded sampling, not a fuzz campaign; no benchmark measurement, sanitizer, profiler, portability matrix, transfer verification, or production validation was completed."
+  ],
+  "project_id": "project_d667887dddd98fbea55fa17d9b99cf19",
+  "verdict": "REVISE"
+}

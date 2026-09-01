@@ -1,0 +1,99 @@
+{
+  "course_id": "course_cca662c08900888319cd02fdb7c42bd2",
+  "nodes": [
+    {
+      "id": "manager_unit_01_benchmark_to_claim",
+      "node_kind": "study_unit",
+      "title": "From Benchmark to Defensible Claim",
+      "classification": "MANAGER_AUTHORED_KICKOFF",
+      "official_course_unit": false,
+      "availability": "LOCAL_READY",
+      "scheduled": true
+    },
+    {
+      "id": "material_synthetic_benchmark_v1",
+      "node_kind": "embedded_material",
+      "title": "Synthetic paired benchmark dataset v1",
+      "classification": "MANAGER_AUTHORED_SYNTHETIC_INPUT",
+      "official_course_unit": false,
+      "availability": "EMBEDDED_LOCAL",
+      "scheduled": false
+    },
+    {
+      "id": "unit_ce152fb3ca73e73571899128b87353ff",
+      "node_kind": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "classification": "CATALOG_CONTEXT_RECORD",
+      "catalog_official_course_unit_claim": false,
+      "promoted_to_official_course_unit": false,
+      "availability": "AVAILABLE_IN_SNAPSHOT",
+      "scheduled": false
+    },
+    {
+      "id": "unit_195090ebede23d3c1650f82d7ea17b4d",
+      "node_kind": "normalized_resource_record",
+      "title": "Course Website",
+      "classification": "EXTERNAL_LINK_COLLECTION",
+      "catalog_official_course_unit_claim": false,
+      "promoted_to_official_course_unit": false,
+      "availability": "LINKED_UNVERIFIED",
+      "scheduled": false
+    },
+    {
+      "id": "unit_97872e7fed01afb91c3e0feee4637f74",
+      "node_kind": "normalized_resource_record",
+      "title": "Recordings",
+      "classification": "EXTERNAL_LINK_COLLECTION",
+      "catalog_official_course_unit_claim": false,
+      "promoted_to_official_course_unit": false,
+      "availability": "LINKED_UNVERIFIED",
+      "scheduled": false
+    },
+    {
+      "id": "unit_79bb60d129bb3ed20e7ad70400dcfd91",
+      "node_kind": "normalized_resource_record",
+      "title": "Textbooks",
+      "classification": "UNRESOLVED_MATERIAL_DESCRIPTION",
+      "catalog_official_course_unit_claim": false,
+      "promoted_to_official_course_unit": false,
+      "availability": "UNAVAILABLE_NO_IDENTIFIERS",
+      "scheduled": false
+    },
+    {
+      "id": "unit_91a9e62078b79ff6e1b5f9c37708c1e1",
+      "node_kind": "normalized_resource_record",
+      "title": "Assignments",
+      "classification": "BLOCKED_ASSIGNMENT_RECORD",
+      "catalog_official_course_unit_claim": true,
+      "promoted_to_official_course_unit": false,
+      "availability": "UNAVAILABLE_NOT_OPEN_SOURCE",
+      "scheduled": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_ce152fb3ca73e73571899128b87353ff",
+      "to": "manager_unit_01_benchmark_to_claim",
+      "relationship": "informs_catalog_scope",
+      "dependency": false
+    },
+    {
+      "from": "material_synthetic_benchmark_v1",
+      "to": "manager_unit_01_benchmark_to_claim",
+      "relationship": "required_material_for",
+      "dependency": true
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "graph_scope": "Only manager_unit_01_benchmark_to_claim is scheduled. Resource-record nodes preserve classified catalog inputs and do not constitute a recovered official syllabus or unit sequence.",
+  "provenance": {
+    "catalog_source_file": "docs/软件工程/17803.en.md",
+    "catalog_source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "manager_authored_nodes": [
+      "manager_unit_01_benchmark_to_claim",
+      "material_synthetic_benchmark_v1"
+    ],
+    "external_material_retrieved": false
+  },
+  "validation_label": "CLASSIFIED_GRAPH_PENDING_HARNESS_VALIDATION"
+}

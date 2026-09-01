@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "course_id": "course_aad609c682157cc0ec08cf8bbc70e729",
+  "materials": [
+    {
+      "material_id": "material_unit_spec_student_safe",
+      "title": "Manager-authored kickoff instructions",
+      "classification": "local_learner_material",
+      "availability": "AVAILABLE_LOCAL",
+      "retrieved": false,
+      "required_for_kickoff": true,
+      "official_cs162_material": false,
+      "locations": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "note": "Created for this bounded bridge unit; no external course content is embedded."
+    },
+    {
+      "material_id": "unit_a32abfad99a977bc26eb196578a444e8",
+      "title": "Catalog overview and resource guide",
+      "classification": "catalog_context",
+      "availability": "SNAPSHOT_EXCERPT_ONLY",
+      "retrieved": false,
+      "required_for_kickoff": false,
+      "official_cs162_material": false,
+      "source_reference": "docs/操作系统/CS162.en.md",
+      "urls": [],
+      "note": "The supplied snapshot is available; the referenced source file is not copied into this workspace."
+    },
+    {
+      "material_id": "unit_06164451a1d8e1079401b963108eaba5",
+      "title": "Course Website",
+      "classification": "unresolved_material_pointer",
+      "availability": "DESCRIBED_NO_RECORD_URL",
+      "retrieved": false,
+      "required_for_kickoff": false,
+      "official_cs162_material": false,
+      "source_reference": "docs/操作系统/CS162.en.md#L25",
+      "urls": [],
+      "note": "The normalized record has an empty value and no URL. Source-level URL candidates are inventoried separately and must be verified before attachment."
+    },
+    {
+      "material_id": "unit_8db006d69ce090edffad6f7ff2793663",
+      "title": "Lecture Videos",
+      "classification": "aggregate_material_description",
+      "availability": "DESCRIBED_NO_RECORD_URL",
+      "retrieved": false,
+      "required_for_kickoff": false,
+      "official_cs162_material": false,
+      "source_reference": "docs/操作系统/CS162.en.md#L28",
+      "urls": [],
+      "note": "The snapshot names Fall 2020, Fall 2021, and Spring 2022, but the normalized record does not map a video URL or lecture sequence to a semester."
+    },
+    {
+      "material_id": "unit_3df38fbbc4886deb6bfd5af907a6f78d",
+      "title": "Operating Systems: Principles and Practice (2nd Edition)",
+      "classification": "external_material_link",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "required_for_kickoff": false,
+      "official_cs162_material": false,
+      "source_reference": "docs/操作系统/CS162.en.md#L32",
+      "urls": [
+        "http://ospp.cs.washington.edu/"
+      ],
+      "note": "Only a catalog link and recommendation are available; no chapter text, edition verification, license grant, or local copy is present."
+    },
+    {
+      "material_id": "unit_7994f83d79b5b09b27437a549c11ede4",
+      "title": "Assignments",
+      "classification": "aggregate_assignment_claim",
+      "availability": "DESCRIBED_NO_ASSIGNMENT_BODIES",
+      "retrieved": false,
+      "required_for_kickoff": false,
+      "official_cs162_material": false,
+      "catalog_official_course_unit_flag": true,
+      "source_reference": "docs/操作系统/CS162.en.md#L33",
+      "urls": [],
+      "note": "The record says there are three projects and six homeworks but supplies no names, semester binding, specifications, starter code, or validators."
+    },
+    {
+      "material_id": "unit_d59657ef5615027a406eb67025afe79a",
+      "title": "6 Homeworks",
+      "classification": "aggregate_assignment_claim_with_substitute_link",
+      "availability": "DESCRIPTION_AND_SUBSTITUTE_LINK_ONLY",
+      "retrieved": false,
+      "required_for_kickoff": false,
+      "official_cs162_material": false,
+      "catalog_official_course_unit_flag": true,
+      "source_reference": "docs/操作系统/CS162.en.md#L38",
+      "urls": [
+        "https://pdos.csail.mit.edu/6.824/labs/lab-mr.html"
+      ],
+      "note": "The URL is explicitly described as an MIT 6.824 replacement for MapReduce, not as a CS162 homework body or validator."
+    },
+    {
+      "material_id": "material_source_level_url_inventory",
+      "title": "Unverified source-level resource URL inventory",
+      "classification": "discovery_links_not_unit_records",
+      "availability": "LINKS_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "required_for_kickoff": false,
+      "official_cs162_material": false,
+      "urls": [
+        "https://benpfaff.org/papers/pintos.pdf",
+        "https://www.quora.com/What-is-it-like-to-take-CS-140-Operating-Systems-at-Stanford",
+        "https://github.com/AlfredThiel",
+        "https://pkuflyingpig.gitbook.io/pintos",
+        "https://cs162.org/",
+        "https://web.archive.org/web/20251211080516/https://cs162.org/",
+        "https://www.bilibili.com/video/BV1L541117gr?vd_source=e293470ea109e008c4d9516e39ef318f&p=5&spm_id_from=333.788.videopod.episodes",
+        "https://www.bilibili.com/video/BV1MwDSYWEKy?spm_id_from=333.788.videopod.sections&vd_source=e293470ea109e008c4d9516e39ef318f&p=24",
+        "https://web.archive.org/web/20211216005317/https://cs162.org/",
+        "http://ospp.cs.washington.edu/",
+        "https://pdos.csail.mit.edu/6.824/labs/lab-mr.html",
+        "https://github.com/RisingUppercut/UCB_CS162_2025Fall"
+      ],
+      "note": "Preserved exactly as discovery leads from the snapshot. Their authority, semester, license, integrity, and relation to a specific official unit have not been validated."
+    }
+  ],
+  "blocked": [
+    {
+      "block_id": "block_official_sequence",
+      "applies_to": [
+        "unit_06164451a1d8e1079401b963108eaba5",
+        "unit_8db006d69ce090edffad6f7ff2793663",
+        "unit_7994f83d79b5b09b27437a549c11ede4",
+        "unit_d59657ef5615027a406eb67025afe79a"
+      ],
+      "reason": "No verified semester-specific syllabus, lecture index, or assignment sequence is present.",
+      "effect": "Do not construct or label later official units from these aggregate records.",
+      "resolution": "Acquire a public, authorized semester index and record its URL, retrieval time, license/access basis, content hash, and mapping evidence."
+    },
+    {
+      "block_id": "block_external_bodies",
+      "applies_to": [
+        "unit_3df38fbbc4886deb6bfd5af907a6f78d",
+        "material_source_level_url_inventory"
+      ],
+      "reason": "External bodies were not retrieved, and the snapshot alone does not establish access rights, exact content, or integrity.",
+      "effect": "Links may be cited as discovery leads but their contents may not be assigned, reproduced, or treated as locally available.",
+      "resolution": "A later authorized retrieval job must verify public access and rights, then store provenance and validation metadata without copying restricted material."
+    },
+    {
+      "block_id": "block_assignment_validation",
+      "applies_to": [
+        "unit_7994f83d79b5b09b27437a549c11ede4",
+        "unit_d59657ef5615027a406eb67025afe79a"
+      ],
+      "reason": "No official specification, starter repository revision, local autograder, or worker-controlled validator is available.",
+      "effect": "No official assignment can be issued or marked complete from this preparation job.",
+      "resolution": "Verify a semester-specific public specification and authorized starter revision, then create independent deterministic validation."
+    }
+  ],
+  "retrieval_policy": {
+    "external_retrieval_performed_for_this_job": false,
+    "current_rule": "Treat catalog text, normalized records, and URLs as discovery metadata only. The kickoff must remain usable without external retrieval.",
+    "later_job_requirements": [
+      "Use only public or otherwise authorized access; do not bypass authentication, paywalls, robots controls, or technical restrictions.",
+      "Verify the publisher or institution, course and semester identity, resource type, and mapping to a specific unit.",
+      "Record canonical URL, retrieval timestamp, source revision when available, content hash, license or access basis, and local artifact path.",
+      "Keep restricted, copyrighted, sealed-reference, hidden-grader, and other learners' content out of learner-visible artifacts.",
+      "Distinguish official CS162 material, third-party commentary, alternate-course material, and manager-authored bridges.",
+      "Require a worker-controlled validator before any assignment can be promoted to completed."
+    ],
+    "failure_rule": "If identity, rights, integrity, or unit mapping cannot be verified, retain the material as blocked or link-only and do not infer missing content."
+  }
+}

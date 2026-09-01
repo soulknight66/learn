@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "course_id": "course_d19c01296d2a33b5c57db7e4ef167b72",
+  "nodes": [
+    {
+      "node_id": "kickoff_01_empirical_entropy",
+      "node_type": "study_unit",
+      "title": "Empirical Entropy as a Trustworthy Software Component",
+      "classification": "MANAGER_AUTHORED_KICKOFF",
+      "official_course_unit": false,
+      "availability": "AVAILABLE_LOCAL",
+      "status": "READY_FOR_LEARNER",
+      "order": 1,
+      "required_for_kickoff": true,
+      "provenance": "Created from catalog context for this learning-factory job; not sourced from an MIT syllabus sequence.",
+      "validation_label": "UNVALIDATED_KICKOFF"
+    },
+    {
+      "node_id": "unit_88871de8ed042d26e0c91a6a5d266f6f",
+      "node_type": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "record_type": "reading",
+      "classification": "CATALOG_CONTEXT_RECORD",
+      "official_course_unit_source_flag": false,
+      "promoted_to_study_unit": false,
+      "availability": "AVAILABLE_IN_SNAPSHOT_ONLY",
+      "source_reference": "docs/数学基础/information.en.md",
+      "source_order": 0,
+      "validation_label": "SOURCE_DERIVED_RECORD"
+    },
+    {
+      "node_id": "unit_6599ff134bd620285fcd87e873e6535d",
+      "node_type": "normalized_resource_record",
+      "title": "Course Website",
+      "record_type": "reading",
+      "classification": "EXTERNAL_LINK_RECORD",
+      "official_course_unit_source_flag": false,
+      "promoted_to_study_unit": false,
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "source_reference": "docs/数学基础/information.en.md#L15",
+      "source_order": 15,
+      "urls": [
+        "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-050j-information-and-entropy-spring-2008/index.htm"
+      ],
+      "validation_label": "UNVERIFIED_EXTERNAL_LINK"
+    },
+    {
+      "node_id": "unit_edee96b54325e8e9a98c6b9e2b5c0743",
+      "node_type": "normalized_resource_record",
+      "title": "Textbook",
+      "record_type": "reading",
+      "classification": "EXTERNAL_LINK_RECORD",
+      "official_course_unit_source_flag": false,
+      "promoted_to_study_unit": false,
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "source_reference": "docs/数学基础/information.en.md#L16",
+      "source_order": 16,
+      "urls": [
+        "https://ocw.mit.edu/courses/6-050j-information-and-entropy-spring-2008/resources/mit6_050js08_textbook/"
+      ],
+      "validation_label": "UNVERIFIED_EXTERNAL_LINK"
+    },
+    {
+      "node_id": "unit_bf38715235e38e72e3906767936e5245",
+      "node_type": "normalized_resource_record",
+      "title": "Assignments",
+      "record_type": "assignment",
+      "classification": "OFFICIAL_ASSIGNMENT_DESCRIPTOR_WITHOUT_CONTENT",
+      "official_course_unit_source_flag": true,
+      "promoted_to_study_unit": false,
+      "availability": "DESCRIPTION_ONLY",
+      "source_reference": "docs/数学基础/information.en.md#L17",
+      "source_order": 17,
+      "description": "The snapshot says written and Matlab programming assignments exist but supplies no assignment bodies, files, or schedule.",
+      "validation_label": "SOURCE_CLAIM_UNVERIFIED_CONTENT"
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_88871de8ed042d26e0c91a6a5d266f6f",
+      "to": "unit_6599ff134bd620285fcd87e873e6535d",
+      "relation": "CATALOG_LISTS_RESOURCE"
+    },
+    {
+      "from": "unit_88871de8ed042d26e0c91a6a5d266f6f",
+      "to": "unit_edee96b54325e8e9a98c6b9e2b5c0743",
+      "relation": "CATALOG_LISTS_RESOURCE"
+    },
+    {
+      "from": "unit_88871de8ed042d26e0c91a6a5d266f6f",
+      "to": "unit_bf38715235e38e72e3906767936e5245",
+      "relation": "CATALOG_DESCRIBES_RESOURCE"
+    },
+    {
+      "from": "unit_88871de8ed042d26e0c91a6a5d266f6f",
+      "to": "kickoff_01_empirical_entropy",
+      "relation": "CATALOG_CONTEXT_FOR_MANAGER_AUTHORED_UNIT"
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "classification_policy": {
+    "records_are_units_by_default": false,
+    "link_presence_proves_content_availability": false,
+    "official_source_flag_proves_retrieved_content": false,
+    "promotion_requirement": "A later job must retrieve permitted material, record provenance, inspect its actual scope, and validate the proposed unit boundary before promotion.",
+    "kickoff_dependency_note": "The local kickoff uses only the supplied snapshot as context and does not depend on any external linked content."
+  },
+  "validation": {
+    "label": "STRUCTURE_CLASSIFIED_NOT_COURSE_COMPLETE",
+    "external_retrieval_performed": false
+  }
+}

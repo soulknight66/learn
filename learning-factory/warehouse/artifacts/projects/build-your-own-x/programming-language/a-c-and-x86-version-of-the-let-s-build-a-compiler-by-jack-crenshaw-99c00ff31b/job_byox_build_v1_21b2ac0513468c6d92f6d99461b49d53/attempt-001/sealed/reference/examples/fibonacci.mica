@@ -1,0 +1,10 @@
+let remaining = 10;
+let a = 0;
+let b = 1;
+while (remaining > 0) {
+    print a;
+    let next = a + b;
+    a = b;
+    b = next;
+    remaining = remaining - 1;
+}

@@ -1,0 +1,144 @@
+{
+  "course_id": "course_2b9f424d411d24e0ac4036c944352323",
+  "materials": [
+    {
+      "material_id": "manager_course_brief",
+      "title": "Course Brief",
+      "kind": "learner_brief",
+      "origin": "COURSE_MANAGER_AUTHORED",
+      "locator": "student_safe/COURSE_BRIEF.md",
+      "content_availability": "AVAILABLE_LOCAL",
+      "verified_for_first_unit": true,
+      "required_for_first_unit": true
+    },
+    {
+      "material_id": "manager_study_task",
+      "title": "Weighted Interval Scheduling Study Task",
+      "kind": "assignment_specification",
+      "origin": "COURSE_MANAGER_AUTHORED",
+      "locator": "student_safe/STUDY_TASK.md",
+      "content_availability": "AVAILABLE_LOCAL",
+      "verified_for_first_unit": true,
+      "required_for_first_unit": true
+    },
+    {
+      "material_id": "manager_comprehension_questions",
+      "title": "Kickoff Comprehension Questions",
+      "kind": "learner_questions",
+      "origin": "COURSE_MANAGER_AUTHORED",
+      "locator": "student_safe/COMPREHENSION.md",
+      "content_availability": "AVAILABLE_LOCAL",
+      "verified_for_first_unit": true,
+      "required_for_first_unit": true
+    },
+    {
+      "material_id": "catalog_overview_record",
+      "source_record_id": "unit_942473f1ff80f6adb5030e1d8e515588",
+      "title": "Catalog overview and resource guide",
+      "kind": "catalog_metadata",
+      "origin": "CSDIY_SOURCE_DERIVED",
+      "locator": "docs/数据结构与算法/6.046.en.md",
+      "content_availability": "AVAILABLE_AS_EMBEDDED_SNAPSHOT_METADATA",
+      "verified_for_first_unit": false,
+      "required_for_first_unit": false,
+      "availability_note": "The job input contains the normalized metadata and course description. No source-repository file was copied into the learner materials."
+    },
+    {
+      "material_id": "mit_ocw_course_site",
+      "source_record_id": "unit_976d44d63fcfe4adc7e7133cb7821553",
+      "title": "MIT OpenCourseWare Spring 2015 course website",
+      "kind": "course_site",
+      "origin": "CATALOG_LINK",
+      "url": "https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/",
+      "content_availability": "LINK_RECORDED_CONTENT_NOT_RETRIEVED",
+      "access_status": "NOT_ATTEMPTED",
+      "verified_for_first_unit": false,
+      "required_for_first_unit": false
+    },
+    {
+      "material_id": "bilibili_recording_collection",
+      "source_record_id": "unit_4922ad2caddeedd905c99e4765b826d1",
+      "title": "Spring 2015 recordings",
+      "kind": "recording_collection",
+      "origin": "CATALOG_LINK",
+      "url": "https://www.bilibili.com/video/BV1A7411E737",
+      "content_availability": "LINK_RECORDED_CONTENT_NOT_RETRIEVED",
+      "access_status": "NOT_ATTEMPTED",
+      "verified_for_first_unit": false,
+      "required_for_first_unit": false
+    },
+    {
+      "material_id": "clrs_textbook",
+      "source_record_id": "unit_2b9391d4b1e23416fb39be213438008c",
+      "title": "Introduction to Algorithms (CLRS)",
+      "kind": "textbook_citation",
+      "origin": "CATALOG_DESCRIPTION",
+      "content_availability": "DESCRIBED_ONLY_NOT_PROVIDED",
+      "access_status": "NO_EDITION_CHAPTER_URL_OR_LICENSE_VERIFIED",
+      "verified_for_first_unit": false,
+      "required_for_first_unit": false
+    },
+    {
+      "material_id": "mit_ocw_assignments_index",
+      "source_record_id": "unit_10a0409e1104dacce5fe6a740d5147fd",
+      "title": "MIT OpenCourseWare Spring 2015 assignments index",
+      "kind": "official_assignment_index",
+      "origin": "CATALOG_LINK_WITH_OFFICIAL_RESOURCE_SIGNAL",
+      "url": "https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/pages/assignments/",
+      "content_availability": "LINK_RECORDED_CONTENT_NOT_RETRIEVED",
+      "access_status": "NOT_ATTEMPTED",
+      "verified_for_first_unit": false,
+      "required_for_first_unit": false,
+      "availability_note": "The catalog's official flag is retained, but assignment bodies, ordering, dependencies, and reuse terms were not inspected in this job."
+    }
+  ],
+  "blocked": [
+    {
+      "block_id": "official_course_structure_unverified",
+      "blocks": "Expansion into an official MIT lesson sequence",
+      "reason": "Only a catalog link is present; the course-site pages and syllabus were not retrieved or validated.",
+      "affects_first_unit": false,
+      "resolution_requirement": "A later authorized retrieval job must capture lesson-level metadata, provenance, access results, and validation labels."
+    },
+    {
+      "block_id": "recording_contents_unavailable",
+      "blocks": "Recording-based lecture units and transcript claims",
+      "reason": "A collection URL is recorded, but video availability, ordering, language, captions, licensing, and content were not checked.",
+      "affects_first_unit": false,
+      "resolution_requirement": "Verify lawful access and record each selected item's identity and provenance without bypassing platform controls."
+    },
+    {
+      "block_id": "textbook_contents_unavailable",
+      "blocks": "Required textbook readings",
+      "reason": "The snapshot provides only the title 'Introduction to Algorithms (CLRS)' and no edition, chapters, licensed copy, or stable locator.",
+      "affects_first_unit": false,
+      "resolution_requirement": "Select an edition and lawful access path, then identify exact sections and record their provenance."
+    },
+    {
+      "block_id": "assignment_bodies_unverified",
+      "blocks": "Reuse or sequencing of official assignments",
+      "reason": "The assignments index is linked but its assignment files and terms were not retrieved or classified.",
+      "affects_first_unit": false,
+      "resolution_requirement": "Retrieve only in an authorized later job, validate individual artifacts, and preserve their official-versus-manager-authored distinction."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job_scope": "SNAPSHOT_ONLY_NO_EXTERNAL_RETRIEVAL",
+    "external_retrieval_performed": false,
+    "first_unit_dependency_policy": "The prepared kickoff must remain completable using only the three local learner-safe documents and standard Python documentation already available to the learner.",
+    "classification_rules": [
+      "Do not equate a cataloged URL with available content.",
+      "Do not promote an index, collection, citation, or normalized record into a course unit without item-level evidence.",
+      "Do not fetch, copy, or expose restricted, authenticated, paywalled, sealed, or otherwise unauthorized material.",
+      "Record failed or denied access honestly rather than substituting guessed content.",
+      "Keep source provenance, content identity, license or use basis, retrieval result, and validator label with every future material artifact."
+    ],
+    "future_expansion_requirements": [
+      "Run retrieval as a separately authorized, bounded job.",
+      "Use stable locators and captured checksums where content may lawfully be stored.",
+      "Validate relevance and availability before declaring a learner dependency.",
+      "Label official source material, source-derived metadata, and manager-authored material distinctly.",
+      "Update UNIT_GRAPH.json only after deterministic classification."
+    ]
+  }
+}

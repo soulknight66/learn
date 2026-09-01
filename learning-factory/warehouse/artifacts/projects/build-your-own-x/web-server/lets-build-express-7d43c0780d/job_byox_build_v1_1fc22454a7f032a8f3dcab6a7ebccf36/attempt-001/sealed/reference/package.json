@@ -1,0 +1,14 @@
+{
+  "name": "mini-express-reference",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dependency-free reference implementation for the mini Express-style challenge",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test ../reference_tests/*.test.js"
+  },
+  "engines": {
+    "node": ">=18.17"
+  }
+}

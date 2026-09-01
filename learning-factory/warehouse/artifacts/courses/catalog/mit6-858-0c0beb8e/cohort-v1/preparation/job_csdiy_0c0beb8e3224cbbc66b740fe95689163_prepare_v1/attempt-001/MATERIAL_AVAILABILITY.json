@@ -1,0 +1,223 @@
+{
+  "course_id": "course_0c0beb8e3224cbbc66b740fe95689163",
+  "materials": [
+    {
+      "material_id": "catalog_snapshot",
+      "title": "Supplied CSDIY catalog snapshot",
+      "classification": "SOURCE_DERIVED_METADATA",
+      "availability": "AVAILABLE_IN_JOB_INPUT",
+      "retrieved": false,
+      "usable_now": true,
+      "location": "embedded in the preparation job input",
+      "scope": "Course description, prerequisites, resource records, URLs, and source provenance only; not full instructional content."
+    },
+    {
+      "material_id": "unit_a50eaacebcc5f74e84f88bc2ff96700d",
+      "title": "Catalog overview and resource guide",
+      "classification": "CATALOG_CONTEXT_RECORD",
+      "availability": "AVAILABLE_IN_JOB_INPUT",
+      "retrieved": false,
+      "usable_now": true,
+      "source_reference": "docs/系统安全/MIT6.858.en.md",
+      "scope": "Catalog overview text only; not an official course unit."
+    },
+    {
+      "material_id": "unit_8b2011001dc8b37c0dff9f1dd438e897",
+      "title": "Lab 1",
+      "classification": "CATALOG_CLASSIFIED_OFFICIAL_UNIT_METADATA_ONLY",
+      "availability": "DESCRIBED_ONLY",
+      "retrieved": false,
+      "usable_now": false,
+      "source_reference": "docs/系统安全/MIT6.858.en.md#L15",
+      "missing": [
+        "official specification",
+        "starter code",
+        "environment instructions",
+        "tests or validation procedure"
+      ]
+    },
+    {
+      "material_id": "unit_6e6687dbc9c9054db37e733964290440",
+      "title": "Lab 2",
+      "classification": "CATALOG_CLASSIFIED_OFFICIAL_UNIT_METADATA_ONLY",
+      "availability": "DESCRIBED_ONLY",
+      "retrieved": false,
+      "usable_now": false,
+      "source_reference": "docs/系统安全/MIT6.858.en.md#L16",
+      "missing": [
+        "official specification",
+        "starter code",
+        "environment instructions",
+        "tests or validation procedure"
+      ]
+    },
+    {
+      "material_id": "unit_dd4d28ccaa117297adb815823c76876e",
+      "title": "Lab 3",
+      "classification": "CATALOG_CLASSIFIED_OFFICIAL_UNIT_METADATA_ONLY",
+      "availability": "DESCRIBED_ONLY",
+      "retrieved": false,
+      "usable_now": false,
+      "source_reference": "docs/系统安全/MIT6.858.en.md#L17",
+      "missing": [
+        "official specification",
+        "starter code",
+        "environment instructions",
+        "tests or validation procedure"
+      ]
+    },
+    {
+      "material_id": "unit_be36576663f9c4b207d912fb5cf8628e",
+      "title": "Lab 4",
+      "classification": "CATALOG_CLASSIFIED_OFFICIAL_UNIT_METADATA_ONLY",
+      "availability": "DESCRIBED_ONLY",
+      "retrieved": false,
+      "usable_now": false,
+      "source_reference": "docs/系统安全/MIT6.858.en.md#L18",
+      "missing": [
+        "official specification",
+        "starter code",
+        "environment instructions",
+        "tests or validation procedure"
+      ]
+    },
+    {
+      "material_id": "unit_aeffccb207ac45554998aa1bfad1c308",
+      "title": "Course Website",
+      "classification": "EXTERNAL_RESOURCE_LINK",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "usable_now": false,
+      "url": "http://css.csail.mit.edu/6.858/2022/",
+      "access_verified": false,
+      "content_verified": false,
+      "note": "The catalog marks this record non-unit; the URL alone is not staged material."
+    },
+    {
+      "material_id": "unit_dd4bfb2fbf9e78f0c676c76344325f55",
+      "title": "Assignments pointer",
+      "classification": "CATALOG_CLASSIFIED_OFFICIAL_UNIT_METADATA_ONLY",
+      "availability": "DESCRIBED_ONLY",
+      "retrieved": false,
+      "usable_now": false,
+      "source_reference": "docs/系统安全/MIT6.858.en.md#L27",
+      "note": "The only supplied value is 'refer to the course website.'"
+    },
+    {
+      "material_id": "unit_75865e8b3b6b8592ebc61942ca8549f4",
+      "title": "Textbook",
+      "classification": "CATALOG_ABSENCE_RECORD",
+      "availability": "UNAVAILABLE",
+      "retrieved": false,
+      "usable_now": false,
+      "source_reference": "docs/系统安全/MIT6.858.en.md#L28",
+      "note": "The catalog value is 'None'; no textbook is supplied or assumed."
+    },
+    {
+      "material_id": "unit_7f7fff1b66da96c4a7d20d056afd87c1",
+      "title": "Assignment-set summary",
+      "classification": "CATALOG_CLASSIFIED_OFFICIAL_UNIT_METADATA_ONLY",
+      "availability": "DESCRIBED_ONLY",
+      "retrieved": false,
+      "usable_now": false,
+      "source_reference": "docs/系统安全/MIT6.858.en.md#L29",
+      "note": "The supplied summary names four labs and a final project/Lab 5 but contains no assignment content."
+    },
+    {
+      "material_id": "catalog_link_secfs_sundr_paper",
+      "title": "SecFS/SUNDR reference link named by the catalog",
+      "classification": "COURSE_LEVEL_EXTERNAL_LINK",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "usable_now": false,
+      "url": "https://www.usenix.org/legacy/event/osdi04/tech/full_papers/li_j/li_j.pdf",
+      "access_verified": false,
+      "content_verified": false,
+      "note": "The catalog uses this same URL while discussing both SecFS and SUNDR. That labeling was not resolved because the paper was not fetched."
+    },
+    {
+      "material_id": "kickoff_001_student_packet",
+      "title": "Threat Models and a Tested Authorization Boundary learner packet",
+      "classification": "MANAGER_AUTHORED_SELF_CONTAINED_MATERIAL",
+      "availability": "AVAILABLE_LOCAL",
+      "retrieved": false,
+      "usable_now": true,
+      "paths": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "official_course_material": false,
+      "note": "Authored for this kickoff from general systems-security themes; it neither reproduces nor substitutes for an official MIT unit."
+    }
+  ],
+  "blocked": [
+    {
+      "blocked_id": "official_lab_materials",
+      "material_ids": [
+        "unit_8b2011001dc8b37c0dff9f1dd438e897",
+        "unit_6e6687dbc9c9054db37e733964290440",
+        "unit_dd4d28ccaa117297adb815823c76876e",
+        "unit_be36576663f9c4b207d912fb5cf8628e"
+      ],
+      "reason": "Only one-sentence catalog descriptions are supplied; official specifications, code, and environments are absent.",
+      "effect": "These records cannot yet be materialized or assessed as official labs.",
+      "unblock_condition": "A later authorized job stages lawfully accessible, provenance-recorded materials and validates their identity and completeness."
+    },
+    {
+      "blocked_id": "course_site_contents",
+      "material_ids": [
+        "unit_aeffccb207ac45554998aa1bfad1c308",
+        "unit_dd4bfb2fbf9e78f0c676c76344325f55"
+      ],
+      "reason": "The snapshot contains a link and a pointer, but no retrieved website content.",
+      "effect": "Lecture sequence, assignment details, and linked resources remain unverified and unavailable locally.",
+      "unblock_condition": "A future authorized public-material retrieval records final URLs, access result, license or terms, content hashes, and retrieval provenance."
+    },
+    {
+      "blocked_id": "lecture_and_reading_corpus",
+      "material_ids": [],
+      "reason": "No lecture notes, slides, schedule, or research-paper list is present in the supplied snapshot.",
+      "effect": "No official lecture or reading unit can be claimed from this preparation.",
+      "unblock_condition": "Separately sourced materials must be staged and provenance-checked by a later job."
+    },
+    {
+      "blocked_id": "final_project_or_lab5",
+      "material_ids": [
+        "unit_7f7fff1b66da96c4a7d20d056afd87c1",
+        "catalog_link_secfs_sundr_paper"
+      ],
+      "reason": "A project is described and a paper URL is named, but the project specification, starter repository, and paper content are not staged.",
+      "effect": "The final project/Lab 5 cannot be prepared or evaluated.",
+      "unblock_condition": "Stage and verify the official project specification and any permitted dependencies; a paper alone is not a project specification."
+    },
+    {
+      "blocked_id": "textbook",
+      "material_ids": [
+        "unit_75865e8b3b6b8592ebc61942ca8549f4"
+      ],
+      "reason": "The catalog explicitly records no textbook.",
+      "effect": "There is no textbook to retrieve or treat as required; this does not block the self-contained kickoff.",
+      "unblock_condition": "None unless a later authoritative source identifies a separate permitted reading."
+    }
+  ],
+  "retrieval_policy": {
+    "preparation_network_retrieval": "NOT_PERFORMED",
+    "default": "Treat descriptions and URLs as metadata until content is explicitly staged and verified.",
+    "future_public_retrieval": "Allowed only in a separately authorized job whose scope permits network access and provenance capture.",
+    "required_for_each_retrieved_item": [
+      "Resolve and record the exact source and final location",
+      "Confirm access is public or otherwise explicitly authorized",
+      "Record applicable license or terms and retrieval provenance",
+      "Compute a content hash and classify whether the item is an official unit, supplemental resource, or catalog context",
+      "Keep failed, partial, or ambiguous retrievals marked unavailable"
+    ],
+    "never_retrieve_or_expose": [
+      "Authentication-gated or otherwise restricted content without explicit authorization",
+      "Secrets, hidden graders, sealed references, or examiner-only material for a learner",
+      "Another learner's files or submissions"
+    ],
+    "failure_policy": "Fail closed: do not infer missing content, do not promote a link or description into an available unit, and leave the affected item blocked.",
+    "expansion_policy": "Later jobs may add units only from individually classified, staged, provenance-recorded material; this kickoff does not authorize or imply whole-course expansion."
+  }
+}

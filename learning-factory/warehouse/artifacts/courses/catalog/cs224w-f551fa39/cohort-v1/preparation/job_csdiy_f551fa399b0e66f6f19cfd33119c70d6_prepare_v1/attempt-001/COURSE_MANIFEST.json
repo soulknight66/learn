@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "course_id": "course_f551fa399b0e66f6f19cfd33119c70d6",
+  "title": "CS224w: Machine Learning with Graphs",
+  "status": "KICKOFF_READY",
+  "unit": {
+    "unit_id": "managed_unit_01_graph_software_baseline",
+    "title": "Graph Data Contracts and a Message-Passing Baseline",
+    "position": 1,
+    "origin": "course_manager_authored",
+    "official_course_unit": false,
+    "status": "READY_NOT_COMPLETED",
+    "estimated_hours": 8.0,
+    "scope": "A bounded, self-contained software-engineering kickoff: implement and test a deterministic simple-graph core, classical traversal utilities, and one mean-aggregation message-passing step in Python.",
+    "prerequisites": [
+      "Comfort with asymptotic graph-algorithm analysis",
+      "Working Python knowledge",
+      "Fundamental machine-learning concepts, including vectors and affine maps"
+    ],
+    "learning_objectives": [
+      "Turn graph assumptions into an explicit, validated data contract",
+      "Implement deterministic breadth-first search and connected components behind a small public API",
+      "Implement a dimension-checked mean message-passing step without a graph framework",
+      "Build reproducible unit tests for normal, boundary, and invalid inputs",
+      "Explain complexity, permutation equivariance, representation tradeoffs, and known limitations"
+    ],
+    "required_student_files": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "required_evidence": [
+      "Runnable Python source implementing the specified interfaces",
+      "Deterministic unittest suite covering the stated behavior and failure cases",
+      "Design note documenting invariants, complexity, choices, and limitations",
+      "Recorded test command and result",
+      "Learner-authored comprehension responses tied to the implementation"
+    ]
+  },
+  "completion_policy": {
+    "scope": "UNIT_ONLY",
+    "authority": "Only a validator controlled by the worker harness may promote this unit to SUCCEEDED.",
+    "unit_rule": "All required evidence must exist, the prescribed offline test command must pass, and independent rubric evaluation must meet its pass conditions.",
+    "claim_rule": "A learner or agent prose claim, an external link, or mere file presence is not completion evidence.",
+    "on_unit_success": {
+      "unit_status": "SUCCEEDED",
+      "course_status": "IN_PROGRESS"
+    },
+    "whole_course_rule": "This kickoff can never mark the whole course complete. Course completion requires later, provenance-preserving expansion of actual course units and harness validation of every unit selected by a future approved course policy.",
+    "current_completion": "NOT_EVALUATED"
+  },
+  "provenance": {
+    "classification": "manager-authored kickoff derived from catalog metadata",
+    "catalog_source": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "name": "CSDIY",
+      "type": "course_catalog",
+      "license": "MIT",
+      "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/深度学习/CS224w.en.md"
+    },
+    "snapshot": {
+      "adapter": "csdiy",
+      "extractor_version": "1.1",
+      "classification": "source-derived",
+      "content_sha256": "6a6378ac62be68d1c40b00cb102a19fe3319471aceaf3a724af88c1ce581748b"
+    },
+    "preparation": {
+      "job_id": "job_csdiy_f551fa399b0e66f6f19cfd33119c70d6_prepare_v1",
+      "attempt": 1,
+      "network_retrieval_performed": false,
+      "basis": "The supplied catalog snapshot only; linked course, video, and assignment payloads were not retrieved.",
+      "official_endorsement_claimed": false,
+      "license_boundary": "The catalog's MIT license is not asserted to cover content at linked Stanford or YouTube URLs."
+    }
+  }
+}

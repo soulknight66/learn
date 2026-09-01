@@ -1,0 +1,82 @@
+{
+  "course_id": "course_dba0337dc37f5a949f0dcfe64ab77bc7",
+  "title": "UMich EECS 498-007 / 598-005: Deep Learning for Computer Vision",
+  "status": "KICKOFF_READY",
+  "unit": {
+    "unit_id": "kickoff_unit_01_deterministic_image_knn",
+    "title": "Engineering a Deterministic Image k-NN Baseline",
+    "position": 1,
+    "scope": "BOUNDED_FIRST_STUDY_UNIT",
+    "status": "READY_FOR_LEARNER",
+    "classification": "COURSE_MANAGER_AUTHORED",
+    "official_course_unit": false,
+    "estimated_hours": {
+      "minimum": 6,
+      "maximum": 8
+    },
+    "audience": "A strong algorithms student building practical software-engineering skill",
+    "prerequisites": [
+      "Basic Python",
+      "Matrix and vector familiarity",
+      "Calculus familiarity",
+      "Asymptotic complexity analysis"
+    ],
+    "learning_objectives": [
+      "Turn a mathematical nearest-neighbor rule into a small, documented Python component with a stable API.",
+      "Specify and enforce shape, type, lifecycle, and non-mutation invariants at module boundaries.",
+      "Make neighbor selection, voting, command-line output, and tests deterministic.",
+      "Test normal behavior, ties, malformed inputs, and reproducibility without external data or services.",
+      "Analyze time and space costs and identify the boundary at which a later vision model can replace the baseline."
+    ],
+    "required_course_files": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "examiner_file": "examiner_only/RUBRIC.md"
+  },
+  "completion_policy": {
+    "scope": "UNIT_ONLY",
+    "prose_claims_are_evidence": false,
+    "unit_success": {
+      "validation_authority": "WORKER_HARNESS_CONTROLLED_VALIDATOR_ONLY",
+      "required_evidence": [
+        "Runnable learner implementation matching the public task contract",
+        "Passing deterministic learner and harness tests",
+        "Learner-authored engineering note",
+        "Learner-authored comprehension responses"
+      ],
+      "promotion_rule": "Only a validator controlled by the worker harness may promote kickoff_unit_01_deterministic_image_knn to SUCCEEDED.",
+      "success_effect": "Success applies only to this kickoff unit."
+    },
+    "course_success": {
+      "eligible_now": false,
+      "claimed_now": false,
+      "reason": "The catalog has not been expanded into a verified full course graph, and only one manager-authored kickoff unit is prepared.",
+      "future_rule": "Course completion requires a separately approved complete unit graph, verified material availability, and validator-backed success for every required unit."
+    }
+  },
+  "provenance": {
+    "classification": "MANAGER_AUTHORED_FROM_CATALOG_METADATA",
+    "catalog_snapshot_schema_version": 1,
+    "catalog_status": "DISCOVERED",
+    "source": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "name": "CSDIY",
+      "type": "course_catalog",
+      "license": "MIT",
+      "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/深度学习/EECS498-007.en.md",
+      "content_sha256": "10ce4b44958af665149dbe10a0a2f258f4089fbad92dc5a33f3a6a44916de351",
+      "adapter": "csdiy",
+      "extractor_version": "1.1"
+    },
+    "normalized_resource_record_ids": [
+      "unit_15a3337707ed09597c0b0c732e9be5fb",
+      "unit_6929eda60a5de4105d324d4004b79277"
+    ],
+    "external_material_retrieval": "NOT_PERFORMED",
+    "official_unit_claim": false,
+    "derivation_note": "Catalog identity, prerequisites, language, and link metadata informed the kickoff scope. No linked content was read, copied, or treated as an official unit."
+  }
+}

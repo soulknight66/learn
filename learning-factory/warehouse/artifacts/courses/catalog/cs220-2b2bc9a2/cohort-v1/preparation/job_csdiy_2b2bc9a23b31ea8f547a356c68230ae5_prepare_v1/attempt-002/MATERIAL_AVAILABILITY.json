@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "course_id": "course_2b2bc9a23b31ea8f547a356c68230ae5",
+  "materials": [
+    {
+      "material_id": "material_local_kickoff_packet",
+      "title": "Manager-authored kickoff packet",
+      "role": "required_unit_specification",
+      "availability": "AVAILABLE_LOCAL",
+      "access": "student_safe/COURSE_BRIEF.md, student_safe/STUDY_TASK.md, and student_safe/COMPREHENSION.md",
+      "provenance": "Created for this bounded preparation job from catalog metadata; not official KAIST material."
+    },
+    {
+      "material_id": "material_catalog_overview",
+      "title": "CSDIY catalog overview and resource guide",
+      "role": "catalog_evidence",
+      "availability": "AVAILABLE_AS_SNAPSHOT_METADATA",
+      "source_reference": "docs/编程入门/Rust/cs220.en.md",
+      "content_sha256": "b789189343338418d8be1ec2317f8c1d61e1a8295c9dfd163095056c31993e96",
+      "content_scope": "The supplied snapshot contains the overview text and metadata, not an independently retrieved source file."
+    },
+    {
+      "material_id": "material_course_repository_link",
+      "title": "KAIST CS220 course repository",
+      "role": "course_website",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "url": "https://github.com/kaist-cp/cs220",
+      "normalized_record_id": "unit_c4d2212f601498e6f5317c4dfad1dfcc",
+      "access_checked": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "material_course_slides_link",
+      "title": "Course slides",
+      "role": "catalog-listed_textbook_or_learning_path",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "url": "https://docs.google.com/presentation/d/17G3SwkE_tq0H3lTt9N0ysIbHhqDZBfHkoWD5LwwAKSo/edit#slide=id.p",
+      "normalized_record_id": "unit_f064ecc90341cea36ef09073675e9a78",
+      "access_checked": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "material_official_assignments_link",
+      "title": "Official assignment collection",
+      "role": "official_assignment_collection",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "url": "https://github.com/kaist-cp/cs220/tree/main/src/assignments",
+      "normalized_record_id": "unit_e63616c0f7b870cc2f819284e6e5ea74",
+      "access_checked": false,
+      "required_for_kickoff": false,
+      "classification_note": "The catalog marks this resource as official, but no individual assignment has been classified as a graph unit."
+    },
+    {
+      "material_id": "material_rust_book_link",
+      "title": "The Rust Programming Language",
+      "role": "catalog-recommended_supplement",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "url": "https://doc.rust-lang.org/book/",
+      "source_reference": "catalog description",
+      "access_checked": false,
+      "required_for_kickoff": false
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "material_lecture_recordings",
+      "title": "Lecture recordings",
+      "status": "UNAVAILABLE_AT_CATALOG_SOURCE",
+      "reason": "The normalized catalog record has availability UNAVAILABLE, raw value None, and no URL.",
+      "normalized_record_id": "unit_ce6ba85d84f3089eb469d60e84000d5d",
+      "workaround": "Do not imply that recordings exist; use the self-contained kickoff packet and only later-verified public materials."
+    },
+    {
+      "material_id": "material_verified_official_unit_inventory",
+      "title": "Verified official assignment and lesson inventory",
+      "status": "BLOCKED_PENDING_AUTHORIZED_RETRIEVAL_AND_CLASSIFICATION",
+      "reason": "The snapshot supplies collection links but not the contents, ordering, dependencies, or stable identities of individual official units.",
+      "workaround": "Keep the graph bounded to the manager-authored kickoff until a later job verifies the public sources."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": "Snapshot-only preparation; no external retrieval was attempted.",
+    "later_jobs_may": [
+      "Retrieve publicly accessible resources when the job explicitly authorizes network retrieval and applicable terms permit it.",
+      "Record canonical URL, retrieval timestamp, content hash or immutable revision, license or access classification, and validator label for every acquired artifact.",
+      "Classify concrete assignment or lesson boundaries before adding them to the unit graph."
+    ],
+    "later_jobs_must_not": [
+      "Bypass authentication, paywalls, sharing controls, robots restrictions, or other access controls.",
+      "Treat a successful link discovery as proof that content was retrieved, licensed, complete, or suitable for learner distribution.",
+      "Copy secrets, hidden graders, sealed references, or another learner's files into learner-visible materials.",
+      "Infer lecture recordings or a full official sequence when the source does not provide them."
+    ],
+    "on_unavailable_or_restricted": "Record the material as blocked with the observed reason and continue only with independently authorized, provenance-labeled alternatives.",
+    "unit_promotion_rule": "Only a later, verified classification job may promote a normalized resource record into an official course-unit node."
+  }
+}

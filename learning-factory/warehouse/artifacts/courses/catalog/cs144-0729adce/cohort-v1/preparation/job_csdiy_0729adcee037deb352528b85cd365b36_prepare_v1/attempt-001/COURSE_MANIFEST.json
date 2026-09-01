@@ -1,0 +1,86 @@
+{
+  "course_id": "course_0729adcee037deb352528b85cd365b36",
+  "title": "CS144: Computer Network",
+  "status": "KICKOFF_PREPARED_NOT_VALIDATED",
+  "unit": {
+    "unit_id": "kickoff_01_bounded_byte_stream",
+    "title": "Engineering a Bounded Byte Stream in C++",
+    "position": 1,
+    "classification": "manager-authored kickoff",
+    "official_course_unit": false,
+    "scope": "One self-contained software-engineering study unit; it is not a reconstruction of a Stanford assignment.",
+    "estimated_hours": {
+      "target": 6,
+      "maximum": 8
+    },
+    "programming_language": "C++17",
+    "prerequisites": [
+      "Comfort with asymptotic analysis and invariants",
+      "Working knowledge of C++ value types, RAII, and standard containers",
+      "Ability to compile and test a small CMake project"
+    ],
+    "learning_objectives": [
+      "Turn a behavioral contract into explicit representation invariants",
+      "Implement capacity, lifecycle, and accounting rules without losing byte order",
+      "Choose a representation that meets stated complexity requirements",
+      "Build deterministic boundary, state-transition, and model-based tests",
+      "Record reproducible build and test evidence"
+    ],
+    "learner_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "required_submission": [
+      "CMakeLists.txt",
+      "src/byte_stream.hh",
+      "src/byte_stream.cc",
+      "tests/byte_stream_test.cc",
+      "DESIGN.md",
+      "TESTING.md",
+      "COMPREHENSION_ANSWERS.md"
+    ]
+  },
+  "completion_policy": {
+    "current_label": "PREPARED_ONLY",
+    "unit_completion": {
+      "claim_allowed_from_preparation": false,
+      "requires_all_submission_artifacts": true,
+      "requires_reproducible_build_and_test_evidence": true,
+      "requires_independent_examiner_rubric_pass": true,
+      "validator_authority": "worker harness only"
+    },
+    "course_completion": {
+      "claim_allowed_from_this_unit": false,
+      "reason": "This artifact set covers only a bounded first unit; the remaining course has not been expanded, retrieved, or validated.",
+      "future_requirement": "Later authorized jobs must classify and expand additional units, verify their materials, and validate their evidence independently."
+    }
+  },
+  "provenance": {
+    "catalog_snapshot": {
+      "schema_version": 1,
+      "catalog_status": "DISCOVERED",
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "source_name": "CSDIY",
+      "source_type": "course_catalog",
+      "source_license": "MIT",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/计算机网络/CS144.en.md",
+      "adapter": "csdiy",
+      "extractor_version": "1.1",
+      "content_sha256": "183978b7f65987a0e83499d4a0f04f603d3eb3b7d3c8873fc0ea9e72208d6119",
+      "classification": "source-derived"
+    },
+    "preparation": {
+      "classification": "manager-authored",
+      "catalog_use": "metadata and links only",
+      "external_retrieval_performed": false,
+      "official_assignment_reconstruction_attempted": false,
+      "prepared_date": "2026-08-31"
+    }
+  },
+  "validation": {
+    "label": "NOT_YET_VALIDATED",
+    "meaning": "Files are prepared inputs for independent validation and are not evidence that the unit or course is complete."
+  }
+}

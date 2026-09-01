@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "course_id": "course_32937e7db86a2a4ecbc4a40a30d1eba9",
+  "materials": [
+    {
+      "material_id": "catalog_snapshot",
+      "kind": "CATALOG_METADATA",
+      "title": "CSDIY EE16 catalog snapshot",
+      "availability": "AVAILABLE_IN_JOB_INPUT",
+      "retrieval_status": "PROVIDED",
+      "required_for_kickoff": false,
+      "provenance": {
+        "source_file": "docs/电子基础/EE16.en.md",
+        "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+        "content_sha256": "f10c7af9e8848b3ce272b14bade204a8f5480e334d4caf49504ec4ae6a558057"
+      }
+    },
+    {
+      "material_id": "local_student_safe_bundle",
+      "kind": "MANAGER_AUTHORED_UNIT_MATERIAL",
+      "title": "Kickoff learner materials",
+      "availability": "AVAILABLE_LOCAL",
+      "retrieval_status": "NOT_APPLICABLE",
+      "required_for_kickoff": true,
+      "paths": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "provenance_classification": "course-manager-authored"
+    },
+    {
+      "material_id": "unit_1853f48ee60ad140b967cff7baee7baa",
+      "kind": "COURSE_WEBSITE_LINK_GROUP",
+      "title": "Course Website",
+      "availability": "CATALOG_LINK_ONLY_ACCESS_UNVERIFIED",
+      "catalog_claimed_availability": "LINKED",
+      "retrieval_status": "NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "official_course_unit": false,
+      "urls": [
+        "https://inst.eecs.berkeley.edu/~ee16a/su20/",
+        "https://eecs16b.org/"
+      ]
+    },
+    {
+      "material_id": "unit_a88c8ca70595c8fc8fb02b667127319f",
+      "kind": "RECORDING_COLLECTION_LINK_GROUP",
+      "title": "Recordings",
+      "availability": "CATALOG_LINK_ONLY_ACCESS_UNVERIFIED",
+      "catalog_claimed_availability": "LINKED",
+      "retrieval_status": "NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "official_course_unit": false,
+      "urls": [
+        "https://www.youtube.com/playlist?list=PL6nn4B7IPh8YwpxeJqCoNJ7wh0jme6WNr",
+        "https://www.youtube.com/playlist?list=PLfSttCKflps1UrUS1ZaV9KQJkoPFzdZAk"
+      ]
+    },
+    {
+      "material_id": "unit_bfac866c50a32c7538a84cc75c943991",
+      "kind": "NOTES_COLLECTION_LINK_GROUP",
+      "title": "Textbooks (catalog label; URLs point to notes anchors)",
+      "availability": "CATALOG_LINK_ONLY_ACCESS_UNVERIFIED",
+      "catalog_claimed_availability": "LINKED",
+      "retrieval_status": "NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "official_course_unit": false,
+      "urls": [
+        "https://inst.eecs.berkeley.edu/~ee16a/sp22/#notes",
+        "https://eecs16b.org/#notes"
+      ]
+    },
+    {
+      "material_id": "unit_90ccf3ff589ce51f7dbca3f0501ce323",
+      "kind": "ASSIGNMENT_INDEX_LINK_GROUP",
+      "title": "Assignments",
+      "availability": "CATALOG_LINK_ONLY_ACCESS_UNVERIFIED",
+      "catalog_claimed_availability": "LINKED",
+      "retrieval_status": "NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "official_course_unit": true,
+      "unit_granularity_verified": false,
+      "urls": [
+        "https://inst.eecs.berkeley.edu/~ee16a/sp22/hw-practice.html",
+        "https://eecs16b.org/hw-practice/?"
+      ]
+    },
+    {
+      "material_id": "supplemental_repository_pointer",
+      "kind": "SOURCE_METADATA_REPOSITORY_LINK",
+      "title": "EE16A supplemental repository pointer",
+      "availability": "CATALOG_LINK_ONLY_ACCESS_UNVERIFIED",
+      "retrieval_status": "NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "official_course_unit": false,
+      "urls": [
+        "https://github.com/PKUFlyingPig/EE16A"
+      ]
+    }
+  ],
+  "blocked": [
+    {
+      "block_id": "external_website_contents",
+      "status": "BLOCKED_FOR_UNIT_EXPANSION",
+      "affected_material_ids": [
+        "unit_1853f48ee60ad140b967cff7baee7baa"
+      ],
+      "reason": "Only catalog URLs are present; page contents, terms, current accessibility, and unit structure have not been retrieved or verified.",
+      "upstream_unavailability_claimed": false
+    },
+    {
+      "block_id": "recording_contents_and_transcripts",
+      "status": "BLOCKED_FOR_UNIT_EXPANSION",
+      "affected_material_ids": [
+        "unit_a88c8ca70595c8fc8fb02b667127319f"
+      ],
+      "reason": "Playlist links are known, but video contents, ordering, captions, transcripts, and usage terms are unavailable in this workspace.",
+      "upstream_unavailability_claimed": false
+    },
+    {
+      "block_id": "notes_bodies",
+      "status": "BLOCKED_FOR_UNIT_EXPANSION",
+      "affected_material_ids": [
+        "unit_bfac866c50a32c7538a84cc75c943991"
+      ],
+      "reason": "Notes anchors are linked, but note documents and their provenance are not locally available or verified.",
+      "upstream_unavailability_claimed": false
+    },
+    {
+      "block_id": "assignment_bodies",
+      "status": "BLOCKED_FOR_UNIT_EXPANSION",
+      "affected_material_ids": [
+        "unit_90ccf3ff589ce51f7dbca3f0501ce323"
+      ],
+      "reason": "Assignment-index links are known, but assignment bodies, dependencies, licenses, and solution/answer-key boundaries have not been inspected.",
+      "upstream_unavailability_claimed": false
+    },
+    {
+      "block_id": "remote_lab_materials",
+      "status": "NOT_AVAILABLE_IN_SNAPSHOT",
+      "affected_material_ids": [],
+      "reason": "The catalog description mentions remote labs but provides no normalized lab record, lab instructions, bill of materials, dataset, or safety guidance.",
+      "upstream_unavailability_claimed": false
+    },
+    {
+      "block_id": "official_full_course_sequence",
+      "status": "NOT_AVAILABLE_IN_SNAPSHOT",
+      "affected_material_ids": [
+        "unit_1853f48ee60ad140b967cff7baee7baa",
+        "unit_a88c8ca70595c8fc8fb02b667127319f",
+        "unit_bfac866c50a32c7538a84cc75c943991",
+        "unit_90ccf3ff589ce51f7dbca3f0501ce323"
+      ],
+      "reason": "The snapshot does not provide a verified syllabus-level decomposition joining EE16A and EE16B into official units and dependencies.",
+      "upstream_unavailability_claimed": false
+    }
+  ],
+  "retrieval_policy": {
+    "retrieval_performed_for_this_manifest": false,
+    "default_for_catalog_urls": "Treat as discovery pointers, never as evidence that content is available, official, licensed for reuse, safe to expose, or suitable as one unit.",
+    "kickoff_dependency_rule": "The kickoff must remain completable from local learner-safe files; no external URL is required.",
+    "later_job_requirements": [
+      "Retrieve only when a worker-harness policy explicitly permits it.",
+      "Use public, authorized access only; do not bypass authentication, paywalls, access controls, or technical restrictions.",
+      "Record request outcome, canonical URL, retrieval time, content hash, provenance, and license or reuse status before use.",
+      "Scan and classify retrieved artifacts before exposing anything to a learner.",
+      "Keep solutions, answer keys, hidden graders, sealed references, credentials, and instructor-only content out of student views.",
+      "Validate instructional granularity and prerequisites before promoting a resource record into UNIT_GRAPH.json."
+    ],
+    "blocked_semantics": "A blocked entry reports missing local evidence for honest expansion; it does not assert that the upstream resource is permanently unavailable."
+  }
+}

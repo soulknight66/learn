@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "course_id": "course_a6f7b5a36a6b005a24ca3b9cb74b9935",
+  "materials": [
+    {
+      "material_id": "manager_authored_kickoff_packet",
+      "title": "Bounded kickoff learner packet",
+      "role": "required_unit_material",
+      "origin": "course_manager_authored",
+      "availability": "AVAILABLE_LOCAL",
+      "paths": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "required_for_kickoff": true,
+      "validation_label": "LEARNER_SAFE_BY_CONSTRUCTION"
+    },
+    {
+      "material_id": "unit_96aa3d9e7fb8a633d0adc22d357c3f86",
+      "title": "Catalog overview and resource guide",
+      "role": "catalog_context",
+      "origin": "normalized_resource_record",
+      "source_reference": "docs/并行与分布式系统/CS149.en.md",
+      "availability": "AVAILABLE_AS_JOB_SNAPSHOT_METADATA",
+      "required_for_kickoff": false,
+      "official_course_unit": false,
+      "retrieval_state": "SOURCE_DOCUMENT_NOT_COPIED_OR_FETCHED"
+    },
+    {
+      "material_id": "unit_14f6f32818bc31f8948810587dd2037b",
+      "title": "Course Website",
+      "role": "course_index",
+      "origin": "normalized_resource_record",
+      "source_reference": "docs/并行与分布式系统/CS149.en.md#L17",
+      "urls": [
+        "https://www.cs.cmu.edu/afs/cs/academic/class/15418-s18/www/index.html",
+        "https://gfxcourses.stanford.edu/cs149/fall21"
+      ],
+      "availability": "LINKED_NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "official_course_unit": false,
+      "verified_access": false
+    },
+    {
+      "material_id": "unit_33711cea93bb28268545db575da74709",
+      "title": "Recordings",
+      "role": "recording_index",
+      "origin": "normalized_resource_record",
+      "source_reference": "docs/并行与分布式系统/CS149.en.md#L18",
+      "urls": [
+        "https://www.cs.cmu.edu/afs/cs/academic/class/15418-s18/www/schedule.html",
+        "https://youtube.com/playlist?list=PLoROMvodv4rMp7MTFr4hQsDEcX7Bx6Odp&si=txtQiRDZ9ZZUzyRn"
+      ],
+      "availability": "LINKED_NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "official_course_unit": false,
+      "verified_access": false
+    },
+    {
+      "material_id": "unit_8b751ba6c602aa118757cfbe468b2dfa",
+      "title": "Textbook",
+      "role": "textbook",
+      "origin": "normalized_resource_record",
+      "source_reference": "docs/并行与分布式系统/CS149.en.md#L19",
+      "urls": [],
+      "availability": "UNAVAILABLE",
+      "required_for_kickoff": false,
+      "official_course_unit": false,
+      "catalog_evidence": "The raw catalog value is 'None'."
+    },
+    {
+      "material_id": "unit_69d70b260e36c5fdda6110413bdb514a",
+      "title": "Assignments",
+      "role": "official_assignment_collection_index",
+      "origin": "normalized_resource_record",
+      "source_reference": "docs/并行与分布式系统/CS149.en.md#L20",
+      "urls": [
+        "https://gfxcourses.stanford.edu/cs149/fall21"
+      ],
+      "availability": "LINKED_NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "official_course_unit": true,
+      "verified_access": false,
+      "classification_note": "The snapshot claims five assignments, but their individual titles, content, order, and dependencies were not retrieved and are not inferred here."
+    },
+    {
+      "material_id": "catalog_url_instructor_profile",
+      "title": "Kayvon Fatahalian profile",
+      "role": "instructor_profile",
+      "origin": "course_resource_urls",
+      "urls": [
+        "http://www.cs.cmu.edu/~kayvonf"
+      ],
+      "availability": "LINKED_NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "official_course_unit": false,
+      "verified_access": false
+    },
+    {
+      "material_id": "catalog_url_community_repository",
+      "title": "Catalog-linked community repository",
+      "role": "supplemental_repository_with_possible_solution_content",
+      "origin": "course_resource_urls",
+      "urls": [
+        "https://github.com/PKUFlyingPig/CS149-parallel-computing"
+      ],
+      "availability": "LINKED_NOT_RETRIEVED_QUARANTINED",
+      "required_for_kickoff": false,
+      "official_course_unit": false,
+      "verified_access": false,
+      "student_release": "BLOCKED_PENDING_CONTENT_AUDIT"
+    }
+  ],
+  "blocked": [
+    {
+      "blocked_id": "textbook_absent",
+      "material_id": "unit_8b751ba6c602aa118757cfbe468b2dfa",
+      "status": "UNAVAILABLE",
+      "reason": "The catalog explicitly reports no textbook and supplies no URL.",
+      "effect": "No textbook chapter may be assumed or required."
+    },
+    {
+      "blocked_id": "external_course_content_not_present",
+      "material_ids": [
+        "unit_14f6f32818bc31f8948810587dd2037b",
+        "unit_33711cea93bb28268545db575da74709",
+        "unit_69d70b260e36c5fdda6110413bdb514a"
+      ],
+      "status": "NOT_RETRIEVED",
+      "reason": "Only URLs and catalog claims are present in this job; page, lecture, and assignment contents were not fetched.",
+      "effect": "These records cannot be required materials or expanded into verified units in this run."
+    },
+    {
+      "blocked_id": "official_sequence_unverified",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "reason": "The snapshot does not establish individual lecture or assignment titles, ordering, dependencies, or durable artifact locations.",
+      "effect": "The course graph contains one manager-authored kickoff and no inferred official sequence."
+    },
+    {
+      "blocked_id": "community_repository_not_a_learner_source",
+      "material_id": "catalog_url_community_repository",
+      "status": "QUARANTINED",
+      "reason": "The linked repository may contain answer-bearing student or solution material and has not been audited.",
+      "effect": "It must not be copied into a student view or used as completion evidence."
+    }
+  ],
+  "retrieval_policy": {
+    "current_run_mode": "SNAPSHOT_ONLY_NO_EXTERNAL_RETRIEVAL",
+    "external_fetch_performed": false,
+    "kickoff_dependency_policy": "The first unit must remain completable using only manager-authored local materials and ordinary local C++ tooling.",
+    "later_retrieval_requirements": [
+      "Use an authorized retriever and record the exact URL, retrieval outcome, stable artifact location, content hash, retrieval time, and applicable license or terms.",
+      "Keep failed or unavailable retrieval results as explicit evidence rather than relabeling a URL as available content.",
+      "Classify each retrieved item as an index, lecture, reading, assignment, solution, or supplemental resource before changing the unit graph.",
+      "Verify official status, title, order, dependencies, and content independently before promoting any resource record to a course unit.",
+      "Audit for solutions, hidden graders, sealed references, secrets, and third-party student files before release to a learner view."
+    ],
+    "restricted_content_policy": "Do not bypass authentication, access controls, robots restrictions, license limits, or repository boundaries. Restricted or unclear content remains blocked.",
+    "student_release_gate": "Only provenance-recorded, license-compatible, answer-safe material may enter student_safe/.",
+    "fallback": "If later retrieval fails, retain the blocked status and design a properly labeled self-contained manager-authored unit; do not fabricate source content or official structure."
+  }
+}

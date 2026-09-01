@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "course_id": "course_44d7b01cd6b8b3aeb54a24ee1faa172f",
+  "title": "MIT 6.042J: Mathematics for Computer Science",
+  "status": "KICKOFF_UNIT_READY",
+  "unit": {
+    "unit_id": "kickoff_01_executable_graph_invariants",
+    "sequence": 1,
+    "title": "Executable Graph Invariants: A Deterministic Topological Sort",
+    "classification": "course-manager-authored bridge unit",
+    "official_course_unit": false,
+    "scope": "one bounded kickoff unit",
+    "estimated_effort_hours": {
+      "minimum": 4,
+      "maximum": 6
+    },
+    "audience": "A strong algorithms student building production-oriented software-engineering habits",
+    "prerequisites": [
+      "Python 3 fundamentals",
+      "directed graphs and asymptotic analysis",
+      "basic proof by induction or loop-invariant reasoning"
+    ],
+    "learning_objectives": [
+      "turn an algorithmic idea into a precise public contract",
+      "implement deterministic topological sorting with explicit failure behavior",
+      "justify partial correctness, termination, and cycle detection with invariants",
+      "test semantic properties and boundary cases using only the Python standard library"
+    ],
+    "learner_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "expected_submission": [
+      "submission/toposort.py",
+      "submission/test_toposort.py",
+      "submission/ENGINEERING_NOTE.md",
+      "submission/COMPREHENSION_RESPONSES.md"
+    ],
+    "completion_claim_limit": "Completing this unit establishes evidence only for this kickoff unit, not for MIT 6.042J or any whole course."
+  },
+  "completion_policy": {
+    "scope": "unit_only",
+    "learner_self_report_is_evidence": false,
+    "required_evidence": [
+      "the submitted module imports successfully in the designated Python environment",
+      "harness-controlled functional checks pass",
+      "learner tests execute and pass",
+      "the engineering note contains a reviewable invariant argument, termination argument, complexity analysis, and contract discussion",
+      "comprehension responses are independently evaluated"
+    ],
+    "validator_authority": "Only the worker-harness-controlled validator may promote the job or unit result to SUCCEEDED.",
+    "unit_completion": "Awarded only after independent evaluation of all required evidence; file presence or prose claims alone are insufficient.",
+    "course_completion": "Never awarded by this unit. Later units and their separately validated evidence are required before any course-level completion decision."
+  },
+  "provenance": {
+    "artifact_classification": "manager-authored from a catalog snapshot",
+    "catalog_adapter": "csdiy",
+    "catalog_source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "catalog_source_name": "CSDIY",
+    "catalog_source_type": "course_catalog",
+    "catalog_source_file": "docs/数学进阶/6.042J.en.md",
+    "catalog_source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "catalog_content_sha256": "08b5e47f7faea3424bff5eb756a7dc275ce827e2f9a806386bdfef5b474a7179",
+    "catalog_extractor_version": "1.1",
+    "catalog_license": "MIT",
+    "catalog_classification": "source-derived",
+    "course_content_retrieved": false,
+    "network_retrieval_performed": false,
+    "authorship_note": "The catalog identifies the course and public website pointers. The kickoff topic, task, and assessment design are course-manager-authored and are not represented as MIT-authored materials or an official MIT sequence."
+  }
+}

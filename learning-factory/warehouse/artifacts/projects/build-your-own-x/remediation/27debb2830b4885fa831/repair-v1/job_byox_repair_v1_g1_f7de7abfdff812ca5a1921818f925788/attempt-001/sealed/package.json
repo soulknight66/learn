@@ -1,0 +1,5 @@
+{
+  "name": "sprout-sealed-evaluator",
+  "private": true,
+  "type": "module"
+}

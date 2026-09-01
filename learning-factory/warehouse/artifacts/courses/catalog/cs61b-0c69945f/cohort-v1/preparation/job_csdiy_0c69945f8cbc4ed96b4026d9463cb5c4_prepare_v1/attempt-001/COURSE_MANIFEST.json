@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "course_id": "course_0c69945f8cbc4ed96b4026d9463cb5c4",
+  "title": "CS61B: Data Structures and Algorithms",
+  "status": "KICKOFF_PREPARED",
+  "unit": {
+    "unit_id": "unit_kickoff_ring_deque_v1",
+    "title": "Engineering a Generic Ring Deque in Java",
+    "status": "READY_FOR_LEARNER",
+    "origin": "course_manager_authored",
+    "official_course_unit": false,
+    "scope": "One bounded kickoff unit on data-structure implementation, contracts, testing, and engineering communication.",
+    "estimated_human_hours": 7,
+    "programming_language": "Java",
+    "learner_artifacts": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "examiner_artifact": "examiner_only/RUBRIC.md",
+    "validation_label": "PREPARED_AWAITING_HARNESS_VALIDATION"
+  },
+  "completion_policy": {
+    "scope": "UNIT_ONLY",
+    "initial_unit_state": "NOT_ATTEMPTED",
+    "course_completion_claim": "NOT_PERMITTED",
+    "authority": "Only a validator controlled by the worker harness may mark this unit complete.",
+    "unit_completion_requires": [
+      "all required learner deliverables are present",
+      "the Java submission compiles from a clean output directory",
+      "deterministic tests pass",
+      "the implementation satisfies the public contract and representation constraints",
+      "the design note and comprehension responses provide reviewable evidence",
+      "the examiner rubric reaches its passing threshold with no critical gate failure"
+    ],
+    "on_unit_pass": "Record completion only for unit_kickoff_ring_deque_v1; keep the overall course incomplete and eligible for later expansion.",
+    "prohibited_inference": "Preparation, submission, prose self-report, or completion of this kickoff is not evidence that CS61B or any official Berkeley offering has been completed."
+  },
+  "provenance": {
+    "classification": "manager-authored kickoff derived from a catalog snapshot",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/数据结构与算法/CS61B.en.md",
+    "source_content_sha256": "6bb67bbc58d7aab0f8516b00141161fe2bc0a067f217ca96031f9239482e5bcd",
+    "adapter": "csdiy",
+    "extractor_version": "1.1",
+    "source_classification": "source-derived",
+    "external_retrieval": "NONE",
+    "authorship_note": "The unit specification and assessments were authored for this learning-factory kickoff. They are not copied from, endorsed by, or represented as an official UC Berkeley assignment."
+  },
+  "validation_label": "PREPARED_AWAITING_HARNESS_VALIDATION"
+}

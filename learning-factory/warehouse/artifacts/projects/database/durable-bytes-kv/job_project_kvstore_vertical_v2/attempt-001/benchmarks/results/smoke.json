@@ -1,0 +1,38 @@
+{
+  "environment": {
+    "implementation": "CPython",
+    "platform": "Linux-4.18.0-553.el8_10.x86_64-x86_64-with-glibc2.28",
+    "python": "3.11.5"
+  },
+  "hypothesis": "Basic instrumentation may add write overhead without changing format size.",
+  "parameters": {
+    "operations": 500,
+    "sync": false,
+    "value_bytes": 100
+  },
+  "raw_results": {
+    "production": {
+      "file_bytes": 124100,
+      "open_ns": 86837,
+      "operations": 500,
+      "read_ns_per_op": 551.178,
+      "read_total_ns": 275589,
+      "write_ns_per_op": 14042.416,
+      "write_total_ns": 7021208
+    },
+    "reference": {
+      "file_bytes": 124100,
+      "open_ns": 78243,
+      "operations": 500,
+      "read_ns_per_op": 559.062,
+      "read_total_ns": 279531,
+      "write_ns_per_op": 13570.804,
+      "write_total_ns": 6785402
+    }
+  },
+  "schema_version": 1,
+  "summary": {
+    "note": "Smoke result from this execution; rerun and profile before generalizing.",
+    "production_to_reference_write_ratio": 1.0347519572163888
+  }
+}

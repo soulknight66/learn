@@ -1,0 +1,20 @@
+{
+  "evidence": [
+    "Workspace inventory contained only .factory-workspace, JOB.md, RUBRIC.md, SUBMISSION.md, NOTES.md, and DEBUGGING_LOG.md; no solver source, tests, README.md, DESIGN.md, VALIDATION.md, or comprehension responses were available.",
+    "The claimed standard-library test command was rerun with CPython 3.11.5 as PYTHONPATH=src python3 -m unittest discover -s tests -v; it exited 1 because tests was not an importable directory.",
+    "A fresh CLI probe with CPython 3.11.5 as PYTHONPATH=src python3 -m learnfactory --help exited 1 with No module named learnfactory.",
+    "Because no executable CLI was present, no fresh valid, malformed, exhaustion, numerical-failure, raw-hash, byte-determinism, feasibility, objective, or fixed-point checks could be performed. The mandatory offline suite/CLI gate therefore failed, and the remaining execution gates were not demonstrated.",
+    "The learner's representative projected-gradient algebra in NOTES.md is internally consistent, and the prose shows sound instincts about strict convexity, scale invariance, bounded iteration, signed zero, and separating invalid input from numerical failure.",
+    "The available prose does not precisely state the full model and preconditions, justify simplex convexity, or analyze the fixed activation charge; the claimed DESIGN.md and comprehension responses are absent.",
+    "Claims that 32 tests passed and that source, tests, documentation, deterministic output, provenance fields, and status behavior were delivered are self-reports unsupported by artifacts in this workspace.",
+    "Raw score: mathematical model and reasoning 3/20; projection and solver correctness 0/30; validation and failure contract 0/15; tests and independent evidence 0/15; software design, determinism, and provenance 0/15; comprehension responses 0/5."
+  ],
+  "result": "FAIL",
+  "score": 3,
+  "transfer_gaps": [
+    "Place the runnable Python package and CLI in src/ and include the complete deterministic unittest suite in tests/ so an examiner can execute them offline.",
+    "Include README.md, DESIGN.md, VALIDATION.md, and the ten implementation-specific comprehension responses rather than only asserting that they exist.",
+    "Make DESIGN.md state the exact objective, feasible set, input preconditions, existence and uniqueness argument, and the loss of convex guarantees after adding a fixed activation charge.",
+    "After restoring artifacts, rerun independent process-boundary checks and preserve commands, exit codes, streams, raw input hashes, output hashes, recomputed diagnostics, and discrepancies."
+  ]
+}

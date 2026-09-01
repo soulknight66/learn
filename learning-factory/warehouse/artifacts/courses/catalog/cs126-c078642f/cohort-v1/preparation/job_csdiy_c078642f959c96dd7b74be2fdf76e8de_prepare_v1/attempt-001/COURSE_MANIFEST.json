@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "course_id": "course_c078642f959c96dd7b74be2fdf76e8de",
+  "title": "UCB CS126 : Probability theory",
+  "status": "KICKOFF_READY",
+  "unit": {
+    "unit_id": "kickoff_probability_collision_lab_v1",
+    "title": "Probability Models as Reproducible Software: Collision Risk",
+    "sequence": 1,
+    "status": "READY",
+    "scope": "BOUNDED_FIRST_UNIT",
+    "estimated_human_hours": 8,
+    "official_course_unit": false,
+    "authorship": "course-manager-authored bridge unit",
+    "required_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "learning_outcomes": [
+      "Translate a collision-risk problem into an explicit finite probability model.",
+      "Implement exact and Monte Carlo calculations behind a stable Python interface.",
+      "Control randomness and define a machine-readable experiment record for reproducibility.",
+      "Use deterministic tests and statistically justified checks without creating flaky tests.",
+      "Explain assumptions, numerical limitations, and evidence from an experiment."
+    ]
+  },
+  "completion_policy": {
+    "unit_completion_authority": "worker-harness-controlled validator",
+    "required_evidence": [
+      "all required learner deliverables are present in the learner submission",
+      "the automated test command completes successfully in the validation environment",
+      "the seeded experiment can be reproduced from its recorded parameters",
+      "the written analysis and comprehension responses meet the examiner-only rubric"
+    ],
+    "prose_claims_are_evidence": false,
+    "first_unit_effect": "Completion may mark only kickoff_probability_collision_lab_v1 complete; it must not mark the course complete.",
+    "course_completion": "NOT_DEFINED_FROM_THIS_SNAPSHOT",
+    "promotion_rule": "Only a validator controlled by the worker harness may promote the unit to SUCCEEDED.",
+    "failure_rule": "Preserve failed-attempt artifacts and validation evidence for retry; do not infer success from partial output."
+  },
+  "provenance": {
+    "classification": "manager-authored kickoff derived from source-derived catalog metadata",
+    "catalog_snapshot_status": "DISCOVERED",
+    "catalog_adapter": "csdiy",
+    "catalog_extractor_version": "1.1",
+    "catalog_content_sha256": "64630529333b682c1695774e4e01b414021b0c53903852a51fbc322031d67762",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/数学进阶/CS126.en.md",
+    "source_license": "MIT",
+    "source_upstream": "git@github.com:PKUFlyingPig/cs-self-learning.git",
+    "official_scope_claim": "The snapshot identifies a Berkeley probability course and resource pointers, but does not establish an official unit sequence. This kickoff is not represented as Berkeley-authored curriculum.",
+    "external_content_retrieved": false
+  }
+}

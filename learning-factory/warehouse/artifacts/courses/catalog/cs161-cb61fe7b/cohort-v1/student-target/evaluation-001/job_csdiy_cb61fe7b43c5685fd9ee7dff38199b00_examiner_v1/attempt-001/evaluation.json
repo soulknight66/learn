@@ -1,0 +1,17 @@
+{
+  "evidence": [
+    "Examiner inventory found only .factory-workspace, JOB.md, RUBRIC.md, SUBMISSION.md, NOTES.md, and DEBUGGING_LOG.md; there is no submission/ directory.",
+    "All substantive artifacts named by SUBMISSION.md are absent: THREAT_MODEL.md, DESIGN.md, go.mod, store.go, store_test.go, COMPREHENSION.md, and EVIDENCE.md.",
+    "Because no Go package was transferred, examiner-controlled gofmt inspection, go vet, go test, go test -race, black-box authorization probes, mutation probes, collision injection, and barrier-coordinated concurrency checks could not be run.",
+    "NOTES.md and DEBUGGING_LOG.md articulate sound bounded reasoning about trusted caller identity, fail-closed errors, slice ownership, collision handling, locking, and post-revocation reads, but their descriptions of code and authored tests are self-reports rather than inspectable evidence.",
+    "Rubric score: threat model and design reasoning 9/15; authorization and lifecycle behavior 0/25; fail-closed errors and representation safety 0/15; concurrency and identifier robustness 0/12; verification quality 0/18; comprehension 0/10; engineering evidence and maintainability 1/5. Raw score is 10/100, below the no-runnable-implementation cap of 20."
+  ],
+  "result": "REVISE",
+  "score": 10,
+  "transfer_gaps": [
+    "The entire claimed submission/ tree is missing from the examiner workspace.",
+    "There is no independently executable implementation or test suite, so the required normal and race-enabled validation gates have no observable result.",
+    "The claimed detailed threat model, design contract, comprehension responses, command evidence, and invariant-to-test map were not transferred.",
+    "SUBMISSION.md names lowercase notes.md and debugging-log.md, while the only transferred prose files use different uppercase names and contain summaries rather than the claimed implementation evidence."
+  ]
+}

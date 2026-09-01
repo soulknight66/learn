@@ -1,0 +1,6 @@
+--- a/buggy/kvstore.py
++++ b/buggy/kvstore.py
+@@
+-                    # BUG: replay accidentally treats a delete record as a no-op.
+-                    pass
++                    self._data.pop(key, None)

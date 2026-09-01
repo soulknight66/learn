@@ -1,0 +1,17 @@
+{
+  "evidence": [
+    "Artifact audit: submission/interval_scheduler.py, submission/test_interval_scheduler.py, submission/DESIGN.md, and submission/COMPREHENSION_RESPONSES.md are all missing or unreadable in the examiner workspace.",
+    "Bounded test command: PYTHONPATH=submission python3 -m unittest -v submission/test_interval_scheduler.py. It completed without timing out, exited 1, ran no learner tests, and reported ModuleNotFoundError for submission/test_interval_scheduler.",
+    "The examiner's python3 resolves to Python 3.6.8. DEBUGGING_LOG.md reports selecting the provided Python 3.11.5 for a successful learner-side run, but that self-report cannot replace a reproducible examiner run.",
+    "SUBMISSION.md claims that all four artifacts are present and that 16 tests pass; the independent workspace audit directly contradicts the presence claim. No production implementation, learner tests, design proof, or comprehension responses were available to inspect.",
+    "Rubric gate result: required-artifacts gate FAIL. Public API, behavior, optimality, canonical ties, non-mutation, asymptotic complexity, test quality, design accuracy, and comprehension are NOT ASSESSABLE. Examiner-owned correctness and performance cases could not import the missing implementation.",
+    "Section scores: A Contract 0/25; B Algorithm 0/20; C Tests 0/25; D Implementation quality 0/10; E Design 0/10; F Comprehension 0/10. No rubric points are supported by auditable required artifacts."
+  ],
+  "result": "FAIL",
+  "score": 0,
+  "transfer_gaps": [
+    "Transfer the four required learner artifacts into submission/ at the exact rubric paths; verify readability from a fresh examiner workspace rather than relying on a submission manifest.",
+    "Make the supported interpreter selection reproducible for the prescribed unittest invocation; the current unqualified python3 is Python 3.6.8, while the claimed run depended on a separate Python 3.11.5 PATH override.",
+    "After restoring the artifacts, rerun the learner suite and independent exhaustive, validation, permutation, tie, endpoint, mutation, and performance checks before claiming completion."
+  ]
+}

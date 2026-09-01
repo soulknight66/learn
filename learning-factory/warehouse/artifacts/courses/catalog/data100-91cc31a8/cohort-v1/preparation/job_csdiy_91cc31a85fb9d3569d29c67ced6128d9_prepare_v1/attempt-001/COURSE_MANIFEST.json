@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "course_id": "course_91cc31a85fb9d3569d29c67ced6128d9",
+  "title": "UCB Data100: Principles and Techniques of Data Science",
+  "status": "KICKOFF_ONLY_PREPARED",
+  "unit": {
+    "unit_id": "unit_01_reproducible_data_audit",
+    "title": "Reproducible Data Cleaning and Audit Contracts",
+    "position": 1,
+    "status": "PREPARED_UNVALIDATED",
+    "classification": "manager_authored_kickoff",
+    "official_course_unit": false,
+    "scope": "A self-contained software-engineering kickoff using a small tabular-data audit; it is not a reconstruction of an official Data100 assignment.",
+    "estimated_hours": 6,
+    "prerequisites": [
+      "Comfort writing Python functions and command-line programs",
+      "Basic unit testing",
+      "Familiarity with tabular data and asymptotic analysis"
+    ],
+    "learning_objectives": [
+      "Turn ambiguous data-cleaning expectations into explicit, testable contracts",
+      "Distinguish missing values from invalid values without silently losing rows",
+      "Produce deterministic, provenance-bearing JSON artifacts",
+      "Separate parsing, normalization, validation, aggregation, and I/O",
+      "Test both ordinary behavior and failure behavior"
+    ],
+    "student_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "required_external_materials": [],
+    "deliverables": [
+      "src/data_audit.py",
+      "tests/test_data_audit.py",
+      "fixtures/records.csv",
+      "artifacts/audit.json",
+      "DECISIONS.md",
+      "COMPREHENSION_RESPONSES.md"
+    ]
+  },
+  "completion_policy": {
+    "scope": "UNIT_ONLY",
+    "completion_authority": "worker_harness_validator",
+    "required_evidence": [
+      "All required learner deliverables are present in the attempt workspace",
+      "Harness-controlled deterministic tests pass",
+      "The generated audit artifact conforms to the published unit contract",
+      "The learner's design note and comprehension responses are independently evaluated"
+    ],
+    "learner_or_agent_claim_is_evidence": false,
+    "course_completion_effect": "NONE",
+    "course_completion_statement": "Completing this kickoff can complete only the prepared local unit. It does not complete, certify, or substitute for the approximately 80-hour Data100 course.",
+    "promotion_rule": "Only a validator controlled by the worker harness may promote the unit from PREPARED_UNVALIDATED to a successful terminal state."
+  },
+  "provenance": {
+    "catalog_snapshot_schema_version": 1,
+    "catalog_status": "DISCOVERED",
+    "source": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "name": "CSDIY",
+      "type": "course_catalog",
+      "license": "MIT",
+      "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/数据科学/Data100.en.md",
+      "content_sha256": "9da9869f766efc16eafd202fd0bc80924f2baf5a78f6bed4ccd26f0323525595",
+      "adapter": "csdiy",
+      "extractor_version": "1.1"
+    },
+    "preparation": {
+      "classification": "manager-authored-from-catalog-snapshot",
+      "basis": [
+        "catalog description",
+        "declared prerequisites",
+        "declared Python programming language"
+      ],
+      "external_content_retrieved": false,
+      "official_sequence_inferred": false
+    }
+  },
+  "validation": {
+    "label": "UNVALIDATED_PREPARATION",
+    "meaning": "Files are prepared for independent harness validation; their presence is not completion evidence."
+  }
+}

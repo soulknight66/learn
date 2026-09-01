@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "course_id": "course_4f204bbe76f68d9bb20e68389c1c697f",
+  "materials": [
+    {
+      "material_id": "catalog_overview_snapshot",
+      "record_id": "unit_8987eb919af31a108fd03980a66f910a",
+      "title": "Catalog overview and resource guide",
+      "kind": "reading",
+      "source_reference": "docs/系统安全/CSE466.en.md",
+      "catalog_availability": "PRESENT_AS_NORMALIZED_RECORD",
+      "verified_availability": "PROVIDED_IN_JOB_SNAPSHOT",
+      "retrieved_in_this_job": false,
+      "official_course_unit": false,
+      "use": "Provenance and topic-selection input only; not assigned to the learner."
+    },
+    {
+      "material_id": "course_website_link",
+      "record_id": "unit_8e9a30183b862023562e922e546f8aa6",
+      "title": "Course Website",
+      "kind": "reading",
+      "source_reference": "docs/系统安全/CSE466.en.md#L26",
+      "url": "https://dojo.pwn.college/cse466/",
+      "catalog_availability": "LINKED",
+      "verified_availability": "UNVERIFIED_LINK",
+      "retrieved_in_this_job": false,
+      "official_course_unit": false,
+      "use": "Deferred candidate source for a later official unit map."
+    },
+    {
+      "material_id": "recordings_description",
+      "record_id": "unit_99dc3acda5d62f86932771150fa6b088",
+      "title": "Recordings",
+      "kind": "lecture",
+      "source_reference": "docs/系统安全/CSE466.en.md#L27",
+      "catalog_availability": "DESCRIBED",
+      "verified_availability": "NO_DIRECT_URL_OR_ITEM_LIST",
+      "retrieved_in_this_job": false,
+      "official_course_unit": false,
+      "use": "Not used; the catalog only says to see the course website."
+    },
+    {
+      "material_id": "textbooks_none",
+      "record_id": "unit_3463963ed1c22c38fef4063f737eca66",
+      "title": "Textbooks",
+      "kind": "reading",
+      "source_reference": "docs/系统安全/CSE466.en.md#L28",
+      "catalog_availability": "UNAVAILABLE",
+      "verified_availability": "EXPLICITLY_NONE_IN_CATALOG",
+      "retrieved_in_this_job": false,
+      "official_course_unit": false,
+      "use": "No textbook is claimed or assigned."
+    },
+    {
+      "material_id": "assignments_aggregate",
+      "record_id": "unit_c7a73f8a05d8ce87c80462880da5de86",
+      "title": "Assignments",
+      "kind": "assignment",
+      "source_reference": "docs/系统安全/CSE466.en.md#L29",
+      "catalog_availability": "DESCRIBED",
+      "verified_availability": "AGGREGATE_COUNT_ONLY",
+      "catalog_raw_value": "13 modules (358 challenges)",
+      "retrieved_in_this_job": false,
+      "source_metadata_official_course_unit": true,
+      "admitted_as_specific_official_unit": false,
+      "use": "Pedagogical context only; no challenge body or module map is available."
+    },
+    {
+      "material_id": "youtube_channel_link",
+      "record_id": "unit_80ed70ca073e0f46792eaf9a87a29fb1",
+      "title": "Lectures on YouTube",
+      "kind": "lecture",
+      "source_reference": "docs/系统安全/CSE466.en.md#L33",
+      "url": "https://youtube.com/pwncollege",
+      "catalog_availability": "LINKED",
+      "verified_availability": "UNVERIFIED_CHANNEL_LINK_NO_SELECTED_LECTURE",
+      "retrieved_in_this_job": false,
+      "official_course_unit": false,
+      "use": "Deferred discovery input; not required for the kickoff."
+    },
+    {
+      "material_id": "twitch_channel_link",
+      "record_id": null,
+      "title": "Live broadcasts on Twitch",
+      "kind": "auxiliary_catalog_link",
+      "source_reference": "catalog source_metadata.fields",
+      "url": "https://twitch.tv/pwncollege",
+      "catalog_availability": "LINKED_OUTSIDE_NORMALIZED_RECORDS",
+      "verified_availability": "UNVERIFIED_LINK",
+      "retrieved_in_this_job": false,
+      "official_course_unit": false,
+      "use": "Not used."
+    },
+    {
+      "material_id": "discord_community_link",
+      "record_id": null,
+      "title": "Community Discord",
+      "kind": "support_link",
+      "source_reference": "catalog source_metadata.fields",
+      "url": "https://pwn.college/discord",
+      "catalog_availability": "LINKED_OUTSIDE_NORMALIZED_RECORDS",
+      "verified_availability": "UNVERIFIED_LINK",
+      "retrieved_in_this_job": false,
+      "official_course_unit": false,
+      "use": "Not accessed, scraped, or treated as course material."
+    },
+    {
+      "material_id": "github_organization_link",
+      "record_id": null,
+      "title": "pwn.college GitHub organization",
+      "kind": "source_code_link",
+      "source_reference": "catalog source_metadata.fields",
+      "url": "https://github.com/pwncollege",
+      "catalog_availability": "LINKED_OUTSIDE_NORMALIZED_RECORDS",
+      "verified_availability": "UNVERIFIED_ORGANIZATION_LINK_NO_SELECTED_REPOSITORY",
+      "retrieved_in_this_job": false,
+      "official_course_unit": false,
+      "use": "Not used; no repository, revision, path, or license was resolved."
+    }
+  ],
+  "blocked": [
+    {
+      "block_id": "official_module_map_missing",
+      "item": "Names, order, dependencies, and requirements of the reported 13 modules",
+      "status": "MISSING_FROM_SNAPSHOT",
+      "reason": "The assignment record provides only an aggregate count.",
+      "impact": "Later jobs cannot honestly expand or mark official modules from this snapshot alone."
+    },
+    {
+      "block_id": "challenge_bodies_missing",
+      "item": "The reported 358 challenge specifications and validation rules",
+      "status": "MISSING_FROM_SNAPSHOT",
+      "reason": "No challenge bodies, identifiers, or validator-controlled evidence are present.",
+      "impact": "No catalog challenge is copied, solved, assigned, or credited in this kickoff."
+    },
+    {
+      "block_id": "recording_index_unresolved",
+      "item": "Course-specific recording list",
+      "status": "DESCRIBED_BUT_UNRESOLVED",
+      "reason": "The catalog says 'See course website' and provides no direct recording records.",
+      "impact": "No recording is assigned or classified as an official unit."
+    },
+    {
+      "block_id": "textbook_absent",
+      "item": "Designated textbook",
+      "status": "EXPLICITLY_UNAVAILABLE",
+      "reason": "The catalog value is 'None'.",
+      "impact": "A later job must not invent a required textbook."
+    }
+  ],
+  "retrieval_policy": {
+    "this_job": "No network resource, linked page, video, chat, stream, repository, restricted content, or authenticated content was fetched.",
+    "kickoff_dependency_rule": "The kickoff must remain usable from the bundled learner-safe documents and a local Linux/Python environment; unverified links are optional discovery inputs only.",
+    "later_job_allowed": [
+      "Retrieve only publicly accessible resources that are within the later job's authorization.",
+      "Record the exact URL, retrieval time, revision or content digest, license or access terms, and availability result.",
+      "Classify each retrieved item before adding graph nodes or learner dependencies.",
+      "Use independently controlled validators for any completion claim."
+    ],
+    "later_job_forbidden": [
+      "Do not bypass authentication, access controls, paywalls, invitations, or platform restrictions.",
+      "Do not scrape Discord, private chats, learner submissions, hidden graders, sealed references, or restricted challenge answers.",
+      "Do not infer an official module solely from a normalized link record, channel title, aggregate assignment count, or catalog prose.",
+      "Do not silently substitute invented material for an unavailable official resource."
+    ],
+    "failure_handling": "Keep unavailable or failed retrieval records explicit. A failed or disallowed retrieval remains blocked and cannot be treated as learner-visible material."
+  }
+}

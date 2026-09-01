@@ -1,0 +1,11 @@
+[package]
+name = "pocket-browser-starter"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+name = "pocket_browser"
+path = "src/lib.rs"
+
+[dependencies]

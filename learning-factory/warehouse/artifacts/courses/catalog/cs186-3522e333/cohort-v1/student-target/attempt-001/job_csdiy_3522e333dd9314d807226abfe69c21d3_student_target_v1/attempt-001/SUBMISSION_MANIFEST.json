@@ -1,0 +1,33 @@
+{
+  "unit_id": "managed_unit_01_relational_pipeline",
+  "label": "LEARNER_GENERATED_UNVALIDATED",
+  "provenance": {
+    "authorship": "learner-generated response to a manager-authored kickoff unit",
+    "implementation_language": "Java",
+    "runtime": "JDK 8 or newer (javac and java on PATH)",
+    "package": "edu.learningfactory.relational",
+    "external_dependencies": []
+  },
+  "entry_points": {
+    "test_main": "edu.learningfactory.relational.RelationalPipelineTest",
+    "run_instructions": "RUN.md",
+    "build_command": "javac -d build/classes @build/sources.list",
+    "test_command": "java -cp build/classes edu.learningfactory.relational.RelationalPipelineTest"
+  },
+  "submitted_paths": [
+    "src/main/java/edu/learningfactory/relational/",
+    "src/test/java/edu/learningfactory/relational/",
+    "DESIGN.md",
+    "RUN.md",
+    "COMPREHENSION_RESPONSE.md",
+    "SUBMISSION_MANIFEST.json",
+    "test-output.txt",
+    "notes.md",
+    "submission.md",
+    "debugging-log.md"
+  ],
+  "validation": {
+    "evaluator_validated": false,
+    "claim": "No evaluator validation or whole-project completion is claimed."
+  }
+}

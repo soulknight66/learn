@@ -1,0 +1,98 @@
+{
+  "course_id": "course_f2058429efb4429f3e2ed64ae91ecf74",
+  "title": "MIT6.1600: Foundations of Computer Security",
+  "status": "KICKOFF_READY",
+  "unit": {
+    "unit_id": "kickoff_u01_authentication_boundary",
+    "title": "Authentication Boundary: Engineer a Local Credential Verifier",
+    "position": 1,
+    "status": "READY_FOR_LEARNER",
+    "origin": "COURSE_MANAGER_AUTHORED",
+    "official_course_unit": false,
+    "catalog_alignment": "authentication",
+    "audience": "A strong algorithms student building practical software-engineering habits",
+    "estimated_human_hours": 5.0,
+    "prerequisite_assumptions": [
+      "discrete mathematics",
+      "basic Python 3 programming",
+      "basic knowledge of computer systems",
+      "ability to run Python unittest from a terminal"
+    ],
+    "learning_objectives": [
+      "Turn an authentication threat model into explicit component requirements and trust boundaries",
+      "Implement a small defensive credential-verification component using standard-library cryptographic primitives rather than custom cryptography",
+      "Define failure behavior, state invariants, and a test seam before treating the component as complete",
+      "Use deterministic unit tests to examine success, failure, malformed state, and nondeterministic inputs",
+      "Explain the gap between an educational component and a production authentication service"
+    ],
+    "scope": {
+      "included": [
+        "a local, in-memory password credential store",
+        "enrollment and verification behavior",
+        "one-way verifier storage with per-record salts",
+        "generic authentication failure behavior",
+        "threat modeling, unit testing, and an engineering note"
+      ],
+      "excluded": [
+        "network services or testing against live systems",
+        "account recovery, sessions, authorization, MFA, rate limiting, and distributed storage",
+        "official MIT lectures, notes, recordings, or lab specifications that were not retrieved",
+        "a claim of completing the authentication module or the course"
+      ]
+    },
+    "prepared_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "learner_deliverables": [
+      "authn/verifier.py",
+      "tests/test_verifier.py",
+      "THREAT_MODEL.md",
+      "ENGINEERING_NOTE.md",
+      "COMPREHENSION_RESPONSES.md"
+    ],
+    "independent_assessment": "examiner_only/RUBRIC.md"
+  },
+  "completion_policy": {
+    "decision_authority": "Only a validator controlled by the learning-factory worker harness may mark this unit complete.",
+    "unit_completion_requires": [
+      "all listed learner deliverables are present",
+      "the submitted test suite passes in the assigned environment",
+      "independent checks confirm the required authentication behavior and storage invariants",
+      "the threat model and engineering note are consistent with the implementation",
+      "the comprehension responses demonstrate reasoning about the learner's own artifact"
+    ],
+    "prose_claims_are_evidence": false,
+    "on_unit_validation": "Record completion of kickoff_u01_authentication_boundary only.",
+    "course_completion_effect": "NONE",
+    "course_completion_rule": "This kickoff cannot establish completion of an MIT module, the six described labs, or the approximately 50-hour course. Later units require separately retrieved, classified, prepared, and validated evidence."
+  },
+  "provenance": {
+    "catalog_snapshot": {
+      "schema_version": 1,
+      "catalog_status": "DISCOVERED",
+      "adapter": "csdiy",
+      "extractor_version": "1.1",
+      "classification": "source-derived",
+      "content_sha256": "a99b36e53f827cda2376498a807735d1c8758aa1866ab5372ae1c8aa4e84f793",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/系统安全/MIT6.1600.en.md"
+    },
+    "upstream_source": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "name": "CSDIY",
+      "type": "course_catalog",
+      "license": "MIT",
+      "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git"
+    },
+    "preparation": {
+      "job_id": "job_csdiy_f2058429efb4429f3e2ed64ae91ecf74_prepare_v1",
+      "classification": "manager-authored kickoff derived from catalog-level topic and prerequisite data",
+      "external_retrieval_performed": false,
+      "retrieved_external_materials": [],
+      "official_endorsement_claimed": false
+    }
+  }
+}

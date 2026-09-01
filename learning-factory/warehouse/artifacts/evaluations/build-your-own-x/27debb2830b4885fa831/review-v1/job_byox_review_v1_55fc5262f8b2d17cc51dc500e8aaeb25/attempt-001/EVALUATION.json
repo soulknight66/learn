@@ -1,0 +1,30 @@
+{
+  "builder_job_id": "job_byox_build_v1_55fc5262f8b2d17cc51dc500e8aaeb25",
+  "checks_run": [
+    "Inspected all 61 regular files in the immutable CANDIDATE tree, including the learner contract, starter, public tests, sealed reference, sealed tests, exercises, benchmark, validation record, manifest, and provenance.",
+    "Parsed manifest/provenance data independently, counted files and symlinks, scanned learner-visible source for sealed-reference imports and prohibited host APIs, and ran the candidate structure checker.",
+    "Probed the available JavaScript toolchains and attempted the documented starter, public, reference, and benchmark commands with 30-second bounds.",
+    "Ran the submitted mechanically transformed GJS smoke and a separate 28-assertion transformed probe covering ordinary semantics, errors, input immutability, and malformed bytecode.",
+    "Ran focused transformed counterexamples for inherited identifier names, flat-expression engine parity, step-limit behavior, grouped assignment, and bytecode-array prototypes while preserving the original VM at() calls for the prototype probe.",
+    "Computed a deterministic aggregate SHA-256 over CANDIDATE before review writes and rechecked it after executable probes."
+  ],
+  "evidence": [
+    "REVISE: sealed/reference/src/vm.js validates dense arrays without constraining their prototype and then invokes program.code.at(-1). A custom inherited at method was executed during validation (atCalls=1), while a null-prototype dense array produced host TypeError rather than BytecodeError.",
+    "REVISE: sealed/reference/src/lexer.js reads KEYWORDS[text] from a normal Object. Valid identifiers constructor, toString, hasOwnProperty, and __proto__ resolved through Object.prototype and were not emitted as IDENTIFIER; a constructor declaration failed with ParseError.",
+    "REVISE: a grammar-valid 1,000-term addition is below the documented source, token, parse-depth, and evaluation-step ceilings. The transformed tree engine returned 1000, but VM execution failed during compilation with CompileError: Compile depth exceeds 1000, contradicting the required every-valid-source engine parity.",
+    "REVISE: public_tests, sealed/reference_tests, and debugging contain import-bearing .js entry files outside either submitted type=module package scope. The documented commands are therefore not reproducible across the declared Node >=20 range without a root module marker, .mjs names, or an explicit flag.",
+    "REVISE: the full submission contains sealed reference code and exercise answers, but no deterministic learner-view export or isolation check was supplied. Directory naming and prose alone do not establish progressive disclosure.",
+    "The artifact is candid about validation: status is GENERATED, labels are GENERATED and PARTIAL, independent validation is REQUIRED, and productionized is false. It claims no fuzz, benchmark, transfer, production, or Node-test result.",
+    "The learner material is otherwise substantial: requirements, concepts, staged starter files, narrow public tests, design prompts, debugging/review exercises, adversarial seeds, and a benchmark harness are clearly separated by purpose.",
+    "The license boundary conservatively distinguishes the CC0 catalog metadata from the linked resource whose license is NOASSERTION and says linked content was not copied."
+  ],
+  "limitations": [
+    "node and npm were absent (exit 127), so original ECMAScript-module linkage, node:test assertions, the documented benchmark, and behavior on supported Node releases were not executed.",
+    "GJS 1.56.2 cannot load these modules directly. All successful GJS observations used mechanically transformed source and are supplemental algorithm evidence only; they do not establish BUILDS or TESTED.",
+    "The source catalog checkout, linked upstream repository, network, and a recomputable provenance snapshot were unavailable. Source-commit, license-evidence, and no-copy assertions could not be independently compared with external material.",
+    "No learner-view construction or worker-harness filtering mechanism was present, so whether sealed files are excluded in deployment is inconclusive.",
+    "No independent fuzzing, coverage, mutation testing, benchmark measurement, transfer validation, security audit, or production deployment was performed."
+  ],
+  "project_id": "project_c305a6b70f268e23e2e48694e3604f28",
+  "verdict": "REVISE"
+}

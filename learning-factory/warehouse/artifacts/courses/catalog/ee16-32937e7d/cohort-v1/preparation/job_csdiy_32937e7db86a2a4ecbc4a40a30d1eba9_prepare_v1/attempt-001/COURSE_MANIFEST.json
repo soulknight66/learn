@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "course_id": "course_32937e7db86a2a4ecbc4a40a30d1eba9",
+  "title": "UCB EE16A&B: Designing Information Devices and Systems I&II",
+  "status": "KICKOFF_READY",
+  "unit": {
+    "unit_id": "kickoff_unit_001_sensor_pipeline",
+    "sequence": 1,
+    "title": "From ADC Counts to a Tested Sensor Pipeline",
+    "status": "READY_FOR_STUDY",
+    "classification": "COURSE_MANAGER_AUTHORED_KICKOFF",
+    "official_course_unit": false,
+    "estimated_hours": {
+      "minimum": 6,
+      "target": 8,
+      "maximum": 10
+    },
+    "scope": "A simulation-only introduction to voltage dividers, ADC conversion, rolling-median filtering, defensive CSV handling, deterministic command-line behavior, and automated Python tests.",
+    "learning_outcomes": [
+      "Translate an ideal voltage-divider model into a numerically guarded conversion pipeline.",
+      "State and enforce input, configuration, and output contracts at software boundaries.",
+      "Implement and test a deterministic trailing-median sensor-data transformation.",
+      "Prevent invalid input from partially replacing a previously valid output artifact.",
+      "Explain what the implementation demonstrates and what cannot be inferred from catalog links."
+    ],
+    "required_student_safe_files": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "examiner_artifact": "examiner_only/RUBRIC.md",
+    "out_of_scope": [
+      "physical circuit construction",
+      "mains-powered or laboratory hardware",
+      "coverage of the full EE16A or EE16B syllabus",
+      "claims of equivalence to a UC Berkeley assignment",
+      "course completion or credit"
+    ]
+  },
+  "completion_policy": {
+    "unit_completion_is_course_completion": false,
+    "course_state_after_unit_success": "IN_PROGRESS",
+    "unit_success_requires": [
+      "the learner submission contains the implementation, documentation, tests, and separate comprehension responses required by STUDY_TASK.md",
+      "the implementation passes its own deterministic test suite in a clean supported Python environment",
+      "an independent worker-harness-controlled validator checks the observable contract and records evidence",
+      "an examiner evaluates the comprehension responses independently using examiner_only/RUBRIC.md"
+    ],
+    "promotion_authority": "Only a validator controlled by the worker harness may promote this unit to SUCCEEDED.",
+    "prose_is_not_evidence": true,
+    "whole_course_rule": "This kickoff can establish completion of only kickoff_unit_001_sensor_pipeline. Whole-course completion requires a later, provenance-backed graph of additional units and successful validation of every unit designated as required; that graph does not yet exist.",
+    "current_completion_claim": "NONE"
+  },
+  "provenance": {
+    "input_kind": "embedded_catalog_snapshot",
+    "input_schema_version": 1,
+    "catalog_status": "DISCOVERED",
+    "catalog_classification": "source-derived",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_file": "docs/电子基础/EE16.en.md",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "content_sha256": "f10c7af9e8848b3ce272b14bade204a8f5480e334d4caf49504ec4ae6a558057",
+    "adapter": "csdiy",
+    "extractor_version": "1.1",
+    "catalog_license": "MIT",
+    "license_scope_note": "The stated MIT license belongs to the catalog source and is not asserted for any externally linked course material.",
+    "unit_design_origin": "course-manager-authored from catalog topic and audience requirements; not copied from or claimed to be an official UC Berkeley unit",
+    "external_retrieval_performed": false
+  }
+}

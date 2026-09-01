@@ -1,0 +1,28 @@
+schema_version: 1
+course_id: "mit-6-s081-cow-transfer"
+institution: "Massachusetts Institute of Technology"
+title: "MIT 6.S081 Operating System Engineering — COW Transfer Slice"
+topic: "operating-systems"
+status: "ASSIGNMENTS_ATTEMPTED"
+canonical_course_hours: 150
+slice_estimated_human_hours: 8
+difficulty: 8
+source:
+  catalog: "CSDIY"
+  upstream_url: "git@github.com:PKUFlyingPig/cs-self-learning.git"
+  commit: "adce8e13789dc16aa6d1fbe163e9541736defae4"
+  reference: "docs/操作系统/MIT6.S081.en.md"
+  course_website: "https://pdos.csail.mit.edu/6.828/2021/schedule.html"
+  license: "MIT"
+boundaries:
+  student_material: "student_safe/"
+  student_attempt: "attempts/target-learner/attempt-001/"
+  examiner_material: "examiner_only/"
+  student_can_read_examiner_material: false
+completion:
+  metadata: "complete"
+  environment: "ready-for-model-exercise"
+  canonical_xv6_lab: "not-attempted-in-this-slice"
+  transfer_attempt: "candidate-generated"
+  local_grading: "must-be-established-by-external-validator"
+  official_autograder: "not-used"

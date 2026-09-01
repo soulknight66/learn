@@ -1,0 +1,158 @@
+{
+  "course_id": "course_337eb2bbdec44e1f6f7dd4df9ba72848",
+  "materials": [
+    {
+      "material_id": "local_course_brief",
+      "title": "Kickoff course brief",
+      "kind": "MANAGER_AUTHORED_GUIDE",
+      "access_status": "AVAILABLE_LOCAL",
+      "location": "student_safe/COURSE_BRIEF.md",
+      "required_for_kickoff": true,
+      "official_course_unit": false
+    },
+    {
+      "material_id": "local_study_task",
+      "title": "Combinational-logic engineering task",
+      "kind": "MANAGER_AUTHORED_TASK",
+      "access_status": "AVAILABLE_LOCAL",
+      "location": "student_safe/STUDY_TASK.md",
+      "required_for_kickoff": true,
+      "official_course_unit": false
+    },
+    {
+      "material_id": "local_comprehension_prompts",
+      "title": "Kickoff comprehension prompts",
+      "kind": "MANAGER_AUTHORED_QUESTIONS",
+      "access_status": "AVAILABLE_LOCAL",
+      "location": "student_safe/COMPREHENSION.md",
+      "required_for_kickoff": true,
+      "official_course_unit": false
+    },
+    {
+      "material_id": "unit_21ad32d4bbb5a15edcc244b5371781c1",
+      "title": "Catalog overview and resource guide",
+      "kind": "NORMALIZED_CATALOG_RECORD",
+      "access_status": "SNAPSHOT_METADATA_ONLY",
+      "location": "docs/体系结构/DDCA.en.md",
+      "required_for_kickoff": false,
+      "official_course_unit": false
+    },
+    {
+      "material_id": "unit_92657f2e32316feacc6c8bc2ba6c0d65",
+      "title": "Course Website",
+      "kind": "EXTERNAL_CATALOG_LINK",
+      "access_status": "LINK_ONLY_UNVERIFIED",
+      "location": "https://safari.ethz.ch/digitaltechnik/spring2020/",
+      "required_for_kickoff": false,
+      "official_course_unit": false
+    },
+    {
+      "material_id": "unit_09cb0675a22715ccf4793776b41d8029",
+      "title": "Recordings",
+      "kind": "EXTERNAL_CATALOG_LINK",
+      "access_status": "LINK_ONLY_UNVERIFIED",
+      "location": "https://www.youtube.com/playlist?list=PL5Q2soXY2Zi_FRrloMa2fUYWPGiZUBQo2",
+      "required_for_kickoff": false,
+      "official_course_unit": false
+    },
+    {
+      "material_id": "unit_1edf38af78dd7830046c1ea67b21cda9",
+      "title": "Patt and Patel, Introduction to Computing Systems",
+      "kind": "BIBLIOGRAPHIC_REFERENCE",
+      "access_status": "DESCRIBED_ONLY_NOT_PROVIDED",
+      "location": null,
+      "required_for_kickoff": false,
+      "official_course_unit": false
+    },
+    {
+      "material_id": "unit_ee35f362d89f593981b1ae83e1642e30",
+      "title": "Harris and Harris, Digital Design and Computer Architecture (MIPS Edition)",
+      "kind": "BIBLIOGRAPHIC_REFERENCE",
+      "access_status": "DESCRIBED_ONLY_NOT_PROVIDED",
+      "location": null,
+      "required_for_kickoff": false,
+      "official_course_unit": false
+    },
+    {
+      "material_id": "unit_349ccbdf94bdaee3e97037e03e65ec53",
+      "title": "Assignments",
+      "kind": "OFFICIAL_ASSIGNMENT_POINTER",
+      "access_status": "DESCRIBED_ONLY_GENERIC_POINTER",
+      "location": null,
+      "required_for_kickoff": false,
+      "official_course_unit": true
+    },
+    {
+      "material_id": "catalog_url_vivado",
+      "title": "Vivado product link",
+      "kind": "EXTERNAL_TOOL_LINK",
+      "access_status": "LINK_ONLY_UNVERIFIED",
+      "location": "https://china.xilinx.com/products/design-tools/vivado.html",
+      "required_for_kickoff": false,
+      "official_course_unit": false
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_92657f2e32316feacc6c8bc2ba6c0d65",
+      "block_type": "NOT_RETRIEVED_OR_VERIFIED",
+      "reason": "The snapshot supplies only an external URL; page availability, contents, rights, and correspondence to the 2020 offering were not checked.",
+      "impact_on_kickoff": "NONE",
+      "later_resolution": "A later authorized ingestion job may retrieve public pages, record provenance and checksums, and classify actual course units."
+    },
+    {
+      "material_id": "unit_09cb0675a22715ccf4793776b41d8029",
+      "block_type": "NOT_RETRIEVED_OR_VERIFIED",
+      "reason": "The snapshot supplies a playlist URL but no verified video titles, ordering, transcripts, or access evidence.",
+      "impact_on_kickoff": "NONE",
+      "later_resolution": "A later authorized ingestion job may inventory publicly accessible recordings and attach explicit validation labels."
+    },
+    {
+      "material_id": "unit_1edf38af78dd7830046c1ea67b21cda9",
+      "block_type": "NOT_PROVIDED",
+      "reason": "Only a book citation is present; no licensed copy, edition details beyond the title, or assigned sections are available.",
+      "impact_on_kickoff": "NONE",
+      "later_resolution": "Confirm lawful learner access and identify a bounded section before making it required."
+    },
+    {
+      "material_id": "unit_ee35f362d89f593981b1ae83e1642e30",
+      "block_type": "NOT_PROVIDED",
+      "reason": "Only a book citation is present; no licensed copy or assigned sections are available.",
+      "impact_on_kickoff": "NONE",
+      "later_resolution": "Confirm lawful learner access and identify a bounded section before making it required."
+    },
+    {
+      "material_id": "unit_349ccbdf94bdaee3e97037e03e65ec53",
+      "block_type": "GENERIC_POINTER_ONLY",
+      "reason": "The record says to refer to the course website but includes no assignment brief. Assignment solutions are explicitly outside the permitted material set.",
+      "impact_on_kickoff": "NONE",
+      "later_resolution": "Retrieve only an authorized public assignment brief in a later job, exclude solutions, and validate it before unit expansion."
+    },
+    {
+      "material_id": "catalog_url_vivado",
+      "block_type": "TOOL_NOT_VERIFIED_OR_PROVISIONED",
+      "reason": "The catalog link was not visited, and no installer, license, supported platform, or Basys 3 board is present in this material snapshot.",
+      "impact_on_kickoff": "NONE",
+      "later_resolution": "Verify tool and hardware requirements in a separately authorized lab-preparation job."
+    }
+  ],
+  "retrieval_policy": {
+    "external_retrieval_performed_for_this_job": false,
+    "current_unit_rule": "The kickoff must remain completable using only the three local learner-safe documents and Python 3's standard library.",
+    "locator_rule": "A catalog URL or citation is a locator, not evidence that content is available, current, licensed, safe, or an official unit.",
+    "later_job_requirements": [
+      "Use an explicitly authorized retrieval job and fetch only public or otherwise lawfully accessible material",
+      "Record the final locator, source identity, offering/version, retrieval time, checksum when applicable, rights information, and validation label",
+      "Inspect content before exposing it to learners and classify each item as a resource, official unit, assignment brief, tool, or unrelated pointer",
+      "Keep source repositories read-only and copy only approved artifacts into per-attempt workspaces",
+      "Recompute unit dependencies only after availability has been validated"
+    ],
+    "never_retrieve_or_expose": [
+      "Assignment solutions",
+      "Hidden graders or sealed references",
+      "Secrets or authentication material",
+      "Paywalled, access-controlled, or copyrighted full text without authorization",
+      "Another learner's files"
+    ]
+  }
+}

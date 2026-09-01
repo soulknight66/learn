@@ -1,0 +1,11 @@
+#ifndef MICA_LIMITS_H
+#define MICA_LIMITS_H
+
+/* Publicly documented limits, repeated here for embedding experiments. */
+#define MICA_SOURCE_LIMIT 1048576
+#define MICA_NODE_LIMIT 65536
+#define MICA_VARIABLE_LIMIT 256
+#define MICA_DEPTH_LIMIT 128
+#define MICA_STEP_LIMIT 10000000
+
+#endif

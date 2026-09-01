@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "course_id": "course_44d7b01cd6b8b3aeb54a24ee1faa172f",
+  "materials": [
+    {
+      "material_id": "kickoff_course_brief",
+      "title": "Kickoff course brief",
+      "classification": "course-manager-authored",
+      "official_course_material": false,
+      "availability": "AVAILABLE_LOCAL",
+      "learner_required": true,
+      "location": "student_safe/COURSE_BRIEF.md"
+    },
+    {
+      "material_id": "kickoff_study_task",
+      "title": "Executable graph invariants study task",
+      "classification": "course-manager-authored",
+      "official_course_material": false,
+      "availability": "AVAILABLE_LOCAL",
+      "learner_required": true,
+      "location": "student_safe/STUDY_TASK.md"
+    },
+    {
+      "material_id": "kickoff_comprehension",
+      "title": "Kickoff comprehension questions",
+      "classification": "course-manager-authored",
+      "official_course_material": false,
+      "availability": "AVAILABLE_LOCAL",
+      "learner_required": true,
+      "location": "student_safe/COMPREHENSION.md"
+    },
+    {
+      "material_id": "unit_e95203d87462c8c9d547348421102f10",
+      "title": "Catalog overview and resource guide",
+      "classification": "catalog_metadata_input",
+      "official_course_material": false,
+      "availability": "METADATA_IN_SNAPSHOT",
+      "learner_required": false,
+      "source_reference": "docs/数学进阶/6.042J.en.md",
+      "note": "The supplied snapshot exposes the normalized record and provenance, not a separately retrieved reading."
+    },
+    {
+      "material_id": "unit_5a6d7a2f9b47bd2afcc0962bc9ed2c39",
+      "title": "MIT OpenCourseWare course website editions",
+      "classification": "catalog_link_bundle",
+      "official_course_material": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "learner_required": false,
+      "urls": [
+        "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/",
+        "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-fall-2010/",
+        "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2005/"
+      ],
+      "source_reference": "docs/数学进阶/6.042J.en.md#L15",
+      "note": "The URLs are catalog pointers. Their current contents, accessibility, licensing details, and unit structure were not checked in this job."
+    },
+    {
+      "material_id": "unit_284529472170b72be58b208fc2d338ae",
+      "title": "Recordings",
+      "classification": "unresolved_catalog_pointer",
+      "official_course_material": false,
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "learner_required": false,
+      "source_reference": "docs/数学进阶/6.042J.en.md#L16",
+      "catalog_value": "Refer to the course website",
+      "note": "No recording URL, file, edition mapping, or verification evidence is present in the snapshot."
+    },
+    {
+      "material_id": "unit_e1c8cc3470044818283f459197ab3d97",
+      "title": "Assignments",
+      "classification": "unresolved_official_course_unit_pointer",
+      "official_course_material": true,
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "learner_required": false,
+      "source_reference": "docs/数学进阶/6.042J.en.md#L17",
+      "catalog_value": "Refer to the course website",
+      "note": "The catalog marks this normalized record as official, but supplies no assignment URL, file, edition, or content."
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_284529472170b72be58b208fc2d338ae",
+      "blocked_for": "official recording expansion",
+      "reason": "Only a descriptive pointer is available; there is no concrete recording locator or verified public artifact.",
+      "impact_on_kickoff": "none; the bounded kickoff is self-contained",
+      "resolution_evidence_required": "A later authorized job must locate a public official page, associate each recording with an edition and unit, and record access and provenance checks."
+    },
+    {
+      "material_id": "unit_e1c8cc3470044818283f459197ab3d97",
+      "blocked_for": "official assignment expansion",
+      "reason": "Only a descriptive pointer is available; assignment identity, edition, files, and public availability are unknown.",
+      "impact_on_kickoff": "none; no official assignment is claimed or required",
+      "resolution_evidence_required": "A later authorized job must identify the assignment on a public official page, bind it to an edition and topic, and record access, license, and provenance checks."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": "Use only the supplied catalog snapshot and locally authored kickoff artifacts. No network or source-repository content retrieval was performed.",
+    "later_expansion": [
+      "Start with the cataloged HTTPS MIT OpenCourseWare URLs and remain on public, official resources.",
+      "Do not authenticate, bypass access controls, fetch restricted content, or copy hidden, sealed, or learner-specific files.",
+      "Treat links and descriptive pointers as unverified until a successful retrieval is recorded.",
+      "Before assigning retrieved material, record its canonical URL, course edition, title, public access status, applicable license or terms, retrieval provenance, and a content digest for downloaded artifacts.",
+      "Classify each item as an instructional unit, supporting resource, index, or unresolved pointer; normalization alone is not promotion to an official unit.",
+      "Leave missing or ambiguous items blocked rather than substituting guessed content."
+    ],
+    "promotion_rule": "A later job may change an availability label only when deterministic retrieval and classification evidence is stored with the artifact.",
+    "fallback": "The current manager-authored kickoff remains usable without any external material; official-course expansion waits for separately validated retrieval."
+  }
+}

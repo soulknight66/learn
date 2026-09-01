@@ -1,0 +1,77 @@
+{
+  "course_id": "course_337eb2bbdec44e1f6f7dd4df9ba72848",
+  "nodes": [
+    {
+      "id": "manager_unit_01_combinational_contracts",
+      "node_kind": "STUDY_UNIT",
+      "title": "Combinational Logic as a Tested Interface",
+      "classification": "MANAGER_AUTHORED_KICKOFF",
+      "official_course_unit": false,
+      "availability": "AVAILABLE_LOCAL",
+      "expansion_state": "BOUNDED_AND_READY"
+    },
+    {
+      "id": "unit_21ad32d4bbb5a15edcc244b5371781c1",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Catalog overview and resource guide",
+      "classification": "CATALOG_OVERVIEW",
+      "official_course_unit": false,
+      "availability": "SNAPSHOT_METADATA_ONLY",
+      "expansion_state": "INPUT_RECORD_NOT_STUDY_UNIT"
+    },
+    {
+      "id": "unit_92657f2e32316feacc6c8bc2ba6c0d65",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Course Website",
+      "classification": "CATALOG_LINK",
+      "official_course_unit": false,
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "expansion_state": "NOT_EXPANDED"
+    },
+    {
+      "id": "unit_09cb0675a22715ccf4793776b41d8029",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Recordings",
+      "classification": "CATALOG_LINK",
+      "official_course_unit": false,
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "expansion_state": "NOT_EXPANDED"
+    },
+    {
+      "id": "unit_1edf38af78dd7830046c1ea67b21cda9",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Patt and Patel, Introduction to Computing Systems",
+      "classification": "BIBLIOGRAPHIC_REFERENCE",
+      "official_course_unit": false,
+      "availability": "DESCRIBED_ONLY_NOT_PROVIDED",
+      "expansion_state": "NOT_EXPANDED"
+    },
+    {
+      "id": "unit_ee35f362d89f593981b1ae83e1642e30",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Harris and Harris, Digital Design and Computer Architecture (MIPS Edition)",
+      "classification": "BIBLIOGRAPHIC_REFERENCE",
+      "official_course_unit": false,
+      "availability": "DESCRIBED_ONLY_NOT_PROVIDED",
+      "expansion_state": "NOT_EXPANDED"
+    },
+    {
+      "id": "unit_349ccbdf94bdaee3e97037e03e65ec53",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Assignments",
+      "classification": "OFFICIAL_ASSIGNMENT_POINTER",
+      "official_course_unit": true,
+      "availability": "DESCRIBED_ONLY_GENERIC_POINTER",
+      "expansion_state": "OFFICIAL_CONTENT_NOT_RETRIEVED_OR_EXPANDED"
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_21ad32d4bbb5a15edcc244b5371781c1",
+      "to": "manager_unit_01_combinational_contracts",
+      "relationship": "CATALOG_CONTEXT_INFORMED_SCOPE",
+      "required_dependency": false
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion."
+}

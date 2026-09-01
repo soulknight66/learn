@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "course_id": "course_2b2bc9a23b31ea8f547a356c68230ae5",
+  "graph_scope": "BOUNDED_KICKOFF_ONLY",
+  "nodes": [
+    {
+      "unit_id": "unit_01_dependency_planner",
+      "title": "Rust Dependency Planner: Ownership, Errors, and Deterministic Tests",
+      "type": "study_unit",
+      "origin": "course-manager-authored",
+      "official_course_unit": false,
+      "sequence": 1,
+      "status": "READY_FOR_STUDY",
+      "estimated_human_hours": 6.0,
+      "dependencies": [],
+      "required_material_ids": [
+        "material_local_kickoff_packet"
+      ],
+      "optional_material_ids": [
+        "material_rust_book_link",
+        "material_course_repository_link",
+        "material_course_slides_link"
+      ]
+    }
+  ],
+  "edges": [],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "record_classifications": [
+    {
+      "record_unit_id": "unit_3a4b81694c566cdf2e8e26719aa10e05",
+      "title": "Catalog overview and resource guide",
+      "classification": "catalog_evidence",
+      "official_course_unit_metadata": false,
+      "promoted_to_graph_node": false,
+      "reason": "This is the source catalog overview, not an instructional unit."
+    },
+    {
+      "record_unit_id": "unit_c4d2212f601498e6f5317c4dfad1dfcc",
+      "title": "Course Website",
+      "classification": "linked_resource_collection",
+      "official_course_unit_metadata": false,
+      "promoted_to_graph_node": false,
+      "reason": "The record identifies a repository link but supplies no unit boundary, order, or retrieved content."
+    },
+    {
+      "record_unit_id": "unit_ce6ba85d84f3089eb469d60e84000d5d",
+      "title": "Recordings",
+      "classification": "unavailable_resource",
+      "official_course_unit_metadata": false,
+      "promoted_to_graph_node": false,
+      "reason": "The catalog value is explicitly None."
+    },
+    {
+      "record_unit_id": "unit_f064ecc90341cea36ef09073675e9a78",
+      "title": "Textbooks",
+      "classification": "linked_learning_material",
+      "official_course_unit_metadata": false,
+      "promoted_to_graph_node": false,
+      "reason": "The record is a link to slides, not a verified unit record."
+    },
+    {
+      "record_unit_id": "unit_e63616c0f7b870cc2f819284e6e5ea74",
+      "title": "Assignments",
+      "classification": "official_assignment_collection_link",
+      "official_course_unit_metadata": true,
+      "promoted_to_graph_node": false,
+      "reason": "The official flag establishes the role of the assignment resource, but the collection was not retrieved or decomposed into verified assignment units."
+    }
+  ],
+  "expansion_rule": "A later job may add an official-course node only after retrieving an allowed public resource, identifying a concrete unit boundary, recording provenance, and validating its order and dependencies."
+}

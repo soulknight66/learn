@@ -1,0 +1,2 @@
+/usr/bin/printf should-not-run ; | /usr/bin/printf impossible
+/usr/bin/printf 'valid line after error\n'

@@ -1,0 +1,112 @@
+{
+  "course_id": "course_c3b34c705927a16bd82ee9c280b23a3c",
+  "materials": [
+    {
+      "material_id": "unit_0868972eafdc337762cac70887351cb4",
+      "title": "Catalog overview and resource guide",
+      "type": "reading",
+      "classification": "CATALOG_METADATA",
+      "declared_official_course_unit": false,
+      "availability": "PRESENT_IN_SNAPSHOT",
+      "source_reference": "docs/\u6df1\u5ea6\u5b66\u4e60/CMU11-785.en.md",
+      "locators": [],
+      "local_content_present": true,
+      "usable_for_kickoff": true,
+      "permitted_use": "Course identification, broad scope, prerequisites, workload, and resource-discovery context only",
+      "content_validation": "SOURCE_DERIVED_CATALOG_RECORD"
+    },
+    {
+      "material_id": "unit_242ce1362298afbd37257346c8c3245b",
+      "title": "Course Website",
+      "type": "reading",
+      "classification": "EXTERNAL_INDEX_LINK",
+      "declared_official_course_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "source_reference": "docs/\u6df1\u5ea6\u5b66\u4e60/CMU11-785.en.md#L17",
+      "locators": [
+        "https://deeplearning.cs.cmu.edu/S26/index.html"
+      ],
+      "local_content_present": false,
+      "usable_for_kickoff": false,
+      "permitted_use": "Future discovery after an authorized retrieval and validation job",
+      "content_validation": "UNVERIFIED_EXTERNAL_CONTENT"
+    },
+    {
+      "material_id": "unit_b5d73819653ba27c169165dcd58994ea",
+      "title": "Recordings",
+      "type": "lecture",
+      "classification": "RESOURCE_CATEGORY_DESCRIPTION",
+      "declared_official_course_unit": false,
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "source_reference": "docs/\u6df1\u5ea6\u5b66\u4e60/CMU11-785.en.md#L18",
+      "locators": [],
+      "local_content_present": false,
+      "usable_for_kickoff": false,
+      "permitted_use": "None until a specific recording, semester, access status, and license are verified",
+      "content_validation": "NO_CONTENT_TO_VALIDATE"
+    },
+    {
+      "material_id": "unit_36fb91464d8237b2a303681884cca53e",
+      "title": "Textbooks",
+      "type": "reading",
+      "classification": "RESOURCE_CATEGORY_DESCRIPTION",
+      "declared_official_course_unit": false,
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "source_reference": "docs/\u6df1\u5ea6\u5b66\u4e60/CMU11-785.en.md#L19",
+      "locators": [],
+      "local_content_present": false,
+      "usable_for_kickoff": false,
+      "permitted_use": "None until individual notes, slides, or readings and their access terms are verified",
+      "content_validation": "NO_CONTENT_TO_VALIDATE"
+    },
+    {
+      "material_id": "unit_d893e371e27ae1f2d8c52c8fd31ed3f6",
+      "title": "Assignments",
+      "type": "assignment",
+      "classification": "OFFICIAL_RESOURCE_CATEGORY_DESCRIPTION",
+      "declared_official_course_unit": true,
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "source_reference": "docs/\u6df1\u5ea6\u5b66\u4e60/CMU11-785.en.md#L20",
+      "locators": [],
+      "local_content_present": false,
+      "usable_for_kickoff": false,
+      "permitted_use": "None until a specific published assignment and its learner-access and reuse terms are verified",
+      "content_validation": "NO_CONTENT_TO_VALIDATE",
+      "note": "The snapshot confirms only that programming assignments and a project exist; it does not supply their contents."
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_242ce1362298afbd37257346c8c3245b",
+      "block_type": "NOT_RETRIEVED",
+      "reason": "Only an external index URL was supplied; its current contents, access terms, and unit structure were not inspected."
+    },
+    {
+      "material_id": "unit_b5d73819653ba27c169165dcd58994ea",
+      "block_type": "NO_SPECIFIC_LOCATOR_OR_CONTENT",
+      "reason": "Recordings are described as semester-dependent, but no recording URLs or files were supplied."
+    },
+    {
+      "material_id": "unit_36fb91464d8237b2a303681884cca53e",
+      "block_type": "NO_SPECIFIC_LOCATOR_OR_CONTENT",
+      "reason": "No individual lecture note, slide deck, textbook, or paper was identified."
+    },
+    {
+      "material_id": "unit_d893e371e27ae1f2d8c52c8fd31ed3f6",
+      "block_type": "NO_SPECIFIC_LOCATOR_OR_CONTENT",
+      "reason": "No assignment statement, project specification, or semester mapping was supplied."
+    }
+  ],
+  "retrieval_policy": {
+    "retrieval_performed_for_this_job": false,
+    "current_unit_dependency_on_external_material": false,
+    "rules": [
+      "Do not infer lecture, reading, assignment, or project contents from a catalog description.",
+      "Do not fetch content requiring authentication, enrollment, payment, bypassed controls, or uncertain authorization.",
+      "A later authorized job may inspect public locators, but must record the final URL, retrieval outcome, semester, license or access terms, and a content digest.",
+      "Validate resource identity and dependencies before promoting any retrieved record to an official course unit.",
+      "Keep unavailable or failed retrievals explicit; never replace them with fabricated material."
+    ],
+    "future_expansion_gate": "Later course expansion requires durable retrieval evidence and validator-controlled classification; a prose claim or live link alone is insufficient."
+  }
+}

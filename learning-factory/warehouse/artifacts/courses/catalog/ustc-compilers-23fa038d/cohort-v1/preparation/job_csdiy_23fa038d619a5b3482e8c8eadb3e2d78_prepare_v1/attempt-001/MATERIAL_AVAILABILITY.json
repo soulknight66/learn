@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "course_id": "course_23fa038d619a5b3482e8c8eadb3e2d78",
+  "materials": [
+    {
+      "material_id": "material_local_kickoff_packet",
+      "title": "Manager-authored kickoff packet",
+      "origin": "manager_authored",
+      "availability": "AVAILABLE_LOCAL",
+      "required_for_kickoff": true,
+      "official_ustc_material": false,
+      "learner_safe_locations": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "content_basis": "Self-contained specification derived from the compiler-topic scope in the catalog snapshot; no external content was copied.",
+      "validation_label": "LEARNER_SAFE_PREPARED_PENDING_HARNESS_VALIDATION"
+    },
+    {
+      "material_id": "unit_f969a05e96c62f50116c2caf97125f9f",
+      "title": "Catalog overview and resource guide",
+      "origin": "normalized_catalog_record",
+      "catalog_signal": "PRESENT_AS_SNAPSHOT_DATA",
+      "availability": "SNAPSHOT_METADATA_ONLY",
+      "required_for_kickoff": false,
+      "catalog_official_course_unit_claim": false,
+      "classified_as": "catalog_metadata_input",
+      "content_available_locally": false,
+      "source_reference": "docs/编译原理/USTC-Compilers.en.md",
+      "evidence": "The supplied job snapshot contains the record and course description, but not the referenced source file as a learner material."
+    },
+    {
+      "material_id": "unit_d4397615488f1d2ae786f97f1bc0d95e",
+      "title": "Course Website",
+      "origin": "normalized_catalog_record",
+      "catalog_signal": "LINKED",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "catalog_official_course_unit_claim": false,
+      "classified_as": "external_resource_locator",
+      "content_available_locally": false,
+      "url": "https://ustc-compiler-principles.github.io/2023",
+      "source_reference": "docs/编译原理/USTC-Compilers.en.md#L20",
+      "evidence": "URL supplied by the catalog snapshot; reachability, contents, license, and current version were not checked."
+    },
+    {
+      "material_id": "unit_5cb334bb1335eaf0364f15cba5c0ad08",
+      "title": "Recordings",
+      "origin": "normalized_catalog_record",
+      "catalog_signal": "LINKED",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "catalog_official_course_unit_claim": false,
+      "classified_as": "external_resource_locator",
+      "content_available_locally": false,
+      "url": "https://www.bilibili.com/video/BV1D7421N7c4",
+      "source_reference": "docs/编译原理/USTC-Compilers.en.md#L21",
+      "evidence": "URL supplied by the catalog snapshot; video access, language, captions, completeness, license, and current availability were not checked."
+    },
+    {
+      "material_id": "unit_cda7a2e085f483ce59d431b7402bf4aa",
+      "title": "Textbook",
+      "origin": "normalized_catalog_record",
+      "catalog_signal": "DESCRIBED",
+      "availability": "DESCRIPTION_ONLY",
+      "required_for_kickoff": false,
+      "catalog_official_course_unit_claim": false,
+      "classified_as": "unresolved_resource_description",
+      "content_available_locally": false,
+      "locator_text": "See the course website",
+      "source_reference": "docs/编译原理/USTC-Compilers.en.md#L22",
+      "evidence": "The normalized textbook record supplies no direct URL or bibliographic identity."
+    },
+    {
+      "material_id": "unit_f5bd98e76a1b5f51eac8383b6dcfc164",
+      "title": "Assignments",
+      "origin": "normalized_catalog_record",
+      "catalog_signal": "LINKED",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "catalog_official_course_unit_claim": true,
+      "classified_as": "candidate_official_assignment_index",
+      "content_available_locally": false,
+      "url": "https://ustc-compiler-principles.github.io/textbook",
+      "source_reference": "docs/编译原理/USTC-Compilers.en.md#L23",
+      "evidence": "The catalog labels this normalized record official and links a page. The page and any component assignments, code, tutorials, tests, licenses, and ordering were not retrieved or verified."
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_f969a05e96c62f50116c2caf97125f9f",
+      "blocked_content": "Original catalog overview file",
+      "reason_code": "NOT_PRESENT_IN_ATTEMPT_WORKSPACE",
+      "reason": "Only its supplied snapshot data is available; the original source repository is a read-only provenance reference and was not copied into the learner packet."
+    },
+    {
+      "material_id": "unit_d4397615488f1d2ae786f97f1bc0d95e",
+      "blocked_content": "Course website pages and files",
+      "reason_code": "NOT_RETRIEVED",
+      "reason": "This preparation is snapshot-only. No network fetch or access check was authorized or attempted."
+    },
+    {
+      "material_id": "unit_5cb334bb1335eaf0364f15cba5c0ad08",
+      "blocked_content": "Recording media, captions, and transcript",
+      "reason_code": "NOT_RETRIEVED",
+      "reason": "This preparation is snapshot-only. No network fetch, stream extraction, or access check was authorized or attempted."
+    },
+    {
+      "material_id": "unit_cda7a2e085f483ce59d431b7402bf4aa",
+      "blocked_content": "Textbook identity and contents",
+      "reason_code": "UNRESOLVED_LOCATOR",
+      "reason": "The record says only 'See the course website'; no direct bibliographic record or retrieved page establishes the material."
+    },
+    {
+      "material_id": "unit_f5bd98e76a1b5f51eac8383b6dcfc164",
+      "blocked_content": "Official assignment pages, lab framework, tutorials, and tests",
+      "reason_code": "NOT_RETRIEVED",
+      "reason": "A catalog URL is not evidence that its contents are locally available, current, licensed for copying, or decomposed into verified course units."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job_mode": "SNAPSHOT_ONLY_NO_FETCH",
+    "current_job_external_retrieval_performed": false,
+    "future_retrieval_rules": [
+      "A later authorized job may follow a catalog URL only when network access and the source's access terms permit it.",
+      "Never bypass authentication, payment, regional controls, robots restrictions, or other access controls; never copy secrets, hidden grader data, sealed references, or another learner's work.",
+      "Record the requested URL, resolved URL, retrieval time, content type, license or usage basis, byte hash, and retrieval result for every acquired artifact.",
+      "Keep failed, denied, missing, and ambiguous retrievals blocked with evidence instead of guessing their contents.",
+      "Inspect and classify acquired content before creating graph units; a normalized record or an official flag alone does not establish unit boundaries, dependencies, or completion requirements.",
+      "Preserve distinct catalog roles that share a URL until inspection establishes whether they refer to the same content.",
+      "Place only explicitly learner-safe material in learner-visible locations and keep examiner assets separate."
+    ],
+    "future_unit_expansion_gate": "Content must be locally available with provenance, an explicit validation label, learner-visibility classification, and an independently justified unit boundary before it may become a required unit.",
+    "fallback": "If retrieval remains unavailable, author another clearly labeled, self-contained manager unit or leave expansion pending; do not present reconstructed material as official."
+  },
+  "provenance": {
+    "classification": "availability assessment from supplied catalog snapshot and local workspace inspection",
+    "catalog_source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "catalog_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "catalog_content_sha256": "48cb43c1501c3ad2e887dfeb5b7f4601e12e3fed5c512f40af0d6048aa806c17",
+    "assessed_on": "2026-08-31"
+  },
+  "validation": {
+    "label": "PREPARED_PENDING_HARNESS_VALIDATION",
+    "completion_claim": false
+  }
+}

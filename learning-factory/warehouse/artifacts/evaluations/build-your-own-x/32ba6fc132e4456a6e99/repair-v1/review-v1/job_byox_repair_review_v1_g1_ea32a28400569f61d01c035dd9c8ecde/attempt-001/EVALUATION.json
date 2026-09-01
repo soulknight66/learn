@@ -1,0 +1,31 @@
+{
+  "builder_job_id": "job_byox_repair_v1_g1_4e3ccb4926e280942bcd30984264287b",
+  "checks_run": [
+    "Read-only candidate inventory, entry-type audit, SHA-256 aggregate, and generated-product scan",
+    "Manifest/provenance parsing and cross-field consistency checks",
+    "Shell and Python validator syntax checks",
+    "Candidate structural verifier execution",
+    "Public and sealed Java runner attempts with bounded timeouts and an external writable TMPDIR",
+    "Static contract, starter, public-test, reference, and sealed-test review",
+    "Temporary learner-view construction and exact-inventory/hash validator check",
+    "Java import and high-confidence credential-pattern scans"
+  ],
+  "evidence": [
+    "CANDIDATE contains 40 regular files, no symlinks or irregular entries, and has sorted per-file SHA-256 aggregate 756c53cd0c4967c36c5194fdc4256f6fbb9bbb6dc39de02c85b02bf8ab86c95b.",
+    "sealed/validation/verify_artifact.py exited 0 and reported GENERATED + PARTIAL, 23 required files, 15 learner-view files, 8 lexically checked Java sources, no high-confidence credential hits, and no archived Java build products.",
+    "The public and sealed runners both reached javac and exited 127 because javac is unavailable; consequently none of the 10 public or 14 sealed Java cases executed.",
+    "public_tests README claims independent milestone groups, but milestone 2 invokes fail/recover APIs assigned to later milestones and milestone 3 invokes recoverReplica in two cases.",
+    "REQUIREMENTS.md makes any deterministic initial leader conforming, while starter/README.md and the public suite require the lowest replica ID.",
+    "An exact-hash 15-file temporary learner view passed the candidate validator, but that allowlist omits VALIDATION.md, PROVENANCE.json, and LICENSE_BOUNDARY.md even though its README links to them.",
+    "Manifest project/source/commit/snapshot fields agree with PROVENANCE.json; labels remain honestly limited to GENERATED and PARTIAL, productionized is false, and independent validation is REQUIRED.",
+    "All Java imports are from java.* and an independent scan of 40 regular files found no private-key, AWS access-key, GitHub token, or Slack token pattern."
+  ],
+  "limitations": [
+    "No java, javac, jshell, ecj, Maven, Gradle, or other Java execution toolchain is available, so build correctness and runtime behavior are inconclusive.",
+    "git is unavailable and network/source access is restricted; the no-copy assertion and linked NOASSERTION resource could not be compared externally.",
+    "Candidate-controlled validators and static inspection do not establish BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED.",
+    "The passing learner-view check used a reviewer-created temporary copy, not an orchestrator-captured delivery, so it is not transfer-verification evidence."
+  ],
+  "project_id": "project_7fc5b6faee61f34679ec47f9c4964256",
+  "verdict": "REVISE"
+}

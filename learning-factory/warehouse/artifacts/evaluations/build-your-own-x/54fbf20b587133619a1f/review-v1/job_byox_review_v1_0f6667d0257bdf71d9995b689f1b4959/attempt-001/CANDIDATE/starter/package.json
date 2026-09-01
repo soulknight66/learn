@@ -1,0 +1,16 @@
+{
+  "name": "pebble-language-starter",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Incomplete, zero-dependency starter for the Pebble language challenge",
+  "exports": {
+    ".": "./src/index.js",
+    "./errors": "./src/errors.js",
+    "./opcodes": "./src/opcodes.js",
+    "./tokens": "./src/tokens.js"
+  },
+  "scripts": {
+    "test": "node --test ../public_tests/*.test.mjs"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "builder_job_id": "job_byox_build_v1_0f6667d0257bdf71d9995b689f1b4959",
+  "checks_run": [
+    "Inventoried all 68 regular files, permissions, path types, learner-facing material, sealed material, manifests, and validation claims without modifying CANDIDATE/.",
+    "Attempted the public tests, sealed reference tests, adversarial runner, and a one-sample benchmark smoke command with 30-second outer bounds; every command exited 127 because Node.js is unavailable.",
+    "Ran the supplied static checker under the default Python 3.6.8 (exit 1, unsupported future annotations) and explicit Python 3.11.5 (exit 0, STATIC VALIDATION PASS).",
+    "Independently parsed four metadata/package files with duplicate-key rejection, recomputed canonical SHA-256 values, resolved 46 relative imports across 26 JavaScript modules, and checked for special paths and high-confidence credential or forbidden dynamic-execution patterns.",
+    "Cross-checked the requirements, starter API, public tests, sealed reference implementation, reference tests, staged exercises, adversarial runner, benchmark harness, provenance boundary, and validation-label language by manual source trace."
+  ],
+  "evidence": [
+    "REVISE: sealed/adversarial/run.mjs and sealed/benchmarks/benchmark.mjs import sealed/reference/index.js, while only the incomplete public suite imports starter/src/index.js; the supplied evaluator-stage runners therefore cannot validate or measure a learner implementation as wired.",
+    "The complete submitted tree makes sealed reference code, reference tests, answer keys, and all later-stage prompts readable. The prose requires an initial learner view to withhold them, but no independently testable projection/reveal configuration or transfer evidence is supplied.",
+    "Executable correctness remains unestablished: the builder record candidly says no JavaScript suite ran, and all independent Node-based attempts also exited 127. The static pass proves only the limited structural checks implemented by that script.",
+    "The maxSteps contract permits backend-specific accounting but also requires backend agreement for terminating programs; the supplied reference gives a concrete divergence for emit 1; at maxSteps 2 (tree succeeds after two ticks, VM exhausts before its third instruction/HALT).",
+    "MANIFEST.yaml is conservative and honest: status GENERATED, validation labels GENERATED/PARTIAL, independent validation REQUIRED, and productionized false. No BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED promotion is supported or made.",
+    "License/provenance text correctly treats the linked resource license as NOASSERTION and limits generated material to personal educational use; canonical metadata hashes match, but the no-copy assertion cannot be independently substantiated from this offline artifact alone."
+  ],
+  "limitations": [
+    "No Node.js, nodejs, deno, bun, qjs, js, d8, jsc, or quickjs runtime was available, and no Python JavaScript engine/parser package was installed; JavaScript syntax, module loading, tests, adversarial behavior, and benchmark execution are inconclusive.",
+    "The linked upstream resource and source snapshot were not available inside the review workspace, so authorship, close-paraphrase, and upstream-license assertions were not independently compared.",
+    "The review workspace contains only the complete candidate pack, not a generated learner view or transfer artifact; whether an external control plane correctly excludes sealed/later-stage files could not be tested.",
+    "The default python3 is 3.6.8 and git is unavailable. The static checker was reproducible only by naming the separately provisioned Python 3.11.5 binary, and its raw .git observation consequently differed from the builder's historical workspace transcript."
+  ],
+  "project_id": "project_77599834cfe38f15a3b1a4564b1c5efb",
+  "verdict": "REVISE"
+}

@@ -1,0 +1,18 @@
+{
+  "archive_format": "ustar",
+  "include": [
+    "README.md",
+    "AGENTS.md",
+    "MANIFEST.yaml",
+    "REQUIREMENTS.md",
+    "CONCEPTS.md",
+    "DESIGN_QUESTIONS.md",
+    "starter",
+    "public_tests",
+    "environment"
+  ],
+  "manifest_sha256": "cf665f0c237cb6320076e93c64b5419bfcb771e93f61a4054173fca30738ffab",
+  "project_id": "project_884ee11fc61abc48b60825556299dae5",
+  "provenance_snapshot_sha256": "f7a36c6e3d6cae8eaefb0e013c4b9f9f9190dc2eb15a90ccdec01284edce28d2",
+  "schema_version": 1
+}

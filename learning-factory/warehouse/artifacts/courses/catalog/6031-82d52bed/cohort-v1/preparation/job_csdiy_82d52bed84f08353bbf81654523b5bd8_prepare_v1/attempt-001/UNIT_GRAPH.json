@@ -1,0 +1,98 @@
+{
+  "course_id": "course_82d52bed84f08353bbf81654523b5bd8",
+  "nodes": [
+    {
+      "node_id": "unit_04733cc0abb7c2265f3bc150e7160a72",
+      "title": "Catalog overview and resource guide",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "classification": "CATALOG_CONTEXT_INPUT",
+      "source_record_type": "reading",
+      "source_reference": "docs/软件工程/6031.en.md",
+      "source_claim_official_course_unit": false,
+      "official_course_unit": false,
+      "availability": "PRESENT_AS_SNAPSHOT_METADATA",
+      "part_of_current_unit": false
+    },
+    {
+      "node_id": "unit_6e6eb7e9aef53b77a597d33a2410f013",
+      "title": "Course Website",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "classification": "RESOURCE_LINK_GROUP",
+      "source_record_type": "reading",
+      "source_reference": "docs/软件工程/6031.en.md#L25",
+      "source_claim_official_course_unit": false,
+      "official_course_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "part_of_current_unit": false
+    },
+    {
+      "node_id": "unit_cb7d0bc6b48bbc24b27ef73f5570e30e",
+      "title": "Recordings",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "classification": "UNAVAILABLE_RESOURCE_NOTICE",
+      "source_record_type": "lecture",
+      "source_reference": "docs/软件工程/6031.en.md#L26",
+      "source_claim_official_course_unit": false,
+      "official_course_unit": false,
+      "availability": "UNAVAILABLE",
+      "part_of_current_unit": false
+    },
+    {
+      "node_id": "unit_cf7306e628515e94fe837eaf7a2b46da",
+      "title": "Assignments",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "classification": "OFFICIAL_AGGREGATE_DESCRIPTION",
+      "source_record_type": "assignment",
+      "source_reference": "docs/软件工程/6031.en.md#L27",
+      "source_claim_official_course_unit": true,
+      "official_course_unit": false,
+      "availability": "DESCRIBED_NOT_RETRIEVED",
+      "part_of_current_unit": false,
+      "classification_note": "The record says '4 Problem Sets + 1 Project' but contains no individual assignment identity or content, so this aggregate record is not promoted to an official unit."
+    },
+    {
+      "node_id": "kickoff_01_trustworthy_range_set",
+      "title": "From a Correct Algorithm to a Trustworthy ADT",
+      "node_kind": "STUDY_UNIT",
+      "classification": "MANAGER_AUTHORED_KICKOFF",
+      "official_course_unit": false,
+      "availability": "READY_LOCAL",
+      "part_of_current_unit": true,
+      "estimated_hours": {
+        "minimum": 6,
+        "maximum": 8
+      },
+      "student_artifacts": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_04733cc0abb7c2265f3bc150e7160a72",
+      "to": "kickoff_01_trustworthy_range_set",
+      "relation": "INFORMS_SCOPE",
+      "required_dependency": false,
+      "note": "Only the catalog's stated goals, language, audience, and course context inform the manager-authored kickoff."
+    },
+    {
+      "from": "unit_6e6eb7e9aef53b77a597d33a2410f013",
+      "to": "kickoff_01_trustworthy_range_set",
+      "relation": "OPTIONAL_FUTURE_ENRICHMENT",
+      "required_dependency": false,
+      "active_for_current_unit": false,
+      "note": "The links were not retrieved and no linked content is required for this unit."
+    },
+    {
+      "from": "unit_cf7306e628515e94fe837eaf7a2b46da",
+      "to": "kickoff_01_trustworthy_range_set",
+      "relation": "CATALOG_CONTEXT_ONLY",
+      "required_dependency": false,
+      "active_for_current_unit": false,
+      "note": "The aggregate assignment count motivates practice but supplies neither task text nor an official unit."
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion."
+}

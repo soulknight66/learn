@@ -1,0 +1,69 @@
+{
+  "course_id": "course_273048007d194845ebfe42969260ecf6",
+  "title": "UCB CS70: Discrete Math and Probability Theory",
+  "status": "KICKOFF_PREPARED_NOT_VALIDATED",
+  "unit": {
+    "unit_id": "kickoff_01_stable_matching_engineering",
+    "title": "Stable Matching as an Executable Contract",
+    "status": "READY_FOR_LEARNER_NOT_COMPLETED",
+    "origin": "COURSE_MANAGER_AUTHORED",
+    "official_course_unit": false,
+    "sequence": 1,
+    "estimated_human_hours": 8,
+    "audience": "A strong algorithms student developing production-oriented software-engineering skill",
+    "scope": "A bounded kickoff connecting logic and proof to a robust implementation of left-proposing deferred acceptance.",
+    "learning_objectives": [
+      "Turn a mathematical definition into explicit input contracts, output guarantees, and implementation invariants.",
+      "Implement deterministic left-proposing deferred acceptance for complete strict preferences.",
+      "Justify termination, stability, proposer optimality, and asymptotic cost under stated assumptions.",
+      "Build an independent stability oracle and deterministic tests that can expose implementation errors.",
+      "Document failure behavior, reproducibility, and the boundary between the mathematical model and a reusable software component."
+    ],
+    "required_learner_evidence": [
+      "A runnable implementation with a documented public interface",
+      "Automated deterministic tests, including malformed-input and property-oriented cases",
+      "A design note containing contracts, invariants, proof arguments, and complexity analysis",
+      "A reproducible run guide",
+      "Written responses to the supplied comprehension prompts"
+    ],
+    "excluded_scope": [
+      "Completion of CS70 or of any substantial fraction of the cataloged 60-hour course",
+      "Claims that this task reproduces an official UC Berkeley lecture, note, textbook chapter, or assignment",
+      "Matching with ties, incomplete preference lists, capacities, strategic behavior, or distributed deployment",
+      "Graph theory, number theory, polynomial rings, coding theory, probability, hashing, and load balancing"
+    ]
+  },
+  "completion_policy": {
+    "current_completion_claim": "NONE",
+    "unit_completion_requires": {
+      "all_required_evidence_present": true,
+      "independent_examiner_score_at_least": 80,
+      "score_scale": 100,
+      "critical_conditions": [
+        "The implementation is runnable using the submitted instructions.",
+        "For valid inputs, the output is a bijection and has no blocking pair.",
+        "The learner's proof and test evidence are their own and contain no hidden examiner material."
+      ],
+      "validator_authority": "Only a validator controlled by the worker harness may record completion."
+    },
+    "on_unit_pass": "Record completion only for kickoff_01_stable_matching_engineering; keep the course status partial.",
+    "on_unit_fail": "Preserve the attempt and examiner evidence; do not infer completion from prose or file presence.",
+    "course_completion_rule": "This kickoff can never, by itself, complete the course. Later independently validated units and an explicit course-level completion decision are required.",
+    "artifact_presence_is_not_completion": true
+  },
+  "provenance": {
+    "artifact_classification": "MANAGER_DERIVED_FROM_CATALOG_SNAPSHOT",
+    "validation_label": "PREPARED_NOT_VALIDATED",
+    "external_retrieval_performed": false,
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/数学进阶/CS70.en.md",
+    "source_content_sha256": "9542f4ac4a33e63d6be53a59373f1d6a02e96bea16cf1bb645474db72c15d449",
+    "adapter": "csdiy",
+    "extractor_version": "1.1",
+    "source_license_label": "MIT",
+    "derivation_note": "The topic choice uses the catalog's stated logic-proof/stable-matching correspondence. The activity design, requirements, explanations, and assessment are newly authored and are not represented as official UC Berkeley material."
+  }
+}

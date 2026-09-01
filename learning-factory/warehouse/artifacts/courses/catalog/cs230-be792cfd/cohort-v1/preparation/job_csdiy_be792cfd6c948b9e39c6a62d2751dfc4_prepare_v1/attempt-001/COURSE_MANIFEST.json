@@ -1,0 +1,74 @@
+{
+  "course_id": "course_be792cfd6c948b9e39c6a62d2751dfc4",
+  "title": "Coursera: Deep Learning",
+  "status": "KICKOFF_READY",
+  "unit": {
+    "unit_id": "unit_01_reliable_logistic_core",
+    "position": 1,
+    "title": "Reliable Logistic Core: From Equation to Tested Python",
+    "kind": "manager_authored_kickoff",
+    "status": "READY_NOT_STARTED",
+    "estimated_human_hours": 6.0,
+    "bounded": true,
+    "official_course_unit": false,
+    "scope": "Implement and independently verify a small, numerically stable binary logistic-loss core using the Python standard library.",
+    "prerequisite_assumptions": [
+      "Comfort with algorithms and asymptotic analysis",
+      "Fundamental machine-learning vocabulary",
+      "Working Python knowledge",
+      "Basic differential calculus and vectors"
+    ],
+    "learning_objectives": [
+      "Turn mathematical assumptions into explicit software contracts.",
+      "Implement stable logit, sigmoid, binary-loss, and analytic-gradient calculations.",
+      "Design deterministic tests for normal, boundary, and invalid inputs.",
+      "Check analytic gradients against an independent finite-difference oracle.",
+      "Record reproducible execution evidence and analyze time and space cost."
+    ],
+    "required_outputs": [
+      "submission/logistic_core.py",
+      "submission/tests/test_logistic_core.py",
+      "submission/DESIGN.md",
+      "submission/EVIDENCE.md",
+      "submission/RESPONSES.md"
+    ],
+    "external_content_required": false
+  },
+  "completion_policy": {
+    "current_claim": "PREPARATION_ONLY",
+    "unit_completion_label": "UNIT_01_VALIDATED",
+    "unit_completion_requires": [
+      "All required outputs are present.",
+      "The test command completes successfully in the declared environment.",
+      "An independent examiner applies examiner_only/RUBRIC.md and awards at least 80 out of 100.",
+      "The mathematical-correctness, contract-safety, and verification rubric minima are each met.",
+      "No unresolved critical defect remains."
+    ],
+    "completion_authority": "A validator controlled by the worker harness or an explicitly assigned independent examiner; learner prose and self-reported logs are supporting evidence only.",
+    "unit_success_implies_course_completion": false,
+    "course_completion_status_after_unit_success": "IN_PROGRESS",
+    "course_completion_requires": "A later, separately authorized expansion must identify, make available, schedule, and validate the remaining course units. The catalog estimate is 80 hours; this kickoff covers only 6 hours and cannot satisfy whole-course completion."
+  },
+  "provenance": {
+    "classification": "mixed_source_metadata_and_manager_authored_design",
+    "catalog_snapshot": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "source_name": "CSDIY",
+      "source_type": "course_catalog",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/深度学习/CS230.en.md",
+      "content_sha256": "fdb6a72fe3f01519005c8c4caa46ae763a0f9453ba896e3380c5f1088e28f7ae",
+      "adapter": "csdiy",
+      "extractor_version": "1.1",
+      "license": "MIT",
+      "classification": "source-derived"
+    },
+    "unit_design": {
+      "classification": "manager-authored",
+      "basis": "Catalog title, description, prerequisites, language, and availability metadata only",
+      "official_course_content_copied": false,
+      "network_retrieval_performed": false,
+      "restricted_content_fetched": false
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "evidence": [
+    "A recursive inventory of the examiner workspace found only RUBRIC.md, SUBMISSION.md, NOTES.md, DEBUGGING_LOG.md, JOB.md, and .factory-workspace; the claimed production source, test source, DESIGN.md, RUN.md, SUBMISSION_MANIFEST.json, test-output.txt, and COMPREHENSION_RESPONSE.md are absent.",
+    "No java, javac, or jar executable is available on PATH, and no JDK executable was found in the standard local JDK locations checked, so the documented clean compile/test flow cannot be reconstructed or executed here.",
+    "SUBMISSION.md and DEBUGGING_LOG.md explicitly report javac: command not found, exit status 127, no compiled classes, and no test SUMMARY; test-output.txt itself was not transferred for independent inspection.",
+    "Because no production or test code was supplied, the examiner cannot verify compilation, the common operator abstraction, scan/filter/project/limit semantics, lifecycle behavior, ownership, deterministic assertions, or the claimed independent oracle. This triggers the compilation, required-operator, deterministic-test, and evaluator-controlled-check hard gates.",
+    "The required manifest is absent, so the unit name, learner-unvalidated label, declared commands/runtime, file inventory, and submitted artifact identity cannot be independently validated.",
+    "NOTES.md and DEBUGGING_LOG.md show sound engineering intent about stable end-of-stream, zero-limit over-pull, immutable snapshots, cleanup after failed open, oracle independence, and the difference between authored and executed tests, but these prose claims are not evidence that the unavailable implementation has those properties."
+  ],
+  "result": "FAIL",
+  "score": 0,
+  "transfer_gaps": [
+    "Transfer the complete submitted tree: production and test sources, DESIGN.md, RUN.md, SUBMISSION_MANIFEST.json, test-output.txt, and COMPREHENSION_RESPONSE.md.",
+    "Provide an attributable artifact identity (revision or content digest plus file inventory) so controlled results can be tied to the exact submitted bytes.",
+    "Make the declared offline JDK available to the worker harness, then run the clean compile/test command against the transferred revision with bounded timeout, process-group control, captured exit status, and preserved logs.",
+    "Run independent examiner tests for required semantics, lifecycle misuse, ownership aliases, zero-limit and early-termination pulls, stable end-of-stream, Unicode/extreme values, and repeated deterministic seeded-oracle behavior before assigning a validated-pass label."
+  ]
+}

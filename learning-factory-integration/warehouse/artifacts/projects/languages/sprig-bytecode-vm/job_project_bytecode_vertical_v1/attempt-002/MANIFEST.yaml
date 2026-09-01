@@ -1,0 +1,29 @@
+{
+  "architectures": [
+    {
+      "name": "bytecode",
+      "path": "sealed/reference",
+      "role": "reference compiler and stack VM"
+    },
+    {
+      "name": "treewalk",
+      "path": "alternatives/treewalk",
+      "role": "independent AST evaluator"
+    }
+  ],
+  "deployment_status": "NOT_PRODUCTION_READY",
+  "id": "sprig-bytecode-vm",
+  "productionized": false,
+  "provenance_project_id": "project_4b7f4b85b17b06eeba75d235767a898f",
+  "schema_version": 1,
+  "shared_contract": "tinyvm.parse_source and tinyvm.run_source",
+  "status": "GENERATED_CANDIDATE",
+  "validation_targets": [
+    "BUILDS",
+    "TESTED",
+    "FUZZED",
+    "BENCHMARKED",
+    "REVIEWED",
+    "PARTIAL"
+  ]
+}

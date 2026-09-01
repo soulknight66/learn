@@ -1,0 +1,24 @@
+{
+  "attempt_id": "target-learner-attempt-001",
+  "errors": 0,
+  "evaluator": "independent deterministic examiner",
+  "evidence": [
+    "test_private_page_becomes_copy_on_write (test_shared_pages.PublicBehaviorTests.test_private_page_becomes_copy_on_write) ... ok",
+    "test_unlink_defers_reclamation (test_shared_pages.PublicBehaviorTests.test_unlink_defers_reclamation) ... ok",
+    "test_unrelated_processes_share_named_page (test_shared_pages.PublicBehaviorTests.test_unrelated_processes_share_named_page) ... ok",
+    "test_concurrent_shared_writes_remain_valid (test_transfer.HiddenTransferTests.test_concurrent_shared_writes_remain_valid) ... ok",
+    "test_cow_chain_does_not_leak (test_transfer.HiddenTransferTests.test_cow_chain_does_not_leak) ... ok",
+    "test_exec_and_exit_release_exactly_once (test_transfer.HiddenTransferTests.test_exec_and_exit_release_exactly_once) ... ok",
+    "test_fork_preserves_intentional_sharing (test_transfer.HiddenTransferTests.test_fork_preserves_intentional_sharing) ... ok",
+    "test_invalid_operations_are_explicit (test_transfer.HiddenTransferTests.test_invalid_operations_are_explicit) ... ok",
+    "",
+    "----------------------------------------------------------------------",
+    "Ran 8 tests in 0.003s",
+    "",
+    "OK"
+  ],
+  "failures": 0,
+  "result": "PASS",
+  "skipped": 0,
+  "tests_run": 8
+}

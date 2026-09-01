@@ -1,0 +1,20 @@
+{
+  "evidence": [
+    "Artifact gate failed: the examiner inventory contains RUBRIC.md, SUBMISSION.md, NOTES.md, DEBUGGING_LOG.md, JOB.md, and .factory-workspace, but no CMakeLists.txt, STUDY_TASK.md, DESIGN.md, TESTING.md, COMPREHENSION_ANSWERS.md, src/byte_stream.hh, src/byte_stream.cc, or tests/byte_stream_test.cc.",
+    "The declared configure command `cmake -S . -B _examiner_build` exited 1 because the handed-off source directory does not contain CMakeLists.txt. Consequently no library or test executable could be built, no CTest registration could be inspected, and no examiner-owned black-box test could be run.",
+    "The historical toolchain blocker is not reproduced in this examiner environment: CMake 3.26.5 listed its module tree successfully, `g++ -print-prog-name=cc1plus` resolved `/usr/libexec/gcc/x86_64-redhat-linux/8/cc1plus`, and GCC 8.5.0 accepted a trivial C++17 translation unit with exit 0. This does not validate the missing implementation.",
+    "The claimed 12,000-operation learner test and Python state-model result are prose claims only in this handoff; their source, raw log, operation stream, and failure diagnostics are absent. The rubric explicitly disallows awarding model-test points from a claim alone.",
+    "The available notes show sound conceptual judgment about conservation, partial acceptance, FIFO wraparound, closed versus finished, independent sticky error state, prefix-erasure complexity, and caller handling of backpressure. The worked capacity-five trace matches the rubric answer guide.",
+    "Numeric breakdown: reproducible project/interface 0/10; byte preservation/capacity 0/25; lifecycle/diagnostics/accounting 0/15; representation/complexity 0/15 because implementation and stress evidence are unavailable; learner tests 0/20; design/reproduction record 4/5 based on the narrative notes and debugging record; comprehension 8/10. Total 12/100.",
+    "Required-artifact, configure/build/CTest, examiner-test, and score-threshold gates are not satisfied. No behavioral or memory-safety pass can be inferred from the absence of runnable code. Rubric final label: UNIT_NOT_COMPLETE."
+  ],
+  "result": "FAIL",
+  "score": 12,
+  "transfer_gaps": [
+    "Transfer the complete project tree, especially CMakeLists.txt, src/byte_stream.hh, src/byte_stream.cc, and tests/byte_stream_test.cc.",
+    "Transfer STUDY_TASK.md so the examiner can compare the public interface against the authoritative local contract.",
+    "Transfer DESIGN.md, TESTING.md, and COMPREHENSION_ANSWERS.md rather than summaries that merely say those artifacts exist.",
+    "Provide raw configure, build, CTest, and sanitizer logs with commands and exit codes; provide the committed fixed-seed model-test source and its reproducible diagnostics.",
+    "Reconcile the recorded CMAKE_ROOT/cc1plus failures with the current environment, where CMake module discovery and a C++17 frontend probe both succeed."
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "course_id": "course_aad609c682157cc0ec08cf8bbc70e729",
+  "nodes": [
+    {
+      "node_id": "unit_kickoff_rrsim_v1",
+      "title": "Deterministic Round-Robin Scheduler Simulator in C",
+      "node_type": "study_unit",
+      "origin": "course_manager_authored_bridge",
+      "official_course_unit": false,
+      "promoted_to_study_unit": true,
+      "status": "READY",
+      "availability": "SELF_CONTAINED",
+      "order": 1
+    },
+    {
+      "node_id": "unit_a32abfad99a977bc26eb196578a444e8",
+      "title": "Catalog overview and resource guide",
+      "node_type": "normalized_resource_record",
+      "source_record_type": "reading",
+      "catalog_official_course_unit_flag": false,
+      "classification": "catalog_context",
+      "promoted_to_study_unit": false,
+      "availability": "SNAPSHOT_EXCERPT_ONLY",
+      "source_reference": "docs/操作系统/CS162.en.md",
+      "order": 0
+    },
+    {
+      "node_id": "unit_06164451a1d8e1079401b963108eaba5",
+      "title": "Course Website",
+      "node_type": "normalized_resource_record",
+      "source_record_type": "reading",
+      "catalog_official_course_unit_flag": false,
+      "classification": "unresolved_material_pointer",
+      "promoted_to_study_unit": false,
+      "availability": "DESCRIBED_NO_RECORD_URL",
+      "source_reference": "docs/操作系统/CS162.en.md#L25",
+      "order": 25
+    },
+    {
+      "node_id": "unit_8db006d69ce090edffad6f7ff2793663",
+      "title": "Lecture Videos",
+      "node_type": "normalized_resource_record",
+      "source_record_type": "lecture",
+      "catalog_official_course_unit_flag": false,
+      "classification": "aggregate_material_description",
+      "promoted_to_study_unit": false,
+      "availability": "DESCRIBED_NO_RECORD_URL",
+      "source_reference": "docs/操作系统/CS162.en.md#L28",
+      "order": 28
+    },
+    {
+      "node_id": "unit_3df38fbbc4886deb6bfd5af907a6f78d",
+      "title": "Textbook",
+      "node_type": "normalized_resource_record",
+      "source_record_type": "reading",
+      "catalog_official_course_unit_flag": false,
+      "classification": "external_material_link",
+      "promoted_to_study_unit": false,
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "source_reference": "docs/操作系统/CS162.en.md#L32",
+      "order": 32
+    },
+    {
+      "node_id": "unit_7994f83d79b5b09b27437a549c11ede4",
+      "title": "Assignments",
+      "node_type": "normalized_resource_record",
+      "source_record_type": "assignment",
+      "catalog_official_course_unit_flag": true,
+      "classification": "aggregate_assignment_claim",
+      "promoted_to_study_unit": false,
+      "availability": "DESCRIBED_NO_ASSIGNMENT_BODIES",
+      "source_reference": "docs/操作系统/CS162.en.md#L33",
+      "order": 33
+    },
+    {
+      "node_id": "unit_d59657ef5615027a406eb67025afe79a",
+      "title": "6 Homeworks",
+      "node_type": "normalized_resource_record",
+      "source_record_type": "assignment",
+      "catalog_official_course_unit_flag": true,
+      "classification": "aggregate_assignment_claim_with_substitute_link",
+      "promoted_to_study_unit": false,
+      "availability": "DESCRIPTION_AND_SUBSTITUTE_LINK_ONLY",
+      "source_reference": "docs/操作系统/CS162.en.md#L38",
+      "order": 38
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_a32abfad99a977bc26eb196578a444e8",
+      "to": "unit_kickoff_rrsim_v1",
+      "relation": "informs_scope_only",
+      "required_for_completion": false
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion."
+}

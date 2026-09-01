@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "course_id": "course_4e8de940764b44ebd05b6ba96fee719c",
+  "materials": [
+    {
+      "material_id": "material_local_kickoff_packet",
+      "title": "Kickoff learner packet",
+      "kind": "manager_authored_packet",
+      "availability": "AVAILABLE_LOCAL",
+      "official_course_material": false,
+      "locations": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "required_for_kickoff": true,
+      "evidence": "Files prepared in this attempt workspace.",
+      "provenance": "Learning-factory course-manager authored from the catalog topic 'data-flow analysis'; no remote course content reproduced."
+    },
+    {
+      "material_id": "material_catalog_overview",
+      "title": "Catalog overview and resource guide",
+      "kind": "catalog_metadata",
+      "catalog_record_id": "unit_dda5c7805166efa854c27943a64956d9",
+      "availability": "METADATA_AVAILABLE_IN_SNAPSHOT",
+      "official_course_material": false,
+      "source_reference": "docs/编程语言设计与分析/PKU-SoftwareAnalysis.en.md",
+      "required_for_kickoff": false,
+      "evidence": "The normalized record and catalog description were supplied in the job snapshot.",
+      "content_retrieved": false
+    },
+    {
+      "material_id": "material_course_homepage",
+      "title": "2020 course homepage",
+      "kind": "web_link",
+      "catalog_record_id": "unit_1ed593902234704769d25fc4ac4a50f6",
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "official_course_material": "UNVERIFIED",
+      "url": "https://xiongyingfei.github.io/SA/2020/main.htm",
+      "required_for_kickoff": false,
+      "evidence": "URL appears in the supplied catalog snapshot; reachability, content, license, and unit structure were not checked.",
+      "content_retrieved": false
+    },
+    {
+      "material_id": "material_professor_homepage",
+      "title": "Professor homepage",
+      "kind": "web_link",
+      "catalog_record_id": "unit_1ed593902234704769d25fc4ac4a50f6",
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "official_course_material": "UNVERIFIED",
+      "url": "https://xiongyingfei.github.io/",
+      "required_for_kickoff": false,
+      "evidence": "URL appears in the supplied catalog snapshot; it is a general homepage rather than a verified course unit.",
+      "content_retrieved": false
+    },
+    {
+      "material_id": "material_2020_video",
+      "title": "2020 course video portal",
+      "kind": "lecture_link",
+      "catalog_record_id": "unit_f938b7be2628ad6b7942ed22c265ece6",
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "official_course_material": "UNVERIFIED",
+      "url": "https://liveclass.org.cn/cloudCourse/#/courseDetail/8mI06L2eRqk8GcsW",
+      "required_for_kickoff": false,
+      "evidence": "URL appears in the supplied catalog snapshot; access requirements, contents, transcript, and licensing were not checked.",
+      "content_retrieved": false
+    },
+    {
+      "material_id": "material_course_textbook",
+      "title": "Course textbook",
+      "kind": "reading",
+      "catalog_record_id": "unit_195e4e3b0ccd4e8a22e6c648aeef4e7a",
+      "availability": "UNAVAILABLE",
+      "official_course_material": false,
+      "required_for_kickoff": false,
+      "evidence": "The supplied catalog value is 'None'.",
+      "content_retrieved": false
+    }
+  ],
+  "blocked": [
+    {
+      "blocker_id": "blocked_textbook",
+      "material_id": "material_course_textbook",
+      "category": "NOT_PROVIDED_BY_CATALOG",
+      "reason": "No textbook is designated in the catalog snapshot.",
+      "impact": "No textbook reading can be assigned or treated as completed.",
+      "kickoff_mitigation": "The local task specification is self-contained."
+    },
+    {
+      "blocker_id": "blocked_official_sequence",
+      "material_id": "material_course_homepage",
+      "category": "AUTHORITATIVE_MAPPING_NOT_VERIFIED",
+      "reason": "The snapshot has course-level links but no verified syllabus, lecture titles, ordering, or official unit boundaries.",
+      "impact": "Only the authored kickoff can be prepared; later official units cannot yet be asserted.",
+      "kickoff_mitigation": "Keep the unit graph explicitly partial and non-official."
+    },
+    {
+      "blocker_id": "blocked_video_contents",
+      "material_id": "material_2020_video",
+      "category": "LINK_ONLY_ACCESS_UNKNOWN",
+      "reason": "No video, transcript, access grant, or license was supplied, and no remote retrieval was performed.",
+      "impact": "The video cannot be required, summarized, or used as evidence of learning.",
+      "kickoff_mitigation": "The kickoff has no video dependency."
+    }
+  ],
+  "retrieval_policy": {
+    "policy_version": 1,
+    "retrieval_performed_during_preparation": false,
+    "current_rule": "Use only the supplied snapshot and files deliberately placed in the attempt workspace.",
+    "restricted_content": "Do not authenticate, bypass access controls, copy restricted media, or infer contents from a URL.",
+    "later_job_requirements": [
+      "confirm that retrieval is authorized and consistent with licensing and access terms",
+      "record the requested URL, resolved source, retrieval result, and content hash",
+      "label link reachability separately from content availability",
+      "verify official ownership and curricular role before promoting a resource record to a unit",
+      "store only learner-safe derived artifacts in learner-visible locations",
+      "retain honest blocked status when any check fails"
+    ],
+    "fallback_rule": "A link-only or blocked item must remain optional; use locally authored, provenance-labeled material for any required activity."
+  },
+  "provenance": {
+    "snapshot_source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "snapshot_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "snapshot_content_sha256": "5c26f67523735d0b6f94bd684d945d637207e18ad98e7ca8268df6c70bc434fd",
+    "classification_method": "Catalog fields and normalized records were classified without network access."
+  },
+  "validation": {
+    "label": "AVAILABILITY_CLASSIFIED_FROM_SNAPSHOT_NOT_REMOTE_VERIFIED",
+    "remote_material_validated": false
+  }
+}

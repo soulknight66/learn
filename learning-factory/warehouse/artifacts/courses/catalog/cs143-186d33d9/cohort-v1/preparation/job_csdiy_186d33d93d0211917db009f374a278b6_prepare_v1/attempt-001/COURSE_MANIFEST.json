@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "course_id": "course_186d33d93d0211917db009f374a278b6",
+  "title": "Stanford CS143: Compilers",
+  "status": "KICKOFF_READY",
+  "unit": {
+    "unit_id": "unit_01_minicool_lexer_engineering",
+    "title": "Compiler Frontend Kickoff: Engineering a MiniCOOL-0 Lexer",
+    "status": "READY_FOR_LEARNER",
+    "classification": "manager-authored kickoff",
+    "official_course_unit": false,
+    "timebox_hours": {
+      "minimum": 6,
+      "maximum": 8
+    },
+    "scope": "Specify, implement, test, and explain a deterministic lexer for the manager-defined MiniCOOL-0 subset. The unit introduces the compiler pipeline but does not include parsing, semantic analysis, optimization, code generation, MIPS, or an official COOL assignment.",
+    "audience": "A strong algorithms student who knows basic computer architecture and can build a nontrivial program in Java or C++.",
+    "learning_objectives": [
+      "Translate a lexical contract into a deterministic scanner with explicit states and source positions.",
+      "Apply maximal munch and precedence rules without losing linear-time behavior.",
+      "Separate scanning logic, diagnostics, command-line I/O, and tests behind stable interfaces.",
+      "Build reproducible automated tests for normal, boundary, and malformed inputs.",
+      "Use concrete repository evidence to justify correctness and design decisions."
+    ],
+    "learner_deliverables": [
+      "A Java or C++ MiniCOOL-0 lexer with the command-line behavior specified in student_safe/STUDY_TASK.md.",
+      "A deterministic automated test suite and documented build/test commands.",
+      "A concise engineering README or DESIGN document.",
+      "Written responses to student_safe/COMPREHENSION.md."
+    ],
+    "student_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ]
+  },
+  "completion_policy": {
+    "unit_completion_requires": [
+      "All required deliverables are present in the learner submission.",
+      "The documented clean build and automated test commands succeed under the worker harness.",
+      "An independent validator applies examiner_only/RUBRIC.md to repository evidence and records a passing result."
+    ],
+    "unit_pass_threshold": "70/100 with every essential-behavior gate in the rubric satisfied",
+    "promotion_authority": "Only a validator controlled by the worker harness may mark this unit complete.",
+    "course_completion": "Completion of this kickoff unit is not completion of Stanford CS143, the cataloged set of written assignments or labs, or any broader compiler curriculum. Course completion remains NOT_EVALUATED until later jobs retrieve and validate an authorized full course plan and its required evidence.",
+    "prose_claims": "Learner, manager, or agent prose is not completion evidence."
+  },
+  "provenance": {
+    "classification": "manager-authored preparation derived from source catalog metadata",
+    "catalog_source": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "name": "CSDIY",
+      "type": "course_catalog",
+      "license": "MIT",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/编译原理/CS143.en.md",
+      "catalog_content_sha256": "23d43d26856c40acc3f545e336706cf9c9e6a39b72520906e4c77fb165337108",
+      "adapter": "csdiy",
+      "extractor_version": "1.1"
+    },
+    "catalog_facts_used": [
+      "The catalog describes a compiler-construction course using COOL and MIPS/SPIM.",
+      "The catalog names lexical analysis as an early theoretical topic.",
+      "The catalog lists Computer Architecture as a prerequisite and Java or C++ as implementation languages.",
+      "The catalog reports 150 learning hours and an aggregate of five written assignments plus five programming labs."
+    ],
+    "authorship_boundary": "The unit sequence, MiniCOOL-0 contract, tasks, questions, and rubric were created for this kickoff. They are not copied from, endorsed by, or claimed to be official Stanford CS143 materials.",
+    "retrieval_statement": "No external linked content was fetched or treated as available during preparation."
+  },
+  "validation": {
+    "label": "PREPARED_UNVALIDATED",
+    "meaning": "Artifact structure has been prepared; no learner work has been evaluated and no course completion is claimed."
+  }
+}

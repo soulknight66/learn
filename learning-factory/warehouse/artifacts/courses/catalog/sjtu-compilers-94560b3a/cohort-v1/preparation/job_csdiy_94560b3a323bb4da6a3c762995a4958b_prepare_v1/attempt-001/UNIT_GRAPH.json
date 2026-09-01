@@ -1,0 +1,137 @@
+{
+  "course_id": "course_94560b3a323bb4da6a3c762995a4958b",
+  "nodes": [
+    {
+      "node_id": "kickoff_slp_interpreter_v1",
+      "node_kind": "prepared_unit",
+      "title": "Engineering a Straight-Line Program Interpreter",
+      "status": "READY_FOR_INDEPENDENT_VALIDATION",
+      "official_course_unit": false,
+      "bounded": true,
+      "estimated_human_hours": 10,
+      "source_record_ids": [
+        "unit_482afc4f4901a1788881e88a48cd4d79"
+      ],
+      "classification_note": "Manager-authored kickoff informed by the catalog's Lab 1 title; not claimed to be the official SJTU assignment."
+    },
+    {
+      "node_id": "unit_b1f7f927668e82260d8742bdee52e2b3",
+      "node_kind": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "record_type": "reading",
+      "classification": "CATALOG_CONTEXT",
+      "availability": "AVAILABLE_IN_JOB_SNAPSHOT",
+      "official_course_unit": false,
+      "prepared_unit": false,
+      "eligible_for_completion": false
+    },
+    {
+      "node_id": "unit_7685fbbe1b235dfe8ee53cd7b3a34ebc",
+      "node_kind": "normalized_resource_record",
+      "title": "Course Website",
+      "record_type": "reading",
+      "classification": "EXTERNAL_RESOURCE_LINK",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "official_course_unit": false,
+      "prepared_unit": false,
+      "eligible_for_completion": false
+    },
+    {
+      "node_id": "unit_37700664935abd50412973e87586834c",
+      "node_kind": "normalized_resource_record",
+      "title": "Slides",
+      "record_type": "lecture",
+      "classification": "EXTERNAL_RESOURCE_INDEX_LINK",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "official_course_unit": false,
+      "prepared_unit": false,
+      "eligible_for_completion": false
+    },
+    {
+      "node_id": "unit_991d0c205cfe73c2df237de2c9e74ce9",
+      "node_kind": "normalized_resource_record",
+      "title": "Course Textbook",
+      "record_type": "reading",
+      "classification": "EXTERNAL_TEXTBOOK_LINK",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "official_course_unit": false,
+      "prepared_unit": false,
+      "eligible_for_completion": false
+    },
+    {
+      "node_id": "unit_482afc4f4901a1788881e88a48cd4d79",
+      "node_kind": "normalized_resource_record",
+      "title": "Lab 1: Straight-line Program Interpreter",
+      "record_type": "lab",
+      "classification": "OFFICIAL_UNIT_DESCRIPTION_ONLY",
+      "availability": "DESCRIPTION_ONLY",
+      "official_course_unit": true,
+      "prepared_unit": false,
+      "eligible_for_completion": false
+    },
+    {
+      "node_id": "unit_2244f7c4d5f1239fdd782762b0612037",
+      "node_kind": "normalized_resource_record",
+      "title": "Lab 2: Lexer",
+      "record_type": "lab",
+      "classification": "OFFICIAL_UNIT_DESCRIPTION_ONLY",
+      "availability": "DESCRIPTION_ONLY",
+      "official_course_unit": true,
+      "prepared_unit": false,
+      "eligible_for_completion": false
+    },
+    {
+      "node_id": "unit_ead0a507af158e29db370e42b97a0047",
+      "node_kind": "normalized_resource_record",
+      "title": "Lab 3: Parser",
+      "record_type": "lab",
+      "classification": "OFFICIAL_UNIT_DESCRIPTION_ONLY",
+      "availability": "DESCRIPTION_ONLY",
+      "official_course_unit": true,
+      "prepared_unit": false,
+      "eligible_for_completion": false
+    },
+    {
+      "node_id": "unit_d5529c29b17fcb2423ffe1f955101e62",
+      "node_kind": "normalized_resource_record",
+      "title": "Lab 4: Type Checking",
+      "record_type": "lab",
+      "classification": "OFFICIAL_UNIT_DESCRIPTION_ONLY",
+      "availability": "DESCRIPTION_ONLY",
+      "official_course_unit": true,
+      "prepared_unit": false,
+      "eligible_for_completion": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_b1f7f927668e82260d8742bdee52e2b3",
+      "to": "kickoff_slp_interpreter_v1",
+      "relation": "provides_catalog_context"
+    },
+    {
+      "from": "unit_482afc4f4901a1788881e88a48cd4d79",
+      "to": "kickoff_slp_interpreter_v1",
+      "relation": "topic_informs_manager_authored_unit"
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "graph_policy": {
+    "prepared_units": [
+      "kickoff_slp_interpreter_v1"
+    ],
+    "course_order_inferred": false,
+    "dependency_order_inferred": false,
+    "future_expansion": "The website, schedule, textbook, and described labs remain classified inputs. Later jobs must verify and prepare them before adding schedulable units or dependency edges."
+  },
+  "provenance": {
+    "classification": "catalog-records-plus-manager-authored-unit",
+    "catalog_content_sha256": "c0b01a3547deab67a2c9ce70808ae093949cc577ef4b3208bb40f409922c4189",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "retrieval_performed": false
+  },
+  "validation": {
+    "label": "PREPARED_UNVALIDATED",
+    "meaning": "Node and edge classifications await worker-harness validation and do not certify course completion."
+  }
+}

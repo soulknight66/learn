@@ -1,0 +1,45 @@
+{
+  "alternative_architectures": [
+    "bounded-thread-per-connection",
+    "single-threaded-selector-loop"
+  ],
+  "architecture_value": 9,
+  "artifact_revision": 1,
+  "concepts": [
+    "incremental protocol parsing",
+    "bounded concurrency",
+    "backpressure",
+    "idempotency",
+    "optimistic concurrency",
+    "fault containment",
+    "graceful shutdown",
+    "observability",
+    "benchmark interpretation"
+  ],
+  "cs_depth": 7,
+  "debugging_value": 8,
+  "deployment_status": "NOT_PRODUCTION_READY",
+  "difficulty": 7,
+  "estimated_human_hours": 14,
+  "family": "networking-and-production-services",
+  "languages": [
+    "Python 3.11"
+  ],
+  "production_relevance": 9,
+  "productionized": false,
+  "project_id": "bounded-http-counter-service",
+  "provenance_file": "PROVENANCE.json",
+  "reference_architecture": "bounded-worker-pool",
+  "schema_version": 1,
+  "status": "GENERATED_CANDIDATE",
+  "title": "Bounded HTTP/1.1 Counter Service",
+  "type": "build-your-own-x-challenge-pack",
+  "validation_targets": [
+    "BUILDS",
+    "TESTED",
+    "FUZZED",
+    "BENCHMARKED",
+    "REVIEWED",
+    "PARTIAL"
+  ]
+}

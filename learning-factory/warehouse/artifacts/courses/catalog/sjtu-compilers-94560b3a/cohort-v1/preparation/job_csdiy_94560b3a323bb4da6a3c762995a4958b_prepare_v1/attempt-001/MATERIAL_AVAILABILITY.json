@@ -1,0 +1,128 @@
+{
+  "course_id": "course_94560b3a323bb4da6a3c762995a4958b",
+  "materials": [
+    {
+      "material_id": "catalog_snapshot",
+      "title": "CSDIY catalog snapshot",
+      "kind": "catalog_metadata",
+      "status": "AVAILABLE_INLINE",
+      "location": "JOB.md",
+      "verified_content": "Course metadata, resource URLs, and short labels for four labs",
+      "limits": "This is a catalog description, not an official syllabus, lab handout, starter kit, or answer set."
+    },
+    {
+      "material_id": "course_website",
+      "record_id": "unit_7685fbbe1b235dfe8ee53cd7b3a34ebc",
+      "title": "SJTU compiler course website",
+      "kind": "website",
+      "status": "LINK_ONLY_NOT_RETRIEVED",
+      "url": "https://ipads.se.sjtu.edu.cn/courses/compilers",
+      "official_course_unit": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "slide_schedule",
+      "record_id": "unit_37700664935abd50412973e87586834c",
+      "title": "Slides and schedule index",
+      "kind": "lecture_index",
+      "status": "LINK_ONLY_NOT_RETRIEVED",
+      "url": "https://ipads.se.sjtu.edu.cn/courses/compilers/Schedule.html",
+      "official_course_unit": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "tiger_book",
+      "record_id": "unit_991d0c205cfe73c2df237de2c9e74ce9",
+      "title": "Modern Compiler Implementation in C (Tiger Book)",
+      "kind": "textbook_pdf",
+      "status": "LINK_ONLY_NOT_RETRIEVED",
+      "url": "https://ipads.se.sjtu.edu.cn/courses/compilers/textbook/TigerBook-English.pdf",
+      "official_course_unit": false,
+      "required_for_kickoff": false,
+      "rights_note": "No license or redistribution status was established from the snapshot."
+    },
+    {
+      "material_id": "old_framework",
+      "title": "Old tiger-compiler framework referenced by the catalog",
+      "kind": "source_repository",
+      "status": "LINK_ONLY_NOT_RETRIEVED",
+      "url": "https://gitee.com/east-china-normal-university_ttb_cs/tiger-compiler-25sp",
+      "official_course_unit": false,
+      "required_for_kickoff": false,
+      "compatibility": "UNKNOWN",
+      "rights_note": "License, provenance, safety, and compatibility must be checked before later use."
+    },
+    {
+      "material_id": "lab_1_description",
+      "record_id": "unit_482afc4f4901a1788881e88a48cd4d79",
+      "title": "Lab 1: Straight-line Program Interpreter",
+      "kind": "official_unit_record",
+      "status": "DESCRIPTION_ONLY",
+      "available_content": "Title only",
+      "required_for_kickoff": true,
+      "use": "Topic signal for a new, self-contained kickoff specification"
+    },
+    {
+      "material_id": "lab_2_description",
+      "record_id": "unit_2244f7c4d5f1239fdd782762b0612037",
+      "title": "Lab 2: Lexer",
+      "kind": "official_unit_record",
+      "status": "DESCRIPTION_ONLY",
+      "available_content": "Title only",
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "lab_3_description",
+      "record_id": "unit_ead0a507af158e29db370e42b97a0047",
+      "title": "Lab 3: Parser",
+      "kind": "official_unit_record",
+      "status": "DESCRIPTION_ONLY",
+      "available_content": "Title only",
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "lab_4_description",
+      "record_id": "unit_d5529c29b17fcb2423ffe1f955101e62",
+      "title": "Lab 4: Type Checking",
+      "kind": "official_unit_record",
+      "status": "DESCRIPTION_ONLY",
+      "available_content": "Title only",
+      "required_for_kickoff": false
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "current_framework",
+      "title": "Newest course framework code",
+      "status": "RESTRICTED_NOT_RETRIEVED",
+      "reason": "The catalog explicitly says it is not yet open-sourced and directs readers to contact a teaching assistant.",
+      "attempted": false,
+      "handling": "Do not request, infer, mirror, or redistribute it in this job. A later authorized job may record legitimate access separately."
+    },
+    {
+      "material_id": "official_lab_handouts_and_tests",
+      "title": "Official lab specifications, starter files, tests, and solutions",
+      "status": "NOT_PRESENT_IN_SNAPSHOT",
+      "reason": "The snapshot contains lab titles but no handouts, starter files, tests, or solutions.",
+      "attempted": false,
+      "handling": "Do not claim the manager-authored kickoff reproduces these materials."
+    }
+  ],
+  "retrieval_policy": {
+    "this_job": "No external retrieval is required or performed. The kickoff is self-contained and does not depend on linked or restricted material.",
+    "public_links": "A later authorized retrieval job may check public links. It must record the final URL, retrieval result, timestamp, checksum, license or access terms, and validator label before promoting content to available course material.",
+    "restricted_material": "Do not bypass access controls, contact staff under false pretenses, use hidden or sealed references, or copy another student's files. Restricted material remains blocked unless legitimate authorization and provenance are recorded.",
+    "failure_handling": "A failed or denied retrieval remains durable evidence and must not be relabeled as available. Link presence alone is not content availability.",
+    "unit_expansion": "Only verified content or an explicitly manager-authored self-contained specification may support a later prepared unit; normalized resource records alone are insufficient."
+  },
+  "provenance": {
+    "classification": "availability-assessment-from-provided-catalog-snapshot",
+    "catalog_content_sha256": "c0b01a3547deab67a2c9ce70808ae093949cc577ef4b3208bb40f409922c4189",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "retrieval_performed": false
+  },
+  "validation": {
+    "label": "CLASSIFIED_NOT_RETRIEVED",
+    "meaning": "Availability labels report only snapshot evidence; URLs and contents were not independently validated."
+  }
+}

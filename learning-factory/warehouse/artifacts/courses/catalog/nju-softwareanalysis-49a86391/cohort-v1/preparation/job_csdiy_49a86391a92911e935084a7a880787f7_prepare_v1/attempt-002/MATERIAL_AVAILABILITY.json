@@ -1,0 +1,111 @@
+{
+  "course_id": "course_49a86391a92911e935084a7a880787f7",
+  "materials": [
+    {
+      "material_id": "unit_160fa119252d441b50f9b7029ea80743",
+      "title": "Catalog overview and resource guide",
+      "type": "reading",
+      "record_origin": "NORMALIZED_RESOURCE_RECORD",
+      "source_reference": "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md",
+      "catalog_availability": "PRESENT_AS_METADATA_IN_SNAPSHOT",
+      "verified_availability": "METADATA_ONLY",
+      "official_course_unit_flag": false,
+      "classification": "CATALOG_CONTEXT_NOT_A_MANAGED_UNIT",
+      "required_for_kickoff": false,
+      "urls": []
+    },
+    {
+      "material_id": "unit_50cf2e120948e02276605a6101985cbf",
+      "title": "Course Website",
+      "type": "reading",
+      "record_origin": "NORMALIZED_RESOURCE_RECORD",
+      "source_reference": "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md#L23",
+      "catalog_availability": "LINKED",
+      "verified_availability": "NOT_RETRIEVED_OR_VERIFIED",
+      "official_course_unit_flag": false,
+      "classification": "REMOTE_CATALOG_LINK_NOT_A_MANAGED_UNIT",
+      "required_for_kickoff": false,
+      "urls": [
+        "https://tai-e.pascal-lab.net/lectures.html"
+      ]
+    },
+    {
+      "material_id": "unit_1b08cc17a1b5722bc34ff68b2340bb4a",
+      "title": "Course Video",
+      "type": "lecture",
+      "record_origin": "NORMALIZED_RESOURCE_RECORD",
+      "source_reference": "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md#L24",
+      "catalog_availability": "LINKED",
+      "verified_availability": "NOT_RETRIEVED_OR_VERIFIED",
+      "official_course_unit_flag": false,
+      "classification": "REMOTE_CATALOG_LINK_NOT_A_MANAGED_UNIT",
+      "required_for_kickoff": false,
+      "urls": [
+        "https://www.bilibili.com/video/BV1b7411K7P4/"
+      ],
+      "notes": "The catalog supplied a longer URL with tracking query parameters; this record retains the stable public video identifier only."
+    },
+    {
+      "material_id": "unit_beafc601752da3d57cf12292da935789",
+      "title": "Course Textbook",
+      "type": "reading",
+      "record_origin": "NORMALIZED_RESOURCE_RECORD",
+      "source_reference": "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md#L25",
+      "catalog_availability": "UNAVAILABLE",
+      "verified_availability": "UNAVAILABLE_AS_DECLARED_BY_CATALOG",
+      "official_course_unit_flag": false,
+      "classification": "MISSING_MATERIAL",
+      "required_for_kickoff": false,
+      "urls": [],
+      "notes": "The catalog value is explicitly None; no textbook title or content was inferred."
+    },
+    {
+      "material_id": "unit_53d4bd196e18ba8590d1df1ea5bb56c4",
+      "title": "Course Assignments",
+      "type": "assignment",
+      "record_origin": "NORMALIZED_RESOURCE_RECORD",
+      "source_reference": "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md#L26",
+      "catalog_availability": "LINKED",
+      "verified_availability": "NOT_RETRIEVED_OR_VERIFIED",
+      "official_course_unit_flag": true,
+      "classification": "OFFICIAL_RESOURCE_LINK_NOT_PROMOTED_TO_MANAGED_UNIT",
+      "required_for_kickoff": false,
+      "urls": [
+        "https://tai-e.pascal-lab.net/intro/overview.html"
+      ],
+      "notes": "The source metadata marks this as an official course unit, but the normalized record is only a link-level input. Its internal assignment sequence and access conditions remain unverified."
+    },
+    {
+      "material_id": "catalog_field_oj",
+      "title": "Online Judge",
+      "type": "assessment_service",
+      "record_origin": "CATALOG_FIELD_ONLY",
+      "source_reference": "source_metadata.fields.oj",
+      "catalog_availability": "LINKED",
+      "verified_availability": "NOT_RETRIEVED_OR_VERIFIED",
+      "official_course_unit_flag": false,
+      "classification": "REMOTE_SERVICE_NOT_A_MANAGED_UNIT",
+      "required_for_kickoff": false,
+      "urls": [
+        "https://oj.pascal-lab.net/problem"
+      ],
+      "notes": "No account, access, problem inventory, or submission policy was tested."
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_beafc601752da3d57cf12292da935789",
+      "status": "BLOCKED_UNAVAILABLE",
+      "reason": "The catalog explicitly lists no course textbook and supplies no URL.",
+      "unblock_condition": "A later authorized source provides a specific, lawfully accessible text or the course catalog is updated."
+    }
+  ],
+  "retrieval_policy": {
+    "this_job": "NO_EXTERNAL_RETRIEVAL_PERFORMED",
+    "linked_means": "A URL was present in the catalog snapshot; it does not establish current reachability, public access, completeness, safety, or suitability.",
+    "future_retrieval": "A later authorized job may verify public links and record retrieval time, final URL, access conditions, content identity, and validation label before using retrieved material.",
+    "restricted_content": "Do not bypass authentication, paywalls, regional controls, robots restrictions, or other access controls; do not request, reproduce, or infer sealed tests or restricted solutions.",
+    "failure_handling": "Preserve the source URL and record the observed failure without inventing replacement content or marking the resource complete.",
+    "unit_promotion": "A material may enter a future unit only after identity, availability, scope, prerequisites, and learner-safe status are explicitly validated."
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "course_id": "course_aad609c682157cc0ec08cf8bbc70e729",
+  "title": "CS162: Operating System — Software-Engineering Kickoff",
+  "status": "FIRST_UNIT_PREPARED",
+  "unit": {
+    "unit_id": "unit_kickoff_rrsim_v1",
+    "sequence": 1,
+    "title": "Deterministic Round-Robin Scheduler Simulator in C",
+    "origin": "course_manager_authored_bridge",
+    "official_course_unit": false,
+    "scope": "A self-contained prerequisite bridge from algorithmic reasoning to defensive C, deterministic state transitions, testing, and technical documentation. It is not represented as a UC Berkeley CS162 lecture, homework, or project.",
+    "audience": "A strong algorithms student with working C, command-line, Make, and basic debugger skills",
+    "estimated_hours": {
+      "minimum": 6,
+      "target": 8,
+      "maximum": 10
+    },
+    "learning_objectives": [
+      "Turn scheduling rules into explicit state, invariants, and deterministic tie-breaking behavior.",
+      "Separate scheduling policy from queue, parsing, reporting, and error-handling mechanisms.",
+      "Implement a bounded C command-line program with checked parsing, ownership discipline, and overflow-aware arithmetic.",
+      "Create repeatable tests that exercise normal traces, ties, idle time, malformed input, and boundary values.",
+      "Record design decisions and reproducible validation evidence."
+    ],
+    "required_material_ids": [
+      "material_unit_spec_student_safe"
+    ],
+    "learner_files": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ]
+  },
+  "completion_policy": {
+    "completion_scope": "FIRST_UNIT_ONLY",
+    "whole_course_completion_allowed": false,
+    "course_credit_claim_allowed": false,
+    "learner_self_report_is_evidence": false,
+    "required_evidence": [
+      "The submitted program builds through the documented non-interactive command.",
+      "Automated tests and recorded commands are reproducible in the evaluator's environment.",
+      "The implementation satisfies the public behavioral contract and rejects invalid input.",
+      "The design note, test inventory, and comprehension responses are present.",
+      "An independent evaluator applies examiner_only/RUBRIC.md."
+    ],
+    "decision_rule": "Only independent validation of the required evidence may mark unit_kickoff_rrsim_v1 complete. Passing this unit changes no claim about later CS162 units, the full catalog course, or institutional credit."
+  },
+  "provenance": {
+    "prepared_from": "provided_catalog_snapshot_only",
+    "classification": "course_manager_derived",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_license": "MIT",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/操作系统/CS162.en.md",
+    "source_content_sha256": "bd0c94977650dc649221d49bc02881866e5b2bd6e3f3d031af05da3398cfe399",
+    "adapter": "csdiy",
+    "extractor_version": "1.1",
+    "catalog_status": "DISCOVERED",
+    "snapshot_schema_version": 1,
+    "external_retrieval_performed": false
+  }
+}

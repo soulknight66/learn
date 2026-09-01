@@ -1,0 +1,34 @@
+{
+  "builder_job_id": "job_project_bytecode_vertical_v1",
+  "checks_run": [
+    "Inventoried all submitted files and reconciled documented and manifest paths.",
+    "Checked the default and explicitly available Python toolchains.",
+    "Ran the candidate environment checks with Python 3.11.5.",
+    "Ran the public, withheld-contract, and bytecode test suites against the bytecode reference.",
+    "Ran the differential fuzz, benchmark, debugging, and optimizer exercise commands with bounded timeouts.",
+    "Ran a reviewer-authored deterministic 300-case expression oracle.",
+    "Probed parser and compiler depth limits, typed failures, and source-location propagation.",
+    "Audited JSON structure, prohibited execution patterns, disclosure boundaries, licensing, provenance, and benchmark internal consistency."
+  ],
+  "evidence": [
+    "README.md requires GRAMMAR.md and BYTECODE.md, but both files are absent.",
+    "MANIFEST.yaml declares alternatives/treewalk, but that path is absent; the submitted fuzz and benchmark commands both exit 1 with ModuleNotFoundError.",
+    "Under Python 3.11.5, 6 public, 10 withheld-contract, and 5 bytecode tests passed against sealed/reference.",
+    "The reviewer-authored 300-case expression oracle passed with seed 20260831 and output digest d2aef60bee02da13bd0344658075645897cdd576d738b2bcc37d3e61ae013ef3.",
+    "Valid 1200-deep unary, parenthesized, and left-associated programs each escaped run_source as an untyped RecursionError.",
+    "Runtime faults for undefined names, division by zero, and duplicate declarations contain no location, and AST and bytecode instruction nodes carry no source span.",
+    "The benchmark smoke JSON is arithmetically self-consistent but has no explicit validation label, timestamp, or input implementation hash and cannot be reproduced from the submitted tree.",
+    "The debugging integrity check and fixed regression passed, while the deliberately buggy regression failed with the expected observed output of 18.",
+    "PROVENANCE.json clearly separates CC0 catalog metadata from the NOASSERTION linked article, but the generated learning pack has no LICENSE or explicit reuse grant.",
+    "The manifest honestly says GENERATED_CANDIDATE, NOT_PRODUCTION_READY, and productionized false; its validation_targets were not treated as achieved labels."
+  ],
+  "limitations": [
+    "The default python3 is Python 3.6.8 and is incompatible; Python 3.11.5 was available by absolute path and used for substantive execution checks.",
+    "The missing tree-walk implementation prevents cross-architecture semantic-step, fuzz, and benchmark validation.",
+    "Network and source-repository access were unavailable, so the external article, catalog commit, and no-copy provenance assertion could not be independently compared.",
+    "git and rg were unavailable; deterministic find, grep, diff, hashlib, and direct Python inspection were used instead.",
+    "The historical benchmark timings were not accepted as current performance evidence because the command is not reproducible from this submission."
+  ],
+  "project_id": "project_4b7f4b85b17b06eeba75d235767a898f",
+  "verdict": "REVISE"
+}

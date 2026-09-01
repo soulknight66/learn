@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "course_id": "course_e4139fae990a1a91c82c7b61e11354f1",
+  "nodes": [
+    {
+      "id": "course_e4139fae990a1a91c82c7b61e11354f1",
+      "kind": "course",
+      "title": "MIT6.5940: TinyML and Efficient Deep Learning Computing",
+      "status": "DISCOVERED"
+    },
+    {
+      "id": "kickoff_u01_quantization_engineering",
+      "kind": "manager_authored_study_unit",
+      "title": "Measurement-First Weight Quantization",
+      "status": "PREPARED",
+      "official_course_unit": false,
+      "estimated_hours": 6
+    },
+    {
+      "id": "unit_1e88b56e08354dec1e46303ee10c751f",
+      "kind": "normalized_resource_record",
+      "record_type": "reading",
+      "title": "Catalog overview and resource guide",
+      "classification": "catalog_metadata_only",
+      "availability": "AVAILABLE_IN_SNAPSHOT",
+      "official_course_unit": false,
+      "source_reference": "docs/\u673a\u5668\u5b66\u4e60\u7cfb\u7edf/EML.en.md"
+    },
+    {
+      "id": "unit_12485261eb8021e434727b13fb14a6b0",
+      "kind": "normalized_resource_record",
+      "record_type": "reading",
+      "title": "Course Website",
+      "classification": "external_link_collection",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "official_course_unit": false,
+      "source_reference": "docs/\u673a\u5668\u5b66\u4e60\u7cfb\u7edf/EML.en.md#L20"
+    },
+    {
+      "id": "unit_486e85bbe3ae8c91af65261dff6f9a60",
+      "kind": "normalized_resource_record",
+      "record_type": "lecture",
+      "title": "Recordings",
+      "classification": "playlist_link_collection",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "official_course_unit": false,
+      "source_reference": "docs/\u673a\u5668\u5b66\u4e60\u7cfb\u7edf/EML.en.md#L21"
+    },
+    {
+      "id": "unit_15c93c0afbd563d73f380bd19f3e676f",
+      "kind": "normalized_resource_record",
+      "record_type": "reading",
+      "title": "Textbooks",
+      "classification": "absence_record",
+      "availability": "UNAVAILABLE",
+      "official_course_unit": false,
+      "source_reference": "docs/\u673a\u5668\u5b66\u4e60\u7cfb\u7edf/EML.en.md#L22"
+    },
+    {
+      "id": "unit_a030f85e836141870f4ed9fc65616427",
+      "kind": "normalized_resource_record",
+      "record_type": "assignment",
+      "title": "Assignments",
+      "classification": "official_collection_description_unexpanded",
+      "availability": "DESCRIBED_NOT_RETRIEVED",
+      "official_course_unit": true,
+      "resolved_unit_count": 0,
+      "description": "The catalog says there are five labs, but supplies no individual specifications, starter files, or validation assets.",
+      "source_reference": "docs/\u673a\u5668\u5b66\u4e60\u7cfb\u7edf/EML.en.md#L23"
+    }
+  ],
+  "edges": [
+    {
+      "from": "course_e4139fae990a1a91c82c7b61e11354f1",
+      "to": "kickoff_u01_quantization_engineering",
+      "relation": "has_manager_authored_kickoff"
+    },
+    {
+      "from": "course_e4139fae990a1a91c82c7b61e11354f1",
+      "to": "unit_1e88b56e08354dec1e46303ee10c751f",
+      "relation": "has_catalog_resource_record"
+    },
+    {
+      "from": "course_e4139fae990a1a91c82c7b61e11354f1",
+      "to": "unit_12485261eb8021e434727b13fb14a6b0",
+      "relation": "has_catalog_resource_record"
+    },
+    {
+      "from": "course_e4139fae990a1a91c82c7b61e11354f1",
+      "to": "unit_486e85bbe3ae8c91af65261dff6f9a60",
+      "relation": "has_catalog_resource_record"
+    },
+    {
+      "from": "course_e4139fae990a1a91c82c7b61e11354f1",
+      "to": "unit_15c93c0afbd563d73f380bd19f3e676f",
+      "relation": "has_catalog_resource_record"
+    },
+    {
+      "from": "course_e4139fae990a1a91c82c7b61e11354f1",
+      "to": "unit_a030f85e836141870f4ed9fc65616427",
+      "relation": "has_catalog_resource_record"
+    },
+    {
+      "from": "kickoff_u01_quantization_engineering",
+      "to": "unit_1e88b56e08354dec1e46303ee10c751f",
+      "relation": "topic_selected_from_catalog_overview"
+    },
+    {
+      "from": "kickoff_u01_quantization_engineering",
+      "to": "unit_a030f85e836141870f4ed9fc65616427",
+      "relation": "topic_alignment_only",
+      "note": "The catalog associates quantization with an early lab; this edge does not assert equivalence to or reproduce that lab."
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "boundary_policy": {
+    "normalized_records_are_units_by_default": false,
+    "official_unit_admission_rule": "A later job must retrieve an attributable syllabus, lecture, or assignment body, verify its official status, record provenance, and validate its boundaries before promoting it to an official unit.",
+    "resolved_official_units": 0,
+    "kickoff_is_official": false,
+    "normalized_dependency_edges": 0,
+    "reason": "Every normalized input record has an empty dependency list, and the sole official assignment record is only an aggregate description."
+  },
+  "provenance": {
+    "classification": "manager-classified-from-catalog-snapshot",
+    "catalog_content_sha256": "5d3e23c4816e9fe020e8086017ddb9f89cb6512bd41071cbe8028ea33ab2f2f2",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "network_retrieval_performed": false
+  },
+  "validation_label": "AWAITING_WORKER_HARNESS_VALIDATION"
+}

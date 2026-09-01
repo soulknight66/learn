@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+for argument in "$@"; do
+    printf '<%s>\n' "$argument"
+done
+
+status=${RECORD_ARGV_STATUS:-0}
+if [[ ! $status =~ ^[0-9]+$ ]] || (( status > 255 )); then
+    printf '%s\n' 'record-argv: invalid RECORD_ARGV_STATUS' >&2
+    exit 64
+fi
+exit "$status"

@@ -1,0 +1,45 @@
+{
+  "course_id": "course_742d4325985228f05947d939ae196034",
+  "nodes": [
+    {
+      "unit_id": "unit_kickoff_vmwalk_v1",
+      "title": "Unit 0 — Build vmwalk, a Bounded Virtual-Address Translator",
+      "type": "study_unit",
+      "status": "READY_NOT_STARTED",
+      "classification": "manager-authored-kickoff",
+      "official_course_unit": false,
+      "position": 0,
+      "estimated_hours": 5.0,
+      "hard_stop_hours": 6.0,
+      "dependencies": [],
+      "required_material_ids": [],
+      "preparation_basis_material_ids": [
+        "material_3efca53294f9653ffa41dc9ce1564746"
+      ],
+      "completion_scope": "THIS_UNIT_ONLY"
+    }
+  ],
+  "edges": [],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "provenance": {
+    "artifact_classification": "manager-authored-from-catalog-snapshot",
+    "basis": "catalog-snapshot-only",
+    "external_retrieval_performed": false,
+    "input": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "source_type": "course_catalog",
+      "source_name": "CSDIY",
+      "license": "MIT",
+      "adapter": "csdiy",
+      "extractor_version": "1.1",
+      "classification": "source-derived",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/操作系统/MIT6.S081.en.md",
+      "content_sha256": "1a596c3c893b18df2b1e576c9f8cbaa2028c04eee06d66d62810d0735ca1f0c1"
+    }
+  },
+  "validation": {
+    "label": "PREPARED_NOT_HARNESS_VALIDATED",
+    "scope": "Identity, graph shape, and catalog-record classification only"
+  }
+}

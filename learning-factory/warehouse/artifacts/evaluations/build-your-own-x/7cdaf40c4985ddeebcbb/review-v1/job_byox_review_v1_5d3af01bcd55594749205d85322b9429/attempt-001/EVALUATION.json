@@ -1,0 +1,34 @@
+{
+  "builder_job_id": "job_byox_build_v1_5d3af01bcd55594749205d85322b9429",
+  "checks_run": [
+    "Inventoried all candidate files, file types, permissions, and sealed-material paths.",
+    "Parsed MANIFEST.yaml and PROVENANCE.json as JSON and cross-checked project, source, commit, status, and production fields.",
+    "Recomputed the byte-level SHA-256 digest of PROVENANCE.json and compared it with MANIFEST.yaml provenance_sha256.",
+    "Attempted the public test, sealed reference test, and benchmark scripts under independent 10-second time bounds.",
+    "Ran POSIX shell syntax checks on all submitted runner scripts.",
+    "Ran an independent read-only delimiter, lexical-state, package-path, and public-type filename sanity scan over 25 Java files.",
+    "Statically reviewed the starter API, reference lexer/parser/analyzer/emitter, public and sealed tests, adversarial cases, exercises, and validation prose.",
+    "Inspected learner-view separation, generated-material licensing, provenance declarations, runner isolation, and common credential signatures.",
+    "Compared a deterministic candidate tree digest before and after test attempts to confirm the submitted material was unchanged."
+  ],
+  "evidence": [
+    "REVISE: MANIFEST.yaml declares provenance_sha256 0577e5701f5f7125eb6b8c378a0607e95cd98d1253e257593d3b7e739a69319a, but the submitted PROVENANCE.json bytes hash to 7945a3a2b470aff1edc4a632444e43ae0f44bf33b5f2511fc2f5c15e0e8e3797.",
+    "The declared manifest hash equals PROVENANCE.json's embedded snapshot_sha256 field, but that field-to-field equality does not authenticate the provenance file; the candidate's immutable metadata binding PASS wording is therefore unsupported as written.",
+    "java, javac, ecj, jikes, jshell, and Java parser substitutes were unavailable. The three Java runners each exited 127 before compilation, execution, or measurement, so no BUILDS, TESTED, or BENCHMARKED evidence was produced.",
+    "MANIFEST.yaml honestly remains status GENERATED with validation_labels GENERATED and PARTIAL, independent_validation REQUIRED, and productionized false.",
+    "The independent static Java sanity scan passed for 25 files, and shell syntax passed for all three runners; neither result establishes Java compilation or JVM bytecode correctness.",
+    "The submission contains 24 sealed/reference/answer files. No deterministic learner export manifest or transfer-verification evidence demonstrates that these files are excluded from the learner view.",
+    "All three runner scripts invoke javac/java without their own timeout, resource bound, process-group control, or captured-log contract; the reviewer supplied an outer 10-second timeout.",
+    "LICENSE_BOUNDARY.md candidly marks the linked resource NOASSERTION and says it was not copied, but the independently generated artifact has no explicit license grant or SPDX identifier.",
+    "The candidate tree digest was c3c9eb94a71f25b9695cf39ff6966d7349a621e4b4f4b5d22fd59cd34a7e1bb5 both before and after bounded runner attempts."
+  ],
+  "limitations": [
+    "No Java compiler or JVM was available, so source compilation, generated-class loading, verifier behavior, runtime semantics, determinism, defensive-copy behavior, limits, and benchmark behavior remain inconclusive.",
+    "The upstream catalog checkout, linked article, and authoritative ingestion database were outside the review workspace; catalog CC0 evidence and the no-copy/no-paraphrase declaration could not be independently established from submitted files alone.",
+    "No harness-produced learner projection was provided, so progressive-disclosure transfer isolation could only be assessed from paths and prose, not verified end to end.",
+    "The credential scan covered common signatures only and is not a general secret detector.",
+    "No fuzzing, mutation testing, cross-JDK verification, performance measurement, production review, or transfer verification was performed."
+  ],
+  "project_id": "project_0a9558fa302fe4d5561a786b582f9a0e",
+  "verdict": "REVISE"
+}

@@ -1,0 +1,86 @@
+{
+  "course_id": "course_d73e529380112922b713506925cb84ea",
+  "title": "CMU 15-445: Database Systems — Software Engineering Kickoff",
+  "status": "FIRST_UNIT_READY",
+  "unit": {
+    "unit_id": "unit_kickoff_buffer_pool_engineering_v1",
+    "sequence": 1,
+    "title": "Engineering a Small, Testable Buffer Pool",
+    "classification": "manager-authored kickoff",
+    "official_course_unit": false,
+    "estimated_hours": {
+      "minimum": 6,
+      "target": 8,
+      "maximum": 10
+    },
+    "audience": "A learner strong in data structures and algorithms who is building C++ software-engineering practice.",
+    "learning_objectives": [
+      "Turn an informal systems idea into an explicit C++ component contract.",
+      "Implement deterministic fixed-capacity residency, pinning, LRU replacement, dirty-page write-back, and error handling.",
+      "Protect component invariants across ordinary and failure paths.",
+      "Build repeatable tests with a controllable storage test double and document engineering trade-offs.",
+      "Reason about ownership, observable state, complexity, and future concurrency hazards."
+    ],
+    "scope_in": [
+      "A standalone C++17 in-memory buffer-pool model",
+      "An injected page-store boundary and deterministic failure injection",
+      "LRU choice among unpinned pages",
+      "Dirty tracking, explicit flush, and write-back before eviction",
+      "Automated tests, reproducible build commands, and concise design notes",
+      "Written comprehension responses"
+    ],
+    "scope_out": [
+      "The official CMU 15-445 Project #1 specification or starter code",
+      "The complete BusTub buffer pool manager",
+      "Concurrency control, background flushing, real disk I/O, B+ trees, SQL execution, and query optimization",
+      "Any claim of completing CMU 15-445 or its assignments"
+    ],
+    "learner_documents": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "expected_submission_evidence": [
+      "submission/CMakeLists.txt",
+      "submission/include/buffer_pool.h",
+      "submission/src/buffer_pool.cpp",
+      "submission/tests/buffer_pool_test.cpp",
+      "submission/ENGINEERING_NOTES.md",
+      "submission/COMPREHENSION_RESPONSES.md"
+    ]
+  },
+  "completion_policy": {
+    "preparation_is_completion": false,
+    "learner_claim_is_evidence": false,
+    "unit_completion": {
+      "decision_authority": "worker-harness-controlled validator",
+      "requires_all": [
+        "All expected submission evidence is present and attributable to this attempt.",
+        "The documented build and test commands succeed in the validation environment.",
+        "Independent tests confirm the required behavior and invariant preservation.",
+        "An examiner applies examiner_only/RUBRIC.md and records a passing result."
+      ]
+    },
+    "course_completion": {
+      "granted_by_this_unit": false,
+      "reason": "This is one manager-authored kickoff exercise. The catalog estimates a much larger course and does not provide enough retrieved official material to define or validate the whole course."
+    },
+    "promotion_rule": "Only durable validator evidence may promote the unit job; no artifact in this packet may promote the overall course to complete."
+  },
+  "provenance": {
+    "prepared_content_classification": "manager-authored from a catalog snapshot",
+    "catalog": {
+      "adapter": "csdiy",
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "source_name": "CSDIY",
+      "source_type": "course_catalog",
+      "source_license": "MIT",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/数据库系统/15445.en.md",
+      "content_sha256": "5a8cb9d14def1ddfb2ede44d5341595308338a1a4529eb60cf043689aac8cf74",
+      "extractor_version": "1.1",
+      "catalog_schema_version": 1
+    },
+    "claims_boundary": "The snapshot supports course identity, broad themes, resource leads, and aggregate assignment counts. It does not establish the contents, ordering, accessibility, or completion requirements of an official CMU unit. No external resource was retrieved while preparing this packet."
+  }
+}

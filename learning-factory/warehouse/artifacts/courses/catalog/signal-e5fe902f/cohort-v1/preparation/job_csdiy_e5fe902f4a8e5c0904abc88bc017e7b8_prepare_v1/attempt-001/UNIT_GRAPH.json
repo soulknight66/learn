@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "course_id": "course_e5fe902f4a8e5c0904abc88bc017e7b8",
+  "nodes": [
+    {
+      "node_id": "managed_unit_01_finite_signals_lti_engineering",
+      "node_type": "STUDY_UNIT",
+      "title": "Finite Discrete-Time Signals and Reliable Convolution Software",
+      "classification": "COURSE_MANAGER_AUTHORED_KICKOFF",
+      "official_course_unit": false,
+      "availability": "LOCAL_READY",
+      "estimated_human_hours": 8,
+      "status": "READY_FOR_LEARNER"
+    },
+    {
+      "node_id": "unit_70d41092bcdd76b785d4cc93f00933fb",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Catalog overview and resource guide",
+      "source_type": "reading",
+      "source_order": 0,
+      "classification": "CATALOG_METADATA_INPUT",
+      "catalog_claims_official_course_unit": false,
+      "accepted_as_official_study_unit": false,
+      "availability": "SNAPSHOT_METADATA_AVAILABLE",
+      "source_reference": "docs/电子基础/signal.en.md"
+    },
+    {
+      "node_id": "unit_b1f865aedc959a3393d423bfa18c0f0e",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Course Website",
+      "source_type": "reading",
+      "source_order": 15,
+      "classification": "EXTERNAL_RESOURCE_LOCATOR",
+      "catalog_claims_official_course_unit": false,
+      "accepted_as_official_study_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "source_reference": "docs/电子基础/signal.en.md#L15",
+      "urls": [
+        "https://inst.eecs.berkeley.edu/~ee120/fa19/"
+      ]
+    },
+    {
+      "node_id": "unit_2edbdac8cb6e8d462f3c69ac2de0c629",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Recordings",
+      "source_type": "lecture",
+      "source_order": 16,
+      "classification": "UNRESOLVED_RESOURCE_POINTER",
+      "catalog_claims_official_course_unit": false,
+      "accepted_as_official_study_unit": false,
+      "availability": "DESCRIBED_ONLY_NO_DIRECT_LOCATOR",
+      "source_reference": "docs/电子基础/signal.en.md#L16"
+    },
+    {
+      "node_id": "unit_6c0892ce230ccc2ccda96fd28fbf1c02",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Assignments",
+      "source_type": "assignment",
+      "source_order": 17,
+      "classification": "UNRESOLVED_OFFICIAL_RESOURCE_POINTER",
+      "catalog_claims_official_course_unit": true,
+      "accepted_as_official_study_unit": false,
+      "availability": "DESCRIBED_ONLY_NO_DIRECT_LOCATOR",
+      "source_reference": "docs/电子基础/signal.en.md#L17",
+      "classification_note": "The source flag is preserved, but the record names an assignment category rather than an identifiable assignment. It is not promoted to a graph study unit without retrieval and verification."
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "edge_catalog_informs_managed_unit_01",
+      "from": "unit_70d41092bcdd76b785d4cc93f00933fb",
+      "to": "managed_unit_01_finite_signals_lti_engineering",
+      "relation": "INFORMS_SCOPE",
+      "required_for_completion": false
+    },
+    {
+      "edge_id": "edge_website_may_resolve_recordings",
+      "from": "unit_b1f865aedc959a3393d423bfa18c0f0e",
+      "to": "unit_2edbdac8cb6e8d462f3c69ac2de0c629",
+      "relation": "POTENTIAL_RETRIEVAL_PARENT",
+      "required_for_completion": false
+    },
+    {
+      "edge_id": "edge_website_may_resolve_assignments",
+      "from": "unit_b1f865aedc959a3393d423bfa18c0f0e",
+      "to": "unit_6c0892ce230ccc2ccda96fd28fbf1c02",
+      "relation": "POTENTIAL_RETRIEVAL_PARENT",
+      "required_for_completion": false
+    }
+  ],
+  "record_boundary": {
+    "source_statement": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+    "policy": "A normalized record is retained as an input node. It becomes an official study unit only after its identity, content, provenance, availability, and place in the course have been verified.",
+    "normalized_input_node_ids": [
+      "unit_70d41092bcdd76b785d4cc93f00933fb",
+      "unit_b1f865aedc959a3393d423bfa18c0f0e",
+      "unit_2edbdac8cb6e8d462f3c69ac2de0c629",
+      "unit_6c0892ce230ccc2ccda96fd28fbf1c02"
+    ],
+    "official_units_adopted_from_normalized_records": [],
+    "manager_authored_units": [
+      "managed_unit_01_finite_signals_lti_engineering"
+    ],
+    "whole_course_graph_complete": false
+  },
+  "provenance": {
+    "classification": "DERIVED_FROM_SUPPLIED_CATALOG_SNAPSHOT",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_content_sha256": "a60116b62d06ad973233ce92c16c407ac6228533a9fcb4da6cd3fa081c1af904",
+    "network_retrieval_performed": false
+  },
+  "validation": {
+    "label": "STRUCTURE_PREPARED_CONTENT_UNVERIFIED",
+    "whole_course_completion_evidence": false
+  }
+}

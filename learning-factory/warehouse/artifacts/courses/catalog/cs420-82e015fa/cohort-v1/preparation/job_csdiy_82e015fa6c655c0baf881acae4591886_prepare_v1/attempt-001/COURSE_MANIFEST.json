@@ -1,0 +1,75 @@
+{
+  "course_id": "course_82e015fa6c655c0baf881acae4591886",
+  "title": "CS420: Compiler Design",
+  "status": "KICKOFF_READY",
+  "unit": {
+    "unit_id": "managed_unit_01_ast_traversal_engineering",
+    "title": "AST Traversal as an Engineering Component",
+    "ordinal": 1,
+    "designation": "manager_authored_kickoff",
+    "official_course_unit": false,
+    "completion_status": "NOT_ASSESSED",
+    "scope": "A self-contained Rust exercise in designing, testing, and documenting a deterministic AST traversal and outline renderer.",
+    "estimated_human_hours": 6,
+    "audience": "A strong algorithms student building practical software-engineering habits.",
+    "prerequisites": [
+      "Data structures, including trees and recursive traversal",
+      "Basic computer-systems concepts",
+      "Working knowledge of Rust ownership, enums, pattern matching, and Cargo"
+    ],
+    "learning_objectives": [
+      "Turn a traversal requirement into explicit, testable invariants",
+      "Separate tree walking from output policy so each can evolve independently",
+      "Produce deterministic behavior and tests for nested and empty structures",
+      "Use Rust error handling, documentation, and reproducible command evidence",
+      "State integration assumptions without pretending compatibility with unavailable KECC APIs"
+    ],
+    "required_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "deliverables": [
+      "A buildable Rust crate implementing the assigned miniature AST traversal",
+      "Automated tests, including exact-output and structural coverage cases",
+      "DESIGN.md documenting invariants, ownership choices, and integration assumptions",
+      "EVIDENCE.md recording commands actually run and their results",
+      "Written responses to the comprehension prompts"
+    ],
+    "out_of_scope": [
+      "Claiming to implement or match the KECC repository API",
+      "Parsing the full C language",
+      "SSA construction, IR optimization, or RISC-V code generation",
+      "Completing any official KAIST assignment",
+      "Completing the full CS420 course"
+    ]
+  },
+  "completion_policy": {
+    "completion_scope": "THIS_KICKOFF_UNIT_ONLY",
+    "course_completion_conferred": false,
+    "course_status_after_unit_acceptance": "IN_PROGRESS",
+    "requires": [
+      "All declared deliverables are present",
+      "A validator controlled by the worker harness independently builds and tests the submission",
+      "The independent examiner rubric is applied to the submitted evidence",
+      "No unavailable external material is represented as reviewed or completed"
+    ],
+    "validation_authority": "worker_harness_validator",
+    "prohibited_inference": "Acceptance of this unit is evidence only for this bounded kickoff; it is never evidence that CS420, its official homework, recordings, textbooks, or later compiler stages were completed."
+  },
+  "provenance": {
+    "artifact_classification": "manager-authored kickoff derived from catalog metadata",
+    "job_input": "JOB.md",
+    "catalog_adapter": "csdiy",
+    "catalog_extractor_version": "1.1",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_file": "docs/编译原理/CS420.en.md",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_content_sha256": "59d4f57edeab71511e133132a7244d18a8e501a7ed512d62f1587b6515e598fe",
+    "source_license": "MIT",
+    "external_retrieval_performed": false,
+    "provenance_note": "The catalog snapshot supplied the course description and resource locators. No linked repository, video, textbook, or assignment content was fetched or treated as inspected."
+  }
+}

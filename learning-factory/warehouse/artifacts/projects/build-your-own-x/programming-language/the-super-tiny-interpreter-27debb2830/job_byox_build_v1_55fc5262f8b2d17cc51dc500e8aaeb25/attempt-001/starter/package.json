@@ -1,0 +1,13 @@
+{
+  "name": "sprout-language-starter",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "test:public": "node --test ../public_tests/*.test.js"
+  }
+}

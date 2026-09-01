@@ -1,0 +1,139 @@
+{
+  "course_id": "course_be792cfd6c948b9e39c6a62d2751dfc4",
+  "materials": [
+    {
+      "record_id": "unit_9bb5243ea66db01a3f735c2742b58997",
+      "title": "Catalog overview and resource guide",
+      "type": "reading",
+      "source_reference": "docs/深度学习/CS230.en.md",
+      "official_course_unit": false,
+      "catalog_availability": "NOT_STATED",
+      "classified_availability": "CATALOG_METADATA_ONLY",
+      "local_content_available": false,
+      "urls": [],
+      "kickoff_use": "PROVENANCE_ONLY",
+      "classification_reason": "The supplied snapshot contains catalog metadata, but no standalone reading body is present in the attempt workspace."
+    },
+    {
+      "record_id": "unit_421f164fa65671187ef8d03b9b32c279",
+      "title": "Course Website",
+      "type": "reading",
+      "source_reference": "docs/深度学习/CS230.en.md#L15",
+      "official_course_unit": false,
+      "catalog_availability": "LINKED",
+      "classified_availability": "LINK_ONLY_UNVERIFIED",
+      "local_content_available": false,
+      "urls": [
+        "https://www.coursera.org/specializations/deep-learning"
+      ],
+      "kickoff_use": "NOT_REQUIRED",
+      "classification_reason": "A locator is recorded, but its current contents, granularity, access conditions, and license were not retrieved or verified."
+    },
+    {
+      "record_id": "unit_147cd91ce8c45dfd1a13ea3d63606736",
+      "title": "Lecture Videos",
+      "type": "lecture",
+      "source_reference": "docs/深度学习/CS230.en.md#L16",
+      "official_course_unit": false,
+      "catalog_availability": "LINKED",
+      "classified_availability": "LINK_ONLY_UNVERIFIED",
+      "local_content_available": false,
+      "urls": [
+        "https://www.coursera.org/specializations/deep-learning"
+      ],
+      "kickoff_use": "NOT_REQUIRED",
+      "classification_reason": "The record points to a specialization landing page rather than an identified video body. The Bilibili mention supplies no URL and was not searched."
+    },
+    {
+      "record_id": "unit_29d5bc5a8c6ac2ea5b27c75e9ba581d5",
+      "title": "Text Book",
+      "type": "reading",
+      "source_reference": "docs/深度学习/CS230.en.md#L17",
+      "official_course_unit": false,
+      "catalog_availability": "UNAVAILABLE",
+      "classified_availability": "UNAVAILABLE_NO_RESOURCE",
+      "local_content_available": false,
+      "urls": [],
+      "kickoff_use": "NOT_REQUIRED",
+      "classification_reason": "The catalog value is explicitly 'none'; no textbook is claimed or substituted."
+    },
+    {
+      "record_id": "unit_e1b7d198a2e949b224a5364f2a678122",
+      "title": "Assignments",
+      "type": "assignment",
+      "source_reference": "docs/深度学习/CS230.en.md#L18",
+      "official_course_unit": true,
+      "catalog_availability": "LINKED",
+      "classified_availability": "LINK_ONLY_UNVERIFIED",
+      "local_content_available": false,
+      "urls": [
+        "https://www.coursera.org/specializations/deep-learning"
+      ],
+      "kickoff_use": "NOT_REQUIRED",
+      "classification_reason": "The catalog marks the assignment category as official, but provides only a specialization link and no assignment body, identity, dependency, or validated access."
+    }
+  ],
+  "blocked": [
+    {
+      "block_id": "block_catalog_overview_body",
+      "record_ids": [
+        "unit_9bb5243ea66db01a3f735c2742b58997"
+      ],
+      "reason": "The referenced source reading is not present as local learner material.",
+      "effect": "It cannot be assigned as a reading in this unit."
+    },
+    {
+      "block_id": "block_lecture_bodies",
+      "record_ids": [
+        "unit_147cd91ce8c45dfd1a13ea3d63606736"
+      ],
+      "reason": "No identified lecture files, transcripts, or stable per-lecture locators are available locally; access conditions are unverified.",
+      "effect": "Lectures cannot yet be scheduled or credited."
+    },
+    {
+      "block_id": "block_textbook",
+      "record_ids": [
+        "unit_29d5bc5a8c6ac2ea5b27c75e9ba581d5"
+      ],
+      "reason": "The catalog explicitly reports no textbook.",
+      "effect": "Later expansion must not invent or imply an official textbook."
+    },
+    {
+      "block_id": "block_assignment_bodies",
+      "record_ids": [
+        "unit_e1b7d198a2e949b224a5364f2a678122"
+      ],
+      "reason": "No assignment body or submission contract is present, and enrollment or other access requirements may apply.",
+      "effect": "Official assignments cannot yet be scheduled, reproduced, or treated as completed."
+    },
+    {
+      "block_id": "block_full_course_map",
+      "record_ids": [
+        "unit_421f164fa65671187ef8d03b9b32c279",
+        "unit_147cd91ce8c45dfd1a13ea3d63606736",
+        "unit_e1b7d198a2e949b224a5364f2a678122"
+      ],
+      "reason": "The snapshot does not provide a verified syllabus, sequence, version, or unit-level dependency map.",
+      "effect": "Only the manager-authored kickoff may be prepared; whole-course expansion remains a later job."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job_mode": "METADATA_ONLY_NO_FETCH",
+    "current_job_network_retrieval_performed": false,
+    "rules": [
+      "Treat a URL as a locator, never as evidence that its content is locally available, licensed, current, or learner-accessible.",
+      "Do not bypass authentication, enrollment, paywalls, robots controls, access controls, or other restrictions.",
+      "Do not fetch or reproduce restricted course pages, lectures, transcripts, or assignments.",
+      "A later authorized retrieval job may ingest only content it is permitted to access and redistribute.",
+      "Every retrieved artifact must record its resolved URL, retrieval time, content hash, license or usage basis, access classification, and validator result.",
+      "Keep failed retrievals and unresolved access conditions explicit; do not silently replace unavailable official material with unofficial material.",
+      "Only after deterministic validation may a material record become an AVAILABLE dependency of a scheduled unit."
+    ],
+    "expansion_requirements": [
+      "Resolve the exact course or specialization version and official unit identities.",
+      "Classify each resource as public, enrollment-gated, paid, unavailable, or locally supplied.",
+      "Obtain authorized content or create clearly labeled manager-authored alternatives.",
+      "Record dependencies and validation evidence before adding later units to UNIT_GRAPH.json."
+    ]
+  }
+}

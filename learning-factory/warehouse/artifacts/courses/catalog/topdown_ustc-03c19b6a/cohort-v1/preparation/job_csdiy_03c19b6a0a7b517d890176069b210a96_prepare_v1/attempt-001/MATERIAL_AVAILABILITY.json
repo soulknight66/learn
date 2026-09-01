@@ -1,0 +1,140 @@
+{
+  "course_id": "course_03c19b6a0a7b517d890176069b210a96",
+  "materials": [
+    {
+      "material_id": "unit_a939be395296b2f37c3721b798d562c7",
+      "title": "Catalog overview and resource guide",
+      "kind": "catalog_metadata",
+      "source_reference": "docs/计算机网络/topdown_ustc.en.md",
+      "locator": null,
+      "catalog_availability": "PRESENT_AS_NORMALIZED_RECORD",
+      "verified_availability": "METADATA_AVAILABLE_CONTENT_NOT_PRESENT",
+      "retrieved": false,
+      "integrity_verified": false,
+      "official_course_unit": false,
+      "required_for_kickoff": false,
+      "notes": "The preparation job supplies a catalog snapshot, but the underlying Markdown source file is not present in this attempt workspace."
+    },
+    {
+      "material_id": "unit_7d7a176ff74ec3c81d56d334f315e2ed",
+      "title": "Course Website",
+      "kind": "website",
+      "source_reference": "docs/计算机网络/topdown_ustc.en.md#L20",
+      "locator": "http://staff.ustc.edu.cn/~qzheng/teaching.html",
+      "catalog_availability": "LINKED",
+      "verified_availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "integrity_verified": false,
+      "official_course_unit": false,
+      "required_for_kickoff": false,
+      "notes": "The URL is catalog data. Reachability, current ownership, contents, language, license, and syllabus structure have not been verified."
+    },
+    {
+      "material_id": "unit_d71e26b04d07e9b3dd0e75f6d5077e0f",
+      "title": "Recordings",
+      "kind": "lecture_collection",
+      "source_reference": "docs/计算机网络/topdown_ustc.en.md#L21",
+      "locator": "https://www.bilibili.com/video/BV1JV411t7ow/",
+      "catalog_availability": "LINKED",
+      "verified_availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "integrity_verified": false,
+      "official_course_unit": false,
+      "required_for_kickoff": false,
+      "notes": "The catalog describes lecture recordings. Playlist order, accessibility, captions, licensing, and content have not been verified."
+    },
+    {
+      "material_id": "unit_e8c0e7d31eb08a89f375b42afe335cd8",
+      "title": "Slides",
+      "kind": "slide_archive",
+      "source_reference": "docs/计算机网络/topdown_ustc.en.md#L22",
+      "locator": "http://staff.ustc.edu.cn/~qzheng/cn.zip",
+      "catalog_availability": "LINKED",
+      "verified_availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "integrity_verified": false,
+      "official_course_unit": false,
+      "required_for_kickoff": false,
+      "notes": "The archive was not downloaded or opened. Its format, safety, contents, license, and correspondence to recordings are unknown."
+    },
+    {
+      "material_id": "unit_817ff2d5bd9c284da2b1339c61c0c21d",
+      "title": "Computer Networking: A Top-Down Approach, 7th Edition",
+      "kind": "textbook",
+      "source_reference": "docs/计算机网络/topdown_ustc.en.md#L23",
+      "locator": null,
+      "catalog_availability": "DESCRIBED",
+      "verified_availability": "BIBLIOGRAPHIC_REFERENCE_ONLY",
+      "retrieved": false,
+      "integrity_verified": false,
+      "official_course_unit": false,
+      "required_for_kickoff": false,
+      "notes": "No licensed copy, excerpt, edition verification, or chapter mapping was supplied. The catalog recommendation does not establish lawful availability."
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_a939be395296b2f37c3721b798d562c7",
+      "blocked_scope": "underlying_catalog_file",
+      "reason_code": "SOURCE_FILE_NOT_PRESENT_IN_ATTEMPT",
+      "retryable": true,
+      "unblocking_condition": "A later ingestion job copies the authorized source file and verifies it against the recorded commit and SHA-256."
+    },
+    {
+      "material_id": "unit_7d7a176ff74ec3c81d56d334f315e2ed",
+      "blocked_scope": "remote_content",
+      "reason_code": "EXTERNAL_LINK_NOT_RETRIEVED_OR_VERIFIED",
+      "retryable": true,
+      "unblocking_condition": "An authorized retrieval job checks reachability, ownership, license, provenance, and content without bypassing access controls."
+    },
+    {
+      "material_id": "unit_d71e26b04d07e9b3dd0e75f6d5077e0f",
+      "blocked_scope": "remote_video_content",
+      "reason_code": "EXTERNAL_LINK_NOT_RETRIEVED_OR_VERIFIED",
+      "retryable": true,
+      "unblocking_condition": "An authorized retrieval job confirms lawful access and records stable item-level metadata and validation evidence."
+    },
+    {
+      "material_id": "unit_e8c0e7d31eb08a89f375b42afe335cd8",
+      "blocked_scope": "remote_archive_content",
+      "reason_code": "ARCHIVE_NOT_RETRIEVED_OR_SAFETY_CHECKED",
+      "retryable": true,
+      "unblocking_condition": "An authorized retrieval job downloads into quarantine, records a digest, scans and safely extracts the archive, and classifies its files."
+    },
+    {
+      "material_id": "unit_817ff2d5bd9c284da2b1339c61c0c21d",
+      "blocked_scope": "full_text",
+      "reason_code": "LICENSED_COPY_NOT_SUPPLIED",
+      "retryable": true,
+      "unblocking_condition": "The learner or institution supplies lawful access; a later job may record metadata or permitted excerpts but must not copy restricted text into learner artifacts."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": "Classify catalog metadata only. Do not fetch remote or restricted content.",
+    "default_for_links": "A URL is evidence of a catalog pointer, not evidence of availability, integrity, license, content, or official unit status.",
+    "later_jobs_may": [
+      "Retrieve public materials only when explicitly authorized and permitted by their access and license terms.",
+      "Record final URL, retrieval result, content digest, media type, size, license evidence, and provenance.",
+      "Quarantine and inspect archives before exposing extracted files.",
+      "Ask for learner- or institution-provided lawful access when a required work is restricted."
+    ],
+    "later_jobs_must_not": [
+      "Bypass authentication, paywalls, geographic controls, robots restrictions, or technical access controls.",
+      "Treat a bibliographic citation or catalog description as possession of the work.",
+      "Expose secrets, sealed references, hidden grader material, or files from another learner.",
+      "Promote a normalized resource record into an official unit solely because it has a title, order, or URL."
+    ],
+    "promotion_rule": "Material may support later unit expansion only after deterministic availability and provenance checks; official sequencing additionally requires syllabus-level evidence.",
+    "fallback": "If retrieval remains unavailable, build only explicitly manager-authored, self-contained units and keep the missing dependency visible."
+  },
+  "provenance": {
+    "catalog_source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "catalog_source_file": "docs/计算机网络/topdown_ustc.en.md",
+    "catalog_source_content_sha256": "c00a06e9146c9538c448d2072b1216ec46be52b28a333a52638e748f28405c5d",
+    "classification_basis": "catalog snapshot and normalized resource records supplied to the preparation job"
+  },
+  "validation": {
+    "label": "CLASSIFIED_FROM_SNAPSHOT_NOT_RETRIEVAL_VERIFIED",
+    "validated_by": null
+  }
+}

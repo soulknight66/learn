@@ -1,0 +1,55 @@
+{
+  "course_id": "course_5bf62d4dddae9f5a6b22345e1e5aa955",
+  "title": "UCB CS169: software engineering",
+  "status": "KICKOFF_READY_COURSE_INCOMPLETE",
+  "unit": {
+    "unit_id": "kickoff_dependency_planner_vertical_slice_v1",
+    "title": "From Correct Algorithm to Reliable Service: A Dependency-Planner Vertical Slice",
+    "status": "READY",
+    "scope": "One manager-authored kickoff unit, not an official CS169 unit or a reconstruction of the full course.",
+    "official_course_unit": false,
+    "estimated_human_hours": 6,
+    "audience": "A strong algorithms student beginning deliberate software-engineering practice.",
+    "learning_objectives": [
+      "Translate a small user need into an explicit service contract and acceptance scenarios.",
+      "Wrap a familiar dependency-ordering algorithm in a deterministic HTTP boundary.",
+      "Use automated tests to cover normal, invalid, and failure behavior.",
+      "Make a small implementation reproducible and reviewable through documentation and captured evidence.",
+      "Distinguish evidence for one completed slice from evidence for course completion."
+    ],
+    "learner_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "examiner_material": "examiner_only/RUBRIC.md"
+  },
+  "completion_policy": {
+    "scope": "UNIT_ONLY",
+    "course_completion_allowed": false,
+    "unit_completion_requires": [
+      "A runnable implementation satisfying the specified service contract.",
+      "Automated tests with reproducible passing output for required behavior and edge cases.",
+      "Learner-authored engineering documentation and comprehension responses.",
+      "Independent evaluation using examiner_only/RUBRIC.md."
+    ],
+    "evidence_rule": "Files, executable checks, and validator-observed results are evidence; a learner or agent prose claim is not.",
+    "promotion_authority": "Only the worker-harness-controlled validator may promote this unit to completed.",
+    "effect_of_unit_pass": "A pass completes only kickoff_dependency_planner_vertical_slice_v1 and leaves the course incomplete.",
+    "whole_course_policy": "No whole-course completion condition is defined by this preparation job. Later jobs must retrieve, classify, sequence, and validate additional units before making any broader claim."
+  },
+  "provenance": {
+    "classification": "course-manager-authored-from-catalog-snapshot",
+    "input_scope": "The catalog snapshot embedded in the preparation job; no external content was retrieved.",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_file": "docs/软件工程/CS169.en.md",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "content_sha256": "08872bfcb287f942ae49c3b12a0f8d3c28069f735698b9efb1b6d505eea17d62",
+    "adapter": "csdiy",
+    "extractor_version": "1.1",
+    "catalog_license": "MIT",
+    "external_retrieval_performed": false
+  }
+}

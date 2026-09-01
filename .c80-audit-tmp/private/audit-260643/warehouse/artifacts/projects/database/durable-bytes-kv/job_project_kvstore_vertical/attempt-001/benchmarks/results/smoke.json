@@ -1,0 +1,38 @@
+{
+  "environment": {
+    "implementation": "CPython",
+    "platform": "Linux-4.18.0-553.el8_10.x86_64-x86_64-with-glibc2.28",
+    "python": "3.11.5"
+  },
+  "hypothesis": "Observability bookkeeping adds modest write overhead without changing format size.",
+  "parameters": {
+    "operations": 500,
+    "sync": false,
+    "value_bytes": 100
+  },
+  "raw_results": {
+    "production": {
+      "file_bytes": 124100,
+      "open_ns": 97680,
+      "operations": 500,
+      "read_ns_per_op": 554.474,
+      "read_total_ns": 277237,
+      "write_ns_per_op": 13360.856,
+      "write_total_ns": 6680428
+    },
+    "reference": {
+      "file_bytes": 124100,
+      "open_ns": 90092,
+      "operations": 500,
+      "read_ns_per_op": 547.178,
+      "read_total_ns": 273589,
+      "write_ns_per_op": 13436.702,
+      "write_total_ns": 6718351
+    }
+  },
+  "schema_version": 1,
+  "summary": {
+    "note": "Smoke result from this execution; rerun and profile before generalizing.",
+    "production_to_reference_write_ratio": 0.9943553112958821
+  }
+}

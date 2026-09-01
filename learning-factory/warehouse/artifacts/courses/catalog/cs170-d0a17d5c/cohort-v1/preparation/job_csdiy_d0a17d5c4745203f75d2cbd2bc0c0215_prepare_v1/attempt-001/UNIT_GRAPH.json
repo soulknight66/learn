@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "course_id": "course_d0a17d5c4745203f75d2cbd2bc0c0215",
+  "nodes": [
+    {
+      "node_id": "unit_manager_kickoff_inversion_counting_v1",
+      "kind": "study_unit",
+      "title": "Inversion Counting: From Algorithm to Reliable Component",
+      "status": "READY",
+      "origin": "course-manager-authored",
+      "official_course_unit": false,
+      "bounded": true,
+      "promoted_to_unit": true
+    },
+    {
+      "node_id": "unit_75ffce4e9741ead8f38d074b32904343",
+      "kind": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "resource_type": "reading",
+      "classification": "CATALOG_METADATA",
+      "availability": "AVAILABLE_IN_JOB_INPUT",
+      "source_official_course_unit": false,
+      "promoted_to_unit": false,
+      "source_reference": "docs/数据结构与算法/CS170.en.md"
+    },
+    {
+      "node_id": "unit_1e4e80cbab728292484daad20811d6a1",
+      "kind": "normalized_resource_record",
+      "title": "Course Website",
+      "resource_type": "reading",
+      "classification": "EXTERNAL_RESOURCE_LINK",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "source_official_course_unit": false,
+      "promoted_to_unit": false,
+      "source_reference": "docs/数据结构与算法/CS170.en.md#L17"
+    },
+    {
+      "node_id": "unit_464e09281fbd7877bcb9de61f69a59e0",
+      "kind": "normalized_resource_record",
+      "title": "Recordings",
+      "resource_type": "lecture",
+      "classification": "EXTERNAL_RESOURCE_LINK",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "source_official_course_unit": false,
+      "promoted_to_unit": false,
+      "source_reference": "docs/数据结构与算法/CS170.en.md#L18"
+    },
+    {
+      "node_id": "unit_aee3554377b967384ed4d4db26889796",
+      "kind": "normalized_resource_record",
+      "title": "Recordings",
+      "resource_type": "lecture",
+      "classification": "DESCRIPTION_ONLY_REFERENCE",
+      "availability": "UNAVAILABLE_NO_LOCATOR",
+      "source_official_course_unit": false,
+      "promoted_to_unit": false,
+      "source_reference": "docs/数据结构与算法/CS170.en.md#L19"
+    },
+    {
+      "node_id": "unit_6bc900afe4e4a816dfb9e00a15e26e9d",
+      "kind": "normalized_resource_record",
+      "title": "Assignments",
+      "resource_type": "assignment",
+      "classification": "OFFICIAL_RESOURCE_DESCRIPTION",
+      "availability": "UNAVAILABLE_NO_LOCATOR",
+      "source_official_course_unit": true,
+      "promoted_to_unit": false,
+      "source_reference": "docs/数据结构与算法/CS170.en.md#L20",
+      "classification_note": "The source flag is preserved, but the generic description does not identify a concrete assignment, order, contents, or dependency and therefore is not a usable graph unit."
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_manager_kickoff_inversion_counting_v1",
+      "to": "unit_75ffce4e9741ead8f38d074b32904343",
+      "relation": "scope_informed_by",
+      "required_for_study": false
+    },
+    {
+      "from": "unit_75ffce4e9741ead8f38d074b32904343",
+      "to": "unit_1e4e80cbab728292484daad20811d6a1",
+      "relation": "catalog_lists",
+      "required_for_study": false
+    },
+    {
+      "from": "unit_75ffce4e9741ead8f38d074b32904343",
+      "to": "unit_464e09281fbd7877bcb9de61f69a59e0",
+      "relation": "catalog_lists",
+      "required_for_study": false
+    },
+    {
+      "from": "unit_75ffce4e9741ead8f38d074b32904343",
+      "to": "unit_aee3554377b967384ed4d4db26889796",
+      "relation": "catalog_describes",
+      "required_for_study": false
+    },
+    {
+      "from": "unit_75ffce4e9741ead8f38d074b32904343",
+      "to": "unit_6bc900afe4e4a816dfb9e00a15e26e9d",
+      "relation": "catalog_describes",
+      "required_for_study": false
+    }
+  ],
+  "record_boundary": "Normalized records are classification inputs and may be catalog links or generic descriptions rather than official course units. A source flag is retained as evidence about the record, but no record is promoted to a study unit without verified identity, content, ordering, dependencies, availability, and provenance. In this graph only the explicitly manager-authored kickoff node is a runnable unit."
+}

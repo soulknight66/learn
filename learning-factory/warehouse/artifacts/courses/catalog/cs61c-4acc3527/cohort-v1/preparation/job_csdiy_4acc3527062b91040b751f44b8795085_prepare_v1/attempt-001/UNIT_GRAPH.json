@@ -1,0 +1,115 @@
+{
+  "course_id": "course_4acc3527062b91040b751f44b8795085",
+  "nodes": [
+    {
+      "node_id": "catalog_record_unit_238cde0680e335f78bce51726663e57f",
+      "kind": "NORMALIZED_RESOURCE_INPUT",
+      "title": "Catalog overview and resource guide",
+      "classification": "AVAILABLE_SNAPSHOT_METADATA_ONLY",
+      "catalog_official_course_unit_claim": false,
+      "admitted_as_course_unit": false,
+      "source_reference": "docs/体系结构/CS61C.en.md"
+    },
+    {
+      "node_id": "catalog_record_unit_060f033433eec78a4f1997f8562fec29",
+      "kind": "NORMALIZED_RESOURCE_INPUT",
+      "title": "Recordings",
+      "classification": "LINK_ONLY_NOT_RETRIEVED",
+      "catalog_official_course_unit_claim": false,
+      "admitted_as_course_unit": false,
+      "source_reference": "docs/体系结构/CS61C.en.md#L21"
+    },
+    {
+      "node_id": "catalog_record_unit_e37cf8ae547d4ed99894065d3d4a0933",
+      "kind": "NORMALIZED_RESOURCE_INPUT",
+      "title": "Assignments",
+      "classification": "LINK_ONLY_PENDING_PROVENANCE_AND_LEARNER_SAFETY_REVIEW",
+      "catalog_official_course_unit_claim": true,
+      "admitted_as_course_unit": false,
+      "source_reference": "docs/体系结构/CS61C.en.md#L22"
+    },
+    {
+      "node_id": "kickoff_c_index_v1",
+      "kind": "MANAGER_AUTHORED_UNIT",
+      "title": "C Systems Kickoff: A Verified Integer Index",
+      "status": "READY_FOR_LEARNER",
+      "official_course_unit": false,
+      "bounded": true
+    },
+    {
+      "node_id": "kickoff_contract",
+      "kind": "UNIT_STAGE",
+      "title": "Read the contract and record design decisions"
+    },
+    {
+      "node_id": "kickoff_implement",
+      "kind": "UNIT_STAGE",
+      "title": "Implement the C library and CLI"
+    },
+    {
+      "node_id": "kickoff_verify",
+      "kind": "UNIT_STAGE",
+      "title": "Run deterministic tests and dynamic checks"
+    },
+    {
+      "node_id": "kickoff_explain",
+      "kind": "UNIT_STAGE",
+      "title": "Submit engineering evidence and comprehension responses"
+    }
+  ],
+  "edges": [
+    {
+      "from": "catalog_record_unit_238cde0680e335f78bce51726663e57f",
+      "to": "kickoff_c_index_v1",
+      "relation": "INFORMS_SCOPE_ONLY"
+    },
+    {
+      "from": "kickoff_c_index_v1",
+      "to": "kickoff_contract",
+      "relation": "CONTAINS_STAGE"
+    },
+    {
+      "from": "kickoff_c_index_v1",
+      "to": "kickoff_implement",
+      "relation": "CONTAINS_STAGE"
+    },
+    {
+      "from": "kickoff_c_index_v1",
+      "to": "kickoff_verify",
+      "relation": "CONTAINS_STAGE"
+    },
+    {
+      "from": "kickoff_c_index_v1",
+      "to": "kickoff_explain",
+      "relation": "CONTAINS_STAGE"
+    },
+    {
+      "from": "kickoff_contract",
+      "to": "kickoff_implement",
+      "relation": "PRECEDES"
+    },
+    {
+      "from": "kickoff_implement",
+      "to": "kickoff_verify",
+      "relation": "PRECEDES"
+    },
+    {
+      "from": "kickoff_verify",
+      "to": "kickoff_explain",
+      "relation": "PRECEDES"
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "provenance": {
+    "classification": "MANAGER_DERIVED_FROM_CATALOG_SNAPSHOT",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_content_sha256": "b10c610042142bd493fb78bfc461d920b689d72f4bef9d68adad5cb1f909b049",
+    "external_content_retrieved": false
+  },
+  "validation": {
+    "label": "AWAITING_WORKER_HARNESS_VALIDATION",
+    "edge_references_checked": true,
+    "completion_promotion_authorized": false
+  }
+}

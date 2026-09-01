@@ -1,0 +1,89 @@
+{
+  "course_id": "course_3522e333dd9314d807226abfe69c21d3",
+  "nodes": [
+    {
+      "node_id": "managed_unit_01_relational_pipeline",
+      "node_type": "managed_study_unit",
+      "title": "Contract-Driven Relational Operator Pipeline",
+      "classification": "manager_authored_kickoff",
+      "official_course_unit": false,
+      "status": "READY_FOR_LEARNER",
+      "sequence": 1,
+      "material_dependencies": [
+        "local_course_brief",
+        "local_study_task",
+        "local_comprehension"
+      ]
+    },
+    {
+      "node_id": "unit_3f36cd7daeaaafc64383653546b5455a",
+      "node_type": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "source_type": "reading",
+      "manager_classification": "catalog_metadata_input",
+      "source_claim_official_course_unit": false,
+      "promoted_to_managed_unit": false,
+      "availability": "METADATA_ONLY"
+    },
+    {
+      "node_id": "unit_4fdc572d8adfe793f815ce40f67018b0",
+      "node_type": "normalized_resource_record",
+      "title": "Course Website",
+      "source_type": "reading",
+      "manager_classification": "external_resource_locator",
+      "source_claim_official_course_unit": false,
+      "promoted_to_managed_unit": false,
+      "availability": "LINKED_UNRETRIEVED"
+    },
+    {
+      "node_id": "unit_6e31bb36841e891ebeb553a0b506fb9d",
+      "node_type": "normalized_resource_record",
+      "title": "Recordings",
+      "source_type": "lecture",
+      "manager_classification": "external_playlist_locator",
+      "source_claim_official_course_unit": false,
+      "promoted_to_managed_unit": false,
+      "availability": "LINKED_UNRETRIEVED"
+    },
+    {
+      "node_id": "unit_826950e96a3b44413703fbc5a72fb33b",
+      "node_type": "normalized_resource_record",
+      "title": "Assignments",
+      "source_type": "assignment",
+      "manager_classification": "external_assignment_index_candidate",
+      "source_claim_official_course_unit": true,
+      "promoted_to_managed_unit": false,
+      "availability": "LINKED_UNRETRIEVED",
+      "classification_note": "The snapshot flag is retained as a source claim, but the linked index was not retrieved or decomposed into verified official units."
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_3f36cd7daeaaafc64383653546b5455a",
+      "to": "managed_unit_01_relational_pipeline",
+      "relation": "catalog_metadata_informs_scope",
+      "dependency": false,
+      "note": "This edge records provenance influence only; it does not promote the resource record to a unit."
+    }
+  ],
+  "record_boundary": {
+    "policy": "Normalized records may be catalog resource links rather than official course units; each record must be classified for content, authority, and availability before promotion.",
+    "input_record_count": 4,
+    "promoted_normalized_record_ids": [],
+    "manager_authored_unit_ids": [
+      "managed_unit_01_relational_pipeline"
+    ],
+    "external_content_retrieved": false,
+    "boundary_result": "One non-official kickoff is prepared. No normalized resource record is treated as a verified course unit.",
+    "future_expansion_rule": "Add a later unit only after authorized retrieval, content-level classification, provenance capture, learner/examiner separation, and independent validation planning."
+  },
+  "provenance": {
+    "input": "Supplied CSDIY catalog snapshot",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/数据库系统/CS186.en.md",
+    "content_sha256": "897b6844818f67e51d87cd14dfacd84e3359243fa478e87faf55c2a4bd6778ff",
+    "manager_authored_graph": true,
+    "external_retrieval_performed": false
+  },
+  "validation_label": "STRUCTURE_CHECKED_KICKOFF_GRAPH_NOT_COURSE_COMPLETION"
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Productionize Project"
+  short_description: "Turn an academic build into shippable code"
+  default_prompt: "Use $productionize-project to review and productionize this working educational project."

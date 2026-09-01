@@ -1,0 +1,36 @@
+{
+  "builder_job_id": "job_byox_build_v1_92c6d6b7201d4d460ce04f69dcffd19c",
+  "checks_run": [
+    "Inventoried all 47 submitted files and inspected all learner, evaluator, implementation, test, metadata, license, provenance, and validation material.",
+    "Compiled all 22 Ruby source and executable files with Ruby 2.5.9; compilation exited 0.",
+    "Ran the starter public suite with a 15-second bound: 0/8 passed and exit 1, matching the documented intentionally incomplete scaffold.",
+    "Ran the public suite against the sealed reference with a 15-second bound: 8/8 passed and exit 0.",
+    "Ran the sealed reference suite with a 20-second bound: 14 passed, 1 TCP case skipped, 0 failed, exit 0.",
+    "Ran a reviewer-authored protocol harness from independent wire bytes: 5/5 checks passed and exit 0.",
+    "Ran the deterministic adversarial runner with a 15-second bound: 54 checks passed and exit 0; this was not treated as fuzzing.",
+    "Ran the candidate packaging gate with a 15-second bound: exit 0, then audited its required-path coverage independently.",
+    "Probed loopback TCP with a 5-second bound: socket creation failed with Errno::EPERM and exit 1.",
+    "Audited manifest/provenance consistency, artifact hashes, validation-label language, file types/modes, sealed-path readability, public-test coverage, CLI parity, signal handling, and generated-material licensing."
+  ],
+  "evidence": [
+    "The manifest is conservatively labeled GENERATED and PARTIAL, requires independent validation, sets productionized=false, and claims none of BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED.",
+    "The builder's documented local outcomes reproduced: reference public 8/8, sealed 14 pass plus 1 honest TCP skip, adversarial 54, packaging gate pass, and starter public 0/8 by design.",
+    "Independent known-wire checks passed for an RFC masked Hello frame, canonical 16-bit framing, duplicate-header preservation, upgrade read-ahead, protocol close 1002, and a bounded silent-handshake timeout.",
+    "All 47 candidate entries are regular files; no symlink, special file, or world-writable file was found.",
+    "The project ID, source ID, source commit, and embedded snapshot identifier agree between manifest and provenance.",
+    "Sealed design answers, exercise answers, reference code, and evaluator tests are directly readable in the submitted tree; no deterministic materialized-student-view check establishes that sealed/** is withheld.",
+    "The starter CLI omits --handshake-timeout and --read-timeout although the reference exposes them, and its direct signal-trap call to a synchronized stop reproduces ThreadError: can't be called from trap context.",
+    "The eight-case public runner has zero TinyWS::Connection and zero TinyWS::Server references despite documentation claiming basic connection-state coverage.",
+    "The packaging gate's REQUIRED list omits core starter/reference entry points and test/adversarial runners, so its successful structure result is not evidence that a functional pack is complete.",
+    "A handler-raised TinyWS::ProtocolError(1008) was converted into a wire close 1008 and a normal worker return, suppressing an application failure as though it were peer input.",
+    "The linked-resource boundary is candidly NOASSERTION and no vendored dependency was found, but the generated artifact has no explicit license grant or LICENSE/COPYING file."
+  ],
+  "limitations": [
+    "TCP bind/accept, admission control, real-network teardown, and end-to-end server shutdown were inconclusive because this sandbox rejects loopback socket creation with Errno::EPERM.",
+    "The catalog source snapshot and linked upstream article were outside the permitted workspace and network access was unavailable, so source-license evidence and the no-copying assertion could not be independently corroborated.",
+    "No external RFC 6455 conformance suite, alternate Ruby runtime, coverage tool, fuzzer, profiler, benchmark, security review, deployment, or transfer environment was available.",
+    "The manifest provenance value equals the embedded snapshot identifier but not the SHA-256 of PROVENANCE.json; without a digest definition or authoritative external snapshot, provenance authenticity remains unverified."
+  ],
+  "project_id": "project_0481ac5d3348b421d2f9d5d0c6d52ecb",
+  "verdict": "REVISE"
+}

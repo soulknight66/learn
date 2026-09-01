@@ -1,0 +1,24 @@
+Subject: improve read latency with cache and background compaction
+
++ self.cache = {}
++ self.compactor = Thread(target=self._compact_forever)
++ self.compactor.start()
+
+  def get(self, key):
++     if key in self.cache:
++         return self.cache[key]
+      with self._lock:
+-         return self._data.get(key)
++         value = self._data.get(key)
++         self.cache[key] = value
++         return value
+
+  def delete(self, key):
+      with self._lock:
+          ...
++     # cache invalidation will be added later
+
+  def _compact_forever(self):
+      while True:
+          sleep(60)
+          self.compact()

@@ -1,0 +1,61 @@
+{
+  "course_id": "course_079fb47dd187d35337e03301b41db7a8",
+  "title": "Introductory C Programming Specialization",
+  "status": "KICKOFF_PREPARED",
+  "validation_label": "PREPARED_FIRST_UNIT_ONLY_NOT_VALIDATED",
+  "unit": {
+    "unit_id": "kickoff_c_memory_engineering_v1",
+    "title": "Kickoff: Ownership, Dynamic Memory, and Debuggable C",
+    "status": "READY",
+    "scope": "BOUNDED_FIRST_STUDY_UNIT",
+    "authorship": "course-manager-authored",
+    "official_course_unit": false,
+    "estimated_hours": 7,
+    "learner_profile": "A strong algorithms student building practical software-engineering habits in C",
+    "learning_objectives": [
+      "State and maintain ownership and lifetime invariants for a heap-backed C data structure",
+      "Implement a small C component with explicit API contracts and failure behavior",
+      "Use compiler diagnostics, tests, GDB, and a memory checker to produce reproducible debugging evidence",
+      "Make a small, reviewable Git history and document engineering decisions"
+    ],
+    "student_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "examiner_material": "examiner_only/RUBRIC.md"
+  },
+  "completion_policy": {
+    "unit_completion_is_course_completion": false,
+    "prepared_scope": "Only kickoff_c_memory_engineering_v1 is prepared by this job.",
+    "unit_completion_requires": [
+      "All deliverables named in student_safe/STUDY_TASK.md are present",
+      "The submitted program is built and exercised by validator-controlled checks",
+      "The debugging record and comprehension responses are independently assessed"
+    ],
+    "course_completion_requires": "Later jobs must retrieve and classify the actual course structure and materials, prepare additional units, and validate each required unit before whole-course completion can be considered.",
+    "promotion_authority": "worker-harness-controlled validator",
+    "prohibited_inferences": [
+      "Preparing this kickoff does not prove that the learner started or completed the Duke/Coursera specialization.",
+      "Completing this kickoff does not prove completion of any official Duke/Coursera assignment or of the whole course.",
+      "Catalog discovery and external links do not prove material access or completion."
+    ]
+  },
+  "provenance": {
+    "classification": "course-manager-derived",
+    "catalog_schema_version": 1,
+    "catalog_status_at_preparation": "DISCOVERED",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/编程入门/C/Duke-Coursera-Intro-C.en.md",
+    "source_content_sha256": "ae8c6ef3cd06e925e51b5dd697bce46d983210fae47fb1b1970f08ea28b664a1",
+    "adapter": "csdiy",
+    "extractor_version": "1.1",
+    "source_license": "MIT",
+    "derivation_note": "The source snapshot identifies themes and resource references. The bounded kickoff, task, questions, and rubric were authored for this preparation job and are not reproduced official course content.",
+    "external_retrieval_performed": false,
+    "restricted_content_included": false
+  }
+}

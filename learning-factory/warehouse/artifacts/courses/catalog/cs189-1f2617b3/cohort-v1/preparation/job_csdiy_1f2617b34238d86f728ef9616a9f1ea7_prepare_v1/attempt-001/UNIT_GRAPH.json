@@ -1,0 +1,138 @@
+{
+  "course_id": "course_1f2617b34238d86f728ef9616a9f1ea7",
+  "nodes": [
+    {
+      "node_id": "kickoff_01_reproducible_knn",
+      "node_type": "study_unit",
+      "title": "Engineering a Reproducible k-Nearest-Neighbors Pipeline",
+      "status": "READY",
+      "official_course_unit": false,
+      "origin": "course_manager_authored"
+    },
+    {
+      "node_id": "kickoff_01_specify",
+      "node_type": "activity",
+      "title": "Extract deterministic model and data contracts",
+      "parent_unit_id": "kickoff_01_reproducible_knn",
+      "status": "READY"
+    },
+    {
+      "node_id": "kickoff_01_build",
+      "node_type": "activity",
+      "title": "Implement the classifier and experiment runner",
+      "parent_unit_id": "kickoff_01_reproducible_knn",
+      "status": "READY"
+    },
+    {
+      "node_id": "kickoff_01_verify",
+      "node_type": "activity",
+      "title": "Test edge cases, isolation, and byte-stable reproduction",
+      "parent_unit_id": "kickoff_01_reproducible_knn",
+      "status": "READY"
+    },
+    {
+      "node_id": "kickoff_01_explain",
+      "node_type": "activity",
+      "title": "Explain algorithmic and engineering tradeoffs",
+      "parent_unit_id": "kickoff_01_reproducible_knn",
+      "status": "READY"
+    },
+    {
+      "node_id": "record:unit_464397105793d8d5e89f8fdfc1b68457",
+      "node_type": "normalized_resource_record",
+      "source_record_id": "unit_464397105793d8d5e89f8fdfc1b68457",
+      "title": "Catalog overview and resource guide",
+      "resource_type": "reading",
+      "classification": "CATALOG_METADATA_ONLY",
+      "source_metadata_official_course_unit": false,
+      "admitted_as_official_course_unit": false,
+      "availability": "AVAILABLE_IN_SUPPLIED_SNAPSHOT",
+      "used_by_kickoff": false
+    },
+    {
+      "node_id": "record:unit_b84a4a67a815d26224a8ddaf13e1a244",
+      "node_type": "normalized_resource_record",
+      "source_record_id": "unit_b84a4a67a815d26224a8ddaf13e1a244",
+      "title": "Course Website",
+      "resource_type": "reading",
+      "classification": "EXTERNAL_RESOURCE_POINTER",
+      "source_metadata_official_course_unit": false,
+      "admitted_as_official_course_unit": false,
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "url": "https://www.eecs189.org/",
+      "used_by_kickoff": false
+    },
+    {
+      "node_id": "record:unit_3b4167f9d09b1cd73bde703333e25f1a",
+      "node_type": "normalized_resource_record",
+      "source_record_id": "unit_3b4167f9d09b1cd73bde703333e25f1a",
+      "title": "Recordings",
+      "resource_type": "lecture",
+      "classification": "EXTERNAL_PLAYLIST_POINTER",
+      "source_metadata_official_course_unit": false,
+      "admitted_as_official_course_unit": false,
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "url": "https://www.youtube.com/playlist?list=PLOOm2AoWIPEyZazQVnIcaK2KnezpGZV-X",
+      "used_by_kickoff": false
+    },
+    {
+      "node_id": "record:unit_ac8fa1acc30b80b88bfe36ed8217a9ae",
+      "node_type": "normalized_resource_record",
+      "source_record_id": "unit_ac8fa1acc30b80b88bfe36ed8217a9ae",
+      "title": "Textbooks",
+      "resource_type": "reading",
+      "classification": "UNRESOLVED_EXTERNAL_RESOURCE_POINTER",
+      "source_metadata_official_course_unit": false,
+      "admitted_as_official_course_unit": false,
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "url": "https://www.eecs189.org/",
+      "used_by_kickoff": false
+    },
+    {
+      "node_id": "record:unit_f9554eea2739122d614ea380adf8b33f",
+      "node_type": "normalized_resource_record",
+      "source_record_id": "unit_f9554eea2739122d614ea380adf8b33f",
+      "title": "Assignments",
+      "resource_type": "assignment",
+      "classification": "OFFICIAL_ASSIGNMENT_POINTER_UNVERIFIED",
+      "source_metadata_official_course_unit": true,
+      "admitted_as_official_course_unit": false,
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "url": "https://www.eecs189.org/",
+      "used_by_kickoff": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "kickoff_01_reproducible_knn",
+      "to": "kickoff_01_specify",
+      "relation": "contains"
+    },
+    {
+      "from": "kickoff_01_specify",
+      "to": "kickoff_01_build",
+      "relation": "prerequisite"
+    },
+    {
+      "from": "kickoff_01_build",
+      "to": "kickoff_01_verify",
+      "relation": "prerequisite"
+    },
+    {
+      "from": "kickoff_01_verify",
+      "to": "kickoff_01_explain",
+      "relation": "prerequisite"
+    }
+  ],
+  "record_boundary": "Normalized records are catalog-derived inputs for classification. A record title, type, link, order, or source-level official_course_unit flag does not by itself admit that record as a verified official unit or make its content available.",
+  "classification_policy": {
+    "official_unit_admission_requires": [
+      "The material itself has been retrieved by an authorized worker",
+      "Course identity, unit identity, access conditions, and permitted use have been verified",
+      "A content hash and retrieval provenance have been recorded",
+      "The material has passed isolation and learner-safety checks"
+    ],
+    "kickoff_dependency_on_catalog_links": "NONE",
+    "future_expansion": "Later jobs may add verified units without reclassifying this kickoff as official."
+  }
+}

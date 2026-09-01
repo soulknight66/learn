@@ -1,0 +1,5 @@
+let minimum = -9223372036854775807 - 1;
+print 9223372036854775807 + 1;
+print minimum / -1;
+print minimum % -1;
+print minimum < 0;

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "course_id": "course_d19c01296d2a33b5c57db7e4ef167b72",
+  "title": "MIT6.050J: Information theory and Entropy",
+  "status": "KICKOFF_PREPARED",
+  "unit": {
+    "unit_id": "kickoff_01_empirical_entropy",
+    "title": "Empirical Entropy as a Trustworthy Software Component",
+    "status": "READY_FOR_LEARNER",
+    "classification": "manager-authored kickoff",
+    "official_course_unit": false,
+    "scope": "A self-contained first encounter with discrete empirical entropy through a tested, streaming byte-analysis utility.",
+    "estimated_human_hours": 6.0,
+    "prerequisites": [
+      "Comfort with sums, logarithms, and finite probability distributions",
+      "Ability to implement and test a small Python 3 program"
+    ],
+    "learning_objectives": [
+      "Compute a finite empirical distribution from event counts and evaluate base-2 Shannon entropy",
+      "Turn mathematical preconditions and edge cases into an explicit software contract",
+      "Implement bounded-memory binary-file analysis with deterministic machine-readable output",
+      "Use focused tests to check numerical properties, invalid inputs, and I/O boundaries",
+      "State what empirical entropy does and does not establish about compression or security"
+    ],
+    "learner_artifacts": [
+      "submission/entropy_tool.py",
+      "submission/test_entropy_tool.py",
+      "submission/README.md",
+      "submission/COMPREHENSION_RESPONSES.md"
+    ],
+    "required_material_ids": [
+      "material_local_kickoff_packet"
+    ],
+    "external_material_required": false
+  },
+  "completion_policy": {
+    "current_completion_claim": "NONE",
+    "completion_scope": "FIRST_UNIT_ONLY",
+    "unit_completion_requires": [
+      "All four learner artifacts exist and are inspectable",
+      "The implementation and learner tests run in the declared Python environment",
+      "Deterministic evaluator checks cover the public contract, numerical cases, binary I/O, and error behavior",
+      "Comprehension responses are independently assessed against examiner-only criteria"
+    ],
+    "validation_authority": "Only an independent worker-harness-controlled evaluator may promote the unit to completed.",
+    "unit_completion_implies_course_completion": false,
+    "catalog_discovery_is_completion_evidence": false,
+    "future_course_completion": "Requires separately sourced, classified, scheduled, completed, and independently validated later units; no such claim is made here."
+  },
+  "provenance": {
+    "artifact_classification": "manager-authored from supplied catalog snapshot",
+    "validation_label": "UNVALIDATED_KICKOFF",
+    "catalog_adapter": "csdiy",
+    "catalog_classification": "source-derived",
+    "catalog_content_sha256": "42043632fc4e333eab1ec2afad20255ae36f1272eb15618873257e1eb8de1adf",
+    "catalog_extractor_version": "1.1",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/数学基础/information.en.md",
+    "source_license": "MIT",
+    "external_retrieval_performed": false,
+    "authorship_note": "The kickoff scope, explanations, software task, questions, and rubric were created for this job and are not represented as MIT course materials."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "course_id": "course_49a86391a92911e935084a7a880787f7",
+  "nodes": [
+    {
+      "unit_id": "unit_kickoff_ir_cfg_reachability_v1",
+      "title": "Engineering a Tiny IR and Control-Flow Graph Analyzer",
+      "kind": "MANAGER_AUTHORED_STUDY_UNIT",
+      "sequence": 1,
+      "status": "READY_FOR_STUDY",
+      "official_course_unit": false,
+      "estimated_hours": 8,
+      "prerequisites": [
+        "Data Structures and Algorithms",
+        "Familiarity with at least one programming language"
+      ],
+      "source_basis": [
+        "The catalog description says the course begins with abstract syntax trees, control-flow graphs, and intermediate representations.",
+        "The catalog identifies Java as the course programming language and emphasizes implementation assignments."
+      ]
+    }
+  ],
+  "edges": [],
+  "record_boundary": "The graph contains only the bounded manager-authored kickoff unit. Normalized resource records and catalog URLs are classified in MATERIAL_AVAILABILITY.json; they are not graph nodes and are not automatically official course units. No later course sequence is inferred from link order, source-line order, or the official_course_unit metadata flag."
+}

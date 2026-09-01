@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "optparse"
+$LOAD_PATH.unshift(File.expand_path("../lib", __dir__))
+require "tiny_ws"
+
+options = TinyWS::Server::DEFAULTS.dup
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: tiny_ws [options]"
+  opts.on("--host HOST", String) { |v| options[:host] = v }
+  opts.on("--port PORT", Integer) { |v| options[:port] = v }
+  opts.on("--max-clients N", Integer) { |v| options[:max_clients] = v }
+  opts.on("--max-header-bytes N", Integer) { |v| options[:max_header_bytes] = v }
+  opts.on("--max-frame-bytes N", Integer) { |v| options[:max_frame_bytes] = v }
+  opts.on("--max-message-bytes N", Integer) { |v| options[:max_message_bytes] = v }
+end
+parser.parse!(ARGV)
+
+server = TinyWS::Server.new(**options)
+stop = proc { server.stop }
+Signal.trap("INT", &stop)
+Signal.trap("TERM", &stop)
+
+warn "TinyWS listening on #{options[:host]}:#{options[:port]}"
+server.serve_forever
+

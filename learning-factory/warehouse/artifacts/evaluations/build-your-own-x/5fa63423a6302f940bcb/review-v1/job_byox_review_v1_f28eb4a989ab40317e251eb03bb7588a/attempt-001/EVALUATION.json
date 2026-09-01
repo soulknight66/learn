@@ -1,0 +1,28 @@
+{
+  "builder_job_id": "job_byox_build_v1_f28eb4a989ab40317e251eb03bb7588a",
+  "checks_run": [
+    "Inspected all 62 submitted files, including learner documentation, starter code, public tests, sealed reference code/tests, exercises, benchmark harness, manifest, provenance, and validation claims.",
+    "Copied CANDIDATE to disposable review storage and ran bounded clean builds; the starter baseline passed and the deliberately incomplete parser milestone check failed with the documented 17 assertions.",
+    "Built the sealed reference with strict warnings and ran its 32-test suite with no skips; all tests passed when invoked with the submitted absolute-path default.",
+    "Ran the public CLI smoke suite, exercise compilation checks, pack audit, independent metadata/link checks, and a one-iteration benchmark-harness smoke check.",
+    "Ran independent adversarial probes for ENOEXEC execution and child reaping while a foreground job was active.",
+    "Attempted an ASan/UBSan build and a syscall trace, then verified CANDIDATE retained its original aggregate digest."
+  ],
+  "evidence": [
+    "REVISE: a completed background child remained Z (defunct) for the duration of an unrelated foreground sleep because the foreground wait only collects its own process group; this violates the explicit all-children reaping requirement.",
+    "REVISE: executing an executable text file without a shebang printed its contents' command output and returned 0; jobs.c uses execvp, whose ENOEXEC fallback delegated interpretation to the host shell despite the contract forbidding a pre-existing shell from interpreting command text.",
+    "The manifest is conservative and honest: status GENERATED, labels GENERATED/PARTIAL, independent validation REQUIRED, and productionized false; no TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED promotion is claimed.",
+    "The normal reference build, all 32 submitted reference tests, public CLI smoke tests, starter baseline, six exercise compilation checks, and structural audit passed independently on GCC 8.5.0, GNU Make 4.2.1, and Python 3.6.8.",
+    "The canonical SHA-256 of parsed PROVENANCE.json was 0343524004b914e47b5ad2522b50dedc30016985a996823676752128998bf4d9; ten local Markdown links resolved; the 62-file CANDIDATE aggregate stayed 3cb91203c1dcea839ca03804994da38cd9692fdb7928b6462b4e9444f0e1df2c.",
+    "Learner-facing material is well staged and does not directly link to sealed implementation details, but the submitted tree itself contains 23 readable sealed/reference/test/answer files and no independently rendered student view was available for transfer verification.",
+    "public_tests/Makefile directly links only starter/src/parser.c even though starter/README.md permits helper source files, so a correctly modularized learner parser can break the advertised parser-check targets unless the tests are also edited."
+  ],
+  "limitations": [
+    "The linked upstream tutorial and source snapshot were outside the readable workspace, so the no-copy/close-paraphrase assertion and linked-resource license could not be independently compared; the candidate correctly records the linked license as NOASSERTION.",
+    "ASan/UBSan execution was unavailable because libasan.so.5.0.0 and libubsan.so.1.0.0 could not be linked; valgrind was unavailable.",
+    "strace was installed but ptrace was denied by the environment, so the ENOEXEC result is supported by behavior plus static execvp inspection rather than a syscall trace.",
+    "No fuzzing, allocation/fork fault injection, multi-platform run, performance benchmark, production-readiness assessment, or student-view transfer test was completed; the benchmark command was only a harness smoke run."
+  ],
+  "project_id": "project_a39dec7bd5caf7524c0e9df3e14a2c8b",
+  "verdict": "REVISE"
+}

@@ -1,0 +1,28 @@
+{
+  "generated_material": {
+    "classification": "agent-generated",
+    "copied_tutorial_text_or_code": false,
+    "inferred_metadata": [
+      "difficulty",
+      "concepts",
+      "production relevance"
+    ],
+    "measured_outputs": [
+      "benchmarks/results/smoke.json (created by validator)"
+    ],
+    "method": "deterministic vertical-slice template"
+  },
+  "schema_version": 1,
+  "source": {
+    "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989",
+    "external_reference": "http://aosabook.org/en/500L/dbdb-dog-bed-database.html",
+    "license": "CC0-1.0",
+    "lookup_status": "job provenance",
+    "project_id": "project_5187715307b13e38b82d4dacf47b4946",
+    "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+    "source_name": "Build Your Own X",
+    "source_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/build-your-own-x",
+    "source_reference": "README.md#build-your-own-database",
+    "upstream_url": "git@github.com:codecrafters-io/build-your-own-x.git"
+  }
+}

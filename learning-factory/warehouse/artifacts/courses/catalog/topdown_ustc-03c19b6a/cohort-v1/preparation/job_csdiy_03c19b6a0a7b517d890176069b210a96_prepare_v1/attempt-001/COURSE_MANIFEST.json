@@ -1,0 +1,87 @@
+{
+  "course_id": "course_03c19b6a0a7b517d890176069b210a96",
+  "title": "USTC Computer Networking:A Top-Down Approach",
+  "status": "KICKOFF_PREPARED_NOT_VALIDATED",
+  "unit": {
+    "unit_id": "kickoff_01_http_over_tcp",
+    "ordinal": 1,
+    "title": "HTTP over TCP: boundaries, failures, and testable design",
+    "status": "BOUNDED_KICKOFF_PREPARED",
+    "origin": "manager_authored",
+    "upstream_official_unit": false,
+    "estimated_human_hours": 6,
+    "audience": "A strong algorithms student beginning deliberate software-engineering practice",
+    "scope": "Implement and test a deliberately small HTTP/1.1 response reader over loopback TCP, with explicit framing, limits, timeouts, error taxonomy, and observable behavior.",
+    "learning_objectives": [
+      "Distinguish a TCP byte stream from application-level messages.",
+      "Turn a small protocol subset into an explicit, reviewable contract.",
+      "Separate transport, parsing, policy, and observability concerns.",
+      "Use deterministic tests to exercise fragmentation and failure paths.",
+      "Document deliberate limitations without presenting a teaching implementation as production-ready."
+    ],
+    "required_inputs": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md",
+      "A locally available programming language with TCP socket and test support"
+    ],
+    "external_course_material_required": false,
+    "deliverables": [
+      "Source code for the bounded client and response reader",
+      "Deterministic automated tests using only loopback or in-memory byte streams",
+      "A README with run commands and supported/unsupported behavior",
+      "A short engineering report with test evidence and reflection",
+      "Written responses to student_safe/COMPREHENSION.md"
+    ],
+    "out_of_scope": [
+      "TLS, DNS, proxies, redirects, caching, cookies, authentication, HTTP/2, and HTTP/3",
+      "A general-purpose or production HTTP client",
+      "Claims about the upstream lecture order, textbook chapter order, or exam coverage",
+      "Completion of the approximately 40-hour catalog course"
+    ]
+  },
+  "completion_policy": {
+    "unit_completion_requires": [
+      "All declared learner deliverables are present.",
+      "A worker-harness-controlled validator executes the relevant automated tests.",
+      "The validator confirms that required success and failure cases are evidenced by captured results.",
+      "The submission satisfies the independent examiner rubric and its critical gates."
+    ],
+    "acceptable_evidence": [
+      "Validator-captured test command, exit status, and logs",
+      "Inspectable source and test files",
+      "Written report and comprehension responses tied to the submitted implementation"
+    ],
+    "insufficient_evidence": [
+      "A learner or agent prose claim of completion",
+      "Files that were not exercised by the controlled validator",
+      "Successful processing of only one unfragmented happy-path response"
+    ],
+    "promotion_authority": "worker_harness_validator_only",
+    "kickoff_effect": "Passing this unit may complete only kickoff_01_http_over_tcp.",
+    "course_completion": {
+      "allowed_from_this_unit": false,
+      "current_claim": "NOT_COMPLETE",
+      "reason": "The catalog describes a roughly 40-hour course, while this package defines one approximately 6-hour manager-authored kickoff. Later validated units and an explicit course-level policy are required."
+    }
+  },
+  "provenance": {
+    "artifact_classification": "manager-authored kickoff derived from catalog metadata",
+    "catalog_adapter": "csdiy",
+    "catalog_source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "catalog_source_name": "CSDIY",
+    "catalog_source_type": "course_catalog",
+    "catalog_source_file": "docs/计算机网络/topdown_ustc.en.md",
+    "catalog_source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "catalog_source_content_sha256": "c00a06e9146c9538c448d2072b1216ec46be52b28a333a52638e748f28405c5d",
+    "extractor_version": "1.1",
+    "catalog_classification": "source-derived",
+    "input_form": "catalog snapshot embedded in the preparation job",
+    "material_inspection": "No linked website, recording, slide archive, or textbook content was fetched or inspected.",
+    "authorship_boundary": "The unit topic, sequence, exercises, limits, and assessments are learning-factory course-manager decisions, not claims about an official USTC unit."
+  },
+  "validation": {
+    "label": "PREPARED_AWAITING_INDEPENDENT_VALIDATION",
+    "validated_by": null
+  }
+}

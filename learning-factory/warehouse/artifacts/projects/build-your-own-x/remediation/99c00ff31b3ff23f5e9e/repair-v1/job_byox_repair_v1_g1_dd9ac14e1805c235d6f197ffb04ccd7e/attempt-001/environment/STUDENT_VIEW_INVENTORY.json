@@ -1,0 +1,118 @@
+{
+  "algorithm": "sha256",
+  "excluded_from_hashes": [
+    "environment/STUDENT_VIEW_INVENTORY.json"
+  ],
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "92c352dc216ba732b928aca608d8c5e6c0f19aaf43ba47659cd71a3dbdf5b4b9",
+      "size": 1062,
+      "type": "regular-file"
+    },
+    {
+      "path": "CONCEPTS.md",
+      "sha256": "e7d916d643cc8659eb51f9faca0c55d910d71094b7e516bf5c02c41bdf6d51d6",
+      "size": 1962,
+      "type": "regular-file"
+    },
+    {
+      "path": "DESIGN_QUESTIONS.md",
+      "sha256": "88a5501a5c422d8605d6d9f24df05094caa27fe775f35d85c5c585ad756215ef",
+      "size": 1063,
+      "type": "regular-file"
+    },
+    {
+      "path": "MANIFEST.yaml",
+      "sha256": "f51e9e63d1e55de10e36d99322d03e1dd56a3135e5b83b6b38c00cdf3dd6c49b",
+      "size": 451,
+      "type": "regular-file"
+    },
+    {
+      "path": "README.md",
+      "sha256": "bb2bb46b56dcbff29c47d02c17485906f0af22c3d7109f37d24c396eb799eeca",
+      "size": 2643,
+      "type": "regular-file"
+    },
+    {
+      "path": "REQUIREMENTS.md",
+      "sha256": "f009a55b02d483d4a537143992bac64dcee80789ccf348288646f73e998132d3",
+      "size": 4797,
+      "type": "regular-file"
+    },
+    {
+      "path": "environment/README.md",
+      "sha256": "81d4a7edd65392a9fef5f0b9bb608aa74e1709ee615b01d08dc0a832c147d68f",
+      "size": 2013,
+      "type": "regular-file"
+    },
+    {
+      "path": "environment/check_environment.py",
+      "sha256": "125b67d92f5f0870f749a66a1b37e10d03b4c906880e617005ad4dc8e0f5feb6",
+      "size": 1039,
+      "type": "regular-file"
+    },
+    {
+      "path": "environment/materialize_student_view.py",
+      "sha256": "c003e6e5d67bdd344b558f6101c3b0820053c4e06b569da8cacf86197ede456a",
+      "size": 4117,
+      "type": "regular-file"
+    },
+    {
+      "path": "environment/verify_artifact.py",
+      "sha256": "fe8fa67f444d6baec630da15af460d538a9939b0c9ac30ad685584dd8e818cba",
+      "size": 10405,
+      "type": "regular-file"
+    },
+    {
+      "path": "environment/verify_student_view.py",
+      "sha256": "d9920761f5a9febb85196c4b46d68037d3c68ae6c1f68bc009e863f9268f2042",
+      "size": 6467,
+      "type": "regular-file"
+    },
+    {
+      "path": "public_tests/README.md",
+      "sha256": "6baad20514629b63987ba7357d655ab7020c79dde5e942bf56a34abe4d324ea9",
+      "size": 744,
+      "type": "regular-file"
+    },
+    {
+      "path": "public_tests/test_public.py",
+      "sha256": "f88a47af005193e006381f9d243a3aeaf7416f66ab0f43e7a3a0382ad2419788",
+      "size": 7132,
+      "type": "regular-file"
+    },
+    {
+      "path": "starter/Makefile",
+      "sha256": "617b2f7e51cbb87350bf3854e912f6faf4a9c8adb1e9e9c0def91348afe6c473",
+      "size": 226,
+      "type": "regular-file"
+    },
+    {
+      "path": "starter/README.md",
+      "sha256": "97691ff664e79e80519a4ff79ecc289ec32494058bfa432b8e09648b699efcf2",
+      "size": 1112,
+      "type": "regular-file"
+    },
+    {
+      "path": "starter/examples/countdown.mica",
+      "sha256": "485677429aff4086ad11c58b8e44e57a8daf5db4c54eddcddcdd364a1783f734",
+      "size": 57,
+      "type": "regular-file"
+    },
+    {
+      "path": "starter/include/mica_limits.h",
+      "sha256": "847dcb7148f67039ba562df0c02d3bc352d8195f6becf90350ede6c601fd62bc",
+      "size": 211,
+      "type": "regular-file"
+    },
+    {
+      "path": "starter/src/mica.c",
+      "sha256": "791b6d0e0d6651a9143e953b5e05018705b0b27d0c286d6fef83a609dac56db6",
+      "size": 12322,
+      "type": "regular-file"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "exact learner-visible projection"
+}

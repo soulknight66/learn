@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+: "${CAPTURE_FILE:?CAPTURE_FILE must name the argv capture file}"
+
+printf '%s\0' "$@" >"$CAPTURE_FILE"
+if [[ -n ${FAKE_READY_FILE:-} ]]; then
+    : >"$FAKE_READY_FILE"
+fi
+if [[ -n ${FAKE_RELEASE_FILE:-} ]]; then
+    limit=500
+    while [[ ! -e $FAKE_RELEASE_FILE && $limit -gt 0 ]]; do
+        sleep 0.01
+        limit=$((limit - 1))
+    done
+    if [[ ! -e $FAKE_RELEASE_FILE ]]; then
+        printf 'fake isolator: release timed out\n' >&2
+        exit 124
+    fi
+fi
+if [[ -n ${FAKE_STDOUT:-} ]]; then
+    printf '%s' "$FAKE_STDOUT"
+fi
+if [[ -n ${FAKE_STDERR:-} ]]; then
+    printf '%s' "$FAKE_STDERR" >&2
+fi
+exit "${FAKE_STATUS:-0}"

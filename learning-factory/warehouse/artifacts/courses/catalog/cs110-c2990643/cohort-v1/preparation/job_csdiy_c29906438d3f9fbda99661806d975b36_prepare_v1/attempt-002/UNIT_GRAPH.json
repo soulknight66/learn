@@ -1,0 +1,93 @@
+{
+  "course_id": "course_c29906438d3f9fbda99661806d975b36",
+  "nodes": [
+    {
+      "node_id": "unit_manager_kickoff_process_supervision_v1",
+      "title": "Reliable POSIX Process Supervision",
+      "node_kind": "manager_authored_study_unit",
+      "official_course_unit": false,
+      "availability": "PREPARED_LOCAL",
+      "schedulable": true,
+      "estimated_human_hours": 10,
+      "dependencies": [],
+      "classification": "bounded kickoff chosen from catalog-level course goals; not a claim about Stanford's official unit order"
+    },
+    {
+      "node_id": "unit_c429fb63575ba419492d10304fe8e080",
+      "title": "Catalog overview and resource guide",
+      "node_kind": "normalized_catalog_record",
+      "record_role": "catalog_overview",
+      "record_type": "reading",
+      "catalog_official_course_unit_flag": false,
+      "official_unit_status": "NOT_AN_OFFICIAL_UNIT",
+      "availability": "SNAPSHOT_METADATA_AVAILABLE",
+      "schedulable": false,
+      "source_reference": "docs/计算机系统基础/CS110.en.md"
+    },
+    {
+      "node_id": "unit_dfd84e95b182994a703344ce1ab59434",
+      "title": "Course Website",
+      "node_kind": "normalized_resource_pointer",
+      "record_type": "reading",
+      "catalog_official_course_unit_flag": false,
+      "official_unit_status": "NOT_AN_OFFICIAL_UNIT",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "schedulable": false,
+      "source_reference": "docs/计算机系统基础/CS110.en.md#L21",
+      "url": "https://web.stanford.edu/class/archive/cs/cs110/cs110.1204/"
+    },
+    {
+      "node_id": "unit_0ce23f71f43fd9d0a65bd1add01d2104",
+      "title": "Lecture Videos",
+      "node_kind": "normalized_resource_pointer",
+      "record_type": "lecture",
+      "catalog_official_course_unit_flag": false,
+      "official_unit_status": "NOT_AN_OFFICIAL_UNIT",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "schedulable": false,
+      "source_reference": "docs/计算机系统基础/CS110.en.md#L22",
+      "url": "https://www.youtube.com/playlist?list=PLai-xIlqf4JmTNR9aPCwIAOySs1GOm8sQ"
+    },
+    {
+      "node_id": "unit_3091f897555dc8ef43c7bc0be00f0525",
+      "title": "Text Book",
+      "node_kind": "normalized_resource_pointer",
+      "record_type": "reading",
+      "catalog_official_course_unit_flag": false,
+      "official_unit_status": "NOT_AN_OFFICIAL_UNIT",
+      "availability": "LINKED_NOT_RETRIEVED_RIGHTS_UNCHECKED",
+      "schedulable": false,
+      "source_reference": "docs/计算机系统基础/CS110.en.md#L23",
+      "url": "https://www.cs.sfu.ca/~ashriram/Courses/CS295/assets/books/CSAPP_2016.pdf"
+    },
+    {
+      "node_id": "unit_ea2af1b634a4480362b2710f460c31f1",
+      "title": "Assignments",
+      "node_kind": "normalized_aggregate_description",
+      "record_type": "assignment",
+      "catalog_official_course_unit_flag": true,
+      "official_unit_status": "OFFICIAL_COURSEWORK_CLAIM_UNRESOLVED",
+      "availability": "DESCRIBED_ONLY",
+      "schedulable": false,
+      "source_reference": "docs/计算机系统基础/CS110.en.md#L24",
+      "classification": "The record says that seven labs and eight assignments exist, but supplies no individual titles, contents, dependencies, or validated order; it is not promoted to fifteen executable units."
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_c429fb63575ba419492d10304fe8e080",
+      "to": "unit_manager_kickoff_process_supervision_v1",
+      "relation": "CATALOG_SCOPE_INFORMS_MANAGER_UNIT",
+      "required_for_execution": false,
+      "official_sequence_edge": false
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "classification_policy": {
+    "resource_pointer_is_unit": false,
+    "catalog_official_flag_alone_is_schedulable_evidence": false,
+    "official_sequence_known": false,
+    "kickoff_dependency_on_external_links": false,
+    "promotion_requirement": "Inspect actual content, verify access and provenance, split aggregate descriptions, establish dependencies, and validate learner-safe packaging before scheduling any later unit."
+  }
+}

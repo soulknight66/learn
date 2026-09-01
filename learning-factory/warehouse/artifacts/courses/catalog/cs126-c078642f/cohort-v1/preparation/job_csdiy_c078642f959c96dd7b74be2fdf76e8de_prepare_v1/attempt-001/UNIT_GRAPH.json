@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "course_id": "course_c078642f959c96dd7b74be2fdf76e8de",
+  "nodes": [
+    {
+      "node_id": "kickoff_probability_collision_lab_v1",
+      "title": "Probability Models as Reproducible Software: Collision Risk",
+      "node_type": "study_unit",
+      "classification": "manager_authored_bridge_unit",
+      "availability": "AVAILABLE_LOCAL",
+      "official_course_unit": false,
+      "activation": "ACTIVE_FIRST_UNIT",
+      "estimated_human_hours": 8
+    },
+    {
+      "node_id": "unit_8034f58150cb336996c6c0b371c75c76",
+      "title": "Catalog overview and resource guide",
+      "node_type": "normalized_resource_record",
+      "classification": "catalog_overview_input",
+      "availability": "METADATA_IN_SNAPSHOT",
+      "official_course_unit": false,
+      "activation": "NOT_A_STUDY_UNIT",
+      "source_reference": "docs/数学进阶/CS126.en.md"
+    },
+    {
+      "node_id": "unit_4850604df80a688f9a4867b9e02f7e48",
+      "title": "Course Website",
+      "node_type": "normalized_resource_record",
+      "classification": "external_resource_pointer",
+      "availability": "LINKED_UNVERIFIED",
+      "official_course_unit": false,
+      "activation": "NOT_A_STUDY_UNIT",
+      "source_reference": "docs/数学进阶/CS126.en.md#L21"
+    },
+    {
+      "node_id": "unit_3dc3a00dfc58ea7f95891ee49ae31b84",
+      "title": "Textbook",
+      "node_type": "normalized_resource_record",
+      "classification": "external_resource_bundle_pointer",
+      "availability": "LINKED_UNVERIFIED",
+      "official_course_unit": false,
+      "activation": "NOT_A_STUDY_UNIT",
+      "source_reference": "docs/数学进阶/CS126.en.md#L22"
+    },
+    {
+      "node_id": "unit_664c1892d3ee8f99335ce922fcd6b336",
+      "title": "Assignments",
+      "node_type": "normalized_resource_record",
+      "classification": "official_assignment_collection_pointer",
+      "availability": "DESCRIBED_ONLY",
+      "official_course_unit": true,
+      "activation": "BLOCKED_PENDING_RETRIEVAL_AND_CLASSIFICATION",
+      "source_reference": "docs/数学进阶/CS126.en.md#L23"
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_8034f58150cb336996c6c0b371c75c76",
+      "to": "kickoff_probability_collision_lab_v1",
+      "relationship": "informs_scope",
+      "required_for_completion": false
+    },
+    {
+      "from": "unit_3dc3a00dfc58ea7f95891ee49ae31b84",
+      "to": "kickoff_probability_collision_lab_v1",
+      "relationship": "motivates_algorithmic_context",
+      "required_for_completion": false
+    },
+    {
+      "from": "unit_4850604df80a688f9a4867b9e02f7e48",
+      "to": "unit_664c1892d3ee8f99335ce922fcd6b336",
+      "relationship": "may_resolve_description",
+      "required_for_completion": false
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "classification_policy": {
+    "normalized_records_are_automatically_units": false,
+    "active_unit_ids": [
+      "kickoff_probability_collision_lab_v1"
+    ],
+    "future_expansion_gate": "Retrieve through an authorized later job, verify content and provenance, classify granularity, and then add explicit study-unit nodes.",
+    "edge_semantics": "Edges involving unverified or described-only records express provenance or expansion possibilities, not learner prerequisites."
+  }
+}

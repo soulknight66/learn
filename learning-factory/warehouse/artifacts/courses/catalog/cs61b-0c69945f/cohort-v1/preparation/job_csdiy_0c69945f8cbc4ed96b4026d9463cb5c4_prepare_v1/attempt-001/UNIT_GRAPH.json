@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "course_id": "course_0c69945f8cbc4ed96b4026d9463cb5c4",
+  "nodes": [
+    {
+      "node_id": "unit_kickoff_ring_deque_v1",
+      "node_kind": "manager_authored_study_unit",
+      "title": "Engineering a Generic Ring Deque in Java",
+      "availability": "AVAILABLE_LOCAL",
+      "official_course_unit": false,
+      "promotion_state": "BOUNDED_KICKOFF_ONLY",
+      "source_records": [
+        "unit_fd3b9a3f3c111c7e4166b98da8bf15bd",
+        "unit_7c0f9f7c7704961c95fa195397c72bd2"
+      ],
+      "validation_label": "PREPARED_AWAITING_HARNESS_VALIDATION"
+    },
+    {
+      "node_id": "unit_fd3b9a3f3c111c7e4166b98da8bf15bd",
+      "node_kind": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "resource_type": "reading",
+      "classification": "CATALOG_CONTEXT_ONLY",
+      "availability": "AVAILABLE_IN_SUPPLIED_SNAPSHOT",
+      "catalog_metadata_official_course_unit": false,
+      "promoted_to_course_unit": false,
+      "source_reference": "docs/数据结构与算法/CS61B.en.md"
+    },
+    {
+      "node_id": "unit_0ccbdbd7b72d00a47fa5a348ed0d79ad",
+      "node_kind": "normalized_resource_record",
+      "title": "Course Website",
+      "resource_type": "reading",
+      "classification": "EXTERNAL_RESOURCE_LOCATOR",
+      "availability": "LINKED_UNVERIFIED_NOT_RETRIEVED",
+      "catalog_metadata_official_course_unit": false,
+      "promoted_to_course_unit": false,
+      "source_reference": "docs/数据结构与算法/CS61B.en.md#L25"
+    },
+    {
+      "node_id": "unit_02bec6f5c80594c056616c9769f2511f",
+      "node_kind": "normalized_resource_record",
+      "title": "Recordings",
+      "resource_type": "lecture",
+      "classification": "MATERIAL_DESCRIPTION_WITHOUT_LOCATOR",
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "catalog_metadata_official_course_unit": false,
+      "promoted_to_course_unit": false,
+      "source_reference": "docs/数据结构与算法/CS61B.en.md#L26"
+    },
+    {
+      "node_id": "unit_e683db14dd2db15ffce606395406eab2",
+      "node_kind": "normalized_resource_record",
+      "title": "Textbook",
+      "resource_type": "reading",
+      "classification": "DECLARED_ABSENT_MATERIAL",
+      "availability": "UNAVAILABLE_SOURCE_SAYS_NONE",
+      "catalog_metadata_official_course_unit": false,
+      "promoted_to_course_unit": false,
+      "source_reference": "docs/数据结构与算法/CS61B.en.md#L27"
+    },
+    {
+      "node_id": "unit_7c0f9f7c7704961c95fa195397c72bd2",
+      "node_kind": "normalized_resource_record",
+      "title": "Assignments",
+      "resource_type": "assignment",
+      "classification": "OFFICIAL_ASSIGNMENT_CATEGORY_SUMMARY",
+      "availability": "DESCRIBED_ONLY_NO_ASSIGNMENT_BODY",
+      "catalog_metadata_official_course_unit": true,
+      "promoted_to_course_unit": false,
+      "promotion_reason": "The record summarizes offering-dependent assignment counts but supplies no stable assignment identity, body, requirements, or validation material.",
+      "source_reference": "docs/数据结构与算法/CS61B.en.md#L28"
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "edge_catalog_context_informs_kickoff",
+      "from": "unit_fd3b9a3f3c111c7e4166b98da8bf15bd",
+      "to": "unit_kickoff_ring_deque_v1",
+      "relation": "INFORMS_MANAGER_AUTHORED_SCOPE",
+      "required_for_learner": false
+    },
+    {
+      "edge_id": "edge_assignment_summary_informs_practice_format",
+      "from": "unit_7c0f9f7c7704961c95fa195397c72bd2",
+      "to": "unit_kickoff_ring_deque_v1",
+      "relation": "INFORMS_PRACTICE_ORIENTATION",
+      "required_for_learner": false
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "classification_policy": {
+    "normalized_records_are_automatic_units": false,
+    "promotion_requires": [
+      "a stable offering and unit identity",
+      "retrievable and permitted source material",
+      "recorded provenance and content integrity",
+      "an explicit classification decision"
+    ],
+    "offering_rule": "Do not combine schedules, specifications, or assessments from different course offerings into one purported official unit.",
+    "current_decision": "No normalized resource record was promoted to an official study unit in this kickoff."
+  },
+  "provenance": {
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_content_sha256": "6bb67bbc58d7aab0f8516b00141161fe2bc0a067f217ca96031f9239482e5bcd",
+    "external_retrieval": "NONE"
+  },
+  "validation_label": "PREPARED_AWAITING_HARNESS_VALIDATION"
+}

@@ -1,0 +1,185 @@
+{
+  "course_id": "course_54ae44741bfc2dce88b513fe05b34dd4",
+  "materials": [
+    {
+      "material_id": "local_kickoff_bundle",
+      "title": "Manager-authored kickoff materials",
+      "kind": "LOCAL_STUDY_BUNDLE",
+      "availability": "AVAILABLE_LOCAL",
+      "paths": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "retrieved": false,
+      "official_course_material_status": "MANAGER_AUTHORED_NOT_OFFICIAL",
+      "use": "Canonical learner input for the bounded kickoff only"
+    },
+    {
+      "material_id": "catalog_snapshot",
+      "title": "CSDIY CS242 catalog snapshot",
+      "kind": "CATALOG_METADATA",
+      "availability": "AVAILABLE_IN_JOB_INPUT",
+      "source_reference": "docs/编程语言设计与分析/CS242.en.md",
+      "source_record_id": "unit_c83ed8ab8d6f45c56c87fef9d6c7741f",
+      "content_sha256": "d7dff04e5797e28f4ded6448cfdfda7658515acb5d819d1b16520eae8db5921d",
+      "retrieved": false,
+      "official_course_material_status": "CATALOG_METADATA_NOT_OFFICIAL_MATERIAL",
+      "use": "Scope and provenance evidence, not a substitute for linked content"
+    },
+    {
+      "material_id": "grounded_pl_education_paper",
+      "title": "From Theory to Systems: A Grounded Approach to Programming Language Education",
+      "kind": "PAPER_LINK",
+      "urls": [
+        "https://arxiv.org/abs/1904.06750"
+      ],
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "official_course_material_status": "UNVERIFIED",
+      "use": "Optional future course-design context after authorized retrieval"
+    },
+    {
+      "material_id": "course_websites",
+      "title": "CS242 course websites",
+      "kind": "WEBSITE_LINKS",
+      "source_record_id": "unit_b14a4c8ee305e2b97aa67fd035af2e81",
+      "urls": [
+        "https://web.stanford.edu/class/cs242/",
+        "https://stanford-cs242.github.io/f19/"
+      ],
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "official_course_material_status": "UNVERIFIED",
+      "use": "Candidate indexes for later authorized discovery"
+    },
+    {
+      "material_id": "tapl_landing_page",
+      "title": "Types and Programming Languages (TAPL)",
+      "kind": "TEXTBOOK_LINK",
+      "source_record_id": "unit_7f45a1a72ee1b7a589ab3f11e7a239a4",
+      "urls": [
+        "https://www.cis.upenn.edu/~bcpierce/tapl/"
+      ],
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "official_course_material_status": "SUPPORTING_TEXTBOOK_NOT_COURSE_UNIT",
+      "use": "Potential background reference; no text or chapter mapping is bundled"
+    },
+    {
+      "material_id": "assignment_guide",
+      "title": "2019 assignment guide",
+      "kind": "ASSIGNMENT_INDEX_LINK",
+      "source_record_id": "unit_7a02b2af2729423f7256c224c9fcd3fc",
+      "urls": [
+        "https://stanford-cs242.github.io/f19/assignments/"
+      ],
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "official_course_material_status": "SOURCE_RECORD_SAYS_OFFICIAL_NOT_INDEPENDENTLY_VERIFIED",
+      "use": "Candidate source for later assignment-level expansion"
+    },
+    {
+      "material_id": "assignment_repository",
+      "title": "2019 assignment repository",
+      "kind": "SOURCE_REPOSITORY_LINK",
+      "source_record_id": "unit_7a02b2af2729423f7256c224c9fcd3fc",
+      "urls": [
+        "https://github.com/stanford-cs242/f19-assignments"
+      ],
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "official_course_material_status": "SOURCE_RECORD_SAYS_OFFICIAL_NOT_INDEPENDENTLY_VERIFIED",
+      "use": "Read-only candidate input for a later authorized ingestion job"
+    },
+    {
+      "material_id": "final_assignment_options",
+      "title": "Final assignment with four options",
+      "kind": "ASSIGNMENT_DESCRIPTION",
+      "source_record_id": "unit_bcffbf616b0d27c484b04c474bf46360",
+      "urls": [],
+      "availability": "DESCRIPTION_ONLY",
+      "retrieved": false,
+      "official_course_material_status": "SOURCE_RECORD_SAYS_OFFICIAL_NOT_INDEPENDENTLY_VERIFIED",
+      "use": "Future discovery lead only"
+    },
+    {
+      "material_id": "recordings",
+      "title": "Course recordings",
+      "kind": "LECTURE_RECORDINGS",
+      "source_record_id": "unit_7a236308e009e91f29b385839ee1d7cf",
+      "urls": [],
+      "availability": "UNAVAILABLE_BY_CATALOG",
+      "retrieved": false,
+      "official_course_material_status": "NOT_AVAILABLE",
+      "use": "None"
+    },
+    {
+      "material_id": "course_notes",
+      "title": "Course notes",
+      "kind": "COURSE_NOTES",
+      "urls": [],
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "retrieved": false,
+      "official_course_material_status": "UNVERIFIED",
+      "use": "None in this kickoff; the snapshot names notes generally but supplies no direct note record or content"
+    }
+  ],
+  "blocked": [
+    {
+      "block_id": "recordings_absent",
+      "material_id": "recordings",
+      "reason": "The supplied catalog explicitly reports that there are no recordings.",
+      "resolution": "Do not search for unofficial mirrors; use course notes or assignments only if a later job retrieves them lawfully."
+    },
+    {
+      "block_id": "course_notes_not_located",
+      "material_id": "course_notes",
+      "reason": "The catalog says notes are a main resource but supplies no direct notes URL, file, or unit mapping in the normalized records.",
+      "resolution": "A later authorized job may classify notes discovered from a verified public course index; do not infer or fabricate them."
+    },
+    {
+      "block_id": "official_sequence_unverified",
+      "material_id": "course_websites",
+      "reason": "No official syllabus body, unit sequence, or dependency data was provided or retrieved.",
+      "resolution": "A later authorized job must retrieve and checksum the public syllabus before expanding UNIT_GRAPH.json."
+    },
+    {
+      "block_id": "assignment_bodies_missing",
+      "material_id": "assignment_guide",
+      "reason": "The snapshot contains links and topic summaries, not assignment instructions, starter code, tests, or licenses for reuse.",
+      "resolution": "Retrieve only in a later authorized job, verify access and reuse terms, and keep any source repository read-only."
+    },
+    {
+      "block_id": "textbook_content_not_bundled",
+      "material_id": "tapl_landing_page",
+      "reason": "Only a landing-page URL is known; no textbook excerpt or required chapter mapping is present.",
+      "resolution": "Link rather than copy unless a later job establishes lawful availability and records provenance."
+    },
+    {
+      "block_id": "restricted_content_prohibited",
+      "material_id": null,
+      "reason": "Authenticated, paywalled, private, sealed, or otherwise restricted content is outside this job's authority.",
+      "resolution": "Record the item as blocked without bypassing access controls or copying it into learner-visible files."
+    }
+  ],
+  "retrieval_policy": {
+    "artifact_provenance": "Course-manager inventory derived from the supplied CSDIY catalog snapshot; URL contents were not fetched.",
+    "validation_label": "PREPARED_AWAITING_HARNESS_VALIDATION",
+    "current_job": "NO_NETWORK_RETRIEVAL_PERFORMED",
+    "later_job_mode": "EXPLICITLY_AUTHORIZED_PUBLIC_RESOURCES_ONLY",
+    "rules": [
+      "Begin only from a URL recorded in the catalog snapshot or from a verified public page reached from such a URL.",
+      "Do not authenticate, bypass access controls, scrape restricted content, or seek unofficial mirrors.",
+      "Treat a URL as a locator, never as evidence that its content is available or that it is an official unit.",
+      "Record requested URL, final URL, access outcome, content digest, source commit when applicable, and a license/use decision.",
+      "Keep source repositories read-only and copy only authorized inputs into per-attempt workspaces.",
+      "Default to linking rather than copying when reuse rights are unclear.",
+      "Classify each retrieved object as official unit, supporting resource, catalog/index page, or blocked before graph admission.",
+      "Never expose secrets, sealed references, private tests, examiner materials, or another learner's files.",
+      "Failed or unavailable retrieval remains a durable blocked record and must not be silently converted into an available material."
+    ],
+    "graph_expansion_gate": "Only a separate validated job may turn a verified official item into a new unit node.",
+    "fallback_for_this_unit": "Use the local manager-authored learner bundle; no external material is required."
+  }
+}

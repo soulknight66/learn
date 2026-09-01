@@ -1,0 +1,72 @@
+{
+  "command": [
+    "/arm/tools/python/python/3.11.5/rhe8-x86_64/bin/python3",
+    "benchmarks/benchmark.py",
+    "--samples",
+    "7",
+    "--output",
+    "benchmarks/results/smoke.json"
+  ],
+  "environment": {
+    "clock": "time.perf_counter_ns",
+    "cpu_count": 16,
+    "executable": "/arm/tools/python/python/3.11.5/rhe8-x86_64/bin/python3",
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "network": "not used",
+    "platform": "Linux-4.18.0-553.el8_10.x86_64-x86_64-with-glibc2.28",
+    "processor": "x86_64",
+    "python": "3.11.5 (main, Oct 10 2023, 07:04:12) [GCC 8.3.0]"
+  },
+  "hypothesis": "The complete public API paths have measurably different end-to-end costs; no dispatch-only or universal winner is asserted.",
+  "interpretation_boundary": "Fixed order, Python overhead, host load, and compile inclusion limit inference; rerun and use a precompiled benchmark before attributing dispatch cost.",
+  "measurement_scope": "Each timed run_source call includes lexing and parsing for both engines and compilation for bytecode.",
+  "parameters": {
+    "fixed_order": [
+      "bytecode",
+      "treewalk"
+    ],
+    "samples_per_architecture": 7,
+    "warmups": 3,
+    "workload": "sum integers 120 through 1"
+  },
+  "raw_results": {
+    "bytecode": {
+      "engine": "bytecode",
+      "max_elapsed_ns": 1229402,
+      "median_elapsed_ns": 1206726,
+      "min_elapsed_ns": 790934,
+      "pid": 76939,
+      "raw_elapsed_ns": [
+        1229402,
+        1206726,
+        1208150,
+        1213143,
+        790934,
+        791189,
+        798084
+      ],
+      "sample_output_sha256": "f791ce0577d7e9c3df0d37d4759f1769cb2d02661c70bbe7bfcaa2bba5ce9a66",
+      "semantic_steps_last_sample": 1450
+    },
+    "treewalk": {
+      "engine": "treewalk",
+      "max_elapsed_ns": 486997,
+      "median_elapsed_ns": 473275,
+      "min_elapsed_ns": 466072,
+      "pid": 76940,
+      "raw_elapsed_ns": [
+        486997,
+        471917,
+        476589,
+        469818,
+        477868,
+        466072,
+        473275
+      ],
+      "sample_output_sha256": "f791ce0577d7e9c3df0d37d4759f1769cb2d02661c70bbe7bfcaa2bba5ce9a66",
+      "semantic_steps_last_sample": 1450
+    }
+  },
+  "schema_version": 1
+}

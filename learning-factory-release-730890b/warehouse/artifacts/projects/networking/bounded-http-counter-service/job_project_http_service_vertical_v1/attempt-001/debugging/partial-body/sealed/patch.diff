@@ -1,0 +1,13 @@
+--- a/debugging/partial-body/buggy/http_core.py
++++ b/debugging/partial-body/buggy/http_core.py
+@@ -160,9 +160,7 @@
+             if length > self.max_body_bytes:
+                 raise ProtocolError(413, "request body exceeds configured limit")
+             if len(self._buffer) < header_end + length:
+-                if len(self._buffer) == header_end:
+-                    return requests
+-                length = len(self._buffer) - header_end
++                return requests
+             body = bytes(self._buffer[header_end : header_end + length])
+             del self._buffer[: header_end + length]
+             requests.append(Request(method, target, "HTTP/1.1", headers, body))

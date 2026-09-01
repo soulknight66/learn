@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "course_id": "course_cb61fe7b43c5685fd9ee7dff38199b00",
+  "materials": [
+    {
+      "material_id": "catalog_overview",
+      "source_record_id": "unit_0b75a42db88180d967015a62e6c0a865",
+      "title": "Catalog overview and resource guide",
+      "kind": "catalog_metadata",
+      "availability": "AVAILABLE_METADATA_ONLY",
+      "locator": "docs/\u7cfb\u7edf\u5b89\u5168/CS161.en.md",
+      "retrieved": false,
+      "usable_as_instructional_content": false,
+      "notes": "The job input contains the normalized metadata and description, not an independently retrieved course document."
+    },
+    {
+      "material_id": "course_website",
+      "source_record_id": "unit_6d461a4e7a015e88e29479b7fb0339bc",
+      "title": "Summer 2020 course website",
+      "kind": "external_website",
+      "availability": "LINKED_UNVERIFIED",
+      "locator": "https://su20.cs161.org/",
+      "retrieved": false,
+      "usable_as_instructional_content": false,
+      "official_course_unit": false
+    },
+    {
+      "material_id": "recordings",
+      "source_record_id": "unit_6257055036e1de4f991147786d033f3f",
+      "title": "Lecture recordings",
+      "kind": "lecture_media",
+      "availability": "DESCRIBED_NO_DIRECT_LOCATOR",
+      "locator": null,
+      "retrieved": false,
+      "usable_as_instructional_content": false,
+      "official_course_unit": false
+    },
+    {
+      "material_id": "textbook_site",
+      "source_record_id": "unit_bdc93313a888e3dd8b915436da8c624b",
+      "title": "CS161 textbook site",
+      "kind": "external_reading_site",
+      "availability": "LINKED_UNVERIFIED",
+      "locator": "https://textbook.cs161.org/",
+      "retrieved": false,
+      "usable_as_instructional_content": false,
+      "official_course_unit": false
+    },
+    {
+      "material_id": "assignment_set",
+      "source_record_id": "unit_ffa3fdd0e0a1cb4d744b8c951e60f397",
+      "title": "Reported assignment set",
+      "kind": "aggregate_workload_description",
+      "availability": "DESCRIBED_NO_ARTIFACTS",
+      "locator": null,
+      "retrieved": false,
+      "usable_as_instructional_content": false,
+      "source_claims_official_course_unit": true,
+      "classified_as_actionable_unit": false,
+      "notes": "Only the counts 7 online homework sets, 3 labs, and 3 projects are present."
+    },
+    {
+      "material_id": "supplemental_repository",
+      "source_record_id": null,
+      "title": "Catalog-listed UCB-CS161 repository",
+      "kind": "external_repository",
+      "availability": "LINKED_UNVERIFIED",
+      "locator": "https://github.com/PKUFlyingPig/UCB-CS161",
+      "retrieved": false,
+      "usable_as_instructional_content": false,
+      "notes": "This URL appears in course.resource_urls but has no normalized resource record in the snapshot."
+    },
+    {
+      "material_id": "manager_authored_kickoff",
+      "source_record_id": null,
+      "title": "Security Boundaries and Fail-Closed Authorization",
+      "kind": "local_study_unit",
+      "availability": "AVAILABLE_LOCAL",
+      "locator": "student_safe/COURSE_BRIEF.md",
+      "retrieved": false,
+      "usable_as_instructional_content": true,
+      "official_course_unit": false,
+      "notes": "Original course-manager packaging derived from catalog-level scope; it does not reproduce an official assignment."
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "course_website",
+      "status": "NOT_LOCAL",
+      "reason_code": "EXTERNAL_LINK_NOT_RETRIEVED",
+      "reason": "The snapshot supplies a URL only. This bounded preparation job did not verify or copy its contents."
+    },
+    {
+      "material_id": "recordings",
+      "status": "UNAVAILABLE",
+      "reason_code": "MISSING_DIRECT_LOCATOR",
+      "reason": "No recording URL or media artifact is present in the snapshot."
+    },
+    {
+      "material_id": "textbook_site",
+      "status": "NOT_LOCAL",
+      "reason_code": "EXTERNAL_LINK_NOT_RETRIEVED",
+      "reason": "The snapshot supplies a home-page URL only; no chapter text was retrieved."
+    },
+    {
+      "material_id": "assignment_set",
+      "status": "UNAVAILABLE",
+      "reason_code": "MISSING_ASSIGNMENT_ARTIFACTS",
+      "reason": "An aggregate workload description cannot be used as an assignment prompt."
+    },
+    {
+      "material_id": "supplemental_repository",
+      "status": "NOT_LOCAL",
+      "reason_code": "EXTERNAL_LINK_NOT_RETRIEVED",
+      "reason": "The repository URL was recorded but its contents, license at revision, and pedagogical role were not verified."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job_mode": "NO_EXTERNAL_RETRIEVAL",
+    "network_retrieval_performed": false,
+    "current_unit_requires_external_material": false,
+    "rules": [
+      "Treat every catalog URL as an unverified locator until a later authorized retrieval succeeds.",
+      "Retrieve only material that is publicly accessible without credentials and whose use is allowed; never bypass authentication, paywalls, access controls, or robots and rate limits.",
+      "Do not retrieve staff-only material, solutions, hidden graders, sealed references, secrets, or another learner's work.",
+      "Keep source repositories read-only and copy permitted learner inputs only into the later attempt workspace.",
+      "For each successful retrieval, record the canonical URL, retrieval time, content hash, license or access basis, content type, and explicit learner-safe or examiner-only classification.",
+      "If a locator fails, redirects unexpectedly, changes content, or has unclear rights, preserve the failure as blocked evidence and do not infer availability from the catalog claim.",
+      "Promote material to a graph unit only after its content, provenance, dependencies, scope, and harness-controlled validation path are explicit."
+    ],
+    "later_expansion_order": [
+      "Verify the public course website and identify a syllabus or schedule.",
+      "Resolve individual textbook readings and recording URLs against that schedule.",
+      "Locate assignment prompts separately from solutions and staff-only infrastructure.",
+      "Create one provenance-bearing graph node per validated instructional or assessed unit."
+    ]
+  }
+}

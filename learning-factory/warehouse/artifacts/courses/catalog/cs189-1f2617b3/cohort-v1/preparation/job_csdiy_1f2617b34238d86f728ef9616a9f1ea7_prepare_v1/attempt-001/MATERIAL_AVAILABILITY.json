@@ -1,0 +1,133 @@
+{
+  "course_id": "course_1f2617b34238d86f728ef9616a9f1ea7",
+  "materials": [
+    {
+      "material_id": "catalog_snapshot",
+      "title": "CSDIY CS189 catalog snapshot",
+      "kind": "catalog_metadata",
+      "availability": "AVAILABLE_IN_JOB_INPUT",
+      "locator": "JOB.md",
+      "content_scope": "Catalog description, course metadata, provenance, and resource pointers only",
+      "usable_for_unit": true
+    },
+    {
+      "material_id": "course_website_pointer",
+      "title": "Course Website",
+      "kind": "external_link",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "locator": "https://www.eecs189.org/",
+      "source_record_id": "unit_b84a4a67a815d26224a8ddaf13e1a244",
+      "usable_for_unit": false
+    },
+    {
+      "material_id": "recordings_pointer",
+      "title": "Recordings",
+      "kind": "external_playlist_link",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "locator": "https://www.youtube.com/playlist?list=PLOOm2AoWIPEyZazQVnIcaK2KnezpGZV-X",
+      "source_record_id": "unit_3b4167f9d09b1cd73bde703333e25f1a",
+      "usable_for_unit": false
+    },
+    {
+      "material_id": "textbooks_pointer",
+      "title": "Textbooks",
+      "kind": "unresolved_external_link",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "locator": "https://www.eecs189.org/",
+      "source_record_id": "unit_ac8fa1acc30b80b88bfe36ed8217a9ae",
+      "usable_for_unit": false
+    },
+    {
+      "material_id": "assignments_pointer",
+      "title": "Assignments",
+      "kind": "external_assignment_link",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "locator": "https://www.eecs189.org/",
+      "source_record_id": "unit_f9554eea2739122d614ea380adf8b33f",
+      "source_claim_official_course_unit": true,
+      "verified_official_unit": false,
+      "usable_for_unit": false
+    },
+    {
+      "material_id": "kickoff_brief",
+      "title": "Kickoff course brief",
+      "kind": "manager_authored_learner_material",
+      "availability": "LOCAL_AVAILABLE",
+      "locator": "student_safe/COURSE_BRIEF.md",
+      "usable_for_unit": true
+    },
+    {
+      "material_id": "kickoff_task",
+      "title": "Reproducible k-NN study task",
+      "kind": "manager_authored_learner_material",
+      "availability": "LOCAL_AVAILABLE",
+      "locator": "student_safe/STUDY_TASK.md",
+      "usable_for_unit": true
+    },
+    {
+      "material_id": "kickoff_comprehension",
+      "title": "Comprehension prompts",
+      "kind": "manager_authored_learner_material",
+      "availability": "LOCAL_AVAILABLE",
+      "locator": "student_safe/COMPREHENSION.md",
+      "usable_for_unit": true
+    },
+    {
+      "material_id": "kickoff_examiner_rubric",
+      "title": "Independent unit evaluation rubric",
+      "kind": "examiner_only_material",
+      "availability": "LOCAL_RESTRICTED_TO_EXAMINER",
+      "locator": "examiner_only/RUBRIC.md",
+      "usable_for_unit": false,
+      "learner_visible": false
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "course_website_content",
+      "availability": "NOT_RETRIEVED",
+      "reason": "Only a catalog URL was supplied; external retrieval is outside this preparation job.",
+      "effect": "No page content, schedule, notes, or current course structure is asserted."
+    },
+    {
+      "material_id": "recording_media_and_metadata",
+      "availability": "NOT_RETRIEVED",
+      "reason": "Only a playlist URL was supplied; video titles, media, captions, and transcripts were not accessed.",
+      "effect": "No recording is assigned or represented as available."
+    },
+    {
+      "material_id": "textbook_identity_and_content",
+      "availability": "NOT_IDENTIFIED_OR_RETRIEVED",
+      "reason": "The catalog's textbook field points only to the course website and names no book in the supplied snapshot.",
+      "effect": "No textbook reading is required or inferred."
+    },
+    {
+      "material_id": "official_assignment_content",
+      "availability": "NOT_RETRIEVED",
+      "reason": "The normalized assignment record contains a generic course-site link, not an assignment specification or verified files.",
+      "effect": "The kickoff task is manager-authored and must not be described as an official CS189 assignment."
+    },
+    {
+      "material_id": "starter_code_autograder_and_solutions",
+      "availability": "NOT_RETRIEVED",
+      "reason": "No repository location, file identity, license check, or authorized artifact was provided.",
+      "effect": "No upstream starter code, autograder, hidden tests, solutions, or sealed references are included."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": "Do not retrieve external resources. Use the supplied snapshot only as catalog metadata.",
+    "link_semantics": "A URL proves that a pointer was cataloged; it does not prove content availability, identity, currency, licensing, or unit status.",
+    "later_authorized_jobs": [
+      "Fetch only public or explicitly authorized content",
+      "Record the final URL, retrieval time in durable job state, content hash, media type, license or access basis, and source record",
+      "Verify course and unit identity before promotion into the unit graph",
+      "Run isolation and learner-safety checks before creating a student view",
+      "Keep unavailable, gated, removed, or ambiguous resources blocked rather than synthesizing their contents"
+    ],
+    "prohibited": [
+      "Bypassing authentication, paywalls, robots controls, or access restrictions",
+      "Copying solutions, hidden graders, sealed references, secrets, or another learner's files",
+      "Treating catalog prose or a generic link as evidence that a whole course or official unit has been acquired"
+    ]
+  }
+}

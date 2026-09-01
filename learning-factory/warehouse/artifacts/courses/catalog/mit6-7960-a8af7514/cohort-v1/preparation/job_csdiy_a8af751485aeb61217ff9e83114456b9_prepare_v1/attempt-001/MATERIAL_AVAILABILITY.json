@@ -1,0 +1,134 @@
+{
+  "course_id": "course_a8af751485aeb61217ff9e83114456b9",
+  "materials": [
+    {
+      "material_id": "manager_course_brief",
+      "title": "Kickoff Course Brief",
+      "kind": "manager_authored_learner_document",
+      "availability": "AVAILABLE_LOCAL",
+      "path": "student_safe/COURSE_BRIEF.md",
+      "official_course_material": false,
+      "use_in_current_unit": "REQUIRED"
+    },
+    {
+      "material_id": "manager_study_task",
+      "title": "Reliable Softmax Study Task",
+      "kind": "manager_authored_learner_document",
+      "availability": "AVAILABLE_LOCAL",
+      "path": "student_safe/STUDY_TASK.md",
+      "official_course_material": false,
+      "use_in_current_unit": "REQUIRED"
+    },
+    {
+      "material_id": "manager_comprehension",
+      "title": "Kickoff Comprehension Prompts",
+      "kind": "manager_authored_learner_document",
+      "availability": "AVAILABLE_LOCAL",
+      "path": "student_safe/COMPREHENSION.md",
+      "official_course_material": false,
+      "use_in_current_unit": "REQUIRED"
+    },
+    {
+      "material_id": "unit_dc766c64b7c4ba1689b01405ceccb88e",
+      "title": "Catalog overview and resource guide",
+      "kind": "normalized_catalog_record",
+      "availability": "CATALOG_METADATA_ONLY",
+      "source_reference": "docs/深度学习/MIT6-7960.en.md",
+      "official_course_material": false,
+      "use_in_current_unit": "PROVENANCE_CONTEXT_ONLY"
+    },
+    {
+      "material_id": "unit_e5a651a28613c2439373d76f2e7112f1",
+      "title": "MIT OpenCourseWare course website",
+      "kind": "external_link_record",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "url": "https://ocw.mit.edu/courses/6-7960-deep-learning-fall-2024/",
+      "access_verified": false,
+      "content_retrieved": false,
+      "official_course_material": false,
+      "use_in_current_unit": "NOT_REQUIRED"
+    },
+    {
+      "material_id": "unit_8f6a2035d8b690dacc799aec0bfe8b17",
+      "title": "Lecture videos and related materials on MIT OCW",
+      "kind": "normalized_catalog_record",
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "direct_urls": [],
+      "content_retrieved": false,
+      "official_course_material": "UNVERIFIED",
+      "use_in_current_unit": "UNAVAILABLE"
+    },
+    {
+      "material_id": "unit_266558ff5e1891547e8740d3d5eef46b",
+      "title": "Lecture notes and recommended papers",
+      "kind": "normalized_catalog_record",
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "direct_urls": [],
+      "content_retrieved": false,
+      "official_course_material": "UNVERIFIED",
+      "use_in_current_unit": "UNAVAILABLE"
+    },
+    {
+      "material_id": "unit_910137123fac540ea6be747e97656709",
+      "title": "Assignment and project information on MIT OCW",
+      "kind": "normalized_catalog_record",
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "direct_urls": [],
+      "content_retrieved": false,
+      "source_flag_official_course_unit": true,
+      "official_course_material": "UNVERIFIED_BODY",
+      "use_in_current_unit": "UNAVAILABLE"
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_e5a651a28613c2439373d76f2e7112f1",
+      "blocked_item": "Course website contents",
+      "reason": "Only a link is present in the supplied snapshot; access and page contents were not retrieved or verified.",
+      "impact": "The landing page cannot support claims about the official unit sequence in this job.",
+      "needed_for_current_unit": false,
+      "resolution": "A later authorized retrieval job may inspect the public page and record provenance, access terms, and a content digest."
+    },
+    {
+      "material_id": "unit_8f6a2035d8b690dacc799aec0bfe8b17",
+      "blocked_item": "Lecture recordings",
+      "reason": "The snapshot describes recordings but provides no recording identities, direct URLs, transcripts, or local files.",
+      "impact": "No recording is assigned or represented as available.",
+      "needed_for_current_unit": false,
+      "resolution": "Locate and validate individual public recording records in a later authorized job."
+    },
+    {
+      "material_id": "unit_266558ff5e1891547e8740d3d5eef46b",
+      "blocked_item": "Lecture notes and recommended papers",
+      "reason": "The snapshot supplies a description only; it does not identify or contain any note or paper.",
+      "impact": "No reading from this category is assigned or summarized.",
+      "needed_for_current_unit": false,
+      "resolution": "A later job must identify each item, verify lawful access, and capture item-level provenance before use."
+    },
+    {
+      "material_id": "unit_910137123fac540ea6be747e97656709",
+      "blocked_item": "Official assignment and project bodies",
+      "reason": "The snapshot states that information exists on MIT OCW but contains no assignment body, files, ordering, or direct URL.",
+      "impact": "The kickoff task is manager-authored and must not be attributed to MIT.",
+      "needed_for_current_unit": false,
+      "resolution": "A later authorized job may inventory publicly accessible assignment artifacts and validate their identity and terms."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": {
+      "network_retrieval_performed": false,
+      "restricted_content_accessed": false,
+      "basis": "Preparation is bounded to the supplied catalog snapshot and a self-contained kickoff; unavailable materials are not prerequisites."
+    },
+    "future_admission_requirements": [
+      "Use an authorized retrieval worker and public, lawfully accessible sources only.",
+      "Never bypass authentication, paywalls, access controls, robots restrictions, or license restrictions.",
+      "Record the canonical URL, retrieval outcome, license or access terms, content digest, and source provenance for each item.",
+      "Treat links, descriptions, and normalized labels as discovery evidence until the actual item is validated.",
+      "Keep unavailable items blocked and design a self-contained alternative when retrieval or redistribution is not permitted.",
+      "Reclassify a record as an official unit only after its identity, role, sequence, and content are independently supported."
+    ],
+    "promotion_rule": "LINKED_NOT_RETRIEVED or DESCRIBED_NOT_LOCATED may become AVAILABLE only through a durable successful retrieval-and-validation record; prose claims are insufficient.",
+    "failure_policy": "Preserve the failed retrieval outcome and reason without fabricating, summarizing, or assigning missing content."
+  }
+}

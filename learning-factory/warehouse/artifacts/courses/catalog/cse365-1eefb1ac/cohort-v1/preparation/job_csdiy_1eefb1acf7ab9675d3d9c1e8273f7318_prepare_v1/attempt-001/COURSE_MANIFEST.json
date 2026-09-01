@@ -1,0 +1,77 @@
+{
+  "course_id": "course_1eefb1acf7ab9675d3d9c1e8273f7318",
+  "title": "ASU CSE365: Introduction to Cybersecurity",
+  "status": "KICKOFF_PREPARED_UNVALIDATED",
+  "unit": {
+    "unit_id": "kickoff_unit_01_safe_process_boundaries",
+    "title": "Safe Process Boundaries: From Command Lines to Testable Interfaces",
+    "sequence": 1,
+    "classification": "manager-authored kickoff",
+    "official_course_unit": false,
+    "validation_status": "NOT_VALIDATED",
+    "catalog_alignment": [
+      "Program Misuse: Linux commandline",
+      "Challenge-based security practice"
+    ],
+    "audience": "A student strong in algorithms who is developing production software-engineering habits",
+    "scope": "Design, implement, test, and document one small Python adapter that invokes a trusted local inspection tool without turning untrusted input into command syntax.",
+    "estimated_hours": {
+      "minimum": 4,
+      "target": 6,
+      "maximum": 8
+    },
+    "learning_objectives": [
+      "Identify data, code, and trust boundaries in local process invocation.",
+      "Translate a security requirement into explicit interface invariants.",
+      "Use argument-vector process execution, a dedicated process group, bounded timeouts, captured output, and a controlled working directory.",
+      "Validate workspace-relative paths, including traversal and symlink cases.",
+      "Produce deterministic tests and durable evidence instead of relying on a prose claim of correctness."
+    ],
+    "required_outputs": [
+      "A small Python implementation and trusted local helper fixture",
+      "Automated tests for normal, adversarial, failure, and timeout cases",
+      "A threat model and design decision record",
+      "Captured test evidence",
+      "Written responses to the comprehension prompts"
+    ],
+    "student_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "scope_exclusions": [
+      "Privilege escalation",
+      "Attacks against remote or third-party systems",
+      "Use of the catalog's unavailable individual challenges",
+      "A claim to cover any later CSE365 module",
+      "A claim of course completion"
+    ]
+  },
+  "completion_policy": {
+    "policy_scope": "THIS_KICKOFF_UNIT_ONLY",
+    "course_complete": false,
+    "unit_complete_when": [
+      "All required outputs exist and are attributable to the learner's attempt.",
+      "An examiner applies examiner_only/RUBRIC.md to the implementation, tests, evidence, and responses.",
+      "A worker-harness-controlled validator records a passing unit result."
+    ],
+    "completion_authority": "worker-harness-controlled validator",
+    "prose_claims_are_evidence": false,
+    "later_unit_expansion_required": true,
+    "course_completion_rule": "This kickoff can never by itself complete the course. Later jobs must retrieve and classify usable official materials, construct additional bounded units, and validate each required unit before any course-level completion decision."
+  },
+  "provenance": {
+    "derivation": "Manager-authored kickoff derived only from the supplied CSDIY catalog snapshot; it is not represented as an official ASU or pwn.college unit.",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/系统安全/CSE365.en.md",
+    "content_sha256": "7d8d186b7809a876356423e5046f74943a60d265fb89e1f52985043c30f61b4a",
+    "adapter": "csdiy",
+    "extractor_version": "1.1",
+    "catalog_schema_version": 1,
+    "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git",
+    "external_retrieval_performed": false
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "course_id": "course_c3b34c705927a16bd82ee9c280b23a3c",
+  "title": "CMU 11-785: Introduction to Deep Learning",
+  "status": "KICKOFF_READY",
+  "unit": {
+    "unit_id": "unit_kickoff_01_tested_mlp",
+    "title": "From Equations to a Tested MLP Training Step",
+    "position": 1,
+    "status": "READY_FOR_STUDY",
+    "official_course_unit": false,
+    "authorship": "course-manager-authored kickoff",
+    "scope": "Implement, verify, and document a small two-layer classifier and its training step using Python and NumPy only.",
+    "audience": "A strong algorithms student building production-minded software-engineering habits",
+    "estimated_human_hours": 8,
+    "learning_objectives": [
+      "Translate a mathematical model contract into shape-safe, modular numerical software.",
+      "Derive and implement analytic gradients without an automatic-differentiation framework.",
+      "Use deterministic tests and finite differences to find implementation defects.",
+      "Run a reproducible, bounded experiment and distinguish evidence from unsupported conclusions."
+    ],
+    "required_deliverables": [
+      "A small installable or directly runnable Python/NumPy implementation",
+      "Deterministic automated tests, including gradient and numerical-stability checks",
+      "A machine-readable experiment report and the command that reproduces it",
+      "A concise engineering reflection",
+      "Written responses to the learner-safe comprehension prompts"
+    ],
+    "student_documents": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ]
+  },
+  "completion_policy": {
+    "scope": "FIRST_UNIT_ONLY",
+    "course_completion_awarded": false,
+    "unit_completion_requires": [
+      "Every required deliverable is present and attributable to the learner.",
+      "The documented clean-environment test command exits successfully.",
+      "The implementation and report satisfy the independent examiner rubric.",
+      "An authorized validator records a passing unit result; learner prose alone is not completion evidence."
+    ],
+    "minimum_rubric_score": 75,
+    "non_compensable_conditions": [
+      "The implementation uses analytic learner-written gradients rather than an autodiff or deep-learning framework.",
+      "Gradient checks cover every trainable tensor and pass on an examiner-selected non-kink input.",
+      "The submitted experiment can be reproduced from a recorded configuration and seed."
+    ],
+    "after_unit_completion": "Record completion only for unit_kickoff_01_tested_mlp. Later units require separately validated official-material retrieval or separately identified manager-authored scope.",
+    "whole_course_rule": "This kickoff cannot establish completion of CMU 11-785 or of the approximately 120-hour catalog course."
+  },
+  "provenance": {
+    "artifact_classification": "manager-authored",
+    "basis": "provided CSDIY catalog snapshot",
+    "catalog_schema_version": 1,
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/\u6df1\u5ea6\u5b66\u4e60/CMU11-785.en.md",
+    "source_content_sha256": "2df72d673341110bab7876c9380edcbbd80e9d744dc83797d147d27a506d4d42",
+    "source_license": "MIT",
+    "source_derived_claims": [
+      "course identifier and title",
+      "institution, prerequisites, difficulty, and approximate total workload",
+      "broad topic sequence and the existence of a course website, recordings, readings, assignments, and a project"
+    ],
+    "manager_authored_claims": [
+      "kickoff unit title, scope, activities, deliverables, and completion policy"
+    ],
+    "external_retrieval_performed": false,
+    "official_unit_claim": false
+  }
+}

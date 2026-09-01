@@ -1,0 +1,82 @@
+{
+  "course_id": "course_be792cfd6c948b9e39c6a62d2751dfc4",
+  "nodes": [
+    {
+      "node_id": "unit_01_reliable_logistic_core",
+      "type": "managed_unit",
+      "title": "Reliable Logistic Core: From Equation to Tested Python",
+      "origin": "manager-authored",
+      "official_course_unit": false,
+      "status": "READY_NOT_STARTED",
+      "estimated_human_hours": 6.0,
+      "bounded": true,
+      "source_record_ids": []
+    },
+    {
+      "node_id": "activity_01_contracts",
+      "type": "study_activity",
+      "title": "Specify data, shape, error, and averaging contracts",
+      "origin": "manager-authored",
+      "estimated_human_hours": 1.0
+    },
+    {
+      "node_id": "activity_02_implementation",
+      "type": "implementation_activity",
+      "title": "Implement the stable logistic core",
+      "origin": "manager-authored",
+      "estimated_human_hours": 1.5
+    },
+    {
+      "node_id": "activity_03_verification",
+      "type": "verification_activity",
+      "title": "Test contracts, extreme values, and analytic gradients",
+      "origin": "manager-authored",
+      "estimated_human_hours": 2.0
+    },
+    {
+      "node_id": "activity_04_evidence",
+      "type": "reflection_activity",
+      "title": "Record reproducible evidence and engineering analysis",
+      "origin": "manager-authored",
+      "estimated_human_hours": 1.5
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_01_reliable_logistic_core",
+      "to": "activity_01_contracts",
+      "relation": "contains"
+    },
+    {
+      "from": "unit_01_reliable_logistic_core",
+      "to": "activity_02_implementation",
+      "relation": "contains"
+    },
+    {
+      "from": "unit_01_reliable_logistic_core",
+      "to": "activity_03_verification",
+      "relation": "contains"
+    },
+    {
+      "from": "unit_01_reliable_logistic_core",
+      "to": "activity_04_evidence",
+      "relation": "contains"
+    },
+    {
+      "from": "activity_01_contracts",
+      "to": "activity_02_implementation",
+      "relation": "precedes"
+    },
+    {
+      "from": "activity_02_implementation",
+      "to": "activity_03_verification",
+      "relation": "precedes"
+    },
+    {
+      "from": "activity_03_verification",
+      "to": "activity_04_evidence",
+      "relation": "precedes"
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion. No normalized catalog record was promoted into this kickoff graph. The assignment record's official_course_unit flag describes its catalog classification, but its missing body prevents it from becoming a schedulable unit here."
+}

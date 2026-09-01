@@ -1,0 +1,36 @@
+{
+  "builder_job_id": "job_byox_build_v1_cdbae365c04510f869cec3581514dc5a",
+  "checks_run": [
+    "Inventoried and hashed the 52-file candidate tree and checked it for symlinks.",
+    "Inspected the requirements, learner guidance, manifest, provenance, validation record, exercises, tests, Makefiles, and complete reference C implementation.",
+    "Built the starter and sealed reference from clean state on a writable scratch copy with GCC 8.5.0.",
+    "Ran the submitted public, sealed boundary, direct API, adversarial, and repository-audit suites under outer timeouts.",
+    "Ran five independent CLI semantic and atomicity probes, an independent 500-case signed-arithmetic matrix, and an independently authored 18-check C API harness.",
+    "Probed embedded-NUL file handling, special-file handling, and valid deeply nested input.",
+    "Compiled all three C exercise fragments and ran an independent keyword-classifier probe.",
+    "Compared two clean same-host reference builds by SHA-256.",
+    "Checked internal manifest/provenance identifiers and hashes, license markers, progressive-disclosure layout, and validation-label honesty.",
+    "Attempted an AddressSanitizer and UndefinedBehaviorSanitizer build."
+  ],
+  "evidence": [
+    "The starter built cleanly; its test target exited 2 with 9 expected failures and 2 passes because the starter is explicitly a placeholder.",
+    "The reference clean build exited 0; 11 public tests, 18 sealed boundary tests, and 16 submitted API checks passed. The seven-test deterministic adversarial suite also passed.",
+    "Five independently chosen language/atomicity cases, 18 independent API checks, and all 500 arithmetic boundary combinations passed.",
+    "A valid 32,776-byte program with 16,384 nested parentheses died by SIGSEGV (return code -11), despite being far below the 1 MiB CLI limit.",
+    "A file containing `print 1;`, an embedded NUL, and `print 2;` exited 0 and printed only `1`, silently ignoring the trailing source; `/dev/null` was also accepted as an empty program.",
+    "The lexer debugging exercise correctly exposes short-prefix misclassification, but its claimed out-of-bounds read is not present: `strncmp(start, \"let\", length)` reads at most the supplied slice length and stops at NUL. The sealed answer repeats that incorrect safety claim.",
+    "The disclosure directory layout is sensible, but the submitted tree itself contains readable solutions, hidden tests, and the full reference, with no included student-view projector or transfer-verification evidence.",
+    "Manifest labels remain honestly limited to GENERATED and PARTIAL; the pack expressly disclaims fuzzing, benchmarking results, independent validation, transfer verification, and productionization.",
+    "Manifest, provenance, project, source, and commit identifiers are internally consistent. Two same-host clean reference builds produced the same executable SHA-256, 5dc3961e052a5aa3f71bd4ef5b938f736700c035d1c42b8fddfba27f6ce49de5.",
+    "The CC0 assertion is confined to catalog metadata and the linked tutorial is correctly marked NOASSERTION, but no redistribution license is granted for the generated challenge code and prose."
+  ],
+  "limitations": [
+    "clang, valgrind, and ripgrep were unavailable. GCC sanitizer linking failed because libasan.so.5.0.0 and libubsan.so.1.0.0 were unavailable.",
+    "The upstream catalog and linked NOASSERTION tutorial were not available in scope, so source-license evidence, originality, and the no-copy assertion could not be independently verified.",
+    "No harness-generated learner view or transfer artifact was supplied, so progressive-disclosure isolation could be assessed structurally but not transfer-verified.",
+    "Rebuild comparison covered one GCC/Linux host and one path; no cross-compiler, cross-platform, concurrency, allocation-failure, or long-running load validation was possible.",
+    "Submitted suites and prose are recorded only as observations and do not establish BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED labels."
+  ],
+  "project_id": "project_ef449ee88f318bad30bec20a8941022d",
+  "verdict": "REVISE"
+}

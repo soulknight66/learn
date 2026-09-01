@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "course_id": "course_c078642f959c96dd7b74be2fdf76e8de",
+  "materials": [
+    {
+      "material_id": "local_course_brief",
+      "title": "Course brief",
+      "kind": "learner_guide",
+      "location": "student_safe/COURSE_BRIEF.md",
+      "availability": "AVAILABLE_LOCAL",
+      "required_for_first_unit": true,
+      "validation_label": "MANAGER_AUTHORED"
+    },
+    {
+      "material_id": "local_study_task",
+      "title": "Collision-risk software study task",
+      "kind": "assignment_specification",
+      "location": "student_safe/STUDY_TASK.md",
+      "availability": "AVAILABLE_LOCAL",
+      "required_for_first_unit": true,
+      "validation_label": "MANAGER_AUTHORED"
+    },
+    {
+      "material_id": "local_comprehension",
+      "title": "Comprehension questions",
+      "kind": "question_set",
+      "location": "student_safe/COMPREHENSION.md",
+      "availability": "AVAILABLE_LOCAL",
+      "required_for_first_unit": true,
+      "validation_label": "MANAGER_AUTHORED_QUESTIONS_ONLY"
+    },
+    {
+      "material_id": "catalog_overview_record",
+      "title": "Catalog overview and resource guide",
+      "kind": "catalog_metadata",
+      "source_record_id": "unit_8034f58150cb336996c6c0b371c75c76",
+      "source_reference": "docs/数学进阶/CS126.en.md",
+      "availability": "METADATA_IN_SNAPSHOT",
+      "required_for_first_unit": false,
+      "validation_label": "SOURCE_DERIVED_METADATA"
+    },
+    {
+      "material_id": "fall_2020_course_website",
+      "title": "EECS 126 Fall 2020 course website",
+      "kind": "course_website",
+      "url": "https://inst.eecs.berkeley.edu/~ee126/fa20/content.html",
+      "source_record_id": "unit_4850604df80a688f9a4867b9e02f7e48",
+      "availability": "LINKED_UNVERIFIED",
+      "required_for_first_unit": false,
+      "retrieved": false,
+      "validation_label": "CATALOG_POINTER_ONLY"
+    },
+    {
+      "material_id": "textbook_book_page",
+      "title": "Probability in Electrical Engineering and Computer Science book page",
+      "kind": "book_landing_page",
+      "url": "https://link.springer.com/book/10.1007/978-3-030-49995-2",
+      "availability": "LINKED_UNVERIFIED",
+      "required_for_first_unit": false,
+      "retrieved": false,
+      "validation_label": "CATALOG_POINTER_ONLY"
+    },
+    {
+      "material_id": "textbook_pdf",
+      "title": "Probability in Electrical Engineering and Computer Science PDF",
+      "kind": "textbook_pdf",
+      "url": "https://link.springer.com/content/pdf/10.1007%2F978-3-030-49995-2.pdf",
+      "source_record_id": "unit_3dc3a00dfc58ea7f95891ee49ae31b84",
+      "availability": "LINKED_UNVERIFIED",
+      "required_for_first_unit": false,
+      "retrieved": false,
+      "validation_label": "CATALOG_POINTER_ONLY"
+    },
+    {
+      "material_id": "textbook_epub",
+      "title": "Probability in Electrical Engineering and Computer Science EPUB",
+      "kind": "textbook_epub",
+      "url": "https://link.springer.com/download/epub/10.1007%2F978-3-030-49995-2.epub",
+      "source_record_id": "unit_3dc3a00dfc58ea7f95891ee49ae31b84",
+      "availability": "LINKED_UNVERIFIED",
+      "required_for_first_unit": false,
+      "retrieved": false,
+      "validation_label": "CATALOG_POINTER_ONLY"
+    },
+    {
+      "material_id": "peecs_notebooks",
+      "title": "PEECS Jupyter Book and notebooks",
+      "kind": "interactive_notebooks",
+      "url": "https://jeanwalrand.github.io/PeecsJB/intro.html",
+      "source_record_id": "unit_3dc3a00dfc58ea7f95891ee49ae31b84",
+      "availability": "LINKED_UNVERIFIED",
+      "required_for_first_unit": false,
+      "retrieved": false,
+      "validation_label": "CATALOG_POINTER_ONLY"
+    },
+    {
+      "material_id": "catalog_github_repository",
+      "title": "Catalog-linked EECS126 repository",
+      "kind": "source_repository_pointer",
+      "url": "https://github.com/PKUFlyingPig/EECS126",
+      "availability": "LINKED_UNVERIFIED",
+      "required_for_first_unit": false,
+      "retrieved": false,
+      "validation_label": "CATALOG_POINTER_ONLY"
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "official_assignments",
+      "title": "Official assignment files",
+      "source_record_id": "unit_664c1892d3ee8f99335ce922fcd6b336",
+      "availability": "DESCRIBED_ONLY",
+      "reason": "The snapshot says only 'refer to the course website' and contains no assignment-file URLs or contents.",
+      "needed_for_first_unit": false,
+      "unblock_condition": "An authorized later job retrieves the public course index, identifies individual assignment records, verifies access and provenance, and stores only permitted learner-safe content."
+    },
+    {
+      "material_id": "official_unit_sequence",
+      "title": "Verified official lecture, homework, and lab sequence",
+      "availability": "UNAVAILABLE_IN_SNAPSHOT",
+      "reason": "The snapshot describes homework and nine labs but supplies neither a verified sequence nor their contents.",
+      "needed_for_first_unit": false,
+      "unblock_condition": "A later ingestion job obtains and classifies authoritative public records without treating navigation links as units."
+    },
+    {
+      "material_id": "verified_external_copies",
+      "title": "Locally validated copies of linked textbook, notebook, site, and repository resources",
+      "availability": "NOT_RETRIEVED",
+      "reason": "This preparation job did not perform network retrieval, so reachability, licensing at the asset level, integrity, and contents were not verified.",
+      "needed_for_first_unit": false,
+      "unblock_condition": "A retrieval-authorized later job records the resolved URL, access result, license, checksum, retrieval time, and learner-safety classification for each selected asset."
+    }
+  ],
+  "retrieval_policy": {
+    "network_fetch_performed_for_this_unit": false,
+    "first_unit_dependency_mode": "SELF_CONTAINED_LOCAL_SPECIFICATION",
+    "linked_does_not_mean_available": true,
+    "future_retrieval_authority": "later explicitly authorized ingestion or retrieval job",
+    "future_requirements": [
+      "Treat every URL as an unverified pointer until a recorded retrieval succeeds.",
+      "Respect access controls and asset-level licenses; do not bypass authentication, paywalls, robots restrictions, or other controls.",
+      "Record resolved URL, provenance, license, checksum, retrieval time, and validation label for retained artifacts.",
+      "Keep source repositories read-only and copy permitted working inputs only into the per-attempt workspace.",
+      "Exclude secrets, hidden graders, sealed references, examiner materials, and other learners' files from learner-visible locations.",
+      "Classify resource granularity before adding any retrieved record to the unit graph."
+    ],
+    "on_failure": "Record the attempt and reason as blocked; do not fabricate, silently substitute, or promote the material to available."
+  }
+}

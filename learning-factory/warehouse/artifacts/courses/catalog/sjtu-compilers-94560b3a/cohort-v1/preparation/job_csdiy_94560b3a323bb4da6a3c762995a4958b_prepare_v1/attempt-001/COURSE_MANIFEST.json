@@ -1,0 +1,74 @@
+{
+  "course_id": "course_94560b3a323bb4da6a3c762995a4958b",
+  "title": "SJTU Compiler Principles",
+  "status": "KICKOFF_UNIT_READY",
+  "unit": {
+    "unit_id": "kickoff_slp_interpreter_v1",
+    "title": "Engineering a Straight-Line Program Interpreter",
+    "status": "READY_FOR_INDEPENDENT_VALIDATION",
+    "scope": "One manager-authored kickoff unit; it is not a reconstruction of the unavailable official lab handout and does not represent the rest of the course.",
+    "basis": {
+      "normalized_record_id": "unit_482afc4f4901a1788881e88a48cd4d79",
+      "catalog_label": "Lab 1",
+      "catalog_description": "Straight-line Program Interpreter",
+      "relationship": "The description supplies only the topic. The specification and exercises in this unit are newly authored for this learning-factory attempt."
+    },
+    "audience": "A student strong in algorithms who is building production-oriented software-engineering habits.",
+    "implementation_language": "C++17",
+    "estimated_human_hours": 10,
+    "prerequisites": [
+      "Data structures and algorithms",
+      "Programming fundamentals",
+      "Basic computer systems",
+      "Working knowledge of C++ value and ownership semantics"
+    ],
+    "learning_objectives": [
+      "Model a small language with explicit, type-safe abstract syntax",
+      "Implement deterministic, left-to-right evaluation with visible state and output",
+      "Implement a side-effect-free structural analysis over the same syntax tree",
+      "Design explicit error behavior for invalid programs and integer operations",
+      "Build a reproducible CMake and CTest workflow with focused automated tests",
+      "Explain ownership, invariants, complexity, and test strategy in a short design note"
+    ],
+    "required_artifacts": [
+      "C++17 interpreter and AST implementation",
+      "max_print_arity structural analysis",
+      "CMake build and CTest test suite",
+      "README with reproducible commands",
+      "DESIGN.md with engineering rationale",
+      "Written responses to the comprehension prompts"
+    ],
+    "learner_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ]
+  },
+  "completion_policy": {
+    "unit_completion": "The kickoff unit may be marked complete only after a worker-harness-controlled validator confirms the required implementation, tests, documentation, and comprehension submission against the examiner rubric.",
+    "required_evidence": [
+      "A clean configure, build, and CTest run from a fresh build directory",
+      "Independent behavioral checks for interpreter semantics, analysis, and errors",
+      "Manual review of the design note and comprehension responses"
+    ],
+    "prose_claims_are_evidence": false,
+    "whole_course_completion_allowed": false,
+    "course_effect": "Passing this unit records only kickoff_slp_interpreter_v1 as complete. The course must remain in progress until separately prepared units cover the intended course scope and each is independently validated."
+  },
+  "provenance": {
+    "artifact_classification": "manager-authored-kickoff-from-catalog-metadata",
+    "catalog_adapter": "csdiy",
+    "catalog_content_sha256": "c0b01a3547deab67a2c9ce70808ae093949cc577ef4b3208bb40f409922c4189",
+    "extractor_version": "1.1",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/编译原理/SJTU-Compilers.en.md",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_license": "MIT",
+    "retrieval_performed": false,
+    "provenance_note": "Only the catalog snapshot embedded in JOB.md was used. No linked course, textbook, slide, or repository content was fetched."
+  },
+  "validation": {
+    "label": "PREPARED_UNVALIDATED",
+    "meaning": "Artifact structure was prepared for validation; no learner work or course completion has been validated."
+  }
+}

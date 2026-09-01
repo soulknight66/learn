@@ -1,0 +1,120 @@
+{
+  "course_id": "course_82d52bed84f08353bbf81654523b5bd8",
+  "materials": [
+    {
+      "material_id": "catalog_overview_snapshot",
+      "title": "Catalog overview and resource guide",
+      "kind": "CATALOG_METADATA",
+      "classification": "SOURCE_DERIVED_CONTEXT",
+      "official_course_unit": false,
+      "availability": "AVAILABLE_IN_SNAPSHOT",
+      "usable_in_current_unit": true,
+      "source_reference": "docs/软件工程/6031.en.md",
+      "content_scope": "Description, prerequisites, language, workload summary, and resource labels only"
+    },
+    {
+      "material_id": "official_course_site_links",
+      "title": "MIT course website links",
+      "kind": "RESOURCE_LINK_GROUP",
+      "classification": "SOURCE_LISTED_OFFICIAL_HOSTS",
+      "official_course_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "usable_in_current_unit": false,
+      "urls": [
+        "https://web.mit.edu/6.031/",
+        "https://web.mit.edu/6.031/www/sp22/",
+        "https://web.mit.edu/6.031/www/sp21/",
+        "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-005-software-construction-spring-2016/"
+      ],
+      "source_reference": "docs/软件工程/6031.en.md#L25",
+      "verification": "No page availability, version, license, or contents were verified during this job."
+    },
+    {
+      "material_id": "course_recordings",
+      "title": "Recordings",
+      "kind": "LECTURE_MEDIA",
+      "classification": "CATALOG_UNAVAILABLE",
+      "official_course_unit": false,
+      "availability": "UNAVAILABLE",
+      "usable_in_current_unit": false,
+      "urls": [],
+      "source_reference": "docs/软件工程/6031.en.md#L26",
+      "verification": "The supplied catalog value is 'None'; no recording is claimed or substituted."
+    },
+    {
+      "material_id": "official_assignment_inventory",
+      "title": "Four problem sets and one project",
+      "kind": "AGGREGATE_ASSIGNMENT_DESCRIPTION",
+      "classification": "OFFICIAL_COUNT_WITHOUT_BODIES",
+      "official_course_unit": false,
+      "availability": "DESCRIBED_NOT_RETRIEVED",
+      "usable_in_current_unit": false,
+      "urls": [],
+      "source_reference": "docs/软件工程/6031.en.md#L27",
+      "verification": "The count is present, but individual titles, versions, instructions, files, and licenses are absent from the snapshot."
+    },
+    {
+      "material_id": "source_listed_supplementary_repositories",
+      "title": "Source-listed supplementary repositories",
+      "kind": "RESOURCE_LINK_GROUP",
+      "classification": "UNVERIFIED_NON_OFFICIAL_LINKS",
+      "official_course_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "usable_in_current_unit": false,
+      "urls": [
+        "https://github.com/PKUFlyingPig/MIT6.031-software-construction",
+        "https://github.com/pengzhangzhi/self-taught-CS/tree/main/Software%20Construction"
+      ],
+      "verification": "The repositories were listed by the catalog but were not fetched; ownership, completeness, safety, and licensing of their contents were not evaluated."
+    },
+    {
+      "material_id": "manager_authored_kickoff_packet",
+      "title": "From a Correct Algorithm to a Trustworthy ADT",
+      "kind": "LOCAL_STUDY_PACKET",
+      "classification": "MANAGER_AUTHORED_NON_OFFICIAL",
+      "official_course_unit": false,
+      "availability": "AVAILABLE_LOCAL",
+      "usable_in_current_unit": true,
+      "paths": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "verification": "Self-contained for the bounded kickoff; it does not reproduce or stand in for official course material."
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "course_recordings",
+      "status": "UNAVAILABLE",
+      "reason": "The catalog explicitly reports recordings as 'None' and provides no recording URL.",
+      "later_resolution": "Do not infer that recordings exist. A later job may add one only from a newly verified, authorized source with provenance."
+    },
+    {
+      "material_id": "official_assignment_bodies",
+      "status": "NOT_PRESENT_IN_SNAPSHOT",
+      "reason": "Only the aggregate '4 Problem Sets + 1 Project' description is supplied; assignment bodies and per-assignment metadata are absent.",
+      "later_resolution": "Retrieve only if a later job is authorized to access a source-listed public location, then identify and validate each assignment separately."
+    },
+    {
+      "material_id": "official_reading_bodies",
+      "status": "NOT_PRESENT_IN_SNAPSHOT",
+      "reason": "The catalog says a textbook is on the latest website but supplies no normalized reading records or local reading content.",
+      "later_resolution": "A later job must verify the official page, access terms, exact reading identity, and version before adding it."
+    }
+  ],
+  "retrieval_policy": {
+    "network_retrieval_performed_for_this_job": false,
+    "current_unit_requires_external_retrieval": false,
+    "allowed_future_sources": "Source-listed public locations or other explicitly authorized sources, with preference for official MIT hosts.",
+    "restricted_content": "Do not authenticate, bypass access controls, scrape prohibited content, or copy solutions, hidden graders, sealed references, secrets, or another learner's work.",
+    "verification_before_use": [
+      "Record the exact URL or local source, retrieval time, version or commit when available, and content hash.",
+      "Confirm availability, authorship, license or permitted use, and whether the item is an official course unit.",
+      "Scan learner-facing artifacts for solutions, rubric text, hidden evaluation data, secrets, and cross-learner content.",
+      "Keep linked, described, retrieved, validated, and unavailable as distinct states."
+    ],
+    "promotion_rule": "A link or catalog claim alone never becomes an available official unit; deterministic ingestion and worker-harness-controlled validation are required.",
+    "failure_handling": "Preserve the unavailable or blocked record and its reason; never fabricate a replacement or silently relabel manager-authored material as official."
+  }
+}

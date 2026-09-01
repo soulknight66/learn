@@ -1,0 +1,231 @@
+{
+  "course_id": "course_273048007d194845ebfe42969260ecf6",
+  "nodes": [
+    {
+      "node_id": "kickoff_01_stable_matching_engineering",
+      "node_kind": "manager_authored_study_unit",
+      "title": "Stable Matching as an Executable Contract",
+      "status": "READY_NOT_COMPLETED",
+      "official_course_unit": false,
+      "bounded": true,
+      "estimated_human_hours": 8,
+      "provenance_classification": "manager-derived"
+    },
+    {
+      "node_id": "kickoff_01_problem_model",
+      "node_kind": "learner_activity",
+      "parent_unit_id": "kickoff_01_stable_matching_engineering",
+      "title": "Define the matching model and blocking-pair predicate",
+      "status": "ASSIGNED_NOT_COMPLETED",
+      "official_course_unit": false,
+      "provenance_classification": "manager-authored"
+    },
+    {
+      "node_id": "kickoff_01_contract",
+      "node_kind": "learner_activity",
+      "parent_unit_id": "kickoff_01_stable_matching_engineering",
+      "title": "Specify valid inputs, output guarantees, and failure behavior",
+      "status": "ASSIGNED_NOT_COMPLETED",
+      "official_course_unit": false,
+      "provenance_classification": "manager-authored"
+    },
+    {
+      "node_id": "kickoff_01_implementation",
+      "node_kind": "learner_activity",
+      "parent_unit_id": "kickoff_01_stable_matching_engineering",
+      "title": "Implement deterministic left-proposing deferred acceptance",
+      "status": "ASSIGNED_NOT_COMPLETED",
+      "official_course_unit": false,
+      "provenance_classification": "manager-authored"
+    },
+    {
+      "node_id": "kickoff_01_verification",
+      "node_kind": "learner_activity",
+      "parent_unit_id": "kickoff_01_stable_matching_engineering",
+      "title": "Verify contracts, stability, and deterministic behavior",
+      "status": "ASSIGNED_NOT_COMPLETED",
+      "official_course_unit": false,
+      "provenance_classification": "manager-authored"
+    },
+    {
+      "node_id": "kickoff_01_reasoning",
+      "node_kind": "learner_activity",
+      "parent_unit_id": "kickoff_01_stable_matching_engineering",
+      "title": "Explain invariants, proof obligations, complexity, and engineering tradeoffs",
+      "status": "ASSIGNED_NOT_COMPLETED",
+      "official_course_unit": false,
+      "provenance_classification": "manager-authored"
+    },
+    {
+      "node_id": "unit_0867c094a0cdb8ef7d18cdf1b016392d",
+      "node_kind": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "record_type": "reading",
+      "classification": "CATALOG_METADATA_ONLY",
+      "source_metadata_official_course_unit": false,
+      "promoted_to_course_unit": false,
+      "availability": "SNAPSHOT_FIELDS_PRESENT_SOURCE_BODY_ABSENT",
+      "source_reference": "docs/数学进阶/CS70.en.md"
+    },
+    {
+      "node_id": "unit_fe63d8dbaed25a8ba902760e193afab7",
+      "node_kind": "normalized_resource_record",
+      "title": "Course Website",
+      "record_type": "reading",
+      "classification": "LINK_ONLY_NOT_RETRIEVED",
+      "source_metadata_official_course_unit": false,
+      "promoted_to_course_unit": false,
+      "availability": "LINKED_UNVERIFIED",
+      "source_reference": "docs/数学进阶/CS70.en.md#L25"
+    },
+    {
+      "node_id": "unit_4f140c7babf2cc936b663c42f3f55aff",
+      "node_kind": "normalized_resource_record",
+      "title": "Textbook",
+      "record_type": "reading",
+      "classification": "DESCRIPTION_ONLY_NO_ARTIFACT",
+      "source_metadata_official_course_unit": false,
+      "promoted_to_course_unit": false,
+      "availability": "UNAVAILABLE",
+      "source_reference": "docs/数学进阶/CS70.en.md#L26"
+    },
+    {
+      "node_id": "unit_b4957d5339f2d443c582b3357454a3b2",
+      "node_kind": "normalized_resource_record",
+      "title": "Assignments",
+      "record_type": "assignment",
+      "classification": "OFFICIAL_UNIT_CLAIM_WITHOUT_RETRIEVED_ARTIFACT",
+      "source_metadata_official_course_unit": true,
+      "promoted_to_course_unit": false,
+      "availability": "UNAVAILABLE",
+      "source_reference": "docs/数学进阶/CS70.en.md#L27"
+    },
+    {
+      "node_id": "deferred_graph_theory_network_topology",
+      "node_kind": "catalog_topic_placeholder",
+      "title": "Graph theory and network topology design",
+      "status": "DEFERRED_UNPLANNED",
+      "official_course_unit": false,
+      "promoted_to_course_unit": false,
+      "provenance_classification": "catalog-described correspondence"
+    },
+    {
+      "node_id": "deferred_number_theory_rsa",
+      "node_kind": "catalog_topic_placeholder",
+      "title": "Basic number theory and RSA",
+      "status": "DEFERRED_UNPLANNED",
+      "official_course_unit": false,
+      "promoted_to_course_unit": false,
+      "provenance_classification": "catalog-described correspondence"
+    },
+    {
+      "node_id": "deferred_polynomial_rings_coding",
+      "node_kind": "catalog_topic_placeholder",
+      "title": "Polynomial rings and error-correcting codes",
+      "status": "DEFERRED_UNPLANNED",
+      "official_course_unit": false,
+      "promoted_to_course_unit": false,
+      "provenance_classification": "catalog-described correspondence"
+    },
+    {
+      "node_id": "deferred_probability_systems",
+      "node_kind": "catalog_topic_placeholder",
+      "title": "Probability, hash tables, and load balancing",
+      "status": "DEFERRED_UNPLANNED",
+      "official_course_unit": false,
+      "promoted_to_course_unit": false,
+      "provenance_classification": "catalog-described correspondence"
+    }
+  ],
+  "edges": [
+    {
+      "from": "kickoff_01_stable_matching_engineering",
+      "to": "kickoff_01_problem_model",
+      "relation": "contains",
+      "required": true
+    },
+    {
+      "from": "kickoff_01_stable_matching_engineering",
+      "to": "kickoff_01_contract",
+      "relation": "contains",
+      "required": true
+    },
+    {
+      "from": "kickoff_01_stable_matching_engineering",
+      "to": "kickoff_01_implementation",
+      "relation": "contains",
+      "required": true
+    },
+    {
+      "from": "kickoff_01_stable_matching_engineering",
+      "to": "kickoff_01_verification",
+      "relation": "contains",
+      "required": true
+    },
+    {
+      "from": "kickoff_01_stable_matching_engineering",
+      "to": "kickoff_01_reasoning",
+      "relation": "contains",
+      "required": true
+    },
+    {
+      "from": "kickoff_01_problem_model",
+      "to": "kickoff_01_contract",
+      "relation": "prerequisite",
+      "required": true
+    },
+    {
+      "from": "kickoff_01_contract",
+      "to": "kickoff_01_implementation",
+      "relation": "prerequisite",
+      "required": true
+    },
+    {
+      "from": "kickoff_01_contract",
+      "to": "kickoff_01_verification",
+      "relation": "prerequisite",
+      "required": true
+    },
+    {
+      "from": "kickoff_01_implementation",
+      "to": "kickoff_01_verification",
+      "relation": "evidence_input",
+      "required": true
+    },
+    {
+      "from": "kickoff_01_verification",
+      "to": "kickoff_01_reasoning",
+      "relation": "evidence_input",
+      "required": true
+    },
+    {
+      "from": "unit_0867c094a0cdb8ef7d18cdf1b016392d",
+      "to": "kickoff_01_stable_matching_engineering",
+      "relation": "catalog_metadata_informed_topic_selection",
+      "required": false
+    }
+  ],
+  "record_boundary": {
+    "source_statement": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+    "policy": "A normalized record is an ingestion record, not a learning unit. It may become a required or official unit only after an authorized job retrieves the identified artifact, verifies its identity and provenance, and records an explicit promotion decision.",
+    "normalized_record_ids": [
+      "unit_0867c094a0cdb8ef7d18cdf1b016392d",
+      "unit_fe63d8dbaed25a8ba902760e193afab7",
+      "unit_4f140c7babf2cc936b663c42f3f55aff",
+      "unit_b4957d5339f2d443c582b3357454a3b2"
+    ],
+    "promoted_record_ids": [],
+    "manager_authored_unit_ids": [
+      "kickoff_01_stable_matching_engineering"
+    ],
+    "officiality_rule": "The source flag official_course_unit is retained as a claim about the record. It does not establish that missing content was retrieved, authenticated, assigned, or completed.",
+    "deferred_topics_rule": "Catalog topic correspondences are placeholders only; they carry no sequence, content, completion, or officiality claim.",
+    "validation_label": "CLASSIFIED_NOT_EXTERNALLY_VALIDATED",
+    "provenance": {
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/数学进阶/CS70.en.md",
+      "source_content_sha256": "9542f4ac4a33e63d6be53a59373f1d6a02e96bea16cf1bb645474db72c15d449",
+      "external_retrieval_performed": false
+    }
+  }
+}

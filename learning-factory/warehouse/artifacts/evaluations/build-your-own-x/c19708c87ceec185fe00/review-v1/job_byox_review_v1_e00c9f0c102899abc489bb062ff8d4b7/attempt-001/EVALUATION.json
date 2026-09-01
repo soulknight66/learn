@@ -1,0 +1,36 @@
+{
+  "builder_job_id": "job_project_http_service_vertical_v1",
+  "checks_run": [
+    "Parsed MANIFEST.yaml, PROVENANCE.json, and benchmarks/results/smoke.json as JSON",
+    "Compiled every Python source with environment/check_python.py",
+    "Ran public parser/application tests and sealed parser tests independently",
+    "Ran the seeded parser adversary, debugging regression, and cache-review demonstration",
+    "Attempted all three architecture test suites, fault and slow-client probes, and a fresh benchmark under bounded timeouts",
+    "Ran independent probes for numeric framing, chunk invariance, malformed targets, JSON error mapping, and counter bounds",
+    "Recomputed all stored benchmark sample counts and summaries",
+    "Verified the declared catalog commit and CC0 statement in the local source repository",
+    "Checked documented paths, license files, symlinks, and CANDIDATE tree immutability"
+  ],
+  "evidence": [
+    "All Python sources compiled; three public non-network tests and five sealed parser tests passed.",
+    "A 5000-digit Content-Length within the header-size limit raised uncaught ValueError instead of a structured 4xx and can terminate server threads.",
+    "Feeding one valid request plus one malformed request together yielded no valid request, while splitting the same bytes yielded the valid request before the 400; behavior therefore depends on TCP chunking.",
+    "The parser accepted a bare LF inside the request target, contrary to the stated bare-newline and origin-form contract.",
+    "A 5000-digit JSON integer became 500 rather than a stable 4xx, and a valid increment moved a stored counter beyond the implementation's 10^12 input bound.",
+    "README.md advertises scripts/run_all.py and production/PRODUCTIONIZATION.md, but neither exists in the reviewable CANDIDATE tree.",
+    "The stored benchmark has internally consistent raw samples and summaries but no execution timestamp, code digest, controller run identifier, or explicit validation label.",
+    "The parser adversary randomizes chunk widths for one fixed valid request and checks six fixed invalid requests; it is narrow deterministic smoke coverage, not sufficient independent evidence for broad FUZZED or TESTED claims.",
+    "The manifest lists validation targets rather than achieved statuses and honestly records PARTIAL and not production-ready; broad promotion is not supported.",
+    "Catalog commit and CC0 scope were locally verified, and the external tutorial boundary is stated, but the newly generated pack has no declared license.",
+    "Learner and sealed surfaces are clearly separated in naming and prose, but the reveal boundary is explicitly manual and has no transfer-verification evidence."
+  ],
+  "limitations": [
+    "The sandbox denied AF_INET socket creation with PermissionError EPERM, so network behavior, overload, shutdown, fault containment, slow-client recovery, and benchmark reproduction remain inconclusive.",
+    "External network retrieval was unavailable, so the live tutorial terms and the no-copy claim were not independently compared.",
+    "No controller-owned validation log or attestation was present in the review workspace.",
+    "The absent runner and production files may be a submission-packaging or review-staging omission; attribution cannot be determined from CANDIDATE alone.",
+    "No mechanically produced learner-only view was available, so sealed-answer exclusion and TRANSFER_VERIFIED could not be tested."
+  ],
+  "project_id": "project_c72c12c5b510bb2fbeffe9a2175fea74",
+  "verdict": "REVISE"
+}

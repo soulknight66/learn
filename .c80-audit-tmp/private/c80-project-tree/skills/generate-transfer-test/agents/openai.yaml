@@ -1,0 +1,4 @@
+interface:
+  display_name: "Generate Transfer Test"
+  short_description: "Create a novel concept-transfer evaluation"
+  default_prompt: "Use $generate-transfer-test to create and validate a novel transfer task for this assignment."

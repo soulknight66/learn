@@ -1,0 +1,65 @@
+{
+  "course_id": "course_4458b9e26be374d399138238c715a1b4",
+  "title": "NYU DLSP21: NYU Deep Learning Spring 2021",
+  "status": "PARTIAL_KICKOFF_READY",
+  "unit": {
+    "unit_id": "managed_unit_01_engineered_softmax",
+    "sequence": 1,
+    "title": "Engineering a Deterministic, Numerically Stable Softmax Classifier",
+    "origin": "course-manager-authored",
+    "official_course_unit": false,
+    "scope": "A self-contained software-engineering kickoff for implementing, testing, and documenting a small multiclass learning system.",
+    "estimated_human_hours": 7,
+    "expected_range_hours": [
+      5,
+      9
+    ],
+    "official_material_dependency": "NONE",
+    "student_documents": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "learning_objectives": [
+      "Translate a mathematical model into explicit, checked Python interfaces.",
+      "Implement stable softmax and cross-entropy calculations without third-party packages.",
+      "Verify an analytic gradient with finite differences and behavioral tests.",
+      "Build a repeatable command-line experiment with machine-readable provenance.",
+      "Explain correctness, complexity, determinism, and failure-handling decisions."
+    ]
+  },
+  "completion_policy": {
+    "scope": "UNIT_ONLY",
+    "course_completion_on_unit_success": false,
+    "evidence_required": [
+      "A runnable standard-library Python implementation matching the specified interfaces",
+      "Passing deterministic unittest coverage, including stability and gradient checks",
+      "Two repeat runs that produce byte-identical metrics JSON",
+      "A design note and original responses to the comprehension prompts"
+    ],
+    "decision_authority": "An independent worker-harness-controlled validator applying examiner_only/RUBRIC.md",
+    "minimum_result": "The rubric threshold and every mandatory gate must be satisfied; prose claims alone do not count as evidence.",
+    "failure_handling": "Preserve the failed attempt and its logs. A later attempt may revise the submission, but must be validated independently.",
+    "after_unit_completion": "Record only completion of managed_unit_01_engineered_softmax. The course remains partial until separately retrieved, classified, sequenced, completed, and validated units satisfy a future whole-course policy.",
+    "prohibited_inference": "Neither this prepared unit nor its later completion is evidence that the NYU DLSP21 course, its lectures, or its assignments have been completed."
+  },
+  "provenance": {
+    "artifact_classification": "manager-authored-from-catalog-snapshot",
+    "prepared_on": "2026-08-31",
+    "catalog_adapter": "csdiy",
+    "catalog_source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "catalog_source_name": "CSDIY",
+    "catalog_source_file": "docs/深度学习/NYU-DLSP21.en.md",
+    "catalog_source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "catalog_content_sha256": "9be457f99f8e3da9dffc38170e0fc1c5a4186ee20f2eda2d5babc1c4181e4ec0",
+    "catalog_extractor_version": "1.1",
+    "catalog_license": "MIT",
+    "external_retrieval_performed": false,
+    "authorship_note": "The kickoff unit and its prompts were created by the course manager. They are not represented as NYU or Yann LeCun course materials."
+  },
+  "validation": {
+    "label": "PREPARED_NOT_VALIDATED",
+    "validated_by_worker_harness": false,
+    "course_completion_claimed": false
+  }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "unterminated-string",
+    "source": "print \"open;",
+    "expected_category": "LexError"
+  },
+  {
+    "name": "invalid-assignment-target",
+    "source": "(1 + 2) = 3;",
+    "expected_category": "ParseError"
+  },
+  {
+    "name": "short-circuit-undefined-read",
+    "source": "false and missing;",
+    "expected_category": "success"
+  },
+  {
+    "name": "scope-redeclaration",
+    "source": "let value = 1; let value = 2;",
+    "expected_category": "RuntimeError"
+  },
+  {
+    "name": "nonterminating-loop",
+    "source": "while (true) { null; }",
+    "expected_category": "step-limit RuntimeError"
+  },
+  {
+    "name": "numeric-overflow",
+    "source": "9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;",
+    "expected_category": "LexError"
+  }
+]

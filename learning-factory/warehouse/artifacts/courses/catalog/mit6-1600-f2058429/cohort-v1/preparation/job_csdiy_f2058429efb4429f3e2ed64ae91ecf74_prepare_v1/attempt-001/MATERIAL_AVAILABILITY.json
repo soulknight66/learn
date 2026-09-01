@@ -1,0 +1,159 @@
+{
+  "course_id": "course_f2058429efb4429f3e2ed64ae91ecf74",
+  "materials": [
+    {
+      "material_id": "catalog_snapshot",
+      "title": "CSDIY catalog snapshot for MIT6.1600",
+      "kind": "catalog_metadata",
+      "availability": "AVAILABLE_IN_JOB_INPUT",
+      "content_retrieved": true,
+      "officiality": "SOURCE_DERIVED_CATALOG_RECORD",
+      "use_in_kickoff": "Topic alignment, prerequisites, broad module context, and resource discovery only"
+    },
+    {
+      "material_id": "prepared_kickoff_pack",
+      "title": "Manager-authored authentication kickoff pack",
+      "kind": "local_study_material",
+      "availability": "AVAILABLE_LOCAL",
+      "content_retrieved": true,
+      "officiality": "NOT_AN_OFFICIAL_MIT_UNIT",
+      "local_paths": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "use_in_kickoff": "Required"
+    },
+    {
+      "material_id": "course_site_fall_2023",
+      "title": "MIT6.1600 Fall 2023 course website",
+      "kind": "course_website",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "content_retrieved": false,
+      "officiality": "CATALOG_LABELED_COURSE_WEBSITE_NOT_INDEPENDENTLY_VERIFIED",
+      "url": "https://61600.csail.mit.edu/2023/",
+      "use_in_kickoff": "None"
+    },
+    {
+      "material_id": "course_site_fall_2022",
+      "title": "MIT6.1600 Fall 2022 course website",
+      "kind": "course_website",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "content_retrieved": false,
+      "officiality": "CATALOG_LABELED_COURSE_WEBSITE_NOT_INDEPENDENTLY_VERIFIED",
+      "url": "https://61600.csail.mit.edu/2022/",
+      "use_in_kickoff": "None"
+    },
+    {
+      "material_id": "linked_companion_repository",
+      "title": "Catalog-linked MIT6.1600 repository",
+      "kind": "source_repository_pointer",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "content_retrieved": false,
+      "officiality": "UNVERIFIED_EXTERNAL_RESOURCE",
+      "url": "https://github.com/PKUFlyingPig/MIT6.1600",
+      "use_in_kickoff": "None"
+    },
+    {
+      "material_id": "recordings",
+      "title": "Course recordings",
+      "kind": "lecture_recording_set",
+      "availability": "DESCRIBED_ONLY_UNAVAILABLE",
+      "content_retrieved": false,
+      "officiality": "NOT_ESTABLISHED",
+      "catalog_evidence": "Refer to the course website.",
+      "direct_urls": [],
+      "use_in_kickoff": "None"
+    },
+    {
+      "material_id": "lecture_notes",
+      "title": "Course lecture notes",
+      "kind": "reading_set",
+      "availability": "DESCRIBED_ONLY_UNAVAILABLE",
+      "content_retrieved": false,
+      "officiality": "NOT_ESTABLISHED",
+      "catalog_evidence": "There is no required textbook, but the lecture notes are good reading materials.",
+      "direct_urls": [],
+      "use_in_kickoff": "None"
+    },
+    {
+      "material_id": "six_labs",
+      "title": "Six reported course labs",
+      "kind": "assignment_set",
+      "availability": "DESCRIBED_ONLY_UNAVAILABLE",
+      "content_retrieved": false,
+      "officiality": "CATALOG_RECORD_MARKED_OFFICIAL_BUT_ITEMS_NOT_IDENTIFIED",
+      "catalog_evidence": "6 labs in total.",
+      "direct_urls": [],
+      "use_in_kickoff": "None"
+    }
+  ],
+  "blocked": [
+    {
+      "material_ids": [
+        "course_site_fall_2023",
+        "course_site_fall_2022"
+      ],
+      "state": "DEFERRED_FOR_THIS_JOB",
+      "reason_code": "EXTERNAL_CONTENT_NOT_PRESENT",
+      "reason": "The snapshot contains links, not the website bytes, and this preparation job performed no external retrieval.",
+      "resolution": "A later authorized retrieval job may fetch and validate the public pages."
+    },
+    {
+      "material_ids": [
+        "linked_companion_repository"
+      ],
+      "state": "DEFERRED_FOR_THIS_JOB",
+      "reason_code": "EXTERNAL_CONTENT_NOT_PRESENT",
+      "reason": "The repository is only a catalog URL and was not cloned or inspected.",
+      "resolution": "A later authorized ingestion job may capture a pinned revision after provenance and license checks."
+    },
+    {
+      "material_ids": [
+        "recordings"
+      ],
+      "state": "BLOCKED",
+      "reason_code": "NO_DIRECT_LOCATOR",
+      "reason": "The catalog describes recordings but supplies no recording URL or content.",
+      "resolution": "Resolve through a validated public course index in a later authorized job."
+    },
+    {
+      "material_ids": [
+        "lecture_notes"
+      ],
+      "state": "BLOCKED",
+      "reason_code": "NO_DIRECT_LOCATOR",
+      "reason": "The catalog describes lecture notes but supplies no note titles, URLs, or content.",
+      "resolution": "Discover and classify individual notes from a validated public course index."
+    },
+    {
+      "material_ids": [
+        "six_labs"
+      ],
+      "state": "BLOCKED",
+      "reason_code": "AGGREGATE_DESCRIPTION_ONLY",
+      "reason": "The catalog reports a count but provides no lab identities, specifications, starter files, dependencies, or validation rules.",
+      "resolution": "Ingest and classify each publicly available lab separately; do not infer six units from the count alone."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job_mode": "CATALOG_ONLY_NO_EXTERNAL_FETCH",
+    "current_job_result": "No external course pages, repositories, recordings, notes, or lab files were fetched.",
+    "future_retrieval_preconditions": [
+      "the later job explicitly authorizes external retrieval",
+      "the candidate URL is public and its source identity is verified",
+      "access does not require credentials, enrollment, payment, circumvention, or guessing hidden locations",
+      "license and learner-view permissions are recorded before publication"
+    ],
+    "future_ingestion_requirements": [
+      "capture the canonical URL, retrieval timestamp, content hash, media type, and source revision when applicable",
+      "scan the material for secrets, hidden graders, sealed references, solutions, and other learner-owned files",
+      "classify each artifact as official unit, supplemental resource, catalog pointer, or unavailable description",
+      "keep source inputs read-only and copy permitted content only into a per-attempt workspace",
+      "record validation labels before any material becomes learner-visible"
+    ],
+    "promotion_rule": "LINK_ONLY_NOT_RETRIEVED and DESCRIBED_ONLY_UNAVAILABLE records cannot be promoted to AVAILABLE or to official units without captured content and deterministic classification evidence.",
+    "restricted_content_rule": "Do not retrieve, copy, expose, or reconstruct gated content, credentials, solutions, hidden graders, sealed references, or another learner's files.",
+    "fallback_rule": "If a resource remains unavailable, preserve the blocked record and build only clearly labeled manager-authored material that does not impersonate the source course."
+  }
+}

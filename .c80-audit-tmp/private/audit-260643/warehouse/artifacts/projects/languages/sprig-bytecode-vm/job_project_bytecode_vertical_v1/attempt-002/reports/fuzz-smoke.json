@@ -1,0 +1,30 @@
+{
+  "corpus_sha256": "dcb09c5c15781bfa22ef51401e6434aa4165dffd087fa1193252f0463a87b7f0",
+  "coverage": {
+    "features": [
+      "declarations",
+      "assignment",
+      "while",
+      "if/else",
+      "comments",
+      "division/remainder",
+      "unary",
+      "comparison",
+      "short-circuit"
+    ],
+    "programs": 120
+  },
+  "engines": [
+    "bytecode",
+    "treewalk"
+  ],
+  "failures": 0,
+  "iterations": 120,
+  "properties": [
+    "independent arithmetic oracle",
+    "cross-architecture agreement",
+    "deterministic stateful grammar corpus"
+  ],
+  "schema_version": 1,
+  "seed": 7401
+}

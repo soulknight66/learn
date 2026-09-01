@@ -1,0 +1,41 @@
+{
+  "architectures": [
+    "address-ordered-first-fit",
+    "address-ordered-best-fit",
+    "segregated-size-class-bins"
+  ],
+  "artifact_revision": 1,
+  "concepts": [
+    "alignment",
+    "integer-overflow",
+    "intrusive-metadata",
+    "splitting-and-coalescing",
+    "external-fragmentation",
+    "realloc-semantics",
+    "invariant-checking",
+    "sanitizer-gating"
+  ],
+  "deployment_status": "NOT_PRODUCTION_READY",
+  "difficulty": 8,
+  "estimated_human_hours": 16,
+  "family": "systems-memory-management",
+  "languages": [
+    "C11",
+    "Python 3 standard library (harness only)"
+  ],
+  "productionized": false,
+  "project_id": "caller-owned-arena-c-allocator",
+  "provenance_file": "PROVENANCE.json",
+  "schema_version": 1,
+  "source_project_id": "project_62500cd7d143a95230c724df71a56c4a",
+  "status": "GENERATED_CANDIDATE",
+  "title": "Caller-Owned-Arena C Allocator",
+  "type": "build-your-own-x-challenge-pack",
+  "validation_targets": [
+    "BUILDS",
+    "TESTED",
+    "BENCHMARKED",
+    "REVIEWED",
+    "PARTIAL"
+  ]
+}

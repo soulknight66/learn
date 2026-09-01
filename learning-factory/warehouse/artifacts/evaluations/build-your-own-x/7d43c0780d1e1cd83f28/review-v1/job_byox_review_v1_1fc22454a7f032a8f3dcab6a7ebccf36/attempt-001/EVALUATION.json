@@ -1,0 +1,29 @@
+{
+  "builder_job_id": "job_byox_build_v1_1fc22454a7f032a8f3dcab6a7ebccf36",
+  "checks_run": [
+    "Inventoried and read the 62-file candidate, including learner-facing, evaluator, exercise, reference, harness, benchmark, provenance, and validation material.",
+    "Ran python3 environment/verify-structure.py independently; all four structural checks exited 0.",
+    "Parsed MANIFEST.yaml, PROVENANCE.json, and both package.json files as strict JSON and recomputed their SHA-256 hashes.",
+    "Attempted runtime discovery and the public, sealed, adversarial, and benchmark commands; no Node-compatible runtime or container runner was available.",
+    "Counted 21 public and 33 sealed node:test declarations and statically traced the reference dispatcher, request/response helpers, test helpers, adversarial harness, exercises, and benchmark.",
+    "Repeated high-confidence credential-signature, credential-assignment, suspicious-key-filename, symlink, and special-file checks.",
+    "Compared the manifest, provenance record, license boundary, learner instructions, sealed layout, and builder validation claims."
+  ],
+  "evidence": [
+    "The manifest conservatively remains GENERATED/PARTIAL, requires independent validation, and makes no productionization claim; CANDIDATE/VALIDATION.md explicitly disclaims BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, and PRODUCTIONIZED.",
+    "Independent structure execution reproduced 23 required regular files, 21 forbidden paths absent, 62 files, 25 directories, and strict immutable metadata; all four published file hashes also matched.",
+    "Static control-flow tracing found a correctness defect: when decodeURIComponent throws for a captured parameter, dispatch records the error but does not cache the registration match; an arity-four handler later in that same route registration rematches, throws again, and is skipped instead of receiving the URIError.",
+    "Twenty-one reference, hidden-test, expectation, fixed-solution, or answer files under sealed paths are directly readable in this submitted artifact. The instructions ask learners not to inspect them, but the candidate contains no learner-export allowlist or access-control/transfer evidence.",
+    "The public and sealed helpers use JavaScript timers in the same process as learner code, so a synchronously non-returning handler can prevent the advertised absolute deadline from firing; the in-process benchmark likewise has an iteration cap but no wall-clock watchdog.",
+    "The dependency-free CommonJS scaffold, pinned Node 20.19.5 reproduction path, staged public tests, detailed normative requirements, concept notes, and production gap analysis are useful and unusually explicit.",
+    "The provenance boundary correctly distinguishes the CC0 catalog from the NOASSERTION linked tutorial and states that linked content was not copied; no credential signature, suspicious key filename, symlink, or special artifact node was observed."
+  ],
+  "limitations": [
+    "node, npm, nodejs, bun, deno, qjs, js, Docker, Podman, Apptainer, and Singularity were unavailable; JavaScript syntax and behavior, test passes, adversarial passes, exercise outcomes, and benchmark measurements remain unconfirmed.",
+    "Network access and the recorded source checkout were unavailable, so the catalog snapshot, upstream commit contents, linked-resource state, and no-copy assertion could not be independently compared.",
+    "No independently produced learner view or transfer artifact was supplied, so external filtering of sealed material could not be assessed.",
+    "The generated-material statement describes personal educational use but supplies no explicit reuse/distribution license; legal permission beyond that statement is unresolved."
+  ],
+  "project_id": "project_a35390ae473c6dda128f34db394c3f87",
+  "verdict": "REVISE"
+}

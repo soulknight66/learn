@@ -1,0 +1,76 @@
+{
+  "course_id": "course_5d22b573e8385b32fa396f82de7212a7",
+  "nodes": [
+    {
+      "node_id": "kickoff_01_reliable_browser_vertical_slice",
+      "node_type": "MANAGED_STUDY_UNIT",
+      "title": "A Reliable Browser Vertical Slice",
+      "classification": "COURSE_MANAGER_AUTHORED",
+      "availability": "LOCAL_READY",
+      "upstream_official_unit": false,
+      "completion_scope": "UNIT_ONLY"
+    },
+    {
+      "node_id": "unit_1d236670e322e009e369f609569c9dc3",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Catalog overview and resource guide",
+      "resource_type": "reading",
+      "classification": "CATALOG_CONTEXT",
+      "availability": "PRESENT_IN_CATALOG_SNAPSHOT",
+      "catalog_official_course_unit": false,
+      "source_reference": "docs/Web开发/mitweb.en.md"
+    },
+    {
+      "node_id": "unit_78bdcf3b65fa003bd4f18bd734dda1df",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Course Website",
+      "resource_type": "reading",
+      "classification": "EXTERNAL_RESOURCE_POINTER",
+      "availability": "LINKED_UNVERIFIED",
+      "catalog_official_course_unit": false,
+      "source_reference": "docs/Web开发/mitweb.en.md#L17",
+      "url": "https://weblab.mit.edu/schedule/"
+    },
+    {
+      "node_id": "unit_93c577e81aadf0812b7db2eb6bae2148",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Recordings",
+      "resource_type": "lecture",
+      "classification": "UNRESOLVED_RESOURCE_DESCRIPTION",
+      "availability": "DESCRIBED_UNAVAILABLE",
+      "catalog_official_course_unit": false,
+      "source_reference": "docs/Web开发/mitweb.en.md#L18"
+    },
+    {
+      "node_id": "unit_df79d416dc430b329e962e71a0d7a75e",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Assignments",
+      "resource_type": "assignment",
+      "classification": "UNRESOLVED_OFFICIAL_RESOURCE_DESCRIPTION",
+      "availability": "DESCRIBED_UNAVAILABLE",
+      "catalog_official_course_unit": true,
+      "source_reference": "docs/Web开发/mitweb.en.md#L19",
+      "qualification": "The official-unit flag is a source-derived catalog assertion; no assignment content or unit boundary is available in the snapshot."
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_1d236670e322e009e369f609569c9dc3",
+      "to": "kickoff_01_reliable_browser_vertical_slice",
+      "type": "INFORMS_CONTEXT",
+      "required_for_completion": false
+    },
+    {
+      "from": "unit_78bdcf3b65fa003bd4f18bd734dda1df",
+      "to": "kickoff_01_reliable_browser_vertical_slice",
+      "type": "OPTIONAL_FUTURE_REFERENCE",
+      "required_for_completion": false
+    }
+  ],
+  "record_boundary": {
+    "source_statement": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+    "applied_rule": "Every normalized record remains a resource-record node. No record was promoted to a study unit merely because it was normalized or carried an official-unit flag.",
+    "current_unit_boundary": "Only kickoff_01_reliable_browser_vertical_slice is an actionable study unit in this graph.",
+    "expansion_boundary": "Recordings, assignments, and schedule-derived units require separately provenance-tracked retrieval and classification before being added as actionable units."
+  }
+}

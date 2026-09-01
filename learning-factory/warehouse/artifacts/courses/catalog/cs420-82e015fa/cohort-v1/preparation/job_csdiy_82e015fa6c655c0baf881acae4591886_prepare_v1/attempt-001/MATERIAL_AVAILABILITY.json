@@ -1,0 +1,137 @@
+{
+  "course_id": "course_82e015fa6c655c0baf881acae4591886",
+  "materials": [
+    {
+      "material_id": "material_catalog_snapshot",
+      "title": "Catalog snapshot supplied in JOB.md",
+      "kind": "catalog_metadata",
+      "location": "JOB.md",
+      "availability": "AVAILABLE_LOCAL",
+      "content_status": "INSPECTED_AS_DATA",
+      "required_for_current_unit": false,
+      "provenance": "CSDIY adapter 1.1 at source commit adce8e13789dc16aa6d1fbe163e9541736defae4"
+    },
+    {
+      "material_id": "material_catalog_source_document",
+      "title": "CSDIY CS420.en.md source document",
+      "kind": "catalog_source",
+      "location": "docs/编译原理/CS420.en.md",
+      "availability": "REFERENCE_ONLY_NOT_PRESENT",
+      "content_status": "NOT_RETRIEVED",
+      "required_for_current_unit": false
+    },
+    {
+      "material_id": "material_course_website",
+      "record_id": "unit_71755e5cf14f1c003121f0a6e42a7857",
+      "title": "Course Website",
+      "kind": "external_repository",
+      "location": "https://github.com/kaist-cp/cs420",
+      "availability": "LINK_ONLY",
+      "content_status": "NOT_RETRIEVED_OR_VALIDATED",
+      "required_for_current_unit": false
+    },
+    {
+      "material_id": "material_recordings",
+      "record_id": "unit_3977fa8b2b46928c7ad52a1dfe78bd80",
+      "title": "Course Recordings",
+      "kind": "external_video_playlist",
+      "location": "https://www.youtube.com/playlist?list=PL5aMzERQ_OZ8RWqn-XiZLXm1IJuaQbXp0",
+      "availability": "LINK_ONLY",
+      "content_status": "NOT_RETRIEVED_OR_VALIDATED",
+      "required_for_current_unit": false
+    },
+    {
+      "material_id": "material_textbooks",
+      "record_id": "unit_bb70fe17d7359ebcdf167628841da943",
+      "title": "Textbooks Section",
+      "kind": "external_section_locator",
+      "location": "https://github.com/kaist-cp/cs420?tab=readme-ov-file#textbook",
+      "availability": "LINK_ONLY",
+      "content_status": "NOT_RETRIEVED_OR_VALIDATED",
+      "required_for_current_unit": false
+    },
+    {
+      "material_id": "material_assignments",
+      "record_id": "unit_3627120fa5cd3339955e47bce05cbc58",
+      "title": "Assignments Section",
+      "kind": "external_official_assignment_index_locator",
+      "location": "https://github.com/kaist-cp/cs420?tab=readme-ov-file#homework-60",
+      "availability": "LINK_ONLY",
+      "content_status": "NOT_RETRIEVED_OR_VALIDATED",
+      "required_for_current_unit": false,
+      "officiality_note": "The catalog marks the assignment resource as official; its contents and unit structure remain uninspected."
+    },
+    {
+      "material_id": "material_course_brief",
+      "title": "Kickoff Course Brief",
+      "kind": "manager_authored_learner_material",
+      "location": "student_safe/COURSE_BRIEF.md",
+      "availability": "AVAILABLE_LOCAL",
+      "content_status": "PREPARED",
+      "required_for_current_unit": true
+    },
+    {
+      "material_id": "material_study_task",
+      "title": "AST Traversal Engineering Task",
+      "kind": "manager_authored_learner_material",
+      "location": "student_safe/STUDY_TASK.md",
+      "availability": "AVAILABLE_LOCAL",
+      "content_status": "PREPARED",
+      "required_for_current_unit": true
+    },
+    {
+      "material_id": "material_comprehension",
+      "title": "Kickoff Comprehension Prompts",
+      "kind": "manager_authored_learner_material",
+      "location": "student_safe/COMPREHENSION.md",
+      "availability": "AVAILABLE_LOCAL",
+      "content_status": "PREPARED_WITHOUT_ANSWERS",
+      "required_for_current_unit": true
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "material_catalog_source_document",
+      "blocked_scope": "current_workspace_use",
+      "reason": "The source path is provenance metadata; the document itself is not present in this attempt workspace.",
+      "unblock_requires": "A later authorized ingestion job must copy or read the pinned source document and verify its hash."
+    },
+    {
+      "material_id": "material_course_website",
+      "blocked_scope": "content_use_and_unit_expansion",
+      "reason": "Only a URL locator is available; repository content was not fetched, pinned locally, licensed at the item level, or validated.",
+      "unblock_requires": "Authorized retrieval, immutable revision capture, license review, provenance recording, and content classification."
+    },
+    {
+      "material_id": "material_recordings",
+      "blocked_scope": "content_use_and_unit_expansion",
+      "reason": "Only a playlist URL is available; video titles, order, transcripts, access status, and licensing were not inspected.",
+      "unblock_requires": "Authorized metadata retrieval and per-item availability and provenance checks; restricted media must not be copied."
+    },
+    {
+      "material_id": "material_textbooks",
+      "blocked_scope": "content_use_and_unit_expansion",
+      "reason": "The locator points to a section, not locally available textbook content; titles, editions, licenses, and access requirements are unknown.",
+      "unblock_requires": "Authorized inspection of the section followed by separate availability and license classification for each cited work."
+    },
+    {
+      "material_id": "material_assignments",
+      "blocked_scope": "official_assignment_claims_and_unit_expansion",
+      "reason": "The catalog's official-resource flag and URL do not expose verified assignment identities, instructions, order, dependencies, or artifacts in this workspace.",
+      "unblock_requires": "Authorized inspection at a pinned revision plus explicit classification of each assignment and its learner-safe dependencies."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": "NO_EXTERNAL_RETRIEVAL_PERFORMED",
+    "current_unit_dependency_rule": "The kickoff must remain completable using only manager-authored local material and standard local Rust tooling.",
+    "later_job_rules": [
+      "Retrieve only material explicitly authorized for that job and permitted by its access and license terms.",
+      "Never fetch or expose secrets, private or authentication-gated content, paywalled text, hidden graders, sealed references, or another learner's files.",
+      "Pin repositories or documents to an immutable revision when possible and record source URL, revision, retrieval result, checksum, and license.",
+      "Classify a linked index separately from the lessons or assignments it names.",
+      "Record failures, missing items, region or account restrictions, and partial retrieval without substituting inferred content.",
+      "Promote no resource record to an official unit until identity, order, dependencies, availability, and provenance have been verified."
+    ],
+    "on_unavailable": "Leave the material blocked, preserve its locator and reason, and design no required learner task that depends on it."
+  }
+}

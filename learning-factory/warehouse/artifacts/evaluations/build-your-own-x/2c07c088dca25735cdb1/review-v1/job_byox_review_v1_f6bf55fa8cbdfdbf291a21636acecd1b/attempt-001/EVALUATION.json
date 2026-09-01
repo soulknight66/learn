@@ -1,0 +1,35 @@
+{
+  "builder_job_id": "job_byox_build_v1_f6bf55fa8cbdfdbf291a21636acecd1b",
+  "checks_run": [
+    "Strict JSON parsing, metadata hashing, path/symlink/credential audit, local-link check, and immutable-tree inspection",
+    "Sealed reference host suite: PASS (532 checks)",
+    "Public suite against sealed reference: PASS",
+    "Public suite against starter: expected FAIL (76 assertions), confirming genuine TODOs",
+    "Deterministic adversarial harness: PASS (2,209,848 invariant checks)",
+    "Reviewer-authored terminal model, decoder-edge, and concurrent SPSC harness: PASS in three runs (700,060 checks and 100,000 transferred events per run)",
+    "Freestanding reference and starter builds, independent Multiboot checksum parsing, readelf/nm/objdump inspection, and alternative-object compile checks",
+    "Two clean reference builds at distinct output paths with full-file and loadable-text digest comparison",
+    "Reference and adversarial sanitizer target attempts",
+    "Static review of requirements, implementation, tests, learner progression, sealed disclosure, validation claims, license boundary, and provenance"
+  ],
+  "evidence": [
+    "Pure terminal, decoder, and SPSC queue behavior is supported by independently observed strict builds/tests and by the reviewer-authored model/concurrency harness.",
+    "The reference links as ELF32/i386 ET_EXEC with entry 0x101000, an aligned valid Multiboot-v1 header at file offset 4096, no relocations, and no undefined symbols.",
+    "The produced IRQ path contains compiler-generated SSE2 moves through xmm0, while the boot code does not establish SSE state and the ISR saves only general registers; the Makefile leaves the CPU/soft-float baseline to host GCC defaults.",
+    "The reference ELF's .bss has VMA 0x103000 but LMA and PT_LOAD physical address 0x1057c0, inconsistent with the flat physical-equals-virtual execution model; the supplied verifier does not inspect program headers.",
+    "MANIFEST.yaml names 14e4683c... as provenance_sha256, but delivered PROVENANCE.json hashes to 91899132... as raw bytes and d904f811... canonically; the manifest therefore does not directly authenticate the delivered provenance representation.",
+    "Reference ELFs built from identical source and object bytes at two build paths differed as complete files because an object path is retained in the symbol table; their loadable .text bytes were identical.",
+    "The challenge has a clear numbered contract, genuine starter failures, useful public feedback, concepts/questions/debugging exercises, and solution-bearing material separated under sealed/.",
+    "Validation language is appropriately restrained: the manifest remains GENERATED/PARTIAL, productionized is false, and no boot, fuzzing, benchmark, transfer, security, or production label is claimed."
+  ],
+  "limitations": [
+    "qemu-system-i386, grub-file, grub-mkrescue, and xorriso are unavailable, so no boot, keyboard IRQ, or screen behavior was observed.",
+    "AddressSanitizer and UndefinedBehaviorSanitizer targets could not link because libasan.so.5 and libubsan.so.1 are absent.",
+    "clang, scan-build, cppcheck, and valgrind are unavailable; no second compiler or external static/dynamic analyzer result exists.",
+    "git is unavailable and the recorded source repository/upstream article are outside the review workspace, so source_commit, catalog snapshot, no-copy, and linked-resource license claims could not be independently verified.",
+    "Host tests cannot establish privileged I/O, real interrupt timing, bootloader compatibility, physical hardware behavior, performance, security, portability, transfer readiness, or production readiness.",
+    "sealed/ is separated by convention inside the submitted tree; whether it is excluded from an actual learner view depends on the external harness and was not testable here."
+  ],
+  "project_id": "project_07eeac43f46abe6b1c4150d7fe7a648c",
+  "verdict": "REVISE"
+}

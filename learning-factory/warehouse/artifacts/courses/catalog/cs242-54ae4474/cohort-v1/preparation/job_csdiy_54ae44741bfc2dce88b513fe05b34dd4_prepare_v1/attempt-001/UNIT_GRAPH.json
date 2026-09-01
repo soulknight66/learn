@@ -1,0 +1,94 @@
+{
+  "course_id": "course_54ae44741bfc2dce88b513fe05b34dd4",
+  "nodes": [
+    {
+      "node_id": "managed_unit_01_lambda_evaluator",
+      "node_kind": "MANAGED_STUDY_UNIT",
+      "title": "From Reduction Rules to a Tested Lambda-Calculus Evaluator",
+      "status": "READY_FOR_STUDY",
+      "official_course_unit": false,
+      "bounded": true,
+      "estimated_hours": 8,
+      "depends_on": [],
+      "source_basis": [
+        "catalog topic: classic lambda calculus",
+        "catalog topic: implementation of an interpreter",
+        "manager goal: software-engineering practice through deterministic tests and evidence"
+      ],
+      "completion_scope": "NODE_ONLY"
+    }
+  ],
+  "edges": [],
+  "record_boundary": {
+    "artifact_provenance": "Course-manager classification of the supplied CSDIY snapshot at source commit adce8e13789dc16aa6d1fbe163e9541736defae4; no linked content was retrieved.",
+    "validation_label": "PREPARED_AWAITING_HARNESS_VALIDATION",
+    "policy": "Normalized resource records are discovery and availability inputs. They enter nodes only after their contents, identity, access conditions, ordering, and dependencies are verified; a source flag alone does not admit a graph node.",
+    "admitted_managed_nodes": [
+      "managed_unit_01_lambda_evaluator"
+    ],
+    "normalized_records": [
+      {
+        "record_id": "unit_c83ed8ab8d6f45c56c87fef9d6c7741f",
+        "title": "Catalog overview and resource guide",
+        "source_classification": "CATALOG_OVERVIEW",
+        "source_marks_official_course_unit": false,
+        "availability_classification": "AVAILABLE_AS_SNAPSHOT_METADATA",
+        "admitted_as_graph_node": false,
+        "reason": "A catalog overview is evidence about the course, not a study unit."
+      },
+      {
+        "record_id": "unit_bcffbf616b0d27c484b04c474bf46360",
+        "title": "The final assignment has four options",
+        "source_classification": "DESCRIBED_EXAM_RECORD",
+        "source_marks_official_course_unit": true,
+        "availability_classification": "DESCRIPTION_ONLY",
+        "admitted_as_graph_node": false,
+        "reason": "The snapshot supplies neither an assignment body nor a URL or verified prerequisites."
+      },
+      {
+        "record_id": "unit_b14a4c8ee305e2b97aa67fd035af2e81",
+        "title": "Course Website",
+        "source_classification": "RESOURCE_LINK_RECORD",
+        "source_marks_official_course_unit": false,
+        "availability_classification": "LINK_ONLY_UNVERIFIED",
+        "admitted_as_graph_node": false,
+        "reason": "A course landing page is a resource locator, not an official unit."
+      },
+      {
+        "record_id": "unit_7a236308e009e91f29b385839ee1d7cf",
+        "title": "Recordings",
+        "source_classification": "ABSENCE_NOTICE",
+        "source_marks_official_course_unit": false,
+        "availability_classification": "UNAVAILABLE_BY_CATALOG",
+        "admitted_as_graph_node": false,
+        "reason": "The catalog explicitly says recordings are not available."
+      },
+      {
+        "record_id": "unit_7f45a1a72ee1b7a589ab3f11e7a239a4",
+        "title": "Textbooks",
+        "source_classification": "RESOURCE_LINK_RECORD",
+        "source_marks_official_course_unit": false,
+        "availability_classification": "LINK_ONLY_UNVERIFIED",
+        "admitted_as_graph_node": false,
+        "reason": "The record points to a textbook landing page and gives no chapter-to-unit mapping."
+      },
+      {
+        "record_id": "unit_7a02b2af2729423f7256c224c9fcd3fc",
+        "title": "Assignments",
+        "source_classification": "OFFICIAL_RESOURCE_INDEX_RECORD",
+        "source_marks_official_course_unit": true,
+        "availability_classification": "LINK_ONLY_UNVERIFIED",
+        "admitted_as_graph_node": false,
+        "reason": "An assignment index and repository link require later retrieval, classification, and dependency mapping before individual assignments can become nodes."
+      }
+    ],
+    "future_expansion_requires": [
+      "Authorized retrieval from an explicitly public catalog URL",
+      "A recorded final URL, access result, content digest, and license/use decision",
+      "Classification of each fetched item as resource, official unit, or non-unit",
+      "Verified unit ordering and dependencies",
+      "A separate graph update and validation job"
+    ],
+    "course_completion_inference": "FORBIDDEN"
+  }
+}

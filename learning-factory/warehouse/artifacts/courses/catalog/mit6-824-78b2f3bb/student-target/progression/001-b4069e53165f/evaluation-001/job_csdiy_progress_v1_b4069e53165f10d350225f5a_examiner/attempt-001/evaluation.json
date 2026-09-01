@@ -1,0 +1,16 @@
+{
+  "evidence": [
+    "Pre-execution staged learner-file inventory (SHA-256): NOTES.md 7d6655ff4d0e38cdd782738a7c4d2b47ee060ad96e9fc0b37a63def28e31c2f7; SUBMISSION.md 9368492180917b8f79f33087af4e290a0a1da919966fd0e1f2f64a440ac5ed8a; DEBUGGING_LOG.md 7ac9188f6a70cd2bd7f33f1d297482b7e048713f0e98616d1c07e0f791e0d24d; SELF_CHECK.md 154ce643c2f1cb13ca8d9b0e3d0f03b96b6d78b0f0dfb9fdc1e261772220cedd.",
+    "The rubric-scoped artifacts lease_queue.py, test_lease_queue.py, DESIGN.md, and INCIDENT.md were all absent from the staged workspace. SUBMISSION.md names them and claims 17 passing tests, but no preserved implementation, tests, design, or incident record exists to corroborate those prose claims.",
+    "The declared argv command [\"python3\", \"-m\", \"unittest\", \"-v\", \"test_lease_queue.py\"] was reproduced in a clean directory with PYTHONPATH removed, captured output, a new process group, and a 30-second timeout. It did not time out, exited 1 after 0.051240 seconds, produced no stdout, and stderr reported ModuleNotFoundError: No module named 'test_lease_queue'.",
+    "No learner test could run and no independent behavioral or novel check could be executed against an implementation. No adapter was created. Therefore no rubric item has artifact-backed or reproduced behavioral evidence, and the mandatory artifact and clean-test conditions are unmet.",
+    "BATCH_MANIFEST.json parsed as valid JSON and bounds this material to a locally authored exercise with course_completion NOT_CLAIMED; this evaluation does not change that status."
+  ],
+  "result": "FAIL",
+  "score": 0,
+  "transfer_gaps": [
+    "The staged batch lacks the four preserved artifacts needed for an independent assessment of lease, fence, history, state-machine, determinism, debugging, and production-boundary claims.",
+    "No response to a future unseen task was independently assessed, so this result is not TRANSFER_VERIFIED.",
+    "Course completion remains NOT_CLAIMED."
+  ]
+}

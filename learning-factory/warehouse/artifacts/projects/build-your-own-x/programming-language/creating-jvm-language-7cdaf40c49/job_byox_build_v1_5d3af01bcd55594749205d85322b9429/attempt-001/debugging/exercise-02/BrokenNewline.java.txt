@@ -1,0 +1,10 @@
+char advance() {
+    char c = source.charAt(index++);
+    if (c == '\r' || c == '\n') {
+        line++;
+        column = 1;
+    } else {
+        column++;
+    }
+    return c;
+}

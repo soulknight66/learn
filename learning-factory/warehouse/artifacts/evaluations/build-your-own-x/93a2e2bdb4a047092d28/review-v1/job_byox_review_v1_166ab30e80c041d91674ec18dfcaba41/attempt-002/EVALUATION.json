@@ -1,0 +1,41 @@
+{
+  "project_id": "project_5187715307b13e38b82d4dacf47b4946",
+  "builder_job_id": "job_project_kvstore_vertical_v2",
+  "verdict": "REVISE",
+  "evidence": [
+    "On CPython 3.11.5, the submitted sealed reference passed all 4 public tests and all 10 sealed recovery tests.",
+    "Independent bounded runs passed for the reference model fuzzer at 600 operations, reference thread stress at 6 threads by 80 operations, reference torn-tail recovery, and the reference debugging regression; the intentionally buggy regression failed in the documented way.",
+    "The documented scripts/run_all.py, production/implementation/kvstore.py, and production/PRODUCTIONIZATION.md paths are absent from CANDIDATE, despite README instructions and MANIFEST claims for two alternatives and an instrumented variant.",
+    "Every documented production-target test, fuzz, stress, and fault-injection command failed because the production module is absent; a benchmark replay to /tmp also failed while loading the absent production implementation.",
+    "The archived benchmark reports production timings, but its production source is absent and PROVENANCE provides no run identity or submitted-tree hash, so those measurements cannot be reproduced or authenticated from this submission.",
+    "An independent boundary check stored three individually valid 1 MiB values, producing a 4194627-byte log, after which compact() raised ValueError: batch is too large, contradicting the unconditional compaction requirement.",
+    "An unterminated 4194305-byte tail, one byte above MAX_RECORD_BYTES, was accepted and truncated to zero; replay reads the entire file before applying its record-size check.",
+    "Solution code, hidden tests, the debugging root cause and patch, and the expected code review are directly readable inside the submitted archive; no enforced learner-view or reveal boundary is included.",
+    "The pinned local Build Your Own X commit exists, contains the cited DBDB catalog link, and states a CC0 waiver; the linked tutorial license and the license of the generated candidate material are not separately established."
+  ],
+  "checks_run": [
+    "PYTHONDONTWRITEBYTECODE=1 python3 environment/check_python.py -> exit 0; all submitted Python sources compile.",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=sealed/reference python3 -m unittest discover -s public_tests -v -> exit 0; 4 tests passed.",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=sealed/reference python3 -m unittest discover -s sealed/reference_tests -v -> exit 0; 10 tests passed.",
+    "PYTHONDONTWRITEBYTECODE=1 KVSTORE_IMPL=reference python3 adversarial/fuzz/model_fuzz.py --operations 600 -> exit 0.",
+    "PYTHONDONTWRITEBYTECODE=1 KVSTORE_IMPL=reference python3 adversarial/stress/thread_stress.py --threads 6 --operations 80 -> exit 0.",
+    "PYTHONDONTWRITEBYTECODE=1 KVSTORE_IMPL=reference python3 adversarial/fault-injection/torn_tail.py -> exit 0.",
+    "PYTHONDONTWRITEBYTECODE=1 KVSTORE_IMPL=buggy python3 debugging/lost-delete/test_bug.py -> exit 1 with the expected lost-delete assertion; the reference target exited 0.",
+    "PYTHONDONTWRITEBYTECODE=1 python3 scripts/run_all.py -> exit 2 because scripts/run_all.py is absent.",
+    "Documented production public and sealed suites plus production fuzz, stress, and fault-injection commands -> exit 1 with ModuleNotFoundError because production/implementation is absent.",
+    "PYTHONDONTWRITEBYTECODE=1 python3 benchmarks/benchmark.py --operations 500 --output /tmp/kvstore-review-smoke-attempt-002.json -> exit 1 with FileNotFoundError for production/implementation/kvstore.py.",
+    "Independent compaction boundary probe with three MAX_VALUE_BYTES values -> exit 1 with ValueError: batch is too large.",
+    "Independent oversized-tail probe at MAX_RECORD_BYTES plus one -> exit 0 and observed the file shrink from 4194305 bytes to 0.",
+    "PYTHONDONTWRITEBYTECODE=1 KVSTORE_IMPL=reference python3 adversarial/fuzz/model_fuzz.py --operations -1 -> exit 0 and printed a pass without executing an operation.",
+    "Pinned-source git checks -> commit resolved exactly, cited database entry found, and catalog CC0 statement found.",
+    "Candidate inventory and before/after content checks -> 33 regular files, no symlinks or bytecode caches, and unchanged aggregate SHA-256 31a95c6479fa37dc9f2874679eaaf862fd4eba60206ce0309d6b7931982a1be5."
+  ],
+  "limitations": [
+    "The absent production implementation prevents any independent conclusion about its correctness, instrumentation, fuzzing, stress behavior, fault recovery, or performance.",
+    "The archived benchmark cannot be rerun from this submission, and its historical execution identity and exact implementation hashes are unavailable.",
+    "The fault-injection script models a torn tail after a clean close; no real process crash, power loss, filesystem fault, or cross-platform durability campaign was performed.",
+    "The linked external tutorial was not fetched, so its license and any textual or code similarity to generated material remain unverified.",
+    "Thread stress and fuzzing were single bounded deterministic runs and do not establish exhaustive concurrency or corruption safety.",
+    "The archive does not include a generated learner view, so disclosure safety was assessed from the directly readable submitted tree rather than an independently staged student package."
+  ]
+}

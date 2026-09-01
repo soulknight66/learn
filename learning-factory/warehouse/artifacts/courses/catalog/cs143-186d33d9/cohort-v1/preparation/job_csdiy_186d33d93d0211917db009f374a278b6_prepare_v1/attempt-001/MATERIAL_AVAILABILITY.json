@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "course_id": "course_186d33d93d0211917db009f374a278b6",
+  "materials": [
+    {
+      "material_id": "prepared_learner_packet_v1",
+      "title": "Manager-authored kickoff learner packet",
+      "classification": "manager-authored",
+      "availability": "AVAILABLE_LOCAL",
+      "audience": "learner",
+      "paths": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "usable_for_unit": "unit_01_minicool_lexer_engineering",
+      "official_course_material": false
+    },
+    {
+      "material_id": "prepared_examiner_rubric_v1",
+      "title": "Independent kickoff rubric",
+      "classification": "manager-authored",
+      "availability": "AVAILABLE_LOCAL",
+      "audience": "examiner_only",
+      "path": "examiner_only/RUBRIC.md",
+      "expose_to_learner": false,
+      "official_course_material": false
+    },
+    {
+      "material_id": "unit_b94c948b019a07fe148499c7a1c9870e",
+      "title": "Catalog overview and resource guide",
+      "type": "reading",
+      "classification": "source-derived catalog metadata",
+      "availability": "AVAILABLE_IN_SNAPSHOT",
+      "source_reference": "docs/编译原理/CS143.en.md",
+      "official_course_unit": false,
+      "use": "Provenance and high-level scope only; not assigned as course content."
+    },
+    {
+      "material_id": "unit_f491350fddc2b9b80071daef058d4759",
+      "title": "Course Website",
+      "type": "reading",
+      "classification": "external resource pointer",
+      "catalog_availability": "LINKED",
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "urls": [
+        "http://web.stanford.edu/class/cs143/"
+      ],
+      "source_reference": "docs/编译原理/CS143.en.md#L17",
+      "official_course_unit": false,
+      "content_retrieved": false,
+      "use": "Not required for the kickoff."
+    },
+    {
+      "material_id": "unit_d2a1851cd64ac93eddd8741fc4750362",
+      "title": "Recordings",
+      "type": "lecture",
+      "classification": "external resource pointer",
+      "catalog_availability": "LINKED",
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "urls": [
+        "https://www.bilibili.com/video/BV17K4y147Bz"
+      ],
+      "source_reference": "docs/编译原理/CS143.en.md#L18",
+      "official_course_unit": false,
+      "content_retrieved": false,
+      "use": "Not required for the kickoff."
+    },
+    {
+      "material_id": "unit_52883bd62c8de710d0408e88f2232a7b",
+      "title": "Compilers: Principles, Techniques and Tools (Dragon Book)",
+      "type": "reading",
+      "classification": "bibliographic reference",
+      "catalog_availability": "DESCRIBED",
+      "availability": "NOT_PROVIDED",
+      "urls": [],
+      "source_reference": "docs/编译原理/CS143.en.md#L19",
+      "official_course_unit": false,
+      "content_retrieved": false,
+      "use": "Not required for the kickoff; no chapter or edition is inferred."
+    },
+    {
+      "material_id": "unit_6bb4eaf8e8f92085827afcb245b85861",
+      "title": "Five written assignments and five programming labs",
+      "type": "assignment",
+      "classification": "aggregate course-workload description",
+      "catalog_availability": "DESCRIBED",
+      "availability": "PROMPTS_NOT_PROVIDED",
+      "urls": [],
+      "source_reference": "docs/编译原理/CS143.en.md#L20",
+      "source_official_course_unit": true,
+      "concrete_units_available": false,
+      "content_retrieved": false,
+      "use": "Not used or reconstructed for the kickoff."
+    },
+    {
+      "material_id": "catalog_resource_github_repository",
+      "title": "CS143-Compilers-Stanford repository pointer",
+      "type": "repository",
+      "classification": "unnormalized catalog resource pointer",
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "urls": [
+        "https://github.com/skyzluo/CS143-Compilers-Stanford"
+      ],
+      "source_reference": "course.source_metadata.resource_urls",
+      "official_course_unit": false,
+      "content_retrieved": false,
+      "use": "Not required for the kickoff."
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_f491350fddc2b9b80071daef058d4759",
+      "blocked_content": "Course website contents and current official schedule",
+      "reason_code": "LINK_ONLY_NOT_RETRIEVED",
+      "detail": "Only the catalog URL is present; availability, currency, license, and unit structure have not been verified."
+    },
+    {
+      "material_id": "unit_d2a1851cd64ac93eddd8741fc4750362",
+      "blocked_content": "Recording titles, ordering, transcripts, and media",
+      "reason_code": "LINK_ONLY_NOT_RETRIEVED",
+      "detail": "Only a series URL is present; no recording content or stable per-lecture metadata was supplied."
+    },
+    {
+      "material_id": "unit_52883bd62c8de710d0408e88f2232a7b",
+      "blocked_content": "Textbook contents",
+      "reason_code": "COPY_NOT_SUPPLIED",
+      "detail": "A bibliographic title is not access to a licensed copy, and the snapshot does not identify an edition or assigned chapters."
+    },
+    {
+      "material_id": "unit_6bb4eaf8e8f92085827afcb245b85861",
+      "blocked_content": "Official written-assignment and programming-lab prompts, starter code, and tests",
+      "reason_code": "AGGREGATE_DESCRIPTION_ONLY",
+      "detail": "The snapshot reports counts but contains none of the concrete artifacts; they must not be invented."
+    },
+    {
+      "material_id": "catalog_resource_github_repository",
+      "blocked_content": "Repository files and their provenance or license at a resolved revision",
+      "reason_code": "LINK_ONLY_NOT_RETRIEVED",
+      "detail": "The URL appears only in catalog metadata and was not fetched."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job_mode": "NO_EXTERNAL_RETRIEVAL",
+    "rules": [
+      "A URL or title establishes discoverability, not possession, accessibility, official status, or permission to copy.",
+      "Do not fetch paywalled, authenticated, private, restricted, or ambiguously licensed content.",
+      "Do not infer lecture order, assignment prompts, dependencies, editions, or solutions from aggregate metadata.",
+      "Keep examiner-only material out of every learner view.",
+      "Do not expose secrets, sealed references, hidden validation data, or another learner's files."
+    ],
+    "later_job_requirements": [
+      "Use an explicitly authorized retriever and record the resolved URL, retrieval time, revision when applicable, content hash, license or access basis, and validation label.",
+      "Classify each retrieved artifact before adding it to the unit graph.",
+      "Preserve unavailable and failed-retrieval records rather than silently treating them as complete.",
+      "Only a worker-harness validator may promote retrieved material or learner work to a validated state."
+    ]
+  },
+  "provenance": {
+    "classification": "availability classification over source-derived catalog records plus manager-authored local artifacts",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/编译原理/CS143.en.md",
+    "catalog_content_sha256": "23d43d26856c40acc3f545e336706cf9c9e6a39b72520906e4c77fb165337108"
+  },
+  "validation": {
+    "label": "AVAILABILITY_CLASSIFIED_UNVERIFIED",
+    "external_content_fetched": false
+  }
+}

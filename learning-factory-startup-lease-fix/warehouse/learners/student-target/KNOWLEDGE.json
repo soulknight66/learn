@@ -1,0 +1,75 @@
+{
+  "concepts": [
+    {
+      "concept": "concurrency",
+      "confidence": 0.525,
+      "evidence": [
+        {
+          "concept": "concurrency",
+          "created_at": 1788121785.7741845,
+          "description": "Passed bounded concurrent shared-write smoke coverage under a single global lock.",
+          "evidence_id": "evidence_17c9167e0bab34b5a9d06ad79399da11",
+          "kind": "stress-smoke",
+          "source_reference": "job_course_mit6s081_vertical_v2",
+          "weight": 0.2
+        }
+      ],
+      "last_updated": 1788121785.7741845,
+      "misconceptions": [
+        "A global-lock smoke pass is not evidence of scalable kernel synchronization or race freedom."
+      ]
+    },
+    {
+      "concept": "copy-on-write",
+      "confidence": 0.56875,
+      "evidence": [
+        {
+          "concept": "copy-on-write",
+          "created_at": 1788121785.7741845,
+          "description": "Passed private-page COW and unseen lifecycle transfer cases in the Python semantic model.",
+          "evidence_id": "evidence_ae3de30b3178792fdee7544faff2300b",
+          "kind": "transfer-test",
+          "source_reference": "job_course_mit6s081_vertical_v2",
+          "weight": 0.55
+        }
+      ],
+      "last_updated": 1788121785.7741845,
+      "misconceptions": []
+    },
+    {
+      "concept": "reference counting",
+      "confidence": 0.56875,
+      "evidence": [
+        {
+          "concept": "reference counting",
+          "created_at": 1788121785.7741845,
+          "description": "Passed fork/exec/exit/unlink reclamation tests with exact mapping and name references.",
+          "evidence_id": "evidence_f674b29ea9c759de97c6310906da2a27",
+          "kind": "hidden-test",
+          "source_reference": "job_course_mit6s081_vertical_v2",
+          "weight": 0.55
+        }
+      ],
+      "last_updated": 1788121785.7741845,
+      "misconceptions": []
+    },
+    {
+      "concept": "shared memory lifecycle",
+      "confidence": 0.5625,
+      "evidence": [
+        {
+          "concept": "shared memory lifecycle",
+          "created_at": 1788121785.7741845,
+          "description": "Passed unrelated-process shared-page and deferred-unlink scenarios.",
+          "evidence_id": "evidence_60dc26cdbf9505dea21fd8cfb78fdec9",
+          "kind": "transfer-test",
+          "source_reference": "job_course_mit6s081_vertical_v2",
+          "weight": 0.5
+        }
+      ],
+      "last_updated": 1788121785.7741845,
+      "misconceptions": []
+    }
+  ],
+  "student_id": "student-target"
+}

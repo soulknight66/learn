@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "course_id": "course_91cc31a85fb9d3569d29c67ced6128d9",
+  "nodes": [
+    {
+      "node_id": "unit_01_reproducible_data_audit",
+      "node_type": "prepared_study_unit",
+      "title": "Reproducible Data Cleaning and Audit Contracts",
+      "classification": "manager_authored_kickoff",
+      "availability": "LOCAL_COMPLETE",
+      "catalog_official_course_unit_claim": false,
+      "adopted_as_official_course_unit": false,
+      "included_in_kickoff": true,
+      "status": "PREPARED_UNVALIDATED"
+    },
+    {
+      "node_id": "unit_bfa22ee2a4dc294752bc4e7bb779fb25",
+      "node_type": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "classification": "catalog_metadata_input",
+      "resource_type": "reading",
+      "source_order": 0,
+      "availability": "SNAPSHOT_METADATA_ONLY",
+      "catalog_official_course_unit_claim": false,
+      "adopted_as_official_course_unit": false,
+      "included_in_kickoff": false
+    },
+    {
+      "node_id": "unit_5d891186f4f799ea8cd175fa381e23d5",
+      "node_type": "normalized_resource_record",
+      "title": "Course Website",
+      "classification": "external_resource_pointer",
+      "resource_type": "reading",
+      "source_order": 14,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "catalog_official_course_unit_claim": false,
+      "adopted_as_official_course_unit": false,
+      "included_in_kickoff": false
+    },
+    {
+      "node_id": "unit_27f9b21fceb2302c6feefa3a861a2393",
+      "node_type": "normalized_resource_record",
+      "title": "Textbook",
+      "classification": "external_resource_pointer",
+      "resource_type": "reading",
+      "source_order": 16,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "catalog_official_course_unit_claim": false,
+      "adopted_as_official_course_unit": false,
+      "included_in_kickoff": false
+    },
+    {
+      "node_id": "unit_eb3d4148fd801aeb16d121e7e0f21dbe",
+      "node_type": "normalized_resource_record",
+      "title": "Assignments",
+      "classification": "unresolved_official_assignment_reference",
+      "resource_type": "assignment",
+      "source_order": 17,
+      "availability": "DESCRIBED_NOT_RETRIEVED",
+      "catalog_official_course_unit_claim": true,
+      "adopted_as_official_course_unit": false,
+      "included_in_kickoff": false,
+      "non_promotion_reason": "The snapshot supplies only 'refer to the course website'; no assignment identity, body, ordering, or direct URL is available."
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_bfa22ee2a4dc294752bc4e7bb779fb25",
+      "to": "unit_5d891186f4f799ea8cd175fa381e23d5",
+      "relation": "CATALOG_LISTS",
+      "dependency": false
+    },
+    {
+      "from": "unit_bfa22ee2a4dc294752bc4e7bb779fb25",
+      "to": "unit_27f9b21fceb2302c6feefa3a861a2393",
+      "relation": "CATALOG_LISTS",
+      "dependency": false
+    },
+    {
+      "from": "unit_bfa22ee2a4dc294752bc4e7bb779fb25",
+      "to": "unit_eb3d4148fd801aeb16d121e7e0f21dbe",
+      "relation": "CATALOG_DESCRIBES",
+      "dependency": false
+    },
+    {
+      "from": "unit_bfa22ee2a4dc294752bc4e7bb779fb25",
+      "to": "unit_01_reproducible_data_audit",
+      "relation": "INFORMS_LOCAL_SCOPE",
+      "dependency": false
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "provenance": {
+    "classification": "manager-classified-from-provided-snapshot",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/数据科学/Data100.en.md",
+    "content_sha256": "9da9869f766efc16eafd202fd0bc80924f2baf5a78f6bed4ccd26f0323525595",
+    "external_content_retrieved": false
+  },
+  "validation": {
+    "label": "UNVALIDATED_CLASSIFICATION",
+    "meaning": "The graph records preparation-time classifications and has not been promoted by a harness validator."
+  }
+}

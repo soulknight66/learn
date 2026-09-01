@@ -1,0 +1,15 @@
+final class PoolSketch {
+    private final java.util.HashMap<Object, Integer> entries = new java.util.HashMap<>();
+
+    int add(Object value) {
+        entries.putIfAbsent(value, entries.size());
+        return entries.get(value);
+    }
+
+    void write(java.io.DataOutputStream out) throws java.io.IOException {
+        out.writeShort(entries.size());
+        for (Object value : entries.keySet()) {
+            out.writeUTF(value.toString());
+        }
+    }
+}

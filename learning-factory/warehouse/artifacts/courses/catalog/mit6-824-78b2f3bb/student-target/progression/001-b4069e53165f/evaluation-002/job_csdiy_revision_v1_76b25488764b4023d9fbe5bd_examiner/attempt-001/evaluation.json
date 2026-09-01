@@ -1,0 +1,16 @@
+{
+  "evidence": [
+    "Pre-execution staged learner-file inventory (SHA-256): DEBUGGING_LOG.md 336fea66ebd937e5b1d61896ea6f103a759dedf8f15e4a114eaba0441b755e5b; NOTES.md b5d38a53ca605bd9f6e30affebe536b734ee7d61775b5ff1b0f30db06bebb1c1; SELF_CHECK.md d1e740f62bd21cc248c952543beec56e0530623f9d5c713ee12b1b98b9169dcb; SUBMISSION.md a5d5f74207e42c665c8aefddbe92786f9643db0ec7e79831133e99f63fddd6e5. A complete recursive inventory found no other staged learner files or symlinks.",
+    "The currently staged revision does not contain lease_queue.py, test_lease_queue.py, DESIGN.md, or INCIDENT.md. SUBMISSION.md says those four files are present and reports 17 passing tests, but the observable workspace contradicts that claim; learner prose and self-checks do not provide executable or artifact-backed evidence.",
+    "The declared unittest target was reproduced from a clean directory containing the staged learner Markdown files, with PYTHONPATH removed, bytecode disabled, restricted network, a new process session, and a 30-second timeout. The argv-equivalent command `python3 -B -m unittest -v test_lease_queue.py` finished without timing out, exited 1 after 0.160354 seconds, and reported `ModuleNotFoundError: No module named 'test_lease_queue'`.",
+    "Because the implementation and test module are absent, no learner test or independent behavioral check can run, no adapter was created, and there is no observable basis for awarding model, correctness, determinism, debugging, production-reasoning, or novel-behavior credit. The required artifact and clean-test conditions remain unmet.",
+    "BATCH_MANIFEST.json parsed successfully and identifies this as one locally authored bounded batch with course_completion NOT_CLAIMED. This failed examination neither changes that status nor establishes transfer."
+  ],
+  "result": "FAIL",
+  "score": 0,
+  "transfer_gaps": [
+    "The revision still lacks the four preserved artifacts required to assess the claimed implementation, tests, design contract, and debugging evidence.",
+    "No response to an independently supplied unseen task was assessed, so transfer is not verified.",
+    "Course completion remains NOT_CLAIMED."
+  ]
+}

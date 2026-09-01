@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "course_id": "course_6e5f7ce1162afd317973c84f59925006",
+  "nodes": [
+    {
+      "node_id": "managed_unit_001_linear_regression_engineering",
+      "node_type": "managed_study_unit",
+      "title": "Engineering a Reliable Linear Regression Baseline",
+      "order": 1,
+      "status": "PREPARED",
+      "availability": "SELF_CONTAINED",
+      "official_course_unit": false,
+      "classification": "MANAGER_AUTHORED_KICKOFF",
+      "estimated_hours": 8,
+      "provenance": "COURSE_MANIFEST.json"
+    },
+    {
+      "node_id": "unit_8811833dab387b7fad68629b4f65c4c0",
+      "node_type": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "order": 0,
+      "status": "CLASSIFIED",
+      "availability": "METADATA_ONLY",
+      "official_course_unit": false,
+      "classification": "CATALOG_CONTEXT_NOT_A_STUDY_UNIT",
+      "source_reference": "docs/机器学习/CS229.en.md"
+    },
+    {
+      "node_id": "unit_17578ee9d217a992cc629b9310d2447e",
+      "node_type": "normalized_resource_record",
+      "title": "Course Website",
+      "order": 15,
+      "status": "CLASSIFIED",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "official_course_unit": false,
+      "classification": "RESOURCE_LINK_NOT_A_STUDY_UNIT",
+      "source_reference": "docs/机器学习/CS229.en.md#L15"
+    },
+    {
+      "node_id": "unit_ac10c512b377f578841647756e4447d3",
+      "node_type": "normalized_resource_record",
+      "title": "Recordings",
+      "order": 16,
+      "status": "CLASSIFIED",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "official_course_unit": false,
+      "classification": "RESOURCE_LINK_NOT_A_STUDY_UNIT",
+      "source_reference": "docs/机器学习/CS229.en.md#L16"
+    },
+    {
+      "node_id": "unit_dd5c05134a1c3578c35de446c32477d4",
+      "node_type": "normalized_resource_record",
+      "title": "Textbook",
+      "order": 17,
+      "status": "CLASSIFIED",
+      "availability": "NO_TEXTBOOK_LISTED",
+      "official_course_unit": false,
+      "classification": "MATERIAL_DESCRIPTION_NOT_A_STUDY_UNIT",
+      "source_reference": "docs/机器学习/CS229.en.md#L17"
+    },
+    {
+      "node_id": "unit_fd0f6c849436ca8df924534168d6a504",
+      "node_type": "normalized_resource_record",
+      "title": "Assignments",
+      "order": 18,
+      "status": "BLOCKED",
+      "availability": "NOT_OPEN_TO_PUBLIC",
+      "official_course_unit": true,
+      "classification": "OFFICIAL_COURSE_MATERIAL_BLOCKED_NOT_SCHEDULED",
+      "source_reference": "docs/机器学习/CS229.en.md#L18"
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_8811833dab387b7fad68629b4f65c4c0",
+      "to": "managed_unit_001_linear_regression_engineering",
+      "relationship": "catalog_context_informs_scope",
+      "required_dependency": false
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "classification_policy": {
+    "scheduled_node_types": [
+      "managed_study_unit"
+    ],
+    "resource_records_are_scheduled_automatically": false,
+    "blocked_nodes_may_be_dependencies": false,
+    "linked_but_unretrieved_nodes_may_be_required": false
+  },
+  "provenance": {
+    "classification": "course-manager-generated from provided catalog snapshot",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "content_sha256": "dc045173aaf92e20978d929f961d0cde20e4aa4c65e499cdcd54a55975e246a2",
+    "external_retrieval_performed": false
+  },
+  "validation": {
+    "label": "AWAITING_HARNESS_VALIDATION",
+    "validated_completion_claim": false
+  }
+}

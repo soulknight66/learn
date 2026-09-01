@@ -1,0 +1,41 @@
+[factory]
+database = "warehouse/factory.db"
+warehouse = "warehouse"
+lease_seconds = 120
+heartbeat_seconds = 5
+database_busy_timeout_seconds = 60
+poll_seconds = 0.25
+max_concurrency = 12
+allow_host_command_validators = false
+course_revision_limit = 2
+shutdown_grace_seconds = 10
+
+[backend]
+name = "exec"
+command = "codex"
+permission_profile = "factory-isolated"
+toolchain_read_roots = [
+  "/arm/tools/python/python/3.11.5/rhe8-x86_64",
+]
+timeout_seconds = 1800
+model = "gpt-5.6-sol"
+reasoning_effort = "ultra"
+provider = "arm"
+provider_name = "ARM OpenAI Proxy"
+base_url = "https://openai-api-proxy.geo.arm.com/api/providers/openai/v1"
+requires_openai_auth = true
+supports_websockets = false
+
+[limits]
+ingestion = 1
+course_manager = 3
+student = 2
+examiner = 3
+reference_builder = 5
+productionizer = 2
+synthesizer = 2
+maintenance = 1
+
+[retry]
+base_seconds = 2
+max_seconds = 300

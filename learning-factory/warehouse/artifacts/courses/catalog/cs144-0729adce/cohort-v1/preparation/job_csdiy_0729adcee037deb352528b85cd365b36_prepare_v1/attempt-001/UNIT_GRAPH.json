@@ -1,0 +1,81 @@
+{
+  "course_id": "course_0729adcee037deb352528b85cd365b36",
+  "nodes": [
+    {
+      "unit_id": "kickoff_01_bounded_byte_stream",
+      "title": "Engineering a Bounded Byte Stream in C++",
+      "node_type": "study_unit",
+      "classification": "manager-authored kickoff",
+      "official_course_unit": false,
+      "status": "PREPARED_NOT_VALIDATED",
+      "sequence": 1,
+      "estimated_hours": {
+        "target": 6,
+        "maximum": 8
+      },
+      "prerequisite_units": [],
+      "required_material_ids": [
+        "local_course_brief",
+        "local_study_task",
+        "local_comprehension"
+      ],
+      "completion_effect": "May establish completion of this unit only after harness-controlled validation; never establishes course completion."
+    }
+  ],
+  "edges": [],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "source_record_classification": [
+    {
+      "record_id": "unit_57d9ccf5740b0f04f6a56441f012aa0a",
+      "title": "Catalog overview and resource guide",
+      "snapshot_official_course_unit": false,
+      "decision": "CATALOG_CONTEXT_ONLY",
+      "promoted_to_graph_node": false,
+      "reason": "A catalog overview is context, not an instructional unit."
+    },
+    {
+      "record_id": "unit_a6f60f011ba0585ad9bde4f05e0da1b4",
+      "title": "Course Website",
+      "snapshot_official_course_unit": false,
+      "decision": "RESOURCE_LINK_ONLY",
+      "promoted_to_graph_node": false,
+      "reason": "The snapshot supplies a link but no bounded unit content."
+    },
+    {
+      "record_id": "unit_35db54d6a6770d345e6c3986e96e4418",
+      "title": "Video",
+      "snapshot_official_course_unit": false,
+      "decision": "RESOURCE_LINK_ONLY",
+      "promoted_to_graph_node": false,
+      "reason": "A playlist link is not a verified lecture sequence or unit definition."
+    },
+    {
+      "record_id": "unit_0fddbf56ec8570f5dcb36fd3f7487a19",
+      "title": "Textbook",
+      "snapshot_official_course_unit": false,
+      "decision": "UNAVAILABLE_REFERENCE",
+      "promoted_to_graph_node": false,
+      "reason": "The catalog explicitly lists no textbook."
+    },
+    {
+      "record_id": "unit_633863fca13a9401693fb579f663c8f3",
+      "title": "Assignments",
+      "snapshot_official_course_unit": true,
+      "decision": "COURSE_AREA_WITHOUT_UNIT_CONTENT",
+      "promoted_to_graph_node": false,
+      "reason": "The source flag identifies an official course area, but the snapshot only says to consult the website and contains no assignment specification to classify as a bounded unit."
+    }
+  ],
+  "graph_scope": "FIRST_UNIT_ONLY",
+  "expansion_status": "DEFERRED_PENDING_AUTHORIZED_RETRIEVAL_AND_CLASSIFICATION",
+  "provenance": {
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/计算机网络/CS144.en.md",
+    "content_sha256": "183978b7f65987a0e83499d4a0f04f603d3eb3b7d3c8873fc0ea9e72208d6119",
+    "classification": "manager-authored graph from source-derived normalized record metadata",
+    "external_retrieval_performed": false
+  },
+  "validation": {
+    "label": "STRUCTURE_PREPARED_NOT_VALIDATED"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "course_id": "course_194d661507a825dafbdf062d5e563ce6",
+  "title": "MIT 6.006: Introduction to Algorithms",
+  "status": "KICKOFF_READY_NOT_COURSE_COMPLETE",
+  "unit": {
+    "unit_id": "kickoff_priority_queue_engineering_v1",
+    "title": "Engineering a Reliable Binary Min-Priority Queue",
+    "kind": "MANAGER_AUTHORED_KICKOFF",
+    "official_course_unit": false,
+    "status": "READY_FOR_LEARNER",
+    "estimated_human_hours": 8,
+    "implementation_language": "Python",
+    "scope": "One self-contained implementation, testing, evidence, and reflection exercise",
+    "learner_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "examiner_material": "examiner_only/RUBRIC.md"
+  },
+  "completion_policy": {
+    "scope": "KICKOFF_UNIT_ONLY",
+    "unit_completion_requires": [
+      "All learner deliverables required by STUDY_TASK.md are present",
+      "An independent worker-harness validator runs the submitted tests and its own checks",
+      "The submission satisfies the examiner-only pass gates"
+    ],
+    "promotion_authority": "WORKER_HARNESS_VALIDATOR_ONLY",
+    "learner_or_agent_claim_is_evidence": false,
+    "kickoff_completion_implies_course_completion": false,
+    "course_completion_status": "NOT_ASSESSED_BY_THIS_UNIT",
+    "later_units_required": "UNSPECIFIED_UNTIL_MATERIALS_ARE_RETRIEVED_AND_CLASSIFIED"
+  },
+  "provenance": {
+    "classification": "MANAGER_AUTHORED_FROM_CATALOG_SNAPSHOT",
+    "catalog_snapshot_location": "JOB.md",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/数据结构与算法/6.006.en.md",
+    "source_content_sha256": "9690e57765acc3f36e1fb50340fd3c9c6990704128798f7d596f17e99cf65dfa",
+    "extractor_version": "1.1",
+    "remote_content_retrieved": false,
+    "official_sequence_claimed": false,
+    "validation_label": "PREPARED_NOT_VALIDATED"
+  }
+}

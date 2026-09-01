@@ -1,0 +1,11 @@
+--- a/debugging/coalesce-span/buggy/allocator.c
++++ b/debugging/coalesce-span/buggy/allocator.c
+@@ -61,7 +61,7 @@
+
+     static void merge_next(block *item) {
+         block *next = item->next;
+-        item->size += (2U * HEADER_SIZE) + next->size;
++        item->size += HEADER_SIZE + next->size;
+         item->next = next->next;
+         if (item->next != NULL) {
+             item->next->previous = item;

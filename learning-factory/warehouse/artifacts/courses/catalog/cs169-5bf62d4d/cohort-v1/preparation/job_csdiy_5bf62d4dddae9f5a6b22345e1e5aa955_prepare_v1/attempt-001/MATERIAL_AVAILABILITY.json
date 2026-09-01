@@ -1,0 +1,128 @@
+{
+  "course_id": "course_5bf62d4dddae9f5a6b22345e1e5aa955",
+  "materials": [
+    {
+      "material_id": "catalog_snapshot",
+      "title": "Catalog overview and resource guide",
+      "kind": "catalog_metadata",
+      "source_record_id": "unit_b0118c2b011dc973a4cef19fcb5f255e",
+      "locator": "docs/软件工程/CS169.en.md",
+      "availability": "AVAILABLE_IN_JOB_INPUT",
+      "retrieved": true,
+      "verified_content": true,
+      "permitted_use": "Provenance, broad course context, and resource discovery only; not instructional proof of an official unit."
+    },
+    {
+      "material_id": "course_website",
+      "title": "Course Website",
+      "kind": "website_pointer",
+      "source_record_id": "unit_bb78c6bb4256f22b8952dfe750644497",
+      "locator": "http://www.saasbook.info/courses",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "verified_content": false,
+      "permitted_use": "A later retrieval job may inspect it under the retrieval policy."
+    },
+    {
+      "material_id": "recordings",
+      "title": "Recordings",
+      "kind": "lecture_collection",
+      "source_record_id": "unit_317ce48598a4b3c9632c00b86b6f3427",
+      "locator": null,
+      "availability": "UNAVAILABLE_NO_DIRECT_LOCATOR",
+      "retrieved": false,
+      "verified_content": false,
+      "permitted_use": "None in this kickoff."
+    },
+    {
+      "material_id": "textbook",
+      "title": "Software as a service",
+      "kind": "textbook_pointer",
+      "source_record_id": "unit_12a7fd1539090f835cc8f07e104d9f0c",
+      "locator": "https://github.com/PKUFlyingPig/CS169-Software-Engineering/blob/master/saasbook.pdf",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "verified_content": false,
+      "permitted_use": "Optional future reference after access, license, integrity, and relevance checks."
+    },
+    {
+      "material_id": "assignments",
+      "title": "Assignments",
+      "kind": "assignment_collection",
+      "source_record_id": "unit_f8f6c91aa512f29bbcfa707bb921c2e4",
+      "locator": null,
+      "availability": "UNAVAILABLE_NO_DIRECT_LOCATOR",
+      "retrieved": false,
+      "verified_content": false,
+      "permitted_use": "None in this kickoff; do not infer assignment text from the catalog description."
+    },
+    {
+      "material_id": "course_repository",
+      "title": "CS169 Software Engineering repository",
+      "kind": "repository_pointer",
+      "source_record_id": null,
+      "record_origin": "course.source_metadata.resource_urls",
+      "locator": "https://github.com/PKUFlyingPig/CS169-Software-Engineering",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "verified_content": false,
+      "permitted_use": "Future discovery only after provenance and license checks."
+    },
+    {
+      "material_id": "edx_directory",
+      "title": "edX platform",
+      "kind": "generic_platform_pointer",
+      "source_record_id": null,
+      "record_origin": "course.source_metadata.resource_urls",
+      "locator": "https://www.edx.org/",
+      "availability": "GENERIC_LINK_NO_COURSE_LOCATOR",
+      "retrieved": false,
+      "verified_content": false,
+      "permitted_use": "Future discovery only; it is not evidence that a particular run is currently available."
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "recordings",
+      "reason": "The snapshot says only to refer to the course website and supplies no recording locator.",
+      "unblock_condition": "A later authorized job finds and verifies a public, course-specific recording index."
+    },
+    {
+      "material_id": "assignments",
+      "reason": "The snapshot supplies neither assignment text nor a direct locator; official status is a catalog claim, not verified content.",
+      "unblock_condition": "A later authorized job verifies a public source, access terms, identity, and ordering without exposing solutions or restricted assessment data."
+    },
+    {
+      "material_id": "textbook",
+      "reason": "Only a link is present; the PDF bytes, license terms for instructional reuse, and chapter structure were not inspected.",
+      "unblock_condition": "A later retrieval job lawfully downloads or accesses it, records a content hash and license, and validates the relevant sections."
+    },
+    {
+      "material_id": "course_website",
+      "reason": "Only a link is present and its current contents were not inspected.",
+      "unblock_condition": "A later retrieval job verifies reachability, redirects, ownership, access terms, and course-unit claims."
+    },
+    {
+      "material_id": "edx_directory",
+      "reason": "The supplied URL is a platform home page, not a stable course-run locator; availability or enrollment cannot be inferred.",
+      "unblock_condition": "A later discovery job identifies a public, course-specific page and records run dates and access requirements."
+    },
+    {
+      "material_id": "official_unit_sequence",
+      "reason": "The snapshot contains resource records but no verified official sequence of lectures, readings, and assignments.",
+      "unblock_condition": "Later jobs classify retrieved records and corroborate an official sequence from authoritative public metadata."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": "Do not fetch external content. Classify only the snapshot and author a self-contained kickoff.",
+    "link_rule": "A URL proves that a pointer was cataloged; it does not prove reachability, availability, authority, license, or instructional-unit status.",
+    "later_public_retrieval": [
+      "Use only an explicitly authorized retrieval job and public sources whose access terms permit the operation.",
+      "Record canonical URL, retrieval outcome, source identity, license or terms, content hash, and retrieval time.",
+      "Validate content type and relevance before converting a resource into a proposed unit.",
+      "Preserve failed retrieval evidence and keep unavailable status until verification succeeds."
+    ],
+    "restricted_content": "Never bypass authentication, enrollment controls, paywalls, robots restrictions, or other access controls; never copy hidden graders, solutions, secrets, or sealed references into learner-visible artifacts.",
+    "promotion_rule": "Only independently validated, provenance-bearing material may be promoted from a pointer to available material, and availability alone does not make it an official course unit."
+  }
+}

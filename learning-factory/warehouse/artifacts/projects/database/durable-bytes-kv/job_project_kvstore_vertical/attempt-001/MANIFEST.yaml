@@ -1,0 +1,32 @@
+schema_version: 1
+project_id: "durable-bytes-kv"
+title: "Durable Bytes Persistent Key-Value Store"
+family: "storage-database"
+category: "Database"
+language: "Python"
+difficulty: 7
+estimated_human_hours: 14
+production_relevance: 8
+cs_depth: 7
+debugging_value: 9
+architecture_value: 8
+validation_status: "GENERATED_PENDING_EXTERNAL_VALIDATION"
+source:
+  catalog: "Build Your Own X"
+  upstream_url: "git@github.com:codecrafters-io/build-your-own-x.git"
+  commit: "aa17439b62f384511a5561ce308e9598b94d8989"
+  reference: "README.md#build-your-own-database"
+  external_tutorial: "http://aosabook.org/en/500L/dbdb-dog-bed-database.html"
+  license: "CC0-1.0"
+artifacts:
+  starter: true
+  public_tests: true
+  sealed_reference: true
+  alternatives: 2
+  productionized: true
+  fuzzing: true
+  stress: true
+  fault_injection: true
+  benchmarks: true
+  debugging_challenges: 1
+  review_exercises: 1

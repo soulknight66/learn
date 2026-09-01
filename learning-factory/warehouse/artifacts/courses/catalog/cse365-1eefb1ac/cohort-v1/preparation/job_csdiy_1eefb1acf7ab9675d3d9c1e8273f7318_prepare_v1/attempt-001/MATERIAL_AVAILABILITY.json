@@ -1,0 +1,195 @@
+{
+  "course_id": "course_1eefb1acf7ab9675d3d9c1e8273f7318",
+  "validation_status": "CATALOG_CLASSIFICATION_UNVERIFIED_EXTERNALLY",
+  "materials": [
+    {
+      "material_id": "unit_948f2bd20026ac901e6e61ea9c36c62d",
+      "title": "Catalog overview and resource guide",
+      "record_origin": "normalized_resource_record",
+      "source_reference": "docs/系统安全/CSE365.en.md",
+      "reported_availability": "PRESENT_IN_SNAPSHOT",
+      "classified_availability": "AVAILABLE_IN_SUPPLIED_SNAPSHOT",
+      "retrieval_state": "PROVIDED_AS_INPUT",
+      "official_unit": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "unit_8ac458e80f400817b491c17e4a16fa8a",
+      "title": "Course Website",
+      "record_origin": "normalized_resource_record",
+      "source_reference": "docs/系统安全/CSE365.en.md#L25",
+      "urls": [
+        "https://pwn.college/cse365-s2025/"
+      ],
+      "reported_availability": "LINKED",
+      "classified_availability": "LINKED_NOT_RETRIEVED",
+      "retrieval_state": "NOT_FETCHED",
+      "official_unit": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "unit_18cb9e2481581b4c1d6525c20a443262",
+      "title": "Recordings",
+      "record_origin": "normalized_resource_record",
+      "source_reference": "docs/系统安全/CSE365.en.md#L26",
+      "urls": [],
+      "reported_availability": "DESCRIBED",
+      "classified_availability": "DESCRIBED_NOT_LOCATED",
+      "retrieval_state": "NO_DIRECT_RESOURCE_TO_FETCH",
+      "official_unit": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "unit_184f2f4785efe1ea13d5fd1183f6b590",
+      "title": "Textbooks",
+      "record_origin": "normalized_resource_record",
+      "source_reference": "docs/系统安全/CSE365.en.md#L27",
+      "urls": [],
+      "reported_availability": "UNAVAILABLE",
+      "classified_availability": "UNAVAILABLE",
+      "retrieval_state": "NOT_APPLICABLE",
+      "official_unit": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "unit_96bb8f312cbca1a3ce3961886eb538cc",
+      "title": "Assignments: 8 modules (444 challenges)",
+      "record_origin": "normalized_resource_record",
+      "source_reference": "docs/系统安全/CSE365.en.md#L28",
+      "urls": [],
+      "reported_availability": "DESCRIBED",
+      "classified_availability": "DESCRIBED_WITHOUT_CHALLENGE_CONTENT",
+      "retrieval_state": "NO_DIRECT_RESOURCE_TO_FETCH",
+      "catalog_official_unit_flag": true,
+      "expanded_as_official_unit": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "unit_e327c786b0ff0ec3d2db115fcbabcfb7",
+      "title": "Lectures on YouTube",
+      "record_origin": "normalized_resource_record",
+      "source_reference": "docs/系统安全/CSE365.en.md#L32",
+      "urls": [
+        "https://youtube.com/pwncollege"
+      ],
+      "reported_availability": "LINKED",
+      "classified_availability": "LINKED_NOT_RETRIEVED",
+      "retrieval_state": "NOT_FETCHED",
+      "official_unit": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "catalog_link_twitch",
+      "title": "Live broadcasts on Twitch",
+      "record_origin": "catalog_field_only",
+      "source_reference": "docs/系统安全/CSE365.en.md",
+      "urls": [
+        "https://twitch.tv/pwncollege"
+      ],
+      "reported_availability": "LINKED",
+      "classified_availability": "LINKED_NOT_RETRIEVED",
+      "retrieval_state": "NOT_FETCHED",
+      "official_unit": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "catalog_link_discord",
+      "title": "Course community on Discord",
+      "record_origin": "catalog_field_only",
+      "source_reference": "docs/系统安全/CSE365.en.md",
+      "urls": [
+        "https://discord.com/channels/750635557666816031/1328463339528913058"
+      ],
+      "reported_availability": "LINKED",
+      "classified_availability": "RESTRICTED_OR_MEMBERSHIP_DEPENDENT_NOT_RETRIEVED",
+      "retrieval_state": "NOT_FETCHED",
+      "official_unit": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "catalog_link_github",
+      "title": "pwn.college GitHub organization",
+      "record_origin": "catalog_field_only",
+      "source_reference": "docs/系统安全/CSE365.en.md",
+      "urls": [
+        "https://github.com/pwncollege"
+      ],
+      "reported_availability": "LINKED",
+      "classified_availability": "LINKED_NOT_RETRIEVED",
+      "retrieval_state": "NOT_FETCHED",
+      "official_unit": false,
+      "required_for_kickoff": false
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_18cb9e2481581b4c1d6525c20a443262",
+      "reason": "The snapshot says only 'See course website' and supplies no recording URL, item list, or captured content.",
+      "blocks_current_unit": false,
+      "later_resolution": "A later retrieval job may inspect the public course website, record the resolved recording URLs and provenance, and classify each item."
+    },
+    {
+      "material_id": "unit_184f2f4785efe1ea13d5fd1183f6b590",
+      "reason": "The catalog explicitly reports that there is no textbook.",
+      "blocks_current_unit": false,
+      "later_resolution": "Do not invent or imply a required textbook; any supplemental reading must be separately sourced and labeled."
+    },
+    {
+      "material_id": "unit_96bb8f312cbca1a3ce3961886eb538cc",
+      "reason": "Only the aggregate count of 8 modules and 444 challenges is present; challenge names, ordering, bodies, access conditions, and validation rules are absent.",
+      "blocks_current_unit": false,
+      "later_resolution": "A later authorized job must retrieve and classify individual public challenge records before constructing official challenge-based units."
+    },
+    {
+      "material_id": "catalog_link_discord",
+      "reason": "The community link may require authentication or membership and is not course content supplied to this job.",
+      "blocks_current_unit": false,
+      "later_resolution": "Do not retrieve, quote, or expose community content without explicit authorization and learner-safe review."
+    },
+    {
+      "material_id": "unit_8ac458e80f400817b491c17e4a16fa8a",
+      "reason": "The course website was a catalog link only and was not fetched or verified in this job.",
+      "blocks_current_unit": false,
+      "later_resolution": "A network-enabled retrieval job may verify the public link and must record final URL, retrieval result, access conditions, integrity metadata when applicable, and time-scoped provenance."
+    },
+    {
+      "material_id": "unit_e327c786b0ff0ec3d2db115fcbabcfb7",
+      "reason": "The video channel was a catalog link only and was not fetched or verified in this job.",
+      "blocks_current_unit": false,
+      "later_resolution": "A later authorized job may enumerate relevant public lectures and classify each item rather than treating the whole channel as a unit."
+    },
+    {
+      "material_id": "catalog_link_twitch",
+      "reason": "The live channel was a catalog link only and was not fetched or verified in this job.",
+      "blocks_current_unit": false,
+      "later_resolution": "A later authorized job may verify public recordings, if any, and record their individual provenance and access conditions."
+    },
+    {
+      "material_id": "catalog_link_github",
+      "reason": "The source organization was a catalog link only and was not fetched or verified in this job.",
+      "blocks_current_unit": false,
+      "later_resolution": "A later authorized job may identify relevant repositories and licenses; an organization landing page is not itself a course unit."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job_mode": "SUPPLIED_SNAPSHOT_ONLY",
+    "network_fetch_performed": false,
+    "restricted_content_fetch_performed": false,
+    "current_unit_dependency_rule": "The kickoff is self-contained and must remain usable without any linked, described, unavailable, or restricted external material.",
+    "future_job_rules": [
+      "Retrieve only resources explicitly authorized for that job and never bypass authentication, membership, paywalls, robots controls, or access restrictions.",
+      "Treat a successful link fetch as material evidence, not as evidence that the item is an official unit.",
+      "Preserve each source URL, source record, retrieval result, integrity metadata, license or access label, and classification decision.",
+      "Do not expose secrets, community messages, hidden challenge data, answer keys, sealed references, or another learner's files in student-safe outputs.",
+      "Keep missing or failed retrievals blocked; do not synthesize their contents or silently substitute unrelated material.",
+      "Require worker-harness-controlled validation before retrieved content can support completion."
+    ]
+  },
+  "provenance": {
+    "derivation": "Availability classifications were made from the supplied catalog fields and normalized resource records only.",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/系统安全/CSE365.en.md",
+    "content_sha256": "7d8d186b7809a876356423e5046f74943a60d265fb89e1f52985043c30f61b4a",
+    "external_retrieval_performed": false
+  }
+}

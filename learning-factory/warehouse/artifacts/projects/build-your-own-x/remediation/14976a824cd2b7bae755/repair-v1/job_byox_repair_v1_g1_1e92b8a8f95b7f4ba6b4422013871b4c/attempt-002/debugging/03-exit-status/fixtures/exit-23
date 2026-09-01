@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+printf 'child output\n'
+exit 23
+

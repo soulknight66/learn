@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "course_id": "course_d0a17d5c4745203f75d2cbd2bc0c0215",
+  "materials": [
+    {
+      "material_id": "catalog_overview",
+      "title": "Catalog overview and resource guide",
+      "kind": "catalog_metadata",
+      "availability": "AVAILABLE_IN_JOB_INPUT",
+      "locator": "docs/数据结构与算法/CS170.en.md",
+      "retrieved": false,
+      "official_course_unit": false,
+      "use_in_kickoff": "topic and prerequisite context only"
+    },
+    {
+      "material_id": "course_website",
+      "title": "CS170 course website",
+      "kind": "external_link",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "locator": "https://cs170.org/",
+      "retrieved": false,
+      "official_course_unit": false,
+      "use_in_kickoff": "optional pointer; not required"
+    },
+    {
+      "material_id": "recordings_playlist",
+      "title": "Catalog-linked recordings playlist",
+      "kind": "external_link",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "locator": "https://www.youtube.com/playlist?list=PLnocShPlK-Ft-o7NInBDw18be86dNaxlT",
+      "retrieved": false,
+      "official_course_unit": false,
+      "use_in_kickoff": "optional pointer; not required"
+    },
+    {
+      "material_id": "supplemental_repository",
+      "title": "Catalog-linked UCB-CS170 repository",
+      "kind": "external_link",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "locator": "https://github.com/PKUFlyingPig/UCB-CS170",
+      "retrieved": false,
+      "official_course_unit": false,
+      "use_in_kickoff": "none"
+    },
+    {
+      "material_id": "recordings_description",
+      "title": "Recordings described as 'refer to the course website'",
+      "kind": "description_only",
+      "availability": "UNAVAILABLE_NO_LOCATOR",
+      "locator": null,
+      "retrieved": false,
+      "official_course_unit": false,
+      "use_in_kickoff": "none"
+    },
+    {
+      "material_id": "official_assignments_description",
+      "title": "Assignments described as 'refer to the course website'",
+      "kind": "description_only",
+      "availability": "UNAVAILABLE_NO_LOCATOR",
+      "locator": null,
+      "retrieved": false,
+      "official_course_unit": true,
+      "use_in_kickoff": "none"
+    },
+    {
+      "material_id": "manager_authored_kickoff_packet",
+      "title": "Manager-authored kickoff learner packet",
+      "kind": "local_learning_material",
+      "availability": "AVAILABLE_LOCAL",
+      "locators": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "retrieved": false,
+      "official_course_unit": false,
+      "use_in_kickoff": "required and self-contained"
+    }
+  ],
+  "blocked": [
+    {
+      "blocked_id": "blocked_official_assignments",
+      "material_id": "official_assignments_description",
+      "status": "CONTENT_NOT_PRESENT",
+      "reason": "The snapshot supplies only a direction to consult the website; it contains no assignment title, prompt, term, ordering, files, or stable assignment URL.",
+      "needed_for_kickoff": false,
+      "needed_for_future_expansion": true
+    },
+    {
+      "blocked_id": "blocked_recordings_description",
+      "material_id": "recordings_description",
+      "status": "LOCATOR_NOT_PRESENT",
+      "reason": "This normalized record has no URL and is not sufficient to identify a lecture or recording.",
+      "needed_for_kickoff": false,
+      "needed_for_future_expansion": false
+    },
+    {
+      "blocked_id": "blocked_textbook",
+      "material_id": null,
+      "status": "IDENTITY_NOT_PRESENT",
+      "reason": "The catalog praises a textbook but does not provide its title, edition, license, or locator; no textbook content was inferred or obtained.",
+      "needed_for_kickoff": false,
+      "needed_for_future_expansion": true
+    },
+    {
+      "blocked_id": "blocked_official_sequence",
+      "material_id": null,
+      "status": "STRUCTURE_NOT_PRESENT",
+      "reason": "The snapshot does not contain an official schedule or a verified mapping from topics and links to concrete ordered course units.",
+      "needed_for_kickoff": false,
+      "needed_for_future_expansion": true
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": "CATALOG_ONLY_NO_EXTERNAL_FETCH",
+    "external_retrieval_performed": false,
+    "kickoff_dependency_policy": "The kickoff must remain completable from local learner-safe material and standard Python 3.11; linked or blocked materials are not prerequisites.",
+    "later_jobs_may_retrieve": "Only an explicitly authorized retrieval job may access public locators.",
+    "later_job_requirements": [
+      "Preserve the source record and requested URL",
+      "Record retrieval outcome, final locator, timestamp, content hash, and license or access terms when known",
+      "Classify the retrieved object before adding any unit or dependency edge",
+      "Verify concrete title, term or version, ordering, and official status instead of inferring them from link position",
+      "Keep unavailable and failed retrieval records rather than rewriting them as available"
+    ],
+    "restricted_content": "Do not bypass authentication, paywalls, robots controls, access restrictions, or license limits. Do not retrieve hidden graders, sealed references, solutions, or private student work.",
+    "promotion_rule": "A link, description, or official-course-unit flag alone never promotes a record to an official runnable unit."
+  }
+}

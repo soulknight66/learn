@@ -1,0 +1,23 @@
+{
+  "evidence": [
+    "Examiner decision: NOT_YET_COMPLETE. Numeric score: 11.5/100 (numerical and algorithmic correctness 0/30; verification quality 0/25; software-engineering quality 4/20; experiment and provenance 0/15; comprehension 7.5/10).",
+    "Gate 1 FAIL (unverifiable): src/tested_mlp is absent, so the examiner cannot establish that the gradient implementation is learner-written, analytic, or free of autodiff frameworks.",
+    "Gate 2 FAIL: no executable implementation is present and NumPy is unavailable, so no examiner-authored finite-difference cases could be run for W1, b1, W2, and b2.",
+    "Gate 3 FAIL: the documented clean test command exited 127 with '.venv/bin/python: No such file or directory'; tests are absent, so an injected gradient perturbation could not be tested.",
+    "Gate 4 FAIL: the documented experiment command exited 127, reports/experiment.json is absent, no six-run measurements exist, and no report digest or regeneration comparison can be produced.",
+    "Gate 5 PASS: SUBMISSION.md and NOTES.md explicitly bound the work to the kickoff unit, deny access to unavailable official material, and make no CMU 11-785 completion claim.",
+    "Workspace inventory contains RUBRIC.md, SUBMISSION.md, NOTES.md, DEBUGGING_LOG.md, JOB.md, and control directories only. The claimed src, tests, README.md, pyproject.toml, requirements.txt, responses, reports/reflection.md, and reports/experiment.json artifacts are not present.",
+    "Observed environment: default Python 3.6.8; supplied interpreter Python 3.11.5; importing NumPy under either interpreter raises ModuleNotFoundError.",
+    "The derivation in NOTES.md correctly states stable shifted-logit NLL, batch-averaged analytic backpropagation, weight-only L2 gradients, ReLU'(0)=0, and separate data/initialization RNG streams. These demonstrate useful comprehension but do not verify the claimed code or results.",
+    "SHA-256 evidence digests: SUBMISSION.md 161d4b9baa1bbb137c4ec9f37650f15c4f9c4a85e78581ddee5aad7d972f3e14; NOTES.md af5cce1d05522c0db5e79b564510cbb7c58aa8bc693e5c3f89bf42b1fc4917f5; DEBUGGING_LOG.md 23a3874067e4a965533387e263968c65dbe3ecef22e6e25980876b3712a00ded. reports/experiment.json is missing and therefore has no digest."
+  ],
+  "result": "REVISE",
+  "score": 11.5,
+  "transfer_gaps": [
+    "Resubmit the actual implementation, tests, README, dependency metadata, comprehension responses, reflection, and report; prose inventory claims cannot substitute for transferred files.",
+    "Make the documented clean command runnable offline from a clean workspace, using an approved pre-provisioned or vendored NumPy artifact and a setup step that actually creates the referenced interpreter environment.",
+    "Run deterministic central differences on well-scaled, non-kink coordinates in all four tensors and retain evidence that a deliberate sign or scale defect makes the appropriate test fail.",
+    "Generate and retain all six required experiment runs, then rerun and compare every numerical field except runtime; include the required configuration, versions, command, schema label, raw runs, and finite JSON values.",
+    "Keep the current bounded course claim and correct analytic derivation, but ensure every claimed deliverable and validation result is independently inspectable."
+  ]
+}

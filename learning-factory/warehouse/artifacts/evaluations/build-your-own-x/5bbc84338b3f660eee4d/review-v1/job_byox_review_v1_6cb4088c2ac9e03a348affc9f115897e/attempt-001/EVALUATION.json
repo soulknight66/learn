@@ -1,0 +1,29 @@
+{
+  "builder_job_id": "job_byox_build_v1_6cb4088c2ac9e03a348affc9f115897e",
+  "checks_run": [
+    "Inspected all candidate documentation, starter interfaces, public tests, sealed reference code/tests, exercises, validation code, manifest, and provenance metadata without editing CANDIDATE/.",
+    "Reran the 24-test public suite and 34-test sealed reference suite on Python 3.6.8 and Python 3.11.5 with bounded outer timeouts; both suites passed when a writable review-workspace TMPDIR was supplied.",
+    "Ran a reviewer-authored deterministic 55-case evaluator/VM differential matrix and a 24-case malformed-bytecode matrix.",
+    "Reproduced the documented VM/disassembly smoke result, intentional starter failure, intentional debugging-exercise failure, artifact structure report, and raw provenance hash.",
+    "Performed read-only syntax, import, credential-pattern, special-file, prohibited eval/exec, subprocess-safety, progressive-disclosure, and license/provenance audits.",
+    "Probed print/read round trips, integer parsing beyond the host decimal-conversion ceiling, and CLI rendering of large arithmetic results."
+  ],
+  "evidence": [
+    "REVISE: REQUIREMENTS.md requires every non-callable data value to survive print/read, yet the language produces Symbol('nil') for (type nil); print_value renders it as nil and read_one restores None.",
+    "REVISE: a 5000-digit decimal matching the documented integer grammar raises READ_INTEGER on both available Python versions, whose conversion ceiling is 4300 digits.",
+    "REVISE: multiplying two accepted 3000-digit integers succeeds, but print_value leaks host ValueError; the CLI exits 1 with a traceback instead of printing the result and exiting 0.",
+    "REVISE: both subprocess.run calls in the CLI test helpers capture output but specify neither a bounded timeout nor process-group isolation, so a faulty learner CLI can hang validation or leave descendants.",
+    "The reference passed 24/24 public and 34/34 sealed tests on Python 3.6.8 and 3.11.5 with TMPDIR directed to the writable review workspace; the independent differential and malformed-bytecode matrices also passed 55/55 and 24/24 cases.",
+    "Manifest labels are candid: status is GENERATED, labels are only GENERATED and PARTIAL, independent validation is REQUIRED, and productionized is false.",
+    "The CC0 catalog/NOASSERTION linked-resource distinction is explicit, but the generated material has no affirmative license grant."
+  ],
+  "limitations": [
+    "The exact public-suite command initially failed one test because this review sandbox exposes no usable system temporary directory and CANDIDATE is immutable; TMPDIR=.. made all 24 tests pass without changing the candidate.",
+    "The upstream linked resource and source checkout were unavailable, so the no-copy statement and upstream license facts could not be independently verified by comparison.",
+    "No materialized student view or transfer receipt was supplied; recursive exclusion of all sealed directories is therefore inconclusive despite clear namespace documentation.",
+    "No randomized fuzzing, coverage-guided fuzzing, benchmark, profiler, coverage measurement, static type analysis, transfer verification, deployment, or production/security certification was performed.",
+    "The builder's historical failed-run narrative has no retained raw log in the candidate and was not treated as validation evidence."
+  ],
+  "project_id": "project_d49f1492abb05519b3c18d8a793d37a2",
+  "verdict": "REVISE"
+}

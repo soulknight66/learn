@@ -1,0 +1,98 @@
+{
+  "course_id": "course_05e1e7c8db8ac31e5a75e00fc94f7bad",
+  "nodes": [
+    {
+      "id": "unit_01_deterministic_triangle_rasterizer",
+      "node_type": "STUDY_UNIT",
+      "title": "Sampling and Rasterization: Build a Deterministic Triangle Rasterizer",
+      "classification": "MANAGER_AUTHORED_KICKOFF",
+      "official_course_unit": false,
+      "availability": "LOCAL_INSTRUCTIONS_AVAILABLE",
+      "completion_eligible": true,
+      "scope": "UNIT_01_ONLY"
+    },
+    {
+      "id": "unit_f70eb839c64bffa370e25efcb3c65b0b",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Catalog overview and resource guide",
+      "classification": "CATALOG_OVERVIEW_METADATA",
+      "official_course_unit": false,
+      "availability": "SNAPSHOT_METADATA_ONLY",
+      "completion_eligible": false,
+      "source_reference": "docs/计算机图形学/15462.en.md"
+    },
+    {
+      "id": "unit_e7206e6b8b6071aaa47489c4cc25f660",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Course Website",
+      "classification": "EXTERNAL_RESOURCE_POINTER",
+      "official_course_unit": false,
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "completion_eligible": false,
+      "source_reference": "docs/计算机图形学/15462.en.md#L15"
+    },
+    {
+      "id": "unit_b8f64970da21f7bf91a4043991b30aab",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Recordings",
+      "classification": "EXTERNAL_PLAYLIST_POINTER",
+      "official_course_unit": false,
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "completion_eligible": false,
+      "source_reference": "docs/计算机图形学/15462.en.md#L16"
+    },
+    {
+      "id": "unit_245053a20350270ff6679a5362ea2ba2",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Textbooks",
+      "classification": "SUPPLEMENTARY_MATERIAL_DESCRIPTION",
+      "official_course_unit": false,
+      "availability": "DESCRIPTION_ONLY",
+      "completion_eligible": false,
+      "source_reference": "docs/计算机图形学/15462.en.md#L17"
+    },
+    {
+      "id": "unit_41c6259b9eb04a8d55580f9bf891de26",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Assignments",
+      "classification": "CATALOG_FLAGGED_ASSIGNMENT_POINTER_UNEXPANDED",
+      "official_course_unit": false,
+      "source_flag_official_course_unit": true,
+      "availability": "DESCRIPTION_ONLY_BODY_UNAVAILABLE",
+      "completion_eligible": false,
+      "source_reference": "docs/计算机图形学/15462.en.md#L21",
+      "boundary_note": "The source flag is preserved separately, but the record contains only 'refer to the course website'; without a body or verification it is not classified as an official, executable, or completion-eligible unit."
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_f70eb839c64bffa370e25efcb3c65b0b",
+      "to": "unit_01_deterministic_triangle_rasterizer",
+      "type": "INFORMS_TOPIC_SELECTION",
+      "basis": "The supplied catalog description names sampling, rasterization, interpolation, and geometric transformations.",
+      "implies_official_sequence": false
+    },
+    {
+      "from": "unit_41c6259b9eb04a8d55580f9bf891de26",
+      "to": "unit_e7206e6b8b6071aaa47489c4cc25f660",
+      "type": "POINTS_TO_FOR_DETAILS",
+      "basis": "The normalized assignment record says 'refer to the course website'.",
+      "implies_content_availability": false
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "provenance": {
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_content_sha256": "2f655898fdcf113cd550988459ad49d2a54867ac8164528c2989364618aee451",
+    "manager_authored_nodes": [
+      "unit_01_deterministic_triangle_rasterizer"
+    ],
+    "remote_content_retrieved": false
+  },
+  "validation": {
+    "label": "PREPARED_UNVALIDATED",
+    "graph_claim": "Only Unit 01 is locally actionable; no institutional course ordering was inferred.",
+    "completion_evidence": false
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "default_action": "deny",
+  "follow_symlinks": false,
+  "deny_prefixes": [
+    "sealed"
+  ],
+  "learner_base": [
+    "README.md",
+    "AGENTS.md",
+    "MANIFEST.yaml",
+    "REQUIREMENTS.md",
+    "CONCEPTS.md",
+    "DESIGN_QUESTIONS.md",
+    "starter",
+    "public_tests",
+    "environment"
+  ],
+  "stages": [
+    {
+      "name": "core",
+      "reveal": []
+    },
+    {
+      "name": "debugging",
+      "reveal": [
+        "debugging"
+      ]
+    },
+    {
+      "name": "review",
+      "reveal": [
+        "review_exercises"
+      ]
+    },
+    {
+      "name": "adversarial",
+      "reveal": [
+        "adversarial"
+      ]
+    },
+    {
+      "name": "benchmarks",
+      "reveal": [
+        "benchmarks"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+$LOAD_PATH.unshift(File.expand_path("../lib", __dir__))
+require "pebble"
+
+if ARGV.length != 1
+  warn "usage: ruby starter/bin/pebble FILE"
+  exit 64
+end
+
+begin
+  source = File.open(ARGV.fetch(0), "r:UTF-8", &:read)
+  Pebble.run(source)
+rescue Pebble::Error, SystemCallError, EncodingError => error
+  warn error.message
+  exit 1
+end

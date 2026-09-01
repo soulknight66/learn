@@ -1,0 +1,347 @@
+{
+  "concepts": [
+    {
+      "concept": "concurrency",
+      "confidence": 0.525,
+      "evidence": [
+        {
+          "created_at": 1788121785.7741845,
+          "description": "Passed bounded concurrent shared-write smoke coverage under a single global lock.",
+          "evidence_id": "evidence_17c9167e0bab34b5a9d06ad79399da11",
+          "kind": "stress-smoke",
+          "source_reference": "job_course_mit6s081_vertical_v2",
+          "weight": 0.2
+        }
+      ],
+      "invalidated_evidence_count": 0,
+      "last_updated": 1788121785.7741845,
+      "misconceptions": [
+        "A global-lock smoke pass is not evidence of scalable kernel synchronization or race freedom."
+      ]
+    },
+    {
+      "concept": "copy-on-write",
+      "confidence": 0.56875,
+      "evidence": [
+        {
+          "created_at": 1788121785.7741845,
+          "description": "Passed private-page COW and unseen lifecycle transfer cases in the Python semantic model.",
+          "evidence_id": "evidence_ae3de30b3178792fdee7544faff2300b",
+          "kind": "transfer-test",
+          "source_reference": "job_course_mit6s081_vertical_v2",
+          "weight": 0.55
+        }
+      ],
+      "invalidated_evidence_count": 0,
+      "last_updated": 1788121785.7741845,
+      "misconceptions": []
+    },
+    {
+      "concept": "reference counting",
+      "confidence": 0.56875,
+      "evidence": [
+        {
+          "created_at": 1788121785.7741845,
+          "description": "Passed fork/exec/exit/unlink reclamation tests with exact mapping and name references.",
+          "evidence_id": "evidence_f674b29ea9c759de97c6310906da2a27",
+          "kind": "hidden-test",
+          "source_reference": "job_course_mit6s081_vertical_v2",
+          "weight": 0.55
+        }
+      ],
+      "invalidated_evidence_count": 0,
+      "last_updated": 1788121785.7741845,
+      "misconceptions": []
+    },
+    {
+      "concept": "shared memory lifecycle",
+      "confidence": 0.5625,
+      "evidence": [
+        {
+          "created_at": 1788121785.7741845,
+          "description": "Passed unrelated-process shared-page and deferred-unlink scenarios.",
+          "evidence_id": "evidence_60dc26cdbf9505dea21fd8cfb78fdec9",
+          "kind": "transfer-test",
+          "source_reference": "job_course_mit6s081_vertical_v2",
+          "weight": 0.5
+        }
+      ],
+      "invalidated_evidence_count": 0,
+      "last_updated": 1788121785.7741845,
+      "misconceptions": []
+    }
+  ],
+  "invalidated_evidence": [
+    {
+      "attempt_id": "attempt_236a0c5db044a435ce6f2402cd774f38",
+      "concept": "course-kickoff:course_247fa49f95f2021a5de3fb035ef6e0f8",
+      "evidence_id": "evidence_3661ba58d13fc0bd4b80ca12b493a8af",
+      "invalidated_at": 1788231978.6292574,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_247fa49f95f2021a5de3fb035ef6e0f8_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_0b3bc43f1dc71880a968b88d7f6aa588",
+      "concept": "course-kickoff:course_0c0beb8e3224cbbc66b740fe95689163",
+      "evidence_id": "evidence_146c553820a2e704be25a8c4e7911b54",
+      "invalidated_at": 1788231978.6296873,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_0c0beb8e3224cbbc66b740fe95689163_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_9da6d1dd65dfc3725c661aa2c16c6db1",
+      "concept": "course-kickoff:course_0cde7309bb43985ccd240c7cb7544b54",
+      "evidence_id": "evidence_5ce14ccde72717a437ecd1ec6b5713f0",
+      "invalidated_at": 1788231978.6300719,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_0cde7309bb43985ccd240c7cb7544b54_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_5bb6dc0d250adcfb6ee082f099987958",
+      "concept": "course-kickoff:course_3522e333dd9314d807226abfe69c21d3",
+      "evidence_id": "evidence_53a84a4fdeda8bc949a4cd3f5f6eb82b",
+      "invalidated_at": 1788231978.6303875,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_3522e333dd9314d807226abfe69c21d3_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_3d362964ba4abd0561335cf3b8e02e7f",
+      "concept": "course-kickoff:course_8975ea91a9f467fa6ab8278bdbb0841f",
+      "evidence_id": "evidence_0251af713b6810257379e45660d3d12b",
+      "invalidated_at": 1788231978.630902,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_8975ea91a9f467fa6ab8278bdbb0841f_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_6f82ae08c5e2ab4d3c1fe33d35353a3b",
+      "concept": "course-kickoff:course_aad609c682157cc0ec08cf8bbc70e729",
+      "evidence_id": "evidence_92b2b64ea7c2cf017fd1faec3ee07dd0",
+      "invalidated_at": 1788231978.6313734,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_aad609c682157cc0ec08cf8bbc70e729_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_41f547902ec59dfe695a6e052d177f9a",
+      "concept": "course-kickoff:course_742d4325985228f05947d939ae196034",
+      "evidence_id": "evidence_94146c40990ac76fd50f6752ac82b916",
+      "invalidated_at": 1788231978.6321602,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_742d4325985228f05947d939ae196034_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_9bcaf27c0fb9305843c7352e54c5dccf",
+      "concept": "course-kickoff:course_94560b3a323bb4da6a3c762995a4958b",
+      "evidence_id": "evidence_dac359827e6c53ff6a4e70e873ce23fb",
+      "invalidated_at": 1788231978.6323953,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_94560b3a323bb4da6a3c762995a4958b_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_792243fe6aff0c789e3b7a3b897b97a0",
+      "concept": "course-kickoff:course_a6f7b5a36a6b005a24ca3b9cb74b9935",
+      "evidence_id": "evidence_23955c4dc69db0320d46c02bc2a1ba46",
+      "invalidated_at": 1788231978.6327047,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_a6f7b5a36a6b005a24ca3b9cb74b9935_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_bdbd7fbaa7ae7e8a3a7e3fabcdbb6879",
+      "concept": "course-kickoff:course_c29906438d3f9fbda99661806d975b36",
+      "evidence_id": "evidence_f4e1ff4c16a7efa648973914baab1fc5",
+      "invalidated_at": 1788231978.633026,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_c29906438d3f9fbda99661806d975b36_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_f01aa73da64a7c47a2c0d0716b9fa71c",
+      "concept": "course-kickoff:course_cb61fe7b43c5685fd9ee7dff38199b00",
+      "evidence_id": "evidence_588d154f5abd3459f0bad16f30c128ad",
+      "invalidated_at": 1788231978.6333964,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_cb61fe7b43c5685fd9ee7dff38199b00_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_a950e072e04121599128893acb7859a7",
+      "concept": "course-unit:unit_8b606201b492edd35c65efd7eaa1843d",
+      "evidence_id": "evidence_1dd6da8e69565977bd58beab86274f84",
+      "invalidated_at": 1788231978.6342852,
+      "kind": "independent-course-unit-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_progress_v1_b4069e53165f10d350225f5a_examiner"
+    },
+    {
+      "attempt_id": "attempt_0116f22fef12a6a98c8927bb9117ad64",
+      "concept": "course-kickoff:course_e16393fe64c471543127355ed65afd20",
+      "evidence_id": "evidence_cb9ce1b31618a70bfff529ab256f70b7",
+      "invalidated_at": 1788231978.6348214,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_e16393fe64c471543127355ed65afd20_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_3310f6b80810e1172881c9af86a79714",
+      "concept": "course-kickoff:course_aad609c682157cc0ec08cf8bbc70e729",
+      "evidence_id": "evidence_4b217e72742f8e1ae7b464744d809f89",
+      "invalidated_at": 1788231978.634892,
+      "kind": "independent-course-kickoff-revision-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_kickoff_rev_v1_dc0b63ed8de07ced4d857024_examiner"
+    },
+    {
+      "attempt_id": "attempt_9e4575775bacbdbb167d1cef6ecd429e",
+      "concept": "course-unit:unit_8b606201b492edd35c65efd7eaa1843d",
+      "evidence_id": "evidence_d350ff0211873eb7d81af0c27842efbd",
+      "invalidated_at": 1788231978.6351924,
+      "kind": "independent-course-unit-revision-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_revision_v1_76b25488764b4023d9fbe5bd_examiner"
+    },
+    {
+      "attempt_id": "attempt_06f0eb0bbf370f7bd2fcc1e6be027c28",
+      "concept": "course-kickoff:course_aad609c682157cc0ec08cf8bbc70e729",
+      "evidence_id": "evidence_4f1dec4600fffb4d1d72846aa7d40602",
+      "invalidated_at": 1788231978.6352444,
+      "kind": "independent-course-kickoff-revision-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_kickoff_rev_v1_f4579933570b815ab33a9c47_examiner"
+    },
+    {
+      "attempt_id": "attempt_34c8117f93cb30b94437f54fa2a68ef5",
+      "concept": "course-kickoff:course_c3b34c705927a16bd82ee9c280b23a3c",
+      "evidence_id": "evidence_8fc5b05f2a3687b42167611c3df6a871",
+      "invalidated_at": 1788231978.6355016,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_c3b34c705927a16bd82ee9c280b23a3c_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_513465ae055d467d65356c05c182b5ec",
+      "concept": "course-kickoff:course_0729adcee037deb352528b85cd365b36",
+      "evidence_id": "evidence_05570e4ba1eeed18c94f014c1c39eac8",
+      "invalidated_at": 1788231978.6355655,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_0729adcee037deb352528b85cd365b36_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_bc389870763e0fc8c141a625267a44e5",
+      "concept": "course-kickoff:course_194d661507a825dafbdf062d5e563ce6",
+      "evidence_id": "evidence_bd6309f798498232a3d2cf4bdac3c1ad",
+      "invalidated_at": 1788231978.6359153,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_194d661507a825dafbdf062d5e563ce6_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_3296dff68dee92cc520ce7d6f06b86fe",
+      "concept": "course-kickoff:course_2b9f424d411d24e0ac4036c944352323",
+      "evidence_id": "evidence_046199ac7dab36169a454ed300da8417",
+      "invalidated_at": 1788231978.6361878,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_2b9f424d411d24e0ac4036c944352323_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_2e62da0a3cb13478836b904008572d95",
+      "concept": "course-kickoff:course_c078642f959c96dd7b74be2fdf76e8de",
+      "evidence_id": "evidence_ff697460c56282979eb8b1271b816613",
+      "invalidated_at": 1788231978.6365063,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_c078642f959c96dd7b74be2fdf76e8de_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_e199cd7ad0d8f94af9d2bd12945ca80c",
+      "concept": "course-kickoff:course_e5fe902f4a8e5c0904abc88bc017e7b8",
+      "evidence_id": "evidence_f0135d3542d315f3aae64970d7f83e7b",
+      "invalidated_at": 1788231978.6368876,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_e5fe902f4a8e5c0904abc88bc017e7b8_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_3955438aa27b9a023ae2b4f4778aac10",
+      "concept": "course-unit:unit_8b2011001dc8b37c0dff9f1dd438e897",
+      "evidence_id": "evidence_3881c9440f77038a37f577873cc17297",
+      "invalidated_at": 1788231978.63693,
+      "kind": "independent-course-unit-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_progress_v1_4236718658e6c055a2803a07_contract_v2_examiner"
+    },
+    {
+      "attempt_id": "attempt_b0583596fd60e1ae0933547749ebabb6",
+      "concept": "course-kickoff:course_0cde7309bb43985ccd240c7cb7544b54",
+      "evidence_id": "evidence_5c13a134be858b6b1c52ed72570a72f6",
+      "invalidated_at": 1788231978.6372075,
+      "kind": "independent-course-kickoff-revision-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_kickoff_rev_v1_78eb4b744d6187d6c4873a47_examiner"
+    },
+    {
+      "attempt_id": "attempt_27503ab9da33e12324e21419536441ca",
+      "concept": "course-kickoff:course_3522e333dd9314d807226abfe69c21d3",
+      "evidence_id": "evidence_99b089da355a033d0897867a031bc544",
+      "invalidated_at": 1788231978.6376107,
+      "kind": "independent-course-kickoff-revision-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_kickoff_rev_v1_2d608f7e76e8e6cca5a3ffde_examiner"
+    },
+    {
+      "attempt_id": "attempt_afb00d32b2fe87fd40ab4da3edc1189c",
+      "concept": "course-kickoff:course_742d4325985228f05947d939ae196034",
+      "evidence_id": "evidence_8511058038e119541bfd5b797f69d9dc",
+      "invalidated_at": 1788231978.6379507,
+      "kind": "independent-course-kickoff-revision-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_kickoff_rev_v1_22d77aed3f301571c75f511d_examiner"
+    },
+    {
+      "attempt_id": "attempt_05fabab5c39c342e3262f771a2d94132",
+      "concept": "course-kickoff:course_8975ea91a9f467fa6ab8278bdbb0841f",
+      "evidence_id": "evidence_104b2bb2cc44c4baa5f555bb0a1d8b45",
+      "invalidated_at": 1788231978.6381986,
+      "kind": "independent-course-kickoff-revision-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_kickoff_rev_v1_cf44ec3f6ef5e7627a4f72e9_examiner"
+    },
+    {
+      "attempt_id": "attempt_4c76618a5f0214b5e469f3f8ee328c2c",
+      "concept": "course-unit:unit_8b606201b492edd35c65efd7eaa1843d",
+      "evidence_id": "evidence_f954d79476bbed75439adea9d04ef485",
+      "invalidated_at": 1788231978.6384637,
+      "kind": "independent-course-unit-revision-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_revision_v1_17fe48d37fc4ad211efbf049_examiner"
+    },
+    {
+      "attempt_id": "attempt_9485b341fe68097dd3a59a3182250c7c",
+      "concept": "course-kickoff:course_186d33d93d0211917db009f374a278b6",
+      "evidence_id": "evidence_d2d16e4e8bd17be6bd66f0e79d0eb1ec",
+      "invalidated_at": 1788231978.6387382,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_186d33d93d0211917db009f374a278b6_examiner_v1"
+    },
+    {
+      "attempt_id": "attempt_ceb717d2d9c2777bc3fc0ca94928313d",
+      "concept": "course-kickoff:course_4f204bbe76f68d9bb20e68389c1c697f",
+      "evidence_id": "evidence_a9f8d462295c4776cf17938688bff4d2",
+      "invalidated_at": 1788231978.6388059,
+      "kind": "independent-course-examiner",
+      "reason": "legacy CSDIY examiner did not validate a checksum-bound complete student tree",
+      "source_job_id": "job_csdiy_4f204bbe76f68d9bb20e68389c1c697f_examiner_v1"
+    }
+  ],
+  "student_id": "student-target"
+}

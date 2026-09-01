@@ -1,0 +1,15 @@
+{
+  "projects": [
+    {
+      "attempt_id": "attempt_fa721b971d0886da96040e7ebf3b4421",
+      "attempt_number": 1,
+      "end_time": 1788121785.7741845,
+      "result": "PASS",
+      "start_time": 1788121784.7326002,
+      "task_id": "mit-6-s081-cow-transfer-v2",
+      "task_type": "synthetic-transfer-exercise",
+      "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/mit-6-s081/cow-transfer/job_course_mit6s081_vertical_v2/attempt-001/attempts/target-learner/attempt-001"
+    }
+  ],
+  "student_id": "student-target"
+}

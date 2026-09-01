@@ -1,0 +1,38 @@
+{
+  "builder_job_id": "job_byox_build_v1_1863bc88c1a77e27040408cec497262d",
+  "checks_run": [
+    "Inspected all 64 submitted files for contract coverage, learner utility, disclosure boundaries, provenance, licensing, and validation-claim honesty.",
+    "Parsed MANIFEST.yaml and PROVENANCE.json as strict JSON and checked project, source, commit, snapshot, status, and label consistency.",
+    "Built the starter and sealed reference from a writable review copy with the supplied Makefiles and strict C11 warning flags.",
+    "Ran the public suite against the reference (6/6 passed), the sealed suite against the reference (25/25 passed), and the nested-interpreter example (printed 42).",
+    "Ran the public suite against the starter and reproduced its documented intentional result (0/6 passed; runner exit 1).",
+    "Ran reviewer-authored semantic, diagnostic-line, CLI, exact-capacity, one-over-capacity, and deep-nesting probes under bounded subprocess control.",
+    "Inspected both Python runners for argv use, timeout behavior, output capture, and process-tree containment.",
+    "Checked the candidate for special files, common credential/private-key patterns, and placement of solution-bearing material.",
+    "Probed compiler, Python, sanitizer, and alternate-toolchain availability."
+  ],
+  "evidence": [
+    "GCC 8.5.0 compiled both targets with -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror; supplied Makefile commands reproduced successfully outside immutable CANDIDATE/.",
+    "The reference produced the declared 6/6 public passes, 25/25 sealed passes, and output 42 for sealed/reference/examples/meta_vm.mc.",
+    "An independent semantic matrix produced exactly 0,0,1,2,3,0,1,-2,-1,-2,1,0,1 on separate lines, and a line-3 division fault exited 70 with a line-3 diagnostic.",
+    "Exact advertised capacities succeeded for 1,048,576 source bytes, 65,536 bytecode instructions, 128 functions, 32 parameters, 256 locals, 63-byte identifiers, 8,192 operand values, and 256 active frames; tested one-over cases were diagnosed.",
+    "A valid 65,550-byte program containing 32,760 nested parenthesis pairs, 65,534 language tokens and 65,535 stored tokens including EOF terminated by signal 11 with no diagnostic in three of three focused runs.",
+    "A valid source containing 65,536 language tokens exited 65 with 'too many tokens'; 65,535 language tokens succeeded because the fixed 65,536-slot table also stores EOF.",
+    "The starter accepted '+1' and a leading-space value for --max-steps, while the reference rejected both with usage exit 64.",
+    "Both candidate runners use subprocess.run with timeout and captured pipes but do not create or terminate a process group and impose no captured-output bound.",
+    "All reference code, sealed tests, production notes, and exercise answers are structurally below sealed/; the only learner-visible C files are the incomplete starter sources.",
+    "Manifest status is GENERATED with labels GENERATED and PARTIAL, independent validation REQUIRED, and productionized false; prose consistently disclaims stronger labels.",
+    "Project/source/commit/snapshot identifiers are internally consistent, no special files or common credential signatures were found, and the 64-file candidate content digest was 4712c2025215c4db62fb3e08ade721d54e11078fb152ae852c315032c8b2e7b0."
+  ],
+  "limitations": [
+    "clang is unavailable, so no second-compiler or cross-platform check was run.",
+    "AddressSanitizer and UndefinedBehaviorSanitizer executables could not be linked because their runtime libraries are unavailable.",
+    "No fuzz campaign, benchmark, model check, production assessment, or transfer verification was performed; no such label is awarded.",
+    "The upstream linked resource was not accessed, so the non-copy assertion, upstream license status, and source snapshot cannot be independently verified from this workspace.",
+    "Only the submitted directory structure was inspectable; whether an external learner-view exporter actually excludes sealed/ is inconclusive.",
+    "The requirements do not explicitly state whether the synthetic EOF marker counts toward the advertised 65,536-token capacity.",
+    "Passing finite suites and reviewer probes do not establish exhaustive language or security correctness."
+  ],
+  "project_id": "project_4b62c869e81606deb9eb1148a914808f",
+  "verdict": "REVISE"
+}

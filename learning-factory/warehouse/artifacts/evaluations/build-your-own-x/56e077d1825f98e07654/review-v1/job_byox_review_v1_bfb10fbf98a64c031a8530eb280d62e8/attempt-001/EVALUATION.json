@@ -1,0 +1,29 @@
+{
+  "builder_job_id": "job_byox_build_v1_bfb10fbf98a64c031a8530eb280d62e8",
+  "checks_run": [
+    "Inspected the manifest, provenance record, license boundary, learner-facing material, sealed material, reference implementation, ARM adapter, and supplied tests.",
+    "Parsed MANIFEST.yaml and PROVENANCE.json as JSON and checked project, source, commit, snapshot-digest, status, label, and production fields for internal consistency.",
+    "Hashed CANDIDATE before and after review, copied it to reviewer-owned scratch space, and independently rebuilt the starter and sealed host reference with the submitted strict C11 flags.",
+    "Ran public tests against the sealed reference, sealed reference tests, public tests against the incomplete starter, a deterministic reviewer edge-case harness, and a focused callback-reentrancy reproducer.",
+    "Repeated a clean sealed-reference archive build and compared its SHA-256 digest.",
+    "Inventoried host, sanitizer, ARM, and QEMU tool availability; scanned package object types, readable sealed content, and common credential signatures."
+  ],
+  "evidence": [
+    "The manifest honestly remains GENERATED/PARTIAL, requires independent validation, sets productionized=false, and claims no BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED label.",
+    "Independent ordinary checks reproduced the recorded outcomes: starter and reference builds succeeded; public tests passed 3 groups against the reference; sealed tests passed 6 groups; public tests failed all 3 groups against the intentional starter stubs.",
+    "Three additional deterministic groups covering scheduler timing and PID exhaustion, VM extreme ranges and write atomicity, and filesystem path/alias/failure behavior passed.",
+    "A focused identity check failed: PID 1 exited and reaped itself in its callback, spawned PID 2 in the same slot, and ran one nested tick; the outer PID 1 MK_STEP_EXIT then changed PID 2 to ZOMBIE with exit_code 0. The observed line was: pid=2 state=4 exit=0 steps=1 calls=1 now=2.",
+    "The defect is visible in sealed/reference/src/kernel.c:265-267, which gates only the steps increment on the captured PID, followed by lines 268-285, which apply the stale result to any RUNNING occupant of the slot.",
+    "Two clean builds of libtinyarm-reference.a produced the same SHA-256 digest, 54743dcbe4deaecce42dcb353691f23cba2f8964bfd2dd29c61e5205b8bf597c.",
+    "The aggregate CANDIDATE content digest stayed 992cecf74439a2ed8c158b464afc54cc129211601c64a60d31bee7eab9171570 throughout review."
+  ],
+  "limitations": [
+    "arm-none-eabi-gcc and qemu-system-arm were unavailable, so the ARM source was inspected but could not be independently built or booted.",
+    "GCC sanitizer runtimes libasan.so.5.0.0 and libubsan.so.1.0.0 were absent, so sanitizer-clean execution is inconclusive.",
+    "The immutable upstream source snapshot and network were outside the review workspace, so the claimed independent authorship, source commit contents, catalog license evidence, and absence of close paraphrase could not be independently established.",
+    "The evaluator bundle contains readable sealed answers, tests, and implementations. No produced learner-view artifact or harness-controlled export was supplied, so learner isolation and transfer verification remain inconclusive; the candidate makes no transfer claim.",
+    "No fuzzing, benchmark, target-hardware, long-running stress, security, or production validation was performed or inferred."
+  ],
+  "project_id": "project_fc8ca1dbad4baba3bd2d54dbb42c1a98",
+  "verdict": "REVISE"
+}

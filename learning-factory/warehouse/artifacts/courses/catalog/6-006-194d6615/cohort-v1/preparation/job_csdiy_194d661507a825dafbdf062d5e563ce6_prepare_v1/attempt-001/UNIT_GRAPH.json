@@ -1,0 +1,114 @@
+{
+  "course_id": "course_194d661507a825dafbdf062d5e563ce6",
+  "nodes": [
+    {
+      "id": "kickoff_priority_queue_engineering_v1",
+      "title": "Engineering a Reliable Binary Min-Priority Queue",
+      "node_kind": "STUDY_UNIT",
+      "classification": "MANAGER_AUTHORED_KICKOFF",
+      "active_in_current_unit": true,
+      "official_course_unit": false,
+      "availability": "LOCAL_READY",
+      "dependencies": [],
+      "provenance": "Authored for this job using only catalog-level topic, language, and prerequisite metadata",
+      "validation_label": "PREPARED_NOT_VALIDATED"
+    },
+    {
+      "id": "unit_df231856465764fe28a8bd7864ed7840",
+      "title": "Catalog overview and resource guide",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "resource_type": "reading",
+      "classification": "CATALOG_OVERVIEW_INPUT",
+      "active_in_current_unit": false,
+      "source_official_course_unit_flag": false,
+      "expanded_as_study_unit": false,
+      "availability": "SNAPSHOT_METADATA_ONLY",
+      "source_reference": "docs/数据结构与算法/6.006.en.md",
+      "dependencies": [],
+      "validation_label": "INPUT_RECORDED_NOT_REVALIDATED"
+    },
+    {
+      "id": "unit_727b9ded5135273400d4a9e5e16a7894",
+      "title": "Course Website",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "resource_type": "reading",
+      "classification": "EXTERNAL_COURSE_LANDING_PAGE_LINK",
+      "active_in_current_unit": false,
+      "source_official_course_unit_flag": false,
+      "expanded_as_study_unit": false,
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "source_reference": "docs/数据结构与算法/6.006.en.md#L17",
+      "urls": [
+        "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/"
+      ],
+      "dependencies": [],
+      "validation_label": "LINK_RECORDED_CONTENT_NOT_VALIDATED"
+    },
+    {
+      "id": "unit_cd16bd5ae58e4be48ed21eb147f0940c",
+      "title": "Recordings",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "resource_type": "lecture",
+      "classification": "EXTERNAL_RECORDING_COLLECTION_LINK",
+      "active_in_current_unit": false,
+      "source_official_course_unit_flag": false,
+      "expanded_as_study_unit": false,
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "source_reference": "docs/数据结构与算法/6.006.en.md#L18",
+      "urls": [
+        "https://www.bilibili.com/video/BV1b7411e7ZP"
+      ],
+      "dependencies": [],
+      "validation_label": "LINK_RECORDED_CONTENT_NOT_VALIDATED"
+    },
+    {
+      "id": "unit_d900f7c64248e0d582aa280b9174ab74",
+      "title": "Textbooks",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "resource_type": "reading",
+      "classification": "BIBLIOGRAPHIC_REFERENCE",
+      "active_in_current_unit": false,
+      "source_official_course_unit_flag": false,
+      "expanded_as_study_unit": false,
+      "availability": "DESCRIBED_ONLY_NO_COPY_OR_LOCATOR",
+      "description": "Introduction to Algorithms (CLRS)",
+      "source_reference": "docs/数据结构与算法/6.006.en.md#L19",
+      "dependencies": [],
+      "validation_label": "REFERENCE_RECORDED_CONTENT_UNAVAILABLE"
+    },
+    {
+      "id": "unit_8e770d920b56e8c3b744c6fdd86ce61b",
+      "title": "Assignments",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "resource_type": "assignment",
+      "classification": "POTENTIALLY_OFFICIAL_ASSIGNMENT_INDEX_LINK",
+      "active_in_current_unit": false,
+      "source_official_course_unit_flag": true,
+      "manager_officiality_classification": "UNVERIFIED",
+      "expanded_as_study_unit": false,
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "source_reference": "docs/数据结构与算法/6.006.en.md#L20",
+      "urls": [
+        "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/assignments/"
+      ],
+      "dependencies": [],
+      "validation_label": "LINK_RECORDED_CONTENT_NOT_VALIDATED"
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_df231856465764fe28a8bd7864ed7840",
+      "to": "kickoff_priority_queue_engineering_v1",
+      "relation": "CATALOG_CONTEXT_FOR",
+      "instructional_dependency": false,
+      "evidence": "The job-supplied snapshot provided the course topic, Python language, and prerequisite level only."
+    }
+  ],
+  "record_boundary": "Normalized resource records are classification inputs, not automatically official or active study units. Only kickoff_priority_queue_engineering_v1 is active here, and it is manager-authored rather than an asserted MIT unit. No pedagogical order or dependency is inferred from link order; a later job must retrieve, verify, and classify content before expanding the graph.",
+  "artifact_provenance": {
+    "input": "JOB.md catalog snapshot",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "remote_content_retrieved": false
+  },
+  "validation_label": "PREPARED_NOT_VALIDATED"
+}

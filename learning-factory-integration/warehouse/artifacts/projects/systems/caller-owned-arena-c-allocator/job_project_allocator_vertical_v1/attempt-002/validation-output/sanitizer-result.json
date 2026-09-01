@@ -1,0 +1,13 @@
+{
+  "architectures": {},
+  "exit_code": null,
+  "probe_available": false,
+  "probe_reason": "compiler probe rejected address/undefined sanitizers",
+  "requested_architectures": [
+    "reference",
+    "best-fit",
+    "segregated-bins"
+  ],
+  "schema_version": 1,
+  "status": "SKIPPED_UNAVAILABLE"
+}

@@ -1,0 +1,4 @@
+PROVENANCE=RUN.md clean build/test command
+VALIDATION_LABEL=LEARNER_GENERATED_UNVALIDATED
+sh: line 22: javac: command not found
+COMMAND_EXIT_STATUS=127

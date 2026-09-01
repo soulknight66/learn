@@ -1,0 +1,73 @@
+{
+  "course_id": "course_337eb2bbdec44e1f6f7dd4df9ba72848",
+  "title": "Digital Design and Computer Architecture",
+  "status": "KICKOFF_READY_NOT_COURSE_COMPLETE",
+  "unit": {
+    "unit_id": "manager_unit_01_combinational_contracts",
+    "title": "Combinational Logic as a Tested Interface",
+    "position": 1,
+    "status": "READY_NOT_ATTEMPTED",
+    "source_classification": "MANAGER_AUTHORED_KICKOFF",
+    "official_course_unit": false,
+    "estimated_human_hours": 5,
+    "scope": "Specify, implement, and exhaustively test a one-bit full adder and a four-bit ripple-carry adder as a deterministic Python model.",
+    "audience": "A strong algorithms student with introductory programming experience who is beginning digital design and production-style engineering practice.",
+    "prerequisites": [
+      "Comfort with functions, integer arithmetic, and binary representation",
+      "Ability to run Python 3 standard-library unittest tests",
+      "No Verilog, FPGA board, Vivado, textbook, or official assignment access required"
+    ],
+    "learning_objectives": [
+      "Translate a finite behavioral contract into bit-level Boolean logic",
+      "Compose a fixed-width component from a smaller verified component",
+      "Separate a production implementation from an independent test oracle",
+      "Use exhaustive finite-domain tests, explicit input validation, and reproducible evidence",
+      "Explain the correctness and dependency cost of ripple-carry composition"
+    ],
+    "required_material_ids": [
+      "local_course_brief",
+      "local_study_task",
+      "local_comprehension_prompts"
+    ],
+    "expected_learner_artifacts": [
+      "README.md",
+      "design.md",
+      "src/adder.py",
+      "tests/test_adder.py",
+      "answers.md",
+      "EVIDENCE.md"
+    ]
+  },
+  "completion_policy": {
+    "scope": "THIS_KICKOFF_UNIT_ONLY",
+    "initial_state": "READY_NOT_ATTEMPTED",
+    "required_evidence": [
+      "All required learner artifacts are present",
+      "Captured test evidence is reproducible and consistent with an examiner rerun",
+      "Independent examiner checks cover every valid input and the specified invalid-input behavior",
+      "The examiner-only rubric is applied without relying on the learner's prose claim"
+    ],
+    "passing_rule": {
+      "minimum_score_out_of_100": 80,
+      "all_critical_gates_required": true,
+      "rubric_path": "examiner_only/RUBRIC.md"
+    },
+    "decision_authority": "Only a worker-harness-controlled validator may promote the unit attempt to SUCCEEDED.",
+    "course_completion_effect": "Passing this unit records only kickoff-unit completion. It does not establish completion of any ETH Zurich unit, any of the nine described labs, or the course as a whole.",
+    "future_expansion": "Later jobs must verify materials, construct additional bounded units, and validate each unit independently before any broader completion claim."
+  },
+  "provenance": {
+    "classification": "MANAGER_AUTHORED_FROM_CATALOG_SNAPSHOT",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_license": "MIT",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/体系结构/DDCA.en.md",
+    "snapshot_content_sha256": "ea1049d94f8f3bd9b810146ce98261deb907e318687eabdc8690fe15d9699bfd",
+    "adapter": "csdiy",
+    "extractor_version": "1.1",
+    "external_retrieval_performed": false,
+    "provenance_note": "The catalog description and normalized records were used only to bound and contextualize this kickoff. No linked page, recording, textbook, assignment, solution, or tool download was retrieved."
+  }
+}

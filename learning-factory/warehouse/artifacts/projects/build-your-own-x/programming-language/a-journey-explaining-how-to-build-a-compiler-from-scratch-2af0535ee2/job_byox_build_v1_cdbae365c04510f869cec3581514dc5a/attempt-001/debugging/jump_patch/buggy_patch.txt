@@ -1,0 +1,4 @@
+emit(JUMP_IF_FALSE, placeholder)
+patch_index = code_count
+compile_true_branch()
+patch(code[patch_index], code_count)

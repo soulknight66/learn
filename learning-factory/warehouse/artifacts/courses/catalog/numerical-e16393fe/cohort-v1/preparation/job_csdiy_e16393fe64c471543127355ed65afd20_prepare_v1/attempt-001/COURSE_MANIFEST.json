@@ -1,0 +1,74 @@
+{
+  "course_id": "course_e16393fe64c471543127355ed65afd20",
+  "title": "MIT18.330 : Introduction to numerical analysis",
+  "status": "KICKOFF_UNIT_PREPARED",
+  "unit": {
+    "unit_id": "kickoff_01_floating_point_bisection",
+    "title": "Reliable floating-point bisection as a software component",
+    "position": 1,
+    "classification": "course_manager_authored_kickoff",
+    "official_course_unit": false,
+    "scope": "A bounded introduction to floating-point behavior, error-aware stopping rules, bracket invariants, Julia implementation, and deterministic tests. It does not reproduce or claim an official MIT unit.",
+    "audience": "A strong algorithms student building production-oriented software-engineering habits",
+    "estimated_human_hours": 10,
+    "prerequisites": [
+      "Calculus: continuity and roots",
+      "Linear algebra maturity",
+      "Basic probability maturity",
+      "Ability to read and write small programs; Julia syntax may be learned during the unit"
+    ],
+    "learning_objectives": [
+      "Explain why floating-point arithmetic changes the contract of a mathematical algorithm",
+      "State and preserve a bracketing invariant for bisection",
+      "Design explicit success, failure, and stagnation outcomes",
+      "Implement a small Julia API with input validation and bounded execution",
+      "Build deterministic tests around edge cases and observable invariants",
+      "Record reproducible evidence without overstating correctness"
+    ],
+    "learner_files": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "examiner_file": "examiner_only/RUBRIC.md"
+  },
+  "completion_policy": {
+    "scope": "unit_only",
+    "unit_completion_requires": [
+      "All deliverables named in student_safe/STUDY_TASK.md are present",
+      "The submitted Julia project runs without network access and its deterministic test suite passes in the declared environment",
+      "Implementation evidence demonstrates the required input, success, failure, iteration-limit, and floating-point-stagnation behavior",
+      "The design note identifies the maintained invariant and distinguishes residual, interval width, and representation limits",
+      "Every comprehension prompt is answered in the learner's own words with references to their implementation or test evidence",
+      "An authorized validator evaluates the submission against examiner_only/RUBRIC.md"
+    ],
+    "unit_completion_is_not": [
+      "Completion of MIT 18.330",
+      "Completion of the catalog's ten described problem sets",
+      "Completion of the approximately 150-hour course",
+      "Evidence that linked external materials were retrieved or studied"
+    ],
+    "course_completion_claim": "PROHIBITED_FROM_THIS_KICKOFF",
+    "later_expansion": "Additional units require separately retrieved, provenance-recorded, availability-checked materials and their own validated work."
+  },
+  "provenance": {
+    "classification": "manager_authored_from_catalog_snapshot",
+    "catalog_source": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "name": "CSDIY",
+      "type": "course_catalog",
+      "license": "MIT",
+      "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/数学进阶/numerical.en.md",
+      "content_sha256": "f09068f812b2b875c2a2a71b6178283498c47a85694d68ac1fd4730efb6ae3ea",
+      "adapter": "csdiy",
+      "extractor_version": "1.1"
+    },
+    "basis": [
+      "Catalog description naming floating-point representation, equation solving, error estimation, and Julia implementation",
+      "Catalog prerequisites and estimated course scale",
+      "Normalized resource metadata supplied in the job snapshot"
+    ],
+    "not_used": "No external URL content, restricted content, official syllabus sequence, textbook chapter, or assignment body was fetched or copied."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "builder_job_id": "job_byox_build_v1_bb68cd7e2c05f8b000f3e7bfd2e54a32",
+  "checks_run": [
+    "Inventoried and read the 66 submitted files, including starter, public, sealed, exercise, benchmark, provenance, and validation material.",
+    "Parsed MANIFEST.yaml and PROVENANCE.json as strict JSON; recomputed metadata identity links, the canonical project/source digest, and both recorded file hashes.",
+    "Ran bash -n independently over all 32 Bash-shebang files.",
+    "Ran both environment inventory modes and checked actual default temporary-directory availability.",
+    "Ran the sealed reference suite, public suite against the sealed reference, and adversarial suite with bounded timeouts and a writable workspace-local TMPDIR.",
+    "Repeated the public reference suite five times.",
+    "Ran the opt-in real namespace integration probe with an outer timeout.",
+    "Ran the untouched starter baseline and all three broken/fixed debugging exercise pairs.",
+    "Ran a three-iteration benchmark-runner and summarizer smoke without treating it as benchmark evidence.",
+    "Executed targeted reproductions for temporary-storage failure, locale-dependent names, zombie lifecycle owners, and TERM delivery through unshare.",
+    "Audited progressive disclosure, learner guidance, license/provenance boundaries, validation wording, and hidden-answer placement.",
+    "Computed the same aggregate hash of all CANDIDATE files before and after testing to verify immutability."
+  ],
+  "evidence": [
+    "With an explicit writable TMPDIR, the sealed reference suite passed 19/19, public reference suite 9/9, adversarial suite 34/34, and the real rootless namespace probe reported PASS on this host.",
+    "The untouched starter produced the documented 3-pass/6-fail baseline; every intentionally broken debugging specimen failed and every sealed repair passed.",
+    "CANDIDATE/sealed/reference/lib/runtime.sh:79 ignores failure of a here-string used by the prospective-path resolver. With TMPDIR=/definitely/nonexistent, an overlapping MINICTR_HOME was accepted, create exited 0, and state was written inside the rootfs.",
+    "Under en_US.utf8, both name-validation regexes accept the non-ASCII name é. The reference created and listed it; under LC_ALL=C the registration disappeared from ps and delete rejected the name.",
+    "A run record naming a genuine zombie PID with its matching start token was reported RUNNING because minictr_read_live_pid does not reject Z/X process state.",
+    "The wrapper forwards TERM only to unshare, while unshare --kill-child defaults to SIGKILL. A bounded process-only reproduction showed the payload never received TERM.",
+    "Twenty-five evaluator-owned files are physically readable below sealed paths, including complete solutions, evaluator tests, fixed answers, and model reviews; learner-visible VALIDATION.md also discloses hidden test names, and no learner-view allowlist or transfer evidence is present in the artifact.",
+    "The catalog/upstream NOASSERTION boundary and conservative GENERATED/PARTIAL labels are honest, but generated material has no explicit license grant and the manifest has no submitted-file inventory or artifact-tree digest.",
+    "The candidate makes no BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED claim; this review does not promote its manifest."
+  ],
+  "limitations": [
+    "ShellCheck, Bats, BusyBox, ripgrep, and git were unavailable.",
+    "The source catalog working tree and upstream linked repository were not readable in this workspace, and network access was restricted; source-commit, CC0 evidence, authorship, non-access, and non-copying claims remain externally unverified.",
+    "No actual learner-view projection or transfer harness was supplied, so sealed-content isolation is conditional on an unobserved external control-plane rule.",
+    "The host has no /tmp directory. Default documented test commands failed before execution; successful reruns used a disposable writable TMPDIR inside the review workspace.",
+    "The real namespace probe establishes one bounded run on this host only; it is not a hostile-rootfs, portability, escape, or production-security assessment.",
+    "No independent fuzz campaign, load/soak study, transfer verification, or production deployment was performed; benchmark execution was only a runner/summarizer smoke."
+  ],
+  "project_id": "project_44e8061be7b19deb5e3e6b2fdef38d1a",
+  "verdict": "REVISE"
+}

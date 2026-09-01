@@ -1,0 +1,10 @@
+# Expected stdout: 21
+let left = 1071;
+let right = 462;
+let remainder = 0;
+while right != 0 {
+  remainder = left % right;
+  left = right;
+  right = remainder;
+}
+print left;

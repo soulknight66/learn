@@ -1,0 +1,72 @@
+{
+  "course_id": "course_cca662c08900888319cd02fdb7c42bd2",
+  "title": "CMU 17-803: Empirical Methods",
+  "status": "KICKOFF_PREPARED_PENDING_VALIDATION",
+  "unit": {
+    "unit_id": "manager_unit_01_benchmark_to_claim",
+    "title": "From Benchmark to Defensible Claim",
+    "position": 1,
+    "kind": "manager_authored_kickoff",
+    "official_course_unit": false,
+    "status": "PREPARED_PENDING_VALIDATION",
+    "scope": "A bounded introduction to empirical measurement, paired analysis, reproducible tooling, and appropriately limited claims using an embedded synthetic benchmark dataset.",
+    "estimated_human_hours": 6,
+    "prerequisites": [
+      "Solid foundations in computer science",
+      "Ability to write and test a small command-line program",
+      "Familiarity with basic descriptive statistics"
+    ],
+    "learning_objectives": [
+      "Translate an algorithm-performance intuition into a precise empirical question and estimand.",
+      "Identify observational units, variables, pairing, and threats to validity in benchmark data.",
+      "Build a deterministic, tested analysis command with explicit input validation and provenance.",
+      "Report heterogeneous results without turning a descriptive observation into a causal or population-wide claim."
+    ],
+    "required_material_ids": [
+      "material_catalog_snapshot",
+      "material_synthetic_benchmark_v1"
+    ],
+    "learner_files": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "expected_submission_artifacts": [
+      "DESIGN.md",
+      "data/benchmark.csv",
+      "src/analyze.py",
+      "tests/",
+      "artifacts/summary.json",
+      "REPORT.md",
+      "RUN.md",
+      "COMPREHENSION_RESPONSES.md"
+    ]
+  },
+  "completion_policy": {
+    "scope": "UNIT_ONLY",
+    "unit_completion_requires": [
+      "All required submission artifacts are present.",
+      "The analysis is reproducible from the documented command.",
+      "Harness-controlled validation and independent examination pass."
+    ],
+    "course_completion": "NEVER_INFERRED_FROM_THIS_UNIT",
+    "course_completion_rule": "Completing or validating this kickoff records progress for manager_unit_01_benchmark_to_claim only. It does not mark CMU 17-803, any official CMU assignment, or the catalog course as completed.",
+    "completion_authority": "worker_harness_validator",
+    "later_expansion": "Additional units require separately retrieved, classified, provenance-recorded, and validated public materials."
+  },
+  "provenance": {
+    "classification": "manager-authored-from-catalog-snapshot",
+    "catalog_adapter": "csdiy",
+    "catalog_source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "catalog_source_file": "docs/软件工程/17803.en.md",
+    "catalog_source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "catalog_content_sha256": "f8263991f237dd84150a85bba2c093147bfb13cd9e20e1786a496827bd90be05",
+    "catalog_extractor_version": "1.1",
+    "source_license": "MIT",
+    "unit_authorship": "course-manager-authored",
+    "official_course_endorsement": false,
+    "external_material_retrieved": false,
+    "validation_label": "PREPARED_PENDING_HARNESS_VALIDATION",
+    "claims_policy": "Catalog claims are retained as source-derived metadata; the kickoff design and synthetic data are new local artifacts and are not represented as official CMU content."
+  }
+}

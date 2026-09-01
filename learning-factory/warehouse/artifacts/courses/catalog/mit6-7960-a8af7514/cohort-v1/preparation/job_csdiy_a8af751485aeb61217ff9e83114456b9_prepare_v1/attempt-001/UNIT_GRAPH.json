@@ -1,0 +1,128 @@
+{
+  "course_id": "course_a8af751485aeb61217ff9e83114456b9",
+  "nodes": [
+    {
+      "node_id": "kickoff_01_reliable_softmax",
+      "node_type": "manager_authored_study_unit",
+      "title": "Reliable Softmax: From Derivation to Tested Python",
+      "official_course_unit": false,
+      "status": "READY_FOR_STUDY",
+      "estimated_hours": 8
+    },
+    {
+      "node_id": "kickoff_01_contract",
+      "node_type": "activity",
+      "title": "Specify shapes, invariants, and failure behavior",
+      "official_course_unit": false,
+      "estimated_hours": 1
+    },
+    {
+      "node_id": "kickoff_01_implementation",
+      "node_type": "activity",
+      "title": "Implement stable loss, gradients, and deterministic training",
+      "official_course_unit": false,
+      "estimated_hours": 2.5
+    },
+    {
+      "node_id": "kickoff_01_verification",
+      "node_type": "activity",
+      "title": "Build unit tests and an independent gradient checker",
+      "official_course_unit": false,
+      "estimated_hours": 2
+    },
+    {
+      "node_id": "kickoff_01_experiment",
+      "node_type": "activity",
+      "title": "Run and record the deterministic synthetic-data experiment",
+      "official_course_unit": false,
+      "estimated_hours": 1
+    },
+    {
+      "node_id": "kickoff_01_reflection",
+      "node_type": "activity",
+      "title": "Analyze evidence and answer comprehension prompts",
+      "official_course_unit": false,
+      "estimated_hours": 1.5
+    }
+  ],
+  "edges": [
+    {
+      "source": "kickoff_01_reliable_softmax",
+      "target": "kickoff_01_contract",
+      "relation": "contains_first"
+    },
+    {
+      "source": "kickoff_01_contract",
+      "target": "kickoff_01_implementation",
+      "relation": "precedes"
+    },
+    {
+      "source": "kickoff_01_implementation",
+      "target": "kickoff_01_verification",
+      "relation": "precedes"
+    },
+    {
+      "source": "kickoff_01_verification",
+      "target": "kickoff_01_experiment",
+      "relation": "precedes"
+    },
+    {
+      "source": "kickoff_01_experiment",
+      "target": "kickoff_01_reflection",
+      "relation": "precedes"
+    }
+  ],
+  "record_boundary": {
+    "catalog_statement": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+    "admission_policy": "A normalized record enters the official-unit sequence only after its content, identity, ordering, access status, and provenance are independently verified. A source flag alone is insufficient.",
+    "current_official_units_admitted": 0,
+    "classifications": [
+      {
+        "record_id": "unit_dc766c64b7c4ba1689b01405ceccb88e",
+        "title": "Catalog overview and resource guide",
+        "source_type": "reading",
+        "source_flag_official_course_unit": false,
+        "availability": "CATALOG_METADATA_PRESENT",
+        "classification": "catalog_overview_record",
+        "admitted_as_official_unit": false
+      },
+      {
+        "record_id": "unit_e5a651a28613c2439373d76f2e7112f1",
+        "title": "Course Website",
+        "source_type": "reading",
+        "source_flag_official_course_unit": false,
+        "availability": "LINKED_NOT_RETRIEVED",
+        "classification": "external_landing_page_record",
+        "admitted_as_official_unit": false
+      },
+      {
+        "record_id": "unit_8f6a2035d8b690dacc799aec0bfe8b17",
+        "title": "Recordings",
+        "source_type": "lecture",
+        "source_flag_official_course_unit": false,
+        "availability": "DESCRIBED_NOT_LOCATED",
+        "classification": "material_collection_placeholder",
+        "admitted_as_official_unit": false
+      },
+      {
+        "record_id": "unit_266558ff5e1891547e8740d3d5eef46b",
+        "title": "Textbooks",
+        "source_type": "reading",
+        "source_flag_official_course_unit": false,
+        "availability": "DESCRIBED_NOT_LOCATED",
+        "classification": "material_collection_placeholder",
+        "admitted_as_official_unit": false
+      },
+      {
+        "record_id": "unit_910137123fac540ea6be747e97656709",
+        "title": "Assignments",
+        "source_type": "assignment",
+        "source_flag_official_course_unit": true,
+        "availability": "DESCRIBED_NOT_LOCATED",
+        "classification": "official_assignment_category_placeholder",
+        "admitted_as_official_unit": false,
+        "boundary_note": "The snapshot supplies only the category description, not an assignment identity, body, order, or files."
+      }
+    ]
+  }
+}

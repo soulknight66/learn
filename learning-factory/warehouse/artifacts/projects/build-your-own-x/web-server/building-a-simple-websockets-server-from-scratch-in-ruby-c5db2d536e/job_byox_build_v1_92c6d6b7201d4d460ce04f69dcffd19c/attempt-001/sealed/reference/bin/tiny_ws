@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "optparse"
+$LOAD_PATH.unshift(File.expand_path("../lib", __dir__))
+require "tiny_ws"
+
+options = TinyWS::Server::DEFAULTS.dup
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: tiny_ws [options]"
+  opts.on("--host HOST", String) { |v| options[:host] = v }
+  opts.on("--port PORT", Integer) { |v| options[:port] = v }
+  opts.on("--max-clients N", Integer) { |v| options[:max_clients] = v }
+  opts.on("--max-header-bytes N", Integer) { |v| options[:max_header_bytes] = v }
+  opts.on("--max-frame-bytes N", Integer) { |v| options[:max_frame_bytes] = v }
+  opts.on("--max-message-bytes N", Integer) { |v| options[:max_message_bytes] = v }
+  opts.on("--handshake-timeout SECONDS", Float) { |v| options[:handshake_timeout] = v }
+  opts.on("--read-timeout SECONDS", Float) { |v| options[:read_timeout] = v }
+end
+parser.parse!(ARGV)
+
+shutdown_requested = false
+Signal.trap("INT") { shutdown_requested = true }
+Signal.trap("TERM") { shutdown_requested = true }
+
+server = TinyWS::Server.new(**options)
+server.start
+warn "TinyWS listening on #{options[:host]}:#{server.port}"
+sleep 0.1 until shutdown_requested
+server.stop
+

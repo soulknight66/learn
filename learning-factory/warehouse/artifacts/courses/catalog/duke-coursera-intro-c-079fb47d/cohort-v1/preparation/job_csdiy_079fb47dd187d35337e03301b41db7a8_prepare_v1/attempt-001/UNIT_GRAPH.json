@@ -1,0 +1,161 @@
+{
+  "course_id": "course_079fb47dd187d35337e03301b41db7a8",
+  "validation_label": "CLASSIFIED_INPUTS_WITH_ONE_MANAGER_AUTHORED_KICKOFF",
+  "provenance": {
+    "derived_from": "supplied CSDIY catalog snapshot at source commit adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "manager_authored_unit": "kickoff_c_memory_engineering_v1",
+    "external_retrieval_performed": false
+  },
+  "nodes": [
+    {
+      "node_id": "kickoff_c_memory_engineering_v1",
+      "kind": "prepared_unit",
+      "title": "Kickoff: Ownership, Dynamic Memory, and Debuggable C",
+      "status": "READY",
+      "official_course_unit": false,
+      "authorship": "course-manager-authored",
+      "estimated_hours": 7
+    },
+    {
+      "node_id": "kickoff_orientation",
+      "kind": "learning_activity",
+      "title": "Orient to scope, contracts, and evidence",
+      "status": "AVAILABLE_LOCAL",
+      "official_course_unit": false,
+      "resource": "student_safe/COURSE_BRIEF.md"
+    },
+    {
+      "node_id": "kickoff_implementation",
+      "kind": "learning_activity",
+      "title": "Implement and test a heap-backed integer vector",
+      "status": "AVAILABLE_LOCAL",
+      "official_course_unit": false,
+      "resource": "student_safe/STUDY_TASK.md"
+    },
+    {
+      "node_id": "kickoff_tool_evidence",
+      "kind": "learning_activity",
+      "title": "Collect debugging and memory-safety evidence",
+      "status": "AVAILABLE_LOCAL",
+      "official_course_unit": false,
+      "resource": "student_safe/STUDY_TASK.md"
+    },
+    {
+      "node_id": "kickoff_comprehension",
+      "kind": "assessment_activity",
+      "title": "Explain memory, contracts, complexity, and debugging decisions",
+      "status": "AVAILABLE_LOCAL",
+      "official_course_unit": false,
+      "resource": "student_safe/COMPREHENSION.md"
+    },
+    {
+      "node_id": "unit_51c4ba6eee46b4e505dd4bcf9719926c",
+      "kind": "catalog_resource_record",
+      "title": "Catalog overview and resource guide",
+      "record_type": "reading",
+      "source_order": 0,
+      "official_course_unit": false,
+      "classification": "CATALOG_METADATA_INPUT",
+      "content_availability": "SNAPSHOT_ONLY",
+      "prepared_as_unit": false,
+      "source_reference": "docs/编程入门/C/Duke-Coursera-Intro-C.en.md"
+    },
+    {
+      "node_id": "unit_2e4d421da9a45bd3f34418341d917927",
+      "kind": "catalog_resource_record",
+      "title": "Course Website",
+      "record_type": "reading",
+      "source_order": 22,
+      "official_course_unit": false,
+      "classification": "EXTERNAL_LINK_INPUT",
+      "content_availability": "LINK_ONLY_NOT_RETRIEVED",
+      "prepared_as_unit": false,
+      "source_reference": "docs/编程入门/C/Duke-Coursera-Intro-C.en.md#L22"
+    },
+    {
+      "node_id": "unit_9e64d3e7a14504578fce7163002cd0ec",
+      "kind": "catalog_resource_record",
+      "title": "Recordings",
+      "record_type": "lecture",
+      "source_order": 23,
+      "official_course_unit": false,
+      "classification": "DESCRIBED_RESOURCE_INPUT",
+      "content_availability": "UNAVAILABLE_NO_DIRECT_LOCATOR",
+      "prepared_as_unit": false,
+      "source_reference": "docs/编程入门/C/Duke-Coursera-Intro-C.en.md#L23"
+    },
+    {
+      "node_id": "unit_79443c974886a5c90580388534d56ed7",
+      "kind": "catalog_resource_record",
+      "title": "Textbook",
+      "record_type": "reading",
+      "source_order": 24,
+      "official_course_unit": false,
+      "classification": "DESCRIBED_RESOURCE_INPUT",
+      "content_availability": "UNAVAILABLE_NO_DIRECT_LOCATOR",
+      "prepared_as_unit": false,
+      "source_reference": "docs/编程入门/C/Duke-Coursera-Intro-C.en.md#L24"
+    },
+    {
+      "node_id": "unit_1320539f14247977948a088d8d02c35d",
+      "kind": "catalog_resource_record",
+      "title": "Assignments",
+      "record_type": "assignment",
+      "source_order": 25,
+      "official_course_unit": true,
+      "classification": "OFFICIAL_UNIT_REFERENCE_ONLY",
+      "content_availability": "UNAVAILABLE_NO_DIRECT_LOCATOR",
+      "prepared_as_unit": false,
+      "source_reference": "docs/编程入门/C/Duke-Coursera-Intro-C.en.md#L25"
+    }
+  ],
+  "edges": [
+    {
+      "from": "kickoff_c_memory_engineering_v1",
+      "to": "kickoff_orientation",
+      "relation": "contains"
+    },
+    {
+      "from": "kickoff_c_memory_engineering_v1",
+      "to": "kickoff_implementation",
+      "relation": "contains"
+    },
+    {
+      "from": "kickoff_c_memory_engineering_v1",
+      "to": "kickoff_tool_evidence",
+      "relation": "contains"
+    },
+    {
+      "from": "kickoff_c_memory_engineering_v1",
+      "to": "kickoff_comprehension",
+      "relation": "contains"
+    },
+    {
+      "from": "kickoff_orientation",
+      "to": "kickoff_implementation",
+      "relation": "precedes"
+    },
+    {
+      "from": "kickoff_implementation",
+      "to": "kickoff_tool_evidence",
+      "relation": "precedes"
+    },
+    {
+      "from": "kickoff_tool_evidence",
+      "to": "kickoff_comprehension",
+      "relation": "precedes"
+    },
+    {
+      "from": "unit_51c4ba6eee46b4e505dd4bcf9719926c",
+      "to": "kickoff_c_memory_engineering_v1",
+      "relation": "informs_scope_only",
+      "note": "Catalog themes informed the manager-authored kickoff; this does not make the catalog record an official or completed unit."
+    }
+  ],
+  "record_boundary": {
+    "catalog_statement": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+    "application": "Every normalized record is retained as a classified input node. None is automatically promoted to a prepared unit.",
+    "official_reference_handling": "The assignments record carries official_course_unit=true from source metadata, but only its existence is described. Its contents are unavailable, so it is neither attached to the kickoff nor marked ready or complete.",
+    "prepared_unit_boundary": "Only kickoff_c_memory_engineering_v1 and its manager-authored activities are ready in this graph."
+  }
+}

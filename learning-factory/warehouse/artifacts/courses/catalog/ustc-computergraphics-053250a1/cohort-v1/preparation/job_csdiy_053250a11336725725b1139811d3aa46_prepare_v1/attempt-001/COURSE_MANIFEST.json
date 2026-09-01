@@ -1,0 +1,75 @@
+{
+  "course_id": "course_053250a11336725725b1139811d3aa46",
+  "title": "USTC Computer Graphics",
+  "status": "FIRST_UNIT_READY",
+  "unit": {
+    "unit_id": "managed_u1_testable_2d_transforms",
+    "position": 1,
+    "title": "Build a Testable 2D Transform Pipeline",
+    "status": "READY",
+    "classification": "manager-authored bridge unit",
+    "official_course_unit": false,
+    "scope": "A bounded kickoff connecting linear-algebraic graphics transformations to maintainable C++ software, deterministic command-line behavior, and independent tests.",
+    "estimated_human_hours": {
+      "minimum": 6,
+      "maximum": 8
+    },
+    "prerequisites": [
+      "Linear algebra: vectors and matrix multiplication",
+      "Algorithms and asymptotic analysis",
+      "Working C++ programming knowledge",
+      "Basic command-line build and test workflow"
+    ],
+    "learning_objectives": [
+      "Represent translation, scaling, and rotation with homogeneous 3-by-3 matrices using an explicit convention.",
+      "Implement ordered transform composition and explain why the order is observable.",
+      "Separate mathematical operations, parsing, validation, and presentation behind testable interfaces.",
+      "Define deterministic success and failure behavior for a small C++ command-line tool.",
+      "Produce unit, composition, property, and malformed-input tests and interpret their evidence honestly."
+    ],
+    "required_outputs": [
+      "A CMake-based C++17 source tree implementing the specified transform2d program",
+      "Automated tests runnable through CTest",
+      "README.md with reproducible build and test commands",
+      "DESIGN.md with conventions, invariants, complexity, error behavior, and one documented tradeoff",
+      "COMPREHENSION_RESPONSES.md containing the learner's own responses"
+    ],
+    "learner_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "assessment_location": "examiner_only/RUBRIC.md"
+  },
+  "completion_policy": {
+    "scope": "FIRST_UNIT_ONLY",
+    "unit_completion_rule": "All required outputs must exist and an independent validator must verify the build, automated tests, public command-line contract, design evidence, and comprehension responses.",
+    "required_evidence": [
+      "Fresh configure and build logs",
+      "CTest results from the built submission",
+      "Independent black-box checks of transform order and malformed-input behavior",
+      "Inspection of source boundaries, learner-authored tests, DESIGN.md, and COMPREHENSION_RESPONSES.md"
+    ],
+    "validator_authority": "worker-harness-controlled independent validator",
+    "learner_claims_are_evidence": false,
+    "unit_success_completes_course": false,
+    "course_status_after_unit_success": "IN_PROGRESS",
+    "whole_course_completion_rule": "Not defined by this kickoff. Later jobs must retrieve and classify additional material, prepare additional units, and validate each unit before whole-course completion can be considered."
+  },
+  "provenance": {
+    "artifact_classification": "manager-authored from a source-derived catalog snapshot",
+    "catalog_status": "DISCOVERED",
+    "source_name": "CSDIY",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_type": "course_catalog",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/计算机图形学/USTC ComputerGraphics.en.md",
+    "source_content_sha256": "b8daf3562fe663a8170603c000cb190fbef7876a3852b095aaf0f01cb680471a",
+    "adapter": "csdiy",
+    "extractor_version": "1.1",
+    "catalog_schema_version": 1,
+    "external_retrieval_performed": false,
+    "official_sequence_claimed": false,
+    "note": "The catalog snapshot establishes course identity and resource leads, not the contents or ordering of an official first unit."
+  }
+}

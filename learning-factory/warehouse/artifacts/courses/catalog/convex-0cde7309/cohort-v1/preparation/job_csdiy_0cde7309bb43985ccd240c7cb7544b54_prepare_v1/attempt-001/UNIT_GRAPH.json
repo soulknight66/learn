@@ -1,0 +1,127 @@
+{
+  "course_id": "course_0cde7309bb43985ccd240c7cb7544b54",
+  "nodes": [
+    {
+      "id": "unit_kickoff_trustworthy_convex_allocation_v1",
+      "node_type": "PREPARED_STUDY_UNIT",
+      "title": "Trustworthy Convex Allocation Solver",
+      "status": "READY_NOT_STARTED",
+      "authority": "COURSE_MANAGER_AUTHORED",
+      "official_stanford_unit": false,
+      "completion_scope": "UNIT_ONLY"
+    },
+    {
+      "id": "activity_kickoff_brief",
+      "node_type": "LEARNER_ACTIVITY",
+      "title": "Read the kickoff brief and establish the scope boundary",
+      "unit_id": "unit_kickoff_trustworthy_convex_allocation_v1",
+      "artifact": "student_safe/COURSE_BRIEF.md"
+    },
+    {
+      "id": "activity_kickoff_build",
+      "node_type": "LEARNER_ACTIVITY",
+      "title": "Build and self-test the convex allocation solver",
+      "unit_id": "unit_kickoff_trustworthy_convex_allocation_v1",
+      "artifact": "student_safe/STUDY_TASK.md"
+    },
+    {
+      "id": "activity_kickoff_comprehension",
+      "node_type": "LEARNER_ACTIVITY",
+      "title": "Submit mathematical and engineering explanations",
+      "unit_id": "unit_kickoff_trustworthy_convex_allocation_v1",
+      "artifact": "student_safe/COMPREHENSION.md"
+    },
+    {
+      "id": "unit_903a98f8d98bd7f50633f2e9bd10a914",
+      "node_type": "CATALOG_RESOURCE_INPUT",
+      "title": "Catalog overview and resource guide",
+      "resource_type": "reading",
+      "catalog_order": 0,
+      "catalog_dependencies": [],
+      "source_reference": "docs/数学进阶/convex.en.md",
+      "catalog_claimed_official_course_unit": false,
+      "managed_classification": "CATALOG_CONTEXT_NOT_A_STUDY_UNIT",
+      "promoted_to_prepared_unit": false
+    },
+    {
+      "id": "unit_1ae2bb60e0335890f0708d2427fec7af",
+      "node_type": "CATALOG_RESOURCE_INPUT",
+      "title": "Course Website",
+      "resource_type": "reading",
+      "catalog_order": 17,
+      "catalog_dependencies": [],
+      "catalog_availability": "LINKED",
+      "source_reference": "docs/数学进阶/convex.en.md#L17",
+      "catalog_claimed_official_course_unit": false,
+      "managed_classification": "UNVERIFIED_EXTERNAL_POINTER",
+      "promoted_to_prepared_unit": false
+    },
+    {
+      "id": "unit_8c1f78443a0d6f94aa79e459de2dd76a",
+      "node_type": "CATALOG_RESOURCE_INPUT",
+      "title": "Recordings",
+      "resource_type": "lecture",
+      "catalog_order": 18,
+      "catalog_dependencies": [],
+      "catalog_availability": "LINKED",
+      "source_reference": "docs/数学进阶/convex.en.md#L18",
+      "catalog_claimed_official_course_unit": false,
+      "managed_classification": "UNVERIFIED_EXTERNAL_POINTER",
+      "promoted_to_prepared_unit": false
+    },
+    {
+      "id": "unit_520fb81dec2323b223efd60866a9bbb1",
+      "node_type": "CATALOG_RESOURCE_INPUT",
+      "title": "Textbook",
+      "resource_type": "reading",
+      "catalog_order": 19,
+      "catalog_dependencies": [],
+      "catalog_availability": "LINKED",
+      "source_reference": "docs/数学进阶/convex.en.md#L19",
+      "catalog_claimed_official_course_unit": false,
+      "managed_classification": "UNVERIFIED_EXTERNAL_POINTER",
+      "promoted_to_prepared_unit": false
+    },
+    {
+      "id": "unit_3d6f28b788f835abcf1bea23a192a8f2",
+      "node_type": "CATALOG_RESOURCE_INPUT",
+      "title": "Assignments",
+      "resource_type": "assignment",
+      "catalog_order": 20,
+      "catalog_dependencies": [],
+      "catalog_availability": "DESCRIBED",
+      "source_reference": "docs/数学进阶/convex.en.md#L20",
+      "catalog_claimed_official_course_unit": true,
+      "managed_classification": "OFFICIALITY_CLAIM_UNVERIFIED_CONTENT_UNAVAILABLE",
+      "promoted_to_prepared_unit": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "activity_kickoff_brief",
+      "to": "activity_kickoff_build",
+      "relation": "PRECEDES"
+    },
+    {
+      "from": "activity_kickoff_build",
+      "to": "activity_kickoff_comprehension",
+      "relation": "PRECEDES"
+    },
+    {
+      "from": "unit_903a98f8d98bd7f50633f2e9bd10a914",
+      "to": "unit_kickoff_trustworthy_convex_allocation_v1",
+      "relation": "INFORMS",
+      "completion_dependency": false
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "classification_policy": {
+    "normalized_record_is_automatically_a_unit": false,
+    "linked_resource_is_completion_evidence": false,
+    "source_officiality_claim_is_automatically_verified": false,
+    "prepared_unit_ids": [
+      "unit_kickoff_trustworthy_convex_allocation_v1"
+    ],
+    "normalized_records_promoted_in_this_job": []
+  }
+}

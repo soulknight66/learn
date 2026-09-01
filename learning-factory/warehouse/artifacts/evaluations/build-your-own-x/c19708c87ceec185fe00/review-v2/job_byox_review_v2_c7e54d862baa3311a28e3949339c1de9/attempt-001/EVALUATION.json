@@ -1,0 +1,37 @@
+{
+  "builder_job_id": "job_project_http_service_vertical_v1",
+  "checks_run": [
+    "Static inventory of candidate contents, permissions, documentation links, progressive-disclosure boundaries, provenance, and licensing",
+    "Independent CPython 3.11.5 compilation of all 16 Python files with bytecode writes disabled",
+    "Public parser/application tests and sealed parser contract tests",
+    "Attempted public and sealed network-test matrices against the worker-pool, thread-per-connection, and event-loop implementations",
+    "Deterministic parser adversary with seed 20260830 and 2000 iterations",
+    "Debugging exercise negative control and corrected-parser regression",
+    "Cache-review sealed disclosure demonstration",
+    "Independent integer-bound and malformed-request-byte probes",
+    "Archived benchmark JSON parsing, identity checks, sample-count checks, and summary recomputation",
+    "Attempted fresh benchmark, fault-injection probe, and slow-client probe",
+    "Candidate file-set SHA-256 and no-write verification"
+  ],
+  "evidence": [
+    "All 16 Python sources compiled under CPython 3.11.5; the three pure public tests and five sealed parser tests passed.",
+    "The parser adversary passed 2000 seeded fragmentation iterations; the intentional partial-body regression failed against the buggy parser and passed against the corrected shared parser.",
+    "The cache exercise's sealed demonstration reproduced its documented cross-principal disclosure.",
+    "An independent application probe created value 1000000000000, incremented by 1, and received 200 with value 1000000000001, contradicting the requirement that integers are bounded.",
+    "An independent parser probe observed acceptance of both a NUL request-target byte and an SOH Host-header byte, contradicting the strict origin-form/header boundary.",
+    "The shared blocking connection loop uses a per-recv inactivity timeout, and the event loop refreshes last_activity on every fragment; the supplied slow-client check sends once and therefore does not cover slow-drip clients or prove a total read deadline.",
+    "README.md advertises scripts/run_all.py and production/PRODUCTIONIZATION.md, but neither path exists; the all-check command exits 2 with file-not-found.",
+    "The archived smoke benchmark is valid JSON and its sample counts, medians, p95 calculations, and rates recompute correctly, but it has no execution timestamp, code hash, validator identity, provenance link, or explicit validation label.",
+    "PROVENANCE.json clearly separates catalog metadata, generated work, inferred metadata, and outbound tutorial content; no LICENSE, COPYING, or NOTICE grants reuse terms for the generated candidate itself.",
+    "The manifest honestly says GENERATED_CANDIDATE and NOT_PRODUCTION_READY and lists validation targets rather than asserting completed validation."
+  ],
+  "limitations": [
+    "The sandbox denies AF_INET socket creation, so all network cases, shutdown/overload behavior, fault containment over the wire, slow-client behavior, and a fresh benchmark are inconclusive rather than failed candidate checks.",
+    "The unqualified python3 on PATH is CPython 3.6.8; documented commands fail at import there. An explicit allowed CPython 3.11.5 interpreter was used for applicable checks.",
+    "The catalog source tree and external tutorial were unavailable from this restricted workspace, so the stated upstream commit, CC0-1.0 metadata, and no-copy claim could not be independently verified.",
+    "No controller-owned validation logs were included, so BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, or transfer claims cannot be promoted from builder-authored scripts, prose, or archived output.",
+    "git and rg executables were unavailable; deterministic file inventory, SHA-256, find, and grep checks were used instead."
+  ],
+  "project_id": "project_c72c12c5b510bb2fbeffe9a2175fea74",
+  "verdict": "REVISE"
+}

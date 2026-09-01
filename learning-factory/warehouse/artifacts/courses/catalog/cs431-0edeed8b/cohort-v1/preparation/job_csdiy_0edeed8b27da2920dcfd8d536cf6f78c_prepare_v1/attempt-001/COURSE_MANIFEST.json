@@ -1,0 +1,92 @@
+{
+  "course_id": "course_0edeed8b27da2920dcfd8d536cf6f78c",
+  "title": "CS431: Concurrent Programming",
+  "status": {
+    "catalog": "DISCOVERED",
+    "preparation": "KICKOFF_READY",
+    "whole_course": "NOT_PREPARED",
+    "completion_claimed": false
+  },
+  "unit": {
+    "unit_id": "manager_unit_01_concurrency_contracts",
+    "sequence": 1,
+    "title": "Concurrency Contracts and a Mutex-Protected FIFO Cache",
+    "status": "PREPARED_NOT_COMPLETED",
+    "origin": "MANAGER_AUTHORED_KICKOFF",
+    "official_course_unit": false,
+    "audience": "A strong algorithms student with basic Rust and concurrency knowledge who is developing production-oriented software-engineering habits",
+    "estimated_hours": 6,
+    "scope": "Specify, implement, test, and document one small bounded concurrent Rust component using safe standard-library synchronization.",
+    "learning_objectives": [
+      "Translate a sequential data-structure specification into explicit concurrent safety and API contracts.",
+      "Identify linearization points for operations protected by a mutex.",
+      "Implement a bounded FIFO cache in safe Rust without exposing synchronization guards.",
+      "Write deterministic sequential and schedule-independent concurrent tests without timing sleeps.",
+      "Record reproducible build evidence and distinguish unit evidence from whole-course completion."
+    ],
+    "required_material_ids": [
+      "prepared_course_brief",
+      "prepared_study_task",
+      "prepared_comprehension"
+    ],
+    "optional_unverified_material_ids": [
+      "course_website_link",
+      "recordings_link",
+      "slides_link",
+      "assignments_link"
+    ],
+    "required_deliverables": [
+      "Cargo.toml",
+      "src/lib.rs",
+      "tests/cache_contract.rs",
+      "tests/cache_concurrency.rs",
+      "DESIGN.md",
+      "EVIDENCE.md",
+      "COMPREHENSION_RESPONSES.md"
+    ],
+    "out_of_scope": [
+      "Lock-free implementation",
+      "Weak-memory-order proofs",
+      "Hazard-pointer implementation",
+      "Reconstruction of the KAIST syllabus",
+      "Completion of any linked CS431 assignment",
+      "Whole-course completion"
+    ]
+  },
+  "completion_policy": {
+    "scope": "UNIT_ONLY",
+    "unit_completion_requires": [
+      "All required learner deliverables are present.",
+      "An independent validator runs formatting, lint, build, and test checks in a controlled environment.",
+      "The implementation and written work meet the examiner-only rubric threshold and critical-category floors.",
+      "Validation evidence is attached to the attempt rather than inferred from learner or agent prose."
+    ],
+    "decision_authority": "INDEPENDENT_VALIDATOR",
+    "prose_claim_is_evidence": false,
+    "prepared_is_completed": false,
+    "unit_completion_implies_course_completion": false,
+    "course_completion_allowed_from_this_unit": false,
+    "course_completion_requirement": "A later course-management job must retrieve and classify authorized source materials, define the remaining official or manager-authored units, and validate each required unit independently."
+  },
+  "provenance": {
+    "catalog_snapshot": {
+      "schema_version": 1,
+      "catalog_adapter": "csdiy",
+      "classification": "source-derived",
+      "content_sha256": "9bf4a6603c3c9fff34574fd6a67c28ff9cd8abb66bb5cdfe8054f4577fee4b20",
+      "extractor_version": "1.1",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/编程入门/Rust/cs431.en.md",
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "source_name": "CSDIY",
+      "source_license": "MIT"
+    },
+    "unit_derivation": {
+      "classification": "manager-authored",
+      "basis": "The supplied catalog description, declared prerequisite, language, and topic range",
+      "normalized_record_ids_used_as_content": [],
+      "external_material_retrieved": false,
+      "official_kaist_unit_claimed": false
+    }
+  }
+}

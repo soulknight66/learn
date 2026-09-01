@@ -1,0 +1,97 @@
+{
+  "course_id": "course_2b9f424d411d24e0ac4036c944352323",
+  "title": "MIT 6.046: Design and Analysis of Algorithms",
+  "status": "KICKOFF_READY",
+  "unit": {
+    "unit_id": "manager_unit_001_weighted_interval_engineering",
+    "title": "Algorithm-to-Component Kickoff: Weighted Interval Scheduling",
+    "status": "PREPARED_NOT_COMPLETED",
+    "scope": {
+      "position": "FIRST_BOUNDED_STUDY_UNIT",
+      "estimated_human_hours": 8,
+      "bounded": true,
+      "represents_whole_course": false
+    },
+    "origin": {
+      "classification": "COURSE_MANAGER_AUTHORED",
+      "official_mit_unit": false,
+      "official_course_sequence_claim": false,
+      "rationale": "The catalog describes an emphasis on algorithm design and analysis and names Python, but it does not provide verified lesson-level content. This bridging unit combines proof, implementation, contracts, and deterministic testing without claiming to reproduce an MIT unit."
+    },
+    "audience": "A strong algorithms student with introductory data structures and algorithms experience who is beginning to build production-oriented software-engineering habits.",
+    "prerequisites": [
+      "Asymptotic notation and basic proof techniques",
+      "Sorting and binary search",
+      "Introductory dynamic programming",
+      "Python 3 and unittest fundamentals"
+    ],
+    "learning_objectives": [
+      "Translate an optimization problem into an explicit, testable software contract.",
+      "Design and justify a correct weighted interval scheduling algorithm.",
+      "Implement deterministic behavior, validation, and non-mutation guarantees in Python.",
+      "Use a small exhaustive oracle and fixed-seed generated cases as differential test evidence.",
+      "Report correctness, complexity, assumptions, and engineering trade-offs in a concise design note."
+    ],
+    "required_material_ids": [
+      "manager_course_brief",
+      "manager_study_task",
+      "manager_comprehension_questions"
+    ],
+    "learner_deliverables": [
+      "submission/interval_scheduler.py",
+      "submission/test_interval_scheduler.py",
+      "submission/DESIGN.md",
+      "submission/COMPREHENSION_RESPONSES.md"
+    ]
+  },
+  "completion_policy": {
+    "current_completion": {
+      "unit_complete": false,
+      "course_complete": false
+    },
+    "unit_completion": {
+      "decision_authority": "WORKER_HARNESS_CONTROLLED_VALIDATOR",
+      "requires": [
+        "All four learner deliverables are present and readable.",
+        "The prescribed deterministic test command completes successfully within the validator timeout.",
+        "Independent examiner checks confirm contract conformance, optimality, deterministic tie handling, and input validation.",
+        "The design note contains a coherent correctness argument and honest end-to-end complexity analysis.",
+        "Comprehension responses meet the independent examiner threshold."
+      ],
+      "prose_claim_is_evidence": false,
+      "learner_self_report_is_sufficient": false
+    },
+    "course_completion": {
+      "may_be_inferred_from_this_unit": false,
+      "may_be_inferred_from_kickoff_preparation": false,
+      "requires_later_unit_expansion": true,
+      "policy": "Passing this unit records only a validator-confirmed unit result. It does not establish coverage of MIT 6.046, the catalog's estimated hours, linked assignments, recordings, or textbook."
+    }
+  },
+  "provenance": {
+    "snapshot_schema_version": 1,
+    "catalog_status": "DISCOVERED",
+    "source": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "name": "CSDIY",
+      "type": "course_catalog",
+      "license": "MIT",
+      "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/数据结构与算法/6.046.en.md",
+      "adapter": "csdiy",
+      "extractor_version": "1.1",
+      "input_content_sha256": "b4fe0ce2eefc4788e3fb6b914e76480d6821afe948577687b5dcc57b14183c45"
+    },
+    "transformation": {
+      "classification": "MANAGER_AUTHORED_FROM_CATALOG_METADATA",
+      "external_retrieval_performed": false,
+      "official_content_copied": false,
+      "decisions": [
+        "Preserve the discovered course identity and prerequisite level.",
+        "Use Python because it is named in the catalog metadata.",
+        "Create one self-contained engineering bridge rather than infer an official first lecture or assignment.",
+        "Keep all linked or merely described resources optional and unavailable until a later authorized retrieval job verifies them."
+      ]
+    }
+  }
+}

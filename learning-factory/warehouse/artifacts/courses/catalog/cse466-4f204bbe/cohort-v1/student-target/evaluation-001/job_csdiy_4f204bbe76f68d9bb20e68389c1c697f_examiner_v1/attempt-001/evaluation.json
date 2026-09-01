@@ -1,0 +1,16 @@
+{
+  "evidence": [
+    "Examiner inventory found only .factory-workspace, JOB.md, RUBRIC.md, SUBMISSION.md, NOTES.md, and DEBUGGING_LOG.md; every implementation, test, fixture, design, comprehension, and raw evidence artifact listed in SUBMISSION.md is absent.",
+    "The documented Python 3.11 unittest discovery command was run with a 30-second outer timeout and exited 1 with: ImportError: Start directory is not importable: 'tests'.",
+    "safe_run.py is absent, so independent argv, bounded-stream, timeout, process-tree, outcome, and atomic-publication probes cannot be run and none of the behavioral critical gates can be cleared.",
+    "SUBMISSION.md claims 14 passing tests and durable TEST_LOG.txt and ENVIRONMENT.txt evidence, but tests/, fixtures/, evidence/, evidence/TEST_LOG.txt, and evidence/ENVIRONMENT.txt are absent from the evaluated workspace.",
+    "NOTES.md and DEBUGGING_LOG.md show broadly correct conceptual reasoning about exact argv boundaries, concurrent pipe drainage, bounded retention, monotonic deadlines, process groups, timeout races, atomic replacement, and multi-user limitations; this supports limited comprehension credit only, not behavioral credit."
+  ],
+  "result": "FAIL",
+  "score": 5,
+  "transfer_gaps": [
+    "Resubmit the actual safe_run.py, fixtures/, tests/, README.md, DESIGN.md, COMPREHENSION_RESPONSES.md, evidence/TEST_LOG.txt, and evidence/ENVIRONMENT.txt files referenced by SUBMISSION.md.",
+    "Make the documented test command runnable from the submitted workspace and retain its complete raw output and environment record.",
+    "After packaging is complete, rerun examiner-controlled argument, byte-boundary, dual-stream, timeout, descendant-PID, outcome-integrity, and atomic-publication probes; prose summaries cannot substitute for those observations."
+  ]
+}

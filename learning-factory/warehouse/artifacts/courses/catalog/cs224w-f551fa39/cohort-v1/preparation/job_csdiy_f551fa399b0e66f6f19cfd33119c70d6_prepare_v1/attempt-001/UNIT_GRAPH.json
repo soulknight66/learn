@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "course_id": "course_f551fa399b0e66f6f19cfd33119c70d6",
+  "nodes": [
+    {
+      "node_id": "managed_unit_01_graph_software_baseline",
+      "title": "Graph Data Contracts and a Message-Passing Baseline",
+      "node_type": "study_unit",
+      "classification": "manager_authored_kickoff",
+      "official_course_unit": false,
+      "materialized_as_unit": true,
+      "status": "READY_NOT_COMPLETED",
+      "completion_scope": "UNIT_ONLY",
+      "dependencies": []
+    },
+    {
+      "node_id": "unit_818bd3fea3a311dcd16d3e5f7f7daa74",
+      "title": "Catalog overview and resource guide",
+      "node_type": "normalized_resource_record",
+      "classification": "catalog_metadata",
+      "source_record_type": "reading",
+      "source_metadata_official_course_unit": false,
+      "availability": "AVAILABLE_IN_SNAPSHOT",
+      "materialized_as_unit": false,
+      "classification_reason": "This record describes the catalog entry; it is not an instructional course unit."
+    },
+    {
+      "node_id": "unit_2a384fe2649b757d5f1172630a50e5ca",
+      "title": "Course Website",
+      "node_type": "normalized_resource_record",
+      "classification": "external_resource_pointer",
+      "source_record_type": "reading",
+      "source_metadata_official_course_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "materialized_as_unit": false,
+      "classification_reason": "A course-site URL is a discovery input, not a validated unit or a local copy of its content."
+    },
+    {
+      "node_id": "unit_a2525b8da75eadb194411b9acac9cbac",
+      "title": "Lecture Videos",
+      "node_type": "normalized_resource_record",
+      "classification": "external_resource_pointer",
+      "source_record_type": "lecture",
+      "source_metadata_official_course_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "materialized_as_unit": false,
+      "classification_reason": "The snapshot contains one video URL but no verified title, sequence, transcript, or unit boundary."
+    },
+    {
+      "node_id": "unit_61da3ec7179e135dd05ce140e60d7c74",
+      "title": "Text Book",
+      "node_type": "normalized_resource_record",
+      "classification": "absent_resource_marker",
+      "source_record_type": "reading",
+      "source_metadata_official_course_unit": false,
+      "availability": "UNAVAILABLE",
+      "materialized_as_unit": false,
+      "classification_reason": "The catalog value is explicitly 'none' and supplies no textbook or URL."
+    },
+    {
+      "node_id": "unit_03f7317a7b9a2d6f9eceebeb59ff8853",
+      "title": "Assignments",
+      "node_type": "normalized_resource_record",
+      "classification": "official_course_collection_pointer",
+      "source_record_type": "assignment",
+      "source_metadata_official_course_unit": true,
+      "availability": "LINKED_COLLECTION_NOT_EXPANDED",
+      "materialized_as_unit": false,
+      "classification_reason": "The source claims a collection of six programming and three written assignments, but the snapshot contains neither nine identifiable records nor their statements, ordering, dependencies, or validation assets."
+    }
+  ],
+  "edges": [],
+  "record_boundary": "Only managed_unit_01_graph_software_baseline is a materialized study unit in this kickoff graph, and it is manager-authored rather than an official Stanford unit. Every unit_* node is retained as a classified normalized resource record. No prerequisite or official-sequence edge is asserted until a later authorized job retrieves and validates unit-level evidence."
+}

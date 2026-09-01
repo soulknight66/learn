@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "course_id": "course_2b2bc9a23b31ea8f547a356c68230ae5",
+  "title": "CS220: Programming Principles",
+  "status": "KICKOFF_READY",
+  "unit": {
+    "unit_id": "unit_01_dependency_planner",
+    "title": "Rust Dependency Planner: Ownership, Errors, and Deterministic Tests",
+    "status": "READY_FOR_STUDY",
+    "origin": "course-manager-authored",
+    "official_course_unit": false,
+    "sequence": 1,
+    "estimated_human_hours": 6.0,
+    "prerequisites": [
+      "Fluency in at least one programming language",
+      "Familiarity with directed graphs and topological sorting"
+    ],
+    "scope": "Implement and explain one small standard-library-only Rust library and CLI. The familiar graph algorithm is a vehicle for practicing API contracts, ownership, typed errors, deterministic behavior, tests, and tool-driven quality checks."
+  },
+  "completion_policy": {
+    "scope": "FIRST_UNIT_ONLY",
+    "unit_completion": {
+      "evidence_required": [
+        "learner source and declared project files",
+        "captured formatter, build, test, and linter results",
+        "learner-authored design reflection",
+        "learner-authored comprehension responses"
+      ],
+      "promotion_authority": "worker-harness-controlled validator",
+      "prose_claims_count_as_evidence": false,
+      "required_validation_result": "PASS"
+    },
+    "course_completion": {
+      "allowed_after_this_unit": false,
+      "status_after_unit_validation": "KICKOFF_UNIT_VALIDATED_ONLY",
+      "reason": "This manifest deliberately defines one bounded first unit; it does not enumerate or validate the full CS220 course."
+    }
+  },
+  "provenance": {
+    "classification": "course-manager-authored-from-catalog-snapshot",
+    "catalog_name": "CSDIY",
+    "catalog_adapter": "csdiy",
+    "catalog_source_file": "docs/编程入门/Rust/cs220.en.md",
+    "catalog_source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "catalog_content_sha256": "b789189343338418d8be1ec2317f8c1d61e1a8295c9dfd163095056c31993e96",
+    "catalog_license": "MIT",
+    "catalog_classification": "source-derived",
+    "prepared_from_snapshot_only": true,
+    "external_retrieval_performed": false,
+    "limitations": [
+      "No linked repository, slides, assignment tree, or Rust Book content was retrieved for this preparation job.",
+      "The kickoff unit is not represented as an official KAIST assignment and must not be used to infer the official course sequence.",
+      "Lecture recordings are cataloged as unavailable."
+    ]
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "course_id": "course_63591b4f60aac46ccd4763128a3613b3",
+  "materials": [
+    {
+      "material_id": "catalog_snapshot_embedded",
+      "title": "CSDIY catalog snapshot",
+      "kind": "catalog_metadata",
+      "source_record_ids": [
+        "unit_4160e33528ade6c4d2a11510793fb487"
+      ],
+      "urls": [],
+      "availability": "SNAPSHOT_METADATA_AVAILABLE",
+      "payload_in_workspace": true,
+      "access_checked": true,
+      "official_course_unit": false,
+      "use_in_kickoff": "Provenance and high-level topic context only"
+    },
+    {
+      "material_id": "coursera_course_pages",
+      "title": "Algorithms, Part I and Part II course pages",
+      "kind": "course_page_pointers",
+      "source_record_ids": [
+        "unit_df7e8a2e51f9405aec35eaa477a76c76",
+        "unit_c4cf30d0acc22c403b899e96dbc5d0e0"
+      ],
+      "urls": [
+        "https://www.coursera.org/learn/algorithms-part1",
+        "https://www.coursera.org/learn/algorithms-part2"
+      ],
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "payload_in_workspace": false,
+      "access_checked": false,
+      "official_course_unit": false,
+      "use_in_kickoff": "Not required"
+    },
+    {
+      "material_id": "coursera_portal",
+      "title": "Coursera portal",
+      "kind": "generic_portal_pointer",
+      "source_record_ids": [],
+      "urls": [
+        "https://www.coursera.org"
+      ],
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "payload_in_workspace": false,
+      "access_checked": false,
+      "official_course_unit": false,
+      "use_in_kickoff": "Not required"
+    },
+    {
+      "material_id": "cuvids_recordings",
+      "title": "CUvids: Algorithms, 4th Edition",
+      "kind": "recording_collection_pointer",
+      "source_record_ids": [
+        "unit_c4cf30d0acc22c403b899e96dbc5d0e0"
+      ],
+      "urls": [
+        "https://cuvids.io/app/course/2/"
+      ],
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "payload_in_workspace": false,
+      "access_checked": false,
+      "official_course_unit": false,
+      "use_in_kickoff": "Not required"
+    },
+    {
+      "material_id": "algorithms_fourth_edition_site",
+      "title": "Algorithms, 4th Edition website",
+      "kind": "textbook_site_pointer",
+      "source_record_ids": [
+        "unit_5cb58ad5b57c9533629a9262e1c9a77f"
+      ],
+      "urls": [
+        "https://algs4.cs.princeton.edu/home/"
+      ],
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "payload_in_workspace": false,
+      "access_checked": false,
+      "official_course_unit": false,
+      "use_in_kickoff": "Optional pointer only; the kickoff is self-contained"
+    },
+    {
+      "material_id": "algs4_code_site",
+      "title": "Algorithms, 4th Edition code site",
+      "kind": "code_collection_pointer",
+      "source_record_ids": [],
+      "urls": [
+        "https://algs4.cs.princeton.edu/code/"
+      ],
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "payload_in_workspace": false,
+      "access_checked": false,
+      "official_course_unit": false,
+      "use_in_kickoff": "Not required and not a source for the learner implementation"
+    },
+    {
+      "material_id": "official_assignment_collection",
+      "title": "Ten projects described by the catalog",
+      "kind": "assignment_collection_description",
+      "source_record_ids": [
+        "unit_9a8f018f0b9c945921d88cb332d6abc1"
+      ],
+      "urls": [],
+      "availability": "DESCRIBED_ONLY",
+      "payload_in_workspace": false,
+      "access_checked": false,
+      "official_course_unit": true,
+      "use_in_kickoff": "Excluded; no project specification is available"
+    },
+    {
+      "material_id": "community_github_repository",
+      "title": "PKUFlyingPig/Princeton-Algorithm repository",
+      "kind": "community_repository_pointer",
+      "source_record_ids": [],
+      "urls": [
+        "https://github.com/PKUFlyingPig/Princeton-Algorithm"
+      ],
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "payload_in_workspace": false,
+      "access_checked": false,
+      "official_course_unit": false,
+      "use_in_kickoff": "Not required; no content was inspected or copied"
+    }
+  ],
+  "blocked": [
+    {
+      "blocked_id": "instructional_payloads_not_present",
+      "scope": "Lecture videos, transcripts, chapter contents, and downloadable course assets behind the catalog links",
+      "status": "BLOCKED_FOR_CURRENT_PREPARATION",
+      "reason": "The snapshot supplies links but no content payloads, and access was not attempted.",
+      "impact": "They cannot be sequenced or represented as verified units yet; the kickoff does not depend on them."
+    },
+    {
+      "blocked_id": "official_project_specs_not_present",
+      "scope": "Individual project specifications, ordering, starter code, public tests, and submission contracts for the ten described projects",
+      "status": "BLOCKED_FOR_CURRENT_PREPARATION",
+      "reason": "Only an aggregate catalog description is present and it provides no direct project URLs or artifacts.",
+      "impact": "No official project has been promoted into the unit graph."
+    },
+    {
+      "blocked_id": "restricted_assessment_content",
+      "scope": "Solutions, hidden tests, grader internals, scoring-system credentials, and enrollment-restricted assessment data",
+      "status": "RESTRICTED_DO_NOT_RETRIEVE",
+      "reason": "Such content is not authorized or needed for this preparation and must not enter a learner view.",
+      "impact": "Later jobs must build independent validators or use only explicitly authorized worker-harness validators."
+    }
+  ],
+  "retrieval_policy": {
+    "current_preparation": "No network retrieval was performed. LINK_ONLY_UNVERIFIED means only the catalog URL is known; it is not a claim of present accessibility.",
+    "later_expansion_requirements": [
+      "Retrieve only in a separately authorized job and only where access and copying are permitted.",
+      "Do not bypass authentication, enrollment, paywalls, access controls, licenses, or technical restrictions.",
+      "Record the requested URL, resolved source, retrieval result, timestamp, content hash, license or terms classification, and provenance before use.",
+      "Validate that acquired content identifies a specific unit before adding an official unit node.",
+      "Keep unavailable or failed retrievals blocked; do not invent titles, order, requirements, or completion claims.",
+      "Expose to learners only licensed learner-safe material; never expose solutions, hidden validators, credentials, sealed references, or examiner artifacts."
+    ],
+    "official_unit_promotion_rule": "A catalog link or aggregate descriptor is insufficient. Promotion requires verified, specific source content and an explicit official-versus-manager-authored classification.",
+    "restricted_content_policy": "DO_NOT_FETCH_COPY_OR_EXPOSE",
+    "fallback": "When material remains unavailable, author a clearly labeled self-contained unit or leave the future unit blocked; never imply equivalence to an official assignment."
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "course_id": "course_1eefb1acf7ab9675d3d9c1e8273f7318",
+  "validation_status": "PREPARED_UNVALIDATED",
+  "nodes": [
+    {
+      "node_id": "kickoff_unit_01_safe_process_boundaries",
+      "node_kind": "prepared_study_unit",
+      "title": "Safe Process Boundaries: From Command Lines to Testable Interfaces",
+      "classification": "manager-authored kickoff",
+      "official_course_unit": false,
+      "state": "PREPARED_UNVALIDATED",
+      "required_for_current_unit": true
+    },
+    {
+      "node_id": "unit_948f2bd20026ac901e6e61ea9c36c62d",
+      "node_kind": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "source_reference": "docs/系统安全/CSE365.en.md",
+      "resource_type": "reading",
+      "classification": "catalog_overview",
+      "catalog_official_unit_flag": false,
+      "expanded_as_official_unit": false,
+      "availability": "AVAILABLE_IN_SUPPLIED_SNAPSHOT",
+      "required_for_current_unit": false
+    },
+    {
+      "node_id": "unit_8ac458e80f400817b491c17e4a16fa8a",
+      "node_kind": "normalized_resource_record",
+      "title": "Course Website",
+      "source_reference": "docs/系统安全/CSE365.en.md#L25",
+      "resource_type": "reading",
+      "classification": "external_course_link",
+      "catalog_official_unit_flag": false,
+      "expanded_as_official_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "required_for_current_unit": false
+    },
+    {
+      "node_id": "unit_18cb9e2481581b4c1d6525c20a443262",
+      "node_kind": "normalized_resource_record",
+      "title": "Recordings",
+      "source_reference": "docs/系统安全/CSE365.en.md#L26",
+      "resource_type": "lecture",
+      "classification": "indirect_material_description",
+      "catalog_official_unit_flag": false,
+      "expanded_as_official_unit": false,
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "required_for_current_unit": false
+    },
+    {
+      "node_id": "unit_184f2f4785efe1ea13d5fd1183f6b590",
+      "node_kind": "normalized_resource_record",
+      "title": "Textbooks",
+      "source_reference": "docs/系统安全/CSE365.en.md#L27",
+      "resource_type": "reading",
+      "classification": "explicit_absence",
+      "catalog_official_unit_flag": false,
+      "expanded_as_official_unit": false,
+      "availability": "UNAVAILABLE",
+      "required_for_current_unit": false
+    },
+    {
+      "node_id": "unit_96bb8f312cbca1a3ce3961886eb538cc",
+      "node_kind": "normalized_resource_record",
+      "title": "Assignments",
+      "source_reference": "docs/系统安全/CSE365.en.md#L28",
+      "resource_type": "assignment",
+      "classification": "aggregate_official_assignment_descriptor",
+      "catalog_official_unit_flag": true,
+      "expanded_as_official_unit": false,
+      "availability": "DESCRIBED_WITHOUT_CHALLENGE_CONTENT",
+      "required_for_current_unit": false
+    },
+    {
+      "node_id": "unit_e327c786b0ff0ec3d2db115fcbabcfb7",
+      "node_kind": "normalized_resource_record",
+      "title": "Lectures on YouTube",
+      "source_reference": "docs/系统安全/CSE365.en.md#L32",
+      "resource_type": "lecture",
+      "classification": "external_channel_link",
+      "catalog_official_unit_flag": false,
+      "expanded_as_official_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "required_for_current_unit": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_948f2bd20026ac901e6e61ea9c36c62d",
+      "to": "kickoff_unit_01_safe_process_boundaries",
+      "relation": "informs_catalog_alignment",
+      "required_dependency": false
+    },
+    {
+      "from": "unit_96bb8f312cbca1a3ce3961886eb538cc",
+      "to": "kickoff_unit_01_safe_process_boundaries",
+      "relation": "informs_challenge_based_format",
+      "required_dependency": false
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "provenance": {
+    "derivation": "Graph classification produced from the supplied catalog snapshot without external retrieval.",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/系统安全/CSE365.en.md",
+    "content_sha256": "7d8d186b7809a876356423e5046f74943a60d265fb89e1f52985043c30f61b4a"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "course_id": "course_3522e333dd9314d807226abfe69c21d3",
+  "title": "UCB CS186: Introduction to Database System",
+  "status": "KICKOFF_READY",
+  "unit": {
+    "unit_id": "managed_unit_01_relational_pipeline",
+    "title": "Contract-Driven Relational Operator Pipeline",
+    "status": "READY_FOR_LEARNER",
+    "classification": "manager_authored_kickoff",
+    "official_course_unit": false,
+    "sequence": 1,
+    "estimated_human_hours": 10,
+    "implementation_language": "Java",
+    "audience": "A strong algorithms student developing production-oriented software-engineering habits",
+    "scope": {
+      "in_scope": [
+        "A typed in-memory row and schema model",
+        "Composable scan, filter, project, and limit operators",
+        "Explicit operator lifecycle and error contracts",
+        "Deterministic unit, integration, and fixed-seed generated tests",
+        "Reproducible build and test evidence"
+      ],
+      "out_of_scope": [
+        "SQL parsing",
+        "Disk pages and buffer management",
+        "Joins and query optimization",
+        "Indexes",
+        "Transactions and concurrency control",
+        "Failure recovery",
+        "NoSQL systems",
+        "Any claim of completing the catalog course"
+      ]
+    },
+    "learning_objectives": [
+      "Translate relational behavior into precise component contracts",
+      "Separate data-model, execution, lifecycle, and validation responsibilities",
+      "Implement a small composable Java subsystem with deterministic behavior",
+      "Test boundary conditions, misuse, composition, and ownership rather than only happy paths",
+      "Record reproducible commands, provenance, and validation state"
+    ],
+    "required_material_ids": [
+      "local_course_brief",
+      "local_study_task",
+      "local_comprehension"
+    ],
+    "learner_artifacts": [
+      "Java production source",
+      "Deterministic automated tests",
+      "DESIGN.md",
+      "RUN.md",
+      "SUBMISSION_MANIFEST.json",
+      "COMPREHENSION_RESPONSE.md",
+      "Fresh captured test output"
+    ]
+  },
+  "completion_policy": {
+    "unit_initial_state": "NOT_STARTED",
+    "unit_completion_authority": "worker_harness_controlled_validator",
+    "unit_completion_requires": [
+      "All required learner artifacts are present in the submitted attempt workspace",
+      "The harness independently executes the documented build and test commands with bounded resources",
+      "The implementation passes evaluator-controlled semantic and lifecycle checks",
+      "The examiner applies examiner_only/RUBRIC.md and records a passing result",
+      "Validation logs are attributable to the submitted artifact revision"
+    ],
+    "learner_claim_is_evidence": false,
+    "learner_supplied_test_output_is_sufficient": false,
+    "kickoff_completion_implies_course_completion": false,
+    "course_completion_allowed_by_this_manifest": false,
+    "course_completion_note": "This manifest prepares and may validate one manager-authored kickoff only. Later units require separately sourced, classified, prepared, and harness-validated records."
+  },
+  "provenance": {
+    "input_classification": "source-derived catalog snapshot",
+    "catalog_snapshot": {
+      "schema_version": 1,
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "source_name": "CSDIY",
+      "source_type": "course_catalog",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/数据库系统/CS186.en.md",
+      "content_sha256": "897b6844818f67e51d87cd14dfacd84e3359243fa478e87faf55c2a4bd6778ff",
+      "adapter": "csdiy",
+      "extractor_version": "1.1"
+    },
+    "preparation": {
+      "classification": "manager-authored from supplied metadata",
+      "input_scope": "The supplied JSON snapshot only",
+      "external_retrieval_performed": false,
+      "official_course_authorship_claimed": false,
+      "validation_label": "STRUCTURE_CHECKED_KICKOFF_NOT_LEARNER_VALIDATED",
+      "validation_scope": "Artifact structure, JSON syntax, cross-file identifiers, audience separation, and kickoff boundary only"
+    }
+  }
+}

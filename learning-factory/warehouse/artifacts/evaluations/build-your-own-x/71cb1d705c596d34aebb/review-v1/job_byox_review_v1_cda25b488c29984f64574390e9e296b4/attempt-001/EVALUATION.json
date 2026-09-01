@@ -1,0 +1,31 @@
+{
+  "builder_job_id": "job_byox_build_v1_cda25b488c29984f64574390e9e296b4",
+  "checks_run": [
+    "Read-only candidate inventory, aggregate SHA-256, file-type, mode, symlink, special-file, build-product, and credential-pattern checks",
+    "Strict JSON duplicate-key parsing plus manifest/provenance identity and validation-status assertions",
+    "GCC 8.5 strict builds, 9 public starter tests, 51 sealed reference tests, and a repeat-build hash comparison in a writable staging copy",
+    "Ten-case adversarial run, six-workload one-sample benchmark smoke, and strict syntax compilation of all eight exercise sources",
+    "Bounded execution of the debugging/review reproducers and their fixed examples",
+    "Independent shell edge matrix covering literal out-of-scope bytes, ASCII whitespace, syntax side effects, statuses, builtin child context, failed redirection, and bounded shutdown",
+    "Independent foreground stop/continue regression and closed-standard-input regression",
+    "ASan and UBSan toolchain availability probes"
+  ],
+  "evidence": [
+    "REVISE: public_tests/test_starter.py requires status 2 and the scaffold-specific text 'tokenization is a TODO' for a missing nonempty command, while REQUIREMENTS.md requires status 127; the sealed reference returned 127. A completed conforming learner solution therefore cannot pass the shipped public suite.",
+    "REVISE: the sealed reference foreground wait requests WUNTRACED but not WCONTINUED. When one pipeline member stopped and another sent SIGCONT to the group, the shell returned 147 instead of waiting for completion and returning the final stage status 0.",
+    "REVISE: answer keys and the full reference are readable inside CANDIDATE, while the only disclosure controls present in the artifact are 'sealed' path names and prose. No machine-readable learner-view allowlist or independently checkable export is supplied.",
+    "The public suite passed 9/9 and the candidate-authored sealed suite passed 51/51 after TMPDIR was pointed at the writable review workspace; these corroborate reproducibility but do not independently prove TESTED.",
+    "All 10 adversarial cases completed at the normal deadline, all eight exercise sources compiled under strict warning-as-error syntax checks, and bounded exercise runs reproduced the documented hangs/status bug and fixed outcomes.",
+    "Manifest labels are honest and internally consistent: GENERATED plus PARTIAL, independent validation REQUIRED, and productionized false. The validation narrative explicitly disclaims stronger labels and treats its adversarial and benchmark runners as non-oracles.",
+    "The license document clearly separates the CC0 catalog metadata from the NOASSERTION linked tutorial and expressly avoids granting rights it cannot establish; no credible credential, symlink, special file, or checked-in build product was found."
+  ],
+  "limitations": [
+    "The upstream catalog repository and linked tutorial were not available in the review workspace, network access was restricted, and git was unavailable, so source-commit authenticity, linked-resource licensing, and the no-copy claim could not be independently verified.",
+    "ASan and UBSan could not link because the host lacks libasan.so.5.0.0 and libubsan.so.1.0.0; valgrind, clang, rg, and a fuzzer were unavailable. No leak, fuzz, syscall-fault-injection, or static-analysis claim is made.",
+    "The default temporary directories were not writable in this sandbox. The first public-test attempt ran zero tests; rerunning with a workspace-local TMPDIR succeeded.",
+    "PTY behavior was exercised only on this Linux host. No macOS/BSD, cross-compiler, sustained race, low-resource, or production-readiness validation was available.",
+    "The candidate does not include the authoritative learner-view export policy or manifest/provenance schemas, so progressive-disclosure enforcement and the intended semantics of provenance_sha256 remain partly inconclusive."
+  ],
+  "project_id": "project_88e5a9a922f8f9e2166223c1333f28f9",
+  "verdict": "REVISE"
+}

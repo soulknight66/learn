@@ -1,0 +1,158 @@
+{
+  "artifact_identity": {
+    "builder_artifact_id": "artifact_87c822e0be784f96b52b4c6e8cbe2023",
+    "builder_job_id": "job_byox_build_v1_cda25b488c29984f64574390e9e296b4",
+    "project_id": "project_88e5a9a922f8f9e2166223c1333f28f9",
+    "remediation_generation": 1,
+    "remediation_snapshot_sha256": "5219d1c474c3c18bc11716574186b0309b8ee45c607c8c7a99e09e38780a8712",
+    "repair_job_id": "job_byox_repair_v1_g1_bd30499861a1b3fa7436d3b9df1d321a",
+    "review_artifact_id": "artifact_6d6f52fa717e4a6dbcbd5a97f42d50a9",
+    "review_job_id": "job_byox_review_v1_cda25b488c29984f64574390e9e296b4"
+  },
+  "digest_algorithm": "view-sha256-v1: SHA-256 over ASCII 'view-sha256-v1\\0', then for each POSIX path in UTF-8 bytewise order: 8-byte big-endian path length, path bytes, 8-byte big-endian file size, and the 32-byte SHA-256 of file content",
+  "learner_view": {
+    "allowlist": [
+      "AGENTS.md",
+      "CONCEPTS.md",
+      "DESIGN_QUESTIONS.md",
+      "MANIFEST.yaml",
+      "README.md",
+      "REQUIREMENTS.md",
+      "environment/README.md",
+      "environment/VIEW_POLICY.json",
+      "public_tests/README.md",
+      "public_tests/api_smoke.c",
+      "public_tests/milestones/lexer_probe.c",
+      "public_tests/milestones/parser_probe.c",
+      "public_tests/run_milestone.py",
+      "public_tests/scaffold_smoke.py",
+      "public_tests/test_starter.py",
+      "starter/Makefile",
+      "starter/README.md",
+      "starter/include/executor.h",
+      "starter/include/lexer.h",
+      "starter/include/parser.h",
+      "starter/include/shell.h",
+      "starter/src/executor.c",
+      "starter/src/lexer.c",
+      "starter/src/main.c",
+      "starter/src/parser.c",
+      "starter/src/shell.c"
+    ],
+    "default": "deny",
+    "forbidden_components": [
+      "answers",
+      "hidden_tests",
+      "reference",
+      "reference_tests",
+      "sealed",
+      "solution",
+      "solutions"
+    ]
+  },
+  "package_contract": {
+    "forbidden_paths": [
+      ".env",
+      ".git",
+      ".venv",
+      "answers",
+      "credentials.json",
+      "environment/sealed",
+      "hidden_tests",
+      "public_tests/hidden_tests",
+      "public_tests/reference",
+      "public_tests/sealed",
+      "reference",
+      "reference_tests",
+      "secrets",
+      "solution",
+      "solutions",
+      "starter/answers",
+      "starter/reference",
+      "starter/reference_tests",
+      "starter/sealed",
+      "starter/solution",
+      "starter/solutions"
+    ],
+    "immutable_file_sha256": {
+      "MANIFEST.yaml": "7f48fa599d87e1a92a8e1a2cb7b8818848024a2188ef6602ec06aa64369779c9",
+      "PROVENANCE.json": "1af66d8f2f62445463a14c74c203620c23213bed4cb5e31eaada2408e3e4c1f1"
+    },
+    "required_paths": [
+      "AGENTS.md",
+      "CONCEPTS.md",
+      "DESIGN_QUESTIONS.md",
+      "LICENSE_BOUNDARY.md",
+      "MANIFEST.yaml",
+      "PROVENANCE.json",
+      "README.md",
+      "REQUIREMENTS.md",
+      "VALIDATION.md",
+      "adversarial/README.md",
+      "benchmarks/README.md",
+      "debugging/README.md",
+      "environment/README.md",
+      "public_tests/README.md",
+      "review_exercises/README.md",
+      "sealed/DESIGN.md",
+      "sealed/REVIEW.md",
+      "sealed/TRADEOFFS.md",
+      "sealed/alternatives/README.md",
+      "sealed/production/PRODUCTIONIZATION.md",
+      "sealed/reference/README.md",
+      "sealed/reference_tests/README.md",
+      "starter/README.md"
+    ]
+  },
+  "schema_version": 1,
+  "validator_view": {
+    "bootstrap_records_excluded_from_digest": [
+      "ARTIFACT_INVENTORY.json",
+      "VALIDATION.md"
+    ],
+    "forbidden_build_basenames": [
+      "asan-fixed",
+      "core",
+      "libminish.a",
+      "minish"
+    ],
+    "forbidden_build_components": [
+      "__pycache__",
+      "build"
+    ],
+    "forbidden_build_suffixes": [
+      ".a",
+      ".d",
+      ".o",
+      ".pyc"
+    ],
+    "roots": [
+      "AGENTS.md",
+      "CONCEPTS.md",
+      "DESIGN_QUESTIONS.md",
+      "LICENSE_BOUNDARY.md",
+      "MANIFEST.yaml",
+      "PROVENANCE.json",
+      "README.md",
+      "REQUIREMENTS.md",
+      "VALIDATION.md",
+      "adversarial",
+      "benchmarks",
+      "debugging",
+      "environment",
+      "public_tests",
+      "review_exercises",
+      "sealed",
+      "starter",
+      "tools"
+    ],
+    "sensitive_prefixes": [
+      "debugging/eof_hang/sealed/",
+      "debugging/token_vector/sealed/",
+      "debugging/wait_race/sealed/",
+      "review_exercises/job_table/sealed/",
+      "review_exercises/pipeline_launcher/sealed/",
+      "sealed/"
+    ]
+  }
+}

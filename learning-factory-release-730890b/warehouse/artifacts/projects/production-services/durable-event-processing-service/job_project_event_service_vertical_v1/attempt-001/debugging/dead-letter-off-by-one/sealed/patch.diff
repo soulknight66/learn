@@ -1,0 +1,11 @@
+--- a/debugging/dead-letter-off-by-one/buggy/event_service.py
++++ b/debugging/dead-letter-off-by-one/buggy/event_service.py
+@@ -487,7 +487,7 @@
+             connection.execute("BEGIN IMMEDIATE")
+             row = self._owned(connection, delivery, current=current)
+             attempts = int(row["attempt_count"])
+-            if attempts > self.max_attempts:
++            if attempts >= self.max_attempts:
+                 self._dead_letter(connection, row, reason, current)
+                 state = "DEAD"
+             else:

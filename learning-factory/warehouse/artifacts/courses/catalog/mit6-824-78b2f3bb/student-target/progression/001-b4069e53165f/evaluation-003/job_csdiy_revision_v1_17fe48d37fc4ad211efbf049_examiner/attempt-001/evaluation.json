@@ -1,0 +1,16 @@
+{
+  "evidence": [
+    "Pre-execution staged learner-file inventory (SHA-256): DEBUGGING_LOG.md 5716c1338929a5cdf4f4e33c933c5fe0cb24205f5fd5aa9950997016563476f0; NOTES.md 251f52c8091237267d560c701e46e349da660341432f68dd008b27ae2d1e487a; SELF_CHECK.md 989c9d7952d73a0d566d97b893d390e2fb0e81253f42bc29cd2b8e0b6ef34577; SUBMISSION.md 08a71697b237e7dcc7872955d9addb9ffb0536ea792326131956abe33329aa3f. A complete recursive file-type inventory found no other staged learner files or learner symlinks.",
+    "The staged revision does not contain lease_queue.py, test_lease_queue.py, DESIGN.md, or INCIDENT.md. SUBMISSION.md lines 3-5 and 13-19 claim those artifacts are present, so the observable staged inventory contradicts the handoff narrative and does not resolve the prior packaging gap.",
+    "The declared command was reproduced in a fresh temporary copy containing the four staged learner files, with PYTHONPATH removed, bytecode disabled, a new process session, captured output, and a 30-second timeout. The argv `python3 -B -m unittest -v test_lease_queue.py` did not time out, exited 1 after 0.050331 seconds, and reported `ModuleNotFoundError: No module named 'test_lease_queue'`.",
+    "Because the implementation and test module are absent, neither the learner suite nor independent behavioral checks can execute; no adapter was created. The missing DESIGN.md and INCIDENT.md also leave no eligible artifact-backed design or debugging evidence, so the narrative behavior claims cannot receive credit.",
+    "BATCH_MANIFEST.json parsed as a single bounded prepared batch and records course_completion as NOT_CLAIMED. This failed bounded examination does not establish transfer, official credit, production correctness, or course completion."
+  ],
+  "result": "FAIL",
+  "score": 0,
+  "transfer_gaps": [
+    "The staged revision still lacks the implementation, test module, design artifact, and incident artifact required for independent assessment.",
+    "No response to an independently supplied unseen task was assessed, so transfer is not verified.",
+    "Course completion remains NOT_CLAIMED."
+  ]
+}

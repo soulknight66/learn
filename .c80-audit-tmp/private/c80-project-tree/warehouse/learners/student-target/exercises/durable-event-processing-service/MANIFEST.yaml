@@ -1,0 +1,21 @@
+schema_version: 1
+id: "durable-event-processing-service"
+title: "Durable Event Processing Service"
+family: "production-services"
+language: "Python 3.11"
+storage: "SQLite"
+difficulty: 8
+estimated_human_hours: 18
+derivation: "agent-generated cross-source synthesis"
+deployment_status: "NOT_PRODUCTION_READY"
+productionized: false
+validation_targets:
+  - "BUILDS"
+  - "TESTED"
+  - "FUZZED"
+  - "BENCHMARKED"
+  - "REVIEWED"
+  - "PARTIAL"
+reveal_boundary:
+  learner: ["README.md", "REQUIREMENTS.md", "CONCEPTS.md", "DESIGN_QUESTIONS.md", "starter/", "public_tests/"]
+  sealed: ["sealed/", "debugging/*/sealed/", "review_exercises/*/sealed/"]

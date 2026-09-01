@@ -1,0 +1,2 @@
+/usr/bin/yes data | /usr/bin/head -n 3
+/usr/bin/printf 'shell survived\n'

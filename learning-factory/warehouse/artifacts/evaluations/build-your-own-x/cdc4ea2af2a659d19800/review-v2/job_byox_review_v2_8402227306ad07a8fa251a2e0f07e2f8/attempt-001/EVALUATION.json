@@ -1,0 +1,31 @@
+{
+  "builder_job_id": "job_project_allocator_vertical_v1",
+  "checks_run": [
+    "Inventoried all 34 submitted files and resolved paths named by the documentation.",
+    "Parsed MANIFEST.yaml, PROVENANCE.json, and benchmarks/results/smoke.json as JSON and checked the benchmark arithmetic and referenced artifacts.",
+    "Ran the documented build entry point and a strict C11 compilation directly from the submitted tree.",
+    "With a reviewer-only inferred header outside CANDIDATE, strictly compiled and ran the submitted public, sealed-contract, deterministic-model, benchmark, debugging, review-exercise, and segregated-integrity programs.",
+    "Ran an independent declared-span overlap contract against all three allocator architectures.",
+    "Probed AddressSanitizer and UndefinedBehaviorSanitizer availability and scanned allocator implementations for prohibited backing-allocation calls.",
+    "Reviewed learner-view separation, progressive disclosure, validation-label honesty, licensing, and provenance boundaries."
+  ],
+  "evidence": [
+    "CANDIDATE/include/allocator.h and CANDIDATE/scripts/build_all.py are absent. The documented Python entry point exited 2, and a native strict C11 compile exited 1 because allocator.h was not found.",
+    "All three implementations accepted overlap in the tail of the caller-declared state span. The independent harness exited 1 for first-fit, best-fit, and segregated bins; each implementation computes state_end from sizeof(state), not state_bytes.",
+    "Candidate-native benchmark replay is impossible: the default Python 3.6.8 rejects run.py syntax, and Python 3.11 reaches a missing validation-output/bin/reference-benchmark. validation-output/toolchain.json and all three recorded benchmark executables are absent.",
+    "The submitted smoke JSON is internally arithmetically consistent, and its deterministic layout metrics matched current direct runs, but it embeds an absolute include path to another build attempt and ships neither the recorded binaries nor controller logs. It is not independent BENCHMARKED evidence.",
+    "After reconstructing only the missing declarations in a reviewer-owned temporary header, all three implementations compiled with the stated strict flags and passed the submitted public, sealed-contract, and 4000-iteration model programs. Because the header was not submitted and the tests are builder-authored, these are limited diagnostic results, not BUILDS or TESTED proof.",
+    "The debugging regression distinguished the reference (exit 0) from the intentional bug (exit 1), the rounding demonstration exited 0, and the segregated-bin integrity test exited 0 under the same temporary-header limitation.",
+    "Twelve solution, reference, and sealed-test files are separated under sealed-named paths, but the candidate contains no deterministic learner-view allowlist or packaging mechanism to enforce their exclusion.",
+    "PROVENANCE.json clearly separates CC0 catalog metadata from a NOASSERTION linked tutorial, and MANIFEST.yaml honestly says NOT_PRODUCTION_READY. No LICENSE, NOTICE, SPDX identifier, or explicit grant covers the generated pack itself."
+  ],
+  "limitations": [
+    "The submitted API header is missing. Numeric error values and the statistics layout in the temporary inferred header may differ from the intended API, so all reconstructed builds are auxiliary only.",
+    "ASan/UBSan could not be linked because libasan.so.5.0.0 and libubsan.so.1.0.0 were unavailable; no sanitized execution was performed.",
+    "Network access and the upstream source checkout were unavailable, so the catalog commit, external tutorial license, and no-copy provenance assertion were not independently verified.",
+    "clang, valgrind, git, and rg were unavailable. Review used GCC 8.5.0, bounded native executions, find, grep, sed, and Python JSON parsing.",
+    "The historical smoke timing cannot be authenticated from the submitted material; current benchmark timings are machine-specific samples and do not validate the historical run."
+  ],
+  "project_id": "project_62500cd7d143a95230c724df71a56c4a",
+  "verdict": "FAIL"
+}

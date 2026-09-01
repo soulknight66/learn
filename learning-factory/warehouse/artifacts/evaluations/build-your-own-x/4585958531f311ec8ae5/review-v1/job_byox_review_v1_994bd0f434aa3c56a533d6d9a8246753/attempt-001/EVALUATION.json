@@ -1,0 +1,34 @@
+{
+  "builder_job_id": "job_byox_build_v1_994bd0f434aa3c56a533d6d9a8246753",
+  "checks_run": [
+    "Inventoried all 59 submitted files, file types, permissions, retained build products, and pre/post-review content digests.",
+    "Parsed MANIFEST.yaml and PROVENANCE.json and cross-checked schema, project, source, commit, snapshot binding, labels, production status, and linked-resource license fields.",
+    "Reviewed learner instructions, behavioral contract, progressive disclosure, sealed answers, reference implementation, tests, production prototype, license boundary, and validation claims.",
+    "In a writable scratch copy, reran strict host checks, public tests against the reference and starter, sealed reference tests at default and -O2 optimization, the production audit prototype, and the sanitizer target.",
+    "Compiled and ran a reviewer-authored deterministic edge and failure-atomicity harness at default and -O2 optimization.",
+    "Built both freestanding ELF images and independently inspected ELF headers, load segments, sections, Multiboot bytes, entry point, and undefined symbols with readelf, objdump, and nm.",
+    "Performed two clean builds of each ELF and compared SHA-256 digests for same-host reproducibility.",
+    "Built the optional micro-workload and ran five bounded samples without treating timing as benchmark validation.",
+    "Ran bounded regular-file, oversized-file, credential-pattern, external-link, and metadata consistency scans."
+  ],
+  "evidence": [
+    "Reference public tests, sealed edge tests, and prototype invariant-audit tests exited 0; the incomplete starter reproduced 27 failures and make exit 2.",
+    "The reviewer harness passed 178 unambiguous contract checks at both default and -O2 optimization, including full frame exhaustion, scheduler transitions, combined VM permissions, maximum addresses, complete output-sentinel checks, and failed-operation state snapshots.",
+    "A repeat-initialization probe mapped one of two frames, then called tk_vm_init again: mappings changed from 1 to 0 while free frames remained 1, leaving ownership unreachable unless repeat initialization is explicitly outside the contract.",
+    "Both ELF images built successfully as ELF32 EM_386 executables with entry 0x00101000, a checksum-valid Multiboot header, and no undefined symbols.",
+    "Two clean same-host builds were byte-identical: starter SHA-256 48b624037b4e6325ac50d25ab150b6934b4e983834300db67a450fc0afd9b926 and reference SHA-256 9d115ef1880dd5f3d1f2e973f74a359b777b50c37e882dde0f9018a2a11d220b.",
+    "Five micro-workload runs completed all 100000 frame and filesystem cycles; observed clock ticks varied, consistent with the candidate's explicit refusal to claim BENCHMARKED.",
+    "The manifest honestly retains GENERATED and PARTIAL, requires independent validation, sets productionized false, and makes no BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED promotion.",
+    "The original CANDIDATE remained unchanged: its aggregate per-file digest was 6a9644c3870a3bf28807e1ad2879e38256edf6fd51f50c15040190edb56642fb before and after testing, with no retained build directories."
+  ],
+  "limitations": [
+    "qemu-system-i386, grub-file, grub-mkrescue, and xorriso were unavailable, so no boot or bootloader compatibility claim was validated.",
+    "The sanitizer target could not link because libasan.so.5.0.0 and libubsan.so.1.0.0 were unavailable; no sanitizer-clean or FUZZED conclusion is possible.",
+    "Clang, Valgrind, cppcheck, scan-build, and git were unavailable; no alternate-compiler, dynamic-analysis, static-analysis, or source-commit checkout result is claimed.",
+    "Network access and the source checkout recorded outside this workspace were unavailable, so the catalog snapshot, upstream article text, and independent-generation/non-copying assertion could not be independently compared.",
+    "The submitted bundle contains readable sealed implementations, hidden tests, and answer keys but no deterministic student-view export or allowlist, so learner isolation cannot be established from the candidate alone.",
+    "readelf reported a non-identity physical address for the BSS PT_LOAD segment (starter p_vaddr 0x00103000 versus p_paddr 0x0010549c; reference 0x00104000 versus 0x00106304); without a Multiboot loader run, runtime impact is inconclusive."
+  ],
+  "project_id": "project_0cc47906ce17d417d486dfe824cb1af4",
+  "verdict": "REVISE"
+}

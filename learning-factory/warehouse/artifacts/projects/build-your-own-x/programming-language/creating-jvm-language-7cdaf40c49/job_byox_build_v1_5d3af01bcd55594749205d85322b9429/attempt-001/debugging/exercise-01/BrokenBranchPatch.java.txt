@@ -1,0 +1,6 @@
+void patchBranch(int opcodePosition, int targetPosition, byte[] code) {
+    int positionAfterInstruction = opcodePosition + 3;
+    int offset = targetPosition - positionAfterInstruction;
+    code[opcodePosition + 1] = (byte) (offset >>> 8);
+    code[opcodePosition + 2] = (byte) offset;
+}

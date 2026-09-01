@@ -1,0 +1,76 @@
+{
+  "course_id": "course_63591b4f60aac46ccd4763128a3613b3",
+  "title": "Coursera: Algorithms I & II",
+  "status": "KICKOFF_READY_NOT_COMPLETED",
+  "unit": {
+    "unit_id": "unit_kickoff_union_find_engineering_v1",
+    "title": "From Disjoint-Set Theory to a Reliable Connectivity Component",
+    "classification": "COURSE_MANAGER_AUTHORED_KICKOFF",
+    "official_course_unit": false,
+    "status": "READY_FOR_LEARNER",
+    "estimated_human_hours": {
+      "minimum": 6,
+      "target": 8,
+      "maximum": 10
+    },
+    "scope": "Design, implement, test, and explain one Java union-find component and one bounded connectivity client.",
+    "learning_objectives": [
+      "State representation invariants and use them in a correctness argument.",
+      "Implement weighted union with path compression behind a precise Java API.",
+      "Build deterministic boundary, invalid-input, integration, and model-based tests.",
+      "Apply monotone connectivity to a small event-stream problem without duplicating the core algorithm.",
+      "Record reproducible build evidence and discuss operational limits such as mutability and concurrency."
+    ],
+    "required_inputs": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "learner_deliverables": [
+      "submission/src/main/java/study/unit1/UnionFind.java",
+      "submission/src/main/java/study/unit1/ConnectivityMilestone.java",
+      "submission/src/test/java/study/unit1/UnionFindTest.java",
+      "submission/src/test/java/study/unit1/ConnectivityMilestoneTest.java",
+      "submission/DESIGN.md",
+      "submission/EVIDENCE.md",
+      "submission/COMPREHENSION_RESPONSES.md"
+    ],
+    "out_of_scope": [
+      "Claiming completion of Algorithms I, Algorithms II, or the catalog's approximately 60-hour course",
+      "Reconstructing or submitting any of the ten described official projects",
+      "Using unverified lecture, textbook, starter-code, solution, or autograder content",
+      "Supporting edge deletion, persistence, distributed execution, or a thread-safe API"
+    ]
+  },
+  "completion_policy": {
+    "prepared_artifacts_are_completion_evidence": false,
+    "unit_completion_requires": [
+      "All listed learner deliverables exist and are attributable to the learner attempt.",
+      "A worker-harness-controlled validator independently compiles and runs the implementation and tests.",
+      "The validator checks behavior, algorithmic constraints, documentation, and comprehension against the examiner-only rubric.",
+      "Validation evidence is durable and explicitly labeled; learner prose alone is not accepted as proof."
+    ],
+    "validation_authority": "WORKER_HARNESS_CONTROLLED_VALIDATOR_ONLY",
+    "on_unit_success": "Mark only unit_kickoff_union_find_engineering_v1 complete; retain the course as incomplete and awaiting evidence-backed expansion.",
+    "course_completion_rule": "This kickoff can never establish whole-course completion. Completion requires a separately defined graph of verified later units and independent validation of every required unit.",
+    "failure_rule": "Preserve failed-attempt artifacts and evidence; a retry does not erase prior results."
+  },
+  "provenance": {
+    "artifact_classification": "course-manager-authored-from-catalog-snapshot",
+    "catalog_snapshot_schema_version": 1,
+    "catalog_adapter": "csdiy",
+    "catalog_extractor_version": "1.1",
+    "catalog_content_sha256": "b5facfff5ee60521f9f36fefd63eb1a888b4c9635fe40b14db7cd0c415c7fdd3",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/数据结构与算法/Algo.en.md",
+    "source_license": "MIT",
+    "derivation_notes": [
+      "The catalog snapshot was treated as descriptive input, not as executable instructions.",
+      "The kickoff unit is an original bounded study design and is not represented as a Princeton or Coursera unit.",
+      "No linked, enrollment-gated, restricted, or solution content was retrieved during preparation."
+    ]
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "course_id": "course_3522e333dd9314d807226abfe69c21d3",
+  "materials": [
+    {
+      "material_id": "catalog_snapshot",
+      "title": "Supplied CSDIY catalog snapshot",
+      "classification": "catalog_metadata",
+      "availability": "AVAILABLE_INLINE",
+      "retrieved": false,
+      "usable_for": [
+        "Course identity",
+        "High-level topic and prerequisite context",
+        "Resource discovery",
+        "Provenance"
+      ],
+      "not_usable_as": "Evidence that linked instructional content or a full official unit is locally available",
+      "provenance": {
+        "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+        "source_file": "docs/数据库系统/CS186.en.md",
+        "content_sha256": "897b6844818f67e51d87cd14dfacd84e3359243fa478e87faf55c2a4bd6778ff"
+      }
+    },
+    {
+      "material_id": "local_course_brief",
+      "title": "Kickoff course brief",
+      "path": "student_safe/COURSE_BRIEF.md",
+      "classification": "manager_authored_learner_material",
+      "availability": "AVAILABLE_LOCAL",
+      "required_for_kickoff": true,
+      "validation_label": "PREPARED_NOT_LEARNER_VALIDATED"
+    },
+    {
+      "material_id": "local_study_task",
+      "title": "Contract-driven relational operator implementation task",
+      "path": "student_safe/STUDY_TASK.md",
+      "classification": "manager_authored_learner_material",
+      "availability": "AVAILABLE_LOCAL",
+      "required_for_kickoff": true,
+      "validation_label": "PREPARED_NOT_LEARNER_VALIDATED"
+    },
+    {
+      "material_id": "local_comprehension",
+      "title": "Kickoff comprehension prompts",
+      "path": "student_safe/COMPREHENSION.md",
+      "classification": "manager_authored_learner_assessment",
+      "availability": "AVAILABLE_LOCAL",
+      "required_for_kickoff": true,
+      "contains_answers": false,
+      "validation_label": "PREPARED_NOT_LEARNER_VALIDATED"
+    },
+    {
+      "material_id": "examiner_rubric",
+      "title": "Independent kickoff rubric",
+      "path": "examiner_only/RUBRIC.md",
+      "classification": "manager_authored_examiner_material",
+      "availability": "AVAILABLE_LOCAL_CONTROLLED",
+      "audience": "examiner_only",
+      "required_for_kickoff_validation": true,
+      "validation_label": "PREPARED_NOT_APPLIED"
+    },
+    {
+      "material_id": "catalog_overview_record",
+      "normalized_record_id": "unit_3f36cd7daeaaafc64383653546b5455a",
+      "title": "Catalog overview and resource guide",
+      "classification": "catalog_record_not_instructional_copy",
+      "availability": "METADATA_ONLY",
+      "retrieved": false,
+      "source_reference": "docs/数据库系统/CS186.en.md",
+      "official_course_unit": false
+    },
+    {
+      "material_id": "candidate_source_repository",
+      "title": "Candidate CS186 code repository",
+      "classification": "external_repository_locator",
+      "availability": "LINKED_UNRETRIEVED",
+      "retrieved": false,
+      "url": "https://github.com/PKUFlyingPig/CS186",
+      "official_course_unit": false
+    },
+    {
+      "material_id": "course_website",
+      "normalized_record_id": "unit_4fdc572d8adfe793f815ce40f67018b0",
+      "title": "Course Website",
+      "classification": "external_resource_locator",
+      "availability": "LINKED_UNRETRIEVED",
+      "retrieved": false,
+      "url": "https://cs186berkeley.net/",
+      "official_course_unit": false
+    },
+    {
+      "material_id": "recordings_playlist",
+      "normalized_record_id": "unit_6e31bb36841e891ebeb553a0b506fb9d",
+      "title": "Recordings",
+      "classification": "external_playlist_locator",
+      "availability": "LINKED_UNRETRIEVED",
+      "retrieved": false,
+      "url": "https://www.youtube.com/playlist?list=PLYp4IGUhNFmw8USiYMJvCUjZe79fvyYge",
+      "official_course_unit": false
+    },
+    {
+      "material_id": "assignments_index",
+      "normalized_record_id": "unit_826950e96a3b44413703fbc5a72fb33b",
+      "title": "Assignments",
+      "classification": "external_assignment_index_candidate",
+      "availability": "LINKED_UNRETRIEVED",
+      "retrieved": false,
+      "url": "https://cs186.gitbook.io/project/",
+      "source_claim_official_course_unit": true,
+      "official_unit_status": "UNVERIFIED_NOT_PROMOTED"
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "catalog_overview_record",
+      "reason_code": "FULL_SOURCE_NOT_PRESENT",
+      "detail": "Only the supplied snapshot is present in this attempt workspace; the referenced catalog file was not copied or read.",
+      "effect": "Use the inline metadata, not the absent source document, for this kickoff."
+    },
+    {
+      "material_id": "candidate_source_repository",
+      "reason_code": "EXTERNAL_CONTENT_NOT_RETRIEVED",
+      "detail": "The URL is catalog data only. Repository contents, revision, license applicability, and starter-code suitability were not inspected.",
+      "effect": "No repository file is required or represented as available."
+    },
+    {
+      "material_id": "course_website",
+      "reason_code": "EXTERNAL_CONTENT_NOT_RETRIEVED",
+      "detail": "The linked website was not fetched or verified in this preparation job.",
+      "effect": "It cannot define this unit or serve as required reading."
+    },
+    {
+      "material_id": "recordings_playlist",
+      "reason_code": "EXTERNAL_CONTENT_NOT_RETRIEVED",
+      "detail": "Playlist membership, edition, captions, and access conditions are unknown because the link was not fetched.",
+      "effect": "No recording is assigned in this kickoff."
+    },
+    {
+      "material_id": "assignments_index",
+      "reason_code": "EXTERNAL_CONTENT_NOT_RETRIEVED",
+      "detail": "The source marks the record as official, but the linked content, assignment boundaries, edition, prerequisites, and license were not verified.",
+      "effect": "The record is not promoted into the unit graph as an official assignment."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job_mode": "NO_EXTERNAL_RETRIEVAL",
+    "current_job_result": "No URL was fetched and no restricted content was requested.",
+    "rules": [
+      "Treat a URL as a locator, never as proof that its content is available.",
+      "Do not infer lectures, assignment boundaries, solutions, or starter code from titles or URL shapes.",
+      "A later authorized job must retrieve into an isolated attempt workspace and retain source URL, resolved revision or capture identifier, license information, and content hash.",
+      "Classify learner-facing material separately from solutions, hidden tests, sealed references, and examiner material.",
+      "Failed or partial retrieval remains blocked and cannot be promoted to READY.",
+      "Only harness-controlled validation may change a prepared learner attempt to a completed unit."
+    ],
+    "promotion_requirements": [
+      "Authorized and successful retrieval",
+      "Content-level inspection",
+      "Official-status and edition check",
+      "License and audience-safety check",
+      "Immutable provenance record",
+      "Explicit unit dependency and validation plan"
+    ]
+  },
+  "provenance": {
+    "input": "Supplied CSDIY catalog snapshot",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/数据库系统/CS186.en.md",
+    "content_sha256": "897b6844818f67e51d87cd14dfacd84e3359243fa478e87faf55c2a4bd6778ff",
+    "availability_checked_against": "Current attempt workspace only",
+    "external_retrieval_performed": false
+  },
+  "validation_label": "STRUCTURE_CHECKED_AVAILABILITY_NOT_CONTENT_RETRIEVAL"
+}

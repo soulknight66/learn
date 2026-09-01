@@ -1,0 +1,14 @@
+{
+  "name": "mini-express-framework-starter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test ../public_tests/*.test.js"
+  },
+  "engines": {
+    "node": ">=18.17"
+  }
+}
+

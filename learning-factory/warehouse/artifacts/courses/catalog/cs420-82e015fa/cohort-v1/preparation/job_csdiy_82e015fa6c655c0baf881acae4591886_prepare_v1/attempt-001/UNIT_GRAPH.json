@@ -1,0 +1,160 @@
+{
+  "course_id": "course_82e015fa6c655c0baf881acae4591886",
+  "nodes": [
+    {
+      "node_id": "prerequisite_data_structures",
+      "node_type": "prerequisite",
+      "title": "Data Structures",
+      "origin": "catalog_claim",
+      "official_course_unit": false
+    },
+    {
+      "node_id": "prerequisite_systems_and_rust",
+      "node_type": "prerequisite",
+      "title": "Basic Computer Systems and Rust Programming",
+      "origin": "catalog_claim",
+      "official_course_unit": false
+    },
+    {
+      "node_id": "managed_unit_01_ast_traversal_engineering",
+      "node_type": "managed_study_unit",
+      "title": "AST Traversal as an Engineering Component",
+      "origin": "course_manager",
+      "classification": "bounded_manager_authored_kickoff",
+      "official_course_unit": false,
+      "status": "READY",
+      "estimated_human_hours": 6
+    },
+    {
+      "node_id": "unit_b78cbf727468ab10944bb088bfb918a4",
+      "node_type": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "record_type": "reading",
+      "source_reference": "docs/编译原理/CS420.en.md",
+      "classification": "catalog_evidence_record",
+      "availability": "SNAPSHOT_RECORD_AVAILABLE",
+      "source_metadata_official_course_unit": false,
+      "adopted_as_official_course_unit": false
+    },
+    {
+      "node_id": "unit_71755e5cf14f1c003121f0a6e42a7857",
+      "node_type": "normalized_resource_record",
+      "title": "Course Website",
+      "record_type": "reading",
+      "source_reference": "docs/编译原理/CS420.en.md#L19",
+      "classification": "external_resource_locator",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "source_metadata_official_course_unit": false,
+      "adopted_as_official_course_unit": false
+    },
+    {
+      "node_id": "unit_3977fa8b2b46928c7ad52a1dfe78bd80",
+      "node_type": "normalized_resource_record",
+      "title": "Recordings",
+      "record_type": "lecture",
+      "source_reference": "docs/编译原理/CS420.en.md#L20",
+      "classification": "external_resource_locator",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "source_metadata_official_course_unit": false,
+      "adopted_as_official_course_unit": false
+    },
+    {
+      "node_id": "unit_bb70fe17d7359ebcdf167628841da943",
+      "node_type": "normalized_resource_record",
+      "title": "Textbooks",
+      "record_type": "reading",
+      "source_reference": "docs/编译原理/CS420.en.md#L21",
+      "classification": "external_resource_locator",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "source_metadata_official_course_unit": false,
+      "adopted_as_official_course_unit": false
+    },
+    {
+      "node_id": "unit_3627120fa5cd3339955e47bce05cbc58",
+      "node_type": "normalized_resource_record",
+      "title": "Assignments",
+      "record_type": "assignment",
+      "source_reference": "docs/编译原理/CS420.en.md#L22",
+      "classification": "official_assignment_index_locator_pending_inspection",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "source_metadata_official_course_unit": true,
+      "adopted_as_official_course_unit": false,
+      "classification_note": "The source flag identifies an official assignment resource, but this normalized record is only a link to an assignment section and does not establish assignment titles, order, requirements, or completion."
+    },
+    {
+      "node_id": "future_unit_expansion_gate",
+      "node_type": "process_gate",
+      "title": "Retrieve, verify, and classify official structure",
+      "origin": "course_manager",
+      "official_course_unit": false,
+      "status": "BLOCKED_PENDING_AUTHORIZED_RETRIEVAL"
+    }
+  ],
+  "edges": [
+    {
+      "from": "prerequisite_data_structures",
+      "to": "managed_unit_01_ast_traversal_engineering",
+      "relation": "prerequisite_for",
+      "required": true
+    },
+    {
+      "from": "prerequisite_systems_and_rust",
+      "to": "managed_unit_01_ast_traversal_engineering",
+      "relation": "prerequisite_for",
+      "required": true
+    },
+    {
+      "from": "unit_b78cbf727468ab10944bb088bfb918a4",
+      "to": "managed_unit_01_ast_traversal_engineering",
+      "relation": "informs_manager_scope",
+      "required": false
+    },
+    {
+      "from": "unit_71755e5cf14f1c003121f0a6e42a7857",
+      "to": "future_unit_expansion_gate",
+      "relation": "candidate_input_for_retrieval",
+      "required": true
+    },
+    {
+      "from": "unit_3977fa8b2b46928c7ad52a1dfe78bd80",
+      "to": "future_unit_expansion_gate",
+      "relation": "candidate_input_for_retrieval",
+      "required": false
+    },
+    {
+      "from": "unit_bb70fe17d7359ebcdf167628841da943",
+      "to": "future_unit_expansion_gate",
+      "relation": "candidate_input_for_retrieval",
+      "required": false
+    },
+    {
+      "from": "unit_3627120fa5cd3339955e47bce05cbc58",
+      "to": "future_unit_expansion_gate",
+      "relation": "candidate_input_for_retrieval",
+      "required": true
+    },
+    {
+      "from": "managed_unit_01_ast_traversal_engineering",
+      "to": "future_unit_expansion_gate",
+      "relation": "bounded_kickoff_before_possible_expansion",
+      "required": false,
+      "course_sequence_claim": false
+    }
+  ],
+  "record_boundary": {
+    "statement": "Normalized records are catalog-derived evidence or locators to classify; they are not automatically official course units.",
+    "classification_rule": "A later job may adopt an official unit only after authorized retrieval verifies the resource content, unit identity, ordering, dependencies, and provenance.",
+    "normalized_record_ids": [
+      "unit_b78cbf727468ab10944bb088bfb918a4",
+      "unit_71755e5cf14f1c003121f0a6e42a7857",
+      "unit_3977fa8b2b46928c7ad52a1dfe78bd80",
+      "unit_bb70fe17d7359ebcdf167628841da943",
+      "unit_3627120fa5cd3339955e47bce05cbc58"
+    ],
+    "adopted_official_unit_ids": [],
+    "manager_authored_unit_ids": [
+      "managed_unit_01_ast_traversal_engineering"
+    ],
+    "boundary_note": "The kickoff is pedagogically aligned with the catalog description but is not represented as KAIST-authored, copied from KECC, or part of a verified official sequence."
+  }
+}

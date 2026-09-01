@@ -1,0 +1,111 @@
+{
+  "course_id": "course_e16393fe64c471543127355ed65afd20",
+  "materials": [
+    {
+      "material_id": "local_kickoff_01",
+      "title": "Manager-authored kickoff learner packet",
+      "kind": "local_study_unit",
+      "location": "student_safe/",
+      "availability": "AVAILABLE_LOCAL",
+      "retrieved": false,
+      "required": true,
+      "official_course_material": false,
+      "use": "The complete required learner-facing basis for this kickoff."
+    },
+    {
+      "material_id": "unit_12b298910751928f99265d4ddfddb083",
+      "title": "Catalog overview and resource guide",
+      "kind": "catalog_record",
+      "location": "docs/数学进阶/numerical.en.md",
+      "availability": "METADATA_IN_SNAPSHOT_ONLY",
+      "retrieved": false,
+      "required": false,
+      "official_course_material": false,
+      "use": "Topic discovery and link provenance only; not instructional content."
+    },
+    {
+      "material_id": "unit_9cae2871bd166d0c0a5c9f1d34b6c5dc",
+      "title": "Course Website",
+      "kind": "external_link",
+      "urls": [
+        "https://github.com/mitmath/18330"
+      ],
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "required": false,
+      "official_course_material": "UNVERIFIED",
+      "use": "Candidate source for later authorized expansion."
+    },
+    {
+      "material_id": "unit_313d825a66619fa5f9c6062422165180",
+      "title": "Textbook",
+      "kind": "external_link",
+      "urls": [
+        "https://fncbook.com"
+      ],
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "required": false,
+      "official_course_material": "UNVERIFIED",
+      "use": "Candidate source for later authorized expansion."
+    },
+    {
+      "material_id": "unit_f5a63ab145db7b687b4e26689c0705a8",
+      "title": "Assignments",
+      "kind": "aggregate_assignment_descriptor",
+      "description": "The catalog says there are 10 problem sets but supplies no assignment bodies or individual sequence.",
+      "availability": "DESCRIBED_ONLY_CONTENT_UNAVAILABLE",
+      "retrieved": false,
+      "required": false,
+      "official_course_material": true,
+      "use": "Discovery fact only; cannot support study or completion claims."
+    },
+    {
+      "material_id": "catalog_link_pkuflyingpig_mit18330",
+      "title": "MIT18.330 repository link listed in catalog metadata",
+      "kind": "unnormalized_external_link",
+      "urls": [
+        "https://github.com/PKUFlyingPig/MIT18.330"
+      ],
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "retrieved": false,
+      "required": false,
+      "official_course_material": "UNVERIFIED",
+      "use": "Candidate mirror or derivative; identity and contents require later review."
+    }
+  ],
+  "blocked": [
+    {
+      "item": "Official syllabus and authoritative unit sequence",
+      "reason": "Not present in the supplied snapshot and not retrieved.",
+      "impact": "No whole-course unit graph or sequencing claim can be made."
+    },
+    {
+      "item": "Bodies, starter code, tests, and grading details for the described 10 problem sets",
+      "reason": "Only the aggregate phrase '10 problem sets' is available.",
+      "impact": "None may be assigned, evaluated, or counted as completed."
+    },
+    {
+      "item": "Contents of the linked course website, textbook, and repository/mirror",
+      "reason": "The job provides links only; no external content was fetched or vendored.",
+      "impact": "They are optional discovery leads and are not dependencies of the kickoff."
+    },
+    {
+      "item": "License and redistribution terms for each linked artifact",
+      "reason": "The catalog source license does not establish the license of every linked resource.",
+      "impact": "Later jobs must verify per-artifact rights before copying content."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": "Do not fetch external or restricted content; use only the supplied catalog snapshot and locally authored kickoff files.",
+    "later_jobs": [
+      "Retrieve only through an authorized mechanism and obey access controls; do not bypass authentication, robots controls, paywalls, or other restrictions.",
+      "For every artifact, record the canonical URL, retrieval result, retrieval time, content digest, license or usage terms, and source revision when available.",
+      "Keep link discovery, successful retrieval, content validation, and official-unit classification as separate states.",
+      "Inspect content before adding dependencies or ordering; a repository, webpage, or normalized record is not automatically a course unit.",
+      "Quarantine unavailable, ambiguous, or restricted items from learner views and never expose secrets, hidden graders, sealed references, or another learner's work.",
+      "Preserve failed retrieval evidence and expand the graph only from validated artifacts."
+    ],
+    "fallback": "If a resource remains unavailable, retain its blocked status and build no completion requirement that depends on it."
+  }
+}

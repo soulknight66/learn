@@ -1,0 +1,156 @@
+{
+  "course_id": "course_0cde7309bb43985ccd240c7cb7544b54",
+  "materials": [
+    {
+      "material_id": "material_catalog_overview",
+      "normalized_record_id": "unit_903a98f8d98bd7f50633f2e9bd10a914",
+      "title": "Catalog overview and resource guide",
+      "type": "reading",
+      "source_reference": "docs/数学进阶/convex.en.md",
+      "catalog_official_course_unit": false,
+      "catalog_availability": "PRESENT_IN_SUPPLIED_SNAPSHOT",
+      "managed_availability": "AVAILABLE_METADATA_ONLY",
+      "external_content_retrieved": false,
+      "usable_for_current_unit": true,
+      "note": "The supplied description and metadata are usable as catalog context; the source file itself was not opened or copied into the unit."
+    },
+    {
+      "material_id": "material_course_website",
+      "normalized_record_id": "unit_1ae2bb60e0335890f0708d2427fec7af",
+      "title": "Course Website",
+      "type": "reading",
+      "source_reference": "docs/数学进阶/convex.en.md#L17",
+      "urls": [
+        "http://stanford.edu/class/ee364a/index.html"
+      ],
+      "catalog_official_course_unit": false,
+      "catalog_availability": "LINKED",
+      "managed_availability": "LINK_ONLY_NOT_RETRIEVED_OR_VERIFIED",
+      "usable_for_current_unit": false
+    },
+    {
+      "material_id": "material_recordings",
+      "normalized_record_id": "unit_8c1f78443a0d6f94aa79e459de2dd76a",
+      "title": "Recordings",
+      "type": "lecture",
+      "source_reference": "docs/数学进阶/convex.en.md#L18",
+      "urls": [
+        "https://www.youtube.com/watch?v=VNON98dKjno&list=PLoCMsyE1cvdXeoqd1hGaMBsCAQQ6otUtO"
+      ],
+      "catalog_official_course_unit": false,
+      "catalog_availability": "LINKED",
+      "managed_availability": "LINK_ONLY_NOT_RETRIEVED_OR_VERIFIED",
+      "usable_for_current_unit": false
+    },
+    {
+      "material_id": "material_textbook",
+      "normalized_record_id": "unit_520fb81dec2323b223efd60866a9bbb1",
+      "title": "Convex Optimization textbook landing page",
+      "type": "reading",
+      "source_reference": "docs/数学进阶/convex.en.md#L19",
+      "urls": [
+        "https://stanford.edu/~boyd/cvxbook/"
+      ],
+      "catalog_official_course_unit": false,
+      "catalog_availability": "LINKED",
+      "managed_availability": "LINK_ONLY_NOT_RETRIEVED_OR_VERIFIED",
+      "usable_for_current_unit": false
+    },
+    {
+      "material_id": "material_assignments",
+      "normalized_record_id": "unit_3d6f28b788f835abcf1bea23a192a8f2",
+      "title": "Assignments",
+      "type": "assignment",
+      "source_reference": "docs/数学进阶/convex.en.md#L20",
+      "urls": [],
+      "catalog_official_course_unit": true,
+      "officiality_verification": "UNVERIFIED_SOURCE_ASSERTION",
+      "catalog_availability": "DESCRIBED",
+      "managed_availability": "UNAVAILABLE_DESCRIPTION_ONLY",
+      "usable_for_current_unit": false,
+      "note": "The snapshot says only 'refer to the course website'; no assignment body or direct assignment locator is present."
+    },
+    {
+      "material_id": "material_instructor_profile",
+      "normalized_record_id": null,
+      "title": "Stephen Boyd profile link",
+      "type": "context_link",
+      "source_reference": "course description and source_metadata.resource_urls",
+      "urls": [
+        "http://web.stanford.edu/~boyd"
+      ],
+      "catalog_official_course_unit": false,
+      "catalog_availability": "LINKED",
+      "managed_availability": "LINK_ONLY_NOT_RETRIEVED_OR_VERIFIED",
+      "usable_for_current_unit": false
+    },
+    {
+      "material_id": "material_supplemental_repository",
+      "normalized_record_id": null,
+      "title": "Catalog-listed supplemental repository",
+      "type": "repository_link",
+      "source_reference": "source_metadata.resource_urls",
+      "urls": [
+        "https://github.com/PKUFlyingPig/Standford_CVX101"
+      ],
+      "catalog_official_course_unit": false,
+      "officiality_verification": "UNKNOWN_UNVERIFIED",
+      "catalog_availability": "LINKED",
+      "managed_availability": "LINK_ONLY_NOT_RETRIEVED_OR_VERIFIED",
+      "usable_for_current_unit": false
+    }
+  ],
+  "blocked": [
+    {
+      "block_id": "block_assignment_content_missing",
+      "material_ids": [
+        "material_assignments"
+      ],
+      "reason_code": "NO_DIRECT_RESOURCE_OR_CONTENT",
+      "reason": "The supplied snapshot contains only an instruction to consult the course website.",
+      "required_for_current_unit": false,
+      "impact": "No official assignment can be registered or reconstructed from this record.",
+      "future_resolution": "An authorized later job must retrieve the course website, locate assignment content, verify provenance and access rights, and validate each assignment before registration."
+    },
+    {
+      "block_id": "block_external_content_not_local",
+      "material_ids": [
+        "material_course_website",
+        "material_recordings",
+        "material_textbook",
+        "material_instructor_profile",
+        "material_supplemental_repository"
+      ],
+      "reason_code": "LINK_ONLY_CURRENT_JOB_NO_FETCH",
+      "reason": "Only catalog URLs were supplied. This preparation job did not fetch, authenticate to, or verify any external target.",
+      "required_for_current_unit": false,
+      "impact": "Titles, contents, ordering, licenses, and accessibility cannot be used to create later units yet.",
+      "future_resolution": "A separately authorized retrieval job may inspect publicly accessible targets under the retrieval policy."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": {
+      "network_retrieval_performed": false,
+      "restricted_content_retrieval_performed": false,
+      "authentication_attempted": false,
+      "current_unit_has_external_dependency": false
+    },
+    "later_jobs": {
+      "authorization_required": true,
+      "rules": [
+        "Use only access explicitly permitted to the later job; never bypass authentication, paywalls, robots controls, or other access restrictions.",
+        "Treat every catalog URL as an unverified pointer until the target is retrieved and classified.",
+        "Record the requested URL, resolved URL, retrieval outcome, retrieval time, content hash, media type, access conditions, and license when known.",
+        "Preserve failed retrieval evidence instead of converting a failure into an availability claim.",
+        "Keep retrieved content out of student-safe views until provenance, license, officiality, and leakage checks pass.",
+        "Do not promote a normalized resource record to an official unit solely because it is normalized or source-labeled official."
+      ],
+      "recommended_order": [
+        "Verify the official course website and locate a syllabus or schedule.",
+        "Inventory textbook and recording coverage without assuming their ordering matches the syllabus.",
+        "Locate and validate assignment bodies and their dependencies.",
+        "Register later units only after their required materials and validation boundaries are explicit."
+      ]
+    }
+  }
+}

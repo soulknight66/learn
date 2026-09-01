@@ -1,0 +1,180 @@
+{
+  "course_id": "course_63591b4f60aac46ccd4763128a3613b3",
+  "nodes": [
+    {
+      "node_id": "unit_kickoff_union_find_engineering_v1",
+      "node_type": "managed_study_unit",
+      "title": "From Disjoint-Set Theory to a Reliable Connectivity Component",
+      "classification": "COURSE_MANAGER_AUTHORED_KICKOFF",
+      "official_course_unit": false,
+      "status": "READY_FOR_LEARNER",
+      "bounded": true,
+      "estimated_human_hours": 8,
+      "requires_external_course_material": false
+    },
+    {
+      "node_id": "activity_contract_invariants",
+      "node_type": "learning_activity",
+      "parent_unit_id": "unit_kickoff_union_find_engineering_v1",
+      "title": "Define the API contract and representation invariants",
+      "classification": "MANAGER_AUTHORED",
+      "official_course_unit": false
+    },
+    {
+      "node_id": "activity_union_find_implementation",
+      "node_type": "learning_activity",
+      "parent_unit_id": "unit_kickoff_union_find_engineering_v1",
+      "title": "Implement weighted union and path compression",
+      "classification": "MANAGER_AUTHORED",
+      "official_course_unit": false
+    },
+    {
+      "node_id": "activity_connectivity_client",
+      "node_type": "learning_activity",
+      "parent_unit_id": "unit_kickoff_union_find_engineering_v1",
+      "title": "Build the connectivity-milestone client",
+      "classification": "MANAGER_AUTHORED",
+      "official_course_unit": false
+    },
+    {
+      "node_id": "activity_verification",
+      "node_type": "learning_activity",
+      "parent_unit_id": "unit_kickoff_union_find_engineering_v1",
+      "title": "Run deterministic and model-based verification",
+      "classification": "MANAGER_AUTHORED",
+      "official_course_unit": false
+    },
+    {
+      "node_id": "activity_comprehension",
+      "node_type": "learning_activity",
+      "parent_unit_id": "unit_kickoff_union_find_engineering_v1",
+      "title": "Explain correctness, complexity, tests, and operational limits",
+      "classification": "MANAGER_AUTHORED",
+      "official_course_unit": false
+    },
+    {
+      "node_id": "unit_4160e33528ade6c4d2a11510793fb487",
+      "node_type": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "classification": "CATALOG_OVERVIEW_INPUT",
+      "source_claimed_official_course_unit": false,
+      "promoted_to_managed_unit": false,
+      "availability": "SNAPSHOT_METADATA_AVAILABLE",
+      "source_reference": "docs/数据结构与算法/Algo.en.md"
+    },
+    {
+      "node_id": "unit_df7e8a2e51f9405aec35eaa477a76c76",
+      "node_type": "normalized_resource_record",
+      "title": "Course Website",
+      "classification": "RESOURCE_INDEX_POINTER",
+      "source_claimed_official_course_unit": false,
+      "promoted_to_managed_unit": false,
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "source_reference": "docs/数据结构与算法/Algo.en.md#L28"
+    },
+    {
+      "node_id": "unit_c4cf30d0acc22c403b899e96dbc5d0e0",
+      "node_type": "normalized_resource_record",
+      "title": "Recordings",
+      "classification": "RESOURCE_INDEX_POINTER",
+      "source_claimed_official_course_unit": false,
+      "promoted_to_managed_unit": false,
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "source_reference": "docs/数据结构与算法/Algo.en.md#L29"
+    },
+    {
+      "node_id": "unit_5cb58ad5b57c9533629a9262e1c9a77f",
+      "node_type": "normalized_resource_record",
+      "title": "Textbooks",
+      "classification": "TEXTBOOK_POINTER",
+      "source_claimed_official_course_unit": false,
+      "promoted_to_managed_unit": false,
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "source_reference": "docs/数据结构与算法/Algo.en.md#L30"
+    },
+    {
+      "node_id": "unit_9a8f018f0b9c945921d88cb332d6abc1",
+      "node_type": "normalized_resource_record",
+      "title": "Assignments",
+      "classification": "OFFICIAL_ASSIGNMENT_COLLECTION_DESCRIPTOR_UNEXPANDED",
+      "source_claimed_official_course_unit": true,
+      "promoted_to_managed_unit": false,
+      "availability": "DESCRIBED_ONLY",
+      "source_reference": "docs/数据结构与算法/Algo.en.md#L31",
+      "promotion_blocker": "The snapshot states that ten projects exist but contains no individual specifications, ordering, starter files, or validation contracts."
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_4160e33528ade6c4d2a11510793fb487",
+      "to": "unit_kickoff_union_find_engineering_v1",
+      "relation": "informs_manager_authored_scope",
+      "dependency": false
+    },
+    {
+      "from": "unit_df7e8a2e51f9405aec35eaa477a76c76",
+      "to": "unit_kickoff_union_find_engineering_v1",
+      "relation": "candidate_for_later_expansion_not_required_now",
+      "dependency": false
+    },
+    {
+      "from": "unit_c4cf30d0acc22c403b899e96dbc5d0e0",
+      "to": "unit_kickoff_union_find_engineering_v1",
+      "relation": "candidate_for_later_expansion_not_required_now",
+      "dependency": false
+    },
+    {
+      "from": "unit_5cb58ad5b57c9533629a9262e1c9a77f",
+      "to": "unit_kickoff_union_find_engineering_v1",
+      "relation": "optional_pointer_not_retrieved",
+      "dependency": false
+    },
+    {
+      "from": "unit_9a8f018f0b9c945921d88cb332d6abc1",
+      "to": "unit_kickoff_union_find_engineering_v1",
+      "relation": "excluded_unexpanded_official_collection",
+      "dependency": false
+    },
+    {
+      "from": "activity_contract_invariants",
+      "to": "activity_union_find_implementation",
+      "relation": "precedes",
+      "dependency": true
+    },
+    {
+      "from": "activity_union_find_implementation",
+      "to": "activity_connectivity_client",
+      "relation": "precedes",
+      "dependency": true
+    },
+    {
+      "from": "activity_union_find_implementation",
+      "to": "activity_verification",
+      "relation": "precedes",
+      "dependency": true
+    },
+    {
+      "from": "activity_connectivity_client",
+      "to": "activity_verification",
+      "relation": "precedes",
+      "dependency": true
+    },
+    {
+      "from": "activity_verification",
+      "to": "activity_comprehension",
+      "relation": "precedes",
+      "dependency": true
+    }
+  ],
+  "record_boundary": {
+    "source_statement": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+    "policy": [
+      "A normalized record is retained as an input record unless verified content establishes a specific teachable unit.",
+      "A link is not evidence that its content was retrieved, accessible, licensed for copying, or validated.",
+      "The aggregate assignment descriptor is not split into ten units without individual official specifications.",
+      "Only the manager-authored kickoff is currently actionable; it is not attributed to Princeton or Coursera.",
+      "Future graph expansion must preserve source identifiers, provenance, availability checks, and explicit official-versus-authored classification."
+    ],
+    "edge_direction": "For dependency edges, from is the prerequisite and to is the dependent node. Nondependency catalog edges express classification context only."
+  }
+}

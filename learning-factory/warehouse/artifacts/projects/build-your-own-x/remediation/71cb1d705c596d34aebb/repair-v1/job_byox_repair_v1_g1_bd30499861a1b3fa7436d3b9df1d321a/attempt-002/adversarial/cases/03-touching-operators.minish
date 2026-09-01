@@ -1,0 +1,1 @@
+/usr/bin/printf left|/usr/bin/wc -c;/usr/bin/printf right>>joined;/usr/bin/cat<joined

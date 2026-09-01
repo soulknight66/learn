@@ -1,0 +1,36 @@
+{
+  "builder_job_id": "job_byox_build_v1_21b2ac0513468c6d92f6d99461b49d53",
+  "checks_run": [
+    "Inspected all 40 submitted files, the manifest/provenance objects, learner-facing progression, sealed material, source, tests, and validation claims.",
+    "Ran the environment and artifact verifiers read-only against CANDIDATE.",
+    "Built the starter and sealed reference from a disposable copy with the documented C11 warning-as-error flags.",
+    "Ran the public baseline, public suite against the reference, sealed reference suite, and Makefile check wrapper.",
+    "Ran reviewer-authored deterministic checks for CLI behavior, lexical behavior, exact resource boundaries, declarations, control flow, deterministic emission, and output-path errors.",
+    "Compared 160 seeded expressions with an independent signed-64-bit oracle and with linked native output.",
+    "Rebuilt and exercised the reference under GCC -O0, -O2, and -O3.",
+    "Audited failure-format conformance, artifact completeness checks, file visibility, credential-shaped text, unsafe process APIs, and provenance digests.",
+    "Attempted an ASan/UBSan build and inventoried additional analysis toolchains."
+  ],
+  "evidence": [
+    "The documented starter baseline reproduced: 7 public tests ran, 2 lexer tests passed, and 5 unfinished-stage tests failed.",
+    "The reference passed 7/7 public tests and 14/14 sealed tests; the wrapper passed the same 14 tests.",
+    "Ten reviewer-authored check groups passed, including the 65,536/65,537 AST-node and 128/129 depth boundaries; 160 seeded expressions matched an independent oracle in interpreted and native modes.",
+    "The documented Fibonacci compile/link/run smoke result reproduced exactly: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34.",
+    "Invalid CLI usage is nonconforming: the reference returns 2 but emits three stderr lines beginning with 'usage:', contrary to the normative one-line 'mica: <phase> error:' requirement; the starter has the same implementation.",
+    "All sealed answers, stronger tests, and the complete reference are readable at mode 0444 in the submitted tree; no independently verifiable learner-view projection or transfer evidence is included.",
+    "The artifact verifier still returned 0 in a disposable negative control after the starter source, public test runner, reference source, and sealed test runner were removed, because those core paths are absent from its required inventory.",
+    "The manifest's provenance_sha256 equals PROVENANCE.json's internal snapshot_sha256, but it is neither the submitted file SHA-256 nor its canonical-JSON SHA-256; no content inventory binds the rest of the artifact.",
+    "The manifest honestly remains GENERATED plus PARTIAL, requires independent validation, sets productionized false, and makes no BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED claim.",
+    "The learner materials provide a useful staged path, explicit semantics, design prompts, adversarial examples, and separated answer material, subject to the isolation concern."
+  ],
+  "limitations": [
+    "ASan/UBSan could not link because /usr/lib64/libasan.so.5.0.0 and /usr/lib64/libubsan.so.1.0.0 are unavailable; no sanitizer coverage is claimed.",
+    "clang, valgrind, cppcheck, and scan-build are unavailable on this host.",
+    "Testing was limited to one x86-64/GCC 8.5.0/glibc environment; no cross-platform conclusion is supported.",
+    "Network and the recorded upstream/source repository were unavailable, so CC0 evidence, source-commit contents, and the no-copy/no-close-paraphrase provenance assertion could not be independently verified.",
+    "The factory's external student-view materialization was not available, so actual transfer isolation is inconclusive; the submitted tree itself does not enforce the stated sealed boundary.",
+    "No fuzzing, benchmark, production, or transfer-validation conclusion is made."
+  ],
+  "project_id": "project_bd342fcec50cb8a15740cbb98e57bc1e",
+  "verdict": "REVISE"
+}

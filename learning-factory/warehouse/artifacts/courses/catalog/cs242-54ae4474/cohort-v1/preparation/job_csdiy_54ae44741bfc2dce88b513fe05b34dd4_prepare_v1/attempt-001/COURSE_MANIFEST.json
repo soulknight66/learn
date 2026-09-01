@@ -1,0 +1,95 @@
+{
+  "course_id": "course_54ae44741bfc2dce88b513fe05b34dd4",
+  "title": "CS242 Programming Languages",
+  "status": "IN_PROGRESS",
+  "unit": {
+    "unit_id": "managed_unit_01_lambda_evaluator",
+    "title": "From Reduction Rules to a Tested Lambda-Calculus Evaluator",
+    "position": 1,
+    "status": "READY_FOR_STUDY",
+    "origin": "course_manager_authored_from_catalog_topics",
+    "official_course_unit": false,
+    "audience": "A strong algorithms student beginning deliberate software-engineering practice",
+    "estimated_hours": {
+      "minimum": 6,
+      "target": 8,
+      "maximum": 10
+    },
+    "prerequisites": [
+      "Comfort with recursion, trees, sets, and asymptotic reasoning",
+      "Ability to write and run unit tests in one locally available programming language",
+      "Basic familiarity with variable binding and functions"
+    ],
+    "learning_objectives": [
+      "Translate a small-step operational semantics into modular executable code",
+      "Implement free-variable analysis and capture-avoiding substitution",
+      "Make fresh-name generation and evaluator outcomes deterministic",
+      "Separate semantic logic, execution limits, tests, and user-facing evidence",
+      "Use focused tests to expose binding, evaluation-order, stuck-term, and fuel-boundary defects"
+    ],
+    "scope": {
+      "included": [
+        "A named abstract syntax tree for the untyped lambda calculus",
+        "Free-variable computation and alpha-equivalence",
+        "Capture-avoiding substitution",
+        "Deterministic call-by-value small-step evaluation",
+        "A fuel-bounded driver with explicit Value, Stuck, and OutOfFuel outcomes",
+        "Unit, boundary, and interaction tests plus concise engineering documentation"
+      ],
+      "excluded": [
+        "Parsing or a command-line REPL",
+        "Static type checking or type inference",
+        "De Bruijn indices and compiler optimization",
+        "OCaml or Rust language instruction",
+        "WebAssembly, ownership, async Rust, session types, and final projects",
+        "Any claim of completing an official Stanford assignment or the full CS242 course"
+      ]
+    },
+    "learner_files": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ]
+  },
+  "completion_policy": {
+    "scope": "THIS_MANAGED_UNIT_ONLY",
+    "unit_completion_requires": [
+      "A runnable implementation of every operation named in STUDY_TASK.md",
+      "A deterministic automated test suite covering every required behavior class",
+      "A reproducible local test command and captured result summary",
+      "A short decision record explaining representation, freshness, and result-state choices",
+      "Learner-authored responses to every prompt in COMPREHENSION.md",
+      "Independent harness-controlled validation against examiner_only/RUBRIC.md"
+    ],
+    "evidence_rule": "Files, captured commands, and validator results are evidence; a prose declaration of completion is not.",
+    "course_completion_effect": "NONE",
+    "course_completion_rule": "Completing this kickoff can mark only managed_unit_01_lambda_evaluator complete. The course remains in progress until later, separately sourced units are admitted to the graph and independently validated.",
+    "automatic_promotion_forbidden": true
+  },
+  "provenance": {
+    "classification": "MANAGER_AUTHORED_DERIVATIVE_KICKOFF",
+    "catalog_snapshot": {
+      "adapter": "csdiy",
+      "extractor_version": "1.1",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/编程语言设计与分析/CS242.en.md",
+      "content_sha256": "d7dff04e5797e28f4ded6448cfdfda7658515acb5d819d1b16520eae8db5921d",
+      "catalog_status": "DISCOVERED"
+    },
+    "source_catalog": {
+      "name": "CSDIY",
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "license": "MIT",
+      "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git"
+    },
+    "derivation_basis": [
+      "The snapshot describes classic lambda calculus and an interpreter/type-checker assignment among the course topics.",
+      "The snapshot identifies OCaml and Rust as course languages but does not provide retrieved lesson or assignment bodies.",
+      "The manager bounded the kickoff to an implementation-language-neutral evaluator so it is self-contained and assessable without pretending to reproduce an official assignment."
+    ],
+    "network_retrieval_performed": false,
+    "external_material_copied": false,
+    "official_endorsement_claimed": false,
+    "validation_label": "PREPARED_AWAITING_HARNESS_VALIDATION"
+  }
+}

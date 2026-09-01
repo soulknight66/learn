@@ -1,0 +1,50 @@
+{
+  "course_id": "mit-6-s081-cow-transfer",
+  "edges": [
+    {
+      "from": "vm-foundations",
+      "inferred": true,
+      "relation": "prerequisite",
+      "to": "cow-invariants"
+    },
+    {
+      "from": "cow-invariants",
+      "inferred": true,
+      "relation": "prerequisite",
+      "to": "transfer-shared-pages"
+    },
+    {
+      "from": "transfer-shared-pages",
+      "inferred": false,
+      "relation": "submission",
+      "to": "external-exam"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "vm-foundations",
+      "order": 1,
+      "title": "Page-table and frame lifetime review",
+      "type": "reading"
+    },
+    {
+      "id": "cow-invariants",
+      "order": 2,
+      "title": "Copy-on-write invariants",
+      "type": "lecture"
+    },
+    {
+      "id": "transfer-shared-pages",
+      "order": 3,
+      "title": "Shared pages between unrelated processes",
+      "type": "assignment"
+    },
+    {
+      "id": "external-exam",
+      "order": 4,
+      "title": "Hidden lifecycle and concurrency evaluation",
+      "type": "exam"
+    }
+  ],
+  "schema_version": 1
+}

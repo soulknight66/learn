@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "course_id": "course_4e8de940764b44ebd05b6ba96fee719c",
+  "title": "PKU Software Analysis",
+  "status": "KICKOFF_UNIT_PREPARED",
+  "unit": {
+    "unit_id": "kickoff_01_reaching_definitions",
+    "title": "Engineering a Deterministic Reaching-Definitions Analyzer",
+    "classification": "course-manager-authored kickoff",
+    "official_course_unit": false,
+    "sequence": 1,
+    "estimated_human_hours": 8,
+    "audience": "A strong algorithms student who knows at least one programming language and is building software-engineering practice",
+    "topic_basis": "The catalog explicitly names data-flow analysis within program analysis based on abstract interpretation.",
+    "scope": {
+      "included": [
+        "intraprocedural forward may-analysis",
+        "control-flow graphs over a small JSON intermediate representation",
+        "reaching-definitions transfer functions",
+        "deterministic worklist iteration",
+        "input validation, stable output, tests, and engineering documentation",
+        "reasoning about convergence, joins, loops, and analysis limits"
+      ],
+      "excluded": [
+        "parsing Java or Python source",
+        "interprocedural analysis",
+        "pointer or alias analysis",
+        "general abstract-interpretation frameworks",
+        "SAT, SMT, and symbolic execution",
+        "program synthesis, bug localization, and repair",
+        "reconstruction of the official PKU lecture order",
+        "the catalog's larger course projects"
+      ]
+    },
+    "learning_outcomes": [
+      "Translate reaching-definitions equations into a terminating worklist implementation.",
+      "Keep mathematical analysis state separate from parsing, validation, serialization, and command-line concerns.",
+      "Produce deterministic results and safe failure behavior for malformed inputs.",
+      "Design tests that distinguish straight-line, branch-join, loop, unreachable-code, and invalid-input behavior.",
+      "Explain why a may-analysis result does not establish definite initialization."
+    ],
+    "learner_artifacts": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "assessment_artifact": "examiner_only/RUBRIC.md"
+  },
+  "completion_policy": {
+    "unit_completion": {
+      "state_at_preparation": "NOT_ATTEMPTED",
+      "required_evidence": [
+        "runnable analyzer source",
+        "deterministic automated tests",
+        "a design and limitations note",
+        "learner responses to the comprehension prompts",
+        "captured validator results"
+      ],
+      "promotion_authority": "worker-harness-controlled independent validator only",
+      "learner_or_agent_prose_is_evidence": false,
+      "passing_rule": "At least 75 of 100 rubric points and every critical gate in the examiner-only rubric must pass."
+    },
+    "course_completion": {
+      "state": "NOT_CLAIMABLE",
+      "this_unit_completes_course": false,
+      "reason": "This is one manager-authored kickoff drawn from a broad catalog description, not a verified official syllabus or a complete course sequence.",
+      "future_requirements": [
+        "establish an authorized and provenance-recorded official unit sequence",
+        "prepare and validate the remaining theoretical and practical units",
+        "validate all required projects and cumulative learning outcomes",
+        "retain independent validator evidence for every promotion"
+      ]
+    }
+  },
+  "provenance": {
+    "preparation_classification": "manager-authored from catalog snapshot",
+    "source": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "name": "CSDIY",
+      "type": "course_catalog",
+      "license": "MIT",
+      "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git",
+      "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4"
+    },
+    "catalog_record": {
+      "adapter": "csdiy",
+      "extractor_version": "1.1",
+      "source_file": "docs/编程语言设计与分析/PKU-SoftwareAnalysis.en.md",
+      "content_sha256": "5c26f67523735d0b6f94bd684d945d637207e18ad98e7ca8268df6c70bc434fd",
+      "classification": "source-derived"
+    },
+    "remote_retrieval_performed": false,
+    "official_endorsement_claimed": false,
+    "authorship_note": "The unit framing, task, comprehension prompts, and rubric are newly prepared learning-factory artifacts; they are not represented as PKU course materials."
+  },
+  "validation": {
+    "label": "PREPARED_AWAITING_INDEPENDENT_VALIDATION",
+    "scope": "artifact structure and learner/examiner separation have been prepared; no learner work or course completion has been validated"
+  }
+}

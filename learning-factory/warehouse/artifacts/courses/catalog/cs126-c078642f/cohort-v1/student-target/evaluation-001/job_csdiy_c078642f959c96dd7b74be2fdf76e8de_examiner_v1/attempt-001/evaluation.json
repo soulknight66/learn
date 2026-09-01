@@ -1,0 +1,19 @@
+{
+  "evidence": [
+    "Reviewed RUBRIC.md, SUBMISSION.md, NOTES.md, and DEBUGGING_LOG.md in the examiner workspace.",
+    "The workspace has no submission/ directory. The referenced README, report, comprehension responses, source package, tests, and six result records are absent.",
+    "Bounded validation argv `env PYTHONPATH=submission/src python3 -m unittest discover -s submission/tests -v` exited 1 on Python 3.6.8 with `ImportError: Start directory is not importable: 'submission/tests'`.",
+    "A complete workspace search found no JSON experiment records, so parsing, schema, parameter-domain, count, probability, seed, and interval claims cannot be checked.",
+    "NOTES.md and DEBUGGING_LOG.md show promising judgment about log-space arithmetic, RNG isolation, Wilson endpoint roundoff, reproducibility limits, and atomic replacement, but these prose claims do not verify the missing implementation.",
+    "Section score record: A=1, B=3, C=2, D=0, E=3, F=1.5; total=10.5/100. The required-files and runnable-submission gates fail independently of the point total."
+  ],
+  "result": "REVISE",
+  "score": 10.5,
+  "transfer_gaps": [
+    "Include the complete learner-authored submission tree referenced by SUBMISSION.md.",
+    "Provide runnable offline source and tests so the documented unittest command succeeds from a clean checkout.",
+    "Include all experiment JSON records and the report that traces them to parameters, seed, trial count, code, and validation labels.",
+    "Include the comprehension responses; conceptual hints scattered through notes are not a substitute for the required artifact.",
+    "Reconcile the claimed lowercase notes.md/debugging-log.md artifact names with the actual workspace files or update the manifest accurately."
+  ]
+}

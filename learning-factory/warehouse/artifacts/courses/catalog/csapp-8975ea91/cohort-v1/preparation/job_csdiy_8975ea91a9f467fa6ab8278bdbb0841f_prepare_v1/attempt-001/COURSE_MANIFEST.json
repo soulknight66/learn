@@ -1,0 +1,83 @@
+{
+  "course_id": "course_8975ea91a9f467fa6ab8278bdbb0841f",
+  "title": "CMU CS15213: CSAPP",
+  "status": "KICKOFF_PREPARED",
+  "unit": {
+    "unit_id": "study_unit_csapp_001_trustworthy_byte_histogram",
+    "title": "A trustworthy byte histogram: C contracts, streams, and evidence",
+    "sequence": 1,
+    "classification": "MANAGER_AUTHORED_STUDY_UNIT",
+    "official_course_unit": false,
+    "learner_status": "NOT_STARTED",
+    "scope": "One bounded, self-contained implementation, test, and explanation cycle; it is not an official CMU assignment.",
+    "timebox_hours": {
+      "minimum": 6,
+      "target": 8,
+      "maximum": 10
+    },
+    "learning_objectives": [
+      "Translate an observable command-line contract into separated C module and process responsibilities.",
+      "Handle arbitrary bytes, stream boundaries, failures, and fixed-width counters without text assumptions.",
+      "Produce a strict, repeatable build and deterministic automated tests with independent expected results.",
+      "Connect requirements to design decisions, implementation, tests, and truthful validation evidence."
+    ],
+    "required_material_ids": [
+      "material_csapp_kickoff_packet_v1"
+    ],
+    "external_material_dependencies": [],
+    "required_submission_artifacts": [
+      "submission/Makefile",
+      "submission/README.md",
+      "submission/DESIGN.md",
+      "submission/TEST_REPORT.md",
+      "submission/COMPREHENSION_RESPONSES.md",
+      "submission/include/bytehist.h",
+      "submission/src/bytehist.c",
+      "submission/src/main.c",
+      "submission/tests/"
+    ]
+  },
+  "completion_policy": {
+    "applies_to": "study_unit_csapp_001_trustworthy_byte_histogram",
+    "preparation_is_completion_evidence": false,
+    "learner_prose_claim_is_completion_evidence": false,
+    "unit_completion": {
+      "initial_state": "NOT_EVALUATED",
+      "required_evidence": [
+        "A frozen submission containing every required artifact.",
+        "Captured results from an independent strict build and learner-authored test run.",
+        "Captured results from independent functional and safety validation.",
+        "Examiner assessment of design documentation and comprehension responses."
+      ],
+      "promotion_authority": "WORKER_HARNESS_CONTROLLED_VALIDATOR_ONLY",
+      "assessment_source": "examiner_only/RUBRIC.md"
+    },
+    "whole_course": {
+      "completion_after_validated_unit": false,
+      "state_after_validated_unit": "IN_PROGRESS",
+      "reason": "This package covers one manager-authored kickoff and does not reconstruct or validate the catalog's full course.",
+      "expansion_requirement": "Later authorized jobs must retrieve, classify, and validate additional material before adding further units."
+    }
+  },
+  "provenance": {
+    "artifact_classification": "course-manager-authored",
+    "catalog_status": "DISCOVERED",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/计算机系统基础/CSAPP.en.md",
+    "source_content_sha256": "845586f550aa6724b2028b0c0fd11562897c58b1bdc826f2f3e3a4f6e30565db",
+    "adapter": "csdiy",
+    "extractor_version": "1.1",
+    "source_license": "MIT",
+    "source_license_scope": "The license claim applies to the catalog source only; no license is asserted for linked sites, recordings, textbook content, or assignments.",
+    "unit_basis": [
+      "The supplied catalog describes C and computer-systems topics.",
+      "The requested learner profile is strong in algorithms and is developing software-engineering skill."
+    ],
+    "network_retrieval_performed": false,
+    "validation_label": "KICKOFF_PACKAGE_SCOPE_VALIDATED",
+    "validation_meaning": "The package structure and scope were checked locally; this label is not learner or course completion evidence."
+  }
+}

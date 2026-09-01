@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "course_id": "course_e4139fae990a1a91c82c7b61e11354f1",
+  "materials": [
+    {
+      "material_id": "catalog_overview",
+      "title": "Catalog overview and resource guide",
+      "kind": "catalog_metadata",
+      "status": "AVAILABLE_IN_SNAPSHOT",
+      "official_course_material": false,
+      "local_body_available": true,
+      "use_in_current_unit": "provenance_and_topic_selection_only",
+      "source_reference": "docs/\u673a\u5668\u5b66\u4e60\u7cfb\u7edf/EML.en.md"
+    },
+    {
+      "material_id": "official_course_websites",
+      "title": "2024 and 2023 course websites",
+      "kind": "external_link_collection",
+      "status": "LINKED_NOT_RETRIEVED",
+      "official_course_material": "UNVERIFIED",
+      "local_body_available": false,
+      "urls": [
+        "https://hanlab.mit.edu/courses/2024-fall-65940",
+        "https://hanlab.mit.edu/courses/2023-fall-65940"
+      ],
+      "use_in_current_unit": "none"
+    },
+    {
+      "material_id": "youtube_recordings",
+      "title": "2024 and 2023 YouTube recording playlists",
+      "kind": "external_playlist_links",
+      "status": "LINKED_NOT_RETRIEVED",
+      "official_course_material": "CATALOG_CLAIM_UNVERIFIED",
+      "local_body_available": false,
+      "urls": [
+        "https://www.youtube.com/playlist?list=PL80kAHvQbh-qGtNc54A6KW4i4bkTPjiRF",
+        "https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB"
+      ],
+      "use_in_current_unit": "none"
+    },
+    {
+      "material_id": "bilibili_recordings",
+      "title": "Raw and subtitled Bilibili recordings",
+      "kind": "recording_collection",
+      "status": "DESCRIBED_WITHOUT_URL",
+      "official_course_material": "UNVERIFIED",
+      "local_body_available": false,
+      "urls": [],
+      "use_in_current_unit": "none"
+    },
+    {
+      "material_id": "textbooks",
+      "title": "Textbooks",
+      "kind": "reading",
+      "status": "UNAVAILABLE",
+      "official_course_material": false,
+      "local_body_available": false,
+      "catalog_value": "None",
+      "urls": [],
+      "use_in_current_unit": "none"
+    },
+    {
+      "material_id": "official_assignment_collection",
+      "title": "Five described labs",
+      "kind": "assignment_collection",
+      "status": "DESCRIBED_NOT_RETRIEVED",
+      "official_course_material": true,
+      "local_body_available": false,
+      "known_from_catalog": "Five labs total: the first three concern quantization, pruning, and NAS; the final two concern LLM compression and efficient deployment.",
+      "unknown": [
+        "individual official titles and boundaries",
+        "specifications and due-order details",
+        "starter code and datasets",
+        "tests, graders, expected outputs, and solutions",
+        "licenses for assignment artifacts"
+      ],
+      "urls": [],
+      "use_in_current_unit": "topic_alignment_only"
+    },
+    {
+      "material_id": "catalog_linked_repository",
+      "title": "MIT6.5940_TinyML repository link",
+      "kind": "external_repository_link",
+      "status": "LINKED_NOT_RETRIEVED",
+      "official_course_material": "UNVERIFIED",
+      "local_body_available": false,
+      "urls": [
+        "https://github.com/PKUFlyingPig/MIT6.5940_TinyML"
+      ],
+      "use_in_current_unit": "none"
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "textbooks",
+      "reason": "The catalog explicitly records that there is no textbook.",
+      "impact": "No textbook chapter can be assigned or treated as official support for this unit.",
+      "resolution": "Keep unavailable; a later manager may add clearly labeled supplemental readings without relabeling them as an official textbook."
+    },
+    {
+      "material_id": "official_assignment_bodies",
+      "reason": "Only an aggregate count and topic summary are present; no lab body, starter files, or validation assets were provided.",
+      "impact": "The five labs cannot yet be expanded, assigned, validated, or claimed complete.",
+      "resolution": "Retrieve only from a permitted attributable source in a later job, record license and checksum, and validate each lab boundary before graph promotion."
+    },
+    {
+      "material_id": "lecture_bodies_and_schedule",
+      "reason": "The snapshot contains playlist and website URLs but no locally ingested pages, video metadata, transcripts, slides, or authoritative schedule.",
+      "impact": "No lecture sequence or lecture-level completion can be inferred.",
+      "resolution": "A later retrieval job may inspect allowlisted public URLs and create separately attributable records."
+    },
+    {
+      "material_id": "bilibili_recordings",
+      "reason": "Availability is asserted in catalog prose, but no URL or content record is supplied.",
+      "impact": "These recordings are not assignable in the current unit.",
+      "resolution": "Require an attributable public URL and normal provenance checks in a later retrieval job."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job_network_retrieval": "NOT_PERFORMED",
+    "current_unit_mode": "self-contained manager-authored material based only on the supplied snapshot",
+    "link_semantics": "A URL is a discovery lead, not proof that its content is available, official, licensed for reuse, or an atomic course unit.",
+    "later_retrieval_requirements": [
+      "Use only explicitly permitted public sources or separately authorized local inputs.",
+      "Do not bypass authentication, paywalls, robots controls, access controls, or regional restrictions.",
+      "Record final URL, retrieval time, content checksum, license or usage status, and source attribution.",
+      "Quarantine fetched material until its official-versus-supplemental classification and unit boundary are validated.",
+      "Keep failures and unavailable items explicit; never synthesize missing official content or solutions."
+    ],
+    "restricted_content": "DO_NOT_FETCH",
+    "promotion_authority": "worker_harness_validator_only"
+  },
+  "provenance": {
+    "classification": "availability-classification-from-catalog-snapshot",
+    "catalog_content_sha256": "5d3e23c4816e9fe020e8086017ddb9f89cb6512bd41071cbe8028ea33ab2f2f2",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "network_retrieval_performed": false
+  },
+  "validation_label": "AWAITING_WORKER_HARNESS_VALIDATION"
+}

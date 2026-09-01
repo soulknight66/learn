@@ -1,0 +1,41 @@
+{
+  "catalog_source": {
+    "catalog_license": "CC0-1.0",
+    "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989",
+    "external_reference": "https://medium.com/p/e0354e914402",
+    "job_id": "job_project_allocator_vertical_v1",
+    "linked_resource_license": "NOASSERTION",
+    "lookup_status": "active_database_record",
+    "project_id": "project_62500cd7d143a95230c724df71a56c4a",
+    "project_slug": "malloc-is-not-magic-implementing-your-own-memory-allocator",
+    "project_title": "Malloc is not magic -- Implementing your own memory allocator",
+    "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+    "source_name": "Build Your Own X",
+    "source_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/build-your-own-x",
+    "source_reference": "README.md:247",
+    "upstream_url": "git@github.com:codecrafters-io/build-your-own-x.git"
+  },
+  "derivation": {
+    "agent_generated": [
+      "requirements, all C implementations and tests, exercises, and notes"
+    ],
+    "inferred": [
+      "difficulty, time estimate, concepts, architecture selection, and production relevance"
+    ],
+    "measured": [
+      "validation-output/toolchain.json only after build execution",
+      "benchmarks/results/smoke.json only after benchmark execution",
+      "controller-owned validator exit codes and logs"
+    ],
+    "source_derived": [
+      "catalog project identity, category, language, outbound URL, and source commit"
+    ]
+  },
+  "license_boundary": {
+    "catalog": "Build Your Own X catalog metadata is recorded under its catalog license.",
+    "generated_pack": "Newly agent-generated educational material; no tutorial text or code copied.",
+    "linked_tutorial": "The outbound tutorial license is NOASSERTION and its prose/code is not mirrored. A learner must retrieve it independently and honor its terms."
+  },
+  "network_used_during_generation": false,
+  "schema_version": 1
+}

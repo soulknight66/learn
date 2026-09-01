@@ -1,0 +1,27 @@
+{
+  "builder_job_id": "job_byox_build_v1_87029dafd2a9b52147af50fba61a6f95",
+  "checks_run": [
+    "Inspected all 52 submitted files, including learner material, public tests, sealed reference code/tests, validation tooling, provenance, and license documentation",
+    "Ran the submitted deterministic pack checker and independent JSON, entry-type, file-count, identifier-consistency, and SHA-256 checks",
+    "Attempted Go toolchain discovery and go test ./... in starter, public_tests, sealed/reference, and sealed/reference_tests",
+    "Cross-checked normative requirements against learner tests and cross-checked module imports against the claimed validation roles",
+    "Verified the aggregate digest of CANDIDATE before and after review"
+  ],
+  "evidence": [
+    "MANIFEST.yaml honestly remains GENERATED/PARTIAL, requires independent validation, and sets productionized=false",
+    "The pack checker exited 0, strict JSON parsing succeeded, no special filesystem entries were found, and the candidate aggregate digest remained 3bcdff6a8457d190d2e95fa34ed7d554e2f67173d2de3516d05d670c97a3cc8c",
+    "REQUIREMENTS.md makes an empty program legal, but starter/types_test.go requires Scan(\"\") to return SCAN/NOT_IMPLEMENTED while AGENTS.md prohibits weakening or deleting tests; a conforming completion therefore cannot pass the prescribed starter suite",
+    "All sealed reference tests import example.com/pebble-reference, not example.com/pebble, so the included independent suite does not validate learner implementations without an undocumented retargeting step",
+    "The full sealed implementation and answer files are readable beside learner material, and MANIFEST.yaml declares no machine-readable student-view allowlist or exclusion policy",
+    "Static tracing shows sealed/reference/parser.go accepts a forged token whose offset advances one byte to a new line with column 99, even though no Scan input can produce that position; this conflicts with PARSE/INVALID_TOKEN_STREAM",
+    "The independent pack-check result reports 75 archived entries, whereas the submitted generation record reports 79"
+  ],
+  "limitations": [
+    "No Go executable or formatter is installed; go version and all four Go test attempts exited 127, so BUILDS, TESTED, race safety, FUZZED, and BENCHMARKED remain unverified",
+    "Restricted source/network access prevented comparison with the catalog snapshot or linked repository, so the no-copy provenance assertion is not independently verified",
+    "The learning-factory student-view constructor was not included; whether it excludes readable sealed paths is inconclusive and must be proven by harness-controlled validation",
+    "The manifest provenance_sha256 equals the embedded snapshot_sha256 but neither the raw nor canonical PROVENANCE.json digest; its external snapshot semantics could not be independently established"
+  ],
+  "project_id": "project_a3a9553a99ae48fff130ecc16f5a5908",
+  "verdict": "REVISE"
+}

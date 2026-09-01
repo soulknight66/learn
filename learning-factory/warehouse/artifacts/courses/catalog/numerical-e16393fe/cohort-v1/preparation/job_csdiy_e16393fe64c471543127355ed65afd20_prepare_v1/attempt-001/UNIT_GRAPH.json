@@ -1,0 +1,87 @@
+{
+  "course_id": "course_e16393fe64c471543127355ed65afd20",
+  "nodes": [
+    {
+      "node_id": "kickoff_01_floating_point_bisection",
+      "title": "Reliable floating-point bisection as a software component",
+      "node_kind": "authored_study_unit",
+      "classification": "course_manager_authored_kickoff",
+      "official_course_unit": false,
+      "availability": "AVAILABLE_LOCAL",
+      "required_for_kickoff": true,
+      "source_reference": "COURSE_MANIFEST.json#unit"
+    },
+    {
+      "node_id": "unit_12b298910751928f99265d4ddfddb083",
+      "title": "Catalog overview and resource guide",
+      "node_kind": "normalized_resource_record",
+      "classification": "catalog_metadata",
+      "official_course_unit": false,
+      "availability": "METADATA_AVAILABLE",
+      "required_for_kickoff": false,
+      "source_reference": "docs/数学进阶/numerical.en.md"
+    },
+    {
+      "node_id": "unit_9cae2871bd166d0c0a5c9f1d34b6c5dc",
+      "title": "Course Website",
+      "node_kind": "normalized_resource_record",
+      "classification": "external_resource_link",
+      "official_course_unit": false,
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "source_reference": "docs/数学进阶/numerical.en.md#L19"
+    },
+    {
+      "node_id": "unit_313d825a66619fa5f9c6062422165180",
+      "title": "Textbook",
+      "node_kind": "normalized_resource_record",
+      "classification": "external_resource_link",
+      "official_course_unit": false,
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "source_reference": "docs/数学进阶/numerical.en.md#L20"
+    },
+    {
+      "node_id": "unit_f5a63ab145db7b687b4e26689c0705a8",
+      "title": "Assignments: aggregate description of 10 problem sets",
+      "node_kind": "normalized_resource_record",
+      "classification": "official_assignment_set_descriptor",
+      "official_course_unit": true,
+      "availability": "DESCRIBED_ONLY_CONTENT_UNAVAILABLE",
+      "required_for_kickoff": false,
+      "source_reference": "docs/数学进阶/numerical.en.md#L21"
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_12b298910751928f99265d4ddfddb083",
+      "to": "kickoff_01_floating_point_bisection",
+      "relation": "catalog_topics_inform_authored_kickoff",
+      "dependency": false
+    },
+    {
+      "from": "unit_9cae2871bd166d0c0a5c9f1d34b6c5dc",
+      "to": "kickoff_01_floating_point_bisection",
+      "relation": "optional_future_context_not_used",
+      "dependency": false
+    },
+    {
+      "from": "unit_313d825a66619fa5f9c6062422165180",
+      "to": "kickoff_01_floating_point_bisection",
+      "relation": "optional_future_context_not_used",
+      "dependency": false
+    },
+    {
+      "from": "unit_f5a63ab145db7b687b4e26689c0705a8",
+      "to": "kickoff_01_floating_point_bisection",
+      "relation": "not_substituted_by_authored_kickoff",
+      "dependency": false
+    }
+  ],
+  "record_boundary": {
+    "statement": "Normalized resource records are catalog inputs to classification, not automatically official course units or an authoritative course sequence.",
+    "kickoff_boundary": "Only kickoff_01_floating_point_bisection is prepared for this job. It is manager-authored, locally available, and is not represented as an official MIT unit.",
+    "edge_semantics": "No edge in this graph establishes a prerequisite unless dependency is true; all current edges are provenance or future-context relationships.",
+    "expansion_rule": "A linked or described record may become a usable later node only after authorized retrieval, provenance capture, access and license review, content inspection, and explicit classification."
+  }
+}

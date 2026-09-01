@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "course_id": "course_4e8de940764b44ebd05b6ba96fee719c",
+  "nodes": [
+    {
+      "unit_id": "kickoff_01_reaching_definitions",
+      "title": "Engineering a Deterministic Reaching-Definitions Analyzer",
+      "node_type": "manager_authored_study_unit",
+      "status": "PREPARED",
+      "official_course_unit": false,
+      "estimated_human_hours": 8,
+      "prerequisites": [
+        "data structures and algorithms",
+        "basic graph traversal and set operations",
+        "ability to write and test Python"
+      ],
+      "source_topic": "data-flow analysis",
+      "required_before": [],
+      "artifacts": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "completion_effect": "May establish completion of this kickoff unit after independent validation; cannot establish completion of the course."
+    }
+  ],
+  "edges": [],
+  "record_boundary": {
+    "policy": "Normalized resource records are catalog-derived inputs for availability classification. A record becomes an official unit only when authoritative content and its curricular role are verified; none meets that condition in this snapshot.",
+    "normalized_records": [
+      {
+        "record_id": "unit_dda5c7805166efa854c27943a64956d9",
+        "title": "Catalog overview and resource guide",
+        "classification": "catalog_metadata",
+        "promoted_to_unit_node": false,
+        "reason": "This is an overview record and explicitly has official_course_unit=false."
+      },
+      {
+        "record_id": "unit_1ed593902234704769d25fc4ac4a50f6",
+        "title": "Course Website",
+        "classification": "unverified_resource_link",
+        "promoted_to_unit_node": false,
+        "reason": "A homepage link is not evidence of an official unit or sequence."
+      },
+      {
+        "record_id": "unit_f938b7be2628ad6b7942ed22c265ece6",
+        "title": "Course Video",
+        "classification": "unverified_resource_link",
+        "promoted_to_unit_node": false,
+        "reason": "The catalog supplies one course-level video link but no verified lecture identity or unit mapping."
+      },
+      {
+        "record_id": "unit_195e4e3b0ccd4e8a22e6c648aeef4e7a",
+        "title": "Course Textbook",
+        "classification": "unavailable_resource",
+        "promoted_to_unit_node": false,
+        "reason": "The catalog value is explicitly None."
+      }
+    ],
+    "authored_node_boundary": "kickoff_01_reaching_definitions is a bounded learning-factory unit justified by a catalog topic. It is not a renamed normalized record and is not claimed to be in the official PKU sequence.",
+    "future_expansion_rule": "Add a node or dependency only after a later job records authoritative title, scope, ordering evidence, availability, and provenance."
+  },
+  "validation": {
+    "label": "SINGLE_KICKOFF_GRAPH_AWAITING_VALIDATION",
+    "claims": {
+      "complete_course_graph": false,
+      "official_sequence_verified": false,
+      "normalized_records_auto_promoted": false
+    }
+  }
+}

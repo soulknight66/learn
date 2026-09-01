@@ -1,0 +1,4 @@
+interface:
+  display_name: "Grade Assignment"
+  short_description: "Independently grade a learner submission"
+  default_prompt: "Use $grade-assignment to evaluate this submission with immutable tests and evidence."

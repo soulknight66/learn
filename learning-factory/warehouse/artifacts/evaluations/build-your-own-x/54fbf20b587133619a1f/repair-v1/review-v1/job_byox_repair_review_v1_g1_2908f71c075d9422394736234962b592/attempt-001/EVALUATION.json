@@ -1,0 +1,35 @@
+{
+  "builder_job_id": "job_byox_repair_v1_g1_250e5b6563a90a708220b0592e8a0dfe",
+  "checks_run": [
+    "Inventoried all 74 candidate files, checked path types, and bound the immutable submission to aggregate SHA-256 7bb404607798ca0af350d9e2841965a50054ce6e6ce8f28d444bd478c93b8e5c.",
+    "Read the normative contract, learner documentation and starter, public tests, staged exercises, sealed answers, reference implementation, reference tests, evaluator binding, adversarial suite, benchmark harness, production assessment, and validation utilities.",
+    "Reran the submitted complete-pack checker with Python 3.6.8 and Python 3.11.5; both runs exited 0 and reported the same identities and static results.",
+    "Reran the submitted validation unittest suite with Python 3.6.8; all 8 tests passed.",
+    "Independently reconstructed all five default-deny learner views and reproduced their file counts and path/content digests.",
+    "Materialized a temporary core projection, independently inspected its 25 files for forbidden and premature roots, and removed the temporary output after the check.",
+    "Strictly parsed manifest, provenance, package, and view-policy JSON; independently checked canonical metadata hashes and project/source/commit identity consistency.",
+    "Checked for Node.js, npm, and alternate JavaScript engines, then attempted bounded public, reference, adversarial, and benchmark commands; every attempt exited 127 because no JavaScript runtime was installed.",
+    "Probed the evaluator module-boundary regexes with comment-separated static, side-effect, and dynamic import syntax; all three escaping imports evaded every regex.",
+    "Statically traced reference lexer/parser/evaluator/compiler/VM behavior, including locations, precedence, jump patching, numeric-domain checks, option validation, step accounting, and bytecode validation."
+  ],
+  "evidence": [
+    "The manifest is candid: it claims only GENERATED and PARTIAL, requires independent validation, and sets productionized to false; no BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED claim was found.",
+    "The learner material is coherent and useful: the specification is normative, starter TODOs are explicit, public tests are labeled incomplete, and later debugging/review/adversarial/benchmark material is progressively staged.",
+    "Independent view reconstruction reproduced core/debugging/review/adversarial/benchmarks counts 25/29/33/34/35 and the submitted SHA-256 identities; no reconstructed view contained sealed or administrator-only metadata.",
+    "A locally materialized core view contained exactly 25 regular files and no sealed, later-stage, provenance, license-boundary, or validation root.",
+    "Manifest, provenance, and license-boundary records consistently distinguish the CC0 catalog snapshot from the linked resource whose license is NOASSERTION; generated material grants no redistribution right beyond the stated personal educational use.",
+    "The evaluator boundary is not a reliable isolation control: legal ECMAScript comments defeat its import regexes, candidate and oracle execute in one process with shared globals, and candidate-defined error classes are used to decide whether candidate errors have the expected class.",
+    "The reference VM's prevalidation checks object and operand shapes but performs stack underflow and final-height checks only during dispatch, contrary to the starter/design promise that stack use is validated before execution.",
+    "Recursive parser, evaluator, and compiler paths have no nesting limit or host-stack containment, so deeply nested valid or malformed inputs can leak a host RangeError instead of the documented Pebble error boundary; the candidate's own sealed review accurately discloses this risk.",
+    "Python-side structural results are reproducible, but there is no independent JavaScript syntax, module-load, reference-test, differential, fuzz, timing, or benchmark result."
+  ],
+  "limitations": [
+    "No Node.js-compatible runtime, npm, or JavaScript parser library was available, so JavaScript execution and syntax acceptance remain unverified.",
+    "The source catalog checkout and linked upstream repository were outside the readable review workspace; provenance assertions and the no-copy claim could be checked for internal consistency but not independently compared with source content or license evidence.",
+    "The local temporary projection exercised projector behavior but was not the real learner-delivery boundary and does not establish TRANSFER_VERIFIED.",
+    "PRIOR_BUILD and PRIOR_REVIEW were not included in this workspace, so the builder's historical preservation hashes and prior-entry comparison could not be reproduced.",
+    "git and rg were unavailable; repository history/status and git-object provenance were not independently inspected, and file discovery used find."
+  ],
+  "project_id": "project_77599834cfe38f15a3b1a4564b1c5efb",
+  "verdict": "REVISE"
+}

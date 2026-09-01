@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "course_id": "course_23fa038d619a5b3482e8c8eadb3e2d78",
+  "nodes": [
+    {
+      "id": "kickoff_01_lexical_contracts",
+      "title": "Lexical Analysis as a Tested Software Contract",
+      "node_type": "manager_authored_study_unit",
+      "classified_as_course_unit": true,
+      "official_course_unit": false,
+      "availability": "LOCAL_READY",
+      "execution_state": "READY_FOR_LEARNER",
+      "bounded_hours": {
+        "target": 8,
+        "hard_stop": 10
+      }
+    },
+    {
+      "id": "unit_f969a05e96c62f50116c2caf97125f9f",
+      "title": "Catalog overview and resource guide",
+      "node_type": "normalized_resource_record",
+      "record_type": "reading",
+      "catalog_official_course_unit_claim": false,
+      "classified_as_course_unit": false,
+      "classified_role": "catalog_metadata_input",
+      "availability": "SNAPSHOT_METADATA_ONLY",
+      "source_reference": "docs/编译原理/USTC-Compilers.en.md"
+    },
+    {
+      "id": "unit_d4397615488f1d2ae786f97f1bc0d95e",
+      "title": "Course Website",
+      "node_type": "normalized_resource_record",
+      "record_type": "reading",
+      "catalog_official_course_unit_claim": false,
+      "classified_as_course_unit": false,
+      "classified_role": "external_resource_locator",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "source_reference": "docs/编译原理/USTC-Compilers.en.md#L20"
+    },
+    {
+      "id": "unit_5cb334bb1335eaf0364f15cba5c0ad08",
+      "title": "Recordings",
+      "node_type": "normalized_resource_record",
+      "record_type": "lecture",
+      "catalog_official_course_unit_claim": false,
+      "classified_as_course_unit": false,
+      "classified_role": "external_resource_locator",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "source_reference": "docs/编译原理/USTC-Compilers.en.md#L21"
+    },
+    {
+      "id": "unit_cda7a2e085f483ce59d431b7402bf4aa",
+      "title": "Textbook",
+      "node_type": "normalized_resource_record",
+      "record_type": "reading",
+      "catalog_official_course_unit_claim": false,
+      "classified_as_course_unit": false,
+      "classified_role": "unresolved_resource_description",
+      "availability": "DESCRIPTION_ONLY",
+      "source_reference": "docs/编译原理/USTC-Compilers.en.md#L22"
+    },
+    {
+      "id": "unit_f5bd98e76a1b5f51eac8383b6dcfc164",
+      "title": "Assignments",
+      "node_type": "normalized_resource_record",
+      "record_type": "assignment",
+      "catalog_official_course_unit_claim": true,
+      "classified_as_course_unit": false,
+      "classified_role": "candidate_official_assignment_index",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "classification_note": "The catalog marks the record official, but the linked page was not retrieved. Its component assignments, ordering, requirements, and availability cannot yet be established.",
+      "source_reference": "docs/编译原理/USTC-Compilers.en.md#L23"
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_f969a05e96c62f50116c2caf97125f9f",
+      "to": "kickoff_01_lexical_contracts",
+      "relation": "catalog_topics_inform_manager_authored_scope",
+      "required_for_execution": false,
+      "note": "Only the supplied snapshot metadata informed the kickoff; the original catalog file is not a learner dependency."
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "graph_scope": "Only kickoff_01_lexical_contracts is executable in this preparation. No external record is a prerequisite, and no future unit or whole-course completion is implied.",
+  "provenance": {
+    "classification": "manager classification of supplied normalized resource records",
+    "catalog_source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "catalog_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "catalog_content_sha256": "48cb43c1501c3ad2e887dfeb5b7f4601e12e3fed5c512f40af0d6048aa806c17",
+    "external_retrieval_performed": false
+  },
+  "validation": {
+    "label": "PREPARED_PENDING_HARNESS_VALIDATION",
+    "completion_claim": false
+  }
+}

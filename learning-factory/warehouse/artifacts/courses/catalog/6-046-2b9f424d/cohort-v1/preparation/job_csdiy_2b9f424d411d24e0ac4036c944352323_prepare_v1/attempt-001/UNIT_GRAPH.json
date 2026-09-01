@@ -1,0 +1,106 @@
+{
+  "course_id": "course_2b9f424d411d24e0ac4036c944352323",
+  "nodes": [
+    {
+      "node_id": "prerequisite_intro_algorithms",
+      "node_type": "PREREQUISITE",
+      "title": "Introductory algorithms or equivalent",
+      "status": "ASSUMED_FOR_TARGET_LEARNER",
+      "official_course_unit": false
+    },
+    {
+      "node_id": "manager_unit_001_weighted_interval_engineering",
+      "node_type": "STUDY_UNIT",
+      "title": "Algorithm-to-Component Kickoff: Weighted Interval Scheduling",
+      "status": "PREPARED_NOT_COMPLETED",
+      "origin": "COURSE_MANAGER_AUTHORED",
+      "official_course_unit": false,
+      "estimated_human_hours": 8
+    },
+    {
+      "node_id": "record_unit_942473f1ff80f6adb5030e1d8e515588",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "source_record_id": "unit_942473f1ff80f6adb5030e1d8e515588",
+      "title": "Catalog overview and resource guide",
+      "resource_type": "reading",
+      "classification": "CATALOG_OVERVIEW_METADATA",
+      "availability": "AVAILABLE_IN_SNAPSHOT_ONLY",
+      "source_official_course_unit_flag": false,
+      "promoted_to_course_unit": false
+    },
+    {
+      "node_id": "record_unit_976d44d63fcfe4adc7e7133cb7821553",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "source_record_id": "unit_976d44d63fcfe4adc7e7133cb7821553",
+      "title": "Course Website",
+      "resource_type": "reading",
+      "classification": "COURSE_SITE_LINK",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "source_official_course_unit_flag": false,
+      "promoted_to_course_unit": false
+    },
+    {
+      "node_id": "record_unit_4922ad2caddeedd905c99e4765b826d1",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "source_record_id": "unit_4922ad2caddeedd905c99e4765b826d1",
+      "title": "Recordings",
+      "resource_type": "lecture",
+      "classification": "RECORDING_COLLECTION_LINK",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "source_official_course_unit_flag": false,
+      "promoted_to_course_unit": false
+    },
+    {
+      "node_id": "record_unit_2b9391d4b1e23416fb39be213438008c",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "source_record_id": "unit_2b9391d4b1e23416fb39be213438008c",
+      "title": "Textbooks",
+      "resource_type": "reading",
+      "classification": "TEXTBOOK_CITATION",
+      "availability": "DESCRIBED_NOT_PROVIDED",
+      "source_official_course_unit_flag": false,
+      "promoted_to_course_unit": false
+    },
+    {
+      "node_id": "record_unit_10a0409e1104dacce5fe6a740d5147fd",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "source_record_id": "unit_10a0409e1104dacce5fe6a740d5147fd",
+      "title": "Assignments",
+      "resource_type": "assignment",
+      "classification": "OFFICIAL_ASSIGNMENT_INDEX_LINK",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "source_official_course_unit_flag": true,
+      "promoted_to_course_unit": false,
+      "classification_note": "The source flag supports classifying the destination as an official assignment resource, but the index link is not itself enough evidence for a bounded unit or its contents."
+    }
+  ],
+  "edges": [
+    {
+      "source": "prerequisite_intro_algorithms",
+      "target": "manager_unit_001_weighted_interval_engineering",
+      "type": "PREREQUISITE_FOR",
+      "instructional_dependency": true
+    },
+    {
+      "source": "record_unit_942473f1ff80f6adb5030e1d8e515588",
+      "target": "manager_unit_001_weighted_interval_engineering",
+      "type": "INFORMS_AUDIENCE_AND_SCOPE",
+      "instructional_dependency": false,
+      "note": "Only catalog metadata informed the manager-authored unit; no official lesson content was inferred."
+    }
+  ],
+  "record_boundary": {
+    "source_statement": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+    "normalized_record_count": 5,
+    "automatically_promoted_count": 0,
+    "official_course_units_asserted_from_records": 0,
+    "rules": [
+      "A normalized record is an input to classification, not proof of an instructional unit.",
+      "A LINKED availability label proves that a URL was cataloged, not that its content was retrieved, accessible, licensed for copying, or validated.",
+      "The official_course_unit source flag is retained as provenance but does not override the record boundary.",
+      "Only separately verified lesson-level evidence may support later official unit nodes.",
+      "Manager-authored bridge units must be labeled as such and must not be presented as the official course sequence."
+    ],
+    "current_graph_result": "One non-official, manager-authored kickoff unit is ready; no normalized resource record has been promoted to an official unit."
+  }
+}

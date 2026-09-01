@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "course_id": "course_6fa71b11ab38337a56da71bee19bd432",
+  "title": "Coursera: Machine Learning",
+  "status": "KICKOFF_READY",
+  "unit": {
+    "unit_id": "unit_kickoff_linear_regression_engineering",
+    "ordinal": 1,
+    "title": "Engineering a Reliable Linear Regression Component",
+    "status": "PREPARED_NOT_ATTEMPTED",
+    "origin": "COURSE_MANAGER_AUTHORED",
+    "official_course_unit": false,
+    "estimated_human_hours": 8,
+    "prerequisites": [
+      "Proficient Python",
+      "Comfort with vectors, matrices, derivatives, and asymptotic analysis",
+      "Ability to run Python unittest tests from a terminal"
+    ],
+    "learning_objectives": [
+      "Translate the mean-squared-error objective into a deterministic batch-gradient-descent implementation",
+      "Design and document a small prediction API with explicit validation and fitted-state contracts",
+      "Build deterministic tests that cover mathematical behavior, edge cases, and input immutability",
+      "Analyze convergence behavior and the time and space costs of the implementation"
+    ],
+    "deliverables": [
+      "src/linear_model.py",
+      "tests/test_linear_model.py",
+      "README.md",
+      "COMPREHENSION_RESPONSES.md"
+    ],
+    "student_packet": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "scope": {
+      "in_scope": [
+        "Ordinary linear regression",
+        "Full-batch gradient descent",
+        "A reusable Python component and deterministic tests",
+        "A small synthetic, deterministic experiment"
+      ],
+      "out_of_scope": [
+        "Completion of the Coursera specialization or any constituent course",
+        "Reproduction of an official Coursera assignment",
+        "Logistic regression and later machine-learning topics",
+        "Credential or certificate claims",
+        "Production deployment"
+      ]
+    }
+  },
+  "completion_policy": {
+    "scope": "THIS_KICKOFF_UNIT_ONLY",
+    "course_completion_claimed": false,
+    "unit_completion_requires": [
+      "All four learner deliverables are present",
+      "The worker-harness-controlled test command completes successfully",
+      "The independent examiner records sufficient rubric evidence",
+      "No critical rubric condition is triggered"
+    ],
+    "evidence_policy": "Learner or worker prose is not completion evidence; promotion requires validator-controlled evidence recorded by the worker harness.",
+    "promotion_authority": "WORKER_HARNESS_VALIDATOR",
+    "after_unit_completion": "Mark only this manager-authored kickoff unit complete. Keep the course status partial until separately sourced, prepared, attempted, and validated units satisfy a future whole-course policy."
+  },
+  "provenance": {
+    "classification": "MANAGER_AUTHORED_FROM_SOURCE_DERIVED_CATALOG_METADATA",
+    "catalog_source": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "name": "CSDIY",
+      "type": "course_catalog",
+      "license": "MIT",
+      "source_file": "docs/机器学习/ML.en.md",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "content_sha256": "f6492cbcc6f75efae564258eebdbcc5f5870d692cc750911d8179759ee4026ff",
+      "adapter": "csdiy",
+      "extractor_version": "1.1"
+    },
+    "selection_basis": "The catalog description explicitly names linear regression and hands-on programming; the software-engineering requirements, API, tests, questions, and rubric were authored for this bounded kickoff.",
+    "retrieval": "No linked, authenticated, paywalled, recording, assignment, or textbook content was fetched or copied.",
+    "official_content_claim": false
+  }
+}

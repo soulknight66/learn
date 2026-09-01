@@ -1,0 +1,11 @@
+--- a/debugging/parser-associativity/buggy/tinyvm/parser.py
++++ b/debugging/parser-associativity/buggy/tinyvm/parser.py
+@@ -89,7 +89,7 @@
+             expression = self._factor()
+             while self._match("+", "-"):
+                 operator = self._previous().kind
+-                right = self._term()
++                right = self._factor()
+                 expression = Binary(expression, operator, right)
+             return expression
+

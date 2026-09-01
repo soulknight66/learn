@@ -1,0 +1,139 @@
+{
+  "course_id": "course_194d661507a825dafbdf062d5e563ce6",
+  "materials": [
+    {
+      "material_id": "kickoff_course_brief",
+      "title": "Kickoff course brief",
+      "kind": "learner_guide",
+      "location": "student_safe/COURSE_BRIEF.md",
+      "availability": "AVAILABLE_LOCAL",
+      "required_for_kickoff": true,
+      "provenance": "MANAGER_AUTHORED_FOR_THIS_JOB",
+      "validation_label": "PREPARED_NOT_VALIDATED"
+    },
+    {
+      "material_id": "kickoff_study_task",
+      "title": "Priority-queue engineering study task",
+      "kind": "assignment",
+      "location": "student_safe/STUDY_TASK.md",
+      "availability": "AVAILABLE_LOCAL",
+      "required_for_kickoff": true,
+      "provenance": "MANAGER_AUTHORED_FOR_THIS_JOB_NOT_AN_OFFICIAL_MIT_ASSIGNMENT",
+      "validation_label": "PREPARED_NOT_VALIDATED"
+    },
+    {
+      "material_id": "kickoff_comprehension",
+      "title": "Kickoff comprehension questions",
+      "kind": "assessment_prompt",
+      "location": "student_safe/COMPREHENSION.md",
+      "availability": "AVAILABLE_LOCAL",
+      "required_for_kickoff": true,
+      "provenance": "MANAGER_AUTHORED_FOR_THIS_JOB",
+      "validation_label": "PREPARED_NOT_VALIDATED"
+    },
+    {
+      "material_id": "unit_df231856465764fe28a8bd7864ed7840",
+      "title": "Catalog overview and resource guide",
+      "kind": "catalog_metadata",
+      "location": "JOB.md catalog snapshot",
+      "availability": "PROVIDED_AS_SNAPSHOT_METADATA",
+      "required_for_kickoff": false,
+      "use_boundary": "May establish catalog identity and context; not instructional course content",
+      "provenance": "CSDIY_SOURCE_DERIVED",
+      "validation_label": "INPUT_RECORDED_NOT_REVALIDATED"
+    },
+    {
+      "material_id": "unit_727b9ded5135273400d4a9e5e16a7894",
+      "title": "Fall 2011 course website",
+      "kind": "external_link",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "content_available_locally": false,
+      "provenance": "URL_FROM_CSDIY_CATALOG_SNAPSHOT",
+      "validation_label": "LINK_RECORDED_CONTENT_NOT_VALIDATED"
+    },
+    {
+      "material_id": "unit_cd16bd5ae58e4be48ed21eb147f0940c",
+      "title": "Fall 2011 recordings",
+      "kind": "external_link",
+      "url": "https://www.bilibili.com/video/BV1b7411e7ZP",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "content_available_locally": false,
+      "provenance": "URL_FROM_CSDIY_CATALOG_SNAPSHOT",
+      "validation_label": "LINK_RECORDED_CONTENT_NOT_VALIDATED"
+    },
+    {
+      "material_id": "unit_d900f7c64248e0d582aa280b9174ab74",
+      "title": "Introduction to Algorithms (CLRS)",
+      "kind": "textbook_reference",
+      "availability": "DESCRIBED_ONLY_NOT_PROVIDED",
+      "required_for_kickoff": false,
+      "content_available_locally": false,
+      "url": null,
+      "license_or_access_grant": null,
+      "provenance": "TITLE_FROM_CSDIY_CATALOG_SNAPSHOT",
+      "validation_label": "REFERENCE_RECORDED_CONTENT_UNAVAILABLE"
+    },
+    {
+      "material_id": "unit_8e770d920b56e8c3b744c6fdd86ce61b",
+      "title": "Fall 2011 assignments index",
+      "kind": "external_link",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/assignments/",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "content_available_locally": false,
+      "source_claims_official_course_unit": true,
+      "officiality_verified": false,
+      "provenance": "URL_AND_FLAG_FROM_CSDIY_CATALOG_SNAPSHOT",
+      "validation_label": "LINK_RECORDED_CONTENT_NOT_VALIDATED"
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_727b9ded5135273400d4a9e5e16a7894",
+      "blocked_content": "Remote course-page body and any linked files",
+      "reason_code": "NOT_RETRIEVED_IN_BOUNDED_PREPARATION",
+      "impact": "Unavailable locally and not used by the kickoff unit"
+    },
+    {
+      "material_id": "unit_cd16bd5ae58e4be48ed21eb147f0940c",
+      "blocked_content": "Recording media, transcript, and episode structure",
+      "reason_code": "NOT_RETRIEVED_IN_BOUNDED_PREPARATION",
+      "impact": "Availability, rights, language, and coverage remain unverified"
+    },
+    {
+      "material_id": "unit_d900f7c64248e0d582aa280b9174ab74",
+      "blocked_content": "Textbook text",
+      "reason_code": "NO_COPY_LOCATOR_OR_ACCESS_GRANT_PROVIDED",
+      "impact": "The bibliographic mention cannot be used as supplied instructional content"
+    },
+    {
+      "material_id": "unit_8e770d920b56e8c3b744c6fdd86ce61b",
+      "blocked_content": "Assignment statements, files, solutions, and ordering",
+      "reason_code": "NOT_RETRIEVED_IN_BOUNDED_PREPARATION",
+      "impact": "No catalog record was promoted into an official unit"
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": "NO_REMOTE_OR_RESTRICTED_CONTENT_RETRIEVAL",
+    "kickoff_dependency_policy": "The kickoff must remain completable from local learner-safe files and the Python standard library",
+    "later_job_requirements": [
+      "Use only an authorized retrieval worker and public or explicitly licensed access paths",
+      "Do not bypass authentication, paywalls, access controls, robots restrictions, or geographic restrictions",
+      "Record the requested URL, resolved URL, retrieval result, content hash, retrieval time, license or terms evidence, and source provenance",
+      "Keep newly retrieved content out of student_safe until a controlled validator checks safety, integrity, relevance, and answer leakage",
+      "Classify actual content and its pedagogical role before adding graph nodes or edges",
+      "Treat a reachable link or a source officiality flag as evidence to review, not automatic evidence of an official unit"
+    ],
+    "restricted_or_unlicensed_material": "LEAVE_BLOCKED_AND_RECORD_REASON",
+    "failed_retrieval": "PRESERVE_FAILURE_EVIDENCE_AND_DO_NOT_INFER_CONTENT"
+  },
+  "artifact_provenance": {
+    "input": "JOB.md catalog snapshot",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "remote_content_retrieved": false
+  },
+  "validation_label": "PREPARED_NOT_VALIDATED"
+}

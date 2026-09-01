@@ -1,0 +1,173 @@
+{
+  "course_id": "course_742d4325985228f05947d939ae196034",
+  "materials": [
+    {
+      "material_id": "material_3efca53294f9653ffa41dc9ce1564746",
+      "source_record_id": "unit_3efca53294f9653ffa41dc9ce1564746",
+      "title": "Catalog overview and resource guide",
+      "type": "reading",
+      "order": 0,
+      "source_reference": "docs/操作系统/MIT6.S081.en.md",
+      "urls": [],
+      "availability": "AVAILABLE_AS_SNAPSHOT_METADATA_ONLY",
+      "classification": "catalog-context-record",
+      "catalog_metadata_supplied": true,
+      "underlying_source_document_retrieved": false,
+      "source_claims_official_course_unit": false,
+      "promoted_to_graph_node": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "material_d081e2deaf331a97c55fbc193b95afc7",
+      "source_record_id": "unit_d081e2deaf331a97c55fbc193b95afc7",
+      "title": "Course Website",
+      "type": "reading",
+      "order": 23,
+      "source_reference": "docs/操作系统/MIT6.S081.en.md#L23",
+      "urls": [
+        "https://pdos.csail.mit.edu/6.828/2021/schedule.html"
+      ],
+      "availability": "LINKED_NOT_RETRIEVED",
+      "classification": "external-course-index-pointer",
+      "catalog_metadata_supplied": true,
+      "underlying_content_retrieved": false,
+      "source_claims_official_course_unit": false,
+      "promoted_to_graph_node": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "material_4fc72bf25a3f336ac7c8b463e513a06d",
+      "source_record_id": "unit_4fc72bf25a3f336ac7c8b463e513a06d",
+      "title": "Lecture Videos",
+      "type": "lecture",
+      "order": 24,
+      "source_reference": "docs/操作系统/MIT6.S081.en.md#L24",
+      "urls": [
+        "https://www.youtube.com/watch?v=L6YqHxYHa7A"
+      ],
+      "availability": "LINKED_NOT_RETRIEVED",
+      "classification": "external-lecture-pointer",
+      "catalog_metadata_supplied": true,
+      "underlying_content_retrieved": false,
+      "source_claims_official_course_unit": false,
+      "promoted_to_graph_node": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "material_bfd41f2521fc9f095353825fe76bb66a",
+      "source_record_id": "unit_bfd41f2521fc9f095353825fe76bb66a",
+      "title": "Text Book",
+      "type": "reading",
+      "order": 26,
+      "source_reference": "docs/操作系统/MIT6.S081.en.md#L26",
+      "urls": [
+        "https://pdos.csail.mit.edu/6.828/2021/xv6/book-riscv-rev2.pdf"
+      ],
+      "availability": "LINKED_NOT_RETRIEVED",
+      "classification": "external-textbook-pointer",
+      "catalog_metadata_supplied": true,
+      "underlying_content_retrieved": false,
+      "source_claims_official_course_unit": false,
+      "promoted_to_graph_node": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "material_df6a6639018a98e5169be5fb709aefd3",
+      "source_record_id": "unit_df6a6639018a98e5169be5fb709aefd3",
+      "title": "Assignments",
+      "type": "assignment",
+      "order": 27,
+      "source_reference": "docs/操作系统/MIT6.S081.en.md#L27",
+      "urls": [
+        "https://pdos.csail.mit.edu/6.828/2021/schedule.html"
+      ],
+      "availability": "LINKED_NOT_RETRIEVED",
+      "classification": "official-assignment-index-pointer-not-expanded",
+      "catalog_metadata_supplied": true,
+      "underlying_content_retrieved": false,
+      "source_claims_official_course_unit": true,
+      "official_status_independently_verified": false,
+      "promoted_to_graph_node": false,
+      "required_for_kickoff": false
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "material_d081e2deaf331a97c55fbc193b95afc7",
+      "blocked_component": "linked website content",
+      "reason_code": "CONTENT_NOT_SUPPLIED",
+      "reason": "The catalog supplied a URL only; external retrieval was outside this preparation job.",
+      "retrieval_attempted": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "material_4fc72bf25a3f336ac7c8b463e513a06d",
+      "blocked_component": "linked video content and lecture sequence",
+      "reason_code": "CONTENT_NOT_SUPPLIED",
+      "reason": "The catalog supplied a URL only; no video, transcript, or verified lecture list is local.",
+      "retrieval_attempted": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "material_bfd41f2521fc9f095353825fe76bb66a",
+      "blocked_component": "linked textbook content",
+      "reason_code": "CONTENT_NOT_SUPPLIED",
+      "reason": "The PDF was not supplied and was not fetched.",
+      "retrieval_attempted": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "material_df6a6639018a98e5169be5fb709aefd3",
+      "blocked_component": "individual assignment definitions, starter code, and official tests",
+      "reason_code": "ASSIGNMENT_INDEX_NOT_EXPANDED",
+      "reason": "The assignments record points to a schedule; it does not provide the eleven claimed labs as independently usable units.",
+      "retrieval_attempted": false,
+      "required_for_kickoff": false
+    }
+  ],
+  "retrieval_policy": {
+    "current_job_mode": "SNAPSHOT_ONLY_NO_EXTERNAL_RETRIEVAL",
+    "external_retrieval_performed": false,
+    "linked_record_counts_as_available_content": false,
+    "current_kickoff_is_self_contained": true,
+    "unnormalized_resource_url_count": 20,
+    "unnormalized_resource_urls_status": "CATALOG_LINKS_ONLY_NOT_RETRIEVED_OR_REVIEWED",
+    "xv6_source_tree_status": "NOT_IDENTIFIED_OR_SUPPLIED",
+    "rules": [
+      "Do not infer a syllabus, lecture sequence, lab specification, source revision, or answer from a URL or catalog description.",
+      "Do not fetch restricted content or copy hidden references, grader fixtures, another learner's work, or solution repositories into a learner view.",
+      "A later retrieval job must have authorized access, preserve origin and license data, record a content digest, and distinguish official, supplemental, and solution-like content.",
+      "Retrieved material must be reviewed for learner safety and deterministically validated before it can become required material or a graph node.",
+      "Unavailable material remains blocked; it must not be silently substituted or reported complete."
+    ],
+    "promotion_requirements": [
+      "authorized and successful retrieval",
+      "stable local artifact location",
+      "source provenance and content digest",
+      "license and learner-safety classification",
+      "verified unit boundaries and dependencies",
+      "validator-controlled acceptance"
+    ]
+  },
+  "provenance": {
+    "artifact_classification": "manager-authored-availability-inventory",
+    "basis": "catalog-snapshot-only",
+    "external_retrieval_performed": false,
+    "input": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "source_type": "course_catalog",
+      "source_name": "CSDIY",
+      "license": "MIT",
+      "adapter": "csdiy",
+      "extractor_version": "1.1",
+      "classification": "source-derived",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/操作系统/MIT6.S081.en.md",
+      "content_sha256": "1a596c3c893b18df2b1e576c9f8cbaa2028c04eee06d66d62810d0735ca1f0c1"
+    }
+  },
+  "validation": {
+    "label": "INVENTORIED_NOT_RETRIEVED",
+    "scope": "Catalog-record classification only; linked content was not validated"
+  }
+}

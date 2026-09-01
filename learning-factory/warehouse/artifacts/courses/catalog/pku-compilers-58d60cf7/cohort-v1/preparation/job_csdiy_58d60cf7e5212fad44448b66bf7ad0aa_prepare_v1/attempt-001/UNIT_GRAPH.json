@@ -1,0 +1,58 @@
+{
+  "course_id": "course_58d60cf7e5212fad44448b66bf7ad0aa",
+  "nodes": [
+    {
+      "node_id": "unit_f29bab14f77e9b679a7f589b02baf2e1",
+      "node_type": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "classification": "catalog_context_input",
+      "availability": "AVAILABLE_AS_SUPPLIED_SNAPSHOT",
+      "upstream_official_course_unit": false,
+      "source_reference": "docs/编译原理/PKU-Compilers.en.md",
+      "order_in_normalized_records": 0
+    },
+    {
+      "node_id": "kickoff_01_testable_compiler_vertical_slice",
+      "node_type": "study_unit",
+      "title": "A Testable Compiler Vertical Slice",
+      "classification": "manager-authored kickoff",
+      "status": "READY",
+      "upstream_official_course_unit": false,
+      "estimated_human_hours": 6,
+      "materials": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ]
+    },
+    {
+      "node_id": "verified_upstream_expansion_gate",
+      "node_type": "expansion_gate",
+      "title": "Verified upstream unit expansion",
+      "classification": "future control point",
+      "status": "BLOCKED_PENDING_VERIFIED_MATERIALS",
+      "upstream_official_course_unit": false,
+      "reason": "Exact upstream sequence and specifications were not supplied or retrieved."
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_f29bab14f77e9b679a7f589b02baf2e1",
+      "to": "kickoff_01_testable_compiler_vertical_slice",
+      "relation": "provides_catalog_context_for",
+      "dependency": false
+    },
+    {
+      "from": "unit_f29bab14f77e9b679a7f589b02baf2e1",
+      "to": "verified_upstream_expansion_gate",
+      "relation": "must_be_supplemented_and_classified_before",
+      "dependency": true
+    }
+  ],
+  "record_boundary": {
+    "source_statement": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+    "applied_decision": "The sole normalized record is retained as available catalog context, not promoted to an official unit. The first study unit is explicitly manager-authored.",
+    "automatic_promotion_of_normalized_records": false,
+    "future_expansion_condition": "Acquire authorized upstream materials, record provenance and availability, verify their role, and make an explicit unit-classification decision."
+  }
+}

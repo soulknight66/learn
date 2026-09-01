@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "course_id": "course_6fa71b11ab38337a56da71bee19bd432",
+  "nodes": [
+    {
+      "id": "unit_kickoff_linear_regression_engineering",
+      "node_kind": "MANAGER_AUTHORED_STUDY_UNIT",
+      "title": "Engineering a Reliable Linear Regression Component",
+      "official_course_unit": false,
+      "availability": "READY_IN_WORKSPACE",
+      "status": "PREPARED_NOT_ATTEMPTED"
+    },
+    {
+      "id": "unit_e374473761ce556637a7b79376f12e79",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Catalog overview and resource guide",
+      "resource_type": "reading",
+      "official_course_unit": false,
+      "classification": "CATALOG_CONTEXT",
+      "availability": "SNAPSHOT_METADATA_ONLY",
+      "source_reference": "docs/机器学习/ML.en.md"
+    },
+    {
+      "id": "unit_2bf2db955ad1599f8e93c768b43db655",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Course Website",
+      "resource_type": "reading",
+      "official_course_unit": false,
+      "classification": "EXTERNAL_LOCATOR",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "source_reference": "docs/机器学习/ML.en.md#L21"
+    },
+    {
+      "id": "unit_6bb2dd6f59bb34fc5fe5a40aa0d11114",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Recordings",
+      "resource_type": "lecture",
+      "official_course_unit": false,
+      "classification": "MATERIAL_PLACEHOLDER",
+      "availability": "DESCRIBED_ONLY",
+      "source_reference": "docs/机器学习/ML.en.md#L22"
+    },
+    {
+      "id": "unit_a28315ef76cd91391a831722bfbb9bd3",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Textbook",
+      "resource_type": "reading",
+      "official_course_unit": false,
+      "classification": "ABSENT_MATERIAL_RECORD",
+      "availability": "UNAVAILABLE",
+      "source_reference": "docs/机器学习/ML.en.md#L23"
+    },
+    {
+      "id": "unit_b06d4ae9e2cf1fb86c5d72809204e4c9",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Assignments",
+      "resource_type": "assignment",
+      "official_course_unit": true,
+      "classification": "OFFICIAL_UNIT_METADATA_WITHOUT_CONTENT",
+      "availability": "DESCRIBED_ONLY",
+      "source_reference": "docs/机器学习/ML.en.md#L24"
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_e374473761ce556637a7b79376f12e79",
+      "to": "unit_kickoff_linear_regression_engineering",
+      "relation": "TOPIC_EVIDENCE_FOR",
+      "official_sequence": false,
+      "basis": "The catalog overview names linear regression and hands-on programming."
+    },
+    {
+      "from": "unit_2bf2db955ad1599f8e93c768b43db655",
+      "to": "unit_6bb2dd6f59bb34fc5fe5a40aa0d11114",
+      "relation": "POTENTIAL_RETRIEVAL_LOCATION_FOR",
+      "official_sequence": false,
+      "basis": "The recordings field says only 'refer to the course website'."
+    },
+    {
+      "from": "unit_2bf2db955ad1599f8e93c768b43db655",
+      "to": "unit_b06d4ae9e2cf1fb86c5d72809204e4c9",
+      "relation": "POTENTIAL_RETRIEVAL_LOCATION_FOR",
+      "official_sequence": false,
+      "basis": "The assignments field says only 'refer to the course website'."
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "classification_policy": {
+    "official_sequence_known": false,
+    "dependency_claims_from_snapshot": [],
+    "rule": "A normalized record remains a resource record unless its evidence establishes unit identity and content. The catalog's official_course_unit flag is preserved, but by itself does not make missing material available or place it in an inferred sequence. Contextual and retrieval-location edges are not prerequisites."
+  }
+}

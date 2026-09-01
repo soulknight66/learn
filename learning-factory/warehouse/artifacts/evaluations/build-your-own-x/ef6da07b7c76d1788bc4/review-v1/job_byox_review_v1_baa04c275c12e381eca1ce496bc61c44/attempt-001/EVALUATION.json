@@ -1,0 +1,38 @@
+{
+  "builder_job_id": "job_byox_build_v1_baa04c275c12e381eca1ce496bc61c44",
+  "checks_run": [
+    "Inventoried all 51 submitted files, checked object types and permissions, and compared aggregate SHA-256 values before and after review.",
+    "Parsed MANIFEST.yaml and PROVENANCE.json as strict JSON and independently invoked the submitted structural/credential audit.",
+    "Ran the environment probe and recorded the available compiler, build tool, Python runtime, utilities, and unavailable analysis tools.",
+    "Built the starter and sealed reference from clean state with the submitted strict warning flags in a writable copy.",
+    "Ran all 15 public tests against the reference and both invocation tests against the starter.",
+    "Ran the sealed parser, job-table, integration, adversarial, and PTY suites under outer timeouts.",
+    "Reproduced the submitted ASan/UBSan link failure, then restored a normal clean reference build.",
+    "Reproduced both debugging-exercise outcomes, compiled the review exercise, and smoke-tested the benchmark driver with one iteration.",
+    "Built a parser-only milestone probe from the reference parser plus the unchanged starter executor and ran the invocation and parsing stages.",
+    "Ran reviewer-owned probes for exact whitespace grammar, mixed stopped/completed wait status, parse-before-launch, and a pipeline with initially closed standard input.",
+    "Reviewed progressive-disclosure layout, learner guidance, known-gap disclosures, license boundary, and provenance binding semantics."
+  ],
+  "evidence": [
+    "The original CANDIDATE aggregate SHA-256 remained 8899c7982e7f1be65f82b60b840de076bf6dece10c6f97d42bf5cfa04da658d0; all candidate files remained immutable and no candidate file was edited.",
+    "Clean strict builds succeeded for starter/msh and sealed/reference/msh-reference with GCC 8.5.0.",
+    "Reference results reproduced: 15/15 public tests, 6 parser cases, 3 job-table cases, 11 integration tests, 4 adversarial tests, and 1 PTY test passed; starter invocation was 2/2.",
+    "Manifest claims are conservative: status is GENERATED, labels are GENERATED and PARTIAL, independent validation is REQUIRED, and productionized is false.",
+    "A mixed-state R4.4 probe created stopped job 1 and completed job 2 with status 7; msh_jobs_wait_all printed a stopped-job diagnostic and returned 1 instead of the specified highest-numbered completed-job status 7.",
+    "Vertical tab, form feed, and carriage return each split an unquoted argument into two, because parser.c uses isspace although R2.1 names only space, tab, and newline as separators.",
+    "The parser-only milestone binary passed 2/2 invocation tests but failed 3/3 parsing-stage tests solely because every parsing test executes an external command through the still-unimplemented starter executor.",
+    "With standard input initially closed, 'printf x | cat' returned 1 with empty stdout and an EBADF diagnostic; close_pipes closes fd 0 after dup2(0, 0).",
+    "The malformed command 'touch ... |' returned 2 and created no file, supporting the parse-before-launch invariant.",
+    "The documented sanitizer limitation reproduced exactly: linking could not find libasan.so.5.0.0 or libubsan.so.1.0.0 and exited 2.",
+    "The actual SHA-256 of PROVENANCE.json is 2ade2f5c7ca0f0af11d436e0fc18422ffe831635622addace3c9a75e3ca7f374, while MANIFEST.yaml provenance_sha256 is the separate snapshot identifier 8c9dfcfc0a7e11722572b7efd0dab0f02bca8ee03eb87027356598182ae4a9ee."
+  ],
+  "limitations": [
+    "ASan/UBSan binaries could not be linked; valgrind, cppcheck, shellcheck, clang, rg, jq, and git were unavailable in this workspace.",
+    "The catalog source repository, linked tutorial, network, and immutable source snapshot were unavailable, so source-commit authenticity, catalog license evidence, and the no-copy/no-close-paraphrase assertion could not be independently verified.",
+    "No materialized learner view or transfer harness was supplied; exclusion of sealed/reference, sealed tests, canonical answers, and evaluator-facing adversarial material from the actual student view remains inconclusive.",
+    "No cross-platform, randomized fuzzing, coverage, deterministic allocation/syscall failure injection, low-resource-limit, PID-reuse, extended PTY, leak, or production-readiness validation was performed.",
+    "Candidate-authored test success was treated only as supporting evidence and does not award BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED."
+  ],
+  "project_id": "project_174888fa5782c93127ae604fcdd4913a",
+  "verdict": "REVISE"
+}

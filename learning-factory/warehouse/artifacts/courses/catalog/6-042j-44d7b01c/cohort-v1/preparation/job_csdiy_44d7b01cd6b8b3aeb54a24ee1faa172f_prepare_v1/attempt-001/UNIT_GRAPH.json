@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "course_id": "course_44d7b01cd6b8b3aeb54a24ee1faa172f",
+  "nodes": [
+    {
+      "node_id": "kickoff_01_executable_graph_invariants",
+      "kind": "managed_study_unit",
+      "title": "Executable Graph Invariants: A Deterministic Topological Sort",
+      "classification": "course-manager-authored bridge unit",
+      "official_course_unit": false,
+      "instructional": true,
+      "availability": "AVAILABLE_LOCAL",
+      "estimated_effort_hours": {
+        "minimum": 4,
+        "maximum": 6
+      },
+      "dependencies": [],
+      "material_paths": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ]
+    },
+    {
+      "node_id": "unit_e95203d87462c8c9d547348421102f10",
+      "kind": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "resource_type": "reading",
+      "classification": "catalog_overview_input",
+      "official_course_unit": false,
+      "instructional": false,
+      "availability": "METADATA_IN_SNAPSHOT",
+      "order": 0,
+      "dependencies": [],
+      "source_reference": "docs/数学进阶/6.042J.en.md"
+    },
+    {
+      "node_id": "unit_5a6d7a2f9b47bd2afcc0962bc9ed2c39",
+      "kind": "normalized_resource_record",
+      "title": "Course Website",
+      "resource_type": "reading",
+      "classification": "website_index_input",
+      "official_course_unit": false,
+      "instructional": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "order": 15,
+      "dependencies": [],
+      "source_reference": "docs/数学进阶/6.042J.en.md#L15"
+    },
+    {
+      "node_id": "unit_284529472170b72be58b208fc2d338ae",
+      "kind": "normalized_resource_record",
+      "title": "Recordings",
+      "resource_type": "lecture",
+      "classification": "unresolved_recordings_pointer",
+      "official_course_unit": false,
+      "instructional": false,
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "order": 16,
+      "dependencies": [],
+      "source_reference": "docs/数学进阶/6.042J.en.md#L16"
+    },
+    {
+      "node_id": "unit_e1c8cc3470044818283f459197ab3d97",
+      "kind": "normalized_resource_record",
+      "title": "Assignments",
+      "resource_type": "assignment",
+      "classification": "unresolved_official_assignment_pointer",
+      "official_course_unit": true,
+      "instructional": false,
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "order": 17,
+      "dependencies": [],
+      "source_reference": "docs/数学进阶/6.042J.en.md#L17"
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_e95203d87462c8c9d547348421102f10",
+      "to": "kickoff_01_executable_graph_invariants",
+      "relationship": "informs_course_selection",
+      "instructional_dependency": false
+    },
+    {
+      "from": "unit_5a6d7a2f9b47bd2afcc0962bc9ed2c39",
+      "to": "unit_284529472170b72be58b208fc2d338ae",
+      "relationship": "catalog_says_refer_to_website",
+      "instructional_dependency": false,
+      "verified": false
+    },
+    {
+      "from": "unit_5a6d7a2f9b47bd2afcc0962bc9ed2c39",
+      "to": "unit_e1c8cc3470044818283f459197ab3d97",
+      "relationship": "catalog_says_refer_to_website",
+      "instructional_dependency": false,
+      "verified": false
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "record_boundary_application": {
+    "instructional_nodes": [
+      "kickoff_01_executable_graph_invariants"
+    ],
+    "input_only_nodes": [
+      "unit_e95203d87462c8c9d547348421102f10",
+      "unit_5a6d7a2f9b47bd2afcc0962bc9ed2c39",
+      "unit_284529472170b72be58b208fc2d338ae",
+      "unit_e1c8cc3470044818283f459197ab3d97"
+    ],
+    "rule": "Input-only nodes do not become assigned study units merely by appearing in the normalized catalog records."
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "course_id": "course_0edeed8b27da2920dcfd8d536cf6f78c",
+  "nodes": [
+    {
+      "node_id": "manager_unit_01_concurrency_contracts",
+      "kind": "STUDY_UNIT",
+      "title": "Concurrency Contracts and a Mutex-Protected FIFO Cache",
+      "origin": "MANAGER_AUTHORED_KICKOFF",
+      "official_course_unit": false,
+      "availability": "LOCAL_PREPARED",
+      "status": "PREPARED_NOT_COMPLETED"
+    },
+    {
+      "node_id": "record:unit_e0634551079f1f1398b8076b75473ba5",
+      "kind": "NORMALIZED_RESOURCE_RECORD",
+      "record_id": "unit_e0634551079f1f1398b8076b75473ba5",
+      "title": "Catalog overview and resource guide",
+      "record_type": "reading",
+      "classification": "CATALOG_METADATA_RECORD",
+      "official_course_unit": false,
+      "availability": "METADATA_ONLY",
+      "promoted_to_study_unit": false
+    },
+    {
+      "node_id": "record:unit_98afdf6f050e56800c507c1bfc74bcf7",
+      "kind": "NORMALIZED_RESOURCE_RECORD",
+      "record_id": "unit_98afdf6f050e56800c507c1bfc74bcf7",
+      "title": "Course Website",
+      "record_type": "reading",
+      "classification": "RESOURCE_COLLECTION_LINK",
+      "official_course_unit": false,
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "promoted_to_study_unit": false
+    },
+    {
+      "node_id": "record:unit_701254094730c7a48404f79e280ab350",
+      "kind": "NORMALIZED_RESOURCE_RECORD",
+      "record_id": "unit_701254094730c7a48404f79e280ab350",
+      "title": "Recordings",
+      "record_type": "lecture",
+      "classification": "PLAYLIST_LINK",
+      "official_course_unit": false,
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "promoted_to_study_unit": false
+    },
+    {
+      "node_id": "record:unit_5e4691ba146b314cf84b15c32b0b0ac4",
+      "kind": "NORMALIZED_RESOURCE_RECORD",
+      "record_id": "unit_5e4691ba146b314cf84b15c32b0b0ac4",
+      "title": "Textbooks",
+      "record_type": "reading",
+      "classification": "SLIDE_DECK_LINK",
+      "official_course_unit": false,
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "promoted_to_study_unit": false
+    },
+    {
+      "node_id": "record:unit_f9c778bf4abfad61a69bfdb825b8d494",
+      "kind": "NORMALIZED_RESOURCE_RECORD",
+      "record_id": "unit_f9c778bf4abfad61a69bfdb825b8d494",
+      "title": "Assignments",
+      "record_type": "assignment",
+      "classification": "OFFICIAL_ASSIGNMENT_COLLECTION_LINK",
+      "official_course_unit": true,
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "promoted_to_study_unit": false,
+      "classification_note": "The catalog marks the assignments record as official, but the link names a collection. No individual assignment content or unit boundary was supplied or inspected."
+    }
+  ],
+  "edges": [
+    {
+      "from": "record:unit_e0634551079f1f1398b8076b75473ba5",
+      "to": "manager_unit_01_concurrency_contracts",
+      "relation": "INFORMS_MANAGER_AUTHORED_SCOPE",
+      "dependency": false,
+      "note": "Only the supplied metadata informs the kickoff; the source document is not treated as assigned reading."
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion."
+}

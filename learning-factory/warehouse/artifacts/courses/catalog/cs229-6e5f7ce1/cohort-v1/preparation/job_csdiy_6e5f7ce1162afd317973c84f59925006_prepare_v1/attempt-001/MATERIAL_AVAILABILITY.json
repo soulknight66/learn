@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "course_id": "course_6e5f7ce1162afd317973c84f59925006",
+  "materials": [
+    {
+      "material_id": "unit_8811833dab387b7fad68629b4f65c4c0",
+      "title": "Catalog overview and resource guide",
+      "kind": "catalog_metadata",
+      "official_course_unit": false,
+      "availability": "METADATA_ONLY",
+      "content_retrieved": false,
+      "catalog_data_present": true,
+      "locators": [],
+      "usable_for_current_unit": "CONTEXT_ONLY",
+      "note": "The supplied snapshot contains descriptive metadata, not the underlying instructional content."
+    },
+    {
+      "material_id": "unit_17578ee9d217a992cc629b9310d2447e",
+      "title": "Course Website",
+      "kind": "course_website",
+      "official_course_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "content_retrieved": false,
+      "catalog_data_present": true,
+      "locators": [
+        "http://cs229.stanford.edu/syllabus.html"
+      ],
+      "usable_for_current_unit": "NO",
+      "note": "The catalog link was recorded but not fetched, resolved, or content-validated."
+    },
+    {
+      "material_id": "unit_ac10c512b377f578841647756e4447d3",
+      "title": "Recordings",
+      "kind": "lecture_recordings",
+      "official_course_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "content_retrieved": false,
+      "catalog_data_present": true,
+      "locators": [
+        "https://www.bilibili.com/video/BV1JE411w7Ub"
+      ],
+      "usable_for_current_unit": "NO",
+      "note": "The catalog link was recorded but its accessibility, language, completeness, rights, and alignment were not validated."
+    },
+    {
+      "material_id": "unit_dd5c05134a1c3578c35de446c32477d4",
+      "title": "Textbook",
+      "kind": "textbook",
+      "official_course_unit": false,
+      "availability": "NONE_LISTED",
+      "content_retrieved": false,
+      "catalog_data_present": true,
+      "locators": [],
+      "usable_for_current_unit": "NO",
+      "note": "The catalog explicitly lists no textbook; this is not evidence that a textbook asset exists."
+    },
+    {
+      "material_id": "described_lecture_notes",
+      "title": "Lecture notes",
+      "kind": "lecture_notes",
+      "official_course_unit": false,
+      "availability": "DESCRIBED_UNLOCATED",
+      "content_retrieved": false,
+      "catalog_data_present": true,
+      "locators": [],
+      "usable_for_current_unit": "NO",
+      "note": "The catalog praises lecture notes but provides no note-specific locator in the normalized records."
+    },
+    {
+      "material_id": "catalog_link_support_repository",
+      "title": "Linked CS229 support repository",
+      "kind": "code_repository",
+      "official_course_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "content_retrieved": false,
+      "catalog_data_present": true,
+      "locators": [
+        "https://github.com/PKUFlyingPig/CS229"
+      ],
+      "usable_for_current_unit": "NO",
+      "note": "This URL appears in source metadata only; ownership, license, contents, and relationship to the official course were not validated."
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_fd0f6c849436ca8df924534168d6a504",
+      "title": "Assignments",
+      "kind": "assignment",
+      "official_course_unit": true,
+      "availability": "NOT_OPEN_TO_PUBLIC",
+      "reason": "The catalog explicitly says: Not open to the public.",
+      "locators": [],
+      "retrieval_attempted": false,
+      "substitution": "The manager-authored kickoff task in student_safe/STUDY_TASK.md is original and is not represented as a Stanford assignment."
+    }
+  ],
+  "retrieval_policy": {
+    "network_retrieval_performed_for_this_job": false,
+    "restricted_content_retrieval_allowed": false,
+    "linked_means_available": false,
+    "rules": [
+      "Never attempt to obtain material identified as private, restricted, or not open to the public.",
+      "Treat catalog URLs as unverified locators until a later authorized job records retrieval outcome, final locator, rights or license, integrity, and content classification.",
+      "Do not make linked or described-only material a required dependency before it is retrieved and validated by the worker harness.",
+      "Keep later material additions attributable to their source record and do not infer an official course sequence from catalog record order.",
+      "Use an original, self-contained substitute when restricted course work is unavailable, and label it as manager-authored."
+    ],
+    "future_expansion_gate": "A later job may add units only after material-level availability and official-unit status are independently established."
+  },
+  "provenance": {
+    "classification": "course-manager-generated from provided catalog snapshot",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_file": "docs/机器学习/CS229.en.md",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "content_sha256": "dc045173aaf92e20978d929f961d0cde20e4aa4c65e499cdcd54a55975e246a2"
+  },
+  "validation": {
+    "label": "AWAITING_HARNESS_VALIDATION",
+    "validated_completion_claim": false
+  }
+}

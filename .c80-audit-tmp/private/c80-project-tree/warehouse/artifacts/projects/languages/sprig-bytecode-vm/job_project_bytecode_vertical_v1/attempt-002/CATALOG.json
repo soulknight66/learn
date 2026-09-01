@@ -1,0 +1,96 @@
+{
+  "architecture_value": 9,
+  "artifact_paths": {
+    "benchmark": "benchmarks/benchmark.py",
+    "debugging_challenge": "debugging/parser-associativity",
+    "fuzzer": "adversarial/grammar_fuzz.py",
+    "hidden_tests": "sealed/reference_tests",
+    "public_tests": "public_tests",
+    "reference": "sealed/reference",
+    "review_exercise": "review_exercises/constant-folding",
+    "starter": "starter",
+    "treewalk_alternative": "alternatives/treewalk"
+  },
+  "concepts": [
+    "lexing",
+    "recursive-descent parsing",
+    "ASTs",
+    "bytecode compilation",
+    "stack virtual machines",
+    "tree-walk interpreters",
+    "resource bounds",
+    "differential testing",
+    "compiler debugging"
+  ],
+  "cs_depth": 9,
+  "debugging_value": 9,
+  "deployment_status": "NOT_PRODUCTION_READY",
+  "difficulty": 8,
+  "estimated_human_hours": 18,
+  "family": "languages-compilers",
+  "id": "sprig-bytecode-vm",
+  "languages": [
+    "Python 3.11"
+  ],
+  "name": "Sprig Language, Compiler, and Bytecode VM",
+  "next": [
+    "closures and lexical scope",
+    "bytecode verification",
+    "garbage collection",
+    "debugger protocol"
+  ],
+  "prerequisites": [
+    "Python",
+    "recursion",
+    "basic language grammars"
+  ],
+  "production_relevance": 8,
+  "productionized": false,
+  "provenance": {
+    "catalog_source": {
+      "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989",
+      "external_reference": "https://medium.com/bumble-tech/home-grown-bytecode-interpreters-51e12d59b25c",
+      "implementation_language": "C",
+      "job_id": "job_project_bytecode_vertical_v1",
+      "license": "CC0-1.0",
+      "linked_resource_license": "NOASSERTION",
+      "lookup_status": "active database catalog row",
+      "project_category": "Emulator / Virtual Machine",
+      "project_id": "project_4b7f4b85b17b06eeba75d235767a898f",
+      "project_slug": "home-grown-bytecode-interpreters",
+      "project_title": "Home-grown bytecode interpreters",
+      "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+      "source_name": "Build Your Own X",
+      "source_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/build-your-own-x",
+      "source_reference": "README.md:166",
+      "upstream_url": "git@github.com:codecrafters-io/build-your-own-x.git"
+    },
+    "derivation": {
+      "agent_generated": [
+        "Sprig language contract and all code, tests, exercises, and prose in this pack"
+      ],
+      "inferred": [
+        "concept tags, difficulty, curriculum placement, production gaps, and architecture comparison"
+      ],
+      "measured": [
+        "benchmark and fuzz reports only after their validator commands execute"
+      ],
+      "source_derived": [
+        "catalog title, category, language tag, and upstream link"
+      ]
+    },
+    "license_boundary": "CC0-1.0 covers the Build Your Own X catalog repository metadata only. The linked article is referenced, not mirrored, and remains NOASSERTION. This independently generated pack is for personal educational use.",
+    "linked_content_copied": false,
+    "network_used_during_generation": false
+  },
+  "type": "build-your-own-x-challenge-pack",
+  "validation_status": "GENERATED_CANDIDATE",
+  "validation_targets": [
+    "BUILDS",
+    "TESTED",
+    "FUZZED",
+    "BENCHMARKED",
+    "REVIEWED",
+    "PARTIAL"
+  ]
+}

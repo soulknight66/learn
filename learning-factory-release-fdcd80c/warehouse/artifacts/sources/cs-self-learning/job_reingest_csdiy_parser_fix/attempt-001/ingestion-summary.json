@@ -1,0 +1,16 @@
+{
+  "adapter": "csdiy",
+  "course_units": 394,
+  "courses": 82,
+  "curriculum_edges": 28,
+  "projects": 0,
+  "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+  "source_name": "CSDIY",
+  "warnings": [
+    "docs/编程语言设计与分析/NJU-SoftwareAnalysis.en.md: missing class hour",
+    "docs/编程语言设计与分析/PKU-SoftwareAnalysis.en.md: missing class hour",
+    "docs/编译原理/CS143.en.md: missing class hour",
+    "docs/编译原理/NJU-Compilers.en.md: missing class hour",
+    "docs/编译原理/SJTU-Compilers.en.md: missing difficulty"
+  ]
+}

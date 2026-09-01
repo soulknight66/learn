@@ -1,0 +1,19 @@
+# Public black-box tests
+
+This module imports the starter through a local `replace` directive and tests only exported behavior. Run it from this directory with:
+
+```bash
+GOTOOLCHAIN=local go test ./...
+```
+
+The unmodified starter is expected to fail at the first scanner-dependent tests. Use focused runs while progressing, for example:
+
+```bash
+go test -run '^TestScan'
+go test -run '^TestParse'
+go test -run '^TestAnalyze'
+go test -run '^TestCompile'
+go test -run '^TestExecute|^TestRuntime|^TestValidate'
+```
+
+These cases are examples, not exhaustive grading. Independent tests may construct malformed tokens, ASTs, analyses, and bytecode; check every integer boundary and error precedence; verify input immutability and concurrent use; and fuzz exported functions for panics. Implement the written requirements rather than matching only these samples.

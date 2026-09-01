@@ -1,0 +1,31 @@
+{
+  "builder_job_id": "job_byox_repair_v1_g1_8eee212a184d6478c87457e5379e9bbb",
+  "checks_run": [
+    "Inspected all 67 submitted files for contract coverage, learner utility, disclosure placement, provenance, licensing, and validation-label honesty.",
+    "Parsed MANIFEST.yaml and PROVENANCE.json with duplicate-key rejection and independently checked their identifiers, commit, snapshot linkage, status, labels, and file digests.",
+    "Built the starter and sealed reference with the supplied strict C11 makefiles in a writable byte-for-byte scratch copy.",
+    "Ran the process-control unit tests, public suite against both binaries, sealed reference suite, nested interpreter, and structural audit with external wall-time bounds.",
+    "Ran a separate bounded 23-case black-box matrix over semantics, diagnostics, and exact/one-over translation and runtime capacities.",
+    "Repeated the independent matrix with GCC -O0 and GCC -O3 -flto builds and checked byte-identical outputs from two clean default rebuilds.",
+    "Independently scanned every submitted filesystem entry for special files, credential signatures, solution answers outside sealed/, and C sources outside starter/ or sealed/."
+  ],
+  "evidence": [
+    "Strict starter and reference builds exited 0; two clean default rebuilds produced stable SHA-256 digests c67a6c46a41945ab748f087e96fbf4ece419968c9dd7810290c470504cb6dd35 and 278b0ef3c85e23dfc7386c289000e99ce89ff3d9ca36774a55aaf8fce8c9d370 respectively.",
+    "Observed 4/4 process-control unit tests, 18/18 public reference cases, and 34/34 sealed reference cases pass; the nested interpreter printed exactly 42 and exited 0.",
+    "The deliberately incomplete starter reproduced its documented 12 passes and 6 failures, with runner exit 1.",
+    "The independent matrix passed 22 of 23 cases under each of -O2, -O0, and -O3 -flto, including exact source-byte, bytecode, function, parameter, local, frame, operand-stack, identifier, expression-nesting, and documented rejection boundaries.",
+    "A grammar-valid program with 4,097 call sites was rejected with exit 65 and 'too many function calls'. It is only 16,418 bytes, 16,403 source tokens, 8,200 bytecode instructions, two functions, and zero arguments per call, so it exceeds none of REQUIREMENTS.md's documented limits; 4,096 otherwise identical calls exited 0.",
+    "The independent structural scan found 67 regular files, no special entries, no credential-signature hits, no ANSWER.md outside sealed/, and no C source outside starter/ or sealed/.",
+    "Metadata remains GENERATED plus PARTIAL, independent_validation is REQUIRED, and productionized is false; the prose consistently disclaims independently controlled validation labels."
+  ],
+  "limitations": [
+    "CANDIDATE/ was mounted read-only (directories mode 0555), so compilation was performed only after copying it and changing permissions on the scratch copy; the submitted tree hash remained unchanged.",
+    "Only GCC 8.5.0 on the provided x86_64 environment was available. Clang, Valgrind, and cppcheck were unavailable.",
+    "Sanitizer builds were inconclusive because the linker could not find libubsan.so.1.0.0 or libasan.so.5.0.0.",
+    "No fuzz campaign, benchmark, production-security assessment, second architecture, or transfer-view verification was performed.",
+    "The upstream linked resource and source snapshot were unavailable to this workspace, so the no-copy assertion and linked-resource license could not be independently established.",
+    "The builder's PRIOR_BUILD and PRIOR_REVIEW roots were not submitted, so the staged-root hash claims in CANDIDATE/VALIDATION.md could not be reproduced."
+  ],
+  "project_id": "project_4b62c869e81606deb9eb1148a914808f",
+  "verdict": "REVISE"
+}

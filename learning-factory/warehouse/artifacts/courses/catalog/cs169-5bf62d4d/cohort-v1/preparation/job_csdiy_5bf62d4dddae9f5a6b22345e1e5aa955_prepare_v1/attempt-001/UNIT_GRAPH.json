@@ -1,0 +1,102 @@
+{
+  "course_id": "course_5bf62d4dddae9f5a6b22345e1e5aa955",
+  "nodes": [
+    {
+      "node_id": "kickoff_dependency_planner_vertical_slice_v1",
+      "node_kind": "study_unit",
+      "title": "From Correct Algorithm to Reliable Service: A Dependency-Planner Vertical Slice",
+      "origin": "course_manager_authored",
+      "availability": "AVAILABLE_IN_WORKSPACE",
+      "accepted_as_official_course_unit": false,
+      "required_for_kickoff": true
+    },
+    {
+      "node_id": "unit_b0118c2b011dc973a4cef19fcb5f255e",
+      "node_kind": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "record_type": "reading",
+      "classification": "catalog_metadata",
+      "availability": "AVAILABLE_IN_JOB_SNAPSHOT",
+      "source_claims_official_course_unit": false,
+      "accepted_as_official_course_unit": false,
+      "instructional_role": "provenance_and_context_only"
+    },
+    {
+      "node_id": "unit_bb78c6bb4256f22b8952dfe750644497",
+      "node_kind": "normalized_resource_record",
+      "title": "Course Website",
+      "record_type": "reading",
+      "classification": "unverified_resource_pointer",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "source_claims_official_course_unit": false,
+      "accepted_as_official_course_unit": false,
+      "instructional_role": "future_discovery_candidate"
+    },
+    {
+      "node_id": "unit_317ce48598a4b3c9632c00b86b6f3427",
+      "node_kind": "normalized_resource_record",
+      "title": "Recordings",
+      "record_type": "lecture",
+      "classification": "description_without_locator",
+      "availability": "UNAVAILABLE",
+      "source_claims_official_course_unit": false,
+      "accepted_as_official_course_unit": false,
+      "instructional_role": "future_discovery_candidate"
+    },
+    {
+      "node_id": "unit_12a7fd1539090f835cc8f07e104d9f0c",
+      "node_kind": "normalized_resource_record",
+      "title": "Textbook",
+      "record_type": "reading",
+      "classification": "unverified_resource_pointer",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "source_claims_official_course_unit": false,
+      "accepted_as_official_course_unit": false,
+      "instructional_role": "optional_future_reference"
+    },
+    {
+      "node_id": "unit_f8f6c91aa512f29bbcfa707bb921c2e4",
+      "node_kind": "normalized_resource_record",
+      "title": "Assignments",
+      "record_type": "assignment",
+      "classification": "official-status-claimed-but-content-unverified",
+      "availability": "UNAVAILABLE",
+      "source_claims_official_course_unit": true,
+      "accepted_as_official_course_unit": false,
+      "instructional_role": "future_discovery_candidate"
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_b0118c2b011dc973a4cef19fcb5f255e",
+      "to": "kickoff_dependency_planner_vertical_slice_v1",
+      "relation": "provides_catalog_context_for",
+      "required": false
+    },
+    {
+      "from": "unit_bb78c6bb4256f22b8952dfe750644497",
+      "to": "kickoff_dependency_planner_vertical_slice_v1",
+      "relation": "future_expansion_pointer_for",
+      "required": false
+    },
+    {
+      "from": "unit_317ce48598a4b3c9632c00b86b6f3427",
+      "to": "kickoff_dependency_planner_vertical_slice_v1",
+      "relation": "future_expansion_pointer_for",
+      "required": false
+    },
+    {
+      "from": "unit_12a7fd1539090f835cc8f07e104d9f0c",
+      "to": "kickoff_dependency_planner_vertical_slice_v1",
+      "relation": "optional_future_reference_for",
+      "required": false
+    },
+    {
+      "from": "unit_f8f6c91aa512f29bbcfa707bb921c2e4",
+      "to": "kickoff_dependency_planner_vertical_slice_v1",
+      "relation": "future_comparison_candidate_for",
+      "required": false
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion. No normalized record is treated as a prerequisite or completed unit in this kickoff."
+}

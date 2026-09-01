@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "course_id": "course_a7a910aa0ff53117a8266badba1bc57c",
+  "title": "Stanford CS142: Web Applications",
+  "status": "KICKOFF_UNIT_READY",
+  "unit": {
+    "unit_id": "manager_unit_01_algorithm_run_log",
+    "title": "Engineering a Small Browser Application",
+    "sequence": 1,
+    "kind": "COURSE_MANAGER_AUTHORED_KICKOFF",
+    "official_course_unit": false,
+    "scope": "One bounded introductory software-engineering unit; it is not a reconstruction of a Stanford CS142 unit.",
+    "estimated_human_hours": 8,
+    "audience": "A learner with strong algorithms fundamentals and prerequisite-level systems/programming experience who is developing practical software-engineering habits.",
+    "prerequisites": [
+      "Comfort writing and debugging small programs",
+      "Basic command-line and source-control familiarity",
+      "Ability to reason about arrays, records, ordering, and invariants",
+      "Catalog-listed background comparable to CS107 and CS108"
+    ],
+    "learning_objectives": [
+      "Translate a behavioral specification into a small browser application",
+      "Separate pure domain logic from DOM and persistence side effects",
+      "Design explicit validation and deterministic state transitions",
+      "Write focused automated tests, including boundary and failure cases",
+      "Document design choices and verify observable behavior"
+    ],
+    "student_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "examiner_material": "examiner_only/RUBRIC.md",
+    "required_submission": [
+      "A runnable Algorithm Run Log browser application",
+      "Automated tests for domain and persistence behavior",
+      "A concise README with execution and verification instructions",
+      "Written responses to the comprehension prompts"
+    ],
+    "external_material_required": false
+  },
+  "completion_policy": {
+    "unit_completion_is_course_completion": false,
+    "course_completion_status": "NOT_EVALUATED",
+    "unit_claim_allowed": "KICKOFF_UNIT_COMPLETED",
+    "whole_course_claim_allowed": false,
+    "unit_completion_requires": [
+      "The worker-harness-controlled validator confirms the submitted files and automated tests",
+      "An independent examiner applies examiner_only/RUBRIC.md to observable evidence",
+      "All critical safety and execution gates in the rubric are satisfied"
+    ],
+    "prose_claims_are_evidence": false,
+    "later_expansion_required": true,
+    "later_expansion_conditions": [
+      "Linked materials are retrieved only by an authorized later job",
+      "Retrieved materials are recorded with provenance and availability evidence",
+      "Resource links are classified before any resource is promoted to a study unit",
+      "Additional units receive independent learner materials and validation"
+    ]
+  },
+  "provenance": {
+    "classification": "MANAGER_AUTHORED_FROM_CATALOG_SNAPSHOT",
+    "validation_label": "PREPARED_KICKOFF_NOT_YET_LEARNER_VALIDATED",
+    "catalog_source": "CSDIY",
+    "catalog_source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "catalog_source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "catalog_source_file": "docs/Web开发/CS142.en.md",
+    "catalog_content_sha256": "20469eb3dee321b376d2001a14da05e03ae8d682c7ef09e7a9a06ebe23a0a402",
+    "catalog_adapter": "csdiy",
+    "catalog_extractor_version": "1.1",
+    "source_license": "MIT",
+    "external_retrieval_performed": false,
+    "authorship_note": "The catalog identifies the course and links. The kickoff scope, task, questions, and rubric were authored for this learning-factory attempt and are not claimed to be Stanford course content."
+  }
+}

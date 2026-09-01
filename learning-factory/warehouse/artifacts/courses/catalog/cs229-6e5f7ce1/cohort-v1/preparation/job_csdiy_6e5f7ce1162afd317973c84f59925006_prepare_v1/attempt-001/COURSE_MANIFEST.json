@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "course_id": "course_6e5f7ce1162afd317973c84f59925006",
+  "title": "CS229: Machine Learning",
+  "status": "IN_PROGRESS",
+  "unit": {
+    "unit_id": "managed_unit_001_linear_regression_engineering",
+    "title": "Engineering a Reliable Linear Regression Baseline",
+    "sequence": 1,
+    "status": "PREPARED",
+    "origin": "course-manager-authored kickoff",
+    "official_course_unit": false,
+    "estimated_hours": 8,
+    "scope": "Implement and test multivariable ordinary least-squares linear regression using deterministic batch gradient descent.",
+    "learning_objectives": [
+      "Connect the least-squares objective and its gradient to an executable implementation.",
+      "Design a small, explicit estimator API with validation and fitted-state contracts.",
+      "Use deterministic tests and an independent numerical reference to establish correctness.",
+      "Diagnose convergence and numerical failures from recorded evidence rather than intuition."
+    ],
+    "student_safe_files": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "examiner_only_file": "examiner_only/RUBRIC.md",
+    "expected_learner_artifacts": [
+      "src/linear_regression.py",
+      "tests/test_linear_regression.py",
+      "DESIGN.md",
+      "COMPREHENSION_RESPONSES.md"
+    ]
+  },
+  "completion_policy": {
+    "scope": "THIS_UNIT_ONLY",
+    "unit_completion_requires": [
+      "All required learner artifacts are present.",
+      "Harness-controlled tests and validation checks pass.",
+      "An independent examiner applies examiner_only/RUBRIC.md and records a passing result.",
+      "The comprehension response is complete and consistent with the submitted implementation."
+    ],
+    "evidence_authority": "worker-harness-controlled validator",
+    "prose_claims_are_evidence": false,
+    "unit_completion_does_not_complete_course": true,
+    "course_completion_effect": "NONE",
+    "course_completion_defined": false,
+    "course_completion_note": "This manifest prepares one bounded kickoff unit. The remaining CS229 sequence has not been retrieved, classified, scheduled, or validated."
+  },
+  "provenance": {
+    "classification": "course-manager-generated",
+    "job_id": "job_csdiy_6e5f7ce1162afd317973c84f59925006_prepare_v1",
+    "attempt": 1,
+    "input": "provided catalog snapshot",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_file": "docs/机器学习/CS229.en.md",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "content_sha256": "dc045173aaf92e20978d929f961d0cde20e4aa4c65e499cdcd54a55975e246a2",
+    "adapter": "csdiy",
+    "extractor_version": "1.1",
+    "external_retrieval_performed": false
+  },
+  "validation": {
+    "label": "AWAITING_HARNESS_VALIDATION",
+    "validated_completion_claim": false
+  }
+}

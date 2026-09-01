@@ -1,0 +1,171 @@
+{
+  "course_id": "course_273048007d194845ebfe42969260ecf6",
+  "materials": [
+    {
+      "material_id": "catalog_snapshot",
+      "title": "Supplied CSDIY catalog snapshot",
+      "kind": "catalog_metadata",
+      "locator": "JOB.md embedded catalog snapshot",
+      "availability": "AVAILABLE_IN_ATTEMPT",
+      "retrieval_status": "SUPPLIED_NOT_FETCHED",
+      "content_scope": "Course description, catalog fields, normalized resource metadata, source metadata, and links only",
+      "permitted_use": "Planning and provenance; not a substitute for course notes or assignments",
+      "official_course_material": false,
+      "validation_label": "INPUT_PRESENT"
+    },
+    {
+      "material_id": "normalized_unit_0867c094a0cdb8ef7d18cdf1b016392d",
+      "normalized_record_id": "unit_0867c094a0cdb8ef7d18cdf1b016392d",
+      "title": "Catalog overview and resource guide",
+      "kind": "normalized_resource_record",
+      "locator": "docs/数学进阶/CS70.en.md",
+      "availability": "METADATA_ONLY",
+      "retrieval_status": "SOURCE_BODY_NOT_PRESENT_IN_ATTEMPT",
+      "content_scope": "Record fields in the supplied snapshot only",
+      "permitted_use": "Catalog context only",
+      "official_course_material": false,
+      "validation_label": "CLASSIFIED_NOT_RETRIEVED"
+    },
+    {
+      "material_id": "normalized_unit_fe63d8dbaed25a8ba902760e193afab7",
+      "normalized_record_id": "unit_fe63d8dbaed25a8ba902760e193afab7",
+      "title": "Course Website",
+      "kind": "external_link",
+      "locator": "http://www.eecs70.org/",
+      "availability": "LINK_ONLY",
+      "retrieval_status": "NOT_RETRIEVED_OR_VERIFIED",
+      "content_scope": "URL string only",
+      "permitted_use": "Future discovery after authorized retrieval",
+      "official_course_material": false,
+      "officiality_note": "The institution and page contents were not authenticated in this attempt.",
+      "validation_label": "LINK_RECORDED_UNVERIFIED"
+    },
+    {
+      "material_id": "normalized_unit_4f140c7babf2cc936b663c42f3f55aff",
+      "normalized_record_id": "unit_4f140c7babf2cc936b663c42f3f55aff",
+      "title": "Textbook",
+      "kind": "described_resource",
+      "locator": null,
+      "catalog_raw_value": "refer to the course website",
+      "availability": "UNAVAILABLE",
+      "retrieval_status": "NO_DIRECT_LOCATOR_OR_ARTIFACT",
+      "content_scope": "Description only",
+      "permitted_use": "None as learning content until resolved",
+      "official_course_material": false,
+      "validation_label": "BLOCKED_MISSING_LOCATOR"
+    },
+    {
+      "material_id": "normalized_unit_b4957d5339f2d443c582b3357454a3b2",
+      "normalized_record_id": "unit_b4957d5339f2d443c582b3357454a3b2",
+      "title": "Assignments",
+      "kind": "described_assignment_record",
+      "locator": null,
+      "catalog_raw_value": "refer to the course website",
+      "availability": "UNAVAILABLE",
+      "retrieval_status": "NO_DIRECT_LOCATOR_OR_ARTIFACT",
+      "content_scope": "Title, type, and catalog description only",
+      "permitted_use": "None as an assignment until resolved",
+      "source_metadata_official_course_unit": true,
+      "officiality_note": "The source record's flag is preserved, but no assignment content is present or authenticated.",
+      "validation_label": "BLOCKED_MISSING_ARTIFACT"
+    },
+    {
+      "material_id": "catalog_linked_ucb_cs70_repository",
+      "title": "Catalog-linked UCB-CS70 repository",
+      "kind": "external_repository_link",
+      "locator": "https://github.com/PKUFlyingPig/UCB-CS70",
+      "availability": "LINK_ONLY",
+      "retrieval_status": "NOT_RETRIEVED_OR_VERIFIED",
+      "content_scope": "URL string only",
+      "permitted_use": "Future discovery after authorized retrieval and rights review",
+      "official_course_material": false,
+      "officiality_note": "The catalog link does not establish UC Berkeley authorship, completeness, currency, or permission for redistribution.",
+      "validation_label": "LINK_RECORDED_UNVERIFIED"
+    },
+    {
+      "material_id": "manager_authored_kickoff_packet",
+      "title": "Stable Matching as an Executable Contract kickoff packet",
+      "kind": "manager_authored_local_material",
+      "locator": "student_safe/",
+      "availability": "AVAILABLE_IN_ATTEMPT",
+      "retrieval_status": "LOCALLY_AUTHORED",
+      "content_scope": "Course brief, study task, and unanswered comprehension prompts",
+      "permitted_use": "Bounded kickoff_01_stable_matching_engineering only",
+      "official_course_material": false,
+      "validation_label": "PREPARED_NOT_VALIDATED"
+    },
+    {
+      "material_id": "manager_authored_examiner_rubric",
+      "title": "Independent kickoff examiner rubric",
+      "kind": "manager_authored_examiner_material",
+      "locator": "examiner_only/RUBRIC.md",
+      "availability": "AVAILABLE_IN_ATTEMPT_EXAMINER_ONLY",
+      "retrieval_status": "LOCALLY_AUTHORED",
+      "content_scope": "Scoring rules and examiner guidance",
+      "permitted_use": "Independent evaluation by the worker harness; never learner evidence",
+      "official_course_material": false,
+      "validation_label": "PREPARED_NOT_VALIDATED"
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "normalized_unit_0867c094a0cdb8ef7d18cdf1b016392d",
+      "reason_code": "SOURCE_BODY_NOT_PRESENT",
+      "reason": "Only the normalized record and supplied catalog fields are available; the referenced source file body is not in this attempt workspace.",
+      "unblock_condition": "An authorized ingestion job supplies the exact source body at the recorded commit and verifies its hash and license."
+    },
+    {
+      "material_id": "normalized_unit_fe63d8dbaed25a8ba902760e193afab7",
+      "reason_code": "EXTERNAL_CONTENT_NOT_RETRIEVED",
+      "reason": "A URL is known, but page contents, redirects, authorship, version, license, and availability were not checked.",
+      "unblock_condition": "An authorized retrieval job captures and validates the public page with provenance."
+    },
+    {
+      "material_id": "normalized_unit_4f140c7babf2cc936b663c42f3f55aff",
+      "reason_code": "MISSING_DIRECT_LOCATOR",
+      "reason": "The catalog says only to refer to the course website and names no textbook, edition, URL, or file.",
+      "unblock_condition": "A validated course source identifies the exact work and confirms access and usage rights."
+    },
+    {
+      "material_id": "normalized_unit_b4957d5339f2d443c582b3357454a3b2",
+      "reason_code": "MISSING_ASSIGNMENT_ARTIFACT",
+      "reason": "The record claims an official assignment category but supplies no assignment title, term, prompt, URL, or file.",
+      "unblock_condition": "A validated official source supplies a specific assignment artifact and term/version metadata."
+    },
+    {
+      "material_id": "catalog_linked_ucb_cs70_repository",
+      "reason_code": "EXTERNAL_REPOSITORY_NOT_RETRIEVED",
+      "reason": "Only the catalog-provided repository URL is present; repository contents and rights were not inspected.",
+      "unblock_condition": "An authorized ingestion job pins a revision, inventories relevant files, and records provenance and redistribution constraints."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job_mode": "NO_EXTERNAL_RETRIEVAL",
+    "external_retrieval_performed": false,
+    "rules": [
+      "Do not infer material availability from a title, URL, raw catalog description, or official-course-unit flag.",
+      "Do not fetch access-controlled, sealed, private, credentialed, hidden-grader, or otherwise restricted content.",
+      "A later job may retrieve an explicitly recorded public locator only when that job is authorized for network retrieval.",
+      "Store retrieved artifacts outside student views until provenance, authorship, license, integrity, and learner-release status are classified.",
+      "Record the requested locator, resolved locator, pinned version or retrieval time, content hash, license evidence, and retrieval result.",
+      "A failed retrieval remains durable evidence and must not be relabeled as available.",
+      "Promoting a resource record to a course unit requires an explicit reviewed decision; retrieval alone is insufficient.",
+      "Never copy examiner guidance, hidden validation data, or another learner's files into student_safe/."
+    ],
+    "later_expansion_gate": [
+      "The material artifact is actually present.",
+      "Its identity and relationship to the cataloged course are verified.",
+      "Its use and learner visibility are permitted.",
+      "Its provenance and validation label are recorded.",
+      "Any new unit is bounded and receives its own completion policy."
+    ],
+    "fallback": "If a source remains unavailable, author a clearly labeled self-contained substitute or defer the topic; never imply that missing official content was used."
+  },
+  "provenance": {
+    "artifact_classification": "MANAGER_CLASSIFICATION_OF_SUPPLIED_SNAPSHOT",
+    "validation_label": "PREPARED_NOT_VALIDATED",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/数学进阶/CS70.en.md",
+    "source_content_sha256": "9542f4ac4a33e63d6be53a59373f1d6a02e96bea16cf1bb645474db72c15d449"
+  }
+}

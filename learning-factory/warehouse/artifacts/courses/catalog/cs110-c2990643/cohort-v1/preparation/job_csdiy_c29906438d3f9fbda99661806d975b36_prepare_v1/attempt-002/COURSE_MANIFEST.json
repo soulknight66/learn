@@ -1,0 +1,69 @@
+{
+  "course_id": "course_c29906438d3f9fbda99661806d975b36",
+  "title": "CS110: Principles of Computer Systems",
+  "status": "KICKOFF_UNIT_READY",
+  "unit": {
+    "unit_id": "unit_manager_kickoff_process_supervision_v1",
+    "title": "Reliable POSIX Process Supervision",
+    "position": "manager-authored kickoff",
+    "official_course_unit": false,
+    "status": "READY_FOR_LEARNER",
+    "estimated_human_hours": 10,
+    "implementation_language": "C++17",
+    "platform": "POSIX-compatible Unix environment",
+    "scope": "Design, implement, test, and explain one small process supervisor that launches a command without a shell, captures its output, enforces a timeout, and reports termination correctly.",
+    "learner_artifacts": [
+      "submission/README.md",
+      "submission/DESIGN.md",
+      "submission/Makefile",
+      "submission/src/",
+      "submission/tests/",
+      "submission/COMPREHENSION_RESPONSES.md"
+    ]
+  },
+  "completion_policy": {
+    "scope": "THIS_KICKOFF_UNIT_ONLY",
+    "unit_completion_requires": [
+      "all declared learner artifacts are present",
+      "the project builds from a clean submission using the documented command",
+      "automated checks exercise normal exit, nonzero exit, argument preservation, output separation, launch failure, and timeout behavior",
+      "an examiner-controlled review applies examiner_only/RUBRIC.md to the submitted evidence"
+    ],
+    "learner_claim_is_evidence": false,
+    "unit_completion_implies_course_completion": false,
+    "course_completion_state_after_unit": "NOT_ESTABLISHED",
+    "course_completion_rule": "Later course units may be added only after their source material and ordering are independently retrieved, classified, and validated; finishing this kickoff must never mark the approximately 150-hour catalog course complete."
+  },
+  "provenance": {
+    "classification": "manager-authored-from-provided-catalog-snapshot",
+    "catalog": {
+      "adapter": "csdiy",
+      "extractor_version": "1.1",
+      "content_sha256": "1f6d5c1f9c96f86397033f58172acbd2c56932bb03f99131e287e9dc734f1345",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/计算机系统基础/CS110.en.md"
+    },
+    "source": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "name": "CSDIY",
+      "type": "course_catalog",
+      "license": "MIT",
+      "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4"
+    },
+    "catalog_facts_used": [
+      "the course concerns advanced computer systems and program construction",
+      "the catalog names C/C++ and Unix fluency",
+      "the catalog emphasizes practical labs, testing, parallel work, and multi-machine systems",
+      "the catalog estimates the whole course at 150 human hours"
+    ],
+    "manager_authored_elements": [
+      "kickoff topic and ordering",
+      "learning task",
+      "completion evidence",
+      "comprehension prompts",
+      "examiner rubric"
+    ],
+    "external_retrieval_performed": false,
+    "official_course_sequence_asserted": false
+  }
+}

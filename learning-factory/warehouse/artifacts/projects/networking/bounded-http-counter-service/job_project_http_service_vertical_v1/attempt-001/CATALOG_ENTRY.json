@@ -1,0 +1,43 @@
+{
+  "artifact_paths": {
+    "adversarial": "adversarial/",
+    "alternatives": 2,
+    "benchmark": "benchmarks/benchmark.py",
+    "debugging_challenges": 1,
+    "reference": "sealed/reference/",
+    "review_exercises": 1,
+    "starter": "starter/"
+  },
+  "concepts": [
+    "http-1.1",
+    "parsing",
+    "concurrency",
+    "backpressure",
+    "reliability",
+    "observability"
+  ],
+  "difficulty": 7,
+  "estimated_human_hours": 14,
+  "family": "networking",
+  "id": "bounded-http-counter-service",
+  "languages": [
+    "python"
+  ],
+  "name": "Bounded HTTP/1.1 Counter Service",
+  "next": [
+    "reverse-proxy",
+    "durable-job-service",
+    "async-runtime"
+  ],
+  "prerequisites": [
+    "tcp-sockets",
+    "python-threading",
+    "json-apis"
+  ],
+  "production_relevance": 9,
+  "productionized": false,
+  "provenance": "PROVENANCE.json",
+  "schema_version": 1,
+  "type": "build",
+  "validation_status": "CANDIDATE_REQUIRES_EXTERNAL_VALIDATION"
+}

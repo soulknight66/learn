@@ -1,0 +1,124 @@
+{
+  "course_id": "course_dba0337dc37f5a949f0dcfe64ab77bc7",
+  "nodes": [
+    {
+      "node_id": "record_unit_15a3337707ed09597c0b0c732e9be5fb",
+      "kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Catalog overview and resource guide",
+      "classification": "CATALOG_INPUT_METADATA",
+      "official_course_unit": false,
+      "availability": "SNAPSHOT_METADATA_ONLY",
+      "source_reference": "docs/深度学习/EECS498-007.en.md",
+      "promoted_to_unit": false
+    },
+    {
+      "node_id": "record_unit_6929eda60a5de4105d324d4004b79277",
+      "kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Course Materials",
+      "classification": "RECOMMENDED_RESOURCE_LINK_INPUT",
+      "official_course_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "source_reference": "docs/深度学习/EECS498-007.en.md#L59",
+      "promoted_to_unit": false
+    },
+    {
+      "node_id": "kickoff_unit_01_deterministic_image_knn",
+      "kind": "STUDY_UNIT",
+      "title": "Engineering a Deterministic Image k-NN Baseline",
+      "classification": "COURSE_MANAGER_AUTHORED",
+      "official_course_unit": false,
+      "status": "READY_FOR_LEARNER",
+      "estimated_hours": {
+        "minimum": 6,
+        "maximum": 8
+      }
+    },
+    {
+      "node_id": "kickoff_01_contract",
+      "kind": "LEARNING_ACTIVITY",
+      "title": "Extract the public interface and invariant contract",
+      "classification": "COURSE_MANAGER_AUTHORED",
+      "official_course_unit": false,
+      "parent_unit_id": "kickoff_unit_01_deterministic_image_knn"
+    },
+    {
+      "node_id": "kickoff_01_implementation",
+      "kind": "LEARNING_ACTIVITY",
+      "title": "Implement the deterministic k-NN component and CLI",
+      "classification": "COURSE_MANAGER_AUTHORED",
+      "official_course_unit": false,
+      "parent_unit_id": "kickoff_unit_01_deterministic_image_knn"
+    },
+    {
+      "node_id": "kickoff_01_verification",
+      "kind": "LEARNING_ACTIVITY",
+      "title": "Build boundary, tie, non-mutation, and reproducibility tests",
+      "classification": "COURSE_MANAGER_AUTHORED",
+      "official_course_unit": false,
+      "parent_unit_id": "kickoff_unit_01_deterministic_image_knn"
+    },
+    {
+      "node_id": "kickoff_01_reflection",
+      "kind": "LEARNING_ACTIVITY",
+      "title": "Analyze complexity and the replaceable model boundary",
+      "classification": "COURSE_MANAGER_AUTHORED",
+      "official_course_unit": false,
+      "parent_unit_id": "kickoff_unit_01_deterministic_image_knn"
+    }
+  ],
+  "edges": [
+    {
+      "from": "record_unit_15a3337707ed09597c0b0c732e9be5fb",
+      "to": "kickoff_unit_01_deterministic_image_knn",
+      "relation": "INFORMS_IDENTITY_AND_SCOPE",
+      "implies_official_status": false
+    },
+    {
+      "from": "kickoff_unit_01_deterministic_image_knn",
+      "to": "kickoff_01_contract",
+      "relation": "CONTAINS"
+    },
+    {
+      "from": "kickoff_unit_01_deterministic_image_knn",
+      "to": "kickoff_01_implementation",
+      "relation": "CONTAINS"
+    },
+    {
+      "from": "kickoff_unit_01_deterministic_image_knn",
+      "to": "kickoff_01_verification",
+      "relation": "CONTAINS"
+    },
+    {
+      "from": "kickoff_unit_01_deterministic_image_knn",
+      "to": "kickoff_01_reflection",
+      "relation": "CONTAINS"
+    },
+    {
+      "from": "kickoff_01_contract",
+      "to": "kickoff_01_implementation",
+      "relation": "PREREQUISITE"
+    },
+    {
+      "from": "kickoff_01_implementation",
+      "to": "kickoff_01_verification",
+      "relation": "PREREQUISITE"
+    },
+    {
+      "from": "kickoff_01_verification",
+      "to": "kickoff_01_reflection",
+      "relation": "PREREQUISITE"
+    }
+  ],
+  "record_boundary": {
+    "source_statement": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+    "classification_rule": "A normalized record remains an input record unless independent provenance establishes that it is an official course unit and its material is available under an allowed retrieval policy.",
+    "normalized_record_count": 2,
+    "promoted_normalized_records": [],
+    "official_course_units_claimed": [],
+    "manager_authored_unit_ids": [
+      "kickoff_unit_01_deterministic_image_knn"
+    ],
+    "linked_textbook_used_by_kickoff": false,
+    "graph_scope": "This graph covers the bounded kickoff only and is not a representation of the full UMich course."
+  }
+}

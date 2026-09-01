@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "course_id": "course_247fa49f95f2021a5de3fb035ef6e0f8",
+  "validation_status": "GENERATED_CANDIDATE",
+  "provenance_ref": "COURSE_MANIFEST.json#provenance",
+  "materials": [
+    {
+      "material_id": "catalog_snapshot",
+      "title": "Pinned CSDIY catalog snapshot",
+      "kind": "CATALOG_METADATA",
+      "availability": "AVAILABLE_IN_JOB_INPUT",
+      "content_present": true,
+      "fidelity": "SOURCE_DERIVED_METADATA",
+      "officiality": "CATALOG_RECORD_NOT_OFFICIAL_COURSE_CONTENT",
+      "use_in_kickoff": "COURSE_IDENTITY_SCOPE_AND_BOUNDARIES_ONLY"
+    },
+    {
+      "material_id": "catalog_overview_record",
+      "source_record_id": "unit_22bf534dbf60486308c76e922d7f9246",
+      "title": "Catalog overview and resource guide",
+      "kind": "NORMALIZED_RESOURCE_RECORD",
+      "availability": "AVAILABLE_IN_SNAPSHOT",
+      "content_present": true,
+      "fidelity": "OVERVIEW_METADATA_ONLY",
+      "officiality": "NOT_AN_OFFICIAL_COURSE_UNIT",
+      "use_in_kickoff": "CONTEXT_ONLY"
+    },
+    {
+      "material_id": "official_schedule_locator",
+      "source_record_id": "unit_8b606201b492edd35c65efd7eaa1843d",
+      "title": "Course website and schedule locator",
+      "kind": "EXTERNAL_URL",
+      "locator": "https://pdos.csail.mit.edu/6.824/schedule.html",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "content_present": false,
+      "fidelity": "LOCATOR_ONLY",
+      "officiality": "TARGET_NOT_INSPECTED",
+      "use_in_kickoff": "NOT_USED"
+    },
+    {
+      "material_id": "assignment_reference_line_20",
+      "source_record_id": "unit_dd4fed0e605404318a24d132969e6923",
+      "title": "Assignment reference: refer to course website",
+      "kind": "ASSIGNMENT_METADATA",
+      "availability": "DESCRIPTION_ONLY",
+      "content_present": false,
+      "fidelity": "GENERIC_REFERENCE_WITHOUT_SPECIFICATION",
+      "officiality": "SOURCE_FLAGGED_OFFICIAL_COMPONENT_NOT_INSTANTIATED",
+      "use_in_kickoff": "NOT_USED_AS_ASSIGNMENT"
+    },
+    {
+      "material_id": "textbook_notice",
+      "source_record_id": "unit_9c6ed807bc1772eff5a9e058b2e9cf71",
+      "title": "Textbook",
+      "kind": "AVAILABILITY_NOTICE",
+      "availability": "UNAVAILABLE_BY_SOURCE",
+      "catalog_value": "None",
+      "content_present": false,
+      "fidelity": "NOTICE_ONLY",
+      "officiality": "NOT_AN_OFFICIAL_COURSE_UNIT",
+      "use_in_kickoff": "NO_TEXTBOOK_REQUIRED"
+    },
+    {
+      "material_id": "project_set_summary_line_22",
+      "source_record_id": "unit_ce480e95cbc2c5fa9af4b43b94529329",
+      "title": "Four-project set summary",
+      "kind": "ASSIGNMENT_METADATA",
+      "availability": "DESCRIPTION_ONLY",
+      "content_present": false,
+      "fidelity": "COUNT_AND_DIFFICULTY_DESCRIPTION_WITHOUT_SPECIFICATIONS",
+      "officiality": "SOURCE_FLAGGED_OFFICIAL_COMPONENT_NOT_INSTANTIATED",
+      "use_in_kickoff": "NOT_USED_AS_ASSIGNMENT"
+    },
+    {
+      "material_id": "external_repository_pkuflyingpig_mit6824",
+      "title": "PKUFlyingPig/MIT6.824 repository locator",
+      "kind": "UNVERIFIED_EXTERNAL_REPOSITORY_URL",
+      "locator": "https://github.com/PKUFlyingPig/MIT6.824",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "content_present": false,
+      "fidelity": "LOCATOR_ONLY",
+      "officiality": "UNVERIFIED",
+      "answer_contamination_risk": "POSSIBLE",
+      "use_in_kickoff": "POLICY_EXCLUDED"
+    },
+    {
+      "material_id": "external_repository_onesizefitsquorum",
+      "title": "OneSizeFitsQuorum profile locator",
+      "kind": "UNVERIFIED_EXTERNAL_REPOSITORY_URL",
+      "locator": "https://github.com/OneSizeFitsQuorum",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "content_present": false,
+      "fidelity": "LOCATOR_ONLY",
+      "officiality": "UNVERIFIED",
+      "answer_contamination_risk": "POSSIBLE",
+      "use_in_kickoff": "POLICY_EXCLUDED"
+    },
+    {
+      "material_id": "external_repository_onesizefitsquorum_mit6824_2021",
+      "title": "OneSizeFitsQuorum/MIT6.824-2021 repository locator",
+      "kind": "UNVERIFIED_EXTERNAL_REPOSITORY_URL",
+      "locator": "https://github.com/OneSizeFitsQuorum/MIT6.824-2021",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "content_present": false,
+      "fidelity": "LOCATOR_ONLY",
+      "officiality": "UNVERIFIED",
+      "answer_contamination_risk": "LIKELY",
+      "use_in_kickoff": "POLICY_EXCLUDED"
+    },
+    {
+      "material_id": "manager_authored_kickoff_packet",
+      "title": "Bounded retry-safe KV kickoff packet",
+      "kind": "GENERATED_LEARNING_MATERIAL",
+      "availability": "PRESENT",
+      "content_present": true,
+      "fidelity": "SELF_CONTAINED_MANAGER_AUTHORED",
+      "officiality": "NOT_OFFICIAL_MIT_COURSE_CONTENT",
+      "use_in_kickoff": "PRIMARY_MATERIAL"
+    }
+  ],
+  "blocked": [
+    {
+      "block_id": "official_unit_sequence",
+      "status": "NOT_RETRIEVED",
+      "applies_to": [
+        "official_schedule_locator"
+      ],
+      "reason": "The snapshot contains only a schedule URL; no target bytes, lecture list, project order, or year-specific structure were staged.",
+      "retrieval_attempted": false,
+      "effect": "No official course sequence is asserted."
+    },
+    {
+      "block_id": "assignment_specifications_and_starter_artifacts",
+      "status": "DESCRIPTION_ONLY",
+      "applies_to": [
+        "assignment_reference_line_20",
+        "project_set_summary_line_22"
+      ],
+      "reason": "The records describe assignments generically but provide no specifications, starter code, tests, licenses, or validation instructions.",
+      "retrieval_attempted": false,
+      "effect": "No official assignment is assigned, reconstructed, or credited."
+    },
+    {
+      "block_id": "lecture_papers_and_notes",
+      "status": "NOT_PROVIDED",
+      "applies_to": [],
+      "reason": "The overview mentions paper discussions, but the snapshot contains no paper identities, copies, lecture notes, or licensed excerpts.",
+      "retrieval_attempted": false,
+      "effect": "The kickoff does not claim to cover an official lecture or paper."
+    },
+    {
+      "block_id": "textbook",
+      "status": "UNAVAILABLE_BY_SOURCE",
+      "applies_to": [
+        "textbook_notice"
+      ],
+      "reason": "The catalog explicitly records the textbook value as None.",
+      "retrieval_attempted": false,
+      "effect": "No textbook reading is required or implied."
+    },
+    {
+      "block_id": "unverified_solution_bearing_repositories",
+      "status": "POLICY_EXCLUDED",
+      "applies_to": [
+        "external_repository_pkuflyingpig_mit6824",
+        "external_repository_onesizefitsquorum",
+        "external_repository_onesizefitsquorum_mit6824_2021"
+      ],
+      "reason": "The external repositories were not inspected and may contain project answers; importing them could contaminate learner evidence.",
+      "retrieval_attempted": false,
+      "effect": "They are not fetched, used, or exposed to the learner."
+    },
+    {
+      "block_id": "course_identity_equivalence",
+      "status": "UNRESOLVED_SOURCE_AMBIGUITY",
+      "applies_to": [
+        "catalog_snapshot"
+      ],
+      "reason": "The description's 6.S081 equivalence claim conflicts with the supplied MIT6.824 distributed-systems identifiers.",
+      "retrieval_attempted": false,
+      "effect": "No equivalence, official mapping, or transfer-credit claim is made."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job_mode": "NO_EXTERNAL_RETRIEVAL",
+    "network_fetch_performed": false,
+    "automatic_link_following": false,
+    "credentials_or_access_bypass_allowed": false,
+    "restricted_or_private_content_allowed": false,
+    "solution_repository_default": "DO_NOT_RETRIEVE_OR_STAGE_FOR_LEARNERS",
+    "later_public_material_requirements": [
+      "A later job must have explicit retrieval authority and a bounded target list.",
+      "Access rights and license or permitted use must be checked before content is copied.",
+      "The exact source URL, retrieval evidence, immutable content digest, and provenance must be recorded.",
+      "Each item must be classified as official, third-party, instructional, answer-bearing, restricted, or unavailable before use.",
+      "Answer-bearing, hidden, sealed, private, or another learner's content must never enter a student-safe view.",
+      "A normalized record or successful download does not by itself create an official unit or a validation result.",
+      "Failed, denied, or incomplete retrieval remains recorded as unavailable rather than being reconstructed from guesses."
+    ],
+    "official_unit_expansion_gate": "AUTHORITATIVE_IDENTITY_PLUS_RIGHTS_PLUS_PROVENANCE_PLUS_EXPLICIT_VALIDATION_LABEL",
+    "unavailable_material_policy": "DEFER_AND_RECORD; DO_NOT INVENT CONTENT"
+  }
+}

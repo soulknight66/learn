@@ -1,0 +1,97 @@
+{
+  "course_id": "course_05e1e7c8db8ac31e5a75e00fc94f7bad",
+  "title": "CMU 15-462: Computer Graphics",
+  "status": "KICKOFF_PREPARED_NOT_COURSE_COMPLETE",
+  "unit": {
+    "unit_id": "unit_01_deterministic_triangle_rasterizer",
+    "title": "Sampling and Rasterization: Build a Deterministic Triangle Rasterizer",
+    "sequence": 1,
+    "classification": "MANAGER_AUTHORED_KICKOFF",
+    "official_course_unit": false,
+    "scope": "One bounded implementation-and-testing unit; it is not a reconstruction of a CMU assignment or lecture.",
+    "readiness": "READY_WITH_LOCAL_INSTRUCTIONS",
+    "estimated_human_hours": 10,
+    "topic_basis": [
+      "sampling",
+      "rasterization",
+      "interpolation",
+      "geometric transformations"
+    ],
+    "software_engineering_focus": [
+      "precise behavioral contracts",
+      "deterministic C++ builds and output",
+      "boundary-condition handling",
+      "automated and property-oriented tests",
+      "evidence-backed engineering notes"
+    ],
+    "prerequisites": [
+      "Basic linear algebra, including 2D vectors and affine combinations",
+      "Basic calculus",
+      "C++17 programming",
+      "Asymptotic analysis and familiarity with invariants"
+    ],
+    "learning_objectives": [
+      "Relate pixel-center sampling to discrete triangle coverage.",
+      "Implement orientation-independent half-space coverage with a consistent shared-edge convention.",
+      "Use barycentric coordinates to interpolate vertex color.",
+      "Turn numerical and input edge cases into explicit, testable behavior.",
+      "Package the implementation as a reproducible command-line program with automated tests."
+    ],
+    "deliverables": [
+      "A C++17 rasterizer library and rasterize command-line executable",
+      "A CMake/CTest build with deterministic automated tests",
+      "README.md with exact build, test, and run commands",
+      "ENGINEERING_NOTES.md documenting invariants, complexity, numerical decisions, and limitations",
+      "A completed response to student_safe/COMPREHENSION.md",
+      "Captured build and test evidence generated from the submitted revision"
+    ],
+    "learner_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "external_material_required": false
+  },
+  "completion_policy": {
+    "prepared_scope": "Exactly one bounded kickoff unit",
+    "unit_completion_is_course_completion": false,
+    "unit_completion_label": "UNIT_01_COMPLETE",
+    "course_completion_label": "COURSE_COMPLETE",
+    "unit_completion_requires": [
+      "All declared deliverables are present in the learner submission.",
+      "A worker-harness-controlled validator independently builds and tests the submitted revision.",
+      "The validator checks the functional contract, engineering evidence, and comprehension response against the examiner-only rubric.",
+      "The durable job record contains validator-produced evidence and the explicit UNIT_01_COMPLETE label."
+    ],
+    "course_completion_requires": [
+      "Later course-management jobs retrieve and classify additional authorized materials.",
+      "A reviewed multi-unit course graph defines coverage beyond this kickoff.",
+      "Every required unit is independently validated with durable evidence.",
+      "A controlled validator, not a learner or worker prose claim, explicitly promotes the course state."
+    ],
+    "promotion_authority": "WORKER_HARNESS_CONTROLLED_VALIDATOR",
+    "prohibited_inference": "Completing, passing, or preparing this unit must never be interpreted as completing CMU 15-462 or the catalog course."
+  },
+  "provenance": {
+    "catalog_source": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "name": "CSDIY",
+      "type": "course_catalog",
+      "license": "MIT",
+      "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/计算机图形学/15462.en.md",
+      "content_sha256": "2f655898fdcf113cd550988459ad49d2a54867ac8164528c2989364618aee451",
+      "adapter": "csdiy",
+      "extractor_version": "1.1"
+    },
+    "catalog_classification": "SOURCE_DERIVED_DISCOVERY_METADATA",
+    "unit_authorship": "COURSE_MANAGER_SYNTHESIS_FROM_DECLARED_CATALOG_TOPICS",
+    "institutional_endorsement_claimed": false,
+    "remote_content_retrieved": false,
+    "validation": {
+      "label": "PREPARED_UNVALIDATED",
+      "scope": "Artifact structure and internal consistency only",
+      "completion_evidence": false
+    }
+  }
+}

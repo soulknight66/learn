@@ -1,0 +1,32 @@
+{
+  "builder_job_id": "job_project_allocator_vertical_v1",
+  "checks_run": [
+    "Candidate inventory, file-mode inspection, and before/after aggregate SHA-256",
+    "Documented native build command and strict C11 syntax-only compilation sweep",
+    "Benchmark runner probes with the default Python 3.6.8 and available Python 3.11.5",
+    "Manifest, provenance, and benchmark JSON parsing and benchmark arithmetic checks",
+    "Progressive-disclosure, learner-utility, license, and provenance review",
+    "Subprocess-safety and validation-claim audit",
+    "Diagnostic strict builds and executions using a reviewer-owned inferred API header outside CANDIDATE",
+    "Reviewer-authored contract, canary, failed-resize, and deterministic stress checks"
+  ],
+  "evidence": [
+    "CANDIDATE omits include/allocator.h and scripts/build_all.py even though README.md and REQUIREMENTS.md require them; the documented build exits 2 and 10 of 13 C translation units fail syntax checking at the missing header.",
+    "benchmarks/run.py cannot run under the documented generic Python 3 requirement on the default Python 3.6.8, and under Python 3.11.5 it exits 1 because CANDIDATE/validation-output/bin/reference-benchmark is absent.",
+    "The checked-in smoke.json is internally arithmetically consistent, but it embeds an include path from another attempt and is detached from absent binaries, toolchain.json, validator logs, hashes, and exit evidence; it does not establish BENCHMARKED.",
+    "Sealed reference solutions, root-cause text, and the expected review are directly present, while no deterministic learner-view projection or visibility policy is submitted.",
+    "All three allocator implementations compute the protected state end with sizeof(state), not state_bytes; a reviewer test supplied overlapping declared state and arena spans and each implementation returned LF_OK, contrary to REQUIREMENTS.md:14.",
+    "With an explicitly non-candidate inferred header, all three architecture sources compiled strictly and passed the included tests plus a reviewer-authored deterministic stress check; this is diagnostic evidence about the source bodies, not evidence that the submitted package builds.",
+    "The manifest honestly retains status GENERATED_CANDIDATE and productionized=false/NOT_PRODUCTION_READY, while PARTIAL appears only among validation targets; no BUILDS, TESTED, BENCHMARKED, REVIEWED, FUZZED, TRANSFER_VERIFIED, or PRODUCTIONIZED promotion is warranted.",
+    "The provenance document clearly separates CC0 catalog metadata from the NOASSERTION linked tutorial, but the generated pack itself has no LICENSE, SPDX identifier, or explicit reuse grant."
+  ],
+  "limitations": [
+    "The missing submitted API header and build harness prevent candidate-native build, test, and benchmark validation; the reviewer-inferred header cannot substitute for submitted material.",
+    "GCC 8.5.0 is available, but AddressSanitizer and UndefinedBehaviorSanitizer cannot link because their runtime libraries are unavailable; clang and valgrind are unavailable.",
+    "Network access and the cited upstream/source repository were outside the review environment, so originality and external license metadata could not be independently verified.",
+    "No controller-owned validator logs, hidden-validator results, transfer evidence, or durable evidence-to-label mapping were submitted.",
+    "Benchmark timing observations were single diagnostic smoke runs and are not accepted as benchmark validation."
+  ],
+  "project_id": "project_62500cd7d143a95230c724df71a56c4a",
+  "verdict": "FAIL"
+}

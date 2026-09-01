@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# A deliberately small container lifecycle CLI.  The isolation mechanism lives
+# in lib/isolate.sh so lifecycle tests can replace it without requiring root.
+
+set -uo pipefail
+
+readonly MINICTR_SCRIPT_DIR="$(
+    cd -- "$(dirname -- "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd -P
+)"
+
+# shellcheck source=lib/runtime.sh
+source "$MINICTR_SCRIPT_DIR/lib/runtime.sh"
+
+minictr_main "$@"

@@ -1,0 +1,86 @@
+{
+  "course_id": "course_a8af751485aeb61217ff9e83114456b9",
+  "title": "MIT 6.7960: Deep Learning",
+  "status": "IN_PROGRESS",
+  "unit": {
+    "unit_id": "kickoff_01_reliable_softmax",
+    "title": "Reliable Softmax: From Derivation to Tested Python",
+    "position": 1,
+    "status": "READY_FOR_STUDY",
+    "classification": "course-manager-authored kickoff",
+    "official_course_unit": false,
+    "scope": "One self-contained implementation, verification, and reflection cycle; it is not a reconstruction of an MIT lecture or assignment.",
+    "estimated_hours": {
+      "minimum": 6,
+      "target": 8,
+      "maximum": 10
+    },
+    "audience": "A strong algorithms student building practical software-engineering habits for deep-learning work.",
+    "prerequisites": [
+      "Linear Algebra",
+      "Probability/Statistics",
+      "ML Foundations",
+      "Python programming"
+    ],
+    "learning_objectives": [
+      "Translate a mathematical multiclass objective into explicit, shape-safe Python interfaces.",
+      "Implement numerically stable softmax cross-entropy without a machine-learning framework.",
+      "Validate analytic gradients against an independent finite-difference oracle.",
+      "Build deterministic tests and a reproducible experiment entry point.",
+      "Use recorded evidence to distinguish implementation correctness from model performance."
+    ],
+    "required_submission_artifacts": [
+      "pyproject.toml",
+      "src/softmax_lab/",
+      "tests/",
+      "artifacts/run.json",
+      "REPORT.md",
+      "COMPREHENSION_RESPONSES.md"
+    ],
+    "learner_documents": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ]
+  },
+  "completion_policy": {
+    "scope": "kickoff_01_reliable_softmax only",
+    "unit_completion_requires": [
+      "All required submission artifacts are present and attributable to one reproducible run.",
+      "The implementation and its independent gradient check satisfy the examiner's correctness gates.",
+      "Automated tests pass from the documented clean command.",
+      "The experiment record is deterministic and supports the report's claims.",
+      "The learner submits substantive responses to every comprehension prompt."
+    ],
+    "validation_authority": "Only an independent worker-harness-controlled examiner may mark the unit successful.",
+    "on_unit_success": {
+      "unit_status": "SUCCEEDED",
+      "course_status": "IN_PROGRESS",
+      "course_completed": false
+    },
+    "whole_course_completion": {
+      "claim_permitted_by_this_manifest": false,
+      "reason": "The catalog describes an approximately 90-hour course, while this manifest prepares only one bounded manager-authored kickoff unit.",
+      "future_requirement": "Later authorized jobs must retrieve and validate available official materials, construct additional units, and independently validate each required unit before course completion can be considered."
+    }
+  },
+  "provenance": {
+    "preparation_classification": "manager-authored from a source-derived catalog snapshot",
+    "catalog_source": {
+      "name": "CSDIY",
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "type": "course_catalog",
+      "license": "MIT",
+      "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/深度学习/MIT6-7960.en.md",
+      "content_sha256": "830dd57f1c5369cab129c24a0ebc08446fe005e5460c466d0d685656a7031cd1",
+      "adapter": "csdiy",
+      "extractor_version": "1.1"
+    },
+    "snapshot_schema_version": 1,
+    "catalog_status_at_preparation": "DISCOVERED",
+    "official_content_retrieved": false,
+    "network_retrieval_performed": false,
+    "authorship_note": "The unit sequence and learner activities were created for this kickoff and are not represented as MIT-authored course content."
+  }
+}

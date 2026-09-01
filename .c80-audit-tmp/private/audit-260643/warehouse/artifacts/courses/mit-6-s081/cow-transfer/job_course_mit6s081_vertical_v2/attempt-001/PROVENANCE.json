@@ -1,0 +1,25 @@
+{
+  "generated_material": {
+    "claims": [
+      "Course identity and public links are source-derived.",
+      "Exercise, implementation, tests, rubric, and notes are newly authored.",
+      "Measured grading evidence is written only by the external grader."
+    ],
+    "classification": "agent-generated",
+    "copied_course_text": false,
+    "method": "deterministic vertical-slice template"
+  },
+  "schema_version": 1,
+  "source": {
+    "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "course_id": "course_742d4325985228f05947d939ae196034",
+    "external_reference": "https://pdos.csail.mit.edu/6.828/2021/schedule.html",
+    "license": "MIT",
+    "lookup_status": "job provenance",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/cs-self-learning",
+    "source_reference": "docs/操作系统/MIT6.S081.en.md",
+    "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "builder_job_id": "job_byox_build_v1_28dac8305a64d1c464faa8e07190fb53",
+  "checks_run": [
+    "Inventoried 64 candidate files, checked file types and symlinks, parsed all 32 Python files, and reviewed learner, evaluator, reference, provenance, and validation material.",
+    "Ran the documented learner test command with the environment default Python and reran public, sealed, and adversarial suites against the reference with the supplied Python 3.11.5 interpreter and a reviewer-owned TMPDIR.",
+    "Ran the starter sentinel, CLI help, namespace capability probe, and structural validator.",
+    "Ran independent edge probes for argv type determinism, finite timeout enforcement, launch-failure state recovery, and image-layer digest binding.",
+    "Compared the candidate aggregate file digest before and after review to verify immutability."
+  ],
+  "evidence": [
+    "Reference execution passed 18/18 public, 22/22 sealed, and 4/4 adversarial authored tests; the intentional starter sentinel failed with NotImplementedError.",
+    "The manifest honestly remains GENERATED/PARTIAL, requires independent validation, and sets productionized=false; documentation explicitly disclaims fuzzing, benchmarking, full namespace execution, hostile-workload safety, and production readiness.",
+    "Runner accepts NaN and infinity timeout values, so its claimed execution bound can be disabled.",
+    "A syntactically valid custom backend tuple containing a NUL argument caused uncaught ValueError after the durable RUNNING transition, leaving history at CREATED to RUNNING rather than recording FAILED.",
+    "ContainerSpec accepted sets and generators despite R1 requiring tuple/list; set-backed argv order changed across PYTHONHASHSEED values.",
+    "A controlled mutation between layer application and hashing produced rootfs bytes from layer A while manifest layer_sha256 identified replacement layer B.",
+    "The documented python3 learner command selected Python 3.6.8 in this workspace and failed with five import errors; Python 3.11.5 was available only through the explicit supplied path.",
+    "Answers were found only below sealed/, no symlinks were present, manifest/provenance identifiers were internally consistent, and no unsafe tar extraction or shell=True call site was found."
+  ],
+  "limitations": [
+    "No populated root filesystem was supplied, so the successful rootless-user-namespace probe does not validate mount, PID, UTS, IPC, chroot, or workload isolation.",
+    "No fuzz campaign, benchmark run, hostile concurrent rootfs mutation test, production review, or transfer verification was performed; no corresponding label is awarded.",
+    "The upstream linked repository and source history could not be compared because network access is restricted and git is unavailable, so the no-copy and linked-license assertions remain provenance claims rather than independently established facts.",
+    "The review workspace exposes evaluator and sealed files by design; enforcement of their exclusion from an actual learner view was not available to test.",
+    "Default system temporary directories were unavailable; tempfile-based checks were rerun successfully with a reviewer-owned writable TMPDIR."
+  ],
+  "project_id": "project_d76f888c329de3f5823edf9ffcbe85c3",
+  "verdict": "REVISE"
+}

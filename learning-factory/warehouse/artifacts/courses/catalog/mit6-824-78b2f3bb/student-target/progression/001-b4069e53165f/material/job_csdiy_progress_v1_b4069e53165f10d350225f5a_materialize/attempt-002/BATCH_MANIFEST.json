@@ -1,0 +1,43 @@
+{
+  "course_id": "course_247fa49f95f2021a5de3fb035ef6e0f8",
+  "batch_id": "csdiy-unit-batch-v1-b4069e53165f10d350225f5a",
+  "sequence": 1,
+  "status": "BOUNDED_UNIT_PREPARED",
+  "course_completion": "NOT_CLAIMED",
+  "unit_ids": [
+    "unit_8b606201b492edd35c65efd7eaa1843d"
+  ],
+  "availability": [
+    "unit_8b606201b492edd35c65efd7eaa1843d: normalized_catalog_resource_record metadata is available in the staged batch snapshot and contains a LINKED Course Website URL locator.",
+    "The locally authored bounded learning packet and examiner materials for this batch are present in this workspace."
+  ],
+  "blocked": [
+    "unit_8b606201b492edd35c65efd7eaa1843d: content behind the Course Website URL was not retrieved and is unavailable to this no-network materialization job.",
+    "Official unit identity, schedule order, papers, assignments, starter code, and tests are not present and are not inferred from the catalog locator."
+  ],
+  "completion_policy": {
+    "completion_authority": "independent externally validated examiner evidence",
+    "scope": "one bounded normalized-resource batch",
+    "prepared_files_are_completion_evidence": false,
+    "learner_self_check_is_completion_evidence": false,
+    "materialization_effect": "Preparation only; no study, pass, transfer, official-unit credit, or course completion is established.",
+    "promotion_boundary": "Only a worker-harness-controlled validator may promote a later independently examined attempt."
+  },
+  "provenance": {
+    "batch_snapshot_sha256": "6a89e00d6f87b8f3928207bdce27fa9eac6fec3a9e353eefbe86984b65dbd519",
+    "classification": "agent-generated material from a source-derived batch snapshot",
+    "source_record": {
+      "unit_id": "unit_8b606201b492edd35c65efd7eaa1843d",
+      "title": "Course Website",
+      "record_classification": "normalized_catalog_resource_record",
+      "official_course_unit": false,
+      "source_reference": "docs/并行与分布式系统/MIT6.824.en.md#L19",
+      "availability": "LINKED",
+      "locator": "https://pdos.csail.mit.edu/6.824/schedule.html"
+    },
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_content_sha256": "40486a7a4c0f3e0ec307bf0650c582d8433c50d6a68ba8cc92059b1374223a42",
+    "external_content_retrieved": false,
+    "generated_unit_classification": "locally authored bounded implementation and debugging exercise; not official MIT course content"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "course_id": "course_d73e529380112922b713506925cb84ea",
+  "nodes": [
+    {
+      "node_id": "unit_kickoff_buffer_pool_engineering_v1",
+      "node_type": "manager_authored_study_unit",
+      "title": "Engineering a Small, Testable Buffer Pool",
+      "status": "READY",
+      "official_course_unit": false,
+      "bounded": true,
+      "estimated_hours": {
+        "minimum": 6,
+        "target": 8,
+        "maximum": 10
+      },
+      "prerequisite_assumptions": [
+        "Data structures and algorithms",
+        "Working C++ fundamentals",
+        "Basic command-line build and test use"
+      ],
+      "completion_effect": "May establish completion of this kickoff unit after independent validation; never establishes completion of the course."
+    }
+  ],
+  "edges": [],
+  "record_boundary": {
+    "statement": "Normalized resource records are catalog-derived inputs for classification. They become graph units only after their identity, content, availability, ordering, and validation basis are independently established.",
+    "official_sequence_asserted": false,
+    "official_course_units_promoted": 0,
+    "empty_edges_reason": "The packet contains exactly one standalone study unit; no trustworthy official prerequisite sequence was available in the snapshot.",
+    "normalized_record_classifications": [
+      {
+        "record_id": "unit_4d1fd422636a9e429ddef09d84282523",
+        "title": "Catalog overview and resource guide",
+        "catalog_official_course_unit_flag": false,
+        "classification": "catalog_overview_input",
+        "availability": "SNAPSHOT_METADATA_ONLY",
+        "promoted_to_graph_node": false,
+        "reason": "It describes the course and points to resources; it is not an instructional unit."
+      },
+      {
+        "record_id": "unit_45b917cf4fd9173b3eb09bad2b8310f6",
+        "title": "Course Website",
+        "catalog_official_course_unit_flag": false,
+        "classification": "external_resource_index",
+        "availability": "LINKED_NOT_RETRIEVED",
+        "promoted_to_graph_node": false,
+        "reason": "Five schedule URLs are leads, not five verified or normalized units."
+      },
+      {
+        "record_id": "unit_26b84c3f154ece2c9632bcc25be51e77",
+        "title": "Recording",
+        "catalog_official_course_unit_flag": false,
+        "classification": "external_lecture_collection_link",
+        "availability": "LINKED_NOT_RETRIEVED",
+        "promoted_to_graph_node": false,
+        "reason": "A playlist link does not identify individual lectures, ordering, or required scope."
+      },
+      {
+        "record_id": "unit_dac72011054c071eefec682af936a5e8",
+        "title": "Textbook",
+        "catalog_official_course_unit_flag": false,
+        "classification": "bibliographic_lead",
+        "availability": "DESCRIBED_ONLY",
+        "promoted_to_graph_node": false,
+        "reason": "No edition, chapter mapping, licensed copy, or local content is supplied."
+      },
+      {
+        "record_id": "unit_9cf5c5aef70534518fa86ebeaf31d7db",
+        "title": "Assignments",
+        "catalog_official_course_unit_flag": true,
+        "classification": "official_assignment_aggregate_descriptor",
+        "availability": "DESCRIBED_ONLY",
+        "promoted_to_graph_node": false,
+        "reason": "The record preserves the catalog's official-unit flag but only says 'Five Projects and Five Homework'; it lacks ten identifiable prompts, dependencies, artifacts, and validators."
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "artifact_paths": {
+    "alternatives": 2,
+    "benchmark": "benchmarks/benchmark.c",
+    "debugging_challenges": 1,
+    "public_tests": "public_tests/",
+    "review_exercises": 1,
+    "sealed_reference": "sealed/reference/",
+    "starter": "starter/"
+  },
+  "concepts": [
+    "allocators",
+    "fragmentation",
+    "memory-safety",
+    "systems-programming",
+    "debugging"
+  ],
+  "deployment_status": "NOT_PRODUCTION_READY",
+  "difficulty": 8,
+  "estimated_human_hours": 16,
+  "family": "memory-management",
+  "id": "caller-owned-arena-c-allocator",
+  "languages": [
+    "c"
+  ],
+  "next": [
+    "slab-allocator",
+    "thread-safe-allocator",
+    "virtual-memory-manager"
+  ],
+  "prerequisites": [
+    "c-pointers",
+    "object-lifetimes",
+    "integer-overflow"
+  ],
+  "production_relevance": 8,
+  "productionized": false,
+  "provenance": "PROVENANCE.json",
+  "schema_version": 1,
+  "source_project_id": "project_62500cd7d143a95230c724df71a56c4a",
+  "type": "build",
+  "validation_status": "CANDIDATE_REQUIRES_EXTERNAL_VALIDATION"
+}

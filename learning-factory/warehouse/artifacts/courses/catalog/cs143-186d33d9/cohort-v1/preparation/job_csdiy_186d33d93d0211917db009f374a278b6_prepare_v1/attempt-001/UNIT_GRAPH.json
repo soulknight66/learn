@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "course_id": "course_186d33d93d0211917db009f374a278b6",
+  "nodes": [
+    {
+      "node_id": "unit_01_minicool_lexer_engineering",
+      "node_type": "study_unit",
+      "title": "Compiler Frontend Kickoff: Engineering a MiniCOOL-0 Lexer",
+      "origin": "manager-authored",
+      "official_course_unit": false,
+      "status": "READY_FOR_LEARNER",
+      "bounded": true,
+      "timebox_hours": {
+        "minimum": 6,
+        "maximum": 8
+      }
+    },
+    {
+      "node_id": "activity_01_contract_and_design",
+      "node_type": "activity",
+      "title": "Read the contract and record a scanner design",
+      "origin": "manager-authored",
+      "official_course_unit": false,
+      "parent_unit_id": "unit_01_minicool_lexer_engineering",
+      "estimated_minutes": 60
+    },
+    {
+      "node_id": "activity_02_implementation",
+      "node_type": "activity",
+      "title": "Implement the MiniCOOL-0 scanner and CLI",
+      "origin": "manager-authored",
+      "official_course_unit": false,
+      "parent_unit_id": "unit_01_minicool_lexer_engineering",
+      "estimated_minutes": 210
+    },
+    {
+      "node_id": "activity_03_verification",
+      "node_type": "activity",
+      "title": "Create deterministic tests and reproducible build evidence",
+      "origin": "manager-authored",
+      "official_course_unit": false,
+      "parent_unit_id": "unit_01_minicool_lexer_engineering",
+      "estimated_minutes": 120
+    },
+    {
+      "node_id": "activity_04_explanation",
+      "node_type": "activity",
+      "title": "Answer comprehension prompts using implementation evidence",
+      "origin": "manager-authored",
+      "official_course_unit": false,
+      "parent_unit_id": "unit_01_minicool_lexer_engineering",
+      "estimated_minutes": 60
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_01_minicool_lexer_engineering",
+      "to": "activity_01_contract_and_design",
+      "relation": "contains"
+    },
+    {
+      "from": "unit_01_minicool_lexer_engineering",
+      "to": "activity_02_implementation",
+      "relation": "contains"
+    },
+    {
+      "from": "unit_01_minicool_lexer_engineering",
+      "to": "activity_03_verification",
+      "relation": "contains"
+    },
+    {
+      "from": "unit_01_minicool_lexer_engineering",
+      "to": "activity_04_explanation",
+      "relation": "contains"
+    },
+    {
+      "from": "activity_01_contract_and_design",
+      "to": "activity_02_implementation",
+      "relation": "precedes"
+    },
+    {
+      "from": "activity_02_implementation",
+      "to": "activity_03_verification",
+      "relation": "precedes"
+    },
+    {
+      "from": "activity_03_verification",
+      "to": "activity_04_explanation",
+      "relation": "precedes"
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "record_classifications": [
+    {
+      "input_record_id": "unit_b94c948b019a07fe148499c7a1c9870e",
+      "title": "Catalog overview and resource guide",
+      "classification": "catalog context",
+      "source_official_course_unit": false,
+      "included_as_graph_node": false,
+      "reason": "A catalog overview is evidence about a course, not a teachable official unit."
+    },
+    {
+      "input_record_id": "unit_f491350fddc2b9b80071daef058d4759",
+      "title": "Course Website",
+      "classification": "unverified external resource pointer",
+      "source_official_course_unit": false,
+      "included_as_graph_node": false,
+      "reason": "The snapshot supplies a URL but no retrieved page or official unit structure."
+    },
+    {
+      "input_record_id": "unit_d2a1851cd64ac93eddd8741fc4750362",
+      "title": "Recordings",
+      "classification": "unverified external lecture-series pointer",
+      "source_official_course_unit": false,
+      "included_as_graph_node": false,
+      "reason": "A series link cannot be expanded into lecture units without authorized retrieval and inspection."
+    },
+    {
+      "input_record_id": "unit_52883bd62c8de710d0408e88f2232a7b",
+      "title": "Textbook",
+      "classification": "bibliographic reference only",
+      "source_official_course_unit": false,
+      "included_as_graph_node": false,
+      "reason": "The title is described, but no licensed text, edition, chapters, or page assignments are supplied."
+    },
+    {
+      "input_record_id": "unit_6bb4eaf8e8f92085827afcb245b85861",
+      "title": "Assignments",
+      "classification": "official aggregate workload claim, not a concrete unit",
+      "source_official_course_unit": true,
+      "included_as_graph_node": false,
+      "reason": "The record reports counts only; no assignment identity, prompt, dependency, or artifact is available."
+    }
+  ],
+  "provenance": {
+    "classification": "manager-authored graph over a source-derived catalog snapshot",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/编译原理/CS143.en.md",
+    "catalog_content_sha256": "23d43d26856c40acc3f545e336706cf9c9e6a39b72520906e4c77fb165337108"
+  },
+  "validation": {
+    "label": "PREPARED_UNVALIDATED",
+    "course_completion_claim": false
+  }
+}

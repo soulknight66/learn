@@ -1,0 +1,38 @@
+{
+  "catalog_source": {
+    "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989",
+    "external_reference": "http://aosabook.org/en/500L/a-simple-web-server.html",
+    "job_id": "job_project_http_service_vertical_v1",
+    "license": "CC0-1.0",
+    "lookup_status": "job provenance",
+    "project_id": "project_c72c12c5b510bb2fbeffe9a2175fea74",
+    "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+    "source_name": "Build Your Own X",
+    "source_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/build-your-own-x",
+    "source_reference": "README.md#build-your-own-web-server",
+    "upstream_url": "git@github.com:codecrafters-io/build-your-own-x.git"
+  },
+  "content_boundary": "No linked tutorial content is mirrored; follow the recorded public URL under its own terms if a learner intentionally retrieves it.",
+  "derivation": {
+    "agent_generated": [
+      "requirements and learner scaffolding",
+      "all Python implementation and tests",
+      "architecture alternatives",
+      "debugging and review exercises",
+      "production gap analysis"
+    ],
+    "inferred": [
+      "difficulty, human-hours estimate, concept tags, and priority scores"
+    ],
+    "measured": [
+      "benchmarks/results/smoke.json only after benchmark.py executes",
+      "controller validation logs outside this candidate tree"
+    ],
+    "source_derived": [
+      "project category and outbound catalog relationship only",
+      "source repository identity, commit, URL, and license metadata"
+    ]
+  },
+  "network_used_during_generation": false,
+  "schema_version": 1
+}

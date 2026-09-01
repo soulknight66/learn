@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "course_id": "course_e5fe902f4a8e5c0904abc88bc017e7b8",
+  "title": "UCB EE120: Signal and Systems",
+  "status": "KICKOFF_READY_COURSE_INCOMPLETE",
+  "unit": {
+    "unit_id": "managed_unit_01_finite_signals_lti_engineering",
+    "sequence": 1,
+    "title": "Finite Discrete-Time Signals and Reliable Convolution Software",
+    "status": "READY_FOR_LEARNER",
+    "classification": "COURSE_MANAGER_AUTHORED_KICKOFF",
+    "official_course_unit": false,
+    "bounded": true,
+    "estimated_human_hours": 8,
+    "audience": "A strong algorithms student beginning deliberate software-engineering practice",
+    "prerequisites": [
+      "Comfort with Python functions, classes, and unittest",
+      "Asymptotic analysis",
+      "Basic calculus and linear algebra",
+      "No prior signals-and-systems course material is assumed for the software task"
+    ],
+    "purpose": "Build and test a small finite-signal API, implement direct and sparsity-aware linear convolution, and produce reproducible correctness and performance evidence.",
+    "scope": {
+      "included": [
+        "Finite real-valued discrete-time signals",
+        "Indexing and time shifts",
+        "Linear convolution by two independently structured implementations",
+        "API contracts, input validation, deterministic unit and property-style tests",
+        "A fixed-seed microbenchmark and a short engineering report"
+      ],
+      "excluded": [
+        "Continuous-time signals",
+        "Fourier transforms and FFT implementation",
+        "Differential equations, frequency response, sampling theory, and feedback control",
+        "Any claim to reproduce an official EE120 lecture, assignment, or lab",
+        "The remaining course sequence"
+      ]
+    },
+    "learning_objectives": [
+      "Translate mathematical indexing conventions into an explicit Python API contract",
+      "Implement direct and sparsity-aware convolution with consistent edge-case behavior",
+      "Use an independent implementation, invariants, and deterministic generated cases as correctness evidence",
+      "Separate asymptotic reasoning from measured performance and report limitations honestly",
+      "Package code, tests, evidence, and provenance so another engineer can reproduce the work"
+    ],
+    "learner_inputs": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "expected_learner_outputs": [
+      "submission/signals.py",
+      "submission/test_signals.py",
+      "submission/benchmark.py",
+      "submission/evidence/benchmark.json",
+      "submission/REPORT.md",
+      "submission/COMPREHENSION_RESPONSES.md"
+    ]
+  },
+  "completion_policy": {
+    "promotion_authority": "WORKER_HARNESS_VALIDATOR_ONLY",
+    "agent_or_learner_claim_is_evidence": false,
+    "kickoff_unit_completion": {
+      "required": [
+        "All expected learner outputs are present",
+        "The validator-controlled test run passes",
+        "The submitted benchmark is reproducible and explicitly labeled as learner-produced evidence",
+        "The report and comprehension responses are independently assessed against examiner_only/RUBRIC.md"
+      ],
+      "result_if_validated": "UNIT_1_COMPLETED_COURSE_STILL_IN_PROGRESS"
+    },
+    "whole_course_completion": {
+      "can_be_awarded_by_this_unit": false,
+      "current_status": "NOT_COMPLETE",
+      "requires": "A separately expanded, provenance-backed unit graph plus successful validation of every later required unit; those units are not yet defined or available."
+    },
+    "failed_or_partial_work": "Retain the attempt and its evidence with a failed or incomplete label; do not promote it to unit or course completion."
+  },
+  "provenance": {
+    "artifact_classification": "MANAGER_AUTHORED_FROM_CATALOG_SNAPSHOT",
+    "catalog_snapshot_schema_version": 1,
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/电子基础/signal.en.md",
+    "source_content_sha256": "a60116b62d06ad973233ce92c16c407ac6228533a9fcb4da6cd3fa081c1af904",
+    "adapter": "csdiy",
+    "extractor_version": "1.1",
+    "network_retrieval_performed": false,
+    "derivation_note": "The catalog title, description, prerequisites, language, and resource locators informed the kickoff. The unit design and learner materials are newly authored and are not represented as UC Berkeley content."
+  },
+  "validation": {
+    "label": "PREPARED_NOT_INDEPENDENTLY_VALIDATED",
+    "meaning": "This manifest records preparation state only; deterministic harness validation is still required."
+  }
+}

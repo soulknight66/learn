@@ -1,0 +1,33 @@
+{
+  "builder_job_id": "job_byox_build_v1_832b16fa07e1811e16d1d5036ec84a57",
+  "checks_run": [
+    "Inventoried all candidate entries, modes, file types, hashes, imports, and validation-label claims.",
+    "Strict-parsed MANIFEST.yaml and PROVENANCE.json and checked project, source, commit, status, label, and productionized-field consistency.",
+    "Inspected learner documentation, starter API, public tests, sealed reference, sealed tests, exercises, provenance, licensing, and production caveats.",
+    "Parsed both shell runners and attempted the documented public and sealed test commands with both default and controlled TMPDIR settings.",
+    "Ran the structural verifier with the default Python and with Python 3.11.5.",
+    "Mutation-tested the structural verifier on a reviewer-owned copy with every Java source and test runner removed.",
+    "Compared the authoritative requirements against public and sealed test expectations and statically traced reference append, read, failover, recovery, and stale-first-recovery paths.",
+    "Recorded matching pre-review and post-review aggregate fingerprints for CANDIDATE."
+  ],
+  "evidence": [
+    "CANDIDATE remained byte-identical during review: 38 regular files, zero symlinks, aggregate fingerprint 9d6c0ebb08eed2a36b5f9143cbe8678edfaf25847086d4b1d35ebf77114655d9 before and after checks.",
+    "The manifest candidly remains GENERATED plus PARTIAL with productionized false; no positive BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED claim was found.",
+    "The Python 3.11 structural verifier exited 0 on the submitted tree, but also exited 0 on a scratch copy containing zero Java files and zero run.sh files, so it does not establish artifact completeness or bind generated content.",
+    "All sealed reference code, hidden tests, and answer keys are ordinary mode-0444 files. Prose says not to inspect them, but the candidate contains no learner-view allowlist, projection, or access-control evidence.",
+    "REQUIREMENTS.md is declared authoritative but omits public-test expectations for a non-negative LogRecord offset, lowest-ID initial leader, leaderId failure when leaderless, and required election after safe recovery.",
+    "The claimed milestone workflow has one unfilterable ten-case public runner and no milestone group reporting; starter/README.md does not map milestones to implementation steps as claimed.",
+    "The documented runners require mktemp and a usable temporary directory; default runs exited 1 because /tmp is absent, and controlled TMPDIR runs reached javac then exited 127 because no JDK is installed.",
+    "The documented python3 verifier command fails under PATH Python 3.6.8; explicit Python 3.11.5 passes, but Python is absent from the environment prerequisites.",
+    "Generated material has no explicit license grant, file inventory, or per-file provenance; the catalog CC0 and linked-resource NOASSERTION boundary is otherwise stated conservatively.",
+    "Static inspection found no clear reachable-state defect in the sealed reference implementation, but this is not compilation or execution evidence."
+  ],
+  "limitations": [
+    "java, javac, and alternate Java toolchains were unavailable, so neither Java suite could compile or execute and correctness remains inconclusive.",
+    "The upstream catalog and linked tutorial were unavailable, so license evidence, source hashes, and the no-copy/no-close-paraphrase claim could not be independently verified.",
+    "No external learner-view harness or transfer artifact was present; sealed-material exposure is therefore a direct risk for a mounted candidate tree and otherwise an unverified integration boundary.",
+    "The review host lacks /tmp, and its default Python is 3.6.8; controlled alternatives were used where possible and both conditions are reported rather than treated as Java test failures."
+  ],
+  "project_id": "project_7fc5b6faee61f34679ec47f9c4964256",
+  "verdict": "REVISE"
+}

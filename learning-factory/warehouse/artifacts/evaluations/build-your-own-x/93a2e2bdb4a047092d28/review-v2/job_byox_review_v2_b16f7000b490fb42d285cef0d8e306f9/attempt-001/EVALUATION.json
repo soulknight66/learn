@@ -1,0 +1,36 @@
+{
+  "builder_job_id": "job_project_kvstore_vertical_v2",
+  "checks_run": [
+    "Submission inventory, documented-path audit, and immutable before/after hash",
+    "CPython 3.11.5 syntax compilation",
+    "Reference public unittest suite and sealed recovery unittest suite",
+    "Starter public-suite baseline",
+    "Reviewer-authored core, recovery, and large-state compaction probe",
+    "Reference fixed-seed model, thread, and torn-tail smoke workloads",
+    "Lost-delete regression against buggy and reference targets",
+    "Advertised aggregate runner and every advertised production-target command",
+    "Benchmark regeneration attempt and bundled JSON consistency audit",
+    "Progressive-disclosure diff and license/provenance review",
+    "Validation-harness zero-work and optimized-mode false-positive probes"
+  ],
+  "evidence": [
+    "Under reviewer-controlled CPython 3.11.5 and TMPDIR, all Python sources compiled, the reference passed 4/4 public tests and 10/10 sealed tests, and an independent probe confirmed core persistence, missing-delete no-append behavior, batching, and torn-tail recovery.",
+    "The reference target completed the documented 600-operation fixed-seed model smoke; an additional 6-thread by 80-operation stress smoke; and the torn-tail smoke. These bounded observations do not establish FUZZED, TESTED, or production readiness.",
+    "The lost-delete exercise reproduced on the buggy target and passed on the reference target.",
+    "The documented scripts/run_all.py, production/implementation/kvstore.py, and production/PRODUCTIONIZATION.md are absent. The aggregate runner, both production unit suites, four production-target scripts, and benchmark regeneration fail before their advertised validation can run.",
+    "The bundled smoke benchmark JSON parses and is arithmetically self-consistent, but its production measurements cannot be reproduced from this submission and its claimed validator origin is not independently authenticated.",
+    "The unsealed debugging/lost-delete/buggy/kvstore.py differs from sealed/reference/kvstore.py by one source line, exposing virtually the complete reference solution outside the sealed boundary.",
+    "A reviewer probe stored four individually valid 1 MiB values; compact() then raised ValueError because the one-record snapshot exceeded MAX_RECORD_BYTES, while all four keys remained recoverable. The learner contract states no total-state compaction limit.",
+    "The manifest honestly labels the package as requiring external validation and not production-ready, and the adversarial and benchmark prose describes its workloads as bounded and machine-specific.",
+    "The adversarial scripts can print passed without meaningful validation: zero-operation model and zero-thread stress invocations exited 0, and python -O removed the torn-tail script's assert checks while it still printed passed.",
+    "No LICENSE, COPYING, or NOTICE file defines reuse terms for the agent-generated material; the recorded CC0-1.0 field is scoped only as source metadata and the external tutorial has no recorded license."
+  ],
+  "limitations": [
+    "The inherited python3 is CPython 3.6.8 and the sandbox has no writable default temporary directory; substantive checks therefore used the available CPython 3.11.5 binary and a reviewer-created workspace TMPDIR.",
+    "No upstream checkout or network verification was available, so the recorded commit, source and tutorial licenses, no-copy claim, and source provenance could not be independently authenticated.",
+    "No real power-loss, abrupt-process-crash, multi-process, long-running stress, coverage, or independent performance harness was available; those properties remain inconclusive.",
+    "Candidate-authored tests and scripts were rerun only as bounded observations and were not treated as proof of lifecycle validation labels."
+  ],
+  "project_id": "project_5187715307b13e38b82d4dacf47b4946",
+  "verdict": "REVISE"
+}

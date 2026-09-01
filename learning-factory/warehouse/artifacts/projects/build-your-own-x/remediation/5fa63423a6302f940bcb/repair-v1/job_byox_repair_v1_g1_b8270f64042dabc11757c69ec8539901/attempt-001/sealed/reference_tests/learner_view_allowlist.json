@@ -1,0 +1,30 @@
+{
+  "files": [
+    "AGENTS.md",
+    "CONCEPTS.md",
+    "DESIGN_QUESTIONS.md",
+    "MANIFEST.yaml",
+    "README.md",
+    "REQUIREMENTS.md",
+    "environment/README.md",
+    "environment/check_toolchain.sh",
+    "public_tests/Makefile",
+    "public_tests/README.md",
+    "public_tests/test_baseline.c",
+    "public_tests/test_cli.py",
+    "public_tests/test_parser_milestones.c",
+    "starter/Makefile",
+    "starter/README.md",
+    "starter/include/byosh.h",
+    "starter/src/execute.c",
+    "starter/src/main.c",
+    "starter/src/parser.c",
+    "starter/src/pipeline.c"
+  ],
+  "learner_roots": [
+    "environment",
+    "public_tests",
+    "starter"
+  ],
+  "schema_version": 1
+}

@@ -1,0 +1,36 @@
+{
+  "course_id": "course_0c0beb8e3224cbbc66b740fe95689163",
+  "batch_id": "csdiy-unit-batch-v1-4236718658e6c055a2803a07",
+  "sequence": 1,
+  "status": "BOUNDED_UNIT_PREPARED",
+  "course_completion": "NOT_CLAIMED",
+  "unit_ids": [
+    "unit_8b2011001dc8b37c0dff9f1dd438e897"
+  ],
+  "availability": [
+    "unit_8b2011001dc8b37c0dff9f1dd438e897: the normalized Lab 1 record and its one-sentence description are available in the supplied snapshot with metadata availability DESCRIBED.",
+    "An original, agent-generated, local-only practice packet is available under student_safe/; it is not official MIT course material or an official Lab 1 specification.",
+    "An original independent-assessment rubric and novel check are available only under examiner_only/."
+  ],
+  "blocked": [
+    "unit_8b2011001dc8b37c0dff9f1dd438e897: the official lab specification, starter code, environment instructions, and official tests or validation procedure are unavailable and were not reconstructed.",
+    "Course-site, lecture, and other externally linked contents were not retrieved or verified; network retrieval was not performed.",
+    "Preparation of this packet cannot establish study, a passing result, transfer, unit credit, or course completion."
+  ],
+  "completion_policy": {
+    "completion_authority": "independent externally validated examiner evidence",
+    "scope": "one bounded normalized-resource batch",
+    "materialization_evidence": "NOT_EVIDENCE_OF_STUDY_PASS_TRANSFER_OR_COURSE_COMPLETION",
+    "assessment_scope": "Only a later independent examination of learner-produced work may evaluate this generated practice task; it cannot award or imply official MIT Lab 1 credit."
+  },
+  "provenance": {
+    "batch_snapshot_sha256": "6a79ba7bdffc16e38fef9dfd63a9be730bf36b0cef3dd03895d11d59ae038d19",
+    "classification": "agent-generated material from a source-derived batch snapshot",
+    "source_record_classification": "explicit_official_course_unit",
+    "source_material_availability": "DESCRIBED",
+    "source_reference": "docs/系统安全/MIT6.858.en.md#L15",
+    "material_authorship": "Original bounded practice and assessment materials; not copied or reconstructed official course content.",
+    "network_retrieval": "NOT_PERFORMED",
+    "validation_label": "PREPARATION_ONLY_NOT_LEARNING_EVIDENCE"
+  }
+}

@@ -1,0 +1,116 @@
+# Environment and safety
+
+MiniCTR has two deliberately separate execution environments: a privilege-free public-test layer and a
+Linux namespace integration layer. Do not infer success in the second from success in the first.
+
+## Public-test prerequisites
+
+The deterministic suite needs:
+
+- Linux or another host capable of running Bash tests;
+- Bash 4 or newer;
+- `cp`, `env`, `find`, `mkdir`, `mktemp`, `rm`, `rmdir`, `sort`, and GNU-compatible `timeout`; and
+- ordinary permission to create temporary files below `${TMPDIR:-/tmp}`.
+
+No Bats or ShellCheck installation is required. The repository includes its own test runner and fake
+isolator.
+
+Run the non-invasive inventory:
+
+```bash
+./environment/check.sh
+```
+
+It checks command availability and the kernel name, then creates and removes one private empty
+directory below `${TMPDIR:-/tmp}`. A zero result therefore confirms that the documented public-test
+temporary base exists and supports private creation at check time. It does not create MiniCTR state,
+enter a namespace, mount anything, change root, contact the network, or elevate privileges.
+
+If `/tmp` is unavailable, select an existing private directory explicitly for both the check and the
+test command:
+
+```bash
+mkdir -p "$PWD/.local-tmp"
+chmod 700 "$PWD/.local-tmp"
+TMPDIR="$PWD/.local-tmp" ./environment/check.sh
+TMPDIR="$PWD/.local-tmp" bash public_tests/test_minictr.sh
+```
+
+## Real-isolation prerequisites
+
+The default isolator additionally targets Linux tools commonly named:
+
+- `unshare` for namespace and user-ID mapping setup;
+- `mount` for private propagation and a container-local proc filesystem; and
+- `chroot` for changing the apparent filesystem root.
+
+Check only that those executables exist with:
+
+```bash
+./environment/check.sh --require-isolation-tools
+```
+
+Even a zero result does not establish that the calls are permitted. User namespaces may be disabled,
+namespace quotas may be exhausted, or an outer container/seccomp/LSM policy may reject setup. A correct
+MiniCTR reports that run as unsupported and does not execute the requested command without isolation.
+
+## Root filesystem policy
+
+This challenge intentionally does not download, unpack, or manufacture a root filesystem. A real smoke
+test requires a disposable absolute directory supplied by the learner. It must contain a real `proc/`
+directory for the namespace-local proc mount, plus the selected command and, for a dynamically linked
+program, its loader and shared libraries at the paths expected by that binary.
+
+A rootfs made from host binaries is tied to that host’s architecture and ABI and should not be described
+as portable. A shell script also needs its interpreter inside the rootfs. The public tests avoid these
+variables by using an empty directory and replacing only the isolation helper.
+
+Never use any of these as an experimental rootfs:
+
+- `/`;
+- a mounted production or user-data filesystem;
+- a directory whose contents are not disposable; or
+- a tree controlled by an untrusted party on a machine with valuable data.
+
+MiniCTR must not modify or delete the rootfs during create/delete lifecycle operations.
+Choose a state directory in a disjoint tree: neither `MINICTR_HOME` nor the rootfs may contain the
+other. A correct implementation rejects overlap before creating state.
+
+## Suggested integration-test containment
+
+If your host permits namespace creation, perform real-isolation checks in a disposable virtual machine
+or nested development container with no secrets and no important writable mounts. Start with a rootfs
+whose contents you understand. Inspect namespace identities and mount state from both sides, test a
+nonzero command, and verify no process or mount remains after exit.
+
+Do not add `sudo` merely because an unprivileged test failed. Root execution changes the threat model and
+can turn a cleanup bug into host damage. Diagnose the denied operation first.
+
+## Optional developer tools
+
+`shellcheck` is useful for finding unquoted expansions and array mistakes if available, but it is not a
+substitute for adversarial argv tests. `findmnt` and `nsenter` can help inspect an integration run.
+`busybox` can be useful when constructing your own disposable rootfs, but it is not provided or required
+by this exercise.
+
+## Deterministic learner transfer
+
+`learner-view.allowlist` is the machine-readable, exact top-level transfer policy. Production tooling
+can create a new learner directory and verify it in one bounded operation:
+
+```bash
+bash environment/project_learner_view.sh /absolute/path/to/new-view
+```
+
+The destination must not already exist or be nested inside an allowlisted source directory. The
+projector copies only allowlisted entries, rejects links, special files, and recursively forbidden
+path components before copying, and then invokes `verify_learner_view.sh`. A recipient can independently
+recheck an existing transfer from its root:
+
+```bash
+bash environment/verify_learner_view.sh .
+```
+
+The policy deliberately excludes builder validation, provenance with internal factory locations,
+debugging answers, code-review answers, adversarial/evaluator suites, benchmarks, and every `sealed/`
+tree. Public tests remain visible because they are the learner contract, not hidden grading material.

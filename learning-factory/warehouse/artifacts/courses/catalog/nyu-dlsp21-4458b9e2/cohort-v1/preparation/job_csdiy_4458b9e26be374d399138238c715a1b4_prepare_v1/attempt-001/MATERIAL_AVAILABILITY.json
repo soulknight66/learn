@@ -1,0 +1,121 @@
+{
+  "course_id": "course_4458b9e26be374d399138238c715a1b4",
+  "materials": [
+    {
+      "record_id": "unit_7f874f07d85beadf1cfb35e7dcb71f9e",
+      "title": "Catalog overview and resource guide",
+      "kind": "catalog_metadata",
+      "source_claims_official_course_unit": false,
+      "availability": "AVAILABLE_AS_SUPPLIED_METADATA",
+      "locator": "docs/深度学习/NYU-DLSP21.en.md",
+      "external_content_retrieved": false,
+      "usable_now": true,
+      "use_limit": "Course identity and broad planning context only; it is not instructional coverage."
+    },
+    {
+      "record_id": "unit_b3b76adbe513cd3f1221eeb2eb1ebf35",
+      "title": "Course Website",
+      "kind": "external_link",
+      "source_claims_official_course_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "locator": "https://atcold.github.io/NYU-DLSP21/",
+      "external_content_retrieved": false,
+      "usable_now": false,
+      "use_limit": "A locator is known, but its current contents, access state, and item-level provenance were not inspected in this preparation job."
+    },
+    {
+      "record_id": "unit_94c1c63c34dc922f03a2ecf069279c56",
+      "title": "Recordings",
+      "kind": "lecture_collection_description",
+      "source_claims_official_course_unit": false,
+      "availability": "DESCRIBED_NOT_RETRIEVED",
+      "locator": null,
+      "external_content_retrieved": false,
+      "usable_now": false,
+      "use_limit": "No lecture titles, direct recording URLs, files, or transcripts are present in the snapshot."
+    },
+    {
+      "record_id": "unit_09001a4df4bd311fa1768e40f776acf6",
+      "title": "Lecture Notes / Slides",
+      "kind": "reading_collection_description",
+      "source_claims_official_course_unit": false,
+      "availability": "DESCRIBED_NOT_RETRIEVED",
+      "locator": null,
+      "external_content_retrieved": false,
+      "usable_now": false,
+      "use_limit": "No note or slide titles, direct URLs, files, or content are present in the snapshot."
+    },
+    {
+      "record_id": "unit_69f6e153d095385e334b3e207dc062ac",
+      "title": "Assignments and practical materials",
+      "kind": "assignment_collection_description",
+      "source_claims_official_course_unit": true,
+      "availability": "DESCRIBED_NOT_RETRIEVED",
+      "locator": null,
+      "external_content_retrieved": false,
+      "usable_now": false,
+      "use_limit": "The snapshot labels this as official, but supplies no specific assignment identity, prompt, starter files, direct URL, or validation instructions."
+    },
+    {
+      "record_id": "managed_unit_01_engineered_softmax",
+      "title": "Manager-authored kickoff packet",
+      "kind": "local_study_unit",
+      "source_claims_official_course_unit": false,
+      "availability": "AVAILABLE_LOCALLY",
+      "locator": "student_safe/",
+      "external_content_retrieved": false,
+      "usable_now": true,
+      "use_limit": "Valid only as the bounded kickoff defined in COURSE_MANIFEST.json; it is not an official NYU unit."
+    }
+  ],
+  "blocked": [
+    {
+      "record_id": "unit_94c1c63c34dc922f03a2ecf069279c56",
+      "reason_code": "NO_ITEM_LOCATORS_OR_CONTENT",
+      "reason": "The catalog describes recordings but provides neither individual locators nor content.",
+      "needed_to_unblock": "An authorized later retrieval must enumerate recordings and record item-level provenance and access status."
+    },
+    {
+      "record_id": "unit_09001a4df4bd311fa1768e40f776acf6",
+      "reason_code": "NO_ITEM_LOCATORS_OR_CONTENT",
+      "reason": "The catalog describes lecture notes or slides but provides neither individual locators nor content.",
+      "needed_to_unblock": "An authorized later retrieval must enumerate the files and record item-level provenance and access status."
+    },
+    {
+      "record_id": "unit_69f6e153d095385e334b3e207dc062ac",
+      "reason_code": "NO_SPECIFIC_ASSIGNMENT_OR_CONTENT",
+      "reason": "Only a collection-level description is supplied; no assignment can be identified or safely issued from it.",
+      "needed_to_unblock": "An authorized later retrieval must identify each assignment, its files, permitted use, dependencies, and validator contract."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": "Use only the supplied snapshot and locally authored kickoff files. No network or source-repository retrieval is part of this preparation.",
+    "later_job_preconditions": [
+      "Retrieval is explicitly authorized for that job.",
+      "The target is publicly accessible or credentials were legitimately supplied for the learner's own access.",
+      "Terms, license, and learner-view isolation permit storage or linking."
+    ],
+    "later_job_process": [
+      "Start from the recorded course website URL; do not guess private or unpublished paths.",
+      "Record the final URL, retrieval timestamp, content hash, title, type, access result, and license or terms status for every item.",
+      "Keep source repositories read-only and copy permitted working material only into a per-attempt workspace.",
+      "Classify each item before proposing units; do not promote a link, collection, or failed retrieval automatically.",
+      "Preserve failed retrieval evidence and keep the corresponding material blocked.",
+      "Require a worker-harness-controlled validator before any added unit can be marked complete."
+    ],
+    "restricted_content": "Never bypass authentication, paywalls, robots or access controls, and never expose secrets, hidden graders, sealed references, examiner material, or another learner's files.",
+    "fallback": "If material remains unavailable, retain the blocked record and design only clearly labeled manager-authored alternatives; never reconstruct or claim the missing official content."
+  },
+  "provenance": {
+    "artifact_classification": "manager-authored-availability-classification",
+    "catalog_source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "catalog_source_file": "docs/深度学习/NYU-DLSP21.en.md",
+    "catalog_source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "catalog_content_sha256": "9be457f99f8e3da9dffc38170e0fc1c5a4186ee20f2eda2d5babc1c4181e4ec0",
+    "external_retrieval_performed": false
+  },
+  "validation": {
+    "label": "AVAILABILITY_CLASSIFIED_FROM_SNAPSHOT_ONLY",
+    "validated_by_worker_harness": false
+  }
+}

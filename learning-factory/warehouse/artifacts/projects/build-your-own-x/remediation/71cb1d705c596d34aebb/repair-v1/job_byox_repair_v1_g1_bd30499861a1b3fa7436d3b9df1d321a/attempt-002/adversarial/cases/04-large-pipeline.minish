@@ -1,0 +1,1 @@
+/usr/bin/head -c 1048576 /dev/zero | /usr/bin/wc -c

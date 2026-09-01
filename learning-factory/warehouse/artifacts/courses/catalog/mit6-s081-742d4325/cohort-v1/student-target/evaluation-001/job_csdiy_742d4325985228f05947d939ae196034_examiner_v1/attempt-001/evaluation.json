@@ -1,0 +1,20 @@
+{
+  "evidence": [
+    "Controlled inventory contained only .factory-workspace, JOB.md, RUBRIC.md, SUBMISSION.md, NOTES.md, and DEBUGGING_LOG.md; the claimed Makefile, src/, tests/, evidence/, DESIGN.md, COMPREHENSION_RESPONSES.md, and SELF_CHECK.md were absent.",
+    "The evaluated narrative identities were SUBMISSION.md sha256 106248d384d1e06599e82f410f954f183a4c15908d2b8626f30bf69e6fe173a1, NOTES.md sha256 161abfaf1eed4eab9109bfc9afe7d193db409d7356ea0e646601f13b596895c6, and DEBUGGING_LOG.md sha256 9e47a9452b637703c49c64be82c73db09c9f3dafbea2b2cae7acae4e41c0f38f.",
+    "The controlled compiler query reported cc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-22).",
+    "A bounded, noninteractive argv invocation of make clean all returned exit 2 with stderr: make: *** No rule to make target 'clean'. Stop.",
+    "A bounded, noninteractive argv invocation of make check returned exit 2 with stderr: make: *** No rule to make target 'check'. Stop.",
+    "No build/vmwalk executable was produced, so none of the independent must-pass fixtures or implementation behavior could be observed.",
+    "SUBMISSION.md and DEBUGGING_LOG.md claim successful builds, 18 passing tests, and logs under evidence/, but those claims conflict with the controlled package and have no included executable, source, tests, or logs to reproduce them.",
+    "NOTES.md shows reasonable conceptual judgment about address decomposition, atomic validation, fixed bounds, permission/presence separation, and validator authority; these prose claims cannot earn implementation or behavior points without the required artifacts."
+  ],
+  "result": "FAIL",
+  "score": 0,
+  "transfer_gaps": [
+    "Package the actual Makefile, C sources, learner tests, DESIGN.md, all eight comprehension responses, SELF_CHECK.md, and learner evidence logs with the submission rather than describing absent artifacts.",
+    "Verify the exact clean submission copy by inventory and hash before running make clean all and make check; preserve command, version, output, and exit-status evidence from that same copy.",
+    "Demonstrate translation, permission, parsing, bounds, diagnostic, and atomic-output behavior with controlled independent fixtures; learner prose and learner test claims are not substitutes for harness evidence.",
+    "Keep the unit incomplete until a worker-harness-controlled run records HARNESS-VALIDATED and all blocking checks pass."
+  ]
+}

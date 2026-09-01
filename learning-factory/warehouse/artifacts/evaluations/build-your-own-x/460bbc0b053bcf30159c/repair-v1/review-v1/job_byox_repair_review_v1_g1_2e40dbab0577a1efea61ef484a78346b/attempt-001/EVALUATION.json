@@ -1,0 +1,36 @@
+{
+  "builder_job_id": "job_byox_repair_v1_g1_afc063e6080efeeee26bf31b20e8e3ef",
+  "checks_run": [
+    "Inspected and cross-checked all 42 regular candidate files, including the requirements, public API, incomplete starter, reference implementation, public and sealed tests, learner guidance, sealed answers, validation record, manifest, and provenance record.",
+    "Computed the candidate file-set digest before and after review and ran all compilation and execution checks against a writable scratch copy rather than CANDIDATE.",
+    "Built the starter with its strict C11 freestanding flags and reproduced its documented initial public-test baseline of 4 passed and 3 failed.",
+    "Built and ran the sealed reference suite with the supplied strict flags and with -O2; independently linked the public tests to the reference archive; inspected undefined symbols with nm.",
+    "Compiled and ran an independent edge-case probe for PID wrap and slot reuse, cursor persistence, VM exhaustion and zeroing, read-only enforcement, maximum and unterminated names, overlapping RAMFS writes, and failure atomicity.",
+    "Compiled all reference sources with additional conversion, shadowing, prototype, cast-qualifier, and string-literal warnings promoted to errors.",
+    "Strict-parsed and cross-checked manifest/provenance identifiers, commit, snapshot digest, labels, production flag, and license-boundary fields; audited entry types and common credential patterns.",
+    "Reviewed progressive disclosure, learner usefulness, license/provenance boundaries, and every validation-label claim for consistency and overclaiming.",
+    "Compared two clean reference archive builds and their member objects to assess bit-level reproducibility."
+  ],
+  "evidence": [
+    "The CANDIDATE aggregate SHA-256 was a763045c67b1b4c7c0d90d94ff644a30f6459c37dbca7da38c9d4819bcefb95c both before and after review; it still contains 42 files and no build directory.",
+    "make -C starter clean build exited 0. make -C starter test exited 2 with the documented deliberately incomplete baseline: 4 passed, 3 failed.",
+    "make -C sealed/reference clean test exited 0 and printed 'reference tests: PASS'; the same suite with -O2 also exited 0.",
+    "The public suite independently linked to the sealed archive exited 0 with 7 passed and 0 failed, and nm -u showed no undefined symbols in the three reference objects.",
+    "The independent probe compiled with strict C11 warnings and exited 0 with 'independent probe: PASS'.",
+    "The additional-warning compilation exited 0 for scheduler.c, vm.c, and ramfs.c.",
+    "The starter and reference public headers have identical SHA-256 765796d7628c14a857b5c23ff2218cfac7a707ea7e0e0eca1fd1e09bec829fcf.",
+    "Strict metadata checks passed: project/source IDs and commit agree, manifest provenance_sha256 equals PROVENANCE snapshot_sha256, status is GENERATED, labels are exactly GENERATED/PARTIAL, independent validation is REQUIRED, and productionized is false.",
+    "The learner path is milestone-driven and contract-focused; solution-bearing implementation, tests, diagnoses, review answers, and production notes are grouped under sealed/ rather than linked from the main README.",
+    "The validation prose accurately distinguishes worker-local evidence from independent evidence and makes none of the prohibited BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED label claims."
+  ],
+  "limitations": [
+    "Only GCC 8.5.0 was available. Clang, Valgrind, cppcheck, clang-tidy, scan-build, splint, QEMU, and NASM were unavailable. GCC sanitizer compilation succeeded, but linking failed because libasan.so.5 and libubsan.so.1 were unavailable, so no sanitizer result is claimed.",
+    "PRIOR_BUILD and PRIOR_REVIEW are not present in the review workspace, so the candidate's historical staged-input hashes and repair-only diff could not be independently repeated.",
+    "The upstream catalog/source snapshot and linked tutorial were not accessible from this isolated workspace. The provenance and license boundary are internally consistent, but the assertion that linked content was not copied could not be independently compared with upstream text.",
+    "No worker-harness learner-view export was supplied. Public/sealed organization was reviewed structurally, but transfer isolation was not exercised and TRANSFER_VERIFIED remains correctly unclaimed.",
+    "Two clean reference builds produced identical member object hashes but different libmicaos.a hashes (3775eb5c... and 37f2305b...). GNU ar 2.30 retained time/owner metadata under 'rcs', so the default archive is not bit-for-bit reproducible even though builds and behavior reproduced.",
+    "No coverage-guided fuzzing, benchmark, second-toolchain, cross-architecture, hardware, concurrency, or production validation was performed; the candidate correctly claims none of those outcomes."
+  ],
+  "project_id": "project_9f93e5b30db7d5e4adf5244cd9ccb1b0",
+  "verdict": "PASS"
+}

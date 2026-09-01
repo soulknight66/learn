@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "course_id": "course_a7a910aa0ff53117a8266badba1bc57c",
+  "materials": [
+    {
+      "material_id": "unit_1088e3bcb9770ddd6d543174012d686f",
+      "title": "Catalog overview and resource guide",
+      "kind": "catalog_record",
+      "source_reference": "docs/Web开发/CS142.en.md",
+      "availability": "AVAILABLE_SNAPSHOT_METADATA_ONLY",
+      "locally_available": true,
+      "retrieved": true,
+      "verified_scope": "Only the catalog fields reproduced in the provided snapshot",
+      "full_course_content_available": false,
+      "required_for_kickoff": false,
+      "provenance": {
+        "classification": "source-derived",
+        "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+        "content_sha256": "20469eb3dee321b376d2001a14da05e03ae8d682c7ef09e7a9a06ebe23a0a402"
+      }
+    },
+    {
+      "material_id": "unit_e478b508f5dd5e5171ebe8fa27425c53",
+      "title": "Course Website",
+      "kind": "external_index_link",
+      "url": "https://web.stanford.edu/class/cs142/index.html",
+      "source_reference": "docs/Web开发/CS142.en.md#L15",
+      "availability": "LINKED_UNRETRIEVED",
+      "locally_available": false,
+      "retrieved": false,
+      "content_verified": false,
+      "source_metadata_official_course_unit": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "unit_d7e89da9af68f5ff8aafcbf369a0d81f",
+      "title": "Recordings",
+      "kind": "external_collection_link",
+      "url": "https://web.stanford.edu/class/cs142/lectures.html",
+      "source_reference": "docs/Web开发/CS142.en.md#L16",
+      "availability": "LINKED_UNRETRIEVED",
+      "locally_available": false,
+      "retrieved": false,
+      "content_verified": false,
+      "source_metadata_official_course_unit": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "unit_6caaea83654672d57cc807acf89bfd60",
+      "title": "Assignments",
+      "kind": "external_collection_link",
+      "url": "https://web.stanford.edu/class/cs142/projects.html",
+      "source_reference": "docs/Web开发/CS142.en.md#L17",
+      "availability": "LINKED_UNRETRIEVED",
+      "locally_available": false,
+      "retrieved": false,
+      "content_verified": false,
+      "source_metadata_official_course_unit": true,
+      "record_promoted_to_study_unit": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "manager_authored_kickoff_packet",
+      "title": "Engineering a Small Browser Application kickoff packet",
+      "kind": "manager_authored_local_material",
+      "paths": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "availability": "AVAILABLE_LOCAL",
+      "locally_available": true,
+      "retrieved": false,
+      "content_verified": true,
+      "validation_label": "LEARNER_SAFE_KICKOFF_SPECIFICATION",
+      "official_stanford_content": false,
+      "required_for_kickoff": true
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_e478b508f5dd5e5171ebe8fa27425c53",
+      "reason": "Only a catalog URL was supplied; external retrieval was outside this preparation job.",
+      "retrieval_attempted": false,
+      "permanent": false,
+      "effect": "No website content may be quoted, summarized, or treated as locally available."
+    },
+    {
+      "material_id": "unit_d7e89da9af68f5ff8aafcbf369a0d81f",
+      "reason": "Only a catalog URL was supplied; external retrieval was outside this preparation job.",
+      "retrieval_attempted": false,
+      "permanent": false,
+      "effect": "No recording titles, sequence, transcripts, or media may be inferred."
+    },
+    {
+      "material_id": "unit_6caaea83654672d57cc807acf89bfd60",
+      "reason": "Only a catalog URL was supplied; external retrieval was outside this preparation job.",
+      "retrieval_attempted": false,
+      "permanent": false,
+      "effect": "No project statements, starter code, solutions, or ordering may be inferred."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job_mode": "NO_EXTERNAL_RETRIEVAL",
+    "current_job_external_requests_made": false,
+    "kickoff_is_self_contained": true,
+    "later_job_rules": [
+      "Retrieve a linked URL only when that later job is authorized to access external public material.",
+      "Do not bypass authentication, access controls, robots restrictions, licensing restrictions, or sealed-content boundaries.",
+      "Record the final URL, retrieval outcome, provenance, content digest, and an explicit availability label.",
+      "Keep an unavailable, moved, denied, or paywalled item in blocked with factual evidence; do not invent replacement content.",
+      "Classify index and collection pages before deriving candidate units, and require independent unit preparation before promotion.",
+      "Never expose solutions, examiner rubrics, hidden validators, secrets, or another learner's files in learner-safe outputs."
+    ],
+    "allowed_outcomes": [
+      "AVAILABLE_VERIFIED",
+      "AVAILABLE_WITH_RESTRICTIONS",
+      "LINKED_UNRETRIEVED",
+      "UNAVAILABLE",
+      "ACCESS_DENIED",
+      "MOVED"
+    ]
+  }
+}

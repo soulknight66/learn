@@ -1,0 +1,150 @@
+{
+  "course_id": "course_f2058429efb4429f3e2ed64ae91ecf74",
+  "nodes": [
+    {
+      "node_id": "kickoff_u01_authentication_boundary",
+      "node_type": "PREPARED_UNIT",
+      "title": "Authentication Boundary: Engineer a Local Credential Verifier",
+      "origin": "COURSE_MANAGER_AUTHORED",
+      "official_course_unit": false,
+      "availability": "LOCAL_READY",
+      "bounded_hours": 5.0
+    },
+    {
+      "node_id": "kickoff_u01_a1_threat_model",
+      "node_type": "LEARNING_ACTIVITY",
+      "title": "Define assets, adversary, trust boundary, and abuse cases",
+      "origin": "COURSE_MANAGER_AUTHORED",
+      "official_course_unit": false,
+      "availability": "LOCAL_READY"
+    },
+    {
+      "node_id": "kickoff_u01_a2_contract",
+      "node_type": "LEARNING_ACTIVITY",
+      "title": "Specify the verifier contract and state invariants",
+      "origin": "COURSE_MANAGER_AUTHORED",
+      "official_course_unit": false,
+      "availability": "LOCAL_READY"
+    },
+    {
+      "node_id": "kickoff_u01_a3_implementation",
+      "node_type": "LEARNING_ACTIVITY",
+      "title": "Implement the local credential verifier",
+      "origin": "COURSE_MANAGER_AUTHORED",
+      "official_course_unit": false,
+      "availability": "LOCAL_READY"
+    },
+    {
+      "node_id": "kickoff_u01_a4_verification",
+      "node_type": "LEARNING_ACTIVITY",
+      "title": "Build deterministic tests and review residual risk",
+      "origin": "COURSE_MANAGER_AUTHORED",
+      "official_course_unit": false,
+      "availability": "LOCAL_READY"
+    },
+    {
+      "node_id": "unit_eb733f055476908faf82dd59941d434a",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Catalog overview and resource guide",
+      "source_type": "reading",
+      "classification": "CATALOG_OVERVIEW_INPUT",
+      "availability": "AVAILABLE_IN_JOB_INPUT",
+      "source_flag_official_course_unit": false,
+      "admitted_as_official_unit": false,
+      "source_reference": "docs/系统安全/MIT6.1600.en.md"
+    },
+    {
+      "node_id": "unit_5ee2c6b4d54f72d345dd6e61f4a1eb22",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Course Website",
+      "source_type": "reading",
+      "classification": "EXTERNAL_LINK_POINTER",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "source_flag_official_course_unit": false,
+      "admitted_as_official_unit": false,
+      "source_reference": "docs/系统安全/MIT6.1600.en.md#L17"
+    },
+    {
+      "node_id": "unit_8b19491e8a7256e7040df0422eb78201",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Recordings",
+      "source_type": "lecture",
+      "classification": "DESCRIBED_RESOURCE_WITHOUT_LOCATOR",
+      "availability": "UNAVAILABLE",
+      "source_flag_official_course_unit": false,
+      "admitted_as_official_unit": false,
+      "source_reference": "docs/系统安全/MIT6.1600.en.md#L18"
+    },
+    {
+      "node_id": "unit_767c9017276128090e7d5efce744dc7b",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Textbooks",
+      "source_type": "reading",
+      "classification": "LECTURE_NOTES_DESCRIPTION_WITHOUT_LOCATOR",
+      "availability": "UNAVAILABLE",
+      "source_flag_official_course_unit": false,
+      "admitted_as_official_unit": false,
+      "source_reference": "docs/系统安全/MIT6.1600.en.md#L19"
+    },
+    {
+      "node_id": "unit_0a438df65d39b245723c56fff3fddaaf",
+      "node_type": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Assignments",
+      "source_type": "assignment",
+      "classification": "AGGREGATE_DESCRIPTION_OF_SIX_LABS",
+      "availability": "UNAVAILABLE",
+      "source_flag_official_course_unit": true,
+      "admitted_as_official_unit": false,
+      "admission_note": "The record reports that six labs exist but supplies no lab identities, specifications, content, or dependency order.",
+      "source_reference": "docs/系统安全/MIT6.1600.en.md#L20"
+    }
+  ],
+  "edges": [
+    {
+      "from": "kickoff_u01_authentication_boundary",
+      "to": "kickoff_u01_a1_threat_model",
+      "relation": "CONTAINS"
+    },
+    {
+      "from": "kickoff_u01_authentication_boundary",
+      "to": "kickoff_u01_a2_contract",
+      "relation": "CONTAINS"
+    },
+    {
+      "from": "kickoff_u01_authentication_boundary",
+      "to": "kickoff_u01_a3_implementation",
+      "relation": "CONTAINS"
+    },
+    {
+      "from": "kickoff_u01_authentication_boundary",
+      "to": "kickoff_u01_a4_verification",
+      "relation": "CONTAINS"
+    },
+    {
+      "from": "kickoff_u01_a1_threat_model",
+      "to": "kickoff_u01_a2_contract",
+      "relation": "PRECEDES"
+    },
+    {
+      "from": "kickoff_u01_a2_contract",
+      "to": "kickoff_u01_a3_implementation",
+      "relation": "PRECEDES"
+    },
+    {
+      "from": "kickoff_u01_a3_implementation",
+      "to": "kickoff_u01_a4_verification",
+      "relation": "PRECEDES"
+    },
+    {
+      "from": "unit_eb733f055476908faf82dd59941d434a",
+      "to": "kickoff_u01_authentication_boundary",
+      "relation": "CATALOG_INFORMS_TOPIC_ALIGNMENT"
+    },
+    {
+      "from": "unit_0a438df65d39b245723c56fff3fddaaf",
+      "to": "kickoff_u01_authentication_boundary",
+      "relation": "CATALOG_INFORMS_PRACTICE_ORIENTATION"
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion."
+}

@@ -1,0 +1,111 @@
+{
+  "course_id": "course_4458b9e26be374d399138238c715a1b4",
+  "nodes": [
+    {
+      "node_id": "managed_unit_01_engineered_softmax",
+      "title": "Engineering a Deterministic, Numerically Stable Softmax Classifier",
+      "node_type": "study_unit",
+      "classification": "MANAGER_AUTHORED_KICKOFF",
+      "official_course_unit": false,
+      "availability": "LOCALLY_AVAILABLE",
+      "activation": "ACTIVE_FIRST_STUDY_UNIT",
+      "sequence": 1,
+      "completion_scope": "UNIT_ONLY"
+    },
+    {
+      "node_id": "unit_7f874f07d85beadf1cfb35e7dcb71f9e",
+      "title": "Catalog overview and resource guide",
+      "node_type": "normalized_resource_record",
+      "classification": "CATALOG_CONTEXT_RECORD",
+      "source_claims_official_course_unit": false,
+      "availability": "METADATA_PRESENT_IN_SNAPSHOT",
+      "promoted_to_study_unit": false,
+      "source_reference": "docs/深度学习/NYU-DLSP21.en.md"
+    },
+    {
+      "node_id": "unit_b3b76adbe513cd3f1221eeb2eb1ebf35",
+      "title": "Course Website",
+      "node_type": "normalized_resource_record",
+      "classification": "EXTERNAL_RESOURCE_POINTER",
+      "source_claims_official_course_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "promoted_to_study_unit": false,
+      "source_reference": "docs/深度学习/NYU-DLSP21.en.md#L17"
+    },
+    {
+      "node_id": "unit_94c1c63c34dc922f03a2ecf069279c56",
+      "title": "Recordings",
+      "node_type": "normalized_resource_record",
+      "classification": "DESCRIBED_RESOURCE_COLLECTION",
+      "source_claims_official_course_unit": false,
+      "availability": "DESCRIBED_NO_ITEM_LOCATORS",
+      "promoted_to_study_unit": false,
+      "source_reference": "docs/深度学习/NYU-DLSP21.en.md#L18"
+    },
+    {
+      "node_id": "unit_09001a4df4bd311fa1768e40f776acf6",
+      "title": "Textbooks",
+      "node_type": "normalized_resource_record",
+      "classification": "DESCRIBED_SLIDE_OR_NOTE_COLLECTION",
+      "source_claims_official_course_unit": false,
+      "availability": "DESCRIBED_NO_ITEM_LOCATORS",
+      "promoted_to_study_unit": false,
+      "source_reference": "docs/深度学习/NYU-DLSP21.en.md#L19"
+    },
+    {
+      "node_id": "unit_69f6e153d095385e334b3e207dc062ac",
+      "title": "Assignments",
+      "node_type": "normalized_resource_record",
+      "classification": "DESCRIBED_OFFICIAL_RESOURCE_COLLECTION",
+      "source_claims_official_course_unit": true,
+      "availability": "DESCRIBED_NO_ITEM_LOCATORS",
+      "promoted_to_study_unit": false,
+      "classification_note": "The source flag is retained, but the generic collection record is not sufficiently identified or available to schedule as a study unit.",
+      "source_reference": "docs/深度学习/NYU-DLSP21.en.md#L20"
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_7f874f07d85beadf1cfb35e7dcb71f9e",
+      "to": "managed_unit_01_engineered_softmax",
+      "relation": "catalog_context_for",
+      "dependency": false,
+      "evidence": "The supplied catalog overview establishes the course identity, prerequisites, language, and broad deep-learning scope."
+    },
+    {
+      "from": "unit_b3b76adbe513cd3f1221eeb2eb1ebf35",
+      "to": "unit_94c1c63c34dc922f03a2ecf069279c56",
+      "relation": "catalog_reports_location_for",
+      "dependency": false,
+      "verified": false
+    },
+    {
+      "from": "unit_b3b76adbe513cd3f1221eeb2eb1ebf35",
+      "to": "unit_09001a4df4bd311fa1768e40f776acf6",
+      "relation": "catalog_reports_location_for",
+      "dependency": false,
+      "verified": false
+    },
+    {
+      "from": "unit_b3b76adbe513cd3f1221eeb2eb1ebf35",
+      "to": "unit_69f6e153d095385e334b3e207dc062ac",
+      "relation": "catalog_reports_location_for",
+      "dependency": false,
+      "verified": false
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "graph_scope": "Only managed_unit_01_engineered_softmax is active. Resource-record nodes preserve discovery evidence and do not establish an official sequence or a completion path.",
+  "expansion_rule": "A later manager may add a specific official unit only after identifying its content, availability, provenance, prerequisites, and validation contract. A collection label alone is insufficient.",
+  "provenance": {
+    "artifact_classification": "manager-authored-classification-of-provided-records",
+    "catalog_source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "catalog_source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "catalog_content_sha256": "9be457f99f8e3da9dffc38170e0fc1c5a4186ee20f2eda2d5babc1c4181e4ec0",
+    "external_retrieval_performed": false
+  },
+  "validation": {
+    "label": "CLASSIFIED_NOT_EXTERNALLY_VERIFIED",
+    "validated_by_worker_harness": false
+  }
+}

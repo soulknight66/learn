@@ -1,0 +1,107 @@
+{
+  "course_id": "course_2ad89457c0083b206fd5ba7064d4a71f",
+  "nodes": [
+    {
+      "node_id": "unit_kickoff_secure_binary_frame_v1",
+      "title": "Boundary-Safe Binary Frame Encoder",
+      "node_kind": "STUDY_UNIT",
+      "manager_classification": "MANAGER_AUTHORED_KICKOFF",
+      "official_course_unit": false,
+      "expanded_as_unit": true,
+      "availability": "AVAILABLE_LOCAL",
+      "status": "READY_FOR_LEARNER"
+    },
+    {
+      "node_id": "unit_e1c68638be49f4ddddb868c41b512ad9",
+      "title": "Catalog overview and resource guide",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "source_type": "reading",
+      "source_order": 0,
+      "source_reference": "docs/系统安全/SEEDLabs.en.md",
+      "manager_classification": "CATALOG_OVERVIEW_METADATA",
+      "official_course_unit": false,
+      "expanded_as_unit": false,
+      "availability": "CATALOG_METADATA_ONLY"
+    },
+    {
+      "node_id": "unit_1a93602e4c2ed8c162bf06297fb24b20",
+      "title": "Course Website",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "source_type": "reading",
+      "source_order": 17,
+      "source_reference": "docs/系统安全/SEEDLabs.en.md#L17",
+      "manager_classification": "COURSE_INDEX_LINK",
+      "official_course_unit": false,
+      "expanded_as_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED"
+    },
+    {
+      "node_id": "unit_a5e58c698e90956c04318ead217b2719",
+      "title": "Recordings",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "source_type": "lecture",
+      "source_order": 18,
+      "source_reference": "docs/系统安全/SEEDLabs.en.md#L18",
+      "manager_classification": "RECORDING_INDEX_LINK",
+      "official_course_unit": false,
+      "expanded_as_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED"
+    },
+    {
+      "node_id": "unit_81947c3b0284852d1c38683a3967d9bc",
+      "title": "Textbooks",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "source_type": "reading",
+      "source_order": 19,
+      "source_reference": "docs/系统安全/SEEDLabs.en.md#L19",
+      "manager_classification": "TEXTBOOK_INDEX_LINK",
+      "official_course_unit": false,
+      "expanded_as_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED"
+    },
+    {
+      "node_id": "unit_9c158e9e7754c151a52b9e62a673c080",
+      "title": "Assignments",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "source_type": "assignment",
+      "source_order": 20,
+      "source_reference": "docs/系统安全/SEEDLabs.en.md#L20",
+      "manager_classification": "CATALOG_DECLARED_OFFICIAL_ASSIGNMENT_COLLECTION_POINTER",
+      "official_course_unit": true,
+      "expanded_as_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "classification_note": "The source marks this record official, but the record summarizes a collection of more than 40 labs and links examples. It is not treated as one completed or fully specified course unit."
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_e1c68638be49f4ddddb868c41b512ad9",
+      "to": "unit_kickoff_secure_binary_frame_v1",
+      "relationship": "INFORMS_SCOPE",
+      "required_dependency": false,
+      "evidence": "The available catalog metadata identifies systems security, C, and hands-on work."
+    },
+    {
+      "from": "unit_9c158e9e7754c151a52b9e62a673c080",
+      "to": "unit_kickoff_secure_binary_frame_v1",
+      "relationship": "TOPIC_SEED_ONLY",
+      "required_dependency": false,
+      "evidence": "The catalog assignment record names buffer overflow as an example; its linked lab content was not retrieved or reproduced."
+    }
+  ],
+  "record_boundary": {
+    "catalog_statement": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+    "applied_rule": "A normalized record is represented as a classified input node. It becomes an expanded study unit only after its identity, contents, dependencies, availability, and validation requirements are independently established.",
+    "source_dependency_edges": 0,
+    "inferred_prerequisite_edges": 0,
+    "current_expansion": "Only unit_kickoff_secure_binary_frame_v1 is expanded, and it is explicitly manager-authored and non-official.",
+    "whole_course_graph_complete": false
+  },
+  "provenance": {
+    "classification": "MANAGER_AUTHORED_GRAPH_FROM_PROVIDED_CATALOG_SNAPSHOT",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_content_sha256": "1f1879a61346c2013aad7514a8aa23ec87c746b1e5ad95778055c2c9f636c117",
+    "external_retrieval_performed": false
+  },
+  "validation_label": "PREPARED_UNVALIDATED"
+}

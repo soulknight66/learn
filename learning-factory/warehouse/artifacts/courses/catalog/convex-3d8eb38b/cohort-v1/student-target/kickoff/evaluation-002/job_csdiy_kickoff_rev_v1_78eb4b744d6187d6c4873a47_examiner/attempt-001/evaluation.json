@@ -1,0 +1,20 @@
+{
+  "evidence": [
+    "An independent inventory of the delivered workspace found the narrative submission files, but no src/, tests/, README.md, DESIGN.md, VALIDATION.md, comprehension-response artifact, or validation-evidence/ directory. The revision's statements that these artifacts were added are therefore not supported by the delivered files.",
+    "The available required interpreter reports Python 3.11.5.",
+    "A fresh run of PYTHONPATH=src /arm/tools/python/python/3.11.5/rhe8-x86_64/bin/python3 -m unittest discover -s tests -v exited 1 with ImportError because tests/ is absent.",
+    "A fresh run of PYTHONPATH=src /arm/tools/python/python/3.11.5/rhe8-x86_64/bin/python3 -m allocation_solver --help exited 1 because allocation_solver is not importable.",
+    "Without an executable solver or fixtures, fresh valid-input, malformed-input, exhaustion, numerical-failure, objective, feasibility, fixed-point, raw-input-hash, and repeated-output checks could not be performed. The runnable offline suite and CLI gate fails, and the remaining execution gates are unverified.",
+    "The delivered notes correctly connect positive weights and a diagonal quadratic to strict convexity and uniqueness on a compact budget simplex, and they recognize that a fixed activation jump removes the convex projected-gradient guarantees. They do not provide the missing exact model, complete preconditions, or a justification of simplex convexity in the claimed design artifact.",
+    "The unit identifier and learner-controlled validation label are scoped honestly in the narrative, but no generated result exists in which the algorithm version and raw-input provenance can be verified.",
+    "Raw score: mathematical model and reasoning 9/20; projection and solver correctness 0/30; validation and failure contract 0/15; tests and independent evidence 0/15; software design, determinism, and provenance 1/15; comprehension responses 0/5."
+  ],
+  "result": "FAIL",
+  "score": 10,
+  "transfer_gaps": [
+    "Deliver the claimed src/allocation_solver package and complete tests/ directory inside the submission workspace rather than referring to files that are not included.",
+    "Include README.md, DESIGN.md, VALIDATION.md, all ten implementation-specific comprehension responses, and the claimed durable validation evidence in the submitted artifact set.",
+    "From a clean copy of the exact deliverable, run the documented CPython 3.11 unittest and CLI commands and confirm that no required file depends on an external or omitted path.",
+    "After the runnable files are present, obtain a fresh independent evaluation of numerical correctness, failure behavior, determinism, diagnostics, and provenance for this kickoff unit."
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "course_id": "course_8975ea91a9f467fa6ab8278bdbb0841f",
+  "materials": [
+    {
+      "material_id": "material_csapp_kickoff_packet_v1",
+      "title": "Manager-authored learner kickoff packet",
+      "origin": "course-manager-authored",
+      "paths": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "availability": "LOCAL_AVAILABLE",
+      "content_present_locally": true,
+      "access_verified": true,
+      "required_for_kickoff": true,
+      "official_course_material": false,
+      "validation_label": "LEARNER_SAFE_KICKOFF"
+    },
+    {
+      "material_id": "unit_b80715910165e96dc7f8940d94337446",
+      "title": "Catalog overview and resource guide",
+      "source_reference": "docs/计算机系统基础/CSAPP.en.md",
+      "catalog_availability": "NOT_STATED",
+      "availability": "SNAPSHOT_METADATA_ONLY",
+      "snapshot_record_present": true,
+      "external_body_present_locally": false,
+      "access_verified": false,
+      "required_for_kickoff": false,
+      "source_official_course_unit": false,
+      "promoted_to_study_unit": false
+    },
+    {
+      "material_id": "unit_49040df735bf8095c8177792361f7e42",
+      "title": "Course Website",
+      "source_reference": "docs/计算机系统基础/CSAPP.en.md#L23",
+      "urls": [
+        "http://csapp.cs.cmu.edu/"
+      ],
+      "catalog_availability": "LINKED",
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "content_present_locally": false,
+      "access_verified": false,
+      "required_for_kickoff": false,
+      "source_official_course_unit": false,
+      "promoted_to_study_unit": false
+    },
+    {
+      "material_id": "unit_5721f73799784b93501b34ea28bf48d3",
+      "title": "Recordings",
+      "source_reference": "docs/计算机系统基础/CSAPP.en.md#L24",
+      "urls": [
+        "https://scs.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx#folderID=%22b96d90ae-9871-4fae-91e2-b1627b43e25e%22"
+      ],
+      "catalog_availability": "LINKED",
+      "availability": "LINK_ONLY_ACCESS_UNVERIFIED",
+      "content_present_locally": false,
+      "access_verified": false,
+      "required_for_kickoff": false,
+      "source_official_course_unit": false,
+      "promoted_to_study_unit": false
+    },
+    {
+      "material_id": "unit_44f6afe8c0b67be779baebd72c9e2f91",
+      "title": "Computer Systems: A Programmer's Perspective, 3/E",
+      "source_reference": "docs/计算机系统基础/CSAPP.en.md#L25",
+      "urls": [],
+      "catalog_availability": "DESCRIBED",
+      "availability": "DESCRIPTION_ONLY_CONTENT_NOT_SUPPLIED",
+      "content_present_locally": false,
+      "access_verified": false,
+      "required_for_kickoff": false,
+      "source_official_course_unit": false,
+      "promoted_to_study_unit": false
+    },
+    {
+      "material_id": "unit_9ce4c387163ea63cd0e9dd2361e1220d",
+      "title": "Assignments",
+      "source_reference": "docs/计算机系统基础/CSAPP.en.md#L26",
+      "urls": [
+        "http://csapp.cs.cmu.edu/3e/labs.html"
+      ],
+      "catalog_availability": "LINKED",
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "content_present_locally": false,
+      "access_verified": false,
+      "required_for_kickoff": false,
+      "source_official_course_unit": true,
+      "promoted_to_study_unit": false,
+      "classification_note": "This is an aggregate assignments record, not validated evidence for eleven distinct unit nodes."
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_49040df735bf8095c8177792361f7e42",
+      "reason_code": "NOT_RETRIEVED_OR_INSPECTED",
+      "reason": "Only the catalog URL is present; page contents, access conditions, and license were not verified.",
+      "blocking_scope": "CONTENT_USE_AND_UNIT_EXPANSION",
+      "unblock_condition": "A later authorized retrieval job records bounded access evidence, provenance, license classification, checksum, and content validation."
+    },
+    {
+      "material_id": "unit_5721f73799784b93501b34ea28bf48d3",
+      "reason_code": "ACCESS_NOT_VERIFIED",
+      "reason": "The recording index is link-only; authentication, authorization, and redistribution conditions are unknown.",
+      "blocking_scope": "RECORDING_USE_AND_UNIT_EXPANSION",
+      "unblock_condition": "A later authorized job verifies lawful access without bypassing controls and records per-item provenance and availability."
+    },
+    {
+      "material_id": "unit_44f6afe8c0b67be779baebd72c9e2f91",
+      "reason_code": "COPYRIGHTED_CONTENT_NOT_SUPPLIED",
+      "reason": "The snapshot supplies a bibliographic title only, with no textbook content or access grant.",
+      "blocking_scope": "TEXTBOOK_CONTENT_USE",
+      "unblock_condition": "Use only learner-provided or institutionally authorized lawful access; do not copy restricted text into the course package."
+    },
+    {
+      "material_id": "unit_9ce4c387163ea63cd0e9dd2361e1220d",
+      "reason_code": "ASSIGNMENT_INDEX_NOT_RETRIEVED_OR_RESOLVED",
+      "reason": "The link and aggregate claim are present, but skeletons, assignment statements, unit boundaries, and licenses were not inspected.",
+      "blocking_scope": "OFFICIAL_ASSIGNMENT_UNIT_EXPANSION",
+      "unblock_condition": "A later authorized job retrieves only permitted assignment metadata or skeletons, excludes solutions, and validates each proposed unit separately."
+    }
+  ],
+  "retrieval_policy": {
+    "retrieval_performed_in_this_job": false,
+    "network_requests_performed": false,
+    "linked_means_content_available": false,
+    "kickoff_dependency_policy": "The kickoff must remain completable from the local manager-authored packet and a local C toolchain; unverified external records are not dependencies.",
+    "future_job_rules": [
+      "Retrieve only within an explicitly authorized, bounded resource scope.",
+      "Never bypass authentication, paywalls, authorization checks, robots restrictions, or license terms.",
+      "Preserve the supplied URL and separately record redirects, access result, retrieval time, content checksum, and source provenance.",
+      "Classify licensing, learner visibility, solution risk, and official-unit granularity before storing or promoting content.",
+      "Retain honest failure evidence; a failed or blocked retrieval remains unavailable rather than being inferred present.",
+      "Do not retrieve, expose, or use published project solutions, hidden graders, sealed references, or another learner's work."
+    ],
+    "student_view_rule": "Only material explicitly cleared as learner-safe may enter a student view.",
+    "promotion_gate": "A normalized record may become a planned official unit only after its content, identity, access, license, provenance, and validation status are established by a later authorized job."
+  },
+  "provenance": {
+    "classification": "availability classification from supplied catalog snapshot plus locally authored packet",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_content_sha256": "845586f550aa6724b2028b0c0fd11562897c58b1bdc826f2f3e3a4f6e30565db",
+    "validation_label": "AVAILABILITY_ASSERTIONS_LOCALLY_VALIDATED",
+    "validation_meaning": "Local paths and snapshot classifications were checked; no external access or license was validated."
+  }
+}

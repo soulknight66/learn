@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "course_id": "course_6fa71b11ab38337a56da71bee19bd432",
+  "materials": [
+    {
+      "material_id": "unit_e374473761ce556637a7b79376f12e79",
+      "title": "Catalog overview and resource guide",
+      "type": "reading",
+      "official_course_unit": false,
+      "catalog_value": "Catalog description and resource metadata",
+      "availability": "SNAPSHOT_METADATA_ONLY",
+      "content_retrieved": false,
+      "classification": "CONTEXT_NOT_CURRICULUM_UNIT",
+      "locator": "docs/机器学习/ML.en.md",
+      "use_for_kickoff": "Topic-selection provenance only"
+    },
+    {
+      "material_id": "unit_2bf2db955ad1599f8e93c768b43db655",
+      "title": "Course Website",
+      "type": "reading",
+      "official_course_unit": false,
+      "catalog_value": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "content_retrieved": false,
+      "classification": "EXTERNAL_LOCATOR_NOT_A_UNIT",
+      "locator": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "use_for_kickoff": "Not required"
+    },
+    {
+      "material_id": "unit_6bb2dd6f59bb34fc5fe5a40aa0d11114",
+      "title": "Recordings",
+      "type": "lecture",
+      "official_course_unit": false,
+      "catalog_value": "refer to the course website",
+      "availability": "DESCRIBED_ONLY",
+      "content_retrieved": false,
+      "classification": "UNRESOLVED_MATERIAL",
+      "locator": null,
+      "use_for_kickoff": "Not required"
+    },
+    {
+      "material_id": "unit_a28315ef76cd91391a831722bfbb9bd3",
+      "title": "Textbook",
+      "type": "reading",
+      "official_course_unit": false,
+      "catalog_value": "None",
+      "availability": "UNAVAILABLE",
+      "content_retrieved": false,
+      "classification": "NO_TEXTBOOK_LISTED",
+      "locator": null,
+      "use_for_kickoff": "Not required"
+    },
+    {
+      "material_id": "unit_b06d4ae9e2cf1fb86c5d72809204e4c9",
+      "title": "Assignments",
+      "type": "assignment",
+      "official_course_unit": true,
+      "catalog_value": "refer to the course website",
+      "availability": "DESCRIBED_ONLY",
+      "content_retrieved": false,
+      "classification": "OFFICIAL_UNIT_METADATA_WITHOUT_ASSIGNMENT_CONTENT",
+      "locator": null,
+      "use_for_kickoff": "Not used or reproduced"
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_6bb2dd6f59bb34fc5fe5a40aa0d11114",
+      "reason": "NO_RECORDING_URL_OR_CONTENT_IN_SNAPSHOT",
+      "detail": "The catalog provides only a direction to consult the course website; access conditions and the recording inventory are unknown."
+    },
+    {
+      "material_id": "unit_a28315ef76cd91391a831722bfbb9bd3",
+      "reason": "CATALOG_EXPLICITLY_LISTS_NONE",
+      "detail": "No textbook can be scheduled from this record."
+    },
+    {
+      "material_id": "unit_b06d4ae9e2cf1fb86c5d72809204e4c9",
+      "reason": "NO_ASSIGNMENT_CONTENT_OR_DIRECT_URL_IN_SNAPSHOT",
+      "detail": "The official-unit metadata flag is preserved, but no prompt, starter code, license, or access condition is available."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": "SNAPSHOT_ONLY_NO_EXTERNAL_FETCH",
+    "later_jobs_may": [
+      "Resolve public official links when network access is explicitly available and retrieval is in scope",
+      "Record the final URL, retrieval time, access condition, license or permitted use, and a content digest",
+      "Create additional units only after their identity, ordering, prerequisites, and usable content have been validated"
+    ],
+    "later_jobs_must_not": [
+      "Bypass authentication, enrollment, paywalls, robots controls, or other access restrictions",
+      "Treat a link, title, description, or official_course_unit flag as proof that content is available",
+      "Invent missing recordings, textbook chapters, assignment prompts, solutions, or official ordering",
+      "Expose restricted content, answer keys, hidden graders, or examiner-only material to learners"
+    ],
+    "on_restricted_or_failed_access": "Keep the material blocked, record the observed reason without secrets, and design only clearly labeled manager-authored alternatives that do not reproduce unavailable content.",
+    "promotion_rule": "Availability changes require deterministic evidence; prose claims alone do not promote a material or resource record."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "evidence": [
+    "INDEPENDENT_EVALUATION_OF_GENERATED_PRACTICE_TASK_ONLY.",
+    "Workspace inventory (`find . -xdev -print`) contained BATCH_MANIFEST.json, SUBMISSION.md, DEBUGGING_LOG.md, NOTES.md, SELF_CHECK.md, and examiner/job files, but no submission/ directory.",
+    "Explicit existence checks reported MISSING for all seven paths claimed by SUBMISSION.md: submission/src/frameguard/__init__.py, submission/src/frameguard/model.py, submission/tests/test_model.py, submission/THREAT_MODEL.md, submission/DESIGN.md, submission/DEBUG_LOG.md, and submission/REPORT.md.",
+    "The declared standard-library command `PYTHONPATH=src python3 -m unittest discover -s tests -v`, run in the staged workspace because the claimed submission/ directory was absent, exited 1 with `ImportError: Start directory is not importable: 'tests'`; zero submitted tests could be rerun.",
+    "SUBMISSION.md and DEBUGGING_LOG.md claim a prior exit-0 run with 13 tests, but the absent source, tests, report, and digest inventory make those prose claims non-reproducible and not independent completion evidence.",
+    "NOTES.md and SELF_CHECK.md accurately limit the work to newly authored practice, distinguish it from unavailable official material, bound completion claims, explain fail-closed ordering and request isolation, limit canary claims, and list several native/deployment gaps; this supports partial credit only for provenance and design reasoning.",
+    "No separately captured learner response or administration record for the frozen-artifact novel check was staged, so the novel-check score is 0/15.",
+    "Score breakdown: boundary/provenance 4/8; vulnerable model 0/20; hardened path/isolation 0/20; deterministic tests 0/15; threat/design reasoning 12/15; reproducibility/debugging 1/7; novel check 0/15. Total 17/100.",
+    "FAIL applies because the implementation and required documents are absent, the suite cannot be run, and the staged work is too incomplete for the critical gates to be evaluated. This verdict grants no official unit credit, course completion, or transfer verification."
+  ],
+  "result": "FAIL",
+  "score": 17,
+  "transfer_gaps": [
+    "No runnable implementation or tests were staged, so even bounded-task behavior could not be independently verified.",
+    "No independently administered response to an unseen task was staged; transfer is NOT_TRANSFER_VERIFIED.",
+    "Official lab materials and validation remain unavailable, so no official MIT Lab 1 credit or course-completion inference is supported."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "builder_job_id": "job_byox_build_v1_edbe0e7cb3c4bae7cc0a9b91ef9f2505",
+  "checks_run": [
+    "Inventoried and hashed the immutable candidate; strict-parsed both metadata documents and checked identifier/commit cross-references.",
+    "Parsed all 35 Python files with Python 3.11.5.",
+    "Ran the 24 public tests against the sealed reference under Python 3.11.5; all passed.",
+    "Ran the 65 sealed reference tests under Python 3.11.5; all passed.",
+    "Ran the public tests against the starter under Python 3.11.5; 24 tests ran with the documented 32 scaffold errors.",
+    "Injected post-publication directory-sync failures into StateStore.create and StateStore.transition.",
+    "Ran passive and bounded active user-namespace environment probes.",
+    "Ran a bounded live backend smoke test with a disposable rootfs and the benign host true binary; setup completed and lifecycle state reached EXITED revision 2.",
+    "Checked artifact types, obvious credential patterns, sealed-path readability, provenance hash linkage, and learner/validator contract alignment."
+  ],
+  "evidence": [
+    "REVISE: StateStore reports failure after publishing visible state when directory sync fails, contrary to REQUIREMENTS.md lines 226-230; the bundled tests miss this post-publication failure.",
+    "REVISE: sealed reference code, validator tests, and answer files are readable in the submitted tree; no deterministic learner-view allowlist or packaging boundary is present in the candidate manifest.",
+    "REVISE: the sealed suite is advertised for learner implementations but asserts private CLI/helper protocol and other behavior not fixed by the normative learner contract.",
+    "The manifest provenance_sha256 value equals PROVENANCE.json's internal snapshot_sha256 but does not equal the submitted PROVENANCE.json file hash.",
+    "Generated material has no explicit redistribution/modification license, although the linked-resource NOASSERTION boundary is cautious and consistent.",
+    "The manifest honestly remains GENERATED/PARTIAL with productionized=false and independent validation required; no promotion is warranted."
+  ],
+  "limitations": [
+    "The default python3 is 3.6.8; explicit Python 3.11.5 and a reviewer-owned TMPDIR were required.",
+    "The C compiler driver could not execute cc1, so the builder's instrumented C payload and C compilation observations were not independently reproduced; a less-informative live smoke test with true did succeed.",
+    "Python 3.10, non-Linux portability, fuzzing, benchmarking, transfer verification, and production/security qualification were not tested.",
+    "git, rg, network access, and the upstream source snapshot were unavailable; source-commit authenticity and the no-copy assertion remain unverified.",
+    "Passing bundled tests establishes only the behavior those tests cover and does not prove containment or production readiness."
+  ],
+  "project_id": "project_884ee11fc61abc48b60825556299dae5",
+  "verdict": "REVISE"
+}

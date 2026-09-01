@@ -1,0 +1,30 @@
+{
+  "builder_job_id": "job_byox_build_v1_a2aa2488500c7fc1d5194fbfbc12b113",
+  "checks_run": [
+    "Inspected all 42 regular files and compared the public contract, learner material, sealed guidance, reference implementation, and tests.",
+    "Built and tested an immutable scratch copy with the supplied Makefiles; also linked the public suite to the sealed reference and audited undefined symbols.",
+    "Compared the reference to an independently authored deterministic model for 90000 scheduler, VM, and RAMFS operations.",
+    "Compiled with additional conversion, shadow, and prototype warnings and ran optimized signed-char and unsigned-char variants.",
+    "Repeated clean reference builds and compared their complete build-tree hashes.",
+    "Strictly parsed manifest and provenance JSON, checked cross-field identities and license labels, compared public headers, scanned file types and credential patterns, and rehashed CANDIDATE before and after review.",
+    "Reviewed progressive-disclosure placement and validation/production claims without treating builder prose as evidence."
+  ],
+  "evidence": [
+    "The supplied strict C11 starter build exited 0; its documented incomplete baseline exited 2 with 4 groups passed and 3 TODO lifecycle groups failed.",
+    "The sealed reference suite exited 0, the public suite against the reference reported 7 passed and 0 failed, and nm found no undefined archive symbols.",
+    "The independent 90000-operation model comparison exited 0; extra-warning and signed/unsigned-char builds also exited 0.",
+    "Two clean reference build trees had the same aggregate SHA-256, 8c72b3a9199c44732dcac5975e21d313443cdb03ec54a7fb45e40eab910d8db2.",
+    "CANDIDATE remained unchanged at aggregate SHA-256 3efa1ccb162d8a90b1f3f3d3aab4304cffa748c07e72eb2813ab8e6e00d22dda; it contains 42 regular files and no symlinks or special entries.",
+    "MANIFEST.yaml honestly remains GENERATED/PARTIAL, requires independent validation, sets productionized false, and makes no promoted validation claim.",
+    "Required revision: sealed/debugging/02-dual-running/ANSWER.md and sealed/review_exercises/01-scheduler/ANSWER.md invent a current scheduler field and claim it is cleared or always identifies RUNNING; the API has only cursor, which records the last successful schedule and remains set after block or exit."
+  ],
+  "limitations": [
+    "Only GCC 8.5.0 was available; Clang, Valgrind, static analyzers, QEMU, and NASM were unavailable.",
+    "ASan and UBSan checks were inconclusive because the installed compiler could not link the missing libasan and libubsan runtimes.",
+    "The immutable upstream snapshot and network were unavailable, so source-commit, catalog-license, and no-copy provenance assertions were checked only for internal consistency, not against the upstream repositories.",
+    "No generated student view was supplied, so sealed-content exclusion was assessed from directory placement and learner-facing text rather than an end-to-end view export.",
+    "No cross-compiler, hardware, emulator, benchmark, coverage, or production validation was performed."
+  ],
+  "project_id": "project_9f93e5b30db7d5e4adf5244cd9ccb1b0",
+  "verdict": "REVISE"
+}

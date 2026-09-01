@@ -1,0 +1,142 @@
+{
+  "course_id": "course_079fb47dd187d35337e03301b41db7a8",
+  "validation_label": "SNAPSHOT_CLASSIFIED_NO_EXTERNAL_RETRIEVAL",
+  "provenance": {
+    "derived_from": "supplied CSDIY catalog snapshot at source commit adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "classification_authority": "course-manager preparation job",
+    "external_retrieval_performed": false
+  },
+  "materials": [
+    {
+      "material_id": "local_course_brief",
+      "title": "Kickoff course brief",
+      "kind": "manager-authored-reading",
+      "locator": "student_safe/COURSE_BRIEF.md",
+      "availability": "AVAILABLE_LOCAL",
+      "official_course_material": false,
+      "validation_label": "PREPARED_FOR_KICKOFF"
+    },
+    {
+      "material_id": "local_study_task",
+      "title": "Heap-backed integer vector engineering task",
+      "kind": "manager-authored-assignment",
+      "locator": "student_safe/STUDY_TASK.md",
+      "availability": "AVAILABLE_LOCAL",
+      "official_course_material": false,
+      "validation_label": "PREPARED_FOR_KICKOFF"
+    },
+    {
+      "material_id": "local_comprehension",
+      "title": "Kickoff comprehension prompts",
+      "kind": "manager-authored-assessment",
+      "locator": "student_safe/COMPREHENSION.md",
+      "availability": "AVAILABLE_LOCAL",
+      "official_course_material": false,
+      "validation_label": "PREPARED_FOR_KICKOFF"
+    },
+    {
+      "material_id": "unit_51c4ba6eee46b4e505dd4bcf9719926c",
+      "title": "Catalog overview and resource guide",
+      "kind": "catalog-record",
+      "locator": "docs/编程入门/C/Duke-Coursera-Intro-C.en.md",
+      "availability": "METADATA_IN_SNAPSHOT",
+      "official_course_material": false,
+      "validation_label": "CATALOG_INPUT_ONLY",
+      "note": "The supplied snapshot, not a separately retrieved source document, was used for scope and provenance."
+    },
+    {
+      "material_id": "unit_2e4d421da9a45bd3f34418341d917927",
+      "title": "Course Website",
+      "kind": "external-link",
+      "locator": "https://www.coursera.org/specializations/c-programming",
+      "availability": "LINK_PRESENT_CONTENT_NOT_RETRIEVED",
+      "official_course_material": false,
+      "validation_label": "UNVERIFIED_EXTERNAL_RESOURCE"
+    },
+    {
+      "material_id": "supplemental_code_link",
+      "title": "Catalog-listed code site",
+      "kind": "external-link",
+      "locator": "https://code.haidongji.com/Duke_Coursera_Intro_C/",
+      "availability": "LINK_PRESENT_CONTENT_NOT_RETRIEVED",
+      "official_course_material": false,
+      "validation_label": "UNVERIFIED_SUPPLEMENTAL_RESOURCE",
+      "note": "The snapshot does not establish ownership, completeness, or official status."
+    },
+    {
+      "material_id": "unit_9e64d3e7a14504578fce7163002cd0ec",
+      "title": "Recordings",
+      "kind": "lecture",
+      "locator": null,
+      "availability": "DESCRIBED_NOT_AVAILABLE",
+      "official_course_material": false,
+      "validation_label": "BLOCKED"
+    },
+    {
+      "material_id": "unit_79443c974886a5c90580388534d56ed7",
+      "title": "Textbook",
+      "kind": "reading",
+      "locator": null,
+      "availability": "DESCRIBED_NOT_AVAILABLE",
+      "official_course_material": false,
+      "validation_label": "BLOCKED"
+    },
+    {
+      "material_id": "unit_1320539f14247977948a088d8d02c35d",
+      "title": "Assignments",
+      "kind": "assignment",
+      "locator": null,
+      "availability": "DESCRIBED_NOT_AVAILABLE",
+      "official_course_material": true,
+      "validation_label": "BLOCKED_OFFICIAL_REFERENCE_ONLY"
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_2e4d421da9a45bd3f34418341d917927",
+      "block_type": "NOT_RETRIEVED",
+      "reason": "Only an external specialization link was supplied. Page contents, enrollment requirements, and access conditions were not inspected.",
+      "needed_for_kickoff": false
+    },
+    {
+      "material_id": "supplemental_code_link",
+      "block_type": "NOT_RETRIEVED",
+      "reason": "Only an unverified external URL was supplied; no repository content or license metadata was acquired.",
+      "needed_for_kickoff": false
+    },
+    {
+      "material_id": "unit_9e64d3e7a14504578fce7163002cd0ec",
+      "block_type": "MISSING_DIRECT_LOCATOR",
+      "reason": "The catalog says only 'refer to the course website'; no recording URLs or files are present.",
+      "needed_for_kickoff": false
+    },
+    {
+      "material_id": "unit_79443c974886a5c90580388534d56ed7",
+      "block_type": "MISSING_DIRECT_LOCATOR",
+      "reason": "The catalog says only 'refer to the course website'; no textbook title, edition, URL, or file is present.",
+      "needed_for_kickoff": false
+    },
+    {
+      "material_id": "unit_1320539f14247977948a088d8d02c35d",
+      "block_type": "MISSING_DIRECT_LOCATOR",
+      "reason": "The source labels an assignment resource but supplies no assignment text or files. Possible enrollment or payment restrictions were not bypassed.",
+      "needed_for_kickoff": false
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": "No network retrieval was performed. The kickoff uses only the supplied catalog snapshot and newly authored local materials.",
+    "later_jobs_may": [
+      "Inspect publicly accessible metadata at supplied links when network access is authorized",
+      "Record access requirements, license or usage terms, exact provenance, and content hashes for acquired material",
+      "Ask an authorized learner or course owner to provide legitimately accessible materials when authentication, enrollment, or payment is required",
+      "Expand the unit graph only after resources are classified and mapped to an evidenced course structure"
+    ],
+    "later_jobs_must_not": [
+      "Bypass authentication, enrollment, payment, robots controls, or other access restrictions",
+      "Treat an external link, catalog description, or resource-record title as proof that content was retrieved",
+      "Promote normalized resource records to ready or completed official units without content and validator-controlled evidence",
+      "Copy restricted course content into learner-safe artifacts"
+    ],
+    "provenance_requirement": "Each future material record must preserve its source locator, retrieval classification, official-status evidence, applicable license or access constraint, and integrity hash when content is acquired."
+  }
+}

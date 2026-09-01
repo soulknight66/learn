@@ -1,0 +1,93 @@
+{
+  "commands": {
+    "best-fit": [
+      "validation-output/bin/best-fit-benchmark"
+    ],
+    "reference": [
+      "validation-output/bin/reference-benchmark"
+    ],
+    "segregated-bins": [
+      "validation-output/bin/segregated-bins-benchmark"
+    ]
+  },
+  "environment": {
+    "compiler": "gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-22)",
+    "network": "not used",
+    "platform": "Linux-4.18.0-553.el8_10.x86_64-x86_64-with-glibc2.28",
+    "python": "3.11.5",
+    "strict_flags": [
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-pedantic",
+      "-O2",
+      "-fno-omit-frame-pointer",
+      "-I",
+      "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_project_allocator_vertical_v1/attempt-002/include"
+    ]
+  },
+  "generated_at_utc": "2026-08-30T21:40:43.464120+00:00",
+  "hypothesis": "segregated bins should reduce search work under mixed sizes, while first-fit and best-fit may produce different external fragmentation; smoke data is not a universal ranking",
+  "interpretation_boundary": "One bounded in-process smoke workload on this machine; allocator metadata, cache state, compiler, and timer resolution affect results. Re-run and profile before drawing production conclusions.",
+  "parameters": {
+    "arena_bytes": 2097152,
+    "fragmentation_pattern": "900 deterministic replacements then free even slots",
+    "slot_count": 256,
+    "timed_operations": 80000
+  },
+  "raw_results": {
+    "best-fit": {
+      "architecture": "address-ordered-best-fit",
+      "elapsed_ns": 10479660,
+      "failed_allocations": 0,
+      "fragmentation_workload": {
+        "block_count": 252,
+        "external_fragmentation_ratio": 0.108422605,
+        "free_blocks": 124,
+        "free_bytes": 1887872,
+        "largest_free_block": 1683184,
+        "live_blocks": 128,
+        "live_bytes": 201216
+      },
+      "operations_per_second": 7633835.449,
+      "successful_allocations": 40064,
+      "timed_operations": 80000
+    },
+    "reference": {
+      "architecture": "address-ordered-first-fit",
+      "elapsed_ns": 10711614,
+      "failed_allocations": 0,
+      "fragmentation_workload": {
+        "block_count": 253,
+        "external_fragmentation_ratio": 0.109890669,
+        "free_blocks": 125,
+        "free_bytes": 1887840,
+        "largest_free_block": 1680384,
+        "live_blocks": 128,
+        "live_bytes": 201216
+      },
+      "operations_per_second": 7468529.019,
+      "successful_allocations": 40064,
+      "timed_operations": 80000
+    },
+    "segregated-bins": {
+      "architecture": "segregated-size-class-bins",
+      "elapsed_ns": 1738324,
+      "failed_allocations": 0,
+      "fragmentation_workload": {
+        "block_count": 252,
+        "external_fragmentation_ratio": 0.11249363,
+        "free_blocks": 124,
+        "free_bytes": 1883840,
+        "largest_free_block": 1671920,
+        "live_blocks": 128,
+        "live_bytes": 201216
+      },
+      "operations_per_second": 46021340.095,
+      "successful_allocations": 40064,
+      "timed_operations": 80000
+    }
+  },
+  "schema_version": 1
+}

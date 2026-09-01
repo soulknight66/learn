@@ -1,0 +1,46 @@
+{
+  "storage-database": [
+    "in-memory key-value store",
+    "persistence and write-ahead logging",
+    "page manager",
+    "buffer pool",
+    "B+ tree",
+    "query execution",
+    "transactions and isolation",
+    "MVCC",
+    "replication"
+  ],
+  "networking": [
+    "sockets",
+    "HTTP server",
+    "persistent connections",
+    "forward proxy",
+    "reverse proxy",
+    "load balancer",
+    "DNS",
+    "transport protocols"
+  ],
+  "languages": [
+    "lexer",
+    "parser and AST",
+    "interpreter",
+    "type checker",
+    "bytecode compiler",
+    "virtual machine",
+    "garbage collector",
+    "optimizer",
+    "debugger",
+    "formatter and LSP",
+    "package manager"
+  ],
+  "operating-systems": [
+    "processes and traps",
+    "scheduling",
+    "virtual memory",
+    "synchronization",
+    "filesystem",
+    "device I/O",
+    "networking",
+    "containers"
+  ]
+}

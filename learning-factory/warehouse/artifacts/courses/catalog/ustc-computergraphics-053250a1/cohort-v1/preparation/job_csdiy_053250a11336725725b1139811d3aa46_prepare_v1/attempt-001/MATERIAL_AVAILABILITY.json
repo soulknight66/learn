@@ -1,0 +1,147 @@
+{
+  "course_id": "course_053250a11336725725b1139811d3aa46",
+  "materials": [
+    {
+      "material_id": "managed_kickoff_packet",
+      "title": "Manager-authored Unit 1 learner packet",
+      "type": "local_instructional_packet",
+      "classification": "manager-authored; not an official USTC unit",
+      "availability": "AVAILABLE_LOCAL",
+      "retrieval_status": "GENERATED_IN_ATTEMPT",
+      "official_course_unit": false,
+      "required_for_current_unit": true,
+      "locations": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "provenance": "Prepared solely from the catalog facts and general computer-graphics/software-engineering knowledge; external content was not copied or retrieved."
+    },
+    {
+      "material_id": "catalog_overview_record",
+      "catalog_record_id": "unit_d4bb26bbccd9524aff4ac68e8a955c1a",
+      "title": "Catalog overview and resource guide",
+      "type": "catalog_metadata",
+      "classification": "source-derived catalog overview; not an official course unit",
+      "availability": "SNAPSHOT_METADATA_ONLY",
+      "retrieval_status": "SOURCE_FILE_NOT_PRESENT",
+      "official_course_unit": false,
+      "required_for_current_unit": false,
+      "source_reference": "docs/计算机图形学/USTC ComputerGraphics.en.md",
+      "note": "The job embeds its normalized metadata, but the referenced source document itself is not in the attempt workspace."
+    },
+    {
+      "material_id": "course_website",
+      "catalog_record_id": "unit_5bbd425dc2a3bd0b73d5104890d17915",
+      "title": "USTC Computer Graphics 2020 course website",
+      "type": "external_link",
+      "classification": "catalog-listed landing page; not an official course unit record",
+      "availability": "LINKED_UNVERIFIED",
+      "retrieval_status": "NOT_RETRIEVED",
+      "official_course_unit": false,
+      "required_for_current_unit": false,
+      "url": "http://staff.ustc.edu.cn/~lgliu/Courses/ComputerGraphics_2020_spring-summer/default.htm",
+      "source_reference": "docs/计算机图形学/USTC ComputerGraphics.en.md#L15",
+      "note": "A URL is known, but reachability, current contents, license, and internal unit structure were not checked."
+    },
+    {
+      "material_id": "recordings_collection",
+      "catalog_record_id": "unit_366664ccaf209a32ff48a1ed1235120c",
+      "title": "Catalog-listed Bilibili recordings",
+      "type": "external_video_collection",
+      "classification": "catalog-listed recording lead; not an official unit map",
+      "availability": "LINKED_UNVERIFIED",
+      "retrieval_status": "NOT_RETRIEVED",
+      "official_course_unit": false,
+      "required_for_current_unit": false,
+      "url": "https://www.bilibili.com/video/BV1iT4y1o7oM/?spm_id_from=333.880.my_history.page.click&vd_source=eea47a16439992e41b232bc5d5684e27",
+      "source_reference": "docs/计算机图形学/USTC ComputerGraphics.en.md#L16",
+      "note": "No recording index, transcript, duration, language detail, or alignment to assignments was supplied or checked."
+    },
+    {
+      "material_id": "angel_textbook",
+      "catalog_record_id": "unit_150dd5c144ac9b12e32a8a5c4a1530ed",
+      "title": "E. Angel, Interactive Computer Graphics, 6th edition (2011)",
+      "type": "optional_textbook_reference",
+      "classification": "bibliographic description only; catalog says the textbook is not prescribed",
+      "availability": "DESCRIBED_NOT_PROVIDED",
+      "retrieval_status": "NOT_RETRIEVED",
+      "official_course_unit": false,
+      "required_for_current_unit": false,
+      "url": null,
+      "source_reference": "docs/计算机图形学/USTC ComputerGraphics.en.md#L17",
+      "note": "No copy, excerpt, direct resource URL, or permission record is available."
+    },
+    {
+      "material_id": "official_assignments_collection",
+      "catalog_record_id": "unit_8c0d611d7d303f6badbb9005d07ee3f2",
+      "title": "Nine homework assignments and one project",
+      "type": "external_assignment_collection_lead",
+      "classification": "catalog-asserted official course resource; aggregate record, not a bounded unit",
+      "availability": "LINKED_UNVERIFIED",
+      "retrieval_status": "PROMPTS_NOT_RETRIEVED",
+      "official_course_unit": true,
+      "official_unit_boundary_verified": false,
+      "required_for_current_unit": false,
+      "url": "http://staff.ustc.edu.cn/~lgliu/Courses/ComputerGraphics_2020_spring-summer/default.htm",
+      "source_reference": "docs/计算机图形学/USTC ComputerGraphics.en.md#L18",
+      "note": "The count and landing-page link are known. Individual titles, prompts, dependencies, files, validation rules, and licensing were not supplied or checked."
+    }
+  ],
+  "blocked": [
+    {
+      "block_id": "official_sequence_unavailable",
+      "affects": [
+        "course_website",
+        "recordings_collection",
+        "official_assignments_collection"
+      ],
+      "reason": "No retrieved syllabus or verified lecture/assignment index is available, so an official ordering cannot be constructed.",
+      "impact": "Only the manager-authored kickoff is ready; later official-course unit expansion is blocked.",
+      "resolution_for_later_job": "Retrieve the public course index when authorized, preserve provenance, and verify titles and dependencies before adding graph nodes."
+    },
+    {
+      "block_id": "external_links_unverified",
+      "affects": [
+        "course_website",
+        "recordings_collection",
+        "official_assignments_collection"
+      ],
+      "reason": "External network content was outside this bounded preparation and was not fetched.",
+      "impact": "Reachability, content identity, license, and learner access remain unknown.",
+      "resolution_for_later_job": "Use an authorized retriever, record final URLs, checksums or immutable identifiers, access results, and validation labels."
+    },
+    {
+      "block_id": "textbook_not_supplied",
+      "affects": [
+        "angel_textbook"
+      ],
+      "reason": "Only a citation was supplied; no licensed copy or excerpt is present.",
+      "impact": "The textbook cannot be treated as available or required.",
+      "resolution_for_later_job": "Keep it optional unless lawful learner access and the exact required sections are established."
+    },
+    {
+      "block_id": "catalog_source_file_absent",
+      "affects": [
+        "catalog_overview_record"
+      ],
+      "reason": "The normalized snapshot names a source path in another repository, but that document is not materialized in this attempt.",
+      "impact": "Only the embedded snapshot, commit, path, and checksum can support provenance claims here.",
+      "resolution_for_later_job": "Ingest the source document through the controlled pipeline if full source inspection is needed."
+    }
+  ],
+  "retrieval_policy": {
+    "current_attempt": "No external retrieval was performed. Known links are recorded as leads, not as evidence that material is present or usable.",
+    "linked_is_available": false,
+    "described_is_available": false,
+    "restricted_content": "Do not bypass authentication, geographic controls, platform controls, robots restrictions, or licensing limits. Do not copy unavailable textbook or platform content into a learner view.",
+    "later_retrieval_requirements": [
+      "Use only authorized retrieval mechanisms and publicly or lawfully accessible material.",
+      "Record the original record ID, requested URL, resolved URL, retrieval result, immutable identifier or checksum when possible, and license or access constraints.",
+      "Validate actual titles, boundaries, order, prerequisites, and content before promoting a record to a unit node.",
+      "Keep failed retrieval attempts and uncertainty explicit; never synthesize missing official prompts or transcripts.",
+      "Store examiner-only material outside student_safe and expose only learner-safe, licensed resources to learners."
+    ],
+    "promotion_rule": "A later job may expand the course only after deterministic ingestion and validation establish both material availability and an honest unit boundary."
+  }
+}

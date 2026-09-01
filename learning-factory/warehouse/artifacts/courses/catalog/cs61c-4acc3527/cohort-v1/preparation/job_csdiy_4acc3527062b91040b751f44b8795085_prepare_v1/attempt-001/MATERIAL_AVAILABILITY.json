@@ -1,0 +1,132 @@
+{
+  "course_id": "course_4acc3527062b91040b751f44b8795085",
+  "materials": [
+    {
+      "material_id": "catalog_snapshot",
+      "title": "CSDIY CS61C catalog snapshot",
+      "kind": "CATALOG_METADATA",
+      "availability": "AVAILABLE_IN_JOB_INPUT",
+      "learner_release": "NOT_REQUIRED",
+      "content_scope": "Course description, catalog fields, normalized link records, and provenance only; no lectures, readings, labs, or assignment bodies.",
+      "source_reference": "docs/体系结构/CS61C.en.md",
+      "content_sha256": "b10c610042142bd493fb78bfc461d920b689d72f4bef9d68adad5cb1f909b049"
+    },
+    {
+      "material_id": "official_site_links",
+      "title": "Current and archived CS61C site references",
+      "kind": "URL_GROUP",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "official_status": "UNVERIFIED_IN_THIS_JOB",
+      "learner_release": "BLOCKED_UNTIL_RETRIEVED_AND_REVIEWED",
+      "urls": [
+        "https://cs61c.org/",
+        "https://cs61c.org/fa24/",
+        "https://web.archive.org/web/20241219154359/https://cs61c.org/fa24/",
+        "https://inst.eecs.berkeley.edu/~cs61c/fa20/",
+        "https://web.archive.org/web/20220120134001/https://inst.eecs.berkeley.edu/~cs61c/fa20/"
+      ]
+    },
+    {
+      "material_id": "unit_060f033433eec78a4f1997f8562fec29",
+      "title": "Recordings",
+      "kind": "NORMALIZED_RESOURCE_RECORD",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "catalog_official_course_unit_claim": false,
+      "learner_release": "BLOCKED_UNTIL_ACCESS_PROVENANCE_AND_LICENSE_REVIEW",
+      "urls": [
+        "https://www.bilibili.com/video/BV1fC4y147iZ/?share_source=copy_web&vd_source=7c3823b46a52fbbef42b79e01d55c300",
+        "https://youtube.com/playlist?list=PLDoI-XvXO0aqgoMQvogzmf7CKiSMSUS3M&si=62aaH5a_PMGrAT2Y",
+        "https://www.bilibili.com/video/BV17b42177VG/?share_source=copy_web&vd_source=7c3823b46a52fbbef42b79e01d55c300",
+        "https://youtube.com/playlist?list=PL0j-r-omG7i0-mnsxN5T4UcVS1Di0isqf&si=CG1EjQiPcw7r7Vs4"
+      ]
+    },
+    {
+      "material_id": "unit_e37cf8ae547d4ed99894065d3d4a0933",
+      "title": "Fa20 assignment backup",
+      "kind": "NORMALIZED_RESOURCE_RECORD",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "catalog_official_course_unit_claim": true,
+      "publisher_identity": "UNVERIFIED_THIRD_PARTY_GITHUB_ACCOUNT",
+      "learner_release": "BLOCKED_PENDING_PROVENANCE_LICENSE_AND_ANSWER_LEAKAGE_REVIEW",
+      "urls": [
+        "https://github.com/InsideEmpire/CS61C-Assignment#"
+      ]
+    },
+    {
+      "material_id": "supplementary_catalog_links",
+      "title": "Supplementary syllabus, comparison, and community repositories",
+      "kind": "URL_GROUP",
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "official_status": "MIXED_OR_UNVERIFIED",
+      "learner_release": "BLOCKED_PENDING_ITEM_LEVEL_REVIEW",
+      "urls": [
+        "https://github.com/PKUFlyingPig/cs-self-learning/blob/master/docs/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/N2T.md",
+        "https://www.learncs.site/docs/curriculum-resource/cs61c/syllabus",
+        "https://github.com/PKUFlyingPig/CS61C-summer20",
+        "https://github.com/InsideEmpire/CS61C-PathwayToSuccess",
+        "https://github.com/RisingUppercut/CS61C_2024_Fall"
+      ]
+    },
+    {
+      "material_id": "manager_authored_kickoff_packet",
+      "title": "C Systems Kickoff learner packet",
+      "kind": "LOCAL_MANAGER_AUTHORED_MATERIAL",
+      "availability": "AVAILABLE_IN_WORKSPACE",
+      "official_status": "NOT_AN_OFFICIAL_UC_BERKELEY_UNIT",
+      "learner_release": "APPROVED",
+      "paths": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ]
+    }
+  ],
+  "blocked": [
+    {
+      "item": "Official lecture, slide, reading, lab, project, and assignment contents",
+      "reason": "No such content was supplied or retrieved; catalog URLs are not content.",
+      "effect": "Do not claim coverage, availability, or completion based on the links."
+    },
+    {
+      "item": "External URLs and archived pages",
+      "reason": "This bounded preparation job performed no network retrieval or access verification.",
+      "effect": "A later authorized ingestion job must retrieve and validate each item before use."
+    },
+    {
+      "item": "Third-party GitHub assignment and student-style repositories",
+      "reason": "They may contain solutions, another learner's work, unclear licensing, or content from an unmatched course offering.",
+      "effect": "Keep out of learner views until provenance, license, offering, and answer-leakage reviews pass."
+    },
+    {
+      "item": "Examiner rubric",
+      "reason": "Assessment criteria and expected-answer guidance are examiner-only.",
+      "effect": "Never copy examiner_only/RUBRIC.md into student_safe or a learner attempt."
+    }
+  ],
+  "retrieval_policy": {
+    "action_for_this_job": "NO_EXTERNAL_FETCH",
+    "catalog_links_are_availability_evidence": false,
+    "future_retrieval_requires": [
+      "Explicit authorization and an allowed destination inside a per-attempt workspace.",
+      "A captured source URL, retrieval time, immutable content digest, source identity, and course-offering label.",
+      "Access and license review before redistribution.",
+      "Item-level classification as official, third-party, or learner-authored; a normalized record alone is insufficient.",
+      "A learner-safety scan for answers, hidden grading data, secrets, sealed references, and another learner's files.",
+      "Validator confirmation before an ingested item can expand the unit graph or support a completion claim."
+    ],
+    "on_failure": "Record the item as unavailable with the failure reason; do not substitute an unsupported claim or silently use another offering.",
+    "source_repository_policy": "Treat catalog source repositories as read-only inputs and copy only reviewed, authorized artifacts into the attempt workspace."
+  },
+  "provenance": {
+    "classification": "MANAGER_CLASSIFICATION_OF_CATALOG_SNAPSHOT",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_content_sha256": "b10c610042142bd493fb78bfc461d920b689d72f4bef9d68adad5cb1f909b049",
+    "external_content_retrieved": false
+  },
+  "validation": {
+    "label": "AWAITING_WORKER_HARNESS_VALIDATION",
+    "link_access_checked": false,
+    "external_material_approved": false
+  }
+}

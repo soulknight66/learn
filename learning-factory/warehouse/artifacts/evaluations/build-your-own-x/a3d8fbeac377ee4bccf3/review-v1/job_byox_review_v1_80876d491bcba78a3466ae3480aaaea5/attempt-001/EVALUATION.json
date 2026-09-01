@@ -1,0 +1,33 @@
+{
+  "builder_job_id": "job_byox_build_v1_80876d491bcba78a3466ae3480aaaea5",
+  "checks_run": [
+    "Inspected all 51 regular files in CANDIDATE, including learner material, test harnesses, sealed reference code, answers, review material, and provenance records.",
+    "Checked candidate path types, permissions, UTF-8 decoding, symbolic links, literal NUL bytes, credential patterns, and an aggregate digest before and after review.",
+    "Ran shell syntax checking, Python AST parsing, strict JSON parsing, cross-file metadata assertions, adversarial base64 validation, and dry-run Make resolution.",
+    "Discovered available toolchains and searched bounded common locations for Free Pascal.",
+    "Invoked environment/check.sh, the public suite, and the sealed suite with 10-second outer timeouts.",
+    "Statically compared the normative Mica contract with the lexer, compiler, VM, CLI, public tests, and sealed tests.",
+    "Inspected subprocess calls and temporary-input handling for timeout, process-group, capture, and read-only-input properties.",
+    "Reviewed validation-label honesty, progressive-disclosure layout, generated-material licensing, and source provenance cross-links."
+  ],
+  "evidence": [
+    "MANIFEST.yaml remains GENERATED plus PARTIAL, requires independent validation, sets productionized to false, and claims none of BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED.",
+    "environment/check.sh exited 2 with the documented PARTIAL diagnostic because fpc and an executable MICA_BIN were unavailable.",
+    "The public and sealed test entry points each exited 1 during setUpClass and ran 0 tests because no executable existed; these are setup failures, not behavioral test results.",
+    "Free Pascal was absent from PATH and the bounded common/tool locations checked; make was /usr/bin/make and Python was 3.6.8.",
+    "bash syntax passed; all three Python harness/driver files parsed; MANIFEST.yaml, PROVENANCE.json, and sealed/adversarial/cases.json parsed as strict JSON.",
+    "Project ID, source ID, source commit, snapshot digest, validation labels, independent-validation requirement, and production flag agree across manifest and provenance records.",
+    "Static inspection found the sealed reference structurally consistent with documented precedence, flat slots, jump backpatching, operand order, arithmetic bounds, and the 100000-instruction limit, but this is not build or test proof.",
+    "All five subprocess.run call sites have per-process timeouts and captured output but no process-group lifecycle; environment/check.sh also invokes make without a bound.",
+    "The public overflow test checks only a diagnostic prefix and omits the required return-code and stdout assertions.",
+    "All 51 candidate files decoded as UTF-8; no symlinks, unusual filesystem nodes, literal NUL bytes, or credential-pattern hits were found; the pre/post aggregate digest was 9e8f6fb5452f8907fbc7999b9b2e79d943873ee7a7c144f900b161f4f9d8a1a8."
+  ],
+  "limitations": [
+    "No Free Pascal compiler or prebuilt Mica executable was available, so starter/reference compilation, public behavior, sealed behavior, adversarial execution, and Pascal compiler diagnostics remain unverified.",
+    "The linked upstream resource and catalog snapshot were not available in this restricted workspace, so the no-copy assertion and catalog license evidence could not be independently compared with source material.",
+    "The reviewer workspace intentionally exposes sealed material; no independently materialized learner view or worker-controlled transfer report was supplied, so disclosure enforcement is inconclusive.",
+    "No fuzzing, benchmark execution, transfer validation, production validation, or independent platform reproduction was performed or inferred."
+  ],
+  "project_id": "project_0211acfa0bef3a271027fdcfd888e86a",
+  "verdict": "REVISE"
+}

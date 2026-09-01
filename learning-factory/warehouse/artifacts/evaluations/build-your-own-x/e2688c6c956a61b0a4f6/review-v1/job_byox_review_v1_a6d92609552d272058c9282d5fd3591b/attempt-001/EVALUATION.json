@@ -1,0 +1,34 @@
+{
+  "builder_job_id": "job_byox_build_v1_a6d92609552d272058c9282d5fd3591b",
+  "checks_run": [
+    "Inventoried all 43 submitted regular files, checked file types/symlinks, and recorded the same aggregate SHA-256 before and after validation.",
+    "Reviewed the learner contract, starter, public tests, sealed reference, sealed tests, progressive-disclosure layout, provenance/license statements, and validation-label claims.",
+    "Ran the environment probe: GCC 8.5.0 and GNU Make 4.2.1 were present; aarch64-none-elf-gcc and qemu-system-aarch64 were absent.",
+    "Built the starter and sealed reference in an isolated writable copy with C11, O2, -Wall, -Wextra, -Wpedantic, and -Werror.",
+    "Ran the submitted reference suite at O2 and O0 and the public suite against the reference; all submitted reference assertions passed.",
+    "Ran a reviewer-authored deterministic suite covering 2,048 scheduler states, arithmetic limits, failure rollback, exact-capacity COW, all 256 open-flag values, name/mode boundaries, and checker index safety.",
+    "Ran a focused reviewer-authored corruption probe for a writable mapping of a multiply referenced frame.",
+    "Attempted the sanitizer target and Pi target build with 30-second bounds; both were blocked by unavailable toolchain/runtime components exactly as documented.",
+    "Parsed and cross-checked manifest/provenance identifiers, compared public and reference headers byte-for-byte, audited validation-label language, and ran credential-pattern searches.",
+    "Ran the supplied structural verifier and credential scanner; the structural verifier failed because its required CANDIDATE/JOB.md input is absent, while the scanner reported no hits."
+  ],
+  "evidence": [
+    "The reference build, 14 submitted reference cases at O2 and O0, and four public cases against the reference exited 0; the intentionally incomplete starter public run exited 2 with the documented four failures.",
+    "The broad independent reviewer suite exited 0 before the focused corruption assertion was added.",
+    "From a valid post-fork state with a shared read-only frame and refcount 2, adding WRITE to one PTE caused pebble_check() to return PEBBLE_OK with an empty reason instead of PEBBLE_ERR_CORRUPT.",
+    "The checker validates permitted PTE bits and exact frame counts separately but has no invariant that forbids WRITE when a frame has more than one reference.",
+    "MANIFEST.yaml remains GENERATED/PARTIAL with productionized=false and independent_validation=REQUIRED; no BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED label is claimed.",
+    "The documented learner allowlist contains no references to sealed paths, and all 22 sealed files are beneath CANDIDATE/sealed; no actual learner-view artifact was supplied for transfer verification.",
+    "The candidate aggregate digest remained db9752b872350391a991657d906376d9a66b3cec4b7d65ef5762395afc7db167."
+  ],
+  "limitations": [
+    "ASan/UBSan execution was unavailable because the host linker could not find libasan.so.5.0.0 and libubsan.so.1.0.0.",
+    "The AArch64 bare-metal compiler, QEMU system emulator, Raspberry Pi hardware, and hardware boot evidence were unavailable.",
+    "The submitted structural verifier is not self-contained after transfer because CANDIDATE/JOB.md is absent, so its required/forbidden path and exact metadata-object checks could not be reproduced.",
+    "No materialized learner view or deterministic transfer receipt was available; progressive-disclosure conclusions are limited to static layout and the prose allowlist.",
+    "Network/upstream access, git, rg, clang tooling, cppcheck, and valgrind were unavailable, so originality, linked-resource license, repository history, and alternate-toolchain behavior were not independently verified.",
+    "A pattern scan is hygiene evidence only and is not a security or secret-leak certification."
+  ],
+  "project_id": "project_ce9cae8ab2c9c820ceec425c2639e501",
+  "verdict": "REVISE"
+}

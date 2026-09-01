@@ -1,0 +1,74 @@
+{
+  "course_id": "course_58d60cf7e5212fad44448b66bf7ad0aa",
+  "title": "PKU Compiler Principles Practice",
+  "status": "KICKOFF_READY",
+  "unit": {
+    "unit_id": "kickoff_01_testable_compiler_vertical_slice",
+    "title": "A Testable Compiler Vertical Slice",
+    "sequence": 1,
+    "classification": "manager-authored kickoff",
+    "upstream_official_course_unit": false,
+    "learner_profile": "A strong algorithms student who is building practical software-engineering habits",
+    "estimated_human_hours": 6,
+    "scope": "Specify, implement, and test a deterministic compiler for a unit-local one-function language, producing a unit-local textual IR.",
+    "learning_objectives": [
+      "Turn a small language contract into an end-to-end compiler pipeline.",
+      "Separate parsing, representation, emission, and command-line concerns well enough to support change.",
+      "Define deterministic success and failure behavior at a process boundary.",
+      "Build repeatable positive and negative tests and preserve concise execution evidence.",
+      "Distinguish a manager-authored exercise from the unavailable upstream SysY, Koopa IR, and RISC-V specifications."
+    ],
+    "required_deliverables": [
+      "A runnable compiler implementation and documented entry point",
+      "Automated tests for the specified valid and invalid input partitions",
+      "README.md with reproducible build and test commands",
+      "DECISIONS.md recording boundaries, invariants, and one planned extension",
+      "EVIDENCE.md containing commands, environment facts, and captured outcomes",
+      "Written responses to student_safe/COMPREHENSION.md"
+    ],
+    "out_of_scope": [
+      "Claiming conformance with the official SysY language or Koopa IR",
+      "RISC-V code generation or execution",
+      "Optimization, variables, expressions, control flow, functions beyond main, or recovery after multiple syntax errors",
+      "Reconstructing the upstream nine-step course sequence",
+      "Fetching remote course content"
+    ],
+    "learner_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ]
+  },
+  "completion_policy": {
+    "completion_scope": "this kickoff unit only",
+    "decision_authority": "A worker-harness-controlled validator applies examiner_only/RUBRIC.md to durable submitted artifacts and execution evidence.",
+    "required_evidence": [
+      "All required deliverables are present.",
+      "The documented clean build and test commands execute within their bounded timeouts.",
+      "Observed valid and invalid cases satisfy the task contract.",
+      "The rubric threshold and every critical gate are satisfied."
+    ],
+    "learner_or_agent_claim_is_evidence": false,
+    "unit_completion_does_not_imply_course_completion": true,
+    "course_completion_rule": "This preparation job defines no whole-course completion route. Later jobs must verify upstream materials, expand and validate additional units, and establish a separate course-level completion decision.",
+    "failure_policy": "Retain failed-attempt artifacts and validation evidence; do not promote the unit on prose claims or partial output."
+  },
+  "provenance": {
+    "artifact_classification": "manager-authored from supplied catalog snapshot",
+    "basis": "The catalog snapshot embedded in JOB.md; no remote material was retrieved.",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_license": "MIT",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/编译原理/PKU-Compilers.en.md",
+    "adapter": "csdiy",
+    "extractor_version": "1.1",
+    "content_sha256": "92e3e14607833a09c2b158be1a885ad77e29db96837acfd8e1edbbc5f7750e02",
+    "normalized_resource_record_ids": [
+      "unit_f29bab14f77e9b679a7f589b02baf2e1"
+    ],
+    "network_retrieval_performed": false,
+    "claim_limit": "The snapshot supports course identity and broad goals only; it does not establish official lesson order, exact language/IR rules, assessment rules, or availability of linked content."
+  }
+}

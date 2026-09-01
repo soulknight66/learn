@@ -1,0 +1,50 @@
+{
+  "architecture_value": 8,
+  "artifact_paths": {
+    "debugging": "debugging/",
+    "faults": "adversarial/",
+    "hidden_tests": "sealed/reference_tests/",
+    "operations": "production/operations/",
+    "reference": "sealed/reference/",
+    "review": "review_exercises/",
+    "starter": "starter/"
+  },
+  "concepts": [
+    "migrations",
+    "idempotency",
+    "durable leases",
+    "at-least-once delivery",
+    "retry backoff",
+    "dead letters",
+    "crash recovery",
+    "backpressure",
+    "observability",
+    "graceful shutdown"
+  ],
+  "debugging_value": 9,
+  "deployment_status": "NOT_PRODUCTION_READY",
+  "difficulty": 8,
+  "estimated_human_hours": 18,
+  "family": "production-services",
+  "id": "durable-event-processing-service",
+  "languages": [
+    "Python 3.11",
+    "SQL"
+  ],
+  "name": "Durable Event Processing Service",
+  "production_relevance": 10,
+  "provenance": "PROVENANCE.json",
+  "schema_version": 1,
+  "type": "deep-challenge-pack",
+  "validation_status": [
+    "GENERATED",
+    "PARTIAL"
+  ],
+  "validation_targets": [
+    "BUILDS",
+    "TESTED",
+    "FUZZED",
+    "BENCHMARKED",
+    "REVIEWED"
+  ]
+}

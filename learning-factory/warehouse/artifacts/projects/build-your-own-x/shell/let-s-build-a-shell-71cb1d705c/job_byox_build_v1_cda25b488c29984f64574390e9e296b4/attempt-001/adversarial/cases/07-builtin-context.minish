@@ -1,0 +1,6 @@
+pwd
+/bin/mkdir child
+cd child
+pwd
+cd .. | pwd
+pwd

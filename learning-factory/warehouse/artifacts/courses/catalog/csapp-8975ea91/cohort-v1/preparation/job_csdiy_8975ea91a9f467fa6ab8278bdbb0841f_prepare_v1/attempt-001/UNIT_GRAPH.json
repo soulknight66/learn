@@ -1,0 +1,128 @@
+{
+  "course_id": "course_8975ea91a9f467fa6ab8278bdbb0841f",
+  "nodes": [
+    {
+      "node_id": "study_unit_csapp_001_trustworthy_byte_histogram",
+      "kind": "MANAGER_AUTHORED_STUDY_UNIT",
+      "title": "A trustworthy byte histogram: C contracts, streams, and evidence",
+      "status": "NOT_STARTED",
+      "official_course_unit": false,
+      "completion_scope": "UNIT_ONLY",
+      "sufficient_for_course_completion": false,
+      "external_material_dependencies": []
+    },
+    {
+      "node_id": "study_unit_csapp_001_contract",
+      "kind": "LEARNING_STEP",
+      "title": "Specify contracts, invariants, and failure policy",
+      "status": "NOT_STARTED",
+      "parent_unit_id": "study_unit_csapp_001_trustworthy_byte_histogram"
+    },
+    {
+      "node_id": "study_unit_csapp_001_implement",
+      "kind": "LEARNING_STEP",
+      "title": "Implement the separated C module and command-line program",
+      "status": "NOT_STARTED",
+      "parent_unit_id": "study_unit_csapp_001_trustworthy_byte_histogram"
+    },
+    {
+      "node_id": "study_unit_csapp_001_verify",
+      "kind": "LEARNING_STEP",
+      "title": "Build deterministic tests and collect truthful tool evidence",
+      "status": "NOT_STARTED",
+      "parent_unit_id": "study_unit_csapp_001_trustworthy_byte_histogram"
+    },
+    {
+      "node_id": "study_unit_csapp_001_explain",
+      "kind": "LEARNING_STEP",
+      "title": "Document decisions and answer comprehension questions",
+      "status": "NOT_STARTED",
+      "parent_unit_id": "study_unit_csapp_001_trustworthy_byte_histogram"
+    },
+    {
+      "node_id": "unit_b80715910165e96dc7f8940d94337446",
+      "kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Catalog overview and resource guide",
+      "classification": "CATALOG_CONTEXT",
+      "source_official_course_unit": false,
+      "promoted_to_study_unit": false
+    },
+    {
+      "node_id": "unit_49040df735bf8095c8177792361f7e42",
+      "kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Course Website",
+      "classification": "COURSE_WEBSITE_LINK",
+      "source_official_course_unit": false,
+      "promoted_to_study_unit": false
+    },
+    {
+      "node_id": "unit_5721f73799784b93501b34ea28bf48d3",
+      "kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Recordings",
+      "classification": "RECORDING_INDEX_LINK",
+      "source_official_course_unit": false,
+      "promoted_to_study_unit": false
+    },
+    {
+      "node_id": "unit_44f6afe8c0b67be779baebd72c9e2f91",
+      "kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Textbook",
+      "classification": "BIBLIOGRAPHIC_REFERENCE",
+      "source_official_course_unit": false,
+      "promoted_to_study_unit": false
+    },
+    {
+      "node_id": "unit_9ce4c387163ea63cd0e9dd2361e1220d",
+      "kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Assignments",
+      "classification": "OFFICIAL_ASSIGNMENT_COLLECTION_ASSERTED_BY_CATALOG",
+      "source_official_course_unit": true,
+      "promoted_to_study_unit": false,
+      "classification_note": "The aggregate record does not identify or validate eleven individual units."
+    }
+  ],
+  "edges": [
+    {
+      "from": "study_unit_csapp_001_contract",
+      "to": "study_unit_csapp_001_implement",
+      "relation": "PRECEDES"
+    },
+    {
+      "from": "study_unit_csapp_001_implement",
+      "to": "study_unit_csapp_001_verify",
+      "relation": "PRECEDES"
+    },
+    {
+      "from": "study_unit_csapp_001_verify",
+      "to": "study_unit_csapp_001_explain",
+      "relation": "PRECEDES"
+    },
+    {
+      "from": "unit_b80715910165e96dc7f8940d94337446",
+      "to": "study_unit_csapp_001_trustworthy_byte_histogram",
+      "relation": "CATALOG_INFORMS_SCOPE"
+    }
+  ],
+  "record_boundary": {
+    "statement": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+    "normalized_record_ids": [
+      "unit_b80715910165e96dc7f8940d94337446",
+      "unit_49040df735bf8095c8177792361f7e42",
+      "unit_5721f73799784b93501b34ea28bf48d3",
+      "unit_44f6afe8c0b67be779baebd72c9e2f91",
+      "unit_9ce4c387163ea63cd0e9dd2361e1220d"
+    ],
+    "promoted_record_ids": [],
+    "manager_authored_unit_ids": [
+      "study_unit_csapp_001_trustworthy_byte_histogram"
+    ],
+    "source_official_flag_policy": "Preserve the source assertion as metadata, but require resource retrieval and unit-level validation before promotion."
+  },
+  "provenance": {
+    "classification": "manager-authored graph from supplied catalog snapshot",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_content_sha256": "845586f550aa6724b2028b0c0fd11562897c58b1bdc826f2f3e3a4f6e30565db",
+    "network_retrieval_performed": false,
+    "validation_label": "GRAPH_BOUNDARY_LOCALLY_VALIDATED"
+  }
+}

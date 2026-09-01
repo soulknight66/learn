@@ -1,0 +1,5 @@
+/usr/bin/printf alpha > first > second
+/usr/bin/wc -c < first
+/usr/bin/wc -c < second
+/usr/bin/printf beta >> second
+/usr/bin/wc -c < second

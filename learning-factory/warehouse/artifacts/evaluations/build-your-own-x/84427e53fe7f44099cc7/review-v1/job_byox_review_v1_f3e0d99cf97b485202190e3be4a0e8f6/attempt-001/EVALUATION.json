@@ -1,0 +1,35 @@
+{
+  "builder_job_id": "job_byox_build_v1_f3e0d99cf97b485202190e3be4a0e8f6",
+  "checks_run": [
+    "Inventoried 55 candidate files and compared aggregate SHA-256 before and after review",
+    "Inspected learner, sealed, provenance, license-boundary, validation, benchmark, and productionization material",
+    "Confirmed Ruby 2.5.9 and syntax-checked 23 Ruby or Ruby-entrypoint files",
+    "Replayed the public/reference suite, sealed/reference suite, reference CLI, incomplete-starter suite, and structure checker under bounded execution",
+    "Ran an independent 11-group semantic and malformed-input harness against the sealed reference",
+    "Probed repeat lexer use, 10000-deep valid unary input, CLI usage/error behavior, and instruction-budget handling",
+    "Parsed manifest/provenance JSON and compared declared and actual SHA-256 values",
+    "Checked for symlinks, common credential markers, dynamic execution/network primitives, and non-local dependencies",
+    "Smoke-ran one benchmark iteration only to validate the driver and its explicit UNVALIDATED_MEASUREMENT label"
+  ],
+  "evidence": [
+    "Candidate-authored public/reference tests observed 12 tests, 26 assertions, 0 failures; sealed/reference tests observed 27 tests, 77 assertions, 0 failures",
+    "Reference CLI observed stdout 3, 2, 1 and exit 0; starter suite observed the declared 12 intentional stub failures and exit 1",
+    "Independent harness passed 10 groups covering lexing, parsing, scoping, deterministic compilation, arithmetic, types, malformed bytecode, and budgets, and failed 1 lexer-reuse group",
+    "Calling Lexer#scan_tokens twice returned the same array with two EOF tokens, contradicting the public exactly-one-EOF contract",
+    "Compiling a grammatically valid expression with 10000 unary operators raised SystemStackError, not Pebble::Error",
+    "All 23 Ruby files/entrypoints parsed, no symlinks were present, and targeted credential and dynamic-execution scans found no matches",
+    "Manifest remains GENERATED/PARTIAL, productionized=false, and explicitly withholds BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, and PRODUCTIONIZED labels",
+    "CANDIDATE aggregate SHA-256 remained b007464e59a00b94602a56b09724208aeba27b792d1b3dffc24e1e8e1e54a74f",
+    "PROVENANCE.json file SHA-256 was 5119170b0732ac97cb5259aea0ae40f919575d015da4e6951149b3eaeda06c68, while manifest provenance_sha256 was e534f25088ceaa9ff361d1831402338ec743bc666427d4b05cb4f56be11ea594 without a recomputation method",
+    "Sealed implementations, tests, and answers are ordinary readable files in the submitted tree; no independently testable student-view projection was supplied"
+  ],
+  "limitations": [
+    "Git, ripgrep, jq, and alternate Ruby versions were unavailable; only Ruby 2.5.9 was exercised",
+    "Network access was restricted and the recorded source repository was outside the readable workspace, so source commit, catalog CC0 evidence, linked-resource contents, non-copying, and external provenance hashes were not independently verified",
+    "No factory student-view projection or access-control harness was available, so sealed-material exclusion from the real learner view is inconclusive",
+    "No fuzzing, mutation testing, statistical benchmarking, learner transfer exercise, or production deployment was performed; the one benchmark smoke run is not BENCHMARKED evidence",
+    "Candidate-authored suites and structure scripts were treated only as corroborating observations, not independent proof or label authority"
+  ],
+  "project_id": "project_0d336967c5b89e5c4851b06a9e793cae",
+  "verdict": "REVISE"
+}

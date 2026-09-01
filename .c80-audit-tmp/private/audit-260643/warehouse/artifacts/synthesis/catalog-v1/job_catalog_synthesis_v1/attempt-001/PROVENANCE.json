@@ -1,0 +1,39 @@
+{
+  "catalog_snapshot_sha256": "f9f5d6771e74c066518fa08c472e7ac1e336721c274aae56489854678be3f222",
+  "derivations": {
+    "benchmark_or_performance_claims": false,
+    "catalog_records": "source-derived normalized SQLite records",
+    "concept_membership": "inferred-deterministic from normalized metadata",
+    "pedagogical_review_claims": false,
+    "priority_scores": "inferred-deterministic using the embedded policy"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "adapter": "csdiy",
+      "classification": "source-derived",
+      "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "extractor_version": "1.0",
+      "license": "MIT",
+      "name": "CSDIY",
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/cs-self-learning",
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "tree_hash": null,
+      "type": "course_catalog",
+      "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git"
+    },
+    {
+      "adapter": "build_your_own_x",
+      "classification": "source-derived",
+      "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989",
+      "extractor_version": "1.0",
+      "license": "CC0-1.0",
+      "name": "Build Your Own X",
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/build-your-own-x",
+      "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+      "tree_hash": null,
+      "type": "project_catalog",
+      "upstream_url": "git@github.com:codecrafters-io/build-your-own-x.git"
+    }
+  ]
+}

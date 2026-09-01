@@ -1,0 +1,180 @@
+{
+  "course_id": "course_03c19b6a0a7b517d890176069b210a96",
+  "nodes": [
+    {
+      "id": "kickoff_01_http_over_tcp",
+      "type": "managed_study_unit",
+      "title": "HTTP over TCP: boundaries, failures, and testable design",
+      "origin": "manager_authored",
+      "official_course_unit": false,
+      "managed_unit": true,
+      "status": "BOUNDED_KICKOFF_PREPARED",
+      "estimated_human_hours": 6
+    },
+    {
+      "id": "kickoff_01_phase_model",
+      "type": "learning_phase",
+      "title": "Model stream semantics and response framing",
+      "origin": "manager_authored",
+      "official_course_unit": false,
+      "parent_unit_id": "kickoff_01_http_over_tcp",
+      "order": 1
+    },
+    {
+      "id": "kickoff_01_phase_contract",
+      "type": "learning_phase",
+      "title": "Write the supported-subset and failure contract",
+      "origin": "manager_authored",
+      "official_course_unit": false,
+      "parent_unit_id": "kickoff_01_http_over_tcp",
+      "order": 2
+    },
+    {
+      "id": "kickoff_01_phase_implement",
+      "type": "learning_phase",
+      "title": "Implement transport and parser with bounded resources",
+      "origin": "manager_authored",
+      "official_course_unit": false,
+      "parent_unit_id": "kickoff_01_http_over_tcp",
+      "order": 3
+    },
+    {
+      "id": "kickoff_01_phase_verify",
+      "type": "learning_phase",
+      "title": "Verify fragmentation and failure behavior deterministically",
+      "origin": "manager_authored",
+      "official_course_unit": false,
+      "parent_unit_id": "kickoff_01_http_over_tcp",
+      "order": 4
+    },
+    {
+      "id": "kickoff_01_phase_reflect",
+      "type": "learning_phase",
+      "title": "Report evidence, limitations, and production gaps",
+      "origin": "manager_authored",
+      "official_course_unit": false,
+      "parent_unit_id": "kickoff_01_http_over_tcp",
+      "order": 5
+    },
+    {
+      "id": "unit_a939be395296b2f37c3721b798d562c7",
+      "type": "catalog_resource_record",
+      "title": "Catalog overview and resource guide",
+      "resource_type": "reading",
+      "origin": "normalized_catalog_input",
+      "official_course_unit": false,
+      "managed_unit": false,
+      "classification": "METADATA_ONLY_NOT_A_UNIT",
+      "source_reference": "docs/计算机网络/topdown_ustc.en.md"
+    },
+    {
+      "id": "unit_7d7a176ff74ec3c81d56d334f315e2ed",
+      "type": "catalog_resource_record",
+      "title": "Course Website",
+      "resource_type": "reading",
+      "origin": "normalized_catalog_input",
+      "official_course_unit": false,
+      "managed_unit": false,
+      "classification": "LINK_ONLY_NOT_A_UNIT",
+      "source_reference": "docs/计算机网络/topdown_ustc.en.md#L20"
+    },
+    {
+      "id": "unit_d71e26b04d07e9b3dd0e75f6d5077e0f",
+      "type": "catalog_resource_record",
+      "title": "Recordings",
+      "resource_type": "lecture",
+      "origin": "normalized_catalog_input",
+      "official_course_unit": false,
+      "managed_unit": false,
+      "classification": "LINK_ONLY_NOT_A_UNIT",
+      "source_reference": "docs/计算机网络/topdown_ustc.en.md#L21"
+    },
+    {
+      "id": "unit_e8c0e7d31eb08a89f375b42afe335cd8",
+      "type": "catalog_resource_record",
+      "title": "Slides",
+      "resource_type": "lecture",
+      "origin": "normalized_catalog_input",
+      "official_course_unit": false,
+      "managed_unit": false,
+      "classification": "LINK_ONLY_NOT_A_UNIT",
+      "source_reference": "docs/计算机网络/topdown_ustc.en.md#L22"
+    },
+    {
+      "id": "unit_817ff2d5bd9c284da2b1339c61c0c21d",
+      "type": "catalog_resource_record",
+      "title": "Textbook",
+      "resource_type": "reading",
+      "origin": "normalized_catalog_input",
+      "official_course_unit": false,
+      "managed_unit": false,
+      "classification": "BIBLIOGRAPHIC_DESCRIPTION_NOT_A_UNIT",
+      "source_reference": "docs/计算机网络/topdown_ustc.en.md#L23"
+    }
+  ],
+  "edges": [
+    {
+      "from": "kickoff_01_http_over_tcp",
+      "to": "kickoff_01_phase_model",
+      "type": "contains"
+    },
+    {
+      "from": "kickoff_01_http_over_tcp",
+      "to": "kickoff_01_phase_contract",
+      "type": "contains"
+    },
+    {
+      "from": "kickoff_01_http_over_tcp",
+      "to": "kickoff_01_phase_implement",
+      "type": "contains"
+    },
+    {
+      "from": "kickoff_01_http_over_tcp",
+      "to": "kickoff_01_phase_verify",
+      "type": "contains"
+    },
+    {
+      "from": "kickoff_01_http_over_tcp",
+      "to": "kickoff_01_phase_reflect",
+      "type": "contains"
+    },
+    {
+      "from": "kickoff_01_phase_model",
+      "to": "kickoff_01_phase_contract",
+      "type": "precedes"
+    },
+    {
+      "from": "kickoff_01_phase_contract",
+      "to": "kickoff_01_phase_implement",
+      "type": "precedes"
+    },
+    {
+      "from": "kickoff_01_phase_implement",
+      "to": "kickoff_01_phase_verify",
+      "type": "precedes"
+    },
+    {
+      "from": "kickoff_01_phase_verify",
+      "to": "kickoff_01_phase_reflect",
+      "type": "precedes"
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+  "classification_summary": {
+    "normalized_records_received": 5,
+    "normalized_records_promoted_to_official_units": 0,
+    "manager_authored_kickoff_units": 1,
+    "resource_dependency_edges_added": 0,
+    "reason": "No linked content or upstream syllabus sequence was inspected, so no resource record is treated as a unit or prerequisite."
+  },
+  "provenance": {
+    "catalog_source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "catalog_source_file": "docs/计算机网络/topdown_ustc.en.md",
+    "catalog_source_content_sha256": "c00a06e9146c9538c448d2072b1216ec46be52b28a333a52638e748f28405c5d",
+    "authored_graph_scope": "one kickoff unit only"
+  },
+  "validation": {
+    "label": "PREPARED_AWAITING_INDEPENDENT_VALIDATION",
+    "validated_by": null
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "course_id": "course_247fa49f95f2021a5de3fb035ef6e0f8",
+  "validation_status": "GENERATED_CANDIDATE",
+  "provenance_ref": "COURSE_MANIFEST.json#provenance",
+  "nodes": [
+    {
+      "id": "kickoff_retry_safe_kv_contract_v1:brief",
+      "order": 1,
+      "type": "MANAGER_AUTHORED_READING",
+      "title": "Failure Models, Contracts, and Deterministic Evidence",
+      "unit_id": "kickoff_retry_safe_kv_contract_v1",
+      "official_course_unit": false,
+      "availability": "PRESENT",
+      "learner_visible": true
+    },
+    {
+      "id": "kickoff_retry_safe_kv_contract_v1:design",
+      "order": 2,
+      "type": "MANAGER_AUTHORED_STUDY_TASK",
+      "title": "Retry-Safe CourierKV Design Dossier",
+      "unit_id": "kickoff_retry_safe_kv_contract_v1",
+      "official_course_unit": false,
+      "availability": "PRESENT",
+      "learner_visible": true
+    },
+    {
+      "id": "kickoff_retry_safe_kv_contract_v1:comprehension",
+      "order": 3,
+      "type": "MANAGER_AUTHORED_COMPREHENSION_CHECK",
+      "title": "Boundary and Failure-Reasoning Questions",
+      "unit_id": "kickoff_retry_safe_kv_contract_v1",
+      "official_course_unit": false,
+      "availability": "PRESENT",
+      "learner_visible": true
+    },
+    {
+      "id": "kickoff_retry_safe_kv_contract_v1:independent_evaluation",
+      "order": 4,
+      "type": "VALIDATION_GATE",
+      "title": "Independent Kickoff Evaluation",
+      "unit_id": "kickoff_retry_safe_kv_contract_v1",
+      "official_course_unit": false,
+      "availability": "PRESENT",
+      "learner_visible": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "kickoff_retry_safe_kv_contract_v1:brief",
+      "to": "kickoff_retry_safe_kv_contract_v1:design",
+      "relation": "PREPARES_FOR",
+      "basis": "MANAGER_DEFINED_WITHIN_GENERATED_KICKOFF",
+      "official_course_sequence": false
+    },
+    {
+      "from": "kickoff_retry_safe_kv_contract_v1:design",
+      "to": "kickoff_retry_safe_kv_contract_v1:comprehension",
+      "relation": "PROVIDES_EVIDENCE_FOR",
+      "basis": "MANAGER_DEFINED_WITHIN_GENERATED_KICKOFF",
+      "official_course_sequence": false
+    },
+    {
+      "from": "kickoff_retry_safe_kv_contract_v1:design",
+      "to": "kickoff_retry_safe_kv_contract_v1:independent_evaluation",
+      "relation": "SUBMISSION_INPUT",
+      "basis": "LOCAL_VALIDATION_WORKFLOW",
+      "official_course_sequence": false
+    },
+    {
+      "from": "kickoff_retry_safe_kv_contract_v1:comprehension",
+      "to": "kickoff_retry_safe_kv_contract_v1:independent_evaluation",
+      "relation": "SUBMISSION_INPUT",
+      "basis": "LOCAL_VALIDATION_WORKFLOW",
+      "official_course_sequence": false
+    }
+  ],
+  "record_boundary": {
+    "statement": "Normalized resource records are catalog inputs to classify; they are not automatically official course units or graph nodes.",
+    "classification_source": "PINNED_CATALOG_SNAPSHOT_ONLY",
+    "external_links_dereferenced": false,
+    "normalized_records_promoted_to_nodes": false,
+    "official_sequence_inferred": false,
+    "records": [
+      {
+        "record_id": "unit_22bf534dbf60486308c76e922d7f9246",
+        "source_title": "Catalog overview and resource guide",
+        "source_type": "reading",
+        "source_official_course_unit_flag": false,
+        "classification": "CATALOG_OVERVIEW_METADATA",
+        "availability": "AVAILABLE_IN_SNAPSHOT",
+        "promoted_to_graph_node": false,
+        "reason": "It describes the course and resources; it is not an official lecture or study unit."
+      },
+      {
+        "record_id": "unit_8b606201b492edd35c65efd7eaa1843d",
+        "source_title": "Course Website",
+        "source_type": "reading",
+        "source_official_course_unit_flag": false,
+        "classification": "EXTERNAL_SCHEDULE_LOCATOR",
+        "availability": "LINKED_NOT_RETRIEVED",
+        "promoted_to_graph_node": false,
+        "reason": "A URL is a locator, not imported course content or evidence of a unit sequence."
+      },
+      {
+        "record_id": "unit_dd4fed0e605404318a24d132969e6923",
+        "source_title": "Assignments",
+        "source_type": "assignment",
+        "source_official_course_unit_flag": true,
+        "classification": "OFFICIAL_COMPONENT_REFERENCE_WITHOUT_SPECIFICATION",
+        "availability": "DESCRIPTION_ONLY",
+        "promoted_to_graph_node": false,
+        "reason": "The record says to consult the website but supplies no assignment identity, requirements, content, or order."
+      },
+      {
+        "record_id": "unit_9c6ed807bc1772eff5a9e058b2e9cf71",
+        "source_title": "Textbook",
+        "source_type": "reading",
+        "source_official_course_unit_flag": false,
+        "classification": "NO_TEXTBOOK_AVAILABILITY_NOTICE",
+        "availability": "UNAVAILABLE_BY_SOURCE",
+        "promoted_to_graph_node": false,
+        "reason": "The catalog value is None; no textbook content exists in the snapshot."
+      },
+      {
+        "record_id": "unit_ce480e95cbc2c5fa9af4b43b94529329",
+        "source_title": "Assignments",
+        "source_type": "assignment",
+        "source_official_course_unit_flag": true,
+        "classification": "OFFICIAL_PROJECT_SET_SUMMARY_WITHOUT_SPECIFICATIONS",
+        "availability": "DESCRIPTION_ONLY",
+        "promoted_to_graph_node": false,
+        "reason": "The record reports four projects but does not identify, specify, order, or provide them; it is not treated as four instantiated units."
+      }
+    ],
+    "later_expansion_rule": "Add an official unit only after its authoritative content, identity, ordering evidence, rights, provenance, and validation label are recorded by a later authorized job."
+  }
+}

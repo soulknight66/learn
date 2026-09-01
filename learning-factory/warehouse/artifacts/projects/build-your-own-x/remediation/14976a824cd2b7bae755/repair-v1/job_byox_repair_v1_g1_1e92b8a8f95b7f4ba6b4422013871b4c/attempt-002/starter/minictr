@@ -1,0 +1,158 @@
+#!/usr/bin/env bash
+# Learner entry point for MiniCTR. Validation and dispatch are provided; the
+# state machine and Linux isolation layers are deliberately unfinished.
+
+set -u
+set -o pipefail
+
+MINICTR_PROGRAM=${0##*/}
+MINICTR_SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P) || {
+    printf '%s\n' "minictr: cannot resolve the starter directory" >&2
+    exit 70
+}
+readonly MINICTR_PROGRAM MINICTR_SCRIPT_DIR
+
+minictr_usage() {
+    cat <<'EOF'
+Usage:
+  minictr create NAME ROOTFS
+  minictr run NAME COMMAND [ARG...]
+  minictr ps
+  minictr delete NAME
+  minictr help
+EOF
+}
+
+minictr_die() {
+    local status=$1
+    shift
+    printf 'minictr: %s\n' "$*" >&2
+    return "$status"
+}
+
+minictr_valid_name() {
+    local name=$1
+    # Bash range expressions follow the ambient collation locale.  Force the
+    # public ASCII grammar to remain bytewise in every caller locale.
+    local LC_ALL=C
+    [[ $name != . && $name != .. && $name =~ ^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$ ]]
+}
+
+minictr_check_name() {
+    local name=$1
+    minictr_valid_name "$name" || minictr_die 64 "invalid instance name: $name"
+}
+
+minictr_check_rootfs() {
+    local rootfs=$1
+
+    [[ $rootfs == /* ]] || {
+        minictr_die 64 "ROOTFS must be an absolute path"
+        return
+    }
+    [[ $rootfs != / ]] || {
+        minictr_die 64 "refusing to use / as ROOTFS"
+        return
+    }
+    [[ $rootfs != *$'\t'* && $rootfs != *$'\r'* && $rootfs != *$'\n'* ]] || {
+        minictr_die 64 "ROOTFS contains a forbidden control character"
+        return
+    }
+    [[ -d $rootfs ]] || {
+        minictr_die 66 "ROOTFS is not an existing directory: $rootfs"
+        return
+    }
+}
+
+minictr_prepare_state_env() {
+    if [[ -z ${MINICTR_HOME+x} ]]; then
+        if [[ -n ${XDG_STATE_HOME:-} ]]; then
+            MINICTR_HOME=$XDG_STATE_HOME/minictr
+        elif [[ -n ${HOME:-} ]]; then
+            MINICTR_HOME=$HOME/.local/state/minictr
+        else
+            minictr_die 64 "set MINICTR_HOME when HOME is unavailable"
+            return
+        fi
+    fi
+
+    [[ -n $MINICTR_HOME && $MINICTR_HOME == /* ]] || {
+        minictr_die 64 "MINICTR_HOME must be a nonempty absolute path"
+        return
+    }
+    export MINICTR_HOME
+}
+
+# Static project code is sourced here. Runtime metadata must never be sourced.
+# shellcheck source=lib/runtime.sh
+. "$MINICTR_SCRIPT_DIR/lib/runtime.sh"
+
+minictr_main() {
+    if (( $# == 0 )); then
+        minictr_die 64 "missing operation"
+        minictr_usage >&2
+        return 64
+    fi
+
+    local operation=$1
+    shift
+
+    case $operation in
+        help|-h|--help)
+            (( $# == 0 )) || {
+                minictr_die 64 "help takes no operands"
+                return
+            }
+            minictr_usage
+            ;;
+        create)
+            (( $# == 2 )) || {
+                minictr_die 64 "usage: minictr create NAME ROOTFS"
+                return
+            }
+            minictr_check_name "$1" || return
+            minictr_check_rootfs "$2" || return
+            minictr_prepare_state_env || return
+            minictr_runtime_create "$1" "$2"
+            ;;
+        run)
+            (( $# >= 2 )) || {
+                minictr_die 64 "usage: minictr run NAME COMMAND [ARG...]"
+                return
+            }
+            minictr_check_name "$1" || return
+            [[ -n $2 ]] || {
+                minictr_die 64 "COMMAND must not be empty"
+                return
+            }
+            minictr_prepare_state_env || return
+            local name=$1
+            shift
+            minictr_runtime_run "$name" "$@"
+            ;;
+        ps)
+            (( $# == 0 )) || {
+                minictr_die 64 "usage: minictr ps"
+                return
+            }
+            minictr_prepare_state_env || return
+            minictr_runtime_ps
+            ;;
+        delete)
+            (( $# == 1 )) || {
+                minictr_die 64 "usage: minictr delete NAME"
+                return
+            }
+            minictr_check_name "$1" || return
+            minictr_prepare_state_env || return
+            minictr_runtime_delete "$1"
+            ;;
+        *)
+            minictr_die 64 "unknown operation: $operation"
+            minictr_usage >&2
+            return 64
+            ;;
+    esac
+}
+
+minictr_main "$@"

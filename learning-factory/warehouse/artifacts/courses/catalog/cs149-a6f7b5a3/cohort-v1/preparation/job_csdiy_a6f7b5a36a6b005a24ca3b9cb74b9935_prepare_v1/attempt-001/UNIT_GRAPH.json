@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "course_id": "course_a6f7b5a36a6b005a24ca3b9cb74b9935",
+  "nodes": [
+    {
+      "node_id": "kickoff_parallel_histogram_v1",
+      "node_kind": "study_unit",
+      "title": "Trustworthy Parallelism: From Sequential Oracle to Measured C++ Histogram",
+      "origin": "course_manager_authored",
+      "official_course_unit": false,
+      "status": "READY",
+      "bounded": true
+    },
+    {
+      "node_id": "kickoff.design",
+      "node_kind": "activity",
+      "parent_unit_id": "kickoff_parallel_histogram_v1",
+      "title": "Specify contracts, invariants, work, and concurrency risks"
+    },
+    {
+      "node_id": "kickoff.implement",
+      "node_kind": "activity",
+      "parent_unit_id": "kickoff_parallel_histogram_v1",
+      "title": "Implement the sequential oracle and std::thread variant"
+    },
+    {
+      "node_id": "kickoff.verify",
+      "node_kind": "activity",
+      "parent_unit_id": "kickoff_parallel_histogram_v1",
+      "title": "Build deterministic correctness and boundary tests"
+    },
+    {
+      "node_id": "kickoff.measure",
+      "node_kind": "activity",
+      "parent_unit_id": "kickoff_parallel_histogram_v1",
+      "title": "Run a bounded benchmark matrix and retain raw observations"
+    },
+    {
+      "node_id": "kickoff.reflect",
+      "node_kind": "activity",
+      "parent_unit_id": "kickoff_parallel_histogram_v1",
+      "title": "Analyze trade-offs and answer comprehension prompts"
+    },
+    {
+      "node_id": "unit_96aa3d9e7fb8a633d0adc22d357c3f86",
+      "node_kind": "catalog_resource_record",
+      "title": "Catalog overview and resource guide",
+      "record_type": "reading",
+      "source_reference": "docs/并行与分布式系统/CS149.en.md",
+      "catalog_official_course_unit": false,
+      "classification": "CATALOG_CONTEXT_ONLY",
+      "promoted_to_study_unit": false
+    },
+    {
+      "node_id": "unit_14f6f32818bc31f8948810587dd2037b",
+      "node_kind": "catalog_resource_record",
+      "title": "Course Website",
+      "record_type": "reading",
+      "source_reference": "docs/并行与分布式系统/CS149.en.md#L17",
+      "catalog_official_course_unit": false,
+      "classification": "LINK_INDEX_NOT_UNIT",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "promoted_to_study_unit": false
+    },
+    {
+      "node_id": "unit_33711cea93bb28268545db575da74709",
+      "node_kind": "catalog_resource_record",
+      "title": "Recordings",
+      "record_type": "lecture",
+      "source_reference": "docs/并行与分布式系统/CS149.en.md#L18",
+      "catalog_official_course_unit": false,
+      "classification": "RECORDING_INDEX_NOT_LECTURE_UNIT",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "promoted_to_study_unit": false
+    },
+    {
+      "node_id": "unit_8b751ba6c602aa118757cfbe468b2dfa",
+      "node_kind": "catalog_resource_record",
+      "title": "Textbook",
+      "record_type": "reading",
+      "source_reference": "docs/并行与分布式系统/CS149.en.md#L19",
+      "catalog_official_course_unit": false,
+      "classification": "ABSENT_MATERIAL_RECORD_NOT_UNIT",
+      "availability": "UNAVAILABLE",
+      "promoted_to_study_unit": false
+    },
+    {
+      "node_id": "unit_69d70b260e36c5fdda6110413bdb514a",
+      "node_kind": "catalog_resource_record",
+      "title": "Assignments",
+      "record_type": "assignment",
+      "source_reference": "docs/并行与分布式系统/CS149.en.md#L20",
+      "catalog_official_course_unit": true,
+      "classification": "OFFICIAL_ASSIGNMENT_COLLECTION_INDEX",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "promoted_to_study_unit": false,
+      "boundary_note": "The record says that five assignments exist but does not enumerate or validate five assignment units."
+    }
+  ],
+  "edges": [
+    {
+      "from": "kickoff_parallel_histogram_v1",
+      "to": "kickoff.design",
+      "edge_kind": "contains"
+    },
+    {
+      "from": "kickoff_parallel_histogram_v1",
+      "to": "kickoff.implement",
+      "edge_kind": "contains"
+    },
+    {
+      "from": "kickoff_parallel_histogram_v1",
+      "to": "kickoff.verify",
+      "edge_kind": "contains"
+    },
+    {
+      "from": "kickoff_parallel_histogram_v1",
+      "to": "kickoff.measure",
+      "edge_kind": "contains"
+    },
+    {
+      "from": "kickoff_parallel_histogram_v1",
+      "to": "kickoff.reflect",
+      "edge_kind": "contains"
+    },
+    {
+      "from": "kickoff.design",
+      "to": "kickoff.implement",
+      "edge_kind": "precedes"
+    },
+    {
+      "from": "kickoff.implement",
+      "to": "kickoff.verify",
+      "edge_kind": "precedes"
+    },
+    {
+      "from": "kickoff.verify",
+      "to": "kickoff.measure",
+      "edge_kind": "precedes",
+      "reason": "Performance is not interpreted before correctness evidence exists."
+    },
+    {
+      "from": "kickoff.measure",
+      "to": "kickoff.reflect",
+      "edge_kind": "precedes"
+    },
+    {
+      "from": "unit_96aa3d9e7fb8a633d0adc22d357c3f86",
+      "to": "kickoff_parallel_histogram_v1",
+      "edge_kind": "catalog_context",
+      "required_at_runtime": false
+    },
+    {
+      "from": "unit_14f6f32818bc31f8948810587dd2037b",
+      "to": "kickoff_parallel_histogram_v1",
+      "edge_kind": "classified_input",
+      "required_at_runtime": false
+    },
+    {
+      "from": "unit_33711cea93bb28268545db575da74709",
+      "to": "kickoff_parallel_histogram_v1",
+      "edge_kind": "classified_input",
+      "required_at_runtime": false
+    },
+    {
+      "from": "unit_8b751ba6c602aa118757cfbe468b2dfa",
+      "to": "kickoff_parallel_histogram_v1",
+      "edge_kind": "classified_input",
+      "required_at_runtime": false
+    },
+    {
+      "from": "unit_69d70b260e36c5fdda6110413bdb514a",
+      "to": "kickoff_parallel_histogram_v1",
+      "edge_kind": "catalog_context",
+      "required_at_runtime": false
+    }
+  ],
+  "record_boundary": {
+    "catalog_statement": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+    "normalized_record_count": 5,
+    "records_promoted_to_official_units": [],
+    "manager_defined_unit_ids": [
+      "kickoff_parallel_histogram_v1"
+    ],
+    "policy": "A normalized record is retained as a resource record unless retrieved evidence establishes an individual unit's identity, official status, ordering, dependencies, and usable content. A true official_course_unit flag on an aggregate assignment index does not create five inferred nodes.",
+    "later_expansion_gate": "A later authorized job must retrieve or receive the material, record provenance and availability, audit learner safety and licensing, and validate unit metadata before adding official lecture or assignment nodes."
+  }
+}

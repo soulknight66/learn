@@ -1,0 +1,119 @@
+{
+  "course_id": "course_cca662c08900888319cd02fdb7c42bd2",
+  "materials": [
+    {
+      "material_id": "material_catalog_snapshot",
+      "title": "CSDIY catalog snapshot for CMU 17-803",
+      "kind": "catalog_metadata",
+      "availability": "AVAILABLE_IN_JOB",
+      "retrieved": true,
+      "use": "Course context and resource discovery only",
+      "provenance": {
+        "source_file": "docs/软件工程/17803.en.md",
+        "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+        "content_sha256": "f8263991f237dd84150a85bba2c093147bfb13cd9e20e1786a496827bd90be05"
+      }
+    },
+    {
+      "material_id": "material_synthetic_benchmark_v1",
+      "title": "Synthetic paired benchmark dataset v1",
+      "kind": "embedded_dataset",
+      "availability": "EMBEDDED_LOCAL",
+      "retrieved": false,
+      "path": "student_safe/STUDY_TASK.md",
+      "use": "Required input for the kickoff unit",
+      "provenance": {
+        "classification": "course-manager-authored-synthetic",
+        "derived_from_external_course_content": false,
+        "validation_label": "SYNTHETIC_FOR_INSTRUCTION"
+      }
+    },
+    {
+      "material_id": "resource_course_websites",
+      "normalized_record_id": "unit_195090ebede23d3c1650f82d7ea17b4d",
+      "title": "Course website links (multiple offerings)",
+      "kind": "external_link_collection",
+      "availability": "LINKED_UNVERIFIED",
+      "retrieved": false,
+      "official_unit": false,
+      "urls": [
+        "https://bvasiles.github.io/empirical-methods/",
+        "https://bvasiles.github.io/empirical-methods/fall-2022/",
+        "https://bvasiles.github.io/empirical-methods/spring-2021/",
+        "https://bvasiles.github.io/empirical-methods/fall-2018/"
+      ],
+      "use": "Candidate discovery source for a later retrieval job; not required by the kickoff"
+    },
+    {
+      "material_id": "resource_recordings",
+      "normalized_record_id": "unit_97872e7fed01afb91c3e0feee4637f74",
+      "title": "Recording links",
+      "kind": "external_link_collection",
+      "availability": "LINKED_UNVERIFIED",
+      "retrieved": false,
+      "official_unit": false,
+      "urls": [
+        "https://www.youtube.com/playlist?list=PLuPUOEODcOmsiOxD7LK5EcQcj34Y9NwYg",
+        "https://www.youtube.com/watch?v=IDtePCle3Qc"
+      ],
+      "use": "Candidate lecture media for a later retrieval job; not required by the kickoff"
+    },
+    {
+      "material_id": "resource_repository_link",
+      "title": "Empirical Methods repository link",
+      "kind": "external_repository_link",
+      "availability": "LINKED_UNVERIFIED",
+      "retrieved": false,
+      "official_unit": false,
+      "urls": [
+        "https://github.com/bvasiles/empirical-methods"
+      ],
+      "use": "Unclassified discovery link from catalog metadata; not required by the kickoff"
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "resource_unspecified_readings",
+      "normalized_record_id": "unit_79bb60d129bb3ed20e7ad70400dcfd91",
+      "title": "Reading materials before each lecture",
+      "availability": "UNAVAILABLE_NO_IDENTIFIERS",
+      "reason": "The snapshot describes readings but supplies no titles, files, or URLs.",
+      "access_restriction": "UNKNOWN",
+      "retrieval_attempted": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "resource_official_assignments",
+      "normalized_record_id": "unit_91a9e62078b79ff6e1b5f9c37708c1e1",
+      "title": "Official assignments",
+      "availability": "UNAVAILABLE_NOT_OPEN_SOURCE",
+      "reason": "The catalog explicitly states that assignments are not open-source and supplies no public location.",
+      "access_restriction": "RESTRICTED_OR_NONPUBLIC",
+      "retrieval_attempted": false,
+      "required_for_kickoff": false,
+      "substitution_policy": "Do not reconstruct, imitate, or claim access to the official assignments; use clearly labeled manager-authored work instead."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": "NO_EXTERNAL_RETRIEVAL_PERFORMED",
+    "kickoff_dependency": "The kickoff is self-contained and does not require any linked or blocked material.",
+    "future_public_retrieval": [
+      "A later authorized job may retrieve only openly accessible resources from the cataloged URLs.",
+      "Record the exact URL, retrieval time, content digest, license or terms when known, and validation result.",
+      "Classify each retrieved item by role and offering before proposing new units.",
+      "A link collection, repository, or recording playlist must not be promoted automatically to an official unit or syllabus position."
+    ],
+    "restricted_content": [
+      "Do not bypass authentication, paywalls, enrollment controls, robots restrictions, or other access controls.",
+      "Do not fetch or expose the non-open-source assignments.",
+      "Keep unavailable items blocked until lawful public access and provenance can be established."
+    ],
+    "failure_handling": "Preserve LINKED_UNVERIFIED or blocked status when retrieval or classification cannot be completed; never infer availability from a catalog link alone."
+  },
+  "provenance": {
+    "classification_basis": "provided CSDIY catalog snapshot only",
+    "catalog_source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "external_retrieval_performed": false
+  },
+  "validation_label": "AVAILABILITY_CLASSIFIED_LINKS_UNVERIFIED"
+}

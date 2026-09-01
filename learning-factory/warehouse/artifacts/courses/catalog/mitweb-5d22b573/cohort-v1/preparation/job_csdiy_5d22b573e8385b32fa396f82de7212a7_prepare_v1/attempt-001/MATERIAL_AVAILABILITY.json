@@ -1,0 +1,76 @@
+{
+  "course_id": "course_5d22b573e8385b32fa396f82de7212a7",
+  "materials": [
+    {
+      "material_id": "catalog_snapshot",
+      "title": "CSDIY catalog snapshot for MIT Web Development Crash Course",
+      "kind": "CATALOG_METADATA",
+      "availability": "AVAILABLE_IN_JOB_INPUT",
+      "retrieved": true,
+      "permitted_use": "Course identity, prerequisite, technology, resource pointers, and provenance only",
+      "content_sha256": "5f02cb330f0cffe8b9b033ff3785c6089aae0a9390e593b9ffb2940244efb09f"
+    },
+    {
+      "material_id": "unit_1d236670e322e009e369f609569c9dc3",
+      "title": "Catalog overview and resource guide",
+      "kind": "NORMALIZED_RESOURCE_RECORD",
+      "availability": "AVAILABLE_AS_METADATA_ONLY",
+      "retrieved": true,
+      "official_course_unit": false,
+      "source_reference": "docs/Web开发/mitweb.en.md"
+    },
+    {
+      "material_id": "unit_78bdcf3b65fa003bd4f18bd734dda1df",
+      "title": "Course Website",
+      "kind": "EXTERNAL_LINK",
+      "availability": "LINKED_UNVERIFIED",
+      "retrieved": false,
+      "official_course_unit": false,
+      "url": "https://weblab.mit.edu/schedule/",
+      "use_in_current_unit": "NOT_REQUIRED"
+    },
+    {
+      "material_id": "kickoff_01_local_packet",
+      "title": "Manager-authored kickoff study packet",
+      "kind": "LOCAL_STUDY_MATERIAL",
+      "availability": "AVAILABLE",
+      "retrieved": false,
+      "origin": "COURSE_MANAGER_AUTHORED",
+      "paths": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ]
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_93c577e81aadf0812b7db2eb6bae2148",
+      "title": "Recordings",
+      "availability": "UNAVAILABLE",
+      "reason": "The snapshot only says to refer to the course website and supplies no recording URLs or recording content.",
+      "unblock_condition": "A later authorized retrieval job locates accessible recordings, records their provenance and access terms, and validates their relationship to a course unit."
+    },
+    {
+      "material_id": "unit_df79d416dc430b329e962e71a0d7a75e",
+      "title": "Assignments",
+      "availability": "UNAVAILABLE",
+      "reason": "The snapshot only says to refer to the course website and includes no assignment text, files, or direct assignment URLs.",
+      "catalog_official_course_unit": true,
+      "qualification": "The source-derived flag does not make missing assignment content available.",
+      "unblock_condition": "A later authorized retrieval job obtains openly accessible assignment records, preserves provenance, and validates their official status and unit boundaries."
+    }
+  ],
+  "retrieval_policy": {
+    "external_retrieval_performed_for_this_packet": false,
+    "linked_does_not_mean_available": true,
+    "current_unit_requires_external_material": false,
+    "restricted_or_access_controlled_content": "DO_NOT_FETCH",
+    "later_job_requirements": [
+      "Use an explicitly authorized retriever and obey access controls and licensing.",
+      "Record the resolved URL, retrieval time, content hash, license or access status, and source relationship.",
+      "Classify each retrieved item before creating or changing a unit node.",
+      "Keep unavailable or failed retrieval records rather than representing them as course content."
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "evidence": [
+    "The complete workspace inventory contains only .factory-workspace, RUBRIC.md, SUBMISSION.md, NOTES.md, DEBUGGING_LOG.md, and JOB.md; the claimed ReliableBisection/ project and all of its deliverables are absent.",
+    "Independent path checks for ReliableBisection/, src/ReliableBisection.jl, and test/runtests.jl exited 2 with No such file or directory. This triggers the rubric's missing-project/core/test cap of 30 and makes the kickoff unit incomplete.",
+    "The documented offline test cannot be started from ReliableBisection/ because that directory is absent. The attempted wrapper also reported julia: command not found and exited 127.",
+    "The independent Julia version probe `julia --version` exited 127, so no Julia version or runtime result was observed.",
+    "The claims of six project paths, 13 testsets, a passing static token check, a seven-state API, invariant-preserving branches, and cached evaluations cannot be verified against source, tests, logs, or generated artifacts in the handed-off workspace.",
+    "Score breakdown: contract/result design 0/15; numerical reasoning/invariant preservation 0/25; bounded implementation 0/15; deterministic tests 0/25; reproducibility/bounded evidence 2/10; comprehension 10/10; total 12/100.",
+    "The comprehension prose is technically sound and appropriately distinguishes width from residual, avoids multiplication for sign checks, explains overflow-aware midpoint selection and representational stagnation, and limits its correctness claim. Those explanations do not substitute for the absent executable artifact or passing tests."
+  ],
+  "result": "FAIL",
+  "score": 12,
+  "transfer_gaps": [
+    "Transfer the complete ReliableBisection/ directory, including Project.toml, README.md, DESIGN.md, EXPERIMENT.md, src/ReliableBisection.jl, and test/runtests.jl.",
+    "Provide independently reproducible Julia-version and offline-test evidence from the declared supported environment, including command, captured output, and exit status.",
+    "Replace planned experiment rows with three measured runs at meaningfully different scales and record provenance and limitations."
+  ]
+}

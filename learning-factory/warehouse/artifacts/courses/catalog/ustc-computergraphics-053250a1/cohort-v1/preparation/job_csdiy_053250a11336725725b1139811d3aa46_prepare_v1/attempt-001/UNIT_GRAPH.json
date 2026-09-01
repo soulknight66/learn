@@ -1,0 +1,70 @@
+{
+  "course_id": "course_053250a11336725725b1139811d3aa46",
+  "nodes": [
+    {
+      "node_id": "managed_u1_testable_2d_transforms",
+      "sequence": 1,
+      "title": "Build a Testable 2D Transform Pipeline",
+      "kind": "study_unit",
+      "classification": "manager-authored bridge unit",
+      "official_course_unit": false,
+      "status": "READY",
+      "estimated_human_hours": {
+        "minimum": 6,
+        "maximum": 8
+      },
+      "entry_requirements": [
+        "Linear algebra",
+        "Algorithms",
+        "C++ programming"
+      ],
+      "exit_evidence": [
+        "Buildable transform2d implementation",
+        "Passing automated test suite",
+        "Design documentation",
+        "Comprehension responses",
+        "Independent validation record"
+      ]
+    }
+  ],
+  "edges": [],
+  "record_boundary": {
+    "policy": "Normalized records may be catalog resource links rather than official course units; they are classified for availability and are not promoted to graph nodes without retrieved content and evidence of unit boundaries.",
+    "graph_scope": "Only the bounded manager-authored kickoff is instantiated. The empty edge set is intentional because no second unit has been prepared.",
+    "normalized_record_ids_reviewed": [
+      "unit_d4bb26bbccd9524aff4ac68e8a955c1a",
+      "unit_5bbd425dc2a3bd0b73d5104890d17915",
+      "unit_366664ccaf209a32ff48a1ed1235120c",
+      "unit_150dd5c144ac9b12e32a8a5c4a1530ed",
+      "unit_8c0d611d7d303f6badbb9005d07ee3f2"
+    ],
+    "normalized_records_promoted_to_nodes": [],
+    "classification_notes": [
+      {
+        "record_id": "unit_d4bb26bbccd9524aff4ac68e8a955c1a",
+        "classification": "catalog overview input",
+        "reason_not_a_node": "The record is explicitly non-official and its referenced source file is not present in this attempt workspace."
+      },
+      {
+        "record_id": "unit_5bbd425dc2a3bd0b73d5104890d17915",
+        "classification": "linked course landing page",
+        "reason_not_a_node": "A landing-page URL is a resource lead, not a bounded unit. Its contents were not retrieved."
+      },
+      {
+        "record_id": "unit_366664ccaf209a32ff48a1ed1235120c",
+        "classification": "linked recording collection",
+        "reason_not_a_node": "No lecture index, titles, durations, or mapping to an official sequence was supplied or retrieved."
+      },
+      {
+        "record_id": "unit_150dd5c144ac9b12e32a8a5c4a1530ed",
+        "classification": "described optional reference",
+        "reason_not_a_node": "The textbook is only bibliographically described and the catalog says it is not prescribed."
+      },
+      {
+        "record_id": "unit_8c0d611d7d303f6badbb9005d07ee3f2",
+        "classification": "official assignment-collection lead",
+        "reason_not_a_node": "The metadata labels the assignment resource official, but the record aggregates nine homework items and one project without prompts or boundaries; it cannot honestly become one or ten unit nodes."
+      }
+    ]
+  }
+}

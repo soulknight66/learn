@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "course_id": "course_32937e7db86a2a4ecbc4a40a30d1eba9",
+  "nodes": [
+    {
+      "node_id": "kickoff_unit_001_sensor_pipeline",
+      "node_kind": "AUTHORED_STUDY_UNIT",
+      "title": "From ADC Counts to a Tested Sensor Pipeline",
+      "sequence": 1,
+      "status": "READY_FOR_STUDY",
+      "official_course_unit": false,
+      "required": true,
+      "estimated_hours": 8,
+      "dependencies": [],
+      "material_policy": "SELF_CONTAINED_LOCAL_INSTRUCTIONS",
+      "provenance_classification": "course-manager-authored kickoff"
+    }
+  ],
+  "edges": [],
+  "record_boundary": {
+    "statement": "Normalized resource records are catalog-derived inputs to classify; a record, ordering value, title, or link-group label is not by itself evidence of an official course unit, prerequisite, or dependency.",
+    "normalized_records_promoted_to_unit_nodes": false,
+    "classification_basis": "Snapshot metadata only; no linked content was retrieved or inspected.",
+    "empty_edge_reason": "Only one bounded authored unit is currently justified, and the catalog snapshot does not establish a trustworthy official unit sequence.",
+    "promotion_rule": "A later job may add a resource-derived unit only after material retrieval is permitted, provenance and availability are recorded, the content is decomposed to unit granularity, and its role and dependencies are validated.",
+    "input_record_classifications": [
+      {
+        "record_id": "unit_940a89d2e635c3fb3ff6a3b937fd60b2",
+        "catalog_title": "Catalog overview and resource guide",
+        "source_official_course_unit_flag": false,
+        "classification": "CATALOG_OVERVIEW_METADATA",
+        "graph_disposition": "NOT_A_UNIT_NODE",
+        "reason": "This record describes the catalog overview rather than an instructional unit."
+      },
+      {
+        "record_id": "unit_1853f48ee60ad140b967cff7baee7baa",
+        "catalog_title": "Course Website",
+        "source_official_course_unit_flag": false,
+        "classification": "EXTERNAL_WEBSITE_LINK_GROUP",
+        "graph_disposition": "NOT_A_UNIT_NODE",
+        "reason": "The aggregate link group provides discovery pointers but no verified instructional scope or sequence."
+      },
+      {
+        "record_id": "unit_a88c8ca70595c8fc8fb02b667127319f",
+        "catalog_title": "Recordings",
+        "source_official_course_unit_flag": false,
+        "classification": "EXTERNAL_RECORDING_COLLECTION_LINK_GROUP",
+        "graph_disposition": "NOT_A_UNIT_NODE",
+        "reason": "Two playlist pointers do not establish individual lecture units or dependencies."
+      },
+      {
+        "record_id": "unit_bfac866c50a32c7538a84cc75c943991",
+        "catalog_title": "Textbooks",
+        "source_official_course_unit_flag": false,
+        "classification": "EXTERNAL_NOTES_COLLECTION_LINK_GROUP",
+        "graph_disposition": "NOT_A_UNIT_NODE",
+        "reason": "The catalog label and anchor links do not expose or verify note-level units in this workspace."
+      },
+      {
+        "record_id": "unit_90ccf3ff589ce51f7dbca3f0501ce323",
+        "catalog_title": "Assignments",
+        "source_official_course_unit_flag": true,
+        "classification": "OFFICIAL_ASSIGNMENT_INDEX_LINK_GROUP_UNVERIFIED",
+        "graph_disposition": "DEFERRED_NOT_A_UNIT_NODE",
+        "reason": "The source flag is preserved, but this aggregate pair of assignment-index URLs has not been retrieved, decomposed, or validated as one official unit."
+      }
+    ]
+  }
+}

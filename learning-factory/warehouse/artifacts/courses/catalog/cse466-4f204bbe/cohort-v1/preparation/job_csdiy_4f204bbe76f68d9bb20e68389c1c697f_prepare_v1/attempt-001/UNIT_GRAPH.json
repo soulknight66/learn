@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "course_id": "course_4f204bbe76f68d9bb20e68389c1c697f",
+  "nodes": [
+    {
+      "id": "unit_8987eb919af31a108fd03980a66f910a",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Catalog overview and resource guide",
+      "classification": "CATALOG_OVERVIEW_INPUT",
+      "source_metadata_official_course_unit": false,
+      "admitted_as_official_course_unit": false,
+      "availability": "PROVIDED_IN_SNAPSHOT",
+      "required_for_kickoff": false
+    },
+    {
+      "id": "unit_8e9a30183b862023562e922e546f8aa6",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Course Website",
+      "classification": "UNVERIFIED_CATALOG_LINK",
+      "source_metadata_official_course_unit": false,
+      "admitted_as_official_course_unit": false,
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "required_for_kickoff": false
+    },
+    {
+      "id": "unit_99dc3acda5d62f86932771150fa6b088",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Recordings",
+      "classification": "DESCRIBED_RESOURCE_WITHOUT_DIRECT_LOCATION",
+      "source_metadata_official_course_unit": false,
+      "admitted_as_official_course_unit": false,
+      "availability": "DESCRIPTION_ONLY",
+      "required_for_kickoff": false
+    },
+    {
+      "id": "unit_3463963ed1c22c38fef4063f737eca66",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Textbooks",
+      "classification": "EXPLICITLY_ABSENT_RESOURCE",
+      "source_metadata_official_course_unit": false,
+      "admitted_as_official_course_unit": false,
+      "availability": "UNAVAILABLE_CATALOG_SAYS_NONE",
+      "required_for_kickoff": false
+    },
+    {
+      "id": "unit_c7a73f8a05d8ce87c80462880da5de86",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Assignments",
+      "classification": "OFFICIAL_FLAGGED_AGGREGATE_DESCRIPTOR_NOT_A_UNIT_MAP",
+      "source_metadata_official_course_unit": true,
+      "admitted_as_official_course_unit": false,
+      "availability": "AGGREGATE_DESCRIPTION_ONLY",
+      "required_for_kickoff": false,
+      "boundary_note": "The statement '13 modules (358 challenges)' describes a collection but supplies no module identities, order, dependencies, or challenge bodies."
+    },
+    {
+      "id": "unit_80ed70ca073e0f46792eaf9a87a29fb1",
+      "node_kind": "NORMALIZED_RESOURCE_RECORD",
+      "title": "Lectures on YouTube",
+      "classification": "UNVERIFIED_CHANNEL_LINK",
+      "source_metadata_official_course_unit": false,
+      "admitted_as_official_course_unit": false,
+      "availability": "LINK_ONLY_NOT_RETRIEVED",
+      "required_for_kickoff": false
+    },
+    {
+      "id": "manager_unit_01_linux_process_boundaries",
+      "node_kind": "STUDY_UNIT",
+      "title": "Linux Process Boundaries: Build and Test a Bounded Command Runner",
+      "classification": "MANAGER_AUTHORED_KICKOFF",
+      "source_metadata_official_course_unit": null,
+      "admitted_as_official_course_unit": false,
+      "availability": "BUNDLED_LEARNER_SAFE_SPECIFICATION",
+      "required_for_kickoff": true
+    },
+    {
+      "id": "activity_01_boundary_model",
+      "node_kind": "LEARNING_ACTIVITY",
+      "title": "Define the process trust boundary and execution states",
+      "classification": "KICKOFF_ACTIVITY",
+      "required_for_kickoff": true
+    },
+    {
+      "id": "activity_02_implementation",
+      "node_kind": "LEARNING_ACTIVITY",
+      "title": "Implement the bounded command runner",
+      "classification": "KICKOFF_ACTIVITY",
+      "required_for_kickoff": true
+    },
+    {
+      "id": "activity_03_verification",
+      "node_kind": "LEARNING_ACTIVITY",
+      "title": "Test with harmless local fixtures and capture evidence",
+      "classification": "KICKOFF_ACTIVITY",
+      "required_for_kickoff": true
+    },
+    {
+      "id": "activity_04_explanation",
+      "node_kind": "LEARNING_ACTIVITY",
+      "title": "Explain design decisions and answer comprehension prompts",
+      "classification": "KICKOFF_ACTIVITY",
+      "required_for_kickoff": true
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_8987eb919af31a108fd03980a66f910a",
+      "to": "manager_unit_01_linux_process_boundaries",
+      "relation": "INFORMS_TOPIC_SELECTION",
+      "required": false
+    },
+    {
+      "from": "unit_c7a73f8a05d8ce87c80462880da5de86",
+      "to": "manager_unit_01_linux_process_boundaries",
+      "relation": "CONTEXTUALIZES_CHALLENGE_BASED_PEDAGOGY",
+      "required": false
+    },
+    {
+      "from": "manager_unit_01_linux_process_boundaries",
+      "to": "activity_01_boundary_model",
+      "relation": "CONTAINS",
+      "required": true
+    },
+    {
+      "from": "manager_unit_01_linux_process_boundaries",
+      "to": "activity_02_implementation",
+      "relation": "CONTAINS",
+      "required": true
+    },
+    {
+      "from": "manager_unit_01_linux_process_boundaries",
+      "to": "activity_03_verification",
+      "relation": "CONTAINS",
+      "required": true
+    },
+    {
+      "from": "manager_unit_01_linux_process_boundaries",
+      "to": "activity_04_explanation",
+      "relation": "CONTAINS",
+      "required": true
+    },
+    {
+      "from": "activity_01_boundary_model",
+      "to": "activity_02_implementation",
+      "relation": "PRECEDES",
+      "required": true
+    },
+    {
+      "from": "activity_02_implementation",
+      "to": "activity_03_verification",
+      "relation": "PRECEDES",
+      "required": true
+    },
+    {
+      "from": "activity_03_verification",
+      "to": "activity_04_explanation",
+      "relation": "PRECEDES",
+      "required": true
+    }
+  ],
+  "record_boundary": "Normalized resource records are catalog inputs to classify, not automatic official course units. A catalog official-unit flag on an aggregate assignment record does not supply or verify the 13 underlying modules. Only later, independently sourced and provenance-recorded evidence may admit official units; this graph admits none and adds one clearly labeled manager-authored kickoff.",
+  "graph_scope": "This graph ends at the four activities in the kickoff unit. It neither reconstructs the reported 13 modules nor represents whole-course progress."
+}

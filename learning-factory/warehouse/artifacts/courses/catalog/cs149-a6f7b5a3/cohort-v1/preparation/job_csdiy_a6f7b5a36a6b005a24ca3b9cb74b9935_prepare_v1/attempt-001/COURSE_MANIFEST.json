@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "course_id": "course_a6f7b5a36a6b005a24ca3b9cb74b9935",
+  "title": "CMU 15-418/Stanford CS149: Parallel Computing",
+  "status": "KICKOFF_READY_NOT_COURSE_COMPLETE",
+  "unit": {
+    "unit_id": "kickoff_parallel_histogram_v1",
+    "title": "Trustworthy Parallelism: From Sequential Oracle to Measured C++ Histogram",
+    "position": 1,
+    "scope_status": "BOUNDED_FIRST_STUDY_UNIT",
+    "origin": "course_manager_authored",
+    "official_course_unit": false,
+    "estimated_human_hours": 8,
+    "audience": "A strong algorithms student beginning deliberate software-engineering practice",
+    "summary": "Build, test, and measure a deterministic byte-histogram program with a sequential reference and a race-free std::thread implementation. The emphasis is trustworthy evidence: explicit contracts, automated tests, reproducible benchmarks, and qualified performance claims.",
+    "learning_objectives": [
+      "Translate a work-partitioning idea into explicit interfaces, invariants, and failure behavior.",
+      "Use a sequential implementation as an oracle for a concurrent implementation.",
+      "Reason about work, span, synchronization, data races, and parallel overhead.",
+      "Build deterministic automated tests that cover boundary cases and multiple thread counts.",
+      "Collect reproducible timing data and separate observations from explanations."
+    ],
+    "assumed_background": {
+      "catalog_reported": [
+        "Computer Architecture",
+        "C"
+      ],
+      "source_metadata_reported": [
+        "Computer Architecture",
+        "C++"
+      ],
+      "unit_requirement": "Working C++17 knowledge, basic computer architecture, asymptotic analysis, and command-line build tools",
+      "catalog_conflict_note": "The normalized course prerequisites say C, while the raw catalog field and programming-language field say C++; this unit requires C++ and does not silently resolve the source discrepancy."
+    },
+    "required_materials": [
+      {
+        "material_id": "manager_authored_kickoff_packet",
+        "availability": "AVAILABLE_LOCAL",
+        "paths": [
+          "student_safe/COURSE_BRIEF.md",
+          "student_safe/STUDY_TASK.md",
+          "student_safe/COMPREHENSION.md"
+        ]
+      }
+    ],
+    "deliverables": [
+      "A buildable C++17 project with sequential and parallel histogram implementations",
+      "A deterministic automated test suite and documented build/test commands",
+      "A short design note stating contracts, decomposition, and concurrency risks",
+      "Raw benchmark data plus a concise analysis that qualifies all performance claims",
+      "Written responses to the learner-safe comprehension prompts"
+    ],
+    "out_of_scope": [
+      "CUDA, MPI, OpenMP, Spark, distributed execution, and GPU optimization",
+      "Reproduction of any Stanford CS149 or CMU 15-418 assignment",
+      "Expansion of catalog links into an official lecture or assignment sequence",
+      "Any claim that this kickoff completes the cataloged course"
+    ]
+  },
+  "completion_policy": {
+    "unit_completion_label": "KICKOFF_UNIT_VALIDATED",
+    "unit_completion_requires": [
+      "Every required deliverable is present in the learner attempt.",
+      "A harness-controlled validator can build the project from a clean workspace and run the documented tests without network access.",
+      "The parallel result exactly matches the sequential oracle over validator-selected normal and boundary cases.",
+      "Benchmark evidence is reproducible enough to support only the claims actually made.",
+      "The independent examiner rubric is applied to produced evidence, not to the learner's prose assertion of completion."
+    ],
+    "promotion_authority": "Only a validator controlled by the worker harness may promote the unit state.",
+    "course_completion_from_this_unit": false,
+    "course_completion_rule": "Validation of this unit proves only completion of the bounded kickoff. The course remains incomplete until later, separately sourced units are retrieved, classified, assigned, and independently validated.",
+    "partial_or_failed_evidence": "Preserve submitted artifacts, test logs, benchmark data, and validation labels for later diagnosis or retry."
+  },
+  "provenance": {
+    "classification": "manager-authored-from-catalog-snapshot",
+    "catalog_snapshot_schema_version": 1,
+    "catalog_status": "DISCOVERED",
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_file": "docs/并行与分布式系统/CS149.en.md",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "catalog_content_sha256": "7a6a7e4cb20b3ca279ca952fd295da4fe1e025e90587e763803375cf619ffdaa",
+    "adapter": "csdiy",
+    "extractor_version": "1.1",
+    "source_license": "MIT",
+    "derivation": "The catalog description establishes the parallel-computing topic, C++ practice, advanced difficulty, and theory/practice emphasis. The kickoff exercise and its ordering are course-manager decisions, not copied official course structure.",
+    "retrieval_note": "No external URL or source repository was fetched while preparing this unit."
+  }
+}

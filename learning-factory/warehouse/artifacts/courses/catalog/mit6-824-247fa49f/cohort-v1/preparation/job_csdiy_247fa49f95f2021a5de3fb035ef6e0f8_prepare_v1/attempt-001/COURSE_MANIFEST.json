@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "course_id": "course_247fa49f95f2021a5de3fb035ef6e0f8",
+  "title": "MIT6.824: Distributed System",
+  "status": "GENERATED_CANDIDATE",
+  "validation_labels": [
+    "GENERATED_CANDIDATE",
+    "BOUNDED_FIRST_UNIT",
+    "NOT_OFFICIAL_COURSE_COMPLETION"
+  ],
+  "unit": {
+    "unit_id": "kickoff_retry_safe_kv_contract_v1",
+    "title": "Retry-Safe Key/Value Operations: Contract, Traces, and Evidence",
+    "position": "BOUNDED_FIRST_UNIT",
+    "classification": "MANAGER_AUTHORED_KICKOFF",
+    "official_course_unit": false,
+    "estimated_human_hours": 6,
+    "hard_timebox_hours": 8,
+    "learner_profile": "Strong in algorithms; deliberately practicing software contracts, failure modeling, deterministic testing, observability, and evidence-based debugging.",
+    "learning_outcomes": [
+      "Turn an informal distributed-service goal into an explicit failure model and client-visible contract.",
+      "Specify retry-safe state transitions for lost, duplicated, delayed, and reordered messages.",
+      "Derive deterministic trace tests and observability from named safety invariants.",
+      "Keep claims within the modeled crash, persistence, concurrency, and material boundaries.",
+      "Record hypotheses, counterexamples, revisions, and reproducible evidence."
+    ],
+    "learner_outputs": [
+      "notes.md",
+      "submission.md",
+      "debugging-log.md"
+    ],
+    "included": [
+      "A self-contained fictional key/value service scenario",
+      "Contract and state-transition design",
+      "Deterministic event-trace analysis and test planning",
+      "A bounded debugging record and production-gap review",
+      "Unanswered comprehension prompts"
+    ],
+    "excluded": [
+      "Official MIT lectures, papers, labs, assignment specifications, starter code, and tests",
+      "Raft, replication, leader election, log agreement, membership change, and sharding",
+      "Network or repository retrieval",
+      "A claim of official credit or whole-course completion"
+    ]
+  },
+  "completion_policy": {
+    "scope": "THIS_GENERATED_KICKOFF_UNIT_ONLY",
+    "candidate_files_are_completion_evidence": false,
+    "learner_self_report_is_completion_evidence": false,
+    "required_evidence": [
+      "All three learner outputs are present and internally consistent.",
+      "The submission contains checkable contracts, traces, test oracles, and bounded claims.",
+      "The debugging log records reproducible hypothesis-experiment-observation-revision cycles.",
+      "An independent examiner evaluates the preserved learner outputs against examiner_only/RUBRIC.md.",
+      "The worker harness validates the examiner's structured result."
+    ],
+    "unit_pass_effect": "Records evidence for this kickoff only.",
+    "course_completion_effect": "NONE",
+    "official_assignment_credit_effect": "NONE",
+    "blocked_or_unretrieved_material_counts_as_complete": false,
+    "promotion_authority": "WORKER_HARNESS_CONTROLLED_VALIDATOR",
+    "allowed_claim_after_pass": "Passed the locally authored bounded kickoff unit.",
+    "forbidden_claims": [
+      "Completed MIT6.824",
+      "Completed an official MIT6.824 lecture, lab, project, or assignment",
+      "Implemented or validated Raft",
+      "Validated behavior outside the stated model"
+    ]
+  },
+  "provenance": {
+    "classification": "PINNED_CATALOG_METADATA_PLUS_MANAGER_AUTHORED_GENERATED_CANDIDATE",
+    "catalog_snapshot_sha256": "2062a6482ecf6100069b894518873567b5188fbffa0fe4896eac94b7498643c5",
+    "catalog": {
+      "catalog_status": "DISCOVERED",
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "source_type": "course_catalog",
+      "source_name": "CSDIY",
+      "source_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/cs-self-learning",
+      "source_upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git",
+      "source_license": "MIT",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/并行与分布式系统/MIT6.824.en.md",
+      "source_content_sha256": "40486a7a4c0f3e0ec307bf0650c582d8433c50d6a68ba8cc92059b1374223a42",
+      "adapter": "csdiy",
+      "extractor_version": "1.1"
+    },
+    "source_derived_fields": [
+      "course_id",
+      "title",
+      "institution",
+      "catalog_status",
+      "estimated whole-course hours",
+      "reported prerequisites",
+      "reported Go language context",
+      "resource locators and normalized resource records"
+    ],
+    "manager_authored_fields": [
+      "unit scope and sequence",
+      "learning outcomes",
+      "fictional CourierKV scenario",
+      "study tasks and comprehension prompts",
+      "completion policy",
+      "examiner rubric"
+    ],
+    "generated_artifact_paths": [
+      "COURSE_MANIFEST.json",
+      "UNIT_GRAPH.json",
+      "MATERIAL_AVAILABILITY.json",
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md",
+      "examiner_only/RUBRIC.md"
+    ],
+    "artifact_set_validation_label": "GENERATED_CANDIDATE",
+    "external_content_retrieved": false,
+    "official_endorsement_or_equivalence_claimed": false,
+    "source_ambiguities": [
+      {
+        "issue": "The description associates MIT6.824 with MIT 6.S081 while the course identifier, title, topic, and schedule locator identify a distributed-systems course.",
+        "handling": "Preserved as unresolved catalog ambiguity; it is not used to infer official identity, equivalence, sequence, or credit."
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "allowed_entries": [
+    {
+      "access": "read-only",
+      "kind": "file",
+      "path": "README.md"
+    },
+    {
+      "access": "read-only",
+      "kind": "file",
+      "path": "AGENTS.md"
+    },
+    {
+      "access": "read-only",
+      "kind": "file",
+      "path": "MANIFEST.yaml"
+    },
+    {
+      "access": "read-only",
+      "kind": "file",
+      "path": "REQUIREMENTS.md"
+    },
+    {
+      "access": "read-only",
+      "kind": "file",
+      "path": "CONCEPTS.md"
+    },
+    {
+      "access": "read-only",
+      "kind": "file",
+      "path": "DESIGN_QUESTIONS.md"
+    },
+    {
+      "access": "read-write",
+      "kind": "directory",
+      "path": "starter"
+    },
+    {
+      "access": "read-only",
+      "kind": "directory",
+      "path": "public_tests"
+    },
+    {
+      "access": "read-only",
+      "kind": "directory",
+      "path": "environment"
+    }
+  ],
+  "denied_prefixes": [
+    "sealed",
+    "adversarial",
+    "debugging",
+    "review_exercises",
+    "benchmarks",
+    "PROVENANCE.json",
+    "LICENSE_BOUNDARY.md",
+    "VALIDATION.md"
+  ],
+  "runtime_boundary": {
+    "learner_mount": "/workspace",
+    "source_pack_mounted": false
+  },
+  "schema_version": 1
+}

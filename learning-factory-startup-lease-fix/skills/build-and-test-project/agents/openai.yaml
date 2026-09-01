@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build and Test Project"
+  short_description: "Build, test, and capture reproducible evidence"
+  default_prompt: "Use $build-and-test-project to build this project, run its authoritative tests, and record reproducible evidence."

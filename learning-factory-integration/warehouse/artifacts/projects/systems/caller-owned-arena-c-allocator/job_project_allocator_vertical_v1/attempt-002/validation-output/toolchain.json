@@ -1,0 +1,29 @@
+{
+  "binary_count": 16,
+  "compiler": "gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-22)",
+  "compiler_path": "/bin/gcc",
+  "network_used": false,
+  "platform": "Linux-4.18.0-553.el8_10.x86_64-x86_64-with-glibc2.28",
+  "sanitizer": {
+    "available": false,
+    "probe": "compile and execute address+undefined sanitizer fixture",
+    "reason": "compiler probe rejected address/undefined sanitizers",
+    "requested_architectures": [
+      "reference",
+      "best-fit",
+      "segregated-bins"
+    ]
+  },
+  "schema_version": 1,
+  "strict_flags": [
+    "-std=c11",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-pedantic",
+    "-O2",
+    "-fno-omit-frame-pointer",
+    "-I",
+    "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_project_allocator_vertical_v1/attempt-002/include"
+  ]
+}

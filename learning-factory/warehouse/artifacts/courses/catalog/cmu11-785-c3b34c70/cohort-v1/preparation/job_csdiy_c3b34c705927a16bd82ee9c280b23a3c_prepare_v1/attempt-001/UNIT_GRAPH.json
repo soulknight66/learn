@@ -1,0 +1,142 @@
+{
+  "course_id": "course_c3b34c705927a16bd82ee9c280b23a3c",
+  "nodes": [
+    {
+      "id": "record:unit_0868972eafdc337762cac70887351cb4",
+      "node_type": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "classification": "CATALOG_METADATA",
+      "availability": "PRESENT_IN_SNAPSHOT",
+      "catalog_official_course_unit_flag": false,
+      "schedulable": false
+    },
+    {
+      "id": "record:unit_242ce1362298afbd37257346c8c3245b",
+      "node_type": "normalized_resource_record",
+      "title": "Course Website",
+      "classification": "EXTERNAL_INDEX_LINK",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "catalog_official_course_unit_flag": false,
+      "schedulable": false
+    },
+    {
+      "id": "record:unit_b5d73819653ba27c169165dcd58994ea",
+      "node_type": "normalized_resource_record",
+      "title": "Recordings",
+      "classification": "RESOURCE_CATEGORY_DESCRIPTION",
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "catalog_official_course_unit_flag": false,
+      "schedulable": false
+    },
+    {
+      "id": "record:unit_36fb91464d8237b2a303681884cca53e",
+      "node_type": "normalized_resource_record",
+      "title": "Textbooks",
+      "classification": "RESOURCE_CATEGORY_DESCRIPTION",
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "catalog_official_course_unit_flag": false,
+      "schedulable": false
+    },
+    {
+      "id": "record:unit_d893e371e27ae1f2d8c52c8fd31ed3f6",
+      "node_type": "normalized_resource_record",
+      "title": "Assignments",
+      "classification": "OFFICIAL_RESOURCE_CATEGORY_DESCRIPTION",
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "catalog_official_course_unit_flag": true,
+      "schedulable": false,
+      "note": "The source flag describes the assignment category; no individual assignment identity, content, or dependency was supplied."
+    },
+    {
+      "id": "unit_kickoff_01_tested_mlp",
+      "node_type": "manager_authored_study_unit",
+      "title": "From Equations to a Tested MLP Training Step",
+      "status": "READY_FOR_STUDY",
+      "official_course_unit": false,
+      "bounded": true
+    },
+    {
+      "id": "activity_contract_and_derivation",
+      "node_type": "required_activity",
+      "parent_unit_id": "unit_kickoff_01_tested_mlp",
+      "title": "Specify tensor contracts and derive gradients"
+    },
+    {
+      "id": "activity_implementation",
+      "node_type": "required_activity",
+      "parent_unit_id": "unit_kickoff_01_tested_mlp",
+      "title": "Implement the model and SGD update"
+    },
+    {
+      "id": "activity_verification",
+      "node_type": "required_activity",
+      "parent_unit_id": "unit_kickoff_01_tested_mlp",
+      "title": "Build deterministic correctness and robustness tests"
+    },
+    {
+      "id": "activity_experiment_and_reflection",
+      "node_type": "required_activity",
+      "parent_unit_id": "unit_kickoff_01_tested_mlp",
+      "title": "Run the fixed experiment and report bounded conclusions"
+    }
+  ],
+  "edges": [
+    {
+      "from": "record:unit_0868972eafdc337762cac70887351cb4",
+      "to": "unit_kickoff_01_tested_mlp",
+      "relation": "CATALOG_CONTEXT_INFORMS",
+      "completion_dependency": false
+    },
+    {
+      "from": "unit_kickoff_01_tested_mlp",
+      "to": "activity_contract_and_derivation",
+      "relation": "CONTAINS"
+    },
+    {
+      "from": "unit_kickoff_01_tested_mlp",
+      "to": "activity_implementation",
+      "relation": "CONTAINS"
+    },
+    {
+      "from": "unit_kickoff_01_tested_mlp",
+      "to": "activity_verification",
+      "relation": "CONTAINS"
+    },
+    {
+      "from": "unit_kickoff_01_tested_mlp",
+      "to": "activity_experiment_and_reflection",
+      "relation": "CONTAINS"
+    },
+    {
+      "from": "activity_contract_and_derivation",
+      "to": "activity_implementation",
+      "relation": "PRECEDES"
+    },
+    {
+      "from": "activity_implementation",
+      "to": "activity_verification",
+      "relation": "PRECEDES"
+    },
+    {
+      "from": "activity_verification",
+      "to": "activity_experiment_and_reflection",
+      "relation": "PRECEDES"
+    }
+  ],
+  "record_boundary": {
+    "statement": "Normalized records are catalog inputs to classify, not automatically official or schedulable course units.",
+    "input_record_ids": [
+      "unit_0868972eafdc337762cac70887351cb4",
+      "unit_242ce1362298afbd37257346c8c3245b",
+      "unit_b5d73819653ba27c169165dcd58994ea",
+      "unit_36fb91464d8237b2a303681884cca53e",
+      "unit_d893e371e27ae1f2d8c52c8fd31ed3f6"
+    ],
+    "managed_unit_ids": [
+      "unit_kickoff_01_tested_mlp"
+    ],
+    "classification_rule": "A link or category description remains a resource record until its identity, content, availability, and dependencies are independently verified.",
+    "officiality_rule": "A source metadata flag is retained but does not by itself promote a broad resource-category record into an official unit.",
+    "completion_rule": "Resource-record nodes do not count toward kickoff-unit or whole-course completion."
+  }
+}

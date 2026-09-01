@@ -1,0 +1,6 @@
+Subject: [PATCH] Cache GET responses to reduce handler latency
+
+Add `ResponseCache`, a lock-protected in-memory cache in front of the application. Successful
+GET results are keyed by request target, avoiding duplicate calls for common API reads.
+
+See `proposed/cache_layer.py` for the reviewable implementation.

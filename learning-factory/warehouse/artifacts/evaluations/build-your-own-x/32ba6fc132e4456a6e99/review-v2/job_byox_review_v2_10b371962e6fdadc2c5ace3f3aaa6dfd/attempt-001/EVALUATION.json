@@ -1,0 +1,33 @@
+{
+  "builder_job_id": "job_byox_build_v1_832b16fa07e1811e16d1d5036ec84a57",
+  "checks_run": [
+    "Inventoried and hashed CANDIDATE before and after review; checked modes and entry types.",
+    "Inspected learner-facing requirements, starter code, public tests, sealed reference code/tests, provenance, license boundary, validation record, exercises, and productionization material.",
+    "Ran both supplied shell scripts through sh -n with 10-second bounds; both parsed successfully.",
+    "Ran the documented structural-verifier command with PATH python3 (3.6.8), where it failed, and with an explicit Python 3.11.5 interpreter, where all configured checks passed.",
+    "Attempted both supplied Java runners with 30-second bounds and a reviewer-writable TMPDIR; both stopped at missing javac with exit 127.",
+    "Performed an independent read-only artifact audit for strict JSON consistency, file types, archived Java products, selected credential signatures, Java import boundaries, learner-visible Java paths, and manifest/provenance cross-fields.",
+    "Compared all 19 starter constructor/method signatures with the sealed reference and manually traced append, read, failure, election, and recovery logic against REQUIREMENTS.md.",
+    "Checked public-test dispatch, sealed-material placement, generated-material licensing terms, and accessibility of the recorded catalog source."
+  ],
+  "evidence": [
+    "CANDIDATE has 38 regular files, no symlinks or irregular entries, all files mode 0444, no archived .class/.jar/.war products, and aggregate content digest 9d6c0ebb08eed2a36b5f9143cbe8678edfaf25847086d4b1d35ebf77114655d9 before and after review.",
+    "The manifest honestly remains status GENERATED with labels [GENERATED, PARTIAL], independent_validation REQUIRED, and productionized false; it claims none of BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED.",
+    "With Python 3.11.5, sealed/validation/verify_artifact.py exited 0 and reported 23 required files, strict manifest/provenance fingerprints, 0 credential hits, 0 archived Java products, and 8 lexically checked Java sources.",
+    "The documented python3 verifier command is not reproducible on this review host's Python 3.6.8: it exits 1 with 'SyntaxError: future feature annotations is not defined'. No Python minimum is documented.",
+    "Both Java runners parse as shell, but java and javac are unavailable. With a writable TMPDIR, public_tests/run.sh and sealed/reference_tests/run.sh each exited 127 at javac; no compilation or Java test case executed.",
+    "Independent static comparison found no missing reference counterpart for any starter signature and no non-java.* imports. Manual review found no definite contract violation in states reachable through the public API, but static inspection is not executable correctness evidence.",
+    "README.md promises a current public-test group per milestone, while ContractTests.main unconditionally runs all 10 cases and implements no argument or milestone dispatch.",
+    "Solution code, reference tests, and answer keys are segregated under sealed paths, but they are present and readable in the submitted tree; no learner-view export or transfer-isolation evidence was supplied.",
+    "Manifest/provenance project, source, commit, and snapshot fields agree internally. The boundary records the linked resource as NOASSERTION and disclaims copying, but generated material has no explicit license grant or SPDX identifier."
+  ],
+  "limitations": [
+    "No Java runtime, compiler, alternate JVM toolchain, or installed Java parser is available, so compilation, public/reference execution, independent adversarial traces, and concurrency checks are inconclusive.",
+    "The default /tmp directory is absent in this sandbox. Exact runner commands first failed in mktemp; setting TMPDIR to the reviewer workspace isolated that environmental issue and exposed the missing javac blocker.",
+    "The recorded catalog checkout is not readable from this workspace and network access is restricted, so source-commit, license-evidence, and non-copying assertions could not be compared with upstream material.",
+    "No harness-owned learner-view export is present, so exclusion of sealed material from an actual student view and TRANSFER_VERIFIED status cannot be established.",
+    "No independent fuzz, benchmark, production, security, or deployment validation was performed; the candidate appropriately makes no such claims."
+  ],
+  "project_id": "project_7fc5b6faee61f34679ec47f9c4964256",
+  "verdict": "REVISE"
+}

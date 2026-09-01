@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "course_id": "course_e5fe902f4a8e5c0904abc88bc017e7b8",
+  "materials": [
+    {
+      "material_id": "catalog_snapshot_overview",
+      "title": "Catalog overview metadata",
+      "kind": "CATALOG_METADATA",
+      "availability": "AVAILABLE_IN_SUPPLIED_SNAPSHOT",
+      "local_content": "METADATA_ONLY",
+      "official_course_unit": false,
+      "source_reference": "docs/电子基础/signal.en.md",
+      "permitted_use_now": "Provenance, high-level scope, prerequisites, and resource discovery"
+    },
+    {
+      "material_id": "ee120_fa19_website",
+      "title": "EE120 Fall 2019 course website",
+      "kind": "EXTERNAL_WEBSITE_LOCATOR",
+      "availability": "LINKED_NOT_RETRIEVED_OR_VERIFIED",
+      "local_content": "NONE",
+      "official_course_unit": false,
+      "urls": [
+        "https://inst.eecs.berkeley.edu/~ee120/fa19/"
+      ],
+      "source_record_id": "unit_b1f865aedc959a3393d423bfa18c0f0e",
+      "permitted_use_now": "Locator only"
+    },
+    {
+      "material_id": "catalog_linked_github_repository",
+      "title": "PKUFlyingPig/UCB-EE120 repository",
+      "kind": "EXTERNAL_REPOSITORY_LOCATOR",
+      "availability": "LINKED_NOT_RETRIEVED_OR_VERIFIED",
+      "local_content": "NONE",
+      "official_course_unit": false,
+      "ownership_or_official_status": "NOT_VERIFIED",
+      "urls": [
+        "https://github.com/PKUFlyingPig/UCB-EE120"
+      ],
+      "source_record_id": null,
+      "source_note": "The URL occurs in course.source_metadata.resource_urls, not as a normalized unit record.",
+      "permitted_use_now": "Locator only"
+    },
+    {
+      "material_id": "recordings_pointer",
+      "title": "Recordings",
+      "kind": "UNRESOLVED_LECTURE_POINTER",
+      "availability": "DESCRIBED_ONLY_UNAVAILABLE",
+      "local_content": "NONE",
+      "official_course_unit": false,
+      "urls": [],
+      "source_record_id": "unit_2edbdac8cb6e8d462f3c69ac2de0c629",
+      "permitted_use_now": "None; do not infer recording contents"
+    },
+    {
+      "material_id": "assignments_pointer",
+      "title": "Assignments",
+      "kind": "UNRESOLVED_ASSIGNMENT_POINTER",
+      "availability": "DESCRIBED_ONLY_UNAVAILABLE",
+      "local_content": "NONE",
+      "catalog_claims_official_course_unit": true,
+      "accepted_as_identified_official_unit": false,
+      "urls": [],
+      "source_record_id": "unit_6c0892ce230ccc2ccda96fd28fbf1c02",
+      "permitted_use_now": "None; do not infer assignment requirements or solutions"
+    },
+    {
+      "material_id": "manager_authored_kickoff_packet",
+      "title": "Finite Discrete-Time Signals and Reliable Convolution Software",
+      "kind": "LOCAL_MANAGER_AUTHORED_STUDY_PACKET",
+      "availability": "AVAILABLE_LOCAL",
+      "local_content": "COMPLETE_FOR_BOUNDED_KICKOFF",
+      "official_course_unit": false,
+      "paths": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md"
+      ],
+      "permitted_use_now": "Kickoff unit only"
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "recordings_pointer",
+      "reason_code": "NO_DIRECT_RESOURCE_LOCATOR",
+      "reason": "The catalog says only 'refer to the course website'; no recording URL, file, or verified index was supplied.",
+      "needed_to_unblock": "An authorized retrieval job must locate, identify, and verify each recording and record access and provenance evidence."
+    },
+    {
+      "material_id": "assignments_pointer",
+      "reason_code": "NO_IDENTIFIED_ASSIGNMENT_CONTENT",
+      "reason": "The catalog says only 'refer to the course website'; no assignment title, specification, file, or direct URL was supplied.",
+      "needed_to_unblock": "An authorized retrieval job must identify each assignment, verify its official status and access terms, and store provenance and integrity evidence."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": "NO_NETWORK_OR_RESTRICTED_CONTENT_RETRIEVAL_PERFORMED",
+    "linked_does_not_mean_available": true,
+    "future_authorized_retrieval": [
+      "Start only from the catalog-provided HTTPS locators and record the final resolved URL.",
+      "Retrieve only publicly accessible material within the later job's explicit authorization; do not bypass authentication, paywalls, robots controls, or other access restrictions.",
+      "Record source identity, retrieval time in durable job state, content hash, media type, license or access terms when known, and the retrieval outcome.",
+      "Scan and classify retrieved content before exposing it to learners; exclude secrets, solutions, hidden graders, sealed references, and other learners' files.",
+      "Keep DISCOVERED, LINKED, RETRIEVED, VERIFIED, and VALIDATED as distinct states. A locator or prose description must never be promoted directly to a course unit.",
+      "If a resource is missing, moved, ambiguous, or restricted, retain the failed retrieval evidence and keep it blocked."
+    ],
+    "expansion_gate": "A later course-manager job may add a unit only after material identity, learner safety, provenance, availability, and curricular dependency have deterministic evidence."
+  },
+  "provenance": {
+    "classification": "AVAILABILITY_CLASSIFICATION_FROM_SUPPLIED_SNAPSHOT",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_content_sha256": "a60116b62d06ad973233ce92c16c407ac6228533a9fcb4da6cd3fa081c1af904",
+    "network_retrieval_performed": false
+  },
+  "validation": {
+    "label": "CATALOG_CLASSIFIED_EXTERNAL_CONTENT_NOT_VERIFIED",
+    "learner_packet_label": "MANAGER_AUTHORED_NOT_OFFICIAL_EE120_MATERIAL"
+  }
+}

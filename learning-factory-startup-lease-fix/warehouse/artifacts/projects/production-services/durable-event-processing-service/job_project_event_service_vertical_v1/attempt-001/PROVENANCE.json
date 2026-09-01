@@ -1,0 +1,40 @@
+{
+  "catalog_context": {
+    "catalog_sources": [
+      {
+        "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989",
+        "license": "CC0-1.0",
+        "name": "Build Your Own X",
+        "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+        "upstream_url": "git@github.com:codecrafters-io/build-your-own-x.git"
+      },
+      {
+        "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+        "license": "MIT",
+        "name": "CSDIY",
+        "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+        "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git"
+      }
+    ],
+    "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989 + adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "derivation": "agent-generated cross-source synthesis",
+    "job_id": "job_project_event_service_vertical_v1",
+    "license": "CC0-1.0 + MIT",
+    "lookup_status": "catalog-linked source records",
+    "provenance_status": "CATALOG_LINKED",
+    "source_name": "Build Your Own X + CSDIY",
+    "source_reference": "agent-generated cross-source production-service synthesis",
+    "upstream_url": "git@github.com:codecrafters-io/build-your-own-x.git + git@github.com:PKUFlyingPig/cs-self-learning.git"
+  },
+  "content_boundary": {
+    "agent_generated": "all requirements, code, tests, exercises, and prose in this pack",
+    "inferred": "difficulty, sequencing, and production relevance",
+    "measured": "benchmarks/results/smoke.json only after benchmark execution",
+    "source_derived": "catalog topic relationships and provenance metadata only"
+  },
+  "derivation": "agent-generated cross-source synthesis",
+  "external_dependencies": [],
+  "network_used_during_generation": false,
+  "schema_version": 1,
+  "tutorial_code_copied": false
+}

@@ -1,0 +1,146 @@
+{
+  "course_id": "course_0729adcee037deb352528b85cd365b36",
+  "materials": [
+    {
+      "material_id": "local_course_brief",
+      "title": "Course Brief",
+      "kind": "learner_brief",
+      "origin": "manager-authored",
+      "path": "student_safe/COURSE_BRIEF.md",
+      "availability": "LOCAL_READY",
+      "required_for_kickoff": true
+    },
+    {
+      "material_id": "local_study_task",
+      "title": "Bounded Byte Stream Study Task",
+      "kind": "assignment_specification",
+      "origin": "manager-authored",
+      "path": "student_safe/STUDY_TASK.md",
+      "availability": "LOCAL_READY",
+      "required_for_kickoff": true
+    },
+    {
+      "material_id": "local_comprehension",
+      "title": "Comprehension Prompts",
+      "kind": "question_set",
+      "origin": "manager-authored",
+      "path": "student_safe/COMPREHENSION.md",
+      "availability": "LOCAL_READY",
+      "required_for_kickoff": true
+    },
+    {
+      "material_id": "unit_57d9ccf5740b0f04f6a56441f012aa0a",
+      "title": "Catalog overview and resource guide",
+      "kind": "catalog_overview",
+      "origin": "source-derived normalized record",
+      "source_reference": "docs/计算机网络/CS144.en.md",
+      "catalog_availability": "NOT_STATED",
+      "availability": "SNAPSHOT_METADATA_ONLY",
+      "snapshot_official_course_unit": false,
+      "classified_as_official_unit": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "unit_a6f60f011ba0585ad9bde4f05e0da1b4",
+      "title": "Course Website",
+      "kind": "external_website",
+      "origin": "source-derived normalized record",
+      "source_reference": "docs/计算机网络/CS144.en.md#L47",
+      "urls": [
+        "https://cs144.github.io/"
+      ],
+      "catalog_availability": "LINKED",
+      "availability": "LINKED_NOT_RETRIEVED_OR_VERIFIED",
+      "snapshot_official_course_unit": false,
+      "classified_as_official_unit": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "unit_35db54d6a6770d345e6c3986e96e4418",
+      "title": "Video",
+      "kind": "external_video_playlist",
+      "origin": "source-derived normalized record",
+      "source_reference": "docs/计算机网络/CS144.en.md#L48",
+      "urls": [
+        "https://www.youtube.com/watch?v=r2WZNaFyrbQ&list=PL6RdenZrxrw9inR-IJv-erlOKRHjymxMN"
+      ],
+      "catalog_availability": "LINKED",
+      "availability": "LINKED_NOT_RETRIEVED_OR_VERIFIED",
+      "snapshot_official_course_unit": false,
+      "classified_as_official_unit": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "unit_0fddbf56ec8570f5dcb36fd3f7487a19",
+      "title": "Textbook",
+      "kind": "reading",
+      "origin": "source-derived normalized record",
+      "source_reference": "docs/计算机网络/CS144.en.md#L49",
+      "urls": [],
+      "catalog_availability": "UNAVAILABLE",
+      "availability": "UNAVAILABLE",
+      "snapshot_official_course_unit": false,
+      "classified_as_official_unit": false,
+      "required_for_kickoff": false,
+      "note": "The catalog value is None; no textbook or substitute is assumed."
+    },
+    {
+      "material_id": "unit_633863fca13a9401693fb579f663c8f3",
+      "title": "Assignments",
+      "kind": "assignment_collection",
+      "origin": "source-derived normalized record",
+      "source_reference": "docs/计算机网络/CS144.en.md#L50",
+      "urls": [],
+      "catalog_availability": "DESCRIBED",
+      "availability": "DESCRIPTION_ONLY_CONTENT_UNAVAILABLE",
+      "snapshot_official_course_unit": true,
+      "classified_as_official_unit": false,
+      "required_for_kickoff": false,
+      "note": "The snapshot says to refer to the course website but contains no assignment text."
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_0fddbf56ec8570f5dcb36fd3f7487a19",
+      "reason_code": "NO_TEXTBOOK_LISTED",
+      "reason": "The catalog explicitly reports None, so there is no textbook to retrieve from this record.",
+      "impact": "None on the self-contained kickoff; later units must name another lawful source if one is needed."
+    },
+    {
+      "material_id": "unit_633863fca13a9401693fb579f663c8f3",
+      "reason_code": "ASSIGNMENT_CONTENT_NOT_IN_SNAPSHOT",
+      "reason": "Only a direction to visit the course website is present; no official assignment content was supplied or fetched.",
+      "impact": "The manager-authored kickoff must not be represented as an official Stanford assignment."
+    },
+    {
+      "material_ids": [
+        "unit_a6f60f011ba0585ad9bde4f05e0da1b4",
+        "unit_35db54d6a6770d345e6c3986e96e4418"
+      ],
+      "reason_code": "EXTERNAL_RETRIEVAL_DEFERRED",
+      "reason": "This preparation job classified supplied links but did not access external content.",
+      "impact": "Their reachability, version, licensing, and instructional granularity remain unverified."
+    }
+  ],
+  "retrieval_policy": {
+    "performed_for_this_job": false,
+    "kickoff_network_dependency": false,
+    "later_job_policy": "An explicitly authorized later job may retrieve public linked material for classification; a link alone never promotes content to an official unit.",
+    "rules": [
+      "Do not fetch authentication-gated, restricted, sealed, or otherwise unauthorized content.",
+      "Do not infer missing textbook or assignment contents.",
+      "Record retrieval time, resolved URL, content digest, license or usage basis, and validation label for each acquired artifact.",
+      "Keep fetched source material outside learner views until isolation and redistribution checks pass.",
+      "Preserve failures and unavailable states instead of substituting unverified material silently."
+    ]
+  },
+  "provenance": {
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_file": "docs/计算机网络/CS144.en.md",
+    "content_sha256": "183978b7f65987a0e83499d4a0f04f603d3eb3b7d3c8873fc0ea9e72208d6119",
+    "classification": "source-derived records plus manager-authored local materials"
+  },
+  "validation": {
+    "label": "AVAILABILITY_CLASSIFIED_NOT_EXTERNALLY_VERIFIED"
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "course_id": "course_0c69945f8cbc4ed96b4026d9463cb5c4",
+  "materials": [
+    {
+      "material_id": "catalog_snapshot",
+      "title": "CSDIY catalog snapshot for CS61B",
+      "kind": "catalog_metadata",
+      "availability": "AVAILABLE_LOCAL_INPUT",
+      "retrieval_state": "SUPPLIED_TO_JOB",
+      "permitted_use": "course identification, broad scope, prerequisite, language, and resource discovery",
+      "official_course_content": false,
+      "provenance": {
+        "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+        "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+        "source_file": "docs/数据结构与算法/CS61B.en.md",
+        "content_sha256": "6bb67bbc58d7aab0f8516b00141161fe2bc0a067f217ca96031f9239482e5bcd"
+      }
+    },
+    {
+      "material_id": "manager_authored_kickoff",
+      "title": "Engineering a Generic Ring Deque in Java",
+      "kind": "local_study_unit",
+      "availability": "AVAILABLE_LOCAL",
+      "retrieval_state": "MANAGER_AUTHORED",
+      "paths": [
+        "student_safe/COURSE_BRIEF.md",
+        "student_safe/STUDY_TASK.md",
+        "student_safe/COMPREHENSION.md",
+        "examiner_only/RUBRIC.md"
+      ],
+      "official_course_content": false,
+      "validation_label": "PREPARED_AWAITING_HARNESS_VALIDATION"
+    },
+    {
+      "material_id": "course_websites",
+      "record_id": "unit_0ccbdbd7b72d00a47fa5a348ed0d79ad",
+      "title": "Offering websites listed by the catalog",
+      "kind": "external_links",
+      "availability": "LINKED_UNVERIFIED",
+      "retrieval_state": "NOT_RETRIEVED",
+      "urls": [
+        "https://sp24.datastructur.es/",
+        "https://fa23.datastructur.es/",
+        "https://sp23.datastructur.es/",
+        "https://sp21.datastructur.es/",
+        "https://sp18.datastructur.es/"
+      ],
+      "official_course_content": "UNKNOWN_UNTIL_VERIFIED",
+      "note": "These are distinct offerings. Their content must not be silently mixed."
+    },
+    {
+      "material_id": "recordings",
+      "record_id": "unit_02bec6f5c80594c056616c9769f2511f",
+      "title": "Recordings",
+      "kind": "lecture_media",
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "retrieval_state": "NOT_RETRIEVED",
+      "locator": null,
+      "official_course_content": "UNKNOWN_UNTIL_LOCATED_AND_VERIFIED",
+      "note": "The catalog says only to refer to a course website and supplies no recording URL."
+    },
+    {
+      "material_id": "textbook",
+      "record_id": "unit_e683db14dd2db15ffce606395406eab2",
+      "title": "Textbook",
+      "kind": "reading",
+      "availability": "UNAVAILABLE",
+      "retrieval_state": "NOT_APPLICABLE",
+      "locator": null,
+      "official_course_content": false,
+      "note": "The catalog explicitly records the textbook field as 'None'."
+    },
+    {
+      "material_id": "assignment_catalog_record",
+      "record_id": "unit_7c0f9f7c7704961c95fa195397c72bd2",
+      "title": "Assignments",
+      "kind": "assignment_summary",
+      "availability": "DESCRIBED_ONLY",
+      "retrieval_state": "NO_ASSIGNMENT_BODY_SUPPLIED",
+      "catalog_metadata_official_course_unit": true,
+      "promoted_to_official_unit": false,
+      "note": "The snapshot gives Spring 2018 counts and says requirements vary by year; it does not provide an individual assignment specification."
+    },
+    {
+      "material_id": "gradescope_service",
+      "title": "Gradescope service mentioned by the catalog",
+      "kind": "third_party_service",
+      "availability": "LINKED_ACCESS_UNVERIFIED",
+      "retrieval_state": "NOT_ACCESSED",
+      "urls": [
+        "https://gradescope.com/"
+      ],
+      "official_course_content": false,
+      "note": "No account, enrollment, invitation code, submission, or autograder action was used for this kickoff."
+    },
+    {
+      "material_id": "supplementary_repositories",
+      "title": "Repositories listed in catalog metadata",
+      "kind": "external_code_links",
+      "availability": "LINKED_UNVERIFIED",
+      "retrieval_state": "NOT_RETRIEVED",
+      "urls": [
+        "https://github.com/PKUFlyingPig/CS61B",
+        "https://github.com/InsideEmpire/CS61B-PathwayToSuccess.git"
+      ],
+      "official_course_content": "NOT_ESTABLISHED",
+      "note": "Repository contents, licenses, ownership, safety, and offering alignment were not inspected."
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "recordings",
+      "reason_code": "NO_DIRECT_LOCATOR",
+      "retryable": true,
+      "resolution": "A later authorized job may inspect one selected public offering website and record a verified recording locator."
+    },
+    {
+      "material_id": "textbook",
+      "reason_code": "SOURCE_DECLARED_NONE",
+      "retryable": false,
+      "resolution": "Do not invent a required textbook; later managers may classify optional readings separately with provenance."
+    },
+    {
+      "material_id": "assignment_catalog_record",
+      "reason_code": "ASSIGNMENT_BODY_ABSENT_AND_OFFERING_UNSELECTED",
+      "retryable": true,
+      "resolution": "Select one offering, verify permitted public access, and ingest each assignment as a distinct versioned record."
+    },
+    {
+      "material_id": "gradescope_service",
+      "reason_code": "THIRD_PARTY_ACCOUNT_OR_ENROLLMENT_BOUNDARY",
+      "retryable": true,
+      "resolution": "Use only through an explicitly authorized learner account and current course policy; never automate enrollment or treat access as completion evidence."
+    },
+    {
+      "material_id": "course_websites",
+      "reason_code": "OUTSIDE_BOUNDED_PREPARATION_AND_NOT_RETRIEVED",
+      "retryable": true,
+      "resolution": "A later retrieval job may select one offering and verify allowed public content under the policy below."
+    },
+    {
+      "material_id": "supplementary_repositories",
+      "reason_code": "OUTSIDE_BOUNDED_PREPARATION_AND_NOT_RETRIEVED",
+      "retryable": true,
+      "resolution": "A later retrieval job may inspect provenance, license, safety, and offering alignment before using repository content."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": "Use only the supplied catalog snapshot and manager-authored local material; perform no external retrieval.",
+    "public_content": "A later authorized job may retrieve public HTTPS resources after selecting exactly one course offering and recording URL, access date, license or use basis, content hash, and offering identity.",
+    "restricted_content": "Do not bypass authentication, paywalls, enrollment controls, robots restrictions, access controls, or repository permissions. Do not obtain private submissions, solutions, hidden tests, sealed references, or another learner's files.",
+    "third_party_services": "Do not create accounts, enroll with invitation codes, submit work, or invoke external autograders without explicit user authorization.",
+    "versioning": "Keep material from different offerings separate. A later expansion must identify dependencies and must not silently replace or merge versions.",
+    "promotion": "A link or normalized record is not an official unit. Promote it only after availability, provenance, permissions, stable identity, and content are deterministically recorded.",
+    "failure_handling": "Record failed retrieval attempts and reasons; never label absent, blocked, or unverified content as available."
+  },
+  "provenance": {
+    "classification": "course-manager availability assessment from supplied snapshot",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_content_sha256": "6bb67bbc58d7aab0f8516b00141161fe2bc0a067f217ca96031f9239482e5bcd",
+    "external_retrieval": "NONE"
+  },
+  "validation_label": "PREPARED_AWAITING_HARNESS_VALIDATION"
+}

@@ -1,0 +1,173 @@
+{
+  "course_id": "course_05e1e7c8db8ac31e5a75e00fc94f7bad",
+  "materials": [
+    {
+      "material_id": "catalog_overview_snapshot",
+      "record_id": "unit_f70eb839c64bffa370e25efcb3c65b0b",
+      "title": "Catalog overview and resource guide",
+      "kind": "CATALOG_METADATA",
+      "availability": "SNAPSHOT_METADATA_AVAILABLE_SOURCE_DOCUMENT_NOT_RETRIEVED",
+      "official_course_unit": false,
+      "local_content_available": true,
+      "local_content_scope": "SUPPLIED_CATALOG_SNAPSHOT_ONLY",
+      "source_document_available": false,
+      "use_for_unit_01": "PROVENANCE_AND_TOPIC_SELECTION_ONLY",
+      "source_reference": "docs/计算机图形学/15462.en.md",
+      "urls": []
+    },
+    {
+      "material_id": "fall_2022_course_website",
+      "record_id": "unit_e7206e6b8b6071aaa47489c4cc25f660",
+      "title": "Course Website",
+      "kind": "EXTERNAL_WEBSITE",
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "official_course_unit": false,
+      "local_content_available": false,
+      "use_for_unit_01": "NOT_REQUIRED",
+      "source_reference": "docs/计算机图形学/15462.en.md#L15",
+      "urls": [
+        "http://15462.courses.cs.cmu.edu/fall2022/"
+      ]
+    },
+    {
+      "material_id": "youtube_recordings_pointer",
+      "record_id": "unit_b8f64970da21f7bf91a4043991b30aab",
+      "title": "Recordings",
+      "kind": "EXTERNAL_VIDEO_PLAYLIST",
+      "availability": "LINK_ONLY_UNVERIFIED",
+      "official_course_unit": false,
+      "local_content_available": false,
+      "use_for_unit_01": "OPTIONAL_POINTER_NOT_USED_AS_SOURCE",
+      "source_reference": "docs/计算机图形学/15462.en.md#L16",
+      "urls": [
+        "https://www.youtube.com/watch?v=W6yEALqsD7k&list=PL9_jI1bdZmz2emSh0UQ5iOdT2xRHFHL7E&index=1"
+      ]
+    },
+    {
+      "material_id": "textbook_description",
+      "record_id": "unit_245053a20350270ff6679a5362ea2ba2",
+      "title": "Textbooks",
+      "kind": "SUPPLEMENTARY_READING_DESCRIPTION",
+      "availability": "DESCRIPTION_ONLY",
+      "official_course_unit": false,
+      "local_content_available": false,
+      "use_for_unit_01": "NOT_REQUIRED",
+      "source_reference": "docs/计算机图形学/15462.en.md#L17",
+      "catalog_statement": "There is no required textbook for 15-462, though a variety of books may provide good supplementary material.",
+      "urls": []
+    },
+    {
+      "material_id": "catalog_supplementary_book_links",
+      "record_id": null,
+      "title": "Supplementary commercial book links from course-level metadata",
+      "kind": "CATALOG_LEVEL_RETAIL_LINKS",
+      "availability": "LINKS_ONLY_UNVERIFIED_NO_BOOK_CONTENT",
+      "official_course_unit": false,
+      "local_content_available": false,
+      "use_for_unit_01": "NOT_REQUIRED",
+      "source_reference": "catalog snapshot course.source_metadata.resource_urls",
+      "urls": [
+        "http://www.amazon.com/Fundamentals-Computer-Graphics-Peter-Shirley/dp/1568814690",
+        "http://www.amazon.com/Computer-Graphics-Principles-Practice-3rd/dp/0321399528/ref=sr_1_2?s=books&ie=UTF8&qid=1440872554&sr=1-2&keywords=foundations+of+3d+computer+graphics",
+        "http://www.amazon.com/gp/product/0123750792?ie=UTF8&tag=pharr-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0123750792"
+      ]
+    },
+    {
+      "material_id": "official_assignments_pointer",
+      "record_id": "unit_41c6259b9eb04a8d55580f9bf891de26",
+      "title": "Assignments",
+      "kind": "CATALOG_FLAGGED_ASSIGNMENT_POINTER",
+      "availability": "DESCRIPTION_ONLY_BODY_UNAVAILABLE",
+      "official_course_unit": false,
+      "source_flag_official_course_unit": true,
+      "local_content_available": false,
+      "use_for_unit_01": "NOT_USED_OR_RECONSTRUCTED",
+      "source_reference": "docs/计算机图形学/15462.en.md#L21",
+      "catalog_statement": "refer to the course website",
+      "urls": []
+    },
+    {
+      "material_id": "manager_authored_unit_01_packet",
+      "record_id": null,
+      "title": "Unit 01 local learner packet",
+      "kind": "MANAGER_AUTHORED_LOCAL_MATERIAL",
+      "availability": "AVAILABLE_LOCAL",
+      "official_course_unit": false,
+      "local_content_available": true,
+      "use_for_unit_01": "REQUIRED",
+      "source_reference": "student_safe/",
+      "urls": []
+    }
+  ],
+  "blocked": [
+    {
+      "blocked_id": "source_catalog_document",
+      "material_id": "catalog_overview_snapshot",
+      "reason_code": "SOURCE_DOCUMENT_NOT_PRESENT_IN_ATTEMPT",
+      "detail": "Only the supplied catalog snapshot is present; the referenced source file was not copied or fetched.",
+      "impact": "The overview can support discovery and provenance, not detailed instruction or official sequencing."
+    },
+    {
+      "blocked_id": "course_website_content",
+      "material_id": "fall_2022_course_website",
+      "reason_code": "REMOTE_CONTENT_NOT_RETRIEVED",
+      "detail": "The snapshot supplies an HTTP link, but no page content or integrity record is available in this job.",
+      "impact": "Website pages cannot be treated as available readings, lectures, or assignments."
+    },
+    {
+      "blocked_id": "recording_content",
+      "material_id": "youtube_recordings_pointer",
+      "reason_code": "REMOTE_MEDIA_NOT_RETRIEVED",
+      "detail": "The playlist pointer is recorded, but video, captions, transcript, ordering, and license were not retrieved or verified.",
+      "impact": "No recording is required by or credited toward Unit 01."
+    },
+    {
+      "blocked_id": "textbook_content",
+      "material_id": "catalog_supplementary_book_links",
+      "reason_code": "COMMERCIAL_LINKS_ONLY",
+      "detail": "The catalog contains retailer links, not licensed local copies; no book content was fetched.",
+      "impact": "The books remain optional discovery pointers and are not prerequisites for Unit 01."
+    },
+    {
+      "blocked_id": "assignment_bodies",
+      "material_id": "official_assignments_pointer",
+      "reason_code": "ASSIGNMENT_BODY_UNAVAILABLE",
+      "detail": "The normalized record is source-flagged as official but contains only an instruction to consult the website; the flag alone is insufficient to classify an unavailable body as an official unit.",
+      "impact": "No official assignment was reconstructed, assigned, or made completion-eligible."
+    },
+    {
+      "blocked_id": "malformed_duplicate_course_url",
+      "material_id": "fall_2022_course_website",
+      "reason_code": "MALFORMED_URL_TOKEN",
+      "detail": "The snapshot also contains 'http://15462.courses.cs.cmu.edu/fall2022/](http://15462.courses.cs.cmu.edu/fall2022/', which is retained only in source provenance and is not a retrievable URL.",
+      "impact": "A later retriever must use the separately supplied canonical-looking link and validate the response."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job": "METADATA_ONLY_NO_REMOTE_FETCH",
+    "later_job_requirements": [
+      "Use an authorized retriever only for explicitly public URLs and obey access controls, terms, licensing, and robots policy.",
+      "Never bypass authentication, paywalls, geographic controls, or other restrictions.",
+      "Normalize and validate each URL before retrieval; reject the malformed duplicate URL token.",
+      "Capture retrieval time, final URL, HTTP result, content hash, media type, license or usage basis, and source-record linkage.",
+      "Quarantine fetched content until a controlled classifier determines whether it is a resource, an official unit, or an assignment and whether it is learner-safe.",
+      "Do not copy copyrighted book or video content into the workspace without an explicit license or authorization.",
+      "Keep failures and unavailable states durable; do not convert a link or prose description into an AVAILABLE status.",
+      "Only a worker-harness-controlled validator may make retrieved material completion-eligible or expand the official unit graph."
+    ],
+    "student_view_policy": "Expose only locally authorized learner materials; exclude examiner rubrics, restricted content, credentials, and unresolved remote bodies.",
+    "fallback": "Unit 01 remains usable from the manager-authored local packet when every remote material is unavailable."
+  },
+  "provenance": {
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_content_sha256": "2f655898fdcf113cd550988459ad49d2a54867ac8164528c2989364618aee451",
+    "classification_method": "COURSE_MANAGER_REVIEW_OF_SUPPLIED_SNAPSHOT_ONLY",
+    "network_retrieval_performed": false
+  },
+  "validation": {
+    "label": "AVAILABILITY_CLASSIFIED_UNVERIFIED",
+    "meaning": "Statuses reflect only evidence supplied to this preparation job; they do not assert remote reachability or content validity.",
+    "completion_evidence": false
+  }
+}

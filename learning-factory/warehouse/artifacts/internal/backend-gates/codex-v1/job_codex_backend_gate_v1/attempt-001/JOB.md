@@ -1,0 +1,1 @@
+This is a bounded backend capability probe. Create BACKEND_READY.txt containing exactly CODEX_BACKEND_READY_V1 followed by a newline. Do not inspect unrelated paths, use the network, or create any other file.

@@ -1,0 +1,81 @@
+{
+  "course_id": "course_82d52bed84f08353bbf81654523b5bd8",
+  "title": "MIT 6.031: Software Construction",
+  "status": "KICKOFF_READY",
+  "unit": {
+    "unit_id": "kickoff_01_trustworthy_range_set",
+    "title": "From a Correct Algorithm to a Trustworthy ADT",
+    "sequence": 1,
+    "status": "READY",
+    "classification": "MANAGER_AUTHORED_KICKOFF",
+    "official_course_unit": false,
+    "audience": "A strong algorithms student who is already proficient in a programming language and is building practical software-engineering habits in Java.",
+    "estimated_hours": {
+      "minimum": 6,
+      "maximum": 8
+    },
+    "learning_objectives": [
+      "Turn behavioral requirements into a precise public contract for a small abstract data type.",
+      "Connect an abstraction function and representation invariant to implementation choices.",
+      "Defend an abstraction boundary against invalid input, arithmetic edge cases, and representation exposure.",
+      "Use example-based and model-based tests as durable evidence of behavior.",
+      "Make a bounded requirement change without weakening existing behavior or clarity."
+    ],
+    "artifacts": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "scope": {
+      "included": [
+        "One manager-authored Java ADT exercise",
+        "Specifications, abstraction function, representation invariant, defensive design, tests, and one change request",
+        "Learner reflection through unanswered comprehension prompts"
+      ],
+      "excluded": [
+        "Any claim that this is an official MIT 6.031 unit",
+        "Official readings, lectures, problem sets, project content, or solutions",
+        "Parallel programming and whole-course coverage"
+      ]
+    }
+  },
+  "completion_policy": {
+    "completion_scope": "KICKOFF_UNIT_ONLY",
+    "course_completion_claimed": false,
+    "unit_completion_implies_course_completion": false,
+    "learner_prose_is_evidence": false,
+    "unit_complete_when": [
+      "All implementation, test, design-note, change-log, and comprehension deliverables named in student_safe/STUDY_TASK.md are present.",
+      "A worker-harness-controlled validator confirms that the submitted program builds and its tests pass.",
+      "An examiner applies examiner_only/RUBRIC.md and records the required result independently of the learner's claims."
+    ],
+    "promotion_authority": "WORKER_HARNESS_VALIDATOR",
+    "later_expansion_required_for_course_completion": true
+  },
+  "provenance": {
+    "classification": "SOURCE_DERIVED_CATALOG_CONTEXT_PLUS_MANAGER_AUTHORED_UNIT",
+    "catalog_snapshot": {
+      "schema_version": 1,
+      "catalog_status": "DISCOVERED",
+      "adapter": "csdiy",
+      "extractor_version": "1.1",
+      "source_file": "docs/软件工程/6031.en.md",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "content_sha256": "1a70b00642a117ad2b70f1857431dd9b89a5699d65abd256f4ed2f45dce43e92"
+    },
+    "source_catalog": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "name": "CSDIY",
+      "type": "course_catalog",
+      "license": "MIT",
+      "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git"
+    },
+    "preparation": {
+      "method": "The manager used only the supplied catalog snapshot to bound and contextualize an original kickoff exercise.",
+      "network_retrieval_performed": false,
+      "official_content_copied": false,
+      "authorship_note": "The kickoff learning design and local packet are manager-authored, not MIT-authored or MIT-endorsed."
+    }
+  }
+}

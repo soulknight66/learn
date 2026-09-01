@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "course_id": "course_d0a17d5c4745203f75d2cbd2bc0c0215",
+  "title": "CS170: Efficient Algorithms and Intractable Problems",
+  "status": "KICKOFF_READY",
+  "unit": {
+    "unit_id": "unit_manager_kickoff_inversion_counting_v1",
+    "title": "Inversion Counting: From Algorithm to Reliable Component",
+    "position": 1,
+    "origin": "course-manager-authored",
+    "official_course_unit": false,
+    "scope": "BOUNDED_KICKOFF",
+    "estimated_hours": 7,
+    "topic_alignment": [
+      "divide-and-conquer",
+      "asymptotic analysis",
+      "correctness arguments",
+      "testing",
+      "reproducible performance measurement"
+    ],
+    "prerequisites": [
+      "Comfort with sequences, recursion, and asymptotic notation",
+      "Ability to write and run Python 3.11 code and unittest tests",
+      "Mathematical maturity comparable to CS61B and CS70"
+    ],
+    "learning_objectives": [
+      "Turn a mathematical definition into a precise, side-effect-aware API contract",
+      "Design and justify a worst-case O(n log n) inversion-counting algorithm",
+      "Implement a deterministic command-line component with explicit failure behavior",
+      "Use examples, a small reference oracle, seeded generation, and subprocess checks to test behavior",
+      "Collect reproducible timing evidence without treating a benchmark as a proof of complexity",
+      "Communicate invariants, correctness, complexity, and engineering tradeoffs concisely"
+    ],
+    "student_materials": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "required_artifacts": [
+      "src/inversion_count.py",
+      "tests/test_inversion_count.py",
+      "tools/benchmark.py",
+      "benchmark_results.json",
+      "DESIGN.md or DESIGN.tex",
+      "README.md",
+      "COMPREHENSION_RESPONSES.md"
+    ]
+  },
+  "completion_policy": {
+    "scope": "THIS_UNIT_ONLY",
+    "course_completion_permitted": false,
+    "unit_completion_requires": [
+      "All required artifacts are present and learner-authored",
+      "The implementation and documented commands run in the declared environment",
+      "Harness-controlled validation confirms functional, complexity, isolation, and interface requirements",
+      "The design note and comprehension responses provide reviewable reasoning",
+      "Benchmark evidence includes reproducibility metadata and is labeled as empirical evidence"
+    ],
+    "evidence_policy": "Learner prose or a self-reported success is not completion evidence; only preserved artifacts and independent validator results may promote this unit.",
+    "failure_policy": "A failed or incomplete attempt remains a durable unit attempt and does not imply course progress beyond the evidence recorded.",
+    "course_policy": "Completing this kickoff neither completes CS170 nor verifies coverage of any later topic. Later units require separately sourced, classified, assigned, and validated work."
+  },
+  "provenance": {
+    "classification": "manager-authored-unit-from-source-derived-catalog-metadata",
+    "catalog_status": "DISCOVERED",
+    "snapshot_schema_version": 1,
+    "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+    "source_name": "CSDIY",
+    "source_type": "course_catalog",
+    "source_file": "docs/数据结构与算法/CS170.en.md",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_content_sha256": "78e0b4a834346e8580c1b6af75a8f34a1f5e4c9f2055318b4382c28f8882fb09",
+    "adapter": "csdiy",
+    "extractor_version": "1.1",
+    "retrieval_performed": false,
+    "authorship_note": "The catalog establishes topic alignment and prerequisites only. The kickoff scope, task, and assessment materials were authored for this preparation job and are not represented as an official UC Berkeley unit."
+  }
+}

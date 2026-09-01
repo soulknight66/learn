@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "course_id": "course_a7a910aa0ff53117a8266badba1bc57c",
+  "nodes": [
+    {
+      "node_id": "manager_unit_01_algorithm_run_log",
+      "title": "Engineering a Small Browser Application",
+      "node_type": "study_unit",
+      "classification": "COURSE_MANAGER_AUTHORED_KICKOFF",
+      "is_study_unit": true,
+      "official_course_unit": false,
+      "availability": "READY_LOCAL",
+      "status": "READY_FOR_INDEPENDENT_VALIDATION"
+    },
+    {
+      "node_id": "unit_1088e3bcb9770ddd6d543174012d686f",
+      "title": "Catalog overview and resource guide",
+      "node_type": "normalized_resource_record",
+      "resource_type": "reading",
+      "classification": "CATALOG_OVERVIEW_INPUT",
+      "is_study_unit": false,
+      "source_metadata_official_course_unit": false,
+      "availability": "AVAILABLE_SNAPSHOT_METADATA_ONLY",
+      "source_reference": "docs/Web开发/CS142.en.md",
+      "promoted_to_study_unit": false
+    },
+    {
+      "node_id": "unit_e478b508f5dd5e5171ebe8fa27425c53",
+      "title": "Course Website",
+      "node_type": "normalized_resource_record",
+      "resource_type": "reading",
+      "classification": "EXTERNAL_INDEX_LINK",
+      "is_study_unit": false,
+      "source_metadata_official_course_unit": false,
+      "availability": "LINKED_UNRETRIEVED",
+      "source_reference": "docs/Web开发/CS142.en.md#L15",
+      "promoted_to_study_unit": false
+    },
+    {
+      "node_id": "unit_d7e89da9af68f5ff8aafcbf369a0d81f",
+      "title": "Recordings",
+      "node_type": "normalized_resource_record",
+      "resource_type": "lecture",
+      "classification": "EXTERNAL_COLLECTION_LINK",
+      "is_study_unit": false,
+      "source_metadata_official_course_unit": false,
+      "availability": "LINKED_UNRETRIEVED",
+      "source_reference": "docs/Web开发/CS142.en.md#L16",
+      "promoted_to_study_unit": false
+    },
+    {
+      "node_id": "unit_6caaea83654672d57cc807acf89bfd60",
+      "title": "Assignments",
+      "node_type": "normalized_resource_record",
+      "resource_type": "assignment",
+      "classification": "EXTERNAL_COLLECTION_LINK_WITH_SOURCE_OFFICIAL_FLAG",
+      "is_study_unit": false,
+      "source_metadata_official_course_unit": true,
+      "availability": "LINKED_UNRETRIEVED",
+      "source_reference": "docs/Web开发/CS142.en.md#L17",
+      "promoted_to_study_unit": false
+    },
+    {
+      "node_id": "future_unit_expansion_gate",
+      "title": "Future unit expansion gate",
+      "node_type": "expansion_gate",
+      "classification": "PLACEHOLDER_NOT_A_STUDY_UNIT",
+      "is_study_unit": false,
+      "official_course_unit": false,
+      "availability": "BLOCKED_PENDING_AUTHORIZED_RETRIEVAL_AND_CLASSIFICATION",
+      "status": "NOT_SCHEDULED"
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_1088e3bcb9770ddd6d543174012d686f",
+      "to": "manager_unit_01_algorithm_run_log",
+      "relation": "INFORMS_CATALOG_LEVEL_SCOPE_ONLY"
+    },
+    {
+      "from": "unit_1088e3bcb9770ddd6d543174012d686f",
+      "to": "future_unit_expansion_gate",
+      "relation": "CANDIDATE_INPUT_FOR"
+    },
+    {
+      "from": "unit_e478b508f5dd5e5171ebe8fa27425c53",
+      "to": "future_unit_expansion_gate",
+      "relation": "CANDIDATE_INPUT_FOR"
+    },
+    {
+      "from": "unit_d7e89da9af68f5ff8aafcbf369a0d81f",
+      "to": "future_unit_expansion_gate",
+      "relation": "CANDIDATE_INPUT_FOR"
+    },
+    {
+      "from": "unit_6caaea83654672d57cc807acf89bfd60",
+      "to": "future_unit_expansion_gate",
+      "relation": "CANDIDATE_INPUT_FOR"
+    },
+    {
+      "from": "manager_unit_01_algorithm_run_log",
+      "to": "future_unit_expansion_gate",
+      "relation": "PRECEDES_ONLY_IF_EXPANSION_IS_AUTHORIZED"
+    }
+  ],
+  "record_boundary": "Normalized records are catalog-derived inputs for classification. A record, including one carrying a source official-course-unit flag, is not automatically an official lesson, assignment, or prepared study unit. Only manager_unit_01_algorithm_run_log is prepared here, and it is explicitly manager-authored rather than official Stanford content.",
+  "classification_policy": {
+    "promotion_requires": [
+      "Authorized retrieval of the referenced content",
+      "Recorded retrieval evidence and content provenance",
+      "Classification of the item as an index, collection, lesson, assignment, or other resource",
+      "A separately prepared learner-safe unit and independent validation"
+    ],
+    "unretrieved_links_create_dependencies": false,
+    "future_gate_is_course_completion": false
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "course_id": "course_8b9ca45a3a931355c8cb809cb83cdb8e",
+  "nodes": [
+    {
+      "id": "kickoff_application_layer_http_v1",
+      "node_type": "study_unit",
+      "title": "Application-Layer Contracts: Build and Observe One HTTP Exchange",
+      "classification": "manager-authored kickoff",
+      "official_course_unit": false,
+      "promoted_to_study_unit": true,
+      "availability": "LOCAL_INSTRUCTIONS_READY",
+      "status": "READY_FOR_STUDY"
+    },
+    {
+      "id": "unit_73fe7a949a76e1aa599fd8fea8869e58",
+      "node_type": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "resource_type": "reading",
+      "classification": "catalog_overview_metadata",
+      "official_course_unit": false,
+      "promoted_to_study_unit": false,
+      "availability": "SNAPSHOT_METADATA_AVAILABLE",
+      "source_reference": "docs/计算机网络/topdown.en.md"
+    },
+    {
+      "id": "unit_ee29358e607ab9d9213dc393f32e4005",
+      "node_type": "normalized_resource_record",
+      "title": "Course Website",
+      "resource_type": "reading",
+      "classification": "external_resource_pointer",
+      "official_course_unit": false,
+      "promoted_to_study_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "source_reference": "docs/计算机网络/topdown.en.md#L15"
+    },
+    {
+      "id": "unit_7566302e2076ef273f6b04ad99e6dca7",
+      "node_type": "normalized_resource_record",
+      "title": "Recordings",
+      "resource_type": "lecture",
+      "classification": "external_resource_pointer",
+      "official_course_unit": false,
+      "promoted_to_study_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "source_reference": "docs/计算机网络/topdown.en.md#L16"
+    },
+    {
+      "id": "unit_f255b3f78af60c02603ba482f228738a",
+      "node_type": "normalized_resource_record",
+      "title": "Textbooks",
+      "resource_type": "reading",
+      "classification": "bibliographic_description",
+      "official_course_unit": false,
+      "promoted_to_study_unit": false,
+      "availability": "DESCRIBED_NOT_PROVIDED",
+      "source_reference": "docs/计算机网络/topdown.en.md#L17"
+    },
+    {
+      "id": "unit_6f3ef9e31d251a2d0ada9e09a9981339",
+      "node_type": "normalized_resource_record",
+      "title": "Assignments",
+      "resource_type": "assignment",
+      "classification": "official_assignment_resource_pointer",
+      "official_course_unit": true,
+      "promoted_to_study_unit": false,
+      "availability": "LINKED_NOT_RETRIEVED",
+      "source_reference": "docs/计算机网络/topdown.en.md#L18",
+      "boundary_note": "The catalog flag is preserved, but the link record was not treated as a fetched, verified, or scheduled unit."
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_73fe7a949a76e1aa599fd8fea8869e58",
+      "to": "kickoff_application_layer_http_v1",
+      "relation": "informs_scope",
+      "required": false,
+      "evidence_basis": "catalog metadata only"
+    },
+    {
+      "from": "unit_ee29358e607ab9d9213dc393f32e4005",
+      "to": "kickoff_application_layer_http_v1",
+      "relation": "optional_future_context",
+      "required": false,
+      "evidence_basis": "unretrieved link"
+    },
+    {
+      "from": "unit_7566302e2076ef273f6b04ad99e6dca7",
+      "to": "kickoff_application_layer_http_v1",
+      "relation": "optional_future_enrichment",
+      "required": false,
+      "evidence_basis": "unretrieved link"
+    },
+    {
+      "from": "unit_f255b3f78af60c02603ba482f228738a",
+      "to": "kickoff_application_layer_http_v1",
+      "relation": "optional_background",
+      "required": false,
+      "evidence_basis": "title-level description only"
+    },
+    {
+      "from": "unit_6f3ef9e31d251a2d0ada9e09a9981339",
+      "to": "kickoff_application_layer_http_v1",
+      "relation": "motivates_observation_lab",
+      "required": false,
+      "evidence_basis": "official assignment link metadata; assignment content not retrieved"
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion."
+}

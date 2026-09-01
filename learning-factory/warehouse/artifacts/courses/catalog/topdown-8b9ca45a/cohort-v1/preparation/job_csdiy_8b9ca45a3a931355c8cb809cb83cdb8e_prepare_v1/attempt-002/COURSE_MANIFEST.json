@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "course_id": "course_8b9ca45a3a931355c8cb809cb83cdb8e",
+  "title": "Computer Networking: A Top-Down Approach",
+  "status": "KICKOFF_PREPARED_NOT_COMPLETE",
+  "unit": {
+    "unit_id": "kickoff_application_layer_http_v1",
+    "title": "Application-Layer Contracts: Build and Observe One HTTP Exchange",
+    "classification": "manager-authored kickoff",
+    "official_course_unit": false,
+    "status": "READY_FOR_STUDY",
+    "estimated_hours": 5,
+    "scope": "Implement and test one bounded, loopback HTTP/1.1 GET exchange over a raw TCP socket; study message framing, fragmented reads, timeouts, resource limits, and reproducible evidence.",
+    "excluded_scope": [
+      "TLS",
+      "HTTP/2 or HTTP/3",
+      "redirects",
+      "proxies",
+      "authentication",
+      "compression",
+      "chunked-body decoding",
+      "general-purpose browser behavior",
+      "public-network testing"
+    ],
+    "prerequisites": [
+      "Basic computer-systems knowledge",
+      "Ability to implement and test a small command-line program",
+      "Familiarity with asymptotic reasoning and finite-state control flow"
+    ],
+    "learning_objectives": [
+      "Distinguish transport read boundaries from application-protocol message boundaries.",
+      "Turn a small protocol contract into separated, testable I/O and parsing components.",
+      "Handle malformed input, premature EOF, timeouts, and bounded memory deliberately.",
+      "Produce reproducible test and observation evidence instead of relying on prose claims."
+    ],
+    "required_local_documents": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "external_material_required": false
+  },
+  "completion_policy": {
+    "kickoff_only": true,
+    "unit_completion_does_not_complete_course": true,
+    "course_completion_status_after_unit": "NOT_ESTABLISHED",
+    "unit_completion_requires": [
+      "Runnable implementation and automated tests produced by the learner",
+      "Reproducible loopback execution evidence",
+      "Learner responses to the comprehension prompts",
+      "Independent evaluation under examiner_only/RUBRIC.md",
+      "Promotion by a worker-harness-controlled validator"
+    ],
+    "claims_not_accepted_as_evidence": [
+      "A learner or agent prose claim of completion",
+      "Opening an external resource link",
+      "Finishing only the reading or reflection",
+      "This preparation package by itself"
+    ],
+    "later_course_expansion_required": true
+  },
+  "provenance": {
+    "catalog_source": {
+      "name": "CSDIY",
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "type": "course_catalog",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/计算机网络/topdown.en.md",
+      "catalog_license": "MIT"
+    },
+    "snapshot": {
+      "adapter": "csdiy",
+      "extractor_version": "1.1",
+      "classification": "source-derived",
+      "content_sha256": "e6012e363b1e5416b5cb9ac623f153589dba93a32c9adc9c7462dc11ac168267"
+    },
+    "preparation": {
+      "classification": "manager-authored",
+      "basis": "The catalog description, metadata, and normalized resource records supplied in the job snapshot.",
+      "external_content_retrieved": false,
+      "official_sequence_claimed": false,
+      "linked_material_licenses": "UNVERIFIED"
+    }
+  }
+}

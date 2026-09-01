@@ -1,0 +1,196 @@
+{
+  "course_id": "course_c473bebd690737d1b3fe4fb26541a8ec",
+  "nodes": [
+    {
+      "node_id": "unit_c473bebd_kickoff_linear_systems_v1",
+      "node_type": "study_unit",
+      "title": "Linear Systems as a Tested Software Component",
+      "classification": "manager-authored-kickoff",
+      "official_course_unit": false,
+      "availability": "READY_LOCAL",
+      "required": true
+    },
+    {
+      "node_id": "activity_model_solution_sets",
+      "node_type": "activity",
+      "title": "Model solution sets and elimination invariants",
+      "classification": "manager-authored",
+      "availability": "READY_LOCAL",
+      "required": true
+    },
+    {
+      "node_id": "activity_define_contract",
+      "node_type": "activity",
+      "title": "Define the solver contract and failure taxonomy",
+      "classification": "manager-authored",
+      "availability": "READY_LOCAL",
+      "required": true
+    },
+    {
+      "node_id": "activity_implement_solver",
+      "node_type": "activity",
+      "title": "Implement elimination with partial pivoting",
+      "classification": "manager-authored",
+      "availability": "READY_LOCAL",
+      "required": true
+    },
+    {
+      "node_id": "activity_verify_solver",
+      "node_type": "activity",
+      "title": "Verify behavior with deterministic tests",
+      "classification": "manager-authored",
+      "availability": "READY_LOCAL",
+      "required": true
+    },
+    {
+      "node_id": "activity_explain_limits",
+      "node_type": "activity",
+      "title": "Explain tradeoffs and numerical limits",
+      "classification": "manager-authored",
+      "availability": "READY_LOCAL",
+      "required": true
+    },
+    {
+      "node_id": "unit_7263c8f71e01ac11de40d959684dbf7f",
+      "node_type": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "resource_type": "reading",
+      "classification": "catalog_metadata_input",
+      "official_course_unit": false,
+      "promoted_to_study_unit": false,
+      "availability": "AVAILABLE_METADATA_ONLY",
+      "required": false
+    },
+    {
+      "node_id": "unit_4a9a58d3275b16d0317c46057638f945",
+      "node_type": "normalized_resource_record",
+      "title": "Course Website",
+      "resource_type": "reading",
+      "classification": "catalog_link_input",
+      "official_course_unit": false,
+      "promoted_to_study_unit": false,
+      "availability": "LINKED_UNVERIFIED",
+      "required": false
+    },
+    {
+      "node_id": "unit_bb7aca98d9926fab545c281d531aa9e1",
+      "node_type": "normalized_resource_record",
+      "title": "Recordings",
+      "resource_type": "lecture",
+      "classification": "catalog_description_input",
+      "official_course_unit": false,
+      "promoted_to_study_unit": false,
+      "availability": "DESCRIBED_NO_DIRECT_LOCATOR",
+      "required": false
+    },
+    {
+      "node_id": "unit_88ddcb5fb389695af921451dcb45bae6",
+      "node_type": "normalized_resource_record",
+      "title": "Textbook",
+      "resource_type": "reading",
+      "classification": "catalog_description_input",
+      "official_course_unit": false,
+      "promoted_to_study_unit": false,
+      "availability": "DESCRIBED_NOT_PROVIDED",
+      "required": false
+    },
+    {
+      "node_id": "unit_7c2493fce2ccf7d14fa645647ea656d3",
+      "node_type": "normalized_resource_record",
+      "title": "Assignments",
+      "resource_type": "assignment",
+      "classification": "catalog_claimed_official_resource_input",
+      "source_official_course_unit_claim": true,
+      "promoted_to_study_unit": false,
+      "availability": "DESCRIBED_NO_DIRECT_LOCATOR",
+      "required": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "unit_c473bebd_kickoff_linear_systems_v1",
+      "to": "activity_model_solution_sets",
+      "relation": "CONTAINS",
+      "required": true
+    },
+    {
+      "from": "unit_c473bebd_kickoff_linear_systems_v1",
+      "to": "activity_define_contract",
+      "relation": "CONTAINS",
+      "required": true
+    },
+    {
+      "from": "unit_c473bebd_kickoff_linear_systems_v1",
+      "to": "activity_implement_solver",
+      "relation": "CONTAINS",
+      "required": true
+    },
+    {
+      "from": "unit_c473bebd_kickoff_linear_systems_v1",
+      "to": "activity_verify_solver",
+      "relation": "CONTAINS",
+      "required": true
+    },
+    {
+      "from": "unit_c473bebd_kickoff_linear_systems_v1",
+      "to": "activity_explain_limits",
+      "relation": "CONTAINS",
+      "required": true
+    },
+    {
+      "from": "activity_model_solution_sets",
+      "to": "activity_define_contract",
+      "relation": "PRECEDES",
+      "required": true
+    },
+    {
+      "from": "activity_define_contract",
+      "to": "activity_implement_solver",
+      "relation": "PRECEDES",
+      "required": true
+    },
+    {
+      "from": "activity_implement_solver",
+      "to": "activity_verify_solver",
+      "relation": "PRECEDES",
+      "required": true
+    },
+    {
+      "from": "activity_verify_solver",
+      "to": "activity_explain_limits",
+      "relation": "PRECEDES",
+      "required": true
+    },
+    {
+      "from": "unit_7263c8f71e01ac11de40d959684dbf7f",
+      "to": "unit_c473bebd_kickoff_linear_systems_v1",
+      "relation": "INFORMED_DESIGN",
+      "required": false
+    },
+    {
+      "from": "unit_4a9a58d3275b16d0317c46057638f945",
+      "to": "unit_c473bebd_kickoff_linear_systems_v1",
+      "relation": "UNVERIFIED_OPTIONAL_CANDIDATE",
+      "required": false
+    },
+    {
+      "from": "unit_bb7aca98d9926fab545c281d531aa9e1",
+      "to": "unit_c473bebd_kickoff_linear_systems_v1",
+      "relation": "UNAVAILABLE_FUTURE_CANDIDATE",
+      "required": false
+    },
+    {
+      "from": "unit_88ddcb5fb389695af921451dcb45bae6",
+      "to": "unit_c473bebd_kickoff_linear_systems_v1",
+      "relation": "UNAVAILABLE_FUTURE_CANDIDATE",
+      "required": false
+    },
+    {
+      "from": "unit_7c2493fce2ccf7d14fa645647ea656d3",
+      "to": "unit_c473bebd_kickoff_linear_systems_v1",
+      "relation": "UNAVAILABLE_FUTURE_CANDIDATE",
+      "required": false
+    }
+  ],
+  "record_boundary": "Normalized records may be catalog resource links rather than official course units. They remain classified inputs here and are not automatically promoted; even the source-marked assignment record requires content retrieval, provenance validation, and manager classification in a later job."
+}

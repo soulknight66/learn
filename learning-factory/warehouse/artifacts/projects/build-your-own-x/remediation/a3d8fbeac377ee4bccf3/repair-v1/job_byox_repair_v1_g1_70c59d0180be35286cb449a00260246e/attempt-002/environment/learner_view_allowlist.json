@@ -1,0 +1,16 @@
+{
+  "root_directories": [
+    "environment",
+    "public_tests",
+    "starter"
+  ],
+  "root_files": [
+    "AGENTS.md",
+    "CONCEPTS.md",
+    "DESIGN_QUESTIONS.md",
+    "MANIFEST.yaml",
+    "README.md",
+    "REQUIREMENTS.md"
+  ],
+  "schema_version": 1
+}

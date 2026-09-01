@@ -1,0 +1,116 @@
+{
+  "course_id": "course_2ea1d64327b40e9dd1751e342e62a833",
+  "materials": [
+    {
+      "material_id": "catalog_snapshot",
+      "record_id": "unit_fcb5ac9d7af4fb8b994b21163f8312bc",
+      "title": "Catalog overview and resource guide",
+      "role": "PROVENANCE_AND_ORIENTATION_ONLY",
+      "availability": "AVAILABLE_INLINE_METADATA",
+      "official_course_unit": false,
+      "included_in_workspace": false,
+      "note": "The preparation job received the snapshot as input; it did not receive a standalone source document."
+    },
+    {
+      "material_id": "coursera_part_1",
+      "record_id": "unit_8c778489031f1697dcfb0b713d5247c3",
+      "title": "Nand2Tetris I course website",
+      "role": "EXTERNAL_COURSE_LOCATOR",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "locator": "https://www.coursera.org/learn/build-a-computer/home/week/1",
+      "official_course_unit": false,
+      "included_in_workspace": false,
+      "access_note": "Current accessibility, authentication requirements, license, and page contents were not checked."
+    },
+    {
+      "material_id": "coursera_part_2",
+      "record_id": "unit_8c778489031f1697dcfb0b713d5247c3",
+      "title": "Nand2Tetris II course website",
+      "role": "EXTERNAL_COURSE_LOCATOR",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "locator": "https://www.coursera.org/learn/nand2tetris2/home/welcome",
+      "official_course_unit": false,
+      "included_in_workspace": false,
+      "access_note": "Current accessibility, authentication requirements, license, and page contents were not checked."
+    },
+    {
+      "material_id": "recordings",
+      "record_id": "unit_cbbcd72b22a84efcf84fc146bc847fcc",
+      "title": "Course recordings",
+      "role": "LECTURE_MATERIAL",
+      "availability": "DESCRIBED_NOT_LOCATED",
+      "official_course_unit": false,
+      "included_in_workspace": false,
+      "access_note": "The snapshot says only to refer to the course website and supplies no recording locator."
+    },
+    {
+      "material_id": "textbook",
+      "record_id": "unit_bc6a18783a58546aa17000c7c9649ec8",
+      "title": "The Elements of Computing Systems: Building a Modern Computer from First Principles (CN-zh version)",
+      "role": "TEXTBOOK_REFERENCE",
+      "availability": "DESCRIBED_REFERENCE_UNRESOLVED",
+      "official_course_unit": false,
+      "included_in_workspace": false,
+      "access_note": "The normalized record contains an unresolved [book] reference and no usable direct locator; rights and access were not established."
+    },
+    {
+      "material_id": "official_assignment_series",
+      "record_id": "unit_0ff55b909e2fc0f658467f4b32eefe49",
+      "title": "Ten construction projects",
+      "role": "AGGREGATE_ASSIGNMENT_DESCRIPTION",
+      "availability": "DESCRIPTION_ONLY",
+      "official_course_unit": true,
+      "included_in_workspace": false,
+      "access_note": "No individual project specification, starter files, simulator, tests, ordering, or submission rules are present in the snapshot."
+    },
+    {
+      "material_id": "catalog_github_repository_link",
+      "title": "PKUFlyingPig/NandToTetris catalog resource link",
+      "role": "UNVERIFIED_SUPPLEMENTARY_LOCATOR",
+      "availability": "LINKED_NOT_RETRIEVED",
+      "locator": "https://github.com/PKUFlyingPig/NandToTetris",
+      "official_course_unit": false,
+      "included_in_workspace": false,
+      "access_note": "The catalog lists this URL, but its contents, licensing at artifact level, relationship to official coursework, and safety for learner distribution were not checked."
+    }
+  ],
+  "blocked": [
+    {
+      "material": "Course-page contents",
+      "reason": "Only external locators were supplied; no network retrieval or authentication was authorized for this preparation.",
+      "impact": "Official week boundaries and detailed syllabus claims cannot be established."
+    },
+    {
+      "material": "Recordings",
+      "reason": "No direct recording locator or access terms were supplied.",
+      "impact": "No lecture is assigned or represented as available."
+    },
+    {
+      "material": "Textbook content",
+      "reason": "The reference is unresolved and its access and redistribution rights are unknown.",
+      "impact": "No chapter or page is required for this kickoff."
+    },
+    {
+      "material": "Official project specifications, starter code, simulators, and validators",
+      "reason": "The snapshot contains only an aggregate assignment description.",
+      "impact": "This kickoff is manager-authored and platform-neutral; passing it cannot count as an official project."
+    },
+    {
+      "material": "Catalog-listed book blob URL",
+      "reason": "The resource URL in the snapshot is visibly incomplete and may identify copyrighted content whose rights were not established.",
+      "impact": "It is not exposed as a retrievable learner resource."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job_mode": "SNAPSHOT_ONLY_NO_EXTERNAL_FETCH",
+    "network_retrieval_performed": false,
+    "rules": [
+      "Do not infer material contents, official unit boundaries, or access from a catalog label or URL.",
+      "Do not copy authenticated, paywalled, restricted, or rights-unclear material into learner-safe storage.",
+      "A later authorized retrieval job must record the final locator, retrieval time, content hash, license or access basis, and source relationship.",
+      "Retrieved records remain materials until separately classified; retrieval alone does not make them official course units.",
+      "Official-unit expansion requires unit-level scope, ordering, dependencies, and harness-controlled validation evidence.",
+      "If access fails or rights remain unclear, preserve the blocked record and use an independently authored substitute rather than claiming the source was obtained."
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "course_id": "course_51bc91893247cdfd588ce273c20ddb29",
+  "title": "NJU Compilers",
+  "status": "KICKOFF_PREPARED_UNVALIDATED",
+  "unit": {
+    "unit_id": "managed_unit_01_expression_front_end",
+    "title": "Compiler Front-End Engineering Kickoff: A Tiny Expression Language",
+    "sequence": 1,
+    "classification": "MANAGER_AUTHORED_STUDY_UNIT",
+    "upstream_official_course_unit": false,
+    "status": "READY_FOR_LEARNER_WORK",
+    "estimated_hours": {
+      "minimum": 8,
+      "maximum": 10
+    },
+    "audience": "A strong algorithms student building practical software-engineering habits",
+    "prerequisites": [
+      "Discrete mathematics",
+      "Comfort reading algorithms and basic Java",
+      "Basic command-line and version-control use"
+    ],
+    "learning_outcomes": [
+      "Turn a small language contract into an ANTLR 4 grammar and Java front end",
+      "Make precedence, associativity, full-input consumption, and error behavior explicit",
+      "Separate generated parser code from authored application code",
+      "Build a deterministic command-line interface and repeatable automated tests",
+      "Explain design and testing decisions with evidence from the implementation"
+    ],
+    "in_scope": [
+      "Lexing and parsing a specified expression language",
+      "Deterministic parenthesized-AST output",
+      "Lexical and syntax diagnostics",
+      "Pinned build dependencies, clean-build instructions, and automated tests",
+      "A short design note and written comprehension responses"
+    ],
+    "out_of_scope": [
+      "Semantic analysis and type checking",
+      "Interpretation or code generation",
+      "Optimization, runtime environments, and register allocation",
+      "Reproduction of an official NJU assignment",
+      "Completion of the full NJU Compilers course"
+    ],
+    "learner_documents": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "examiner_document": "examiner_only/RUBRIC.md"
+  },
+  "completion_policy": {
+    "scope": "THIS_KICKOFF_UNIT_ONLY",
+    "unit_completion_requires": [
+      "All required learner deliverables exist in the learner submission",
+      "A harness-controlled validator executes the documented clean build and tests",
+      "Observed behavior satisfies the examiner-only rubric and its critical gates",
+      "Written responses are evaluated against implementation evidence"
+    ],
+    "evidence_sources": [
+      "Validator-captured build and test logs",
+      "Validator-observed command-line behavior",
+      "The submitted grammar, Java source, tests, build metadata, design note, and responses"
+    ],
+    "promotion_authority": "WORKER_HARNESS_VALIDATOR_ONLY",
+    "prose_claim_is_completion_evidence": false,
+    "unit_success_implies_course_completion": false,
+    "whole_course_completion_policy": "NOT_DEFINED_BY_THIS_KICKOFF",
+    "failure_policy": "Preserve failed-attempt evidence; a later attempt must be validated independently"
+  },
+  "provenance": {
+    "artifact_classification": "COURSE_MANAGER_SYNTHESIS",
+    "validation_label": "PREPARED_NOT_VALIDATED",
+    "catalog_snapshot": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "source_name": "CSDIY",
+      "source_type": "course_catalog",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/编译原理/NJU-Compilers.en.md",
+      "content_sha256": "9f12235c55517683fc06dd43ed28a4690442a5554976a426d317546c4601b1cf",
+      "adapter": "csdiy",
+      "extractor_version": "1.1",
+      "license_label_from_snapshot": "MIT"
+    },
+    "source_use": "Catalog metadata informed scope and tool choice; it was not treated as lesson content or an official unit sequence.",
+    "external_retrieval_performed": false,
+    "official_content_copied": false
+  }
+}

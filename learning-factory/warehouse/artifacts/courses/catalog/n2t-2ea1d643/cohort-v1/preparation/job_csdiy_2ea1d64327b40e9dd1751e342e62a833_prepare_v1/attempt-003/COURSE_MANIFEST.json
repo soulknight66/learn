@@ -1,0 +1,71 @@
+{
+  "course_id": "course_2ea1d64327b40e9dd1751e342e62a833",
+  "title": "Coursera: Nand2Tetris",
+  "status": "READY_FOR_STUDY",
+  "unit": {
+    "unit_id": "kickoff_nand_component_engineering_v1",
+    "sequence": 1,
+    "title": "NAND Component Engineering: Specification, Composition, and Verification",
+    "classification": "MANAGER_AUTHORED_KICKOFF",
+    "official_course_unit": false,
+    "learner_profile": "A strong algorithms student building practical software-engineering habits",
+    "estimated_hours": 6,
+    "scope": "Implement a small, platform-neutral Boolean component library from one trusted NAND primitive and produce deterministic verification and engineering evidence.",
+    "learning_objectives": [
+      "Translate finite Boolean behavior into explicit component contracts.",
+      "Build derived components through constrained composition and clear interfaces.",
+      "Use exhaustive deterministic tests as evidence over a finite input domain.",
+      "Make implementation constraints, assumptions, commands, and verification results reviewable by another engineer."
+    ],
+    "included_components": [
+      "NAND primitive contract",
+      "NOT, AND, OR, and two-input multiplexer components",
+      "Exhaustive tests, a reproducible test command, a design note, and written comprehension responses"
+    ],
+    "excluded_scope": [
+      "Claims of completing an official Nand2Tetris project or week",
+      "Sequential logic, registers, memory, CPU, and machine language",
+      "Virtual machine, compiler, operating system, GUI, and Tetris work",
+      "Any claim of whole-course completion"
+    ]
+  },
+  "completion_policy": {
+    "scope": "THIS_UNIT_ONLY",
+    "initial_unit_state": "NOT_EVALUATED",
+    "course_completion_allowed": false,
+    "learner_self_report_is_evidence": false,
+    "required_evidence": [
+      "A submission containing the specified source, tests, documentation, and comprehension responses",
+      "A captured passing run from the documented one-command test procedure",
+      "Independent inspection of the NAND-only composition constraint",
+      "Independent evaluation using examiner_only/RUBRIC.md"
+    ],
+    "pass_rule": {
+      "minimum_score": 80,
+      "maximum_score": 100,
+      "critical_failures_must_be_absent": true
+    },
+    "completion_effect": "Passing may mark kickoff_nand_component_engineering_v1 complete; it must not change the course to complete or imply completion of an official course unit."
+  },
+  "provenance": {
+    "classification": "MANAGER_AUTHORED_FROM_CATALOG_METADATA",
+    "input": "The catalog snapshot supplied to this preparation job",
+    "source_catalog": {
+      "name": "CSDIY",
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "source_type": "course_catalog",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/体系结构/N2T.en.md",
+      "content_sha256": "4fc58a940cb7f987d3062a5006b859c8a0dcaf8f0b56ad9097ddf0c0a2ce70e0",
+      "adapter": "csdiy",
+      "extractor_version": "1.1"
+    },
+    "catalog_facts_used": [
+      "The course description begins the hardware path by constructing logic gates from NAND gates.",
+      "The catalog lists no prerequisites and permits a language chosen by the learner.",
+      "The catalog describes a broader hardware-and-software course and an aggregate set of ten projects."
+    ],
+    "manager_synthesis": "The exact component set, software-engineering emphasis, six-hour bound, deliverables, and evaluation policy were authored for this kickoff; they were not extracted as an official syllabus unit.",
+    "retrieval": "No linked, authenticated, textbook, recording, repository, or assignment content was fetched for this preparation."
+  }
+}

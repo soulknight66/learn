@@ -1,0 +1,51 @@
+[
+  {
+    "id": "unknown_byte_nul",
+    "source_base64": "cHJpbnQgMTsA",
+    "expected_exit": 65,
+    "expected_phase": "lex"
+  },
+  {
+    "id": "long_leading_zero_literal",
+    "source": "print 0000000000000000000000000000000000000001;\n",
+    "expected_exit": 0,
+    "expected_stdout": "1\n"
+  },
+  {
+    "id": "oversized_literal_unreachable",
+    "source": "halt; print 1000000001;\n",
+    "expected_exit": 65,
+    "expected_phase": "lex"
+  },
+  {
+    "id": "undefined_after_halt",
+    "source": "halt; print absent;\n",
+    "expected_exit": 65,
+    "expected_phase": "compile"
+  },
+  {
+    "id": "deep_parentheses",
+    "generator": "'print ' + ('(' * 2048) + '1' + (')' * 2048) + ';\\n'",
+    "expectation": "bounded completion: success or documented nesting-limit parse failure"
+  },
+  {
+    "id": "empty_infinite_loop",
+    "source": "while true { }\n",
+    "expected_exit": 70,
+    "expected_phase": "runtime",
+    "stderr_contains": "instruction limit exceeded"
+  },
+  {
+    "id": "output_then_overflow",
+    "source": "print 9; print 1000000000 + 1;\n",
+    "expected_exit": 70,
+    "expected_stdout": "9\n",
+    "expected_phase": "runtime"
+  },
+  {
+    "id": "crlf_location",
+    "source": "print 1;\r\n@",
+    "expected_exit": 65,
+    "expected_diagnostic_prefix_suffix": ":2:1: lex:"
+  }
+]

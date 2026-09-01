@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "course_id": "course_51bc91893247cdfd588ce273c20ddb29",
+  "nodes": [
+    {
+      "node_id": "managed_unit_01_expression_front_end",
+      "node_type": "managed_study_unit",
+      "title": "Compiler Front-End Engineering Kickoff: A Tiny Expression Language",
+      "classification": "MANAGER_AUTHORED",
+      "upstream_official_course_unit": false,
+      "schedulable": true,
+      "availability": "LOCAL_SPECIFICATION_AVAILABLE",
+      "required_for_kickoff": true
+    },
+    {
+      "node_id": "artifact_course_brief",
+      "node_type": "learner_safe_artifact",
+      "title": "Course brief",
+      "path": "student_safe/COURSE_BRIEF.md",
+      "availability": "LOCAL",
+      "required_for_kickoff": true
+    },
+    {
+      "node_id": "artifact_study_task",
+      "node_type": "learner_safe_artifact",
+      "title": "Study task",
+      "path": "student_safe/STUDY_TASK.md",
+      "availability": "LOCAL",
+      "required_for_kickoff": true
+    },
+    {
+      "node_id": "artifact_comprehension",
+      "node_type": "learner_safe_artifact",
+      "title": "Comprehension prompts",
+      "path": "student_safe/COMPREHENSION.md",
+      "availability": "LOCAL",
+      "required_for_kickoff": true
+    },
+    {
+      "node_id": "artifact_examiner_rubric",
+      "node_type": "examiner_only_artifact",
+      "title": "Independent evaluation rubric",
+      "path": "examiner_only/RUBRIC.md",
+      "availability": "LOCAL_RESTRICTED_TO_EXAMINER",
+      "required_for_kickoff": true
+    },
+    {
+      "node_id": "unit_3d59671036128c39730c082cc03151c5",
+      "node_type": "normalized_resource_record",
+      "title": "Catalog overview and resource guide",
+      "record_role": "catalog_overview",
+      "classification": "CATALOG_METADATA_INPUT",
+      "upstream_official_course_unit": false,
+      "schedulable": false,
+      "availability": "SNAPSHOT_METADATA_AVAILABLE",
+      "required_for_kickoff": false
+    },
+    {
+      "node_id": "unit_e9b441c47e926f62adf5111b648a9110",
+      "node_type": "normalized_resource_record",
+      "title": "Course Website",
+      "record_role": "external_resource_link",
+      "classification": "LINK_NOT_UNIT",
+      "upstream_official_course_unit": false,
+      "schedulable": false,
+      "availability": "LINKED_UNVERIFIED",
+      "required_for_kickoff": false
+    },
+    {
+      "node_id": "unit_8d66fdd5e748f8d1500b9f113a193f5e",
+      "node_type": "normalized_resource_record",
+      "title": "Recordings",
+      "record_role": "external_resource_link",
+      "classification": "RECORDING_COLLECTION_LINK_NOT_UNIT",
+      "upstream_official_course_unit": false,
+      "schedulable": false,
+      "availability": "LINKED_UNVERIFIED",
+      "required_for_kickoff": false
+    },
+    {
+      "node_id": "unit_47025bf5c29afd47d3ff4bec5753576c",
+      "node_type": "normalized_resource_record",
+      "title": "Compilers: Principles, Techniques and Tools (Dragon Book)",
+      "record_role": "described_textbook",
+      "classification": "BIBLIOGRAPHIC_REFERENCE_NOT_UNIT",
+      "upstream_official_course_unit": false,
+      "schedulable": false,
+      "availability": "DESCRIBED_NOT_PROVIDED",
+      "required_for_kickoff": false
+    },
+    {
+      "node_id": "unit_0f736dd676b843ffc6924a3659b617e7",
+      "node_type": "normalized_resource_record",
+      "title": "10 written assignments + 8~10 programming labs",
+      "record_role": "upstream_assignment_aggregate",
+      "classification": "OFFICIAL_AGGREGATE_RECORD_NOT_AN_EXPANDABLE_UNIT",
+      "upstream_official_course_unit": true,
+      "schedulable": false,
+      "availability": "DESCRIBED_AGGREGATE_ONLY",
+      "required_for_kickoff": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "artifact_course_brief",
+      "to": "managed_unit_01_expression_front_end",
+      "relation": "orients",
+      "required": true
+    },
+    {
+      "from": "artifact_study_task",
+      "to": "managed_unit_01_expression_front_end",
+      "relation": "specifies_work",
+      "required": true
+    },
+    {
+      "from": "artifact_comprehension",
+      "to": "managed_unit_01_expression_front_end",
+      "relation": "collects_reflection_evidence",
+      "required": true
+    },
+    {
+      "from": "artifact_examiner_rubric",
+      "to": "managed_unit_01_expression_front_end",
+      "relation": "validates",
+      "required": true
+    },
+    {
+      "from": "unit_3d59671036128c39730c082cc03151c5",
+      "to": "managed_unit_01_expression_front_end",
+      "relation": "informed_manager_scope",
+      "required": false
+    },
+    {
+      "from": "unit_e9b441c47e926f62adf5111b648a9110",
+      "to": "managed_unit_01_expression_front_end",
+      "relation": "optional_future_enrichment",
+      "required": false
+    },
+    {
+      "from": "unit_8d66fdd5e748f8d1500b9f113a193f5e",
+      "to": "managed_unit_01_expression_front_end",
+      "relation": "optional_future_enrichment",
+      "required": false
+    },
+    {
+      "from": "unit_47025bf5c29afd47d3ff4bec5753576c",
+      "to": "managed_unit_01_expression_front_end",
+      "relation": "optional_future_reading",
+      "required": false
+    },
+    {
+      "from": "unit_0f736dd676b843ffc6924a3659b617e7",
+      "to": "managed_unit_01_expression_front_end",
+      "relation": "context_only_no_content_dependency",
+      "required": false
+    }
+  ],
+  "record_boundary": {
+    "statement": "Normalized records may be catalog resource links rather than official course units; availability and unit status must be classified before later expansion.",
+    "scheduled_unit_ids": [
+      "managed_unit_01_expression_front_end"
+    ],
+    "classification_rule": "No normalized record is scheduled merely because it has a unit_id. The assignment record preserves its upstream official flag but remains an undivided aggregate without assignment content.",
+    "kickoff_independence": "The scheduled unit requires only the local learner-safe specifications; external records are optional and unverified.",
+    "course_boundary": "This graph represents one kickoff unit, not an official NJU sequence and not the whole course."
+  },
+  "provenance": {
+    "artifact_classification": "COURSE_MANAGER_SYNTHESIS",
+    "validation_label": "GRAPH_PREPARED_NOT_VALIDATED",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_content_sha256": "9f12235c55517683fc06dd43ed28a4690442a5554976a426d317546c4601b1cf",
+    "external_retrieval_performed": false
+  }
+}

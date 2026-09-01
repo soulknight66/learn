@@ -1,0 +1,145 @@
+{
+  "course_id": "course_c473bebd690737d1b3fe4fb26541a8ec",
+  "materials": [
+    {
+      "material_id": "unit_7263c8f71e01ac11de40d959684dbf7f",
+      "title": "Catalog overview and resource guide",
+      "kind": "normalized_catalog_record",
+      "source_reference": "docs/数学基础/MITLA.en.md",
+      "availability": "AVAILABLE_METADATA_ONLY",
+      "content_retrieved": true,
+      "instructional_content_verified": false,
+      "required_for_kickoff": false,
+      "note": "Only the supplied catalog snapshot is present; it is provenance and discovery data, not a course lesson."
+    },
+    {
+      "material_id": "unit_4a9a58d3275b16d0317c46057638f945",
+      "title": "MIT OpenCourseWare course website",
+      "kind": "normalized_catalog_record",
+      "source_reference": "docs/数学基础/MITLA.en.md#L19",
+      "locators": [
+        "https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/syllabus/"
+      ],
+      "availability": "LINKED_UNVERIFIED",
+      "content_retrieved": false,
+      "instructional_content_verified": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "unit_bb7aca98d9926fab545c281d531aa9e1",
+      "title": "Recordings",
+      "kind": "normalized_catalog_record",
+      "source_reference": "docs/数学基础/MITLA.en.md#L20",
+      "availability": "DESCRIBED_NO_DIRECT_LOCATOR",
+      "content_retrieved": false,
+      "instructional_content_verified": false,
+      "required_for_kickoff": false,
+      "note": "The snapshot says only to refer to the course website."
+    },
+    {
+      "material_id": "unit_88ddcb5fb389695af921451dcb45bae6",
+      "title": "Introduction to Linear Algebra by Gilbert Strang",
+      "kind": "normalized_catalog_record",
+      "source_reference": "docs/数学基础/MITLA.en.md#L21",
+      "availability": "DESCRIBED_NOT_PROVIDED",
+      "content_retrieved": false,
+      "instructional_content_verified": false,
+      "required_for_kickoff": false,
+      "note": "A title is named, but no licensed copy or assigned section is supplied."
+    },
+    {
+      "material_id": "unit_7c2493fce2ccf7d14fa645647ea656d3",
+      "title": "Assignments",
+      "kind": "normalized_catalog_record",
+      "source_reference": "docs/数学基础/MITLA.en.md#L22",
+      "availability": "DESCRIBED_NO_DIRECT_LOCATOR",
+      "content_retrieved": false,
+      "instructional_content_verified": false,
+      "source_official_course_unit_claim": true,
+      "promoted_to_official_unit": false,
+      "required_for_kickoff": false,
+      "note": "The record points indirectly to the course website and contains no assignment body."
+    },
+    {
+      "material_id": "catalog_url_strang_linear_algebra",
+      "title": "Gilbert Strang linear algebra landing page",
+      "kind": "catalog_url",
+      "locators": [
+        "https://math.mit.edu/~gs/linearalgebra/"
+      ],
+      "availability": "LINKED_UNVERIFIED",
+      "content_retrieved": false,
+      "instructional_content_verified": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "catalog_url_textbook_cover",
+      "title": "Introduction to Linear Algebra cover image",
+      "kind": "catalog_url",
+      "locators": [
+        "https://math.mit.edu/~gs/linearalgebra/ila5/linearalgebra5_Front.jpg"
+      ],
+      "availability": "LINKED_UNVERIFIED",
+      "content_retrieved": false,
+      "instructional_content_verified": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "catalog_url_3blue1brown_playlist",
+      "title": "3Blue1Brown: Essence of Linear Algebra playlist",
+      "kind": "catalog_url",
+      "locators": [
+        "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab"
+      ],
+      "availability": "LINKED_UNVERIFIED",
+      "content_retrieved": false,
+      "instructional_content_verified": false,
+      "required_for_kickoff": false
+    },
+    {
+      "material_id": "catalog_url_final_lecture_page",
+      "title": "MIT OpenCourseWare final lecture page",
+      "kind": "catalog_url",
+      "locators": [
+        "https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/final-1806-lecture-2023/"
+      ],
+      "availability": "LINKED_UNVERIFIED",
+      "content_retrieved": false,
+      "instructional_content_verified": false,
+      "required_for_kickoff": false
+    }
+  ],
+  "blocked": [
+    {
+      "material_id": "unit_bb7aca98d9926fab545c281d531aa9e1",
+      "blocker": "NO_DIRECT_CONTENT_LOCATOR",
+      "impact": "No recording can be assigned or represented as reviewed.",
+      "safe_next_step": "A later authorized retrieval job may inspect the public course index, capture exact lecture records, and validate provenance."
+    },
+    {
+      "material_id": "unit_88ddcb5fb389695af921451dcb45bae6",
+      "blocker": "LICENSED_CONTENT_NOT_INCLUDED",
+      "impact": "No textbook chapter or page range can be assumed available to the learner.",
+      "safe_next_step": "Use only a lawfully accessible learner copy or an openly licensed alternative, then record edition and assigned sections."
+    },
+    {
+      "material_id": "unit_7c2493fce2ccf7d14fa645647ea656d3",
+      "blocker": "ASSIGNMENT_BODY_NOT_INCLUDED",
+      "impact": "The catalog claim alone is insufficient to create or validate an official assignment unit.",
+      "safe_next_step": "A later authorized retrieval job may locate the public assignment index and preserve exact source provenance before classification."
+    }
+  ],
+  "retrieval_policy": {
+    "current_job_action": "NO_REMOTE_FETCH_PERFORMED",
+    "linked_status_meaning": "A URL was present in the supplied snapshot only; reachability, license, contents, and fitness were not checked.",
+    "future_public_retrieval": [
+      "Run only in an explicitly authorized retrieval job.",
+      "Capture the final URL, access result, content identity or hash where lawful, license or terms, and retrieval provenance.",
+      "Classify each retrieved item as metadata, optional resource, or official unit before adding graph dependencies.",
+      "Keep the kickoff runnable when an optional remote resource is unavailable."
+    ],
+    "restricted_content": "Do not bypass authentication, paywalls, access controls, robots restrictions, or license limits; do not copy a learner-owned textbook into shared artifacts.",
+    "student_view": "Expose only learner-safe, authorized material. Never expose examiner artifacts, hidden validators, sealed references, secrets, or another learner's files.",
+    "promotion_rule": "A link or prose description is never evidence that instructional content is available or that a normalized record is an official course unit."
+  }
+}

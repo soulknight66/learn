@@ -1,0 +1,76 @@
+{
+  "course_id": "course_c473bebd690737d1b3fe4fb26541a8ec",
+  "title": "MIT18.06: Linear Algebra",
+  "status": "PREPARED",
+  "unit": {
+    "unit_id": "unit_c473bebd_kickoff_linear_systems_v1",
+    "title": "Linear Systems as a Tested Software Component",
+    "status": "READY",
+    "classification": "manager-authored-kickoff",
+    "official_course_unit": false,
+    "estimated_hours": 8,
+    "audience": "A strong algorithms student building practical software-engineering skill",
+    "scope": {
+      "included": [
+        "solution sets of square linear systems",
+        "Gaussian elimination with partial pivoting",
+        "input contracts and explicit failure modes",
+        "deterministic unit tests and residual-based checks",
+        "documentation of numerical limitations"
+      ],
+      "excluded": [
+        "a claim of coverage of MIT 18.06",
+        "a claim of textbook or lecture completion",
+        "matrix factorization libraries beyond the assigned solver",
+        "production-grade numerical linear algebra",
+        "any normalized catalog record not yet verified as an instructional unit"
+      ]
+    },
+    "learning_objectives": [
+      "Connect row operations, pivots, and solution-set classification.",
+      "Specify a small linear-system solver with observable, testable behavior.",
+      "Implement elimination and back substitution without delegating the core algorithm to a numerical library.",
+      "Use partial pivoting and a documented scale-aware tolerance policy.",
+      "Build deterministic tests for normal, adversarial, and invalid inputs.",
+      "Explain the difference between algorithmic correctness, a small residual, and production numerical reliability."
+    ],
+    "required_local_documents": [
+      "student_safe/COURSE_BRIEF.md",
+      "student_safe/STUDY_TASK.md",
+      "student_safe/COMPREHENSION.md"
+    ],
+    "external_materials_required": false
+  },
+  "completion_policy": {
+    "unit_completion_is_course_completion": false,
+    "unit_completion_authority": "worker-harness-controlled-validator",
+    "learner_or_agent_prose_is_evidence": false,
+    "unit_complete_when": [
+      "All requested submission artifacts exist in the later learner attempt workspace.",
+      "Harness-controlled deterministic checks pass the solver contract and isolation requirements.",
+      "An examiner applies the independent rubric to the captured artifacts and evidence.",
+      "The resulting durable job transition is accepted by the control plane."
+    ],
+    "after_unit_completion": "Keep the course IN_PROGRESS; this kickoff establishes only one bounded foundation.",
+    "whole_course_completion": "Requires separately prepared and validated later units covering a declared course-wide outcome set; no such completion is claimed by this package."
+  },
+  "provenance": {
+    "classification": "manager-authored-from-supplied-catalog-snapshot",
+    "validation_label": "PREPARED_NOT_LEARNER_VALIDATED",
+    "catalog_status": "DISCOVERED",
+    "network_retrieval_performed": false,
+    "source": {
+      "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+      "name": "CSDIY",
+      "type": "course_catalog",
+      "license": "MIT",
+      "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git",
+      "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+      "source_file": "docs/数学基础/MITLA.en.md",
+      "content_sha256": "24859d408ee83f040e3a41ff06c239ed75dfc2f42fd2f122654055c57d1dc318",
+      "adapter": "csdiy",
+      "extractor_version": "1.1"
+    },
+    "authorship_note": "The kickoff sequence and software task are new course-manager work. They are not represented as an official MIT unit, a Gilbert Strang text excerpt, or a 3Blue1Brown lesson."
+  }
+}

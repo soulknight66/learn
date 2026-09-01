@@ -1,0 +1,69 @@
+{
+  "course_id": "course_2ea1d64327b40e9dd1751e342e62a833",
+  "nodes": [
+    {
+      "unit_id": "kickoff_nand_component_engineering_v1",
+      "order": 1,
+      "title": "NAND Component Engineering: Specification, Composition, and Verification",
+      "node_type": "STUDY_UNIT",
+      "classification": "MANAGER_AUTHORED_KICKOFF",
+      "official_course_unit": false,
+      "status": "READY_FOR_STUDY",
+      "estimated_hours": 6,
+      "source_basis": [
+        "unit_fcb5ac9d7af4fb8b994b21163f8312bc",
+        "unit_0ff55b909e2fc0f658467f4b32eefe49"
+      ],
+      "internal_sequence": [
+        "Specify interfaces and finite behavior",
+        "Implement constrained NAND composition",
+        "Run exhaustive deterministic verification",
+        "Package reproducible evidence and reflect"
+      ],
+      "completion_scope": "UNIT_ONLY"
+    }
+  ],
+  "edges": [],
+  "record_boundary": {
+    "rule": "Normalized records are catalog inputs to classify. A link, description, or aggregate official-course reference is not promoted into a teachable official unit without retrieved unit-level evidence.",
+    "graph_effect": "Only the manager-authored kickoff is a graph node. No official course sequence is inferred, and a one-node graph therefore has no dependency edges.",
+    "classifications": [
+      {
+        "record_id": "unit_fcb5ac9d7af4fb8b994b21163f8312bc",
+        "catalog_title": "Catalog overview and resource guide",
+        "classification": "CATALOG_CONTEXT",
+        "promoted_to_official_unit": false,
+        "reason": "The record is explicitly marked as a catalog overview and not an official course unit."
+      },
+      {
+        "record_id": "unit_8c778489031f1697dcfb0b713d5247c3",
+        "catalog_title": "Course Website",
+        "classification": "EXTERNAL_LOCATOR",
+        "promoted_to_official_unit": false,
+        "reason": "The record supplies course links but no retrieved unit definition."
+      },
+      {
+        "record_id": "unit_cbbcd72b22a84efcf84fc146bc847fcc",
+        "catalog_title": "Recordings",
+        "classification": "UNRESOLVED_MATERIAL_POINTER",
+        "promoted_to_official_unit": false,
+        "reason": "Recordings are only described as being on the course website."
+      },
+      {
+        "record_id": "unit_bc6a18783a58546aa17000c7c9649ec8",
+        "catalog_title": "Textbook",
+        "classification": "UNRESOLVED_MATERIAL_POINTER",
+        "promoted_to_official_unit": false,
+        "reason": "The snapshot contains a title and unresolved reference label, not accessible unit content."
+      },
+      {
+        "record_id": "unit_0ff55b909e2fc0f658467f4b32eefe49",
+        "catalog_title": "Assignments",
+        "classification": "AGGREGATE_OFFICIAL_COURSEWORK_REFERENCE",
+        "promoted_to_official_unit": false,
+        "reason": "Although associated with official coursework, it summarizes ten projects collectively and contains no project boundaries, specifications, dependencies, or validation artifacts."
+      }
+    ],
+    "future_expansion_gate": "A later job may add official-unit nodes only after authorized retrieval establishes each unit's title, scope, ordering, provenance, availability, and validation boundary."
+  }
+}

@@ -1,6 +1,3567 @@
 {
   "artifacts": [
     {
+      "artifact_id": "artifact_7eeb245076f44259848563ca406996d4",
+      "attempt_number": 2,
+      "checksum": "4001c189725c3bc76d14b8ecf996c8d700cbebfcdb7c7ca5c09acde967d88d2f",
+      "checksum_algorithm": "tree-sha256-v2",
+      "created_at": 1788268877.7177975,
+      "integrity_status": "VERIFIED_V2",
+      "job_id": "job_byox_repair_v1_g1_70c59d0180be35286cb449a00260246e",
+      "job_type": "codex_task",
+      "metadata": {
+        "archive_projection": {
+          "mode": "declared-worker-outputs",
+          "paths": [
+            "AGENTS.md",
+            "CONCEPTS.md",
+            "DESIGN_QUESTIONS.md",
+            "LICENSE_BOUNDARY.md",
+            "MANIFEST.yaml",
+            "PROVENANCE.json",
+            "README.md",
+            "REQUIREMENTS.md",
+            "VALIDATION.md",
+            "adversarial",
+            "benchmarks",
+            "debugging",
+            "environment",
+            "public_tests",
+            "review_exercises",
+            "sealed",
+            "starter"
+          ],
+          "projected_tree_checksum": "4001c189725c3bc76d14b8ecf996c8d700cbebfcdb7c7ca5c09acde967d88d2f",
+          "projected_tree_checksum_algorithm": "tree-sha256-v2",
+          "schema_version": 1,
+          "source_workspace_checksum": "8ed5c18d8a9a71f850e99630528b1ff863dde0a2c016a2e641465aacd9eff357",
+          "source_workspace_checksum_algorithm": "tree-sha256-v2",
+          "staged_inputs_excluded": true
+        },
+        "attempt": 2,
+        "byox_validation_cutover": {
+          "archive_paths": [
+            "AGENTS.md",
+            "CONCEPTS.md",
+            "DESIGN_QUESTIONS.md",
+            "LICENSE_BOUNDARY.md",
+            "MANIFEST.yaml",
+            "PROVENANCE.json",
+            "README.md",
+            "REQUIREMENTS.md",
+            "VALIDATION.md",
+            "adversarial",
+            "benchmarks",
+            "debugging",
+            "environment",
+            "public_tests",
+            "review_exercises",
+            "sealed",
+            "starter"
+          ],
+          "archive_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+          "classification": "factory-authoritative-validation-snapshot",
+          "limits": {
+            "max_depth": 64,
+            "max_entries": 100000,
+            "max_file_bytes": 536870912,
+            "max_total_bytes": 2147483648
+          },
+          "manifest_sha256": "34eec2a526b8b1d5c21b8b56e42e633524819c67e8fba0edcc448d8084aa8941",
+          "policy": "fresh-inode-workspace-replacement-v1",
+          "quarantine_evidence_scope": "capture-time-retired-source-only",
+          "quarantine_manifest_sha256": "83102e5289636c4c7cf47aa6beec2c973d6e7acb19de07a5f3f1588e3bb57438",
+          "schema_version": 1,
+          "selected_output_checksum": "4001c189725c3bc76d14b8ecf996c8d700cbebfcdb7c7ca5c09acde967d88d2f",
+          "selected_output_checksum_algorithm": "tree-sha256-v2",
+          "snapshot_roots": [
+            "AGENTS.md",
+            "CONCEPTS.md",
+            "DESIGN_QUESTIONS.md",
+            "LICENSE_BOUNDARY.md",
+            "MANIFEST.yaml",
+            "PRIOR_BUILD",
+            "PRIOR_REVIEW",
+            "PROVENANCE.json",
+            "README.md",
+            "REQUIREMENTS.md",
+            "VALIDATION.md",
+            "adversarial",
+            "benchmarks",
+            "debugging",
+            "environment",
+            "public_tests",
+            "review_exercises",
+            "sealed",
+            "starter"
+          ],
+          "source_disposition": "retired-and-discarded",
+          "staged_inputs": [
+            {
+              "checksum": "afe3e7d4d423179f520ea320f0e73ff5f5fc1b163b9877af907f061d900f3b23",
+              "checksum_algorithm": "tree-sha256-v2",
+              "kind": "directory",
+              "path": "PRIOR_BUILD"
+            },
+            {
+              "checksum": "41c466f7b128d3e672b1b81b45445a2a634ab7f56a604cdfc551f81e265af2ce",
+              "checksum_algorithm": "file-sha256",
+              "kind": "file",
+              "path": "PRIOR_REVIEW/EVALUATION.json"
+            },
+            {
+              "checksum": "fff1c2cada5b919632585bd303e21989a6f1becc1350506face57c2dbc5ffc5e",
+              "checksum_algorithm": "file-sha256",
+              "kind": "file",
+              "path": "PRIOR_REVIEW/REVIEW.md"
+            },
+            {
+              "checksum": "9b7ccc4917266f4055d90375c3c4d01e07a6db34a37d206d5789020056c627f4",
+              "checksum_algorithm": "file-sha256",
+              "kind": "file",
+              "path": "PRIOR_REVIEW/VALIDATION.md"
+            }
+          ],
+          "validation_snapshot_checksum": "8ed5c18d8a9a71f850e99630528b1ff863dde0a2c016a2e641465aacd9eff357",
+          "validation_snapshot_checksum_algorithm": "tree-sha256-v2"
+        },
+        "catalog_provenance": {
+          "classification": "agent-generated challenge pack bound to immutable source-derived catalog metadata",
+          "license_boundary": {
+            "catalog_license": "CC0-1.0",
+            "generated_material": "independently generated for personal educational use",
+            "linked_content_copied": false,
+            "linked_resource_license": "NOASSERTION"
+          },
+          "project": {
+            "category": "Programming Language",
+            "concepts": [
+              "parsing",
+              "interpreters",
+              "compilers",
+              "language design"
+            ],
+            "difficulty": 8.0,
+            "implementation_language": "Pascal",
+            "metadata": {
+              "catalog_suffix": "",
+              "languages": [
+                "Pascal"
+              ],
+              "linked_resource_license": "NOASSERTION",
+              "provenance": {
+                "adapter": "build_your_own_x",
+                "classification": "source-derived",
+                "content_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+                "extractor_version": "1.1",
+                "source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+                "source_file": "README.md",
+                "source_line": 342
+              },
+              "scoring": {
+                "basis": "category heuristic",
+                "classification": "inferred",
+                "priority_tier": 1
+              }
+            },
+            "priority_tier": 1,
+            "production_relevance": 8.5,
+            "project_id": "project_0211acfa0bef3a271027fdcfd888e86a",
+            "slug": "let-s-build-a-compiler-pascal",
+            "source_format": "article",
+            "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+            "title": "Let's Build a Compiler",
+            "upstream_reference": "https://compilers.iecc.com/crenshaw/"
+          },
+          "schema_version": 1,
+          "snapshot_sha256": "39c21180cbc5ede2240b48eb399513125810e87c29d484501064179bd9c5b2aa",
+          "source": {
+            "active_at_factory_time": true,
+            "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989",
+            "ingested_at": 1788122856.9532762,
+            "license": "CC0-1.0",
+            "metadata": {
+              "adapter": "build_your_own_x",
+              "extractor_version": "1.1",
+              "head_ref": "master",
+              "last_ingestion": {
+                "at": 1788122856.9532762,
+                "course_units": 0,
+                "courses": 0,
+                "curriculum_edges": 0,
+                "projects": 359,
+                "warnings": []
+              },
+              "license_evidence": "explicit CC0 waiver declaration",
+              "license_file": "README.md#origins--license",
+              "license_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+              "license_source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+              "linked_resource_license": "NOASSERTION",
+              "snapshot_reader": "git-object-database",
+              "tree_hash": "12e788febc0575ae1bce1de8ad1fc28d7fff7c22",
+              "working_tree_dirty": false
+            },
+            "name": "Build Your Own X",
+            "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/build-your-own-x",
+            "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+            "type": "project_catalog",
+            "upstream_url": "git@github.com:codecrafters-io/build-your-own-x.git"
+          }
+        },
+        "classification": "bounded repair of an independently reviewed BYOX artifact",
+        "factory_revision": {
+          "commit": "7ff1d60dfb125749c82a23a8e0f4f8140b41becb",
+          "status": "RECORDED",
+          "tracked_worktree_clean": true
+        },
+        "generation": 1,
+        "job_id": "job_byox_repair_v1_g1_70c59d0180be35286cb449a00260246e",
+        "project_id": "project_0211acfa0bef3a271027fdcfd888e86a",
+        "prompt_contexts": [],
+        "remediation_snapshot": {
+          "generation": 1,
+          "policy_version": 1,
+          "project_id": "project_0211acfa0bef3a271027fdcfd888e86a",
+          "schema_version": 1,
+          "snapshot_sha256": "dcb88ef2e0206418a78f7e4c8c6fb2a77c7e0e50b1fcc33028074863e36a69c0",
+          "trigger": {
+            "builder": {
+              "artifact_attempt": 1,
+              "artifact_checksum": "4ed3d5c6663d6ff31289aed063cd7c586b71608f60985161ee0025d723598aa8",
+              "artifact_id": "artifact_9fecb75972a44948bd381f4901c77b39",
+              "artifact_type": "byox-challenge-pack",
+              "checksum_algorithm": "tree-sha256-v2",
+              "job_id": "job_byox_build_v1_80876d491bcba78a3466ae3480aaaea5"
+            },
+            "builder_artifact_profile": "byox-generic-v1",
+            "project_id": "project_0211acfa0bef3a271027fdcfd888e86a",
+            "review": {
+              "artifact_attempt": 1,
+              "artifact_checksum": "8e918e4e12478c64f92a85a65e1d1d93f829c49247347a5351a9f9324b0d50a4",
+              "artifact_id": "artifact_a744a85a982e465a95685e848a423d06",
+              "artifact_type": "byox-independent-review",
+              "checksum_algorithm": "tree-sha256-v2",
+              "job_id": "job_byox_review_v1_80876d491bcba78a3466ae3480aaaea5"
+            },
+            "review_job_id": "job_byox_review_v1_80876d491bcba78a3466ae3480aaaea5",
+            "review_policy_version": 1,
+            "verdict": "REVISE",
+            "verdict_validation": {
+              "attempt_number": 1,
+              "evidence_sha256": "ed6d15147e82405dc4cfdba43b595c722af2cc38299caa0223e215c060c069bc",
+              "validation_id": "validation_b5aad2a4ce754c2b8289692ed3cc7219",
+              "validator": "byox-independent-review-verdict"
+            }
+          }
+        },
+        "removed_root_metadata": [
+          ".factory-workspace"
+        ],
+        "repair_archive_selection": {
+          "artifact_inventory": {
+            "excluded_paths": [],
+            "excluded_paths_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "original_paths": [
+              "AGENTS.md",
+              "CONCEPTS.md",
+              "DESIGN_QUESTIONS.md",
+              "LICENSE_BOUNDARY.md",
+              "MANIFEST.yaml",
+              "PROVENANCE.json",
+              "README.md",
+              "REQUIREMENTS.md",
+              "VALIDATION.md",
+              "adversarial",
+              "benchmarks",
+              "debugging",
+              "environment",
+              "public_tests",
+              "review_exercises",
+              "sealed",
+              "starter"
+            ],
+            "original_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+            "profile": "byox-generic-v1",
+            "root_kinds": {
+              "AGENTS.md": "file",
+              "CONCEPTS.md": "file",
+              "DESIGN_QUESTIONS.md": "file",
+              "LICENSE_BOUNDARY.md": "file",
+              "MANIFEST.yaml": "file",
+              "PROVENANCE.json": "file",
+              "README.md": "file",
+              "REQUIREMENTS.md": "file",
+              "VALIDATION.md": "file",
+              "adversarial": "directory",
+              "benchmarks": "directory",
+              "debugging": "directory",
+              "environment": "directory",
+              "public_tests": "directory",
+              "review_exercises": "directory",
+              "sealed": "directory",
+              "starter": "directory"
+            },
+            "root_kinds_sha256": "4ab3748035e4101088141376a5db0f5900d24a8b2a0863979e42d39e34e7a878",
+            "schema_version": 1,
+            "selected_paths": [
+              "AGENTS.md",
+              "CONCEPTS.md",
+              "DESIGN_QUESTIONS.md",
+              "LICENSE_BOUNDARY.md",
+              "MANIFEST.yaml",
+              "PROVENANCE.json",
+              "README.md",
+              "REQUIREMENTS.md",
+              "VALIDATION.md",
+              "adversarial",
+              "benchmarks",
+              "debugging",
+              "environment",
+              "public_tests",
+              "review_exercises",
+              "sealed",
+              "starter"
+            ],
+            "selected_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+            "source_artifact_type": "byox-remediated-challenge-pack"
+          },
+          "authoritative_cutover": {
+            "archive_paths": [
+              "AGENTS.md",
+              "CONCEPTS.md",
+              "DESIGN_QUESTIONS.md",
+              "LICENSE_BOUNDARY.md",
+              "MANIFEST.yaml",
+              "PROVENANCE.json",
+              "README.md",
+              "REQUIREMENTS.md",
+              "VALIDATION.md",
+              "adversarial",
+              "benchmarks",
+              "debugging",
+              "environment",
+              "public_tests",
+              "review_exercises",
+              "sealed",
+              "starter"
+            ],
+            "archive_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+            "classification": "factory-authoritative-validation-snapshot",
+            "limits": {
+              "max_depth": 64,
+              "max_entries": 100000,
+              "max_file_bytes": 536870912,
+              "max_total_bytes": 2147483648
+            },
+            "manifest_sha256": "34eec2a526b8b1d5c21b8b56e42e633524819c67e8fba0edcc448d8084aa8941",
+            "policy": "fresh-inode-workspace-replacement-v1",
+            "quarantine_evidence_scope": "capture-time-retired-source-only",
+            "quarantine_manifest_sha256": "83102e5289636c4c7cf47aa6beec2c973d6e7acb19de07a5f3f1588e3bb57438",
+            "schema_version": 1,
+            "selected_output_checksum": "4001c189725c3bc76d14b8ecf996c8d700cbebfcdb7c7ca5c09acde967d88d2f",
+            "selected_output_checksum_algorithm": "tree-sha256-v2",
+            "snapshot_roots": [
+              "AGENTS.md",
+              "CONCEPTS.md",
+              "DESIGN_QUESTIONS.md",
+              "LICENSE_BOUNDARY.md",
+              "MANIFEST.yaml",
+              "PRIOR_BUILD",
+              "PRIOR_REVIEW",
+              "PROVENANCE.json",
+              "README.md",
+              "REQUIREMENTS.md",
+              "VALIDATION.md",
+              "adversarial",
+              "benchmarks",
+              "debugging",
+              "environment",
+              "public_tests",
+              "review_exercises",
+              "sealed",
+              "starter"
+            ],
+            "source_disposition": "retired-and-discarded",
+            "staged_inputs": [
+              {
+                "checksum": "afe3e7d4d423179f520ea320f0e73ff5f5fc1b163b9877af907f061d900f3b23",
+                "checksum_algorithm": "tree-sha256-v2",
+                "kind": "directory",
+                "path": "PRIOR_BUILD"
+              },
+              {
+                "checksum": "41c466f7b128d3e672b1b81b45445a2a634ab7f56a604cdfc551f81e265af2ce",
+                "checksum_algorithm": "file-sha256",
+                "kind": "file",
+                "path": "PRIOR_REVIEW/EVALUATION.json"
+              },
+              {
+                "checksum": "fff1c2cada5b919632585bd303e21989a6f1becc1350506face57c2dbc5ffc5e",
+                "checksum_algorithm": "file-sha256",
+                "kind": "file",
+                "path": "PRIOR_REVIEW/REVIEW.md"
+              },
+              {
+                "checksum": "9b7ccc4917266f4055d90375c3c4d01e07a6db34a37d206d5789020056c627f4",
+                "checksum_algorithm": "file-sha256",
+                "kind": "file",
+                "path": "PRIOR_REVIEW/VALIDATION.md"
+              }
+            ],
+            "validation_snapshot_checksum": "8ed5c18d8a9a71f850e99630528b1ff863dde0a2c016a2e641465aacd9eff357",
+            "validation_snapshot_checksum_algorithm": "tree-sha256-v2"
+          },
+          "paths": [
+            "AGENTS.md",
+            "CONCEPTS.md",
+            "DESIGN_QUESTIONS.md",
+            "LICENSE_BOUNDARY.md",
+            "MANIFEST.yaml",
+            "PROVENANCE.json",
+            "README.md",
+            "REQUIREMENTS.md",
+            "VALIDATION.md",
+            "adversarial",
+            "benchmarks",
+            "debugging",
+            "environment",
+            "public_tests",
+            "review_exercises",
+            "sealed",
+            "starter"
+          ],
+          "paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+          "protected_staged_tree": {
+            "checksum": "afe3e7d4d423179f520ea320f0e73ff5f5fc1b163b9877af907f061d900f3b23",
+            "checksum_algorithm": "tree-sha256-v2"
+          },
+          "quarantined_outputs": {
+            "classification": "excluded-non-artifact-quarantine",
+            "entries": [],
+            "evidence_scope": "capture-time-retired-source-only",
+            "excluded_from_archive_projection": true,
+            "limits": {
+              "max_depth": 8,
+              "max_entries": 256,
+              "max_file_bytes": 524288,
+              "max_files": 192,
+              "max_roots": 16,
+              "max_total_bytes": 4194304
+            },
+            "manifest_sha256": "83102e5289636c4c7cf47aa6beec2c973d6e7acb19de07a5f3f1588e3bb57438",
+            "policy": "excluded-bounded-tree-v1",
+            "roots": [],
+            "schema_version": 1,
+            "summary": {
+              "directories": 0,
+              "entries": 0,
+              "files": 0,
+              "max_depth": 0,
+              "roots": 0,
+              "total_bytes": 0
+            }
+          },
+          "required_added_inventory": {
+            "paths": [],
+            "paths_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "root_kinds": {},
+            "root_kinds_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "schema_version": 1
+          },
+          "schema_version": 1,
+          "source": {
+            "artifact_attempt": 1,
+            "artifact_checksum": "4ed3d5c6663d6ff31289aed063cd7c586b71608f60985161ee0025d723598aa8",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_9fecb75972a44948bd381f4901c77b39",
+            "artifact_type": "byox-challenge-pack",
+            "job_id": "job_byox_build_v1_80876d491bcba78a3466ae3480aaaea5"
+          },
+          "source_artifact_inventory": {
+            "excluded_paths": [],
+            "excluded_paths_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "original_paths": [
+              "AGENTS.md",
+              "CONCEPTS.md",
+              "DESIGN_QUESTIONS.md",
+              "LICENSE_BOUNDARY.md",
+              "MANIFEST.yaml",
+              "PROVENANCE.json",
+              "README.md",
+              "REQUIREMENTS.md",
+              "VALIDATION.md",
+              "adversarial",
+              "benchmarks",
+              "debugging",
+              "environment",
+              "public_tests",
+              "review_exercises",
+              "sealed",
+              "starter"
+            ],
+            "original_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+            "profile": "byox-generic-v1",
+            "root_kinds": {
+              "AGENTS.md": "file",
+              "CONCEPTS.md": "file",
+              "DESIGN_QUESTIONS.md": "file",
+              "LICENSE_BOUNDARY.md": "file",
+              "MANIFEST.yaml": "file",
+              "PROVENANCE.json": "file",
+              "README.md": "file",
+              "REQUIREMENTS.md": "file",
+              "VALIDATION.md": "file",
+              "adversarial": "directory",
+              "benchmarks": "directory",
+              "debugging": "directory",
+              "environment": "directory",
+              "public_tests": "directory",
+              "review_exercises": "directory",
+              "sealed": "directory",
+              "starter": "directory"
+            },
+            "root_kinds_sha256": "4ab3748035e4101088141376a5db0f5900d24a8b2a0863979e42d39e34e7a878",
+            "schema_version": 1,
+            "selected_paths": [
+              "AGENTS.md",
+              "CONCEPTS.md",
+              "DESIGN_QUESTIONS.md",
+              "LICENSE_BOUNDARY.md",
+              "MANIFEST.yaml",
+              "PROVENANCE.json",
+              "README.md",
+              "REQUIREMENTS.md",
+              "VALIDATION.md",
+              "adversarial",
+              "benchmarks",
+              "debugging",
+              "environment",
+              "public_tests",
+              "review_exercises",
+              "sealed",
+              "starter"
+            ],
+            "selected_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+            "source_artifact_type": "byox-challenge-pack"
+          }
+        },
+        "run_id": "run_1295eeeff8f64489beea91e747dbae52",
+        "run_reproducibility": {
+          "digest": "9667320323d0ff7c8d890080a4147860c8c813641d074f9db5c922a7cc072665",
+          "record_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/logs/job_byox_repair_v1_g1_70c59d0180be35286cb449a00260246e/attempt-002/RUN_PROVENANCE.json",
+          "schema": "learnfactory-run-provenance-v3"
+        },
+        "runtime_prompt": {
+          "effective_prompt": {
+            "content_stored": false,
+            "includes_leaf_worker_policy": true,
+            "sha256": "1353352f2ac16912feabbdbafa5fe79e63525fcfe218760f912d07945e85c2d8",
+            "utf8_bytes": 10743
+          },
+          "job_prompt": {
+            "content_stored": false,
+            "sha256": "f61a4aea84865d3ac946fac45e01e392a00b0d1adac8f7ad505796dd8144be5d",
+            "utf8_bytes": 10395
+          },
+          "leaf_worker_policy": {
+            "content_stored": false,
+            "sha256": "61cfaab916fc8a696d7f1c798f8ef8fe1dea8ae235982996b695eea8b7ac44e7",
+            "utf8_bytes": 348
+          }
+        },
+        "sandbox_rule_manifest": {
+          "declared_outputs": [
+            "AGENTS.md",
+            "CONCEPTS.md",
+            "DESIGN_QUESTIONS.md",
+            "LICENSE_BOUNDARY.md",
+            "MANIFEST.yaml",
+            "PROVENANCE.json",
+            "README.md",
+            "REQUIREMENTS.md",
+            "VALIDATION.md",
+            "adversarial/README.md",
+            "benchmarks/README.md",
+            "debugging/README.md",
+            "environment/README.md",
+            "public_tests/README.md",
+            "review_exercises/README.md",
+            "sealed/DESIGN.md",
+            "sealed/REVIEW.md",
+            "sealed/TRADEOFFS.md",
+            "sealed/alternatives/README.md",
+            "sealed/production/PRODUCTIONIZATION.md",
+            "sealed/reference/README.md",
+            "sealed/reference_tests/README.md",
+            "starter/README.md"
+          ],
+          "result_channel": {
+            "content_stored_in_provenance": false,
+            "fixed_alias_stored": true,
+            "launch_namespace": "fixed-alias-only",
+            "nonce_hash_stored": false,
+            "nonce_stored": false,
+            "outer_cli_output_capability": "parent-procfd-readonly-hold",
+            "output_descriptor_inherited": false,
+            "post_exit_result_retention": "bounded-redacted-output",
+            "private_path_stored": false,
+            "runtime_fd_stored": false,
+            "schema_version": 3,
+            "transport": "outer-cli-parent-held-fixed-alias-inode"
+          },
+          "rules": [
+            {
+              "access": "read",
+              "kind": "staged-input-ancestor",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_repair_v1_g1_70c59d0180be35286cb449a00260246e/attempt-002"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_repair_v1_g1_70c59d0180be35286cb449a00260246e/attempt-002/PRIOR_BUILD"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input-ancestor",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_repair_v1_g1_70c59d0180be35286cb449a00260246e/attempt-002/PRIOR_REVIEW"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_repair_v1_g1_70c59d0180be35286cb449a00260246e/attempt-002/PRIOR_REVIEW/EVALUATION.json"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_repair_v1_g1_70c59d0180be35286cb449a00260246e/attempt-002/PRIOR_REVIEW/REVIEW.md"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_repair_v1_g1_70c59d0180be35286cb449a00260246e/attempt-002/PRIOR_REVIEW/VALIDATION.md"
+            }
+          ],
+          "schema_version": 1,
+          "sha256": "b0d6a495303643d3c1969ff26a03322e7df25b1db48f33d72fc31b6c7de11d69",
+          "staged_inputs": [
+            "PRIOR_BUILD",
+            "PRIOR_REVIEW/EVALUATION.json",
+            "PRIOR_REVIEW/REVIEW.md",
+            "PRIOR_REVIEW/VALIDATION.md"
+          ],
+          "tools_enabled": true,
+          "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_repair_v1_g1_70c59d0180be35286cb449a00260246e/attempt-002",
+          "workspace_access": "write"
+        },
+        "staged_inputs": [
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "4ed3d5c6663d6ff31289aed063cd7c586b71608f60985161ee0025d723598aa8",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_9fecb75972a44948bd381f4901c77b39",
+            "artifact_inventory": {
+              "excluded_paths": [],
+              "excluded_paths_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "original_paths": [
+                "AGENTS.md",
+                "CONCEPTS.md",
+                "DESIGN_QUESTIONS.md",
+                "LICENSE_BOUNDARY.md",
+                "MANIFEST.yaml",
+                "PROVENANCE.json",
+                "README.md",
+                "REQUIREMENTS.md",
+                "VALIDATION.md",
+                "adversarial",
+                "benchmarks",
+                "debugging",
+                "environment",
+                "public_tests",
+                "review_exercises",
+                "sealed",
+                "starter"
+              ],
+              "original_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+              "profile": "byox-generic-v1",
+              "root_kinds": {
+                "AGENTS.md": "file",
+                "CONCEPTS.md": "file",
+                "DESIGN_QUESTIONS.md": "file",
+                "LICENSE_BOUNDARY.md": "file",
+                "MANIFEST.yaml": "file",
+                "PROVENANCE.json": "file",
+                "README.md": "file",
+                "REQUIREMENTS.md": "file",
+                "VALIDATION.md": "file",
+                "adversarial": "directory",
+                "benchmarks": "directory",
+                "debugging": "directory",
+                "environment": "directory",
+                "public_tests": "directory",
+                "review_exercises": "directory",
+                "sealed": "directory",
+                "starter": "directory"
+              },
+              "root_kinds_sha256": "4ab3748035e4101088141376a5db0f5900d24a8b2a0863979e42d39e34e7a878",
+              "schema_version": 1,
+              "selected_paths": [
+                "AGENTS.md",
+                "CONCEPTS.md",
+                "DESIGN_QUESTIONS.md",
+                "LICENSE_BOUNDARY.md",
+                "MANIFEST.yaml",
+                "PROVENANCE.json",
+                "README.md",
+                "REQUIREMENTS.md",
+                "VALIDATION.md",
+                "adversarial",
+                "benchmarks",
+                "debugging",
+                "environment",
+                "public_tests",
+                "review_exercises",
+                "sealed",
+                "starter"
+              ],
+              "selected_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+              "source_artifact_type": "byox-challenge-pack"
+            },
+            "artifact_subpath": ".",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "afe3e7d4d423179f520ea320f0e73ff5f5fc1b163b9877af907f061d900f3b23",
+            "checksum_algorithm": "tree-sha256-v2",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "0d9d529b05b5d6c5d492fb8bc30054d8c35e2b62def200a3b4d493ab68593558",
+            "job_id": "job_byox_build_v1_80876d491bcba78a3466ae3480aaaea5",
+            "kind": "directory",
+            "origin": "dependency-artifact",
+            "path": "PRIOR_BUILD",
+            "regular_file_count": 51,
+            "root_change_time_ns": 1788268024617808163,
+            "root_device": 92,
+            "root_inode": 1289656868
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "8e918e4e12478c64f92a85a65e1d1d93f829c49247347a5351a9f9324b0d50a4",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_a744a85a982e465a95685e848a423d06",
+            "artifact_subpath": "EVALUATION.json",
+            "artifact_type": "byox-independent-review",
+            "checksum": "41c466f7b128d3e672b1b81b45445a2a634ab7f56a604cdfc551f81e265af2ce",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "d55e61ac11b1a35b12c8c22c5c0f0bd5a8bc536ca417f7c8cea1c62089689b86",
+            "job_id": "job_byox_review_v1_80876d491bcba78a3466ae3480aaaea5",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "PRIOR_REVIEW/EVALUATION.json",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788268025246119630,
+            "root_device": 92,
+            "root_inode": 616838363
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "8e918e4e12478c64f92a85a65e1d1d93f829c49247347a5351a9f9324b0d50a4",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_a744a85a982e465a95685e848a423d06",
+            "artifact_subpath": "REVIEW.md",
+            "artifact_type": "byox-independent-review",
+            "checksum": "fff1c2cada5b919632585bd303e21989a6f1becc1350506face57c2dbc5ffc5e",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "b951b9882b47b9ba143e71c1e87808b7de4eed831b8678bc7acf3a6d5a7cebf3",
+            "job_id": "job_byox_review_v1_80876d491bcba78a3466ae3480aaaea5",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "PRIOR_REVIEW/REVIEW.md",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788268025252560520,
+            "root_device": 92,
+            "root_inode": 2497849388
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "8e918e4e12478c64f92a85a65e1d1d93f829c49247347a5351a9f9324b0d50a4",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_a744a85a982e465a95685e848a423d06",
+            "artifact_subpath": "VALIDATION.md",
+            "artifact_type": "byox-independent-review",
+            "checksum": "9b7ccc4917266f4055d90375c3c4d01e07a6db34a37d206d5789020056c627f4",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "36c570617544dac4d62999b0f7f3490f9e0b953bcdce4537e7a9b5bb2d91ea78",
+            "job_id": "job_byox_review_v1_80876d491bcba78a3466ae3480aaaea5",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "PRIOR_REVIEW/VALIDATION.md",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788268025259116653,
+            "root_device": 92,
+            "root_inode": 616838386
+          }
+        ],
+        "validated_tree_sha256": "4001c189725c3bc76d14b8ecf996c8d700cbebfcdb7c7ca5c09acde967d88d2f",
+        "validation_evidence": [
+          {
+            "evidence": {
+              "checked": [
+                "README.md",
+                "AGENTS.md",
+                "MANIFEST.yaml",
+                "PROVENANCE.json",
+                "LICENSE_BOUNDARY.md",
+                "REQUIREMENTS.md",
+                "CONCEPTS.md",
+                "DESIGN_QUESTIONS.md",
+                "VALIDATION.md",
+                "starter/README.md",
+                "public_tests/README.md",
+                "environment/README.md",
+                "sealed/reference/README.md",
+                "sealed/reference_tests/README.md",
+                "sealed/DESIGN.md",
+                "sealed/TRADEOFFS.md",
+                "sealed/REVIEW.md",
+                "sealed/alternatives/README.md",
+                "sealed/production/PRODUCTIONIZATION.md",
+                "adversarial/README.md",
+                "debugging/README.md",
+                "review_exercises/README.md",
+                "benchmarks/README.md"
+              ],
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-challenge-structure"
+          },
+          {
+            "evidence": {
+              "checked": [
+                ".git",
+                ".env",
+                ".venv",
+                "credentials.json",
+                "secrets",
+                "reference",
+                "reference_tests",
+                "hidden_tests",
+                "solution",
+                "solutions",
+                "answers",
+                "starter/sealed",
+                "starter/reference",
+                "starter/reference_tests",
+                "starter/solution",
+                "starter/solutions",
+                "starter/answers",
+                "public_tests/sealed",
+                "public_tests/reference",
+                "public_tests/hidden_tests",
+                "environment/sealed"
+              ],
+              "present": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-progressive-boundary"
+          },
+          {
+            "evidence": {
+              "checked": [
+                "README.md",
+                "AGENTS.md",
+                "MANIFEST.yaml",
+                "PROVENANCE.json",
+                "LICENSE_BOUNDARY.md",
+                "REQUIREMENTS.md",
+                "CONCEPTS.md",
+                "DESIGN_QUESTIONS.md",
+                "VALIDATION.md",
+                "starter/README.md",
+                "public_tests/README.md",
+                "environment/README.md",
+                "sealed/reference/README.md",
+                "sealed/reference_tests/README.md",
+                "sealed/DESIGN.md",
+                "sealed/TRADEOFFS.md",
+                "sealed/REVIEW.md",
+                "sealed/alternatives/README.md",
+                "sealed/production/PRODUCTIONIZATION.md",
+                "adversarial/README.md",
+                "debugging/README.md",
+                "review_exercises/README.md",
+                "benchmarks/README.md"
+              ],
+              "failures": [],
+              "minimum_bytes": 1
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-nonempty-files"
+          },
+          {
+            "evidence": {
+              "entry_count": 19,
+              "forbidden": [
+                ".agents",
+                ".codex",
+                ".env",
+                ".git",
+                ".venv",
+                "answer",
+                "answers",
+                "credential",
+                "credentials",
+                "credentials.json",
+                "hidden",
+                "hidden_tests",
+                "job.md",
+                "reference",
+                "reference_tests",
+                "sealed",
+                "secret",
+                "secrets",
+                "solution",
+                "solutions"
+              ],
+              "limit_failure": null,
+              "max_depth": 100,
+              "max_entries": 20000,
+              "present": [],
+              "present_truncated": 0,
+              "roots": [
+                "starter",
+                "public_tests",
+                "environment"
+              ],
+              "unsafe_entries": [],
+              "unsafe_entries_truncated": 0
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-recursive-progressive-boundary"
+          },
+          {
+            "evidence": {
+              "claims_builds_or_tested": false,
+              "counts": {
+                "bytes": 53409,
+                "entries": 26,
+                "files": 22
+              },
+              "groups": [
+                {
+                  "build_descriptor_count": 1,
+                  "build_descriptors": [
+                    "sealed/reference/Makefile"
+                  ],
+                  "missing_or_unsafe_roots": [],
+                  "name": "reference_implementation",
+                  "qualifying_count": 5,
+                  "qualifying_digest": "af26b09aa1c33eed3117e8b27c46bb7c158899a8d8e81d1c1c0dd1fff51a8fd1",
+                  "qualifying_files": [
+                    {
+                      "path": "sealed/reference/src/compiler.pas",
+                      "sha256": "4f14d5e59235c66e2bcd8dd721f57aa4290caccd9dcaa6350651307344d54dcc",
+                      "size_bytes": 9938
+                    },
+                    {
+                      "path": "sealed/reference/src/lexer.pas",
+                      "sha256": "d22208cbd26aafbb82a49d35bae914cbc17375160a724f0016caf149a2037d12",
+                      "size_bytes": 6711
+                    },
+                    {
+                      "path": "sealed/reference/src/mica.pas",
+                      "sha256": "aadcc43fcd8f21f9e88fceda4c7071faaca557b37919fab4b6ddf381ca219bee",
+                      "size_bytes": 2902
+                    },
+                    {
+                      "path": "sealed/reference/src/mica_types.pas",
+                      "sha256": "27288a1a746af0f75e30c906a4382b724f97d387d89fef84496559f5c547510e",
+                      "size_bytes": 3701
+                    },
+                    {
+                      "path": "sealed/reference/src/vm.pas",
+                      "sha256": "21fe6e84f53ddf7b6d00c03da067cb0ccac2869d5fea17ae7e8fe2ddde536559",
+                      "size_bytes": 5970
+                    }
+                  ],
+                  "qualifying_files_truncated": 0,
+                  "roots": [
+                    "sealed/reference"
+                  ]
+                },
+                {
+                  "build_descriptor_count": 1,
+                  "build_descriptors": [
+                    "starter/Makefile"
+                  ],
+                  "missing_or_unsafe_roots": [],
+                  "name": "learner_starter",
+                  "qualifying_count": 5,
+                  "qualifying_digest": "d472e0b3023c9442c0f5aaf1c99e383334cd6203df88f4838e4e6bbf39f1d883",
+                  "qualifying_files": [
+                    {
+                      "path": "starter/src/compiler.pas",
+                      "sha256": "8df12e89bf3a612b9167372ebad3cc7f7661344c7b69a64ca7828aed18f3c84e",
+                      "size_bytes": 436
+                    },
+                    {
+                      "path": "starter/src/lexer.pas",
+                      "sha256": "bb7ec42c627292529c981bdd43b4119a2c632a8a3fab42ab709cbfc82f81897e",
+                      "size_bytes": 376
+                    },
+                    {
+                      "path": "starter/src/mica.pas",
+                      "sha256": "aadcc43fcd8f21f9e88fceda4c7071faaca557b37919fab4b6ddf381ca219bee",
+                      "size_bytes": 2902
+                    },
+                    {
+                      "path": "starter/src/mica_types.pas",
+                      "sha256": "27288a1a746af0f75e30c906a4382b724f97d387d89fef84496559f5c547510e",
+                      "size_bytes": 3701
+                    },
+                    {
+                      "path": "starter/src/vm.pas",
+                      "sha256": "214e7e8cd1c0a9f017b4263ea99ce4cabf42ccc80697365afd1153e240060996",
+                      "size_bytes": 384
+                    }
+                  ],
+                  "qualifying_files_truncated": 0,
+                  "roots": [
+                    "starter"
+                  ]
+                },
+                {
+                  "build_descriptor_count": 0,
+                  "build_descriptors": [],
+                  "missing_or_unsafe_roots": [],
+                  "name": "tests",
+                  "qualifying_count": 2,
+                  "qualifying_digest": "6607815e4d92e6e45e95f2e60ba753114946e341ac0c5b2be3faae6b759dd6b5",
+                  "qualifying_files": [
+                    {
+                      "path": "public_tests/run_tests.py",
+                      "sha256": "652342c166d15f27b232ddee15e9c1786f85748bbb6a53246b91e87430f3ed8a",
+                      "size_bytes": 4803
+                    },
+                    {
+                      "path": "sealed/reference_tests/run_reference_tests.py",
+                      "sha256": "cb07e54abea967f26bf65d42b45998511521d6b7a26e5ba0eb5f42729eb6614e",
+                      "size_bytes": 5965
+                    }
+                  ],
+                  "qualifying_files_truncated": 0,
+                  "roots": [
+                    "public_tests",
+                    "sealed/reference_tests"
+                  ]
+                }
+              ],
+              "limit_failure": null,
+              "limits": {
+                "max_depth": 100,
+                "max_entries": 20000,
+                "max_file_bytes": 33554432,
+                "max_files": 10000,
+                "max_total_bytes": 268435456
+              },
+              "manifest_digest": "6d9346f182ff431e9028002e278923c98b0458ace7cec104b5894dd9ca96aa13",
+              "manifest_version": 1,
+              "missing_groups": [],
+              "oversized_files": [],
+              "oversized_files_truncated": 0,
+              "policy_digest": "96108b83508c5cb8b919635c592c6b33629a029e049a7d69adf1f5e2b0434ec6",
+              "policy_version": 2,
+              "schema_version": 2,
+              "scope": "code-presence-structure-only",
+              "unsafe_entries": [],
+              "unsafe_entries_truncated": 0
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-code-bearing-tree"
+          },
+          {
+            "evidence": {
+              "error_count": 0,
+              "errors": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-manifest"
+          },
+          {
+            "evidence": {
+              "error_count": 0,
+              "errors": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-provenance"
+          },
+          {
+            "evidence": {
+              "checked": [
+                "PRIOR_BUILD",
+                "PRIOR_REVIEW"
+              ],
+              "mismatches": []
+            },
+            "status": "PASS",
+            "validator": "declared-inputs-remained-immutable"
+          }
+        ],
+        "validation_labels": [
+          "GENERATED",
+          "PARTIAL"
+        ],
+        "validation_workspace_tree_sha256": "8ed5c18d8a9a71f850e99630528b1ff863dde0a2c016a2e641465aacd9eff357"
+      },
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/remediation/a3d8fbeac377ee4bccf3/repair-v1/job_byox_repair_v1_g1_70c59d0180be35286cb449a00260246e/attempt-002",
+      "type": "byox-remediated-challenge-pack",
+      "validation_labels": [
+        "GENERATED",
+        "PARTIAL"
+      ],
+      "validation_status": "GENERATED+PARTIAL",
+      "worker_type": "reference_builder"
+    },
+    {
+      "artifact_id": "artifact_7b68f4a8c1074a4490e5c6fe505cad37",
+      "attempt_number": 1,
+      "checksum": "95c80e17a1271c15ddcc0e59b9d96f03b270c387b541feded199734d7a44d6d7",
+      "checksum_algorithm": "tree-sha256-v2",
+      "created_at": 1788268572.119619,
+      "integrity_status": "VERIFIED_V2",
+      "job_id": "job_csdiy_c473bebd690737d1b3fe4fb26541a8ec_prepare_v1",
+      "job_type": "codex_task",
+      "metadata": {
+        "archive_projection": {
+          "mode": "complete-workspace",
+          "schema_version": 1,
+          "source_workspace_checksum": "95c80e17a1271c15ddcc0e59b9d96f03b270c387b541feded199734d7a44d6d7",
+          "source_workspace_checksum_algorithm": "tree-sha256-v2"
+        },
+        "attempt": 1,
+        "catalog_snapshot": {
+          "course": {
+            "catalog_status": "DISCOVERED",
+            "course_id": "course_c473bebd690737d1b3fe4fb26541a8ec",
+            "description": "Gilbert Strang, a great mathematician at MIT, still insists on teaching in his eighties. His classic text book [Introduction to Linear Algebra](https://math.mit.edu/~gs/linearalgebra/) has been adopted as an official textbook by Tsinghua University. After reading the PDF version, I felt deeply guilty and spent more than 200 yuan to purchase a genuine version in English as collection. The cover of this book is attached below. If you can fully understand the mathematical meaning of the cover picture, then your understanding of linear algebra will definitely reach a new height.\n\n![image](https://math.mit.edu/~gs/linearalgebra/ila5/linearalgebra5_Front.jpg)\n\nIn addition to the course materials, the famous Youtuber **3Blue1Brown**'s video series [The Essence of Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab) are also great learning resources.",
+            "difficulty": 3.0,
+            "estimated_human_hours": null,
+            "institution": "MIT",
+            "prerequisites": [
+              "English"
+            ],
+            "slug": "mitla",
+            "source_metadata": {
+              "fields": {
+                "assignments": "refer to the course website",
+                "class hour": "Varying from person to person",
+                "course website": "[fall2011](https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/syllabus/)",
+                "difficulty": "🌟🌟🌟",
+                "offered by": "MIT",
+                "prerequisites": "English",
+                "programming languages": "None",
+                "recordings": "refer to the course website",
+                "textbook": "Introduction to Linear Algebra, Gilbert Strang"
+              },
+              "language": "en",
+              "prerequisites_raw": "English",
+              "programming_languages_raw": "None",
+              "provenance": {
+                "adapter": "csdiy",
+                "classification": "source-derived",
+                "content_sha256": "24859d408ee83f040e3a41ff06c239ed75dfc2f42fd2f122654055c57d1dc318",
+                "extractor_version": "1.1",
+                "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                "source_file": "docs/数学基础/MITLA.en.md"
+              },
+              "resource_urls": [
+                "https://math.mit.edu/~gs/linearalgebra/",
+                "https://math.mit.edu/~gs/linearalgebra/ila5/linearalgebra5_Front.jpg",
+                "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab",
+                "https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/syllabus/",
+                "https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/final-1806-lecture-2023/"
+              ],
+              "source_stem": "MITLA"
+            },
+            "title": "MIT18.06: Linear Algebra",
+            "topic": "数学基础"
+          },
+          "normalized_resource_records": [
+            {
+              "dependencies": [],
+              "metadata": {
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "24859d408ee83f040e3a41ff06c239ed75dfc2f42fd2f122654055c57d1dc318",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/数学基础/MITLA.en.md"
+                },
+                "role": "catalog_overview"
+              },
+              "order": 0,
+              "source_reference": "docs/数学基础/MITLA.en.md",
+              "title": "Catalog overview and resource guide",
+              "type": "reading",
+              "unit_id": "unit_7263c8f71e01ac11de40d959684dbf7f"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "LINKED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "24859d408ee83f040e3a41ff06c239ed75dfc2f42fd2f122654055c57d1dc318",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/数学基础/MITLA.en.md",
+                  "source_line": 19
+                },
+                "raw_value": "[fall2011](https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/syllabus/)",
+                "urls": [
+                  "https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/syllabus/"
+                ]
+              },
+              "order": 19,
+              "source_reference": "docs/数学基础/MITLA.en.md#L19",
+              "title": "Course Website",
+              "type": "reading",
+              "unit_id": "unit_4a9a58d3275b16d0317c46057638f945"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "DESCRIBED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "24859d408ee83f040e3a41ff06c239ed75dfc2f42fd2f122654055c57d1dc318",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/数学基础/MITLA.en.md",
+                  "source_line": 20
+                },
+                "raw_value": "refer to the course website",
+                "urls": []
+              },
+              "order": 20,
+              "source_reference": "docs/数学基础/MITLA.en.md#L20",
+              "title": "Recordings",
+              "type": "lecture",
+              "unit_id": "unit_bb7aca98d9926fab545c281d531aa9e1"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "DESCRIBED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "24859d408ee83f040e3a41ff06c239ed75dfc2f42fd2f122654055c57d1dc318",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/数学基础/MITLA.en.md",
+                  "source_line": 21
+                },
+                "raw_value": "Introduction to Linear Algebra, Gilbert Strang",
+                "urls": []
+              },
+              "order": 21,
+              "source_reference": "docs/数学基础/MITLA.en.md#L21",
+              "title": "Textbook",
+              "type": "reading",
+              "unit_id": "unit_88ddcb5fb389695af921451dcb45bae6"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "DESCRIBED",
+                "official_course_unit": true,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "24859d408ee83f040e3a41ff06c239ed75dfc2f42fd2f122654055c57d1dc318",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/数学基础/MITLA.en.md",
+                  "source_line": 22
+                },
+                "raw_value": "refer to the course website",
+                "urls": []
+              },
+              "order": 22,
+              "source_reference": "docs/数学基础/MITLA.en.md#L22",
+              "title": "Assignments",
+              "type": "assignment",
+              "unit_id": "unit_7c2493fce2ccf7d14fa645647ea656d3"
+            }
+          ],
+          "resource_record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+          "schema_version": 1,
+          "source": {
+            "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+            "license": "MIT",
+            "name": "CSDIY",
+            "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/cs-self-learning",
+            "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+            "type": "course_catalog",
+            "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git"
+          }
+        },
+        "catalog_snapshot_sha256": "eb4382de8dc527ff157e107cc5267abcec4d6df639bd363226014deb4e9ba33a",
+        "classification": "immutable source-derived catalog snapshot plus agent-generated learning artifacts",
+        "factory_revision": {
+          "commit": "7ff1d60dfb125749c82a23a8e0f4f8140b41becb",
+          "status": "RECORDED",
+          "tracked_worktree_clean": true
+        },
+        "job_id": "job_csdiy_c473bebd690737d1b3fe4fb26541a8ec_prepare_v1",
+        "policy_version": 1,
+        "prompt_contexts": [],
+        "removed_root_metadata": [
+          ".factory-workspace"
+        ],
+        "run_id": "run_18fcca25d3424b0f82bddba96f17ad66",
+        "run_reproducibility": {
+          "digest": "59e00f7f2c1ef59affb033342c9c6fb568c95db158dcb859aee003d0f2f38fc0",
+          "record_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/logs/job_csdiy_c473bebd690737d1b3fe4fb26541a8ec_prepare_v1/attempt-001/RUN_PROVENANCE.json",
+          "schema": "learnfactory-run-provenance-v3"
+        },
+        "runtime_prompt": {
+          "effective_prompt": {
+            "content_stored": false,
+            "includes_leaf_worker_policy": true,
+            "sha256": "adbba18c91c1e72a5df2792d1d2be14db061eb2f23a257f4cc7e3d2f9a4225c4",
+            "utf8_bytes": 7352
+          },
+          "job_prompt": {
+            "content_stored": false,
+            "sha256": "aee3c2f9a404dbd86fe33bce52b34d600f990c20f214245df80607b6488c3ed7",
+            "utf8_bytes": 7004
+          },
+          "leaf_worker_policy": {
+            "content_stored": false,
+            "sha256": "61cfaab916fc8a696d7f1c798f8ef8fe1dea8ae235982996b695eea8b7ac44e7",
+            "utf8_bytes": 348
+          }
+        },
+        "sandbox_rule_manifest": {
+          "declared_outputs": [
+            "COURSE_MANIFEST.json",
+            "MATERIAL_AVAILABILITY.json",
+            "UNIT_GRAPH.json",
+            "examiner_only/RUBRIC.md",
+            "student_safe/COMPREHENSION.md",
+            "student_safe/COURSE_BRIEF.md",
+            "student_safe/STUDY_TASK.md"
+          ],
+          "result_channel": {
+            "content_stored_in_provenance": false,
+            "fixed_alias_stored": true,
+            "launch_namespace": "fixed-alias-only",
+            "nonce_hash_stored": false,
+            "nonce_stored": false,
+            "outer_cli_output_capability": "parent-procfd-readonly-hold",
+            "output_descriptor_inherited": false,
+            "post_exit_result_retention": "bounded-redacted-output",
+            "private_path_stored": false,
+            "runtime_fd_stored": false,
+            "schema_version": 3,
+            "transport": "outer-cli-parent-held-fixed-alias-inode"
+          },
+          "rules": [],
+          "schema_version": 1,
+          "sha256": "0accc1631422e4c6f778d0f374d624403d2e49f6a5b8665f8cb5fbdbb11f8b46",
+          "staged_inputs": [],
+          "tools_enabled": true,
+          "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_csdiy_c473bebd690737d1b3fe4fb26541a8ec_prepare_v1/attempt-001",
+          "workspace_access": "write"
+        },
+        "staged_inputs": [],
+        "validated_tree_sha256": "95c80e17a1271c15ddcc0e59b9d96f03b270c387b541feded199734d7a44d6d7",
+        "validation_evidence": [
+          {
+            "evidence": {
+              "checked": [
+                "COURSE_MANIFEST.json",
+                "UNIT_GRAPH.json",
+                "MATERIAL_AVAILABILITY.json",
+                "student_safe/COURSE_BRIEF.md",
+                "student_safe/STUDY_TASK.md",
+                "student_safe/COMPREHENSION.md",
+                "examiner_only/RUBRIC.md"
+              ],
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-preparation-files"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-manifest-fields"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-unit-graph-fields"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-material-availability-fields"
+          }
+        ],
+        "validation_labels": [
+          "GENERATED"
+        ],
+        "validation_workspace_tree_sha256": "95c80e17a1271c15ddcc0e59b9d96f03b270c387b541feded199734d7a44d6d7"
+      },
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/catalog/mitla-c473bebd/cohort-v1/preparation/job_csdiy_c473bebd690737d1b3fe4fb26541a8ec_prepare_v1/attempt-001",
+      "type": "course-preparation",
+      "validation_labels": [
+        "GENERATED"
+      ],
+      "validation_status": "GENERATED",
+      "worker_type": "course_manager"
+    },
+    {
+      "artifact_id": "artifact_db69796e190a43a7865f2a0bd4fae969",
+      "attempt_number": 2,
+      "checksum": "a5e4d3b93bc15c704ae0863fce5780402359bb6ff0466706fdb26a91a0c76460",
+      "checksum_algorithm": "tree-sha256-v2",
+      "created_at": 1788268451.6916645,
+      "integrity_status": "VERIFIED_V2",
+      "job_id": "job_byox_repair_v1_g2_8ebb5db64a06a70cbce675c8060cbf35",
+      "job_type": "codex_task",
+      "metadata": {
+        "archive_projection": {
+          "mode": "declared-worker-outputs",
+          "paths": [
+            "AGENTS.md",
+            "CONCEPTS.md",
+            "DESIGN_QUESTIONS.md",
+            "LICENSE_BOUNDARY.md",
+            "MANIFEST.yaml",
+            "PROVENANCE.json",
+            "README.md",
+            "REQUIREMENTS.md",
+            "VALIDATION.md",
+            "adversarial",
+            "benchmarks",
+            "debugging",
+            "environment",
+            "public_tests",
+            "review_exercises",
+            "sealed",
+            "starter"
+          ],
+          "projected_tree_checksum": "a5e4d3b93bc15c704ae0863fce5780402359bb6ff0466706fdb26a91a0c76460",
+          "projected_tree_checksum_algorithm": "tree-sha256-v2",
+          "schema_version": 1,
+          "source_workspace_checksum": "fc3705bea8f8085f9fdf521b23aa20911c9d078bf718d72c9b5c05d8f4760a56",
+          "source_workspace_checksum_algorithm": "tree-sha256-v2",
+          "staged_inputs_excluded": true
+        },
+        "attempt": 2,
+        "byox_validation_cutover": {
+          "archive_paths": [
+            "AGENTS.md",
+            "CONCEPTS.md",
+            "DESIGN_QUESTIONS.md",
+            "LICENSE_BOUNDARY.md",
+            "MANIFEST.yaml",
+            "PROVENANCE.json",
+            "README.md",
+            "REQUIREMENTS.md",
+            "VALIDATION.md",
+            "adversarial",
+            "benchmarks",
+            "debugging",
+            "environment",
+            "public_tests",
+            "review_exercises",
+            "sealed",
+            "starter"
+          ],
+          "archive_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+          "classification": "factory-authoritative-validation-snapshot",
+          "limits": {
+            "max_depth": 64,
+            "max_entries": 100000,
+            "max_file_bytes": 536870912,
+            "max_total_bytes": 2147483648
+          },
+          "manifest_sha256": "af26c454d2704bfc529cfd06e6ef33fb3896419d2494f5e9ee0de689cefeaa0d",
+          "policy": "fresh-inode-workspace-replacement-v1",
+          "quarantine_evidence_scope": "capture-time-retired-source-only",
+          "quarantine_manifest_sha256": "83102e5289636c4c7cf47aa6beec2c973d6e7acb19de07a5f3f1588e3bb57438",
+          "schema_version": 1,
+          "selected_output_checksum": "a5e4d3b93bc15c704ae0863fce5780402359bb6ff0466706fdb26a91a0c76460",
+          "selected_output_checksum_algorithm": "tree-sha256-v2",
+          "snapshot_roots": [
+            "AGENTS.md",
+            "CONCEPTS.md",
+            "DESIGN_QUESTIONS.md",
+            "LICENSE_BOUNDARY.md",
+            "MANIFEST.yaml",
+            "PRIOR_BUILD",
+            "PRIOR_REVIEW",
+            "PROVENANCE.json",
+            "README.md",
+            "REQUIREMENTS.md",
+            "VALIDATION.md",
+            "adversarial",
+            "benchmarks",
+            "debugging",
+            "environment",
+            "public_tests",
+            "review_exercises",
+            "sealed",
+            "starter"
+          ],
+          "source_disposition": "retired-and-discarded",
+          "staged_inputs": [
+            {
+              "checksum": "58c3fbcf425be40adce6aea67dfcc0285c5caaa456bb21aae48e068557f8d339",
+              "checksum_algorithm": "tree-sha256-v2",
+              "kind": "directory",
+              "path": "PRIOR_BUILD"
+            },
+            {
+              "checksum": "96e77ffc2ebf1a4418eafc69b04f5d5a06c18d6a0d1c178ea891511186f0ac9f",
+              "checksum_algorithm": "file-sha256",
+              "kind": "file",
+              "path": "PRIOR_REVIEW/EVALUATION.json"
+            },
+            {
+              "checksum": "787cb21e2b60a056c986bbc5cbbedcfbc557477597c600e3d25086569de026a2",
+              "checksum_algorithm": "file-sha256",
+              "kind": "file",
+              "path": "PRIOR_REVIEW/REVIEW.md"
+            },
+            {
+              "checksum": "ec48fec82b2993ac36f72d55b213d2311ab7542b4cadb51a4d1c2fd28d135763",
+              "checksum_algorithm": "file-sha256",
+              "kind": "file",
+              "path": "PRIOR_REVIEW/VALIDATION.md"
+            }
+          ],
+          "validation_snapshot_checksum": "fc3705bea8f8085f9fdf521b23aa20911c9d078bf718d72c9b5c05d8f4760a56",
+          "validation_snapshot_checksum_algorithm": "tree-sha256-v2"
+        },
+        "catalog_provenance": {
+          "classification": "agent-generated challenge pack bound to immutable source-derived catalog metadata",
+          "license_boundary": {
+            "catalog_license": "CC0-1.0",
+            "generated_material": "independently generated for personal educational use",
+            "linked_content_copied": false,
+            "linked_resource_license": "NOASSERTION"
+          },
+          "project": {
+            "category": "Distributed Systems",
+            "concepts": [
+              "distributed systems",
+              "replication",
+              "consensus",
+              "fault tolerance"
+            ],
+            "difficulty": 8.0,
+            "implementation_language": "Java",
+            "metadata": {
+              "catalog_suffix": "",
+              "languages": [
+                "Java"
+              ],
+              "linked_resource_license": "NOASSERTION",
+              "provenance": {
+                "adapter": "build_your_own_x",
+                "classification": "source-derived",
+                "content_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+                "extractor_version": "1.1",
+                "source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+                "source_file": "README.md",
+                "source_line": 45
+              },
+              "scoring": {
+                "basis": "category heuristic",
+                "classification": "inferred",
+                "priority_tier": 1
+              }
+            },
+            "priority_tier": 1,
+            "production_relevance": 8.5,
+            "project_id": "project_7fc5b6faee61f34679ec47f9c4964256",
+            "slug": "building-your-own-kafka-like-system-from-scratch-a-step-by-step-guide",
+            "source_format": "repository",
+            "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+            "title": "Building Your Own Kafka-like System From Scratch: A Step-by-Step Guide",
+            "upstream_reference": "https://github.com/buildthingsuseful/build-your-own-kafka"
+          },
+          "schema_version": 1,
+          "snapshot_sha256": "a7356b40000cfd5a88331dd0bdf398d0834bf2552479e75be315415c0e9bdd57",
+          "source": {
+            "active_at_factory_time": true,
+            "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989",
+            "ingested_at": 1788122856.9532762,
+            "license": "CC0-1.0",
+            "metadata": {
+              "adapter": "build_your_own_x",
+              "extractor_version": "1.1",
+              "head_ref": "master",
+              "last_ingestion": {
+                "at": 1788122856.9532762,
+                "course_units": 0,
+                "courses": 0,
+                "curriculum_edges": 0,
+                "projects": 359,
+                "warnings": []
+              },
+              "license_evidence": "explicit CC0 waiver declaration",
+              "license_file": "README.md#origins--license",
+              "license_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+              "license_source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+              "linked_resource_license": "NOASSERTION",
+              "snapshot_reader": "git-object-database",
+              "tree_hash": "12e788febc0575ae1bce1de8ad1fc28d7fff7c22",
+              "working_tree_dirty": false
+            },
+            "name": "Build Your Own X",
+            "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/build-your-own-x",
+            "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+            "type": "project_catalog",
+            "upstream_url": "git@github.com:codecrafters-io/build-your-own-x.git"
+          }
+        },
+        "classification": "bounded repair of an independently reviewed BYOX artifact",
+        "factory_revision": {
+          "commit": "7ff1d60dfb125749c82a23a8e0f4f8140b41becb",
+          "status": "RECORDED",
+          "tracked_worktree_clean": true
+        },
+        "generation": 2,
+        "job_id": "job_byox_repair_v1_g2_8ebb5db64a06a70cbce675c8060cbf35",
+        "project_id": "project_7fc5b6faee61f34679ec47f9c4964256",
+        "prompt_contexts": [],
+        "remediation_snapshot": {
+          "generation": 2,
+          "policy_version": 1,
+          "project_id": "project_7fc5b6faee61f34679ec47f9c4964256",
+          "schema_version": 1,
+          "snapshot_sha256": "cae6b3cc41b887fea119d8018053b870311b3ed947af60af1bf465a193277657",
+          "trigger": {
+            "builder": {
+              "artifact_attempt": 1,
+              "artifact_checksum": "01414901e616a54d1e0763e5457957bc93ce242a2c1837cd6770ef560cacc654",
+              "artifact_id": "artifact_48a7d5efd3bb42a39be85db493efbfbb",
+              "artifact_inventory": {
+                "excluded_paths": [],
+                "excluded_paths_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "original_paths": [
+                  "AGENTS.md",
+                  "CONCEPTS.md",
+                  "DESIGN_QUESTIONS.md",
+                  "LICENSE_BOUNDARY.md",
+                  "MANIFEST.yaml",
+                  "PROVENANCE.json",
+                  "README.md",
+                  "REQUIREMENTS.md",
+                  "VALIDATION.md",
+                  "adversarial",
+                  "benchmarks",
+                  "debugging",
+                  "environment",
+                  "public_tests",
+                  "review_exercises",
+                  "sealed",
+                  "starter"
+                ],
+                "original_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+                "profile": "byox-generic-v1",
+                "root_kinds": {
+                  "AGENTS.md": "file",
+                  "CONCEPTS.md": "file",
+                  "DESIGN_QUESTIONS.md": "file",
+                  "LICENSE_BOUNDARY.md": "file",
+                  "MANIFEST.yaml": "file",
+                  "PROVENANCE.json": "file",
+                  "README.md": "file",
+                  "REQUIREMENTS.md": "file",
+                  "VALIDATION.md": "file",
+                  "adversarial": "directory",
+                  "benchmarks": "directory",
+                  "debugging": "directory",
+                  "environment": "directory",
+                  "public_tests": "directory",
+                  "review_exercises": "directory",
+                  "sealed": "directory",
+                  "starter": "directory"
+                },
+                "root_kinds_sha256": "4ab3748035e4101088141376a5db0f5900d24a8b2a0863979e42d39e34e7a878",
+                "schema_version": 1,
+                "selected_paths": [
+                  "AGENTS.md",
+                  "CONCEPTS.md",
+                  "DESIGN_QUESTIONS.md",
+                  "LICENSE_BOUNDARY.md",
+                  "MANIFEST.yaml",
+                  "PROVENANCE.json",
+                  "README.md",
+                  "REQUIREMENTS.md",
+                  "VALIDATION.md",
+                  "adversarial",
+                  "benchmarks",
+                  "debugging",
+                  "environment",
+                  "public_tests",
+                  "review_exercises",
+                  "sealed",
+                  "starter"
+                ],
+                "selected_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+                "source_artifact_type": "byox-remediated-challenge-pack"
+              },
+              "artifact_type": "byox-remediated-challenge-pack",
+              "checksum_algorithm": "tree-sha256-v2",
+              "job_id": "job_byox_repair_v1_g1_4e3ccb4926e280942bcd30984264287b"
+            },
+            "builder_artifact_profile": "byox-generic-v1",
+            "project_id": "project_7fc5b6faee61f34679ec47f9c4964256",
+            "review": {
+              "artifact_attempt": 1,
+              "artifact_checksum": "0dc94a736d50cf41c44d92a890c6227012e9b9e33b8c153658809bf70968f27f",
+              "artifact_id": "artifact_cdeb6d97ed024bd79032a9686cdcd15a",
+              "artifact_type": "byox-independent-review",
+              "checksum_algorithm": "tree-sha256-v2",
+              "job_id": "job_byox_repair_review_v1_g1_ea32a28400569f61d01c035dd9c8ecde"
+            },
+            "review_job_id": "job_byox_repair_review_v1_g1_ea32a28400569f61d01c035dd9c8ecde",
+            "review_policy_version": 101,
+            "verdict": "REVISE",
+            "verdict_validation": {
+              "attempt_number": 1,
+              "evidence_sha256": "ed6d15147e82405dc4cfdba43b595c722af2cc38299caa0223e215c060c069bc",
+              "validation_id": "validation_8bd021b109dc4c9086768442cb40623e",
+              "validator": "byox-independent-review-verdict"
+            }
+          }
+        },
+        "removed_root_metadata": [
+          ".factory-workspace"
+        ],
+        "repair_archive_selection": {
+          "artifact_inventory": {
+            "excluded_paths": [],
+            "excluded_paths_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "original_paths": [
+              "AGENTS.md",
+              "CONCEPTS.md",
+              "DESIGN_QUESTIONS.md",
+              "LICENSE_BOUNDARY.md",
+              "MANIFEST.yaml",
+              "PROVENANCE.json",
+              "README.md",
+              "REQUIREMENTS.md",
+              "VALIDATION.md",
+              "adversarial",
+              "benchmarks",
+              "debugging",
+              "environment",
+              "public_tests",
+              "review_exercises",
+              "sealed",
+              "starter"
+            ],
+            "original_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+            "profile": "byox-generic-v1",
+            "root_kinds": {
+              "AGENTS.md": "file",
+              "CONCEPTS.md": "file",
+              "DESIGN_QUESTIONS.md": "file",
+              "LICENSE_BOUNDARY.md": "file",
+              "MANIFEST.yaml": "file",
+              "PROVENANCE.json": "file",
+              "README.md": "file",
+              "REQUIREMENTS.md": "file",
+              "VALIDATION.md": "file",
+              "adversarial": "directory",
+              "benchmarks": "directory",
+              "debugging": "directory",
+              "environment": "directory",
+              "public_tests": "directory",
+              "review_exercises": "directory",
+              "sealed": "directory",
+              "starter": "directory"
+            },
+            "root_kinds_sha256": "4ab3748035e4101088141376a5db0f5900d24a8b2a0863979e42d39e34e7a878",
+            "schema_version": 1,
+            "selected_paths": [
+              "AGENTS.md",
+              "CONCEPTS.md",
+              "DESIGN_QUESTIONS.md",
+              "LICENSE_BOUNDARY.md",
+              "MANIFEST.yaml",
+              "PROVENANCE.json",
+              "README.md",
+              "REQUIREMENTS.md",
+              "VALIDATION.md",
+              "adversarial",
+              "benchmarks",
+              "debugging",
+              "environment",
+              "public_tests",
+              "review_exercises",
+              "sealed",
+              "starter"
+            ],
+            "selected_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+            "source_artifact_type": "byox-remediated-challenge-pack"
+          },
+          "authoritative_cutover": {
+            "archive_paths": [
+              "AGENTS.md",
+              "CONCEPTS.md",
+              "DESIGN_QUESTIONS.md",
+              "LICENSE_BOUNDARY.md",
+              "MANIFEST.yaml",
+              "PROVENANCE.json",
+              "README.md",
+              "REQUIREMENTS.md",
+              "VALIDATION.md",
+              "adversarial",
+              "benchmarks",
+              "debugging",
+              "environment",
+              "public_tests",
+              "review_exercises",
+              "sealed",
+              "starter"
+            ],
+            "archive_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+            "classification": "factory-authoritative-validation-snapshot",
+            "limits": {
+              "max_depth": 64,
+              "max_entries": 100000,
+              "max_file_bytes": 536870912,
+              "max_total_bytes": 2147483648
+            },
+            "manifest_sha256": "af26c454d2704bfc529cfd06e6ef33fb3896419d2494f5e9ee0de689cefeaa0d",
+            "policy": "fresh-inode-workspace-replacement-v1",
+            "quarantine_evidence_scope": "capture-time-retired-source-only",
+            "quarantine_manifest_sha256": "83102e5289636c4c7cf47aa6beec2c973d6e7acb19de07a5f3f1588e3bb57438",
+            "schema_version": 1,
+            "selected_output_checksum": "a5e4d3b93bc15c704ae0863fce5780402359bb6ff0466706fdb26a91a0c76460",
+            "selected_output_checksum_algorithm": "tree-sha256-v2",
+            "snapshot_roots": [
+              "AGENTS.md",
+              "CONCEPTS.md",
+              "DESIGN_QUESTIONS.md",
+              "LICENSE_BOUNDARY.md",
+              "MANIFEST.yaml",
+              "PRIOR_BUILD",
+              "PRIOR_REVIEW",
+              "PROVENANCE.json",
+              "README.md",
+              "REQUIREMENTS.md",
+              "VALIDATION.md",
+              "adversarial",
+              "benchmarks",
+              "debugging",
+              "environment",
+              "public_tests",
+              "review_exercises",
+              "sealed",
+              "starter"
+            ],
+            "source_disposition": "retired-and-discarded",
+            "staged_inputs": [
+              {
+                "checksum": "58c3fbcf425be40adce6aea67dfcc0285c5caaa456bb21aae48e068557f8d339",
+                "checksum_algorithm": "tree-sha256-v2",
+                "kind": "directory",
+                "path": "PRIOR_BUILD"
+              },
+              {
+                "checksum": "96e77ffc2ebf1a4418eafc69b04f5d5a06c18d6a0d1c178ea891511186f0ac9f",
+                "checksum_algorithm": "file-sha256",
+                "kind": "file",
+                "path": "PRIOR_REVIEW/EVALUATION.json"
+              },
+              {
+                "checksum": "787cb21e2b60a056c986bbc5cbbedcfbc557477597c600e3d25086569de026a2",
+                "checksum_algorithm": "file-sha256",
+                "kind": "file",
+                "path": "PRIOR_REVIEW/REVIEW.md"
+              },
+              {
+                "checksum": "ec48fec82b2993ac36f72d55b213d2311ab7542b4cadb51a4d1c2fd28d135763",
+                "checksum_algorithm": "file-sha256",
+                "kind": "file",
+                "path": "PRIOR_REVIEW/VALIDATION.md"
+              }
+            ],
+            "validation_snapshot_checksum": "fc3705bea8f8085f9fdf521b23aa20911c9d078bf718d72c9b5c05d8f4760a56",
+            "validation_snapshot_checksum_algorithm": "tree-sha256-v2"
+          },
+          "paths": [
+            "AGENTS.md",
+            "CONCEPTS.md",
+            "DESIGN_QUESTIONS.md",
+            "LICENSE_BOUNDARY.md",
+            "MANIFEST.yaml",
+            "PROVENANCE.json",
+            "README.md",
+            "REQUIREMENTS.md",
+            "VALIDATION.md",
+            "adversarial",
+            "benchmarks",
+            "debugging",
+            "environment",
+            "public_tests",
+            "review_exercises",
+            "sealed",
+            "starter"
+          ],
+          "paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+          "protected_staged_tree": {
+            "checksum": "58c3fbcf425be40adce6aea67dfcc0285c5caaa456bb21aae48e068557f8d339",
+            "checksum_algorithm": "tree-sha256-v2"
+          },
+          "quarantined_outputs": {
+            "classification": "excluded-non-artifact-quarantine",
+            "entries": [],
+            "evidence_scope": "capture-time-retired-source-only",
+            "excluded_from_archive_projection": true,
+            "limits": {
+              "max_depth": 8,
+              "max_entries": 256,
+              "max_file_bytes": 524288,
+              "max_files": 192,
+              "max_roots": 16,
+              "max_total_bytes": 4194304
+            },
+            "manifest_sha256": "83102e5289636c4c7cf47aa6beec2c973d6e7acb19de07a5f3f1588e3bb57438",
+            "policy": "excluded-bounded-tree-v1",
+            "roots": [],
+            "schema_version": 1,
+            "summary": {
+              "directories": 0,
+              "entries": 0,
+              "files": 0,
+              "max_depth": 0,
+              "roots": 0,
+              "total_bytes": 0
+            }
+          },
+          "required_added_inventory": {
+            "paths": [],
+            "paths_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "root_kinds": {},
+            "root_kinds_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "schema_version": 1
+          },
+          "schema_version": 1,
+          "source": {
+            "artifact_attempt": 1,
+            "artifact_checksum": "01414901e616a54d1e0763e5457957bc93ce242a2c1837cd6770ef560cacc654",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_48a7d5efd3bb42a39be85db493efbfbb",
+            "artifact_type": "byox-remediated-challenge-pack",
+            "job_id": "job_byox_repair_v1_g1_4e3ccb4926e280942bcd30984264287b"
+          },
+          "source_artifact_inventory": {
+            "excluded_paths": [],
+            "excluded_paths_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "original_paths": [
+              "AGENTS.md",
+              "CONCEPTS.md",
+              "DESIGN_QUESTIONS.md",
+              "LICENSE_BOUNDARY.md",
+              "MANIFEST.yaml",
+              "PROVENANCE.json",
+              "README.md",
+              "REQUIREMENTS.md",
+              "VALIDATION.md",
+              "adversarial",
+              "benchmarks",
+              "debugging",
+              "environment",
+              "public_tests",
+              "review_exercises",
+              "sealed",
+              "starter"
+            ],
+            "original_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+            "profile": "byox-generic-v1",
+            "root_kinds": {
+              "AGENTS.md": "file",
+              "CONCEPTS.md": "file",
+              "DESIGN_QUESTIONS.md": "file",
+              "LICENSE_BOUNDARY.md": "file",
+              "MANIFEST.yaml": "file",
+              "PROVENANCE.json": "file",
+              "README.md": "file",
+              "REQUIREMENTS.md": "file",
+              "VALIDATION.md": "file",
+              "adversarial": "directory",
+              "benchmarks": "directory",
+              "debugging": "directory",
+              "environment": "directory",
+              "public_tests": "directory",
+              "review_exercises": "directory",
+              "sealed": "directory",
+              "starter": "directory"
+            },
+            "root_kinds_sha256": "4ab3748035e4101088141376a5db0f5900d24a8b2a0863979e42d39e34e7a878",
+            "schema_version": 1,
+            "selected_paths": [
+              "AGENTS.md",
+              "CONCEPTS.md",
+              "DESIGN_QUESTIONS.md",
+              "LICENSE_BOUNDARY.md",
+              "MANIFEST.yaml",
+              "PROVENANCE.json",
+              "README.md",
+              "REQUIREMENTS.md",
+              "VALIDATION.md",
+              "adversarial",
+              "benchmarks",
+              "debugging",
+              "environment",
+              "public_tests",
+              "review_exercises",
+              "sealed",
+              "starter"
+            ],
+            "selected_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+            "source_artifact_type": "byox-remediated-challenge-pack"
+          }
+        },
+        "run_id": "run_60301183a6ca4308a8cedf0b17616152",
+        "run_reproducibility": {
+          "digest": "0b49a8a8dd47d1387149d5da20e56593a7f6975592151a829c4dd67f6a38ec24",
+          "record_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/logs/job_byox_repair_v1_g2_8ebb5db64a06a70cbce675c8060cbf35/attempt-002/RUN_PROVENANCE.json",
+          "schema": "learnfactory-run-provenance-v3"
+        },
+        "runtime_prompt": {
+          "effective_prompt": {
+            "content_stored": false,
+            "includes_leaf_worker_policy": true,
+            "sha256": "c1c0546f4d83dd7fb27b9482b5e4ad4525f3928446cc8c574bd517c61bf20f39",
+            "utf8_bytes": 13193
+          },
+          "job_prompt": {
+            "content_stored": false,
+            "sha256": "bf96b9581906a7d147cb295cb2030d194df55484e863a3be1cce9c821768c908",
+            "utf8_bytes": 12845
+          },
+          "leaf_worker_policy": {
+            "content_stored": false,
+            "sha256": "61cfaab916fc8a696d7f1c798f8ef8fe1dea8ae235982996b695eea8b7ac44e7",
+            "utf8_bytes": 348
+          }
+        },
+        "sandbox_rule_manifest": {
+          "declared_outputs": [
+            "AGENTS.md",
+            "CONCEPTS.md",
+            "DESIGN_QUESTIONS.md",
+            "LICENSE_BOUNDARY.md",
+            "MANIFEST.yaml",
+            "PROVENANCE.json",
+            "README.md",
+            "REQUIREMENTS.md",
+            "VALIDATION.md",
+            "adversarial/README.md",
+            "benchmarks/README.md",
+            "debugging/README.md",
+            "environment/README.md",
+            "public_tests/README.md",
+            "review_exercises/README.md",
+            "sealed/DESIGN.md",
+            "sealed/REVIEW.md",
+            "sealed/TRADEOFFS.md",
+            "sealed/alternatives/README.md",
+            "sealed/production/PRODUCTIONIZATION.md",
+            "sealed/reference/README.md",
+            "sealed/reference_tests/README.md",
+            "starter/README.md"
+          ],
+          "result_channel": {
+            "content_stored_in_provenance": false,
+            "fixed_alias_stored": true,
+            "launch_namespace": "fixed-alias-only",
+            "nonce_hash_stored": false,
+            "nonce_stored": false,
+            "outer_cli_output_capability": "parent-procfd-readonly-hold",
+            "output_descriptor_inherited": false,
+            "post_exit_result_retention": "bounded-redacted-output",
+            "private_path_stored": false,
+            "runtime_fd_stored": false,
+            "schema_version": 3,
+            "transport": "outer-cli-parent-held-fixed-alias-inode"
+          },
+          "rules": [
+            {
+              "access": "read",
+              "kind": "staged-input-ancestor",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_repair_v1_g2_8ebb5db64a06a70cbce675c8060cbf35/attempt-002"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_repair_v1_g2_8ebb5db64a06a70cbce675c8060cbf35/attempt-002/PRIOR_BUILD"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input-ancestor",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_repair_v1_g2_8ebb5db64a06a70cbce675c8060cbf35/attempt-002/PRIOR_REVIEW"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_repair_v1_g2_8ebb5db64a06a70cbce675c8060cbf35/attempt-002/PRIOR_REVIEW/EVALUATION.json"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_repair_v1_g2_8ebb5db64a06a70cbce675c8060cbf35/attempt-002/PRIOR_REVIEW/REVIEW.md"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_repair_v1_g2_8ebb5db64a06a70cbce675c8060cbf35/attempt-002/PRIOR_REVIEW/VALIDATION.md"
+            }
+          ],
+          "schema_version": 1,
+          "sha256": "ba2d83ec22ed157b9446ca7f1a513aad4806f0a3b9ceb0931c377ac64fdbe06e",
+          "staged_inputs": [
+            "PRIOR_BUILD",
+            "PRIOR_REVIEW/EVALUATION.json",
+            "PRIOR_REVIEW/REVIEW.md",
+            "PRIOR_REVIEW/VALIDATION.md"
+          ],
+          "tools_enabled": true,
+          "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_repair_v1_g2_8ebb5db64a06a70cbce675c8060cbf35/attempt-002",
+          "workspace_access": "write"
+        },
+        "staged_inputs": [
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "01414901e616a54d1e0763e5457957bc93ce242a2c1837cd6770ef560cacc654",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_48a7d5efd3bb42a39be85db493efbfbb",
+            "artifact_inventory": {
+              "excluded_paths": [],
+              "excluded_paths_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "original_paths": [
+                "AGENTS.md",
+                "CONCEPTS.md",
+                "DESIGN_QUESTIONS.md",
+                "LICENSE_BOUNDARY.md",
+                "MANIFEST.yaml",
+                "PROVENANCE.json",
+                "README.md",
+                "REQUIREMENTS.md",
+                "VALIDATION.md",
+                "adversarial",
+                "benchmarks",
+                "debugging",
+                "environment",
+                "public_tests",
+                "review_exercises",
+                "sealed",
+                "starter"
+              ],
+              "original_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+              "profile": "byox-generic-v1",
+              "root_kinds": {
+                "AGENTS.md": "file",
+                "CONCEPTS.md": "file",
+                "DESIGN_QUESTIONS.md": "file",
+                "LICENSE_BOUNDARY.md": "file",
+                "MANIFEST.yaml": "file",
+                "PROVENANCE.json": "file",
+                "README.md": "file",
+                "REQUIREMENTS.md": "file",
+                "VALIDATION.md": "file",
+                "adversarial": "directory",
+                "benchmarks": "directory",
+                "debugging": "directory",
+                "environment": "directory",
+                "public_tests": "directory",
+                "review_exercises": "directory",
+                "sealed": "directory",
+                "starter": "directory"
+              },
+              "root_kinds_sha256": "4ab3748035e4101088141376a5db0f5900d24a8b2a0863979e42d39e34e7a878",
+              "schema_version": 1,
+              "selected_paths": [
+                "AGENTS.md",
+                "CONCEPTS.md",
+                "DESIGN_QUESTIONS.md",
+                "LICENSE_BOUNDARY.md",
+                "MANIFEST.yaml",
+                "PROVENANCE.json",
+                "README.md",
+                "REQUIREMENTS.md",
+                "VALIDATION.md",
+                "adversarial",
+                "benchmarks",
+                "debugging",
+                "environment",
+                "public_tests",
+                "review_exercises",
+                "sealed",
+                "starter"
+              ],
+              "selected_paths_sha256": "6a8178d8a2dc63c8f034ea4a92f46299bb841687e6947384ccde5f6a3671dfa8",
+              "source_artifact_type": "byox-remediated-challenge-pack"
+            },
+            "artifact_subpath": ".",
+            "artifact_type": "byox-remediated-challenge-pack",
+            "checksum": "58c3fbcf425be40adce6aea67dfcc0285c5caaa456bb21aae48e068557f8d339",
+            "checksum_algorithm": "tree-sha256-v2",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "1a197ee99f735935467837ec1591c09cdb45ac9756f9802406c6d878bf622b4e",
+            "job_id": "job_byox_repair_v1_g1_4e3ccb4926e280942bcd30984264287b",
+            "kind": "directory",
+            "origin": "dependency-artifact",
+            "path": "PRIOR_BUILD",
+            "regular_file_count": 40,
+            "root_change_time_ns": 1788268024158457206,
+            "root_device": 92,
+            "root_inode": 3436978937
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "0dc94a736d50cf41c44d92a890c6227012e9b9e33b8c153658809bf70968f27f",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_cdeb6d97ed024bd79032a9686cdcd15a",
+            "artifact_subpath": "EVALUATION.json",
+            "artifact_type": "byox-independent-review",
+            "checksum": "96e77ffc2ebf1a4418eafc69b04f5d5a06c18d6a0d1c178ea891511186f0ac9f",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "73640266381dcf755b143fa1ffe3eabe7e132c6532539d954371292de462784f",
+            "job_id": "job_byox_repair_review_v1_g1_ea32a28400569f61d01c035dd9c8ecde",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "PRIOR_REVIEW/EVALUATION.json",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788268024765705563,
+            "root_device": 92,
+            "root_inode": 616838222
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "0dc94a736d50cf41c44d92a890c6227012e9b9e33b8c153658809bf70968f27f",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_cdeb6d97ed024bd79032a9686cdcd15a",
+            "artifact_subpath": "REVIEW.md",
+            "artifact_type": "byox-independent-review",
+            "checksum": "787cb21e2b60a056c986bbc5cbbedcfbc557477597c600e3d25086569de026a2",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "27a637c18188eebf30d0a28d0e48a0043f1a8fa0b3101c09caefa52806dd628f",
+            "job_id": "job_byox_repair_review_v1_g1_ea32a28400569f61d01c035dd9c8ecde",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "PRIOR_REVIEW/REVIEW.md",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788268024774646316,
+            "root_device": 92,
+            "root_inode": 2496298144
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "0dc94a736d50cf41c44d92a890c6227012e9b9e33b8c153658809bf70968f27f",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_cdeb6d97ed024bd79032a9686cdcd15a",
+            "artifact_subpath": "VALIDATION.md",
+            "artifact_type": "byox-independent-review",
+            "checksum": "ec48fec82b2993ac36f72d55b213d2311ab7542b4cadb51a4d1c2fd28d135763",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "2cbf4d608f0768d3343504842b740c66d7a90fcde0a5eccc817787406067ae01",
+            "job_id": "job_byox_repair_review_v1_g1_ea32a28400569f61d01c035dd9c8ecde",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "PRIOR_REVIEW/VALIDATION.md",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788268024781778605,
+            "root_device": 92,
+            "root_inode": 1421639406
+          }
+        ],
+        "validated_tree_sha256": "a5e4d3b93bc15c704ae0863fce5780402359bb6ff0466706fdb26a91a0c76460",
+        "validation_evidence": [
+          {
+            "evidence": {
+              "checked": [
+                "README.md",
+                "AGENTS.md",
+                "MANIFEST.yaml",
+                "PROVENANCE.json",
+                "LICENSE_BOUNDARY.md",
+                "REQUIREMENTS.md",
+                "CONCEPTS.md",
+                "DESIGN_QUESTIONS.md",
+                "VALIDATION.md",
+                "starter/README.md",
+                "public_tests/README.md",
+                "environment/README.md",
+                "sealed/reference/README.md",
+                "sealed/reference_tests/README.md",
+                "sealed/DESIGN.md",
+                "sealed/TRADEOFFS.md",
+                "sealed/REVIEW.md",
+                "sealed/alternatives/README.md",
+                "sealed/production/PRODUCTIONIZATION.md",
+                "adversarial/README.md",
+                "debugging/README.md",
+                "review_exercises/README.md",
+                "benchmarks/README.md"
+              ],
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-challenge-structure"
+          },
+          {
+            "evidence": {
+              "checked": [
+                ".git",
+                ".env",
+                ".venv",
+                "credentials.json",
+                "secrets",
+                "reference",
+                "reference_tests",
+                "hidden_tests",
+                "solution",
+                "solutions",
+                "answers",
+                "starter/sealed",
+                "starter/reference",
+                "starter/reference_tests",
+                "starter/solution",
+                "starter/solutions",
+                "starter/answers",
+                "public_tests/sealed",
+                "public_tests/reference",
+                "public_tests/hidden_tests",
+                "environment/sealed"
+              ],
+              "present": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-progressive-boundary"
+          },
+          {
+            "evidence": {
+              "checked": [
+                "README.md",
+                "AGENTS.md",
+                "MANIFEST.yaml",
+                "PROVENANCE.json",
+                "LICENSE_BOUNDARY.md",
+                "REQUIREMENTS.md",
+                "CONCEPTS.md",
+                "DESIGN_QUESTIONS.md",
+                "VALIDATION.md",
+                "starter/README.md",
+                "public_tests/README.md",
+                "environment/README.md",
+                "sealed/reference/README.md",
+                "sealed/reference_tests/README.md",
+                "sealed/DESIGN.md",
+                "sealed/TRADEOFFS.md",
+                "sealed/REVIEW.md",
+                "sealed/alternatives/README.md",
+                "sealed/production/PRODUCTIONIZATION.md",
+                "adversarial/README.md",
+                "debugging/README.md",
+                "review_exercises/README.md",
+                "benchmarks/README.md"
+              ],
+              "failures": [],
+              "minimum_bytes": 1
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-nonempty-files"
+          },
+          {
+            "evidence": {
+              "entry_count": 19,
+              "forbidden": [
+                ".agents",
+                ".codex",
+                ".env",
+                ".git",
+                ".venv",
+                "answer",
+                "answers",
+                "credential",
+                "credentials",
+                "credentials.json",
+                "hidden",
+                "hidden_tests",
+                "job.md",
+                "reference",
+                "reference_tests",
+                "sealed",
+                "secret",
+                "secrets",
+                "solution",
+                "solutions"
+              ],
+              "limit_failure": null,
+              "max_depth": 100,
+              "max_entries": 20000,
+              "present": [],
+              "present_truncated": 0,
+              "roots": [
+                "starter",
+                "public_tests",
+                "environment"
+              ],
+              "unsafe_entries": [],
+              "unsafe_entries_truncated": 0
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-recursive-progressive-boundary"
+          },
+          {
+            "evidence": {
+              "claims_builds_or_tested": false,
+              "counts": {
+                "bytes": 67676,
+                "entries": 34,
+                "files": 14
+              },
+              "groups": [
+                {
+                  "build_descriptor_count": 0,
+                  "build_descriptors": [],
+                  "missing_or_unsafe_roots": [],
+                  "name": "reference_implementation",
+                  "qualifying_count": 3,
+                  "qualifying_digest": "89ffee79b973bb8f0aab27a18292011102ae0cc838fbfa65410202e53db89d4c",
+                  "qualifying_files": [
+                    {
+                      "path": "sealed/reference/src/main/java/io/learningfactory/kafkalite/LogRecord.java",
+                      "sha256": "c3622093661307fa146effe46e0bf47ed26645d77c6537083925246edee07a40",
+                      "size_bytes": 1389
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/io/learningfactory/kafkalite/PartitionLog.java",
+                      "sha256": "fb523746ec0ef7a88c516f6ce2425f347eadff9b0f52fb5d5b8cbdda44da43ef",
+                      "size_bytes": 2406
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/io/learningfactory/kafkalite/ReplicatedPartition.java",
+                      "sha256": "af0f80533eaac490dbd8bb169e7141dfd02980bbe9ab810fa44399d2a932bf30",
+                      "size_bytes": 11234
+                    }
+                  ],
+                  "qualifying_files_truncated": 0,
+                  "roots": [
+                    "sealed/reference"
+                  ]
+                },
+                {
+                  "build_descriptor_count": 0,
+                  "build_descriptors": [],
+                  "missing_or_unsafe_roots": [],
+                  "name": "learner_starter",
+                  "qualifying_count": 3,
+                  "qualifying_digest": "20388dc493a2610bf4ba068d810c67d226f17d16d71483d0ec16aa29409bf2e6",
+                  "qualifying_files": [
+                    {
+                      "path": "starter/src/main/java/io/learningfactory/kafkalite/LogRecord.java",
+                      "sha256": "7867880fb9c686a25e18e5151d12ff47ce99752b690feaa7c72ce1829bc9d746",
+                      "size_bytes": 458
+                    },
+                    {
+                      "path": "starter/src/main/java/io/learningfactory/kafkalite/PartitionLog.java",
+                      "sha256": "b1a51fc91ab5284bb1e1750fbacd8b8317707722d2d7d29e06103a83cc68a69e",
+                      "size_bytes": 728
+                    },
+                    {
+                      "path": "starter/src/main/java/io/learningfactory/kafkalite/ReplicatedPartition.java",
+                      "sha256": "af81dce85c805e734779a6f10d73f35c250cd624342ce4cb4a00898cd54e2457",
+                      "size_bytes": 1601
+                    }
+                  ],
+                  "qualifying_files_truncated": 0,
+                  "roots": [
+                    "starter"
+                  ]
+                },
+                {
+                  "build_descriptor_count": 0,
+                  "build_descriptors": [],
+                  "missing_or_unsafe_roots": [],
+                  "name": "tests",
+                  "qualifying_count": 4,
+                  "qualifying_digest": "76e5a29a01ff78cd269fd922f0e5b8dd2973da22599068ce87dba629eba8e256",
+                  "qualifying_files": [
+                    {
+                      "path": "public_tests/run.sh",
+                      "sha256": "192526c1b19d58ecb8419267111d88c0fbb923d9de0e40b29e75e35c8f44925a",
+                      "size_bytes": 1305
+                    },
+                    {
+                      "path": "public_tests/src/io/learningfactory/kafkalite/ContractTests.java",
+                      "sha256": "f4ef8a859269d34cb65bc4df2f009e37f6c8f113abbfa97b27f5e74835046975",
+                      "size_bytes": 14372
+                    },
+                    {
+                      "path": "sealed/reference_tests/run.sh",
+                      "sha256": "0a9d367d5df3a9f5c5f02e47023bb21a70fb7e57d27714847b7e1d0483778c5c",
+                      "size_bytes": 1506
+                    },
+                    {
+                      "path": "sealed/reference_tests/src/io/learningfactory/kafkalite/ReferenceTests.java",
+                      "sha256": "8e09e7fdafc8dce954f8f579cd322b8727b2572b9b1952c7f302050f76559de4",
+                      "size_bytes": 24263
+                    }
+                  ],
+                  "qualifying_files_truncated": 0,
+                  "roots": [
+                    "public_tests",
+                    "sealed/reference_tests"
+                  ]
+                }
+              ],
+              "limit_failure": null,
+              "limits": {
+                "max_depth": 100,
+                "max_entries": 20000,
+                "max_file_bytes": 33554432,
+                "max_files": 10000,
+                "max_total_bytes": 268435456
+              },
+              "manifest_digest": "163f9a2d83a5a66a3f14ce46012237dff3ce8fa1957064ed0bf4577236575cf0",
+              "manifest_version": 1,
+              "missing_groups": [],
+              "oversized_files": [],
+              "oversized_files_truncated": 0,
+              "policy_digest": "96108b83508c5cb8b919635c592c6b33629a029e049a7d69adf1f5e2b0434ec6",
+              "policy_version": 2,
+              "schema_version": 2,
+              "scope": "code-presence-structure-only",
+              "unsafe_entries": [],
+              "unsafe_entries_truncated": 0
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-code-bearing-tree"
+          },
+          {
+            "evidence": {
+              "error_count": 0,
+              "errors": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-manifest"
+          },
+          {
+            "evidence": {
+              "error_count": 0,
+              "errors": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-provenance"
+          },
+          {
+            "evidence": {
+              "checked": [
+                "PRIOR_BUILD",
+                "PRIOR_REVIEW"
+              ],
+              "mismatches": []
+            },
+            "status": "PASS",
+            "validator": "declared-inputs-remained-immutable"
+          }
+        ],
+        "validation_labels": [
+          "GENERATED",
+          "PARTIAL"
+        ],
+        "validation_workspace_tree_sha256": "fc3705bea8f8085f9fdf521b23aa20911c9d078bf718d72c9b5c05d8f4760a56"
+      },
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/remediation/32ba6fc132e4456a6e99/repair-v2/job_byox_repair_v1_g2_8ebb5db64a06a70cbce675c8060cbf35/attempt-002",
+      "type": "byox-remediated-challenge-pack",
+      "validation_labels": [
+        "GENERATED",
+        "PARTIAL"
+      ],
+      "validation_status": "GENERATED+PARTIAL",
+      "worker_type": "reference_builder"
+    },
+    {
+      "artifact_id": "artifact_d18c03ad3212414eb37c79ffdc7160d2",
+      "attempt_number": 2,
+      "checksum": "a6b5ca03d9bd799251b6cfb0e562bc95aab908c72ca423f033c858e58741469f",
+      "checksum_algorithm": "tree-sha256-v2",
+      "created_at": 1788268271.868682,
+      "integrity_status": "VERIFIED_V2",
+      "job_id": "job_csdiy_51bc91893247cdfd588ce273c20ddb29_prepare_v1",
+      "job_type": "codex_task",
+      "metadata": {
+        "archive_projection": {
+          "mode": "complete-workspace",
+          "schema_version": 1,
+          "source_workspace_checksum": "a6b5ca03d9bd799251b6cfb0e562bc95aab908c72ca423f033c858e58741469f",
+          "source_workspace_checksum_algorithm": "tree-sha256-v2"
+        },
+        "attempt": 2,
+        "catalog_snapshot": {
+          "course": {
+            "catalog_status": "DISCOVERED",
+            "course_id": "course_51bc91893247cdfd588ce273c20ddb29",
+            "description": "- Learning Hours: 80\n\nThe compiler principles course at Nanjing University utilizes the popular ANTLR (ANother Tool for Language Recognition) v4 programming language parsing and code generation tool to aid in teaching. This tool allows users to focus on designing lexical or syntactic analysis while ANTLR 4 generates repetitive template code. IDE plugins are also available, enabling real-time visualization of the parse tree for easier student comprehension.\n\nANTLR 4 is an LL parser generator, which, compared to LR and LALR parser generators, can handle a narrower scope of grammars. However, its generated parsers have the advantage of being easier to understand and use. Additionally, its support for \"infinite lookahead\" scanning improves handling of narrow grammar scopes.\n\nThe instructor delivers lectures on compiler design in a humorous and engaging manner, incorporating appropriate diagrams and real-life examples to maintain student interest. Particularly in this version of the course, the approach involves first practically completing small examples using ANTLR 4, followed by supplementing with theoretical knowledge. This allows students to approach theoretical aspects with specific questions in mind, enhancing memorability. Through the study of theoretical knowledge, the \"mysterious veil\" of the C language is gradually lifted.\n\nThe theoretical part follows the rhythm outlined in the \"Dragon Book,\" covering topics such as lexical analysis, syntax analysis, semantic analysis, runtime environments, register allocation, code optimization, and generation.\n\nThe practical aspect is the highlight of this course, guiding students step by step to implement their own compiler from simple to complex.\n\nThe instructor is extremely generous, allowing even non-university students to access the Online Judge and participate in course discussions. The instructor also meticulously organizes study materials from previous years, making them easily accessible on the course website.\n\nThe instructor also openly shares the [Zulip](https://2024-compilers-at-software-nju.zulipchat.com/join/wxwq3fib56ltlff2mk6qyrz5/) address for the teaching group (if there are any changes, they can be found on the course website), meaning that students can ask questions and see the questions of other Nanjing University students studying the same material. These questions receive responses from teaching assistants and the instructor, eliminating the need to reiterate pitfalls or experiences, as students can exchange information on one platform with others studying the same content.\n\nThe biggest takeaway is that there is no longer a sense of difficulty or uncertainty in implementing a compiler. Upon completing the course, students have a preliminary and effective approach that enables them to face challenges confidently.",
+            "difficulty": 3.0,
+            "estimated_human_hours": null,
+            "institution": "Nanjing University",
+            "prerequisites": [
+              "Discrete Mathematics"
+            ],
+            "slug": "nju-compilers",
+            "source_metadata": {
+              "fields": {
+                "assignments": "10 written assignments + 8~10 programming labs",
+                "course website": "<http://docs.compilers.cpl.icu/>",
+                "difficulty": "🌟🌟🌟",
+                "learning hours": "80",
+                "offered by": "Nanjing University",
+                "prerequisite": "Discrete Mathematics",
+                "programming languages": "Java",
+                "recordings": "<https://space.bilibili.com/479141149/lists/2312309>",
+                "textbook": "Compilers: Principles, Techniques and Tools (Dragon Book)"
+              },
+              "language": "en",
+              "prerequisites_raw": "Discrete Mathematics",
+              "programming_languages_raw": "Java",
+              "provenance": {
+                "adapter": "csdiy",
+                "classification": "source-derived",
+                "content_sha256": "9f12235c55517683fc06dd43ed28a4690442a5554976a426d317546c4601b1cf",
+                "extractor_version": "1.1",
+                "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                "source_file": "docs/编译原理/NJU-Compilers.en.md"
+              },
+              "resource_urls": [
+                "https://2024-compilers-at-software-nju.zulipchat.com/join/wxwq3fib56ltlff2mk6qyrz5/",
+                "http://docs.compilers.cpl.icu/",
+                "https://space.bilibili.com/479141149/lists/2312309"
+              ],
+              "source_stem": "NJU-Compilers"
+            },
+            "title": "NJU Compilers",
+            "topic": "编译原理"
+          },
+          "normalized_resource_records": [
+            {
+              "dependencies": [],
+              "metadata": {
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "9f12235c55517683fc06dd43ed28a4690442a5554976a426d317546c4601b1cf",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/编译原理/NJU-Compilers.en.md"
+                },
+                "role": "catalog_overview"
+              },
+              "order": 0,
+              "source_reference": "docs/编译原理/NJU-Compilers.en.md",
+              "title": "Catalog overview and resource guide",
+              "type": "reading",
+              "unit_id": "unit_3d59671036128c39730c082cc03151c5"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "LINKED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "9f12235c55517683fc06dd43ed28a4690442a5554976a426d317546c4601b1cf",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/编译原理/NJU-Compilers.en.md",
+                  "source_line": 29
+                },
+                "raw_value": "<http://docs.compilers.cpl.icu/>",
+                "urls": [
+                  "http://docs.compilers.cpl.icu/"
+                ]
+              },
+              "order": 29,
+              "source_reference": "docs/编译原理/NJU-Compilers.en.md#L29",
+              "title": "Course Website",
+              "type": "reading",
+              "unit_id": "unit_e9b441c47e926f62adf5111b648a9110"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "LINKED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "9f12235c55517683fc06dd43ed28a4690442a5554976a426d317546c4601b1cf",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/编译原理/NJU-Compilers.en.md",
+                  "source_line": 30
+                },
+                "raw_value": "<https://space.bilibili.com/479141149/lists/2312309>",
+                "urls": [
+                  "https://space.bilibili.com/479141149/lists/2312309"
+                ]
+              },
+              "order": 30,
+              "source_reference": "docs/编译原理/NJU-Compilers.en.md#L30",
+              "title": "Recordings",
+              "type": "lecture",
+              "unit_id": "unit_8d66fdd5e748f8d1500b9f113a193f5e"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "DESCRIBED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "9f12235c55517683fc06dd43ed28a4690442a5554976a426d317546c4601b1cf",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/编译原理/NJU-Compilers.en.md",
+                  "source_line": 31
+                },
+                "raw_value": "Compilers: Principles, Techniques and Tools (Dragon Book)",
+                "urls": []
+              },
+              "order": 31,
+              "source_reference": "docs/编译原理/NJU-Compilers.en.md#L31",
+              "title": "Textbook",
+              "type": "reading",
+              "unit_id": "unit_47025bf5c29afd47d3ff4bec5753576c"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "DESCRIBED",
+                "official_course_unit": true,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "9f12235c55517683fc06dd43ed28a4690442a5554976a426d317546c4601b1cf",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/编译原理/NJU-Compilers.en.md",
+                  "source_line": 32
+                },
+                "raw_value": "10 written assignments + 8~10 programming labs",
+                "urls": []
+              },
+              "order": 32,
+              "source_reference": "docs/编译原理/NJU-Compilers.en.md#L32",
+              "title": "Assignments",
+              "type": "assignment",
+              "unit_id": "unit_0f736dd676b843ffc6924a3659b617e7"
+            }
+          ],
+          "resource_record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+          "schema_version": 1,
+          "source": {
+            "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+            "license": "MIT",
+            "name": "CSDIY",
+            "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/cs-self-learning",
+            "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+            "type": "course_catalog",
+            "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git"
+          }
+        },
+        "catalog_snapshot_sha256": "e71cc1a570820bd05fb1d7287c8f9af0fcbd52b40fa93bbf48494927a8710a54",
+        "classification": "immutable source-derived catalog snapshot plus agent-generated learning artifacts",
+        "factory_revision": {
+          "commit": "338fd307484047c633c4cde89425656a99d1e6b5",
+          "status": "RECORDED",
+          "tracked_worktree_clean": false
+        },
+        "job_id": "job_csdiy_51bc91893247cdfd588ce273c20ddb29_prepare_v1",
+        "policy_version": 1,
+        "prompt_contexts": [],
+        "removed_root_metadata": [
+          ".factory-workspace"
+        ],
+        "run_id": "run_8d9226ef88e54b8c996915222671544f",
+        "run_reproducibility": {
+          "digest": "17e589d6b80a1179da5dfc0073f863ade3ba76977876297d87adb74f967cd6a3",
+          "record_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/logs/job_csdiy_51bc91893247cdfd588ce273c20ddb29_prepare_v1/attempt-002/RUN_PROVENANCE.json",
+          "schema": "learnfactory-run-provenance-v3"
+        },
+        "runtime_prompt": {
+          "effective_prompt": {
+            "content_stored": false,
+            "includes_leaf_worker_policy": true,
+            "sha256": "472ac4624313811c116abccc0b2a811148bb4352b0083d50f54a956850602d5e",
+            "utf8_bytes": 9232
+          },
+          "job_prompt": {
+            "content_stored": false,
+            "sha256": "128c283f94632a0b680752d54bf566fa17c6813c08393debc1b75a592853c2c3",
+            "utf8_bytes": 8884
+          },
+          "leaf_worker_policy": {
+            "content_stored": false,
+            "sha256": "61cfaab916fc8a696d7f1c798f8ef8fe1dea8ae235982996b695eea8b7ac44e7",
+            "utf8_bytes": 348
+          }
+        },
+        "sandbox_rule_manifest": {
+          "declared_outputs": [
+            "COURSE_MANIFEST.json",
+            "MATERIAL_AVAILABILITY.json",
+            "UNIT_GRAPH.json",
+            "examiner_only/RUBRIC.md",
+            "student_safe/COMPREHENSION.md",
+            "student_safe/COURSE_BRIEF.md",
+            "student_safe/STUDY_TASK.md"
+          ],
+          "result_channel": {
+            "content_stored_in_provenance": false,
+            "fixed_alias_stored": true,
+            "launch_namespace": "fixed-alias-only",
+            "nonce_hash_stored": false,
+            "nonce_stored": false,
+            "outer_cli_output_capability": "parent-procfd-readonly-hold",
+            "output_descriptor_inherited": false,
+            "post_exit_result_retention": "bounded-redacted-output",
+            "private_path_stored": false,
+            "runtime_fd_stored": false,
+            "schema_version": 3,
+            "transport": "outer-cli-parent-held-fixed-alias-inode"
+          },
+          "rules": [],
+          "schema_version": 1,
+          "sha256": "5eb3f8bcd36c5bc660eede45b84f36e7d77d423370d251f2c1bf5ed05500fd88",
+          "staged_inputs": [],
+          "tools_enabled": true,
+          "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_csdiy_51bc91893247cdfd588ce273c20ddb29_prepare_v1/attempt-002",
+          "workspace_access": "write"
+        },
+        "staged_inputs": [],
+        "validated_tree_sha256": "a6b5ca03d9bd799251b6cfb0e562bc95aab908c72ca423f033c858e58741469f",
+        "validation_evidence": [
+          {
+            "evidence": {
+              "checked": [
+                "COURSE_MANIFEST.json",
+                "UNIT_GRAPH.json",
+                "MATERIAL_AVAILABILITY.json",
+                "student_safe/COURSE_BRIEF.md",
+                "student_safe/STUDY_TASK.md",
+                "student_safe/COMPREHENSION.md",
+                "examiner_only/RUBRIC.md"
+              ],
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-preparation-files"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-manifest-fields"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-unit-graph-fields"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-material-availability-fields"
+          }
+        ],
+        "validation_labels": [
+          "GENERATED"
+        ],
+        "validation_workspace_tree_sha256": "a6b5ca03d9bd799251b6cfb0e562bc95aab908c72ca423f033c858e58741469f"
+      },
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/catalog/nju-compilers-51bc9189/cohort-v1/preparation/job_csdiy_51bc91893247cdfd588ce273c20ddb29_prepare_v1/attempt-002",
+      "type": "course-preparation",
+      "validation_labels": [
+        "GENERATED"
+      ],
+      "validation_status": "GENERATED",
+      "worker_type": "course_manager"
+    },
+    {
+      "artifact_id": "artifact_9588e5617f484844a43166f2bbca82dd",
+      "attempt_number": 3,
+      "checksum": "c6f7861d419107499bcff3386e099f41b36360cf7657a21477100917892e08ca",
+      "checksum_algorithm": "tree-sha256-v2",
+      "created_at": 1788268271.7724872,
+      "integrity_status": "VERIFIED_V2",
+      "job_id": "job_csdiy_2ea1d64327b40e9dd1751e342e62a833_prepare_v1",
+      "job_type": "codex_task",
+      "metadata": {
+        "archive_projection": {
+          "mode": "complete-workspace",
+          "schema_version": 1,
+          "source_workspace_checksum": "c6f7861d419107499bcff3386e099f41b36360cf7657a21477100917892e08ca",
+          "source_workspace_checksum_algorithm": "tree-sha256-v2"
+        },
+        "attempt": 3,
+        "catalog_snapshot": {
+          "course": {
+            "catalog_status": "DISCOVERED",
+            "course_id": "course_2ea1d64327b40e9dd1751e342e62a833",
+            "description": "As one of the most popular courses on [Coursera](https://www.coursera.org), tens of thousands of people give it a full score, and over four hundred colleges and high schools teach it. It guides the students who may have no preparatory knowledge in computer science to build a whole computer from Nand logic gates and finally run the Tetris game on it.\n\nSounds cool, right? It's even cooler when you implement it!\n\nThe course is divided into hardware modules and software modules respectively.\n\nIn the hardware modules, you will dive into a world based on 0 and 1, create various logic gates from Nand gates, and construct a CPU step by step to run a simplified instruction set designed by the course instructors.\n\nIn the software modules, you will first write a compiler to compile a high-level language *Jack* which is designed by the instructors into byte codes that can run on virtual machines. Then you will further translate the byte codes into assembly language that can run on the CPU you create in the hardware modules. You will also develop a simple operating system that enables your computer to support GUI.\n\nFinally, you can use *Jack* to create the Tetris game, compile it into assembly language, run it on your self-made CPU, and interact with it through the OS built by yourself. After taking this course, you will have a comprehensive and profound understanding of the entire computer architecture, which might be extremely helpful to your subsequent learning.\n\nYou may think that the course is too difficult. Don't worry, because it is completely designed for laymen. In the instructors' expectations, even high school students can understand the content. So as long as you keep pace with the syllabus, you can finish it within a month.\n\nThis course extracts the essence of computers while omitting the tedious and complex details in modern computer systems that are designed for efficiency and performance. Surely you will enjoy the elegance and magic of computers in a relaxing and jolly journey.",
+            "difficulty": 3.0,
+            "estimated_human_hours": 40.0,
+            "institution": "Hebrew University of Jerusalem",
+            "prerequisites": [],
+            "slug": "n2t",
+            "source_metadata": {
+              "fields": {
+                "assignments": "10 projects to construct a computer, refer to the course website for more details",
+                "class hour": "40 hours",
+                "course website": "[Nand2Tetris I](https://www.coursera.org/learn/build-a-computer/home/week/1), [Nand2Tetris II](https://www.coursera.org/learn/nand2tetris2/home/welcome)",
+                "difficulty": "🌟🌟🌟",
+                "offered by": "Hebrew University of Jerusalem",
+                "prerequisites": "None",
+                "programming languages": "Chosen by the course taker",
+                "recordings": "Refer to course website",
+                "textbook": "[The Elements of Computing Systems: Building a Modern Computer from First Principles (CN-zh version)][book]"
+              },
+              "language": "en",
+              "prerequisites_raw": "None",
+              "programming_languages_raw": "Chosen by the course taker",
+              "provenance": {
+                "adapter": "csdiy",
+                "classification": "source-derived",
+                "content_sha256": "4fc58a940cb7f987d3062a5006b859c8a0dcaf8f0b56ad9097ddf0c0a2ce70e0",
+                "extractor_version": "1.1",
+                "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                "source_file": "docs/体系结构/N2T.en.md"
+              },
+              "resource_urls": [
+                "https://www.coursera.org",
+                "https://www.coursera.org/learn/build-a-computer/home/week/1",
+                "https://www.coursera.org/learn/nand2tetris2/home/welcome",
+                "https://github.com/PKUFlyingPig/NandToTetris",
+                "https://github.com/PKUFlyingPig/NandToTetris/blob/master/%5B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E8%A6%81%E7%B4%A0%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E7%8E%B0%E4%BB%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%5D.(%E5%B0%BC%E8%90%A8"
+              ],
+              "source_stem": "N2T"
+            },
+            "title": "Coursera: Nand2Tetris",
+            "topic": "体系结构"
+          },
+          "normalized_resource_records": [
+            {
+              "dependencies": [],
+              "metadata": {
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "4fc58a940cb7f987d3062a5006b859c8a0dcaf8f0b56ad9097ddf0c0a2ce70e0",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/体系结构/N2T.en.md"
+                },
+                "role": "catalog_overview"
+              },
+              "order": 0,
+              "source_reference": "docs/体系结构/N2T.en.md",
+              "title": "Catalog overview and resource guide",
+              "type": "reading",
+              "unit_id": "unit_fcb5ac9d7af4fb8b994b21163f8312bc"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "LINKED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "4fc58a940cb7f987d3062a5006b859c8a0dcaf8f0b56ad9097ddf0c0a2ce70e0",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/体系结构/N2T.en.md",
+                  "source_line": 29
+                },
+                "raw_value": "[Nand2Tetris I](https://www.coursera.org/learn/build-a-computer/home/week/1), [Nand2Tetris II](https://www.coursera.org/learn/nand2tetris2/home/welcome)",
+                "urls": [
+                  "https://www.coursera.org/learn/build-a-computer/home/week/1",
+                  "https://www.coursera.org/learn/nand2tetris2/home/welcome"
+                ]
+              },
+              "order": 29,
+              "source_reference": "docs/体系结构/N2T.en.md#L29",
+              "title": "Course Website",
+              "type": "reading",
+              "unit_id": "unit_8c778489031f1697dcfb0b713d5247c3"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "DESCRIBED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "4fc58a940cb7f987d3062a5006b859c8a0dcaf8f0b56ad9097ddf0c0a2ce70e0",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/体系结构/N2T.en.md",
+                  "source_line": 30
+                },
+                "raw_value": "Refer to course website",
+                "urls": []
+              },
+              "order": 30,
+              "source_reference": "docs/体系结构/N2T.en.md#L30",
+              "title": "Recordings",
+              "type": "lecture",
+              "unit_id": "unit_cbbcd72b22a84efcf84fc146bc847fcc"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "DESCRIBED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "4fc58a940cb7f987d3062a5006b859c8a0dcaf8f0b56ad9097ddf0c0a2ce70e0",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/体系结构/N2T.en.md",
+                  "source_line": 31
+                },
+                "raw_value": "[The Elements of Computing Systems: Building a Modern Computer from First Principles (CN-zh version)][book]",
+                "urls": []
+              },
+              "order": 31,
+              "source_reference": "docs/体系结构/N2T.en.md#L31",
+              "title": "Textbook",
+              "type": "reading",
+              "unit_id": "unit_bc6a18783a58546aa17000c7c9649ec8"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "DESCRIBED",
+                "official_course_unit": true,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "4fc58a940cb7f987d3062a5006b859c8a0dcaf8f0b56ad9097ddf0c0a2ce70e0",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/体系结构/N2T.en.md",
+                  "source_line": 32
+                },
+                "raw_value": "10 projects to construct a computer, refer to the course website for more details",
+                "urls": []
+              },
+              "order": 32,
+              "source_reference": "docs/体系结构/N2T.en.md#L32",
+              "title": "Assignments",
+              "type": "assignment",
+              "unit_id": "unit_0ff55b909e2fc0f658467f4b32eefe49"
+            }
+          ],
+          "resource_record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+          "schema_version": 1,
+          "source": {
+            "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+            "license": "MIT",
+            "name": "CSDIY",
+            "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/cs-self-learning",
+            "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+            "type": "course_catalog",
+            "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git"
+          }
+        },
+        "catalog_snapshot_sha256": "170b75c35b38b8a168b1c24a9c07f43c5f14ccd81ff2b625b6407904541e5a82",
+        "classification": "immutable source-derived catalog snapshot plus agent-generated learning artifacts",
+        "factory_revision": {
+          "commit": "338fd307484047c633c4cde89425656a99d1e6b5",
+          "status": "RECORDED",
+          "tracked_worktree_clean": false
+        },
+        "job_id": "job_csdiy_2ea1d64327b40e9dd1751e342e62a833_prepare_v1",
+        "policy_version": 1,
+        "prompt_contexts": [],
+        "removed_root_metadata": [
+          ".factory-workspace"
+        ],
+        "run_id": "run_f1c3dc1b2cea4839b0d88dacfd9cef95",
+        "run_reproducibility": {
+          "digest": "c6b76ec60dc2caff5c7e86e76e920acb07bd2dc37c291889660c7708cf887a73",
+          "record_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/logs/job_csdiy_2ea1d64327b40e9dd1751e342e62a833_prepare_v1/attempt-003/RUN_PROVENANCE.json",
+          "schema": "learnfactory-run-provenance-v3"
+        },
+        "runtime_prompt": {
+          "effective_prompt": {
+            "content_stored": false,
+            "includes_leaf_worker_policy": true,
+            "sha256": "e35161264fd7824484d30a556c9b973aab9b5c8af854f475d201458ccc667464",
+            "utf8_bytes": 8978
+          },
+          "job_prompt": {
+            "content_stored": false,
+            "sha256": "2cadc917c61721e8caaea4fcc5738b0143e979ecced3cde2ab14c7e00605d1c2",
+            "utf8_bytes": 8630
+          },
+          "leaf_worker_policy": {
+            "content_stored": false,
+            "sha256": "61cfaab916fc8a696d7f1c798f8ef8fe1dea8ae235982996b695eea8b7ac44e7",
+            "utf8_bytes": 348
+          }
+        },
+        "sandbox_rule_manifest": {
+          "declared_outputs": [
+            "COURSE_MANIFEST.json",
+            "MATERIAL_AVAILABILITY.json",
+            "UNIT_GRAPH.json",
+            "examiner_only/RUBRIC.md",
+            "student_safe/COMPREHENSION.md",
+            "student_safe/COURSE_BRIEF.md",
+            "student_safe/STUDY_TASK.md"
+          ],
+          "result_channel": {
+            "content_stored_in_provenance": false,
+            "fixed_alias_stored": true,
+            "launch_namespace": "fixed-alias-only",
+            "nonce_hash_stored": false,
+            "nonce_stored": false,
+            "outer_cli_output_capability": "parent-procfd-readonly-hold",
+            "output_descriptor_inherited": false,
+            "post_exit_result_retention": "bounded-redacted-output",
+            "private_path_stored": false,
+            "runtime_fd_stored": false,
+            "schema_version": 3,
+            "transport": "outer-cli-parent-held-fixed-alias-inode"
+          },
+          "rules": [],
+          "schema_version": 1,
+          "sha256": "6398952deedae1d0fbee3bd537452b2ab00df94ae0c587cd2bfb297bc64f739d",
+          "staged_inputs": [],
+          "tools_enabled": true,
+          "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_csdiy_2ea1d64327b40e9dd1751e342e62a833_prepare_v1/attempt-003",
+          "workspace_access": "write"
+        },
+        "staged_inputs": [],
+        "validated_tree_sha256": "c6f7861d419107499bcff3386e099f41b36360cf7657a21477100917892e08ca",
+        "validation_evidence": [
+          {
+            "evidence": {
+              "checked": [
+                "COURSE_MANIFEST.json",
+                "UNIT_GRAPH.json",
+                "MATERIAL_AVAILABILITY.json",
+                "student_safe/COURSE_BRIEF.md",
+                "student_safe/STUDY_TASK.md",
+                "student_safe/COMPREHENSION.md",
+                "examiner_only/RUBRIC.md"
+              ],
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-preparation-files"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-manifest-fields"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-unit-graph-fields"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-material-availability-fields"
+          }
+        ],
+        "validation_labels": [
+          "GENERATED"
+        ],
+        "validation_workspace_tree_sha256": "c6f7861d419107499bcff3386e099f41b36360cf7657a21477100917892e08ca"
+      },
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/catalog/n2t-2ea1d643/cohort-v1/preparation/job_csdiy_2ea1d64327b40e9dd1751e342e62a833_prepare_v1/attempt-003",
+      "type": "course-preparation",
+      "validation_labels": [
+        "GENERATED"
+      ],
+      "validation_status": "GENERATED",
+      "worker_type": "course_manager"
+    },
+    {
+      "artifact_id": "artifact_4fe2dbb9e136482aae5b80c1aa0f5b91",
+      "attempt_number": 2,
+      "checksum": "e6f7eeedff91ad7e28f5493f7da41b43701feb8e2397e76737b88702a3745309",
+      "checksum_algorithm": "tree-sha256-v2",
+      "created_at": 1788268224.3222408,
+      "integrity_status": "VERIFIED_V2",
+      "job_id": "job_csdiy_8b9ca45a3a931355c8cb809cb83cdb8e_prepare_v1",
+      "job_type": "codex_task",
+      "metadata": {
+        "archive_projection": {
+          "mode": "complete-workspace",
+          "schema_version": 1,
+          "source_workspace_checksum": "e6f7eeedff91ad7e28f5493f7da41b43701feb8e2397e76737b88702a3745309",
+          "source_workspace_checksum_algorithm": "tree-sha256-v2"
+        },
+        "attempt": 2,
+        "catalog_snapshot": {
+          "course": {
+            "catalog_status": "DISCOVERED",
+            "course_id": "course_8b9ca45a3a931355c8cb809cb83cdb8e",
+            "description": "*Computer Networking: A Top-Down Approach* is a classic textbook in the field of computer networking. The two authors, Jim Kurose and Keith Ross, have carefully crafted a course website to support the textbook, with lecture recordings, interactive online questions, and WireShark labs for network packet analysis. The only pity is that this course doesn't have hardcore programming assignments, and Stanford's [CS144](./CS144.en.md) makes up for that.",
+            "difficulty": 3.0,
+            "estimated_human_hours": 40.0,
+            "institution": "UMass",
+            "prerequisites": [
+              "basic knowledge about computer system"
+            ],
+            "slug": "topdown",
+            "source_metadata": {
+              "fields": {
+                "assignments": "<https://gaia.cs.umass.edu/kurose_ross/wireshark.php>",
+                "class hour": "40 hours",
+                "course website": "<https://gaia.cs.umass.edu/kurose_ross/index.php>",
+                "difficulty": "🌟🌟🌟",
+                "offered by": "UMass",
+                "prerequisites": "basic knowledge about computer system",
+                "programming languages": "None",
+                "recordings": "<https://gaia.cs.umass.edu/kurose_ross/lectures.php>",
+                "textbooks": "Computer Networking: A Top-Down Approach"
+              },
+              "language": "en",
+              "prerequisites_raw": "basic knowledge about computer system",
+              "programming_languages_raw": "None",
+              "provenance": {
+                "adapter": "csdiy",
+                "classification": "source-derived",
+                "content_sha256": "e6012e363b1e5416b5cb9ac623f153589dba93a32c9adc9c7462dc11ac168267",
+                "extractor_version": "1.1",
+                "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                "source_file": "docs/计算机网络/topdown.en.md"
+              },
+              "resource_urls": [
+                "https://github.com/PKUFlyingPig/Computer-Network-A-Top-Down-Approach",
+                "https://gaia.cs.umass.edu/kurose_ross/index.php",
+                "https://gaia.cs.umass.edu/kurose_ross/lectures.php",
+                "https://gaia.cs.umass.edu/kurose_ross/wireshark.php"
+              ],
+              "source_stem": "topdown"
+            },
+            "title": "Computer Networking: A Top-Down Approach",
+            "topic": "计算机网络"
+          },
+          "normalized_resource_records": [
+            {
+              "dependencies": [],
+              "metadata": {
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "e6012e363b1e5416b5cb9ac623f153589dba93a32c9adc9c7462dc11ac168267",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/计算机网络/topdown.en.md"
+                },
+                "role": "catalog_overview"
+              },
+              "order": 0,
+              "source_reference": "docs/计算机网络/topdown.en.md",
+              "title": "Catalog overview and resource guide",
+              "type": "reading",
+              "unit_id": "unit_73fe7a949a76e1aa599fd8fea8869e58"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "LINKED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "e6012e363b1e5416b5cb9ac623f153589dba93a32c9adc9c7462dc11ac168267",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/计算机网络/topdown.en.md",
+                  "source_line": 15
+                },
+                "raw_value": "<https://gaia.cs.umass.edu/kurose_ross/index.php>",
+                "urls": [
+                  "https://gaia.cs.umass.edu/kurose_ross/index.php"
+                ]
+              },
+              "order": 15,
+              "source_reference": "docs/计算机网络/topdown.en.md#L15",
+              "title": "Course Website",
+              "type": "reading",
+              "unit_id": "unit_ee29358e607ab9d9213dc393f32e4005"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "LINKED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "e6012e363b1e5416b5cb9ac623f153589dba93a32c9adc9c7462dc11ac168267",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/计算机网络/topdown.en.md",
+                  "source_line": 16
+                },
+                "raw_value": "<https://gaia.cs.umass.edu/kurose_ross/lectures.php>",
+                "urls": [
+                  "https://gaia.cs.umass.edu/kurose_ross/lectures.php"
+                ]
+              },
+              "order": 16,
+              "source_reference": "docs/计算机网络/topdown.en.md#L16",
+              "title": "Recordings",
+              "type": "lecture",
+              "unit_id": "unit_7566302e2076ef273f6b04ad99e6dca7"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "DESCRIBED",
+                "official_course_unit": false,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "e6012e363b1e5416b5cb9ac623f153589dba93a32c9adc9c7462dc11ac168267",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/计算机网络/topdown.en.md",
+                  "source_line": 17
+                },
+                "raw_value": "Computer Networking: A Top-Down Approach",
+                "urls": []
+              },
+              "order": 17,
+              "source_reference": "docs/计算机网络/topdown.en.md#L17",
+              "title": "Textbooks",
+              "type": "reading",
+              "unit_id": "unit_f255b3f78af60c02603ba482f228738a"
+            },
+            {
+              "dependencies": [],
+              "metadata": {
+                "availability": "LINKED",
+                "official_course_unit": true,
+                "provenance": {
+                  "adapter": "csdiy",
+                  "classification": "source-derived",
+                  "content_sha256": "e6012e363b1e5416b5cb9ac623f153589dba93a32c9adc9c7462dc11ac168267",
+                  "extractor_version": "1.1",
+                  "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+                  "source_file": "docs/计算机网络/topdown.en.md",
+                  "source_line": 18
+                },
+                "raw_value": "<https://gaia.cs.umass.edu/kurose_ross/wireshark.php>",
+                "urls": [
+                  "https://gaia.cs.umass.edu/kurose_ross/wireshark.php"
+                ]
+              },
+              "order": 18,
+              "source_reference": "docs/计算机网络/topdown.en.md#L18",
+              "title": "Assignments",
+              "type": "assignment",
+              "unit_id": "unit_6f3ef9e31d251a2d0ada9e09a9981339"
+            }
+          ],
+          "resource_record_boundary": "Normalized records may be catalog resource links rather than official course units; the course manager must classify availability before later unit expansion.",
+          "schema_version": 1,
+          "source": {
+            "commit_hash": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+            "license": "MIT",
+            "name": "CSDIY",
+            "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/cs-self-learning",
+            "source_id": "source_7de70e693702cd66ab7a40eb964fc119",
+            "type": "course_catalog",
+            "upstream_url": "git@github.com:PKUFlyingPig/cs-self-learning.git"
+          }
+        },
+        "catalog_snapshot_sha256": "de7a7e3c365921f563826f8d8c9e55088026fc06b1748dde087737c06d2bd9e0",
+        "classification": "immutable source-derived catalog snapshot plus agent-generated learning artifacts",
+        "factory_revision": {
+          "commit": "338fd307484047c633c4cde89425656a99d1e6b5",
+          "status": "RECORDED",
+          "tracked_worktree_clean": true
+        },
+        "job_id": "job_csdiy_8b9ca45a3a931355c8cb809cb83cdb8e_prepare_v1",
+        "policy_version": 1,
+        "prompt_contexts": [],
+        "removed_root_metadata": [
+          ".factory-workspace"
+        ],
+        "run_id": "run_6f57f060e8cc4af2be8b7ccc152f95fd",
+        "run_reproducibility": {
+          "digest": "f706094db51099fca2a18795411f067cbc8d92ce8e2c531b027500799e2b22f2",
+          "record_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/logs/job_csdiy_8b9ca45a3a931355c8cb809cb83cdb8e_prepare_v1/attempt-002/RUN_PROVENANCE.json",
+          "schema": "learnfactory-run-provenance-v3"
+        },
+        "runtime_prompt": {
+          "effective_prompt": {
+            "content_stored": false,
+            "includes_leaf_worker_policy": true,
+            "sha256": "91d26d091f05f15f7180b97f20c792049bf2dea9c9cf4daa34f18fb08745d8e2",
+            "utf8_bytes": 6986
+          },
+          "job_prompt": {
+            "content_stored": false,
+            "sha256": "19ce27bdada8a2ffb7a446dc3de8983866617122440b039df241cb6114046299",
+            "utf8_bytes": 6638
+          },
+          "leaf_worker_policy": {
+            "content_stored": false,
+            "sha256": "61cfaab916fc8a696d7f1c798f8ef8fe1dea8ae235982996b695eea8b7ac44e7",
+            "utf8_bytes": 348
+          }
+        },
+        "sandbox_rule_manifest": {
+          "declared_outputs": [
+            "COURSE_MANIFEST.json",
+            "MATERIAL_AVAILABILITY.json",
+            "UNIT_GRAPH.json",
+            "examiner_only/RUBRIC.md",
+            "student_safe/COMPREHENSION.md",
+            "student_safe/COURSE_BRIEF.md",
+            "student_safe/STUDY_TASK.md"
+          ],
+          "result_channel": {
+            "content_stored_in_provenance": false,
+            "fixed_alias_stored": true,
+            "launch_namespace": "fixed-alias-only",
+            "nonce_hash_stored": false,
+            "nonce_stored": false,
+            "outer_cli_output_capability": "parent-procfd-readonly-hold",
+            "output_descriptor_inherited": false,
+            "post_exit_result_retention": "bounded-redacted-output",
+            "private_path_stored": false,
+            "runtime_fd_stored": false,
+            "schema_version": 3,
+            "transport": "outer-cli-parent-held-fixed-alias-inode"
+          },
+          "rules": [],
+          "schema_version": 1,
+          "sha256": "d91fd3e883908d50d56d1e7ce38fe2c85e443f85a2367cccb9fae991ac442e6c",
+          "staged_inputs": [],
+          "tools_enabled": true,
+          "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_csdiy_8b9ca45a3a931355c8cb809cb83cdb8e_prepare_v1/attempt-002",
+          "workspace_access": "write"
+        },
+        "staged_inputs": [],
+        "validated_tree_sha256": "e6f7eeedff91ad7e28f5493f7da41b43701feb8e2397e76737b88702a3745309",
+        "validation_evidence": [
+          {
+            "evidence": {
+              "checked": [
+                "COURSE_MANIFEST.json",
+                "UNIT_GRAPH.json",
+                "MATERIAL_AVAILABILITY.json",
+                "student_safe/COURSE_BRIEF.md",
+                "student_safe/STUDY_TASK.md",
+                "student_safe/COMPREHENSION.md",
+                "examiner_only/RUBRIC.md"
+              ],
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-preparation-files"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-manifest-fields"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-unit-graph-fields"
+          },
+          {
+            "evidence": {
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "course-material-availability-fields"
+          }
+        ],
+        "validation_labels": [
+          "GENERATED"
+        ],
+        "validation_workspace_tree_sha256": "e6f7eeedff91ad7e28f5493f7da41b43701feb8e2397e76737b88702a3745309"
+      },
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/catalog/topdown-8b9ca45a/cohort-v1/preparation/job_csdiy_8b9ca45a3a931355c8cb809cb83cdb8e_prepare_v1/attempt-002",
+      "type": "course-preparation",
+      "validation_labels": [
+        "GENERATED"
+      ],
+      "validation_status": "GENERATED",
+      "worker_type": "course_manager"
+    },
+    {
       "artifact_id": "artifact_c4473fa61ab4413c8053a0fb0df90e0f",
       "attempt_number": 3,
       "checksum": "1aefd913fcf480f0c9639d52ffa390424763f09df561c225eb32b789f64f3655",
@@ -78252,7 +81813,7 @@
       "topic": "软件工程"
     }
   ],
-  "generated_at": 1788267700.7087533,
+  "generated_at": 1788271684.0883925,
   "project_categories": [
     {
       "category": "Uncategorized",

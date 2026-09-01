@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "course_id": "course_51bc91893247cdfd588ce273c20ddb29",
+  "materials": [
+    {
+      "material_id": "local_course_brief",
+      "title": "Course brief",
+      "kind": "learner_safe_specification",
+      "locator": "student_safe/COURSE_BRIEF.md",
+      "availability": "AVAILABLE_LOCAL",
+      "required_for_kickoff": true,
+      "access": "LEARNER_SAFE",
+      "validation_label": "AUTHORED_NOT_YET_HARNESS_VALIDATED"
+    },
+    {
+      "material_id": "local_study_task",
+      "title": "Study task",
+      "kind": "learner_safe_specification",
+      "locator": "student_safe/STUDY_TASK.md",
+      "availability": "AVAILABLE_LOCAL",
+      "required_for_kickoff": true,
+      "access": "LEARNER_SAFE",
+      "validation_label": "AUTHORED_NOT_YET_HARNESS_VALIDATED"
+    },
+    {
+      "material_id": "local_comprehension",
+      "title": "Comprehension prompts",
+      "kind": "learner_safe_assessment_prompt",
+      "locator": "student_safe/COMPREHENSION.md",
+      "availability": "AVAILABLE_LOCAL",
+      "required_for_kickoff": true,
+      "access": "LEARNER_SAFE",
+      "validation_label": "AUTHORED_NOT_YET_HARNESS_VALIDATED"
+    },
+    {
+      "material_id": "local_examiner_rubric",
+      "title": "Independent rubric and answer guide",
+      "kind": "examiner_only_validation_specification",
+      "locator": "examiner_only/RUBRIC.md",
+      "availability": "AVAILABLE_LOCAL_RESTRICTED",
+      "required_for_kickoff": true,
+      "access": "EXAMINER_ONLY",
+      "validation_label": "AUTHORED_NOT_YET_HARNESS_VALIDATED"
+    },
+    {
+      "material_id": "unit_3d59671036128c39730c082cc03151c5",
+      "title": "Catalog overview and resource guide",
+      "kind": "catalog_metadata",
+      "locator": "docs/编译原理/NJU-Compilers.en.md",
+      "availability": "SNAPSHOT_METADATA_AVAILABLE",
+      "required_for_kickoff": false,
+      "access": "CONTENT_NOT_PRESENT_IN_WORKSPACE",
+      "validation_label": "SOURCE_DERIVED_METADATA_ONLY"
+    },
+    {
+      "material_id": "unit_e9b441c47e926f62adf5111b648a9110",
+      "title": "Course Website",
+      "kind": "external_website",
+      "locator": "http://docs.compilers.cpl.icu/",
+      "availability": "LINKED_UNVERIFIED",
+      "required_for_kickoff": false,
+      "access": "NOT_RETRIEVED",
+      "validation_label": "CATALOG_LINK_ONLY"
+    },
+    {
+      "material_id": "unit_8d66fdd5e748f8d1500b9f113a193f5e",
+      "title": "Recordings",
+      "kind": "external_recording_collection",
+      "locator": "https://space.bilibili.com/479141149/lists/2312309",
+      "availability": "LINKED_UNVERIFIED",
+      "required_for_kickoff": false,
+      "access": "NOT_RETRIEVED",
+      "validation_label": "CATALOG_LINK_ONLY"
+    },
+    {
+      "material_id": "unit_47025bf5c29afd47d3ff4bec5753576c",
+      "title": "Compilers: Principles, Techniques and Tools (Dragon Book)",
+      "kind": "textbook_bibliographic_reference",
+      "locator": null,
+      "availability": "DESCRIBED_NOT_PROVIDED",
+      "required_for_kickoff": false,
+      "access": "LEARNER_MUST_USE_A_LAWFULLY_OBTAINED_COPY_IF_LATER_REQUIRED",
+      "validation_label": "BIBLIOGRAPHIC_METADATA_ONLY"
+    },
+    {
+      "material_id": "unit_0f736dd676b843ffc6924a3659b617e7",
+      "title": "10 written assignments + 8~10 programming labs",
+      "kind": "upstream_assignment_aggregate",
+      "locator": null,
+      "availability": "AGGREGATE_DESCRIPTION_ONLY",
+      "required_for_kickoff": false,
+      "access": "ASSIGNMENT_CONTENT_NOT_PROVIDED",
+      "validation_label": "UPSTREAM_OFFICIAL_FLAG_PRESERVED_DETAILS_UNAVAILABLE"
+    },
+    {
+      "material_id": "catalog_community_invitation",
+      "title": "Course discussion community invitation",
+      "kind": "external_community_reference",
+      "locator": null,
+      "availability": "MENTIONED_NOT_RETRIEVED",
+      "required_for_kickoff": false,
+      "access": "JOIN_REFERENCE_NOT_REPUBLISHED; CURRENT_ACCESS_UNKNOWN",
+      "validation_label": "COMMUNITY_METADATA_ONLY"
+    }
+  ],
+  "blocked": [
+    {
+      "block_id": "external_content_not_locally_available",
+      "material_ids": [
+        "unit_e9b441c47e926f62adf5111b648a9110",
+        "unit_8d66fdd5e748f8d1500b9f113a193f5e"
+      ],
+      "reason": "The snapshot supplies links, not retrieved or verified content.",
+      "impact": "These resources cannot be treated as available lessons or evidence in this kickoff.",
+      "later_resolution": "An authorized retrieval job may check reachability, licensing, language, granularity, and artifact hashes before reclassification."
+    },
+    {
+      "block_id": "textbook_content_not_provided",
+      "material_ids": [
+        "unit_47025bf5c29afd47d3ff4bec5753576c"
+      ],
+      "reason": "Only a title is present; no licensed text or locator was supplied.",
+      "impact": "No chapter is assigned in this kickoff.",
+      "later_resolution": "Use only a learner-provided or otherwise lawfully accessible edition, then record the edition and assigned section."
+    },
+    {
+      "block_id": "official_assignments_not_enumerated",
+      "material_ids": [
+        "unit_0f736dd676b843ffc6924a3659b617e7"
+      ],
+      "reason": "The snapshot contains only aggregate counts.",
+      "impact": "No official prompt, ordering, dependency, or expected artifact can be inferred.",
+      "later_resolution": "Expand only from authorized official assignment records with per-item provenance."
+    },
+    {
+      "block_id": "community_access_not_verified",
+      "material_ids": [
+        "catalog_community_invitation"
+      ],
+      "reason": "A community invitation is access-sensitive and may change or require joining a third-party service.",
+      "impact": "It is neither required nor exposed as course content.",
+      "later_resolution": "A learner may opt in through the current official course website; do not ingest private discussions or participant data."
+    }
+  ],
+  "retrieval_policy": {
+    "mode_for_this_job": "METADATA_ONLY_NO_EXTERNAL_FETCH",
+    "external_retrieval_performed": false,
+    "restricted_content_retrieval_performed": false,
+    "kickoff_requires_external_material": false,
+    "future_retrieval_requirements": [
+      "Use an explicitly authorized retriever and an allowlisted target",
+      "Record the requested URL, final URL, access result, media type, license or usage basis, content hash, and durable artifact location",
+      "Keep link reachability distinct from material availability",
+      "Classify individual lessons or assignments before adding graph nodes or dependencies",
+      "Keep examiner-only, private-community, personal, and restricted data out of learner views"
+    ],
+    "never_retrieve": [
+      "Paywalled or copyrighted content without a lawful access basis",
+      "Private community messages or participant data",
+      "Hidden graders, sealed references, credentials, or invitation secrets",
+      "Files from another learner or attempt"
+    ],
+    "reclassification_rule": "A later job may promote a material from linked or described to available only from recorded retrieval evidence; a prose assertion is insufficient."
+  },
+  "provenance": {
+    "artifact_classification": "COURSE_MANAGER_AVAILABILITY_CLASSIFICATION",
+    "validation_label": "CLASSIFIED_FROM_SNAPSHOT_NOT_EXTERNALLY_VERIFIED",
+    "source_commit": "adce8e13789dc16aa6d1fbe163e9541736defae4",
+    "source_content_sha256": "9f12235c55517683fc06dd43ed28a4690442a5554976a426d317546c4601b1cf"
+  }
+}

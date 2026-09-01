@@ -1,8 +1,68 @@
 # Learning artifact catalog
 
-Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 221.
+Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 227.
 
 The complete searchable records, concepts, languages, provenance, and validation labels are in `catalog.json`.
+
+## byox-remediated-challenge-pack — GENERATED+PARTIAL
+
+- Artifact type: `byox-remediated-challenge-pack`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/remediation/a3d8fbeac377ee4bccf3/repair-v1/job_byox_repair_v1_g1_70c59d0180be35286cb449a00260246e/attempt-002`
+- SHA-256: `4001c189725c3bc76d14b8ecf996c8d700cbebfcdb7c7ca5c09acde967d88d2f`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED, PARTIAL
+- Job: `job_byox_repair_v1_g1_70c59d0180be35286cb449a00260246e` (codex_task/reference_builder)
+
+## course-preparation — GENERATED
+
+- Artifact type: `course-preparation`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/catalog/mitla-c473bebd/cohort-v1/preparation/job_csdiy_c473bebd690737d1b3fe4fb26541a8ec_prepare_v1/attempt-001`
+- SHA-256: `95c80e17a1271c15ddcc0e59b9d96f03b270c387b541feded199734d7a44d6d7`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_csdiy_c473bebd690737d1b3fe4fb26541a8ec_prepare_v1` (codex_task/course_manager)
+
+## byox-remediated-challenge-pack — GENERATED+PARTIAL
+
+- Artifact type: `byox-remediated-challenge-pack`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/remediation/32ba6fc132e4456a6e99/repair-v2/job_byox_repair_v1_g2_8ebb5db64a06a70cbce675c8060cbf35/attempt-002`
+- SHA-256: `a5e4d3b93bc15c704ae0863fce5780402359bb6ff0466706fdb26a91a0c76460`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED, PARTIAL
+- Job: `job_byox_repair_v1_g2_8ebb5db64a06a70cbce675c8060cbf35` (codex_task/reference_builder)
+
+## course-preparation — GENERATED
+
+- Artifact type: `course-preparation`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/catalog/nju-compilers-51bc9189/cohort-v1/preparation/job_csdiy_51bc91893247cdfd588ce273c20ddb29_prepare_v1/attempt-002`
+- SHA-256: `a6b5ca03d9bd799251b6cfb0e562bc95aab908c72ca423f033c858e58741469f`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_csdiy_51bc91893247cdfd588ce273c20ddb29_prepare_v1` (codex_task/course_manager)
+
+## course-preparation — GENERATED
+
+- Artifact type: `course-preparation`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/catalog/n2t-2ea1d643/cohort-v1/preparation/job_csdiy_2ea1d64327b40e9dd1751e342e62a833_prepare_v1/attempt-003`
+- SHA-256: `c6f7861d419107499bcff3386e099f41b36360cf7657a21477100917892e08ca`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_csdiy_2ea1d64327b40e9dd1751e342e62a833_prepare_v1` (codex_task/course_manager)
+
+## course-preparation — GENERATED
+
+- Artifact type: `course-preparation`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/courses/catalog/topdown-8b9ca45a/cohort-v1/preparation/job_csdiy_8b9ca45a3a931355c8cb809cb83cdb8e_prepare_v1/attempt-002`
+- SHA-256: `e6f7eeedff91ad7e28f5493f7da41b43701feb8e2397e76737b88702a3745309`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_csdiy_8b9ca45a3a931355c8cb809cb83cdb8e_prepare_v1` (codex_task/course_manager)
 
 ## byox-remediated-challenge-pack — GENERATED+PARTIAL
 

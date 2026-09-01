@@ -14,6 +14,7 @@ from unittest import mock
 from learnfactory.config import BackendSettings, FactorySettings
 from learnfactory.run_provenance import (
     _frame,
+    _git,
     capture_run_provenance,
     unavailable_run_provenance,
     write_run_provenance,
@@ -230,6 +231,34 @@ class RunProvenanceTests(unittest.TestCase):
         expected.update((1).to_bytes(8, "big"))
         expected.update(b"c")
         self.assertEqual(expected.hexdigest(), actual.hexdigest())
+
+    def test_read_only_git_queries_disable_optional_index_locks(self) -> None:
+        completed = subprocess.CompletedProcess(
+            ["git"], 0, stdout=b"", stderr=b""
+        )
+        with mock.patch.dict(
+            os.environ, {"GIT_OPTIONAL_LOCKS": "1"}, clear=False
+        ), mock.patch(
+            "learnfactory.run_provenance.subprocess.run",
+            return_value=completed,
+        ) as run:
+            self.assertIs(completed, _git(self.root, "rev-parse", "HEAD"))
+            self.assertEqual("1", os.environ["GIT_OPTIONAL_LOCKS"])
+
+        self.assertEqual("0", run.call_args.kwargs["env"]["GIT_OPTIONAL_LOCKS"])
+        self.assertEqual(
+            [
+                "git",
+                "-c",
+                "diff.autoRefreshIndex=false",
+                "-C",
+                str(self.root),
+                "rev-parse",
+                "HEAD",
+            ],
+            run.call_args.args[0],
+        )
+        self.assertEqual(10, run.call_args.kwargs["timeout"])
 
     def test_untracked_content_changes_code_and_combined_digest(self) -> None:
         first = self._capture()

@@ -13,6 +13,10 @@
   status. Cleanup now makes a final direct kill/reap attempt even when process
   group signaling fails and fails closed if the primary cannot be proved
   terminal before descendant reconciliation and subreaper restoration.
+- Disable Git's legacy diff index auto-refresh and its modern optional locks for
+  bounded read-only run-provenance queries, so a query timeout on a large NFS
+  worktree cannot strand the root repository's `index.lock` and block later
+  checkpoints.
 - Preserve the initial catalog refill for unpaused bounded scheduler runs, including the intentional
   `--max-jobs 0` refill-only operation, but suppress that controller's periodic refills after it reaches
   a finite dispatch ceiling. This removes avoidable rollback-journal writer contention while the bounded

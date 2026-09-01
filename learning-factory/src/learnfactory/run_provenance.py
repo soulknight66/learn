@@ -248,11 +248,26 @@ def _frame(digest: Any, value: bytes) -> None:
 
 
 def _git(root: Path, *arguments: str) -> subprocess.CompletedProcess[bytes]:
+    environment = os.environ.copy()
+    # These are background, read-only provenance queries. On a large NFS
+    # worktree Git may otherwise take an index-refresh lock and leave
+    # index.lock behind if our bounded timeout terminates the query. The
+    # config override protects the operated Git 2.9 client; the environment
+    # guard covers newer clients with the optional-locks facility.
+    environment["GIT_OPTIONAL_LOCKS"] = "0"
     return subprocess.run(
-        ["git", "-C", str(root), *arguments],
+        [
+            "git",
+            "-c",
+            "diff.autoRefreshIndex=false",
+            "-C",
+            str(root),
+            *arguments,
+        ],
         stdin=subprocess.DEVNULL,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
+        env=environment,
         timeout=10,
         check=False,
     )

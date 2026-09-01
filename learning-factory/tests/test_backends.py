@@ -5,6 +5,7 @@ import hashlib
 import json
 import math
 import os
+import signal
 import shutil
 import sqlite3
 import stat
@@ -22,12 +23,14 @@ from learnfactory.backends.exec_backend import (
     ExecBackend,
     _DescendantReaper,
     _ResultChannelState,
+    _direct_child_pids,
     _discard_empty_result_directories,
     _open_nofollow_directory,
     _open_result_output_descriptor,
     _prepare_result_channel_state,
     _recover_stale_result_channels,
     _remove_result_channel,
+    _terminate_cli_process_group,
 )
 from learnfactory.config import load_settings
 from learnfactory.retained_logs import BoundedBinaryCapture
@@ -1839,6 +1842,67 @@ print(json.dumps({'matches': matches, 'derived': derived, 'ancestors': ancestors
 
         self.assertEqual([_DescendantReaper._PR_GET_CHILD_SUBREAPER], calls)
 
+    def test_periodic_subreaper_reap_never_waits_for_popen_primary(self) -> None:
+        primary_pid = 101
+        exited_descendant = 202
+        running_descendant = 303
+        waited: list[tuple[int, int]] = []
+
+        def waitpid(pid: int, options: int) -> tuple[int, int]:
+            waited.append((pid, options))
+            if pid == exited_descendant:
+                return pid, 0
+            return 0, 0
+
+        reaper = _DescendantReaper(previous=0, baseline=frozenset())
+        with mock.patch(
+            "learnfactory.backends.exec_backend._direct_child_pids",
+            return_value={primary_pid, exited_descendant, running_descendant},
+        ), mock.patch(
+            "learnfactory.backends.exec_backend.os.waitpid",
+            side_effect=waitpid,
+        ):
+            reaper.reap_exited_descendants(primary_pid=primary_pid)
+
+        self.assertNotIn(primary_pid, [pid for pid, _options in waited])
+        self.assertCountEqual(
+            waited,
+            [
+                (exited_descendant, os.WNOHANG),
+                (running_descendant, os.WNOHANG),
+            ],
+        )
+
+    def test_subreaper_refuses_restoration_while_primary_is_live(self) -> None:
+        reaper = _DescendantReaper(previous=0, baseline=frozenset())
+        process = mock.Mock(spec=subprocess.Popen)
+        process.pid = 12345
+        process.poll.return_value = None
+
+        with mock.patch(
+            "learnfactory.backends.exec_backend.ctypes.CDLL"
+        ) as libc:
+            with self.assertRaises(subprocess.TimeoutExpired):
+                reaper.close(primary_process=process)
+
+        libc.assert_not_called()
+        self.assertFalse(reaper._closed)
+
+    def test_terminal_subreaper_scan_does_not_hide_reused_primary_pid(self) -> None:
+        reused_primary_pid = 101
+        reaper = _DescendantReaper(previous=0, baseline=frozenset())
+
+        with mock.patch(
+            "learnfactory.backends.exec_backend._direct_child_pids",
+            side_effect=[{reused_primary_pid}, set(), set()],
+        ), mock.patch(
+            "learnfactory.backends.exec_backend.os.waitpid",
+            return_value=(reused_primary_pid, 0),
+        ) as waitpid:
+            reaper.terminate_new_descendants()
+
+        waitpid.assert_called_once_with(reused_primary_pid, os.WNOHANG)
+
     def test_jsonl_invocation_records_session_usage_and_quality_profile(self) -> None:
         with tempfile.TemporaryDirectory(prefix="learnfactory-backend-") as raw:
             root = Path(raw)
@@ -2516,6 +2580,137 @@ printf profile-ok
             self.assertEqual("normal-parent", result.session_id)
             time.sleep(0.8)
             self.assertFalse(marker.exists())
+
+    def test_periodic_reaper_collects_detached_zombies_before_primary_exit(
+        self,
+    ) -> None:
+        with tempfile.TemporaryDirectory(prefix="learnfactory-backend-reaper-") as raw:
+            root = Path(raw)
+            workspace = root / "workspace"
+            workspace.mkdir()
+            markers = root / "markers"
+            markers.mkdir()
+            primary_pid_marker = markers / "primary.pid"
+            primary_ready = markers / "primary.ready"
+            allow_primary_exit = markers / "allow-primary-exit"
+            executable = root / "fake-codex"
+            executable.write_text(
+                "#!/usr/bin/env python3\n"
+                "import os,pathlib,time\n"
+                f"root=pathlib.Path({str(markers)!r})\n"
+                "(root/'primary.pid').write_text(str(os.getpid()))\n"
+                "for index in range(6):\n"
+                "    child=os.fork()\n"
+                "    if child == 0:\n"
+                "        detached=os.fork()\n"
+                "        if detached == 0:\n"
+                "            os.setsid()\n"
+                "            (root/f'detached-{os.getpid()}.pid').touch(exist_ok=False)\n"
+                "            os._exit(0)\n"
+                "        os._exit(0)\n"
+                "    os.waitpid(child,0)\n"
+                "(root/'primary.ready').write_text('ready')\n"
+                "deadline=time.monotonic()+4\n"
+                "while not (root/'allow-primary-exit').exists() and time.monotonic()<deadline:\n"
+                "    time.sleep(0.01)\n"
+                "raise SystemExit(17 if (root/'allow-primary-exit').exists() else 19)\n",
+                encoding="utf-8",
+            )
+            executable.chmod(0o755)
+            reaped_while_primary_running = threading.Event()
+            stop_observer = threading.Event()
+
+            def observe_reaping() -> None:
+                pid_markers: list[Path] = []
+                while not stop_observer.is_set():
+                    pid_markers = sorted(markers.glob("detached-*.pid"))
+                    if primary_ready.exists() and len(pid_markers) == 6:
+                        break
+                    stop_observer.wait(0.01)
+                if not primary_ready.exists() or len(pid_markers) != 6:
+                    return
+                descendant_pids = [
+                    int(marker.stem.removeprefix("detached-"))
+                    for marker in pid_markers
+                ]
+                primary_pid = int(primary_pid_marker.read_text(encoding="utf-8"))
+                deadline = time.monotonic() + 3.5
+                while time.monotonic() < deadline and not stop_observer.is_set():
+                    direct_children = _direct_child_pids()
+                    if all(pid not in direct_children for pid in descendant_pids):
+                        if primary_pid in direct_children:
+                            reaped_while_primary_running.set()
+                            allow_primary_exit.write_text("exit", encoding="utf-8")
+                        return
+                    stop_observer.wait(0.01)
+
+            observer = threading.Thread(
+                target=observe_reaping,
+                daemon=True,
+                name="detached-zombie-observer",
+            )
+            observer.start()
+            try:
+                result = ExecBackend(str(executable), timeout_seconds=5).start_job(
+                    "reap detached zombies", workspace, root / "logs"
+                )
+            finally:
+                stop_observer.set()
+                observer.join(timeout=5)
+
+            self.assertFalse(observer.is_alive())
+            self.assertTrue(reaped_while_primary_running.is_set())
+            self.assertEqual(17, result.exit_code, result.stderr_tail)
+
+    def test_final_primary_wait_timeout_kills_directly_and_fails_closed(
+        self,
+    ) -> None:
+        process = mock.Mock(spec=subprocess.Popen)
+        process.pid = 12345
+        process.poll.side_effect = [None, None]
+        process.wait.side_effect = [
+            subprocess.TimeoutExpired("primary", 0.25),
+            subprocess.TimeoutExpired("primary", 2),
+            subprocess.TimeoutExpired("primary", 2),
+        ]
+
+        with mock.patch(
+            "learnfactory.backends.exec_backend.os.killpg"
+        ), mock.patch(
+            "learnfactory.backends.exec_backend._wait_process_group"
+        ):
+            with self.assertRaises(subprocess.TimeoutExpired):
+                _terminate_cli_process_group(process, signal.SIGTERM)
+
+        process.kill.assert_called_once_with()
+        self.assertEqual(
+            [mock.call(timeout=0.25), mock.call(timeout=2), mock.call(timeout=2)],
+            process.wait.call_args_list,
+        )
+
+    def test_group_signal_error_still_kills_and_reaps_primary(self) -> None:
+        process = mock.Mock(spec=subprocess.Popen)
+        process.pid = 12345
+        process.poll.return_value = None
+        process.wait.side_effect = [
+            subprocess.TimeoutExpired("primary", 2),
+            137,
+        ]
+        group_error = PermissionError(errno.EPERM, "group signal denied")
+
+        with mock.patch(
+            "learnfactory.backends.exec_backend.os.killpg",
+            side_effect=group_error,
+        ):
+            with self.assertRaises(PermissionError) as raised:
+                _terminate_cli_process_group(process, signal.SIGTERM)
+
+        self.assertIs(group_error, raised.exception)
+        process.kill.assert_called_once_with()
+        self.assertEqual(
+            [mock.call(timeout=2), mock.call(timeout=2)],
+            process.wait.call_args_list,
+        )
 
     def test_result_channel_is_not_inherited_by_fd_bruteforce_child(self) -> None:
         with tempfile.TemporaryDirectory(prefix="learnfactory-backend-channel-") as raw:

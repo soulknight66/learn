@@ -644,6 +644,14 @@ class ExecBackend:
             writer.start()
             prompt_writer = writer
             while process.poll() is None:
+                # Detached grandchildren are adopted by this worker as the
+                # subreaper. Collect exited adoptees throughout a long Codex
+                # run so they cannot accumulate as zombies. The Popen-owned
+                # primary is explicitly excluded; only Popen may consume its
+                # wait status.
+                descendant_reaper.reap_exited_descendants(
+                    primary_pid=process.pid
+                )
                 if cancel_event and cancel_event.wait(0.2):
                     cancelled = True
                     self._stop_process(signal.SIGINT)
@@ -665,20 +673,27 @@ class ExecBackend:
             # A successful CLI parent can still leave detached descendants.
             # Always reconcile the process tree before accepting its result.
             try:
-                try:
-                    _terminate_cli_process_group(process, signal.SIGTERM)
-                except (OSError, subprocess.TimeoutExpired) as error:
-                    runtime_error = runtime_error or error
-            finally:
-                if descendant_reaper is not None:
+                _terminate_cli_process_group(process, signal.SIGTERM)
+            except (OSError, subprocess.TimeoutExpired) as error:
+                runtime_error = runtime_error or error
+            primary_reaped = process.poll() is not None
+            if descendant_reaper is not None:
+                if not primary_reaped:
+                    # Never let the generic descendant waitpid path consume
+                    # the Popen primary's status. Keep subreaper containment
+                    # installed when primary termination could not be proved.
+                    runtime_error = runtime_error or subprocess.TimeoutExpired(
+                        "primary Codex process", 0, output=str(process.pid)
+                    )
+                else:
                     try:
                         descendant_reaper.terminate_new_descendants()
                     except (OSError, subprocess.TimeoutExpired) as error:
                         runtime_error = runtime_error or error
                     finally:
                         try:
-                            descendant_reaper.close()
-                        except OSError as error:
+                            descendant_reaper.close(primary_process=process)
+                        except (OSError, subprocess.TimeoutExpired) as error:
                             runtime_error = runtime_error or error
         self._process = None
         capture_errors: list[str] = []
@@ -1551,6 +1566,11 @@ class _DescendantReaper:
             raise OSError(error, os.strerror(error))
         return cls(previous.value, baseline)
 
+    def reap_exited_descendants(self, *, primary_pid: int) -> None:
+        """Collect exited adoptees without consuming the primary's status."""
+
+        self._new_children(excluded_pid=primary_pid)
+
     def terminate_new_descendants(self) -> None:
         self._signal_until_quiet(signal.SIGTERM, timeout=0.25)
         self._signal_until_quiet(signal.SIGKILL, timeout=1.0)
@@ -1560,7 +1580,12 @@ class _DescendantReaper:
                 "detached Codex descendants", 1.25, output=str(sorted(survivors))
             )
 
-    def _signal_until_quiet(self, value: signal.Signals, *, timeout: float) -> None:
+    def _signal_until_quiet(
+        self,
+        value: signal.Signals,
+        *,
+        timeout: float,
+    ) -> None:
         deadline = time.monotonic() + timeout
         while True:
             children = self._new_children()
@@ -1580,8 +1605,14 @@ class _DescendantReaper:
                 return
             time.sleep(0.02)
 
-    def _new_children(self) -> set[int]:
+    def _new_children(self, *, excluded_pid: int | None = None) -> set[int]:
         children = _direct_child_pids() - set(self._baseline)
+        if excluded_pid is not None:
+            # subprocess.Popen owns this wait status. Exclude the primary
+            # before any waitpid call, including if it exits immediately after
+            # poll(). Terminal cleanup has already reaped it and excludes no
+            # PID, so a rapidly reused number cannot hide an adopted survivor.
+            children.discard(excluded_pid)
         alive: set[int] = set()
         for pid in children:
             try:
@@ -1592,9 +1623,20 @@ class _DescendantReaper:
                 alive.add(pid)
         return alive
 
-    def close(self) -> None:
+    def close(
+        self,
+        *,
+        primary_process: subprocess.Popen[bytes] | None = None,
+    ) -> None:
         if self._closed:
             return
+        if primary_process is not None and primary_process.poll() is None:
+            # Restoration would hand a still-live detached tree back to the
+            # system reaper. Popen retains exclusive ownership of this wait
+            # status; keep subreaper containment installed and fail closed.
+            raise subprocess.TimeoutExpired(
+                "primary Codex process", 0, output=str(primary_process.pid)
+            )
         self._closed = True
         libc = ctypes.CDLL(None, use_errno=True)
         if libc.prctl(
@@ -2679,31 +2721,46 @@ def _terminate_cli_process_group(
 ) -> None:
     process_group = process.pid
     try:
-        os.killpg(process_group, first_signal)
-    except ProcessLookupError:
+        try:
+            os.killpg(process_group, first_signal)
+        except ProcessLookupError:
+            return
         if process.poll() is None:
             try:
-                process.wait(timeout=1)
+                process.wait(timeout=0.25)
             except subprocess.TimeoutExpired:
                 pass
-        return
-    if process.poll() is None:
         try:
-            process.wait(timeout=0.25)
+            _wait_process_group(process_group, 0.25)
         except subprocess.TimeoutExpired:
-            pass
+            try:
+                os.killpg(process_group, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+    finally:
+        # Group signaling can fail independently (for example with EPERM).
+        # Always make a Popen-owned attempt to terminate and reap the primary;
+        # if it succeeds, Python re-raises the original group error unchanged.
+        _terminate_and_reap_cli_primary(process)
+
+
+def _terminate_and_reap_cli_primary(process: subprocess.Popen[bytes]) -> None:
+    """Leave the Popen-owned primary neither live nor unreaped."""
+
+    if process.poll() is not None:
+        return
     try:
-        _wait_process_group(process_group, 0.25)
+        process.wait(timeout=2)
+        return
     except subprocess.TimeoutExpired:
         try:
-            os.killpg(process_group, signal.SIGKILL)
+            process.kill()
         except ProcessLookupError:
             pass
-    if process.poll() is None:
-        try:
-            process.wait(timeout=2)
-        except subprocess.TimeoutExpired:
-            pass
+    # Do not swallow this timeout. Live-loop descendant reconciliation excludes
+    # this PID so only Popen consumes its status, and the no-exclusion terminal
+    # scan is unsafe until that ownership has reached a terminal state.
+    process.wait(timeout=2)
 
 
 def _wait_process_group(process_group: int, timeout: float) -> None:

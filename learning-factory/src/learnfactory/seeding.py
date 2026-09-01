@@ -85,6 +85,9 @@ BYOX_BUILD_POLICY_KIND = "byox_reference_build"
 BYOX_BUILD_S2_POLICY_KIND = "byox_reference_build_s2"
 BYOX_REVIEW_POLICY_KIND = "byox_reference_review"
 BYOX_REVIEW_S2_POLICY_KIND = "byox_reference_review_s2"
+_COW_TRANSFER_EXAMINER_SCHEMA_REPAIR_JOB_ID = (
+    "job_examiner_cow_transfer_v3_schema_repair"
+)
 _BYOX_LEGACY_FOUR_VALIDATOR_PROJECT_ID = (
     "project_44e8061be7b19deb5e3e6b2fdef38d1a"
 )
@@ -1095,6 +1098,56 @@ def _course_evaluation_schema() -> dict[str, Any]:
         "required": ["result", "score", "evidence", "transfer_gaps"],
         "additionalProperties": False,
     }
+
+
+def _cow_transfer_examiner_validators(
+    evaluation_schema: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Return the complete deterministic validator set for this examiner."""
+
+    return [
+        {
+            "type": "required_paths",
+            "name": "examiner-output-files",
+            "paths": ["evaluation.json", "evaluation.md"],
+        },
+        {
+            "type": "json_schema",
+            "name": "examiner-structured-evidence",
+            "path": "evaluation.json",
+            "schema": evaluation_schema,
+        },
+    ]
+
+
+def _needs_cow_transfer_examiner_schema_repair(payload: object) -> bool:
+    """Mirror whether runtime evidence publication reaches a broken binding."""
+
+    if not isinstance(payload, dict):
+        return False
+    learner_policy = payload.get("learner_evidence")
+    if not isinstance(learner_policy, dict):
+        # Runtime treats an absent policy as an examiner with no learner-memory
+        # publication. A schema-only successor is therefore not justified.
+        return False
+    output_schema = payload.get("output_schema")
+    validators = payload.get("validators")
+    if not isinstance(output_schema, dict) or not isinstance(validators, list):
+        return True
+    matches = [
+        item
+        for item in validators
+        if isinstance(item, dict)
+        and item.get("type") == "json_schema"
+        and item.get("name") == learner_policy.get("schema_validator")
+        and item.get("path") == learner_policy.get("evaluation_path")
+        and item.get("schema") == output_schema
+    ]
+    # Do not compare against today's seed schema or require exact validator-list
+    # identity. Historical attempted definitions remain valid when their one
+    # named binding matches their own output schema, including numerically equal
+    # JSON schemas decoded to different Python numeric types.
+    return len(matches) != 1
 
 
 def seed_all_csdiy_course_cohorts(
@@ -2796,17 +2849,8 @@ def seed_initial_jobs(db: Database, jobs: JobRepository) -> dict[str, str]:
     )
     identifiers["student_revision"] = student_revision_id
 
-    evaluation_schema: dict[str, Any] = {
-        "type": "object",
-        "properties": {
-            "result": {"type": "string", "enum": ["PASS", "REVISE", "FAIL"]},
-            "score": {"type": "number", "minimum": 0, "maximum": 100},
-            "evidence": {"type": "array", "items": {"type": "string"}},
-            "transfer_gaps": {"type": "array", "items": {"type": "string"}},
-        },
-        "required": ["result", "score", "evidence", "transfer_gaps"],
-        "additionalProperties": False,
-    }
+    evaluation_schema = _course_evaluation_schema()
+    examiner_validators = _cow_transfer_examiner_validators(evaluation_schema)
     _ensure_job(
         jobs,
         examiner_id,
@@ -2825,19 +2869,7 @@ def seed_initial_jobs(db: Database, jobs: JobRepository) -> dict[str, str]:
                 {"job_id": course_id, "subpath": "examiner_only/RUBRIC.md", "destination": "RUBRIC.md"},
             ],
             "output_schema": evaluation_schema,
-            "validators": [
-                {
-                    "type": "required_paths",
-                    "name": "examiner-output-files",
-                    "paths": ["evaluation.json", "evaluation.md"],
-                },
-                {
-                    "type": "json_schema",
-                    "name": "examiner-structured-evidence",
-                    "path": "evaluation.json",
-                    "schema": evaluation_schema,
-                },
-            ],
+            "validators": examiner_validators,
             "artifact_type": "independent-evaluation",
             "artifact_path": "evaluations/mit-6-s081/cow-transfer/student-target",
             "validation_status": "REVIEWED",
@@ -2862,6 +2894,11 @@ def seed_initial_jobs(db: Database, jobs: JobRepository) -> dict[str, str]:
     examiner_revision_payload = dict(jobs.get(examiner_id)["payload"])
     examiner_revision_payload.update(
         {
+            # Install this contract explicitly. Historical v1 rows may carry a
+            # pre-schema ``json_fields`` validator, so inheriting their lists
+            # would make otherwise-new v2 examiner definitions unpublishable.
+            "output_schema": evaluation_schema,
+            "validators": examiner_validators,
             "inputs_from_dependencies": [
                 {
                     "job_id": student_revision_id,
@@ -2954,6 +2991,96 @@ def seed_initial_jobs(db: Database, jobs: JobRepository) -> dict[str, str]:
         db, examiner_revision_id, examiner_revision_payload
     )
     identifiers["examiner_revision"] = examiner_revision_id
+
+    examiner_revision_record = jobs.get(examiner_revision_id)
+    if (
+        examiner_revision_record is not None
+        and int(examiner_revision_record.get("attempt_count", 0)) > 0
+        and examiner_revision_record.get("state") in {"FAILED", "BLOCKED"}
+        and _needs_cow_transfer_examiner_schema_repair(
+            examiner_revision_record.get("payload")
+        )
+    ):
+        schema_repair_id = _COW_TRANSFER_EXAMINER_SCHEMA_REPAIR_JOB_ID
+        schema_repair_payload = dict(examiner_revision_payload)
+        schema_repair_payload.update(
+            {
+                "output_schema": evaluation_schema,
+                "validators": _cow_transfer_examiner_validators(
+                    evaluation_schema
+                ),
+                "artifact_path": (
+                    "evaluations/mit-6-s081/cow-transfer/"
+                    "student-target-v3-schema-repair"
+                ),
+                "provenance": {
+                    **dict(examiner_revision_payload["provenance"]),
+                    "classification": (
+                        "agent-generated evaluation with an append-only "
+                        "canonical schema repair"
+                    ),
+                    "schema_repair": {
+                        "version": 1,
+                        "supersedes_examiner_job_id": examiner_revision_id,
+                        "reason": (
+                            "attempted v2 examiner lacked the canonical "
+                            "examiner-structured-evidence JSON-schema validator"
+                        ),
+                        "history_policy": (
+                            "append-only; retain the attempted v2 definition "
+                            "and evidence"
+                        ),
+                    },
+                },
+                "revision": {
+                    "version": 3,
+                    "basis": "examiner-structured-evidence-schema-repair",
+                    "supersedes_examiner_job_id": examiner_revision_id,
+                    "changes": [
+                        "canonical output_schema",
+                        "exact matching examiner-structured-evidence validator",
+                        "append-only artifact namespace",
+                    ],
+                },
+            }
+        )
+        if jobs.get(schema_repair_id) is None:
+            learner_policy = schema_repair_payload["learner_evidence"]
+            learner_identity = (
+                learner_policy["student_id"],
+                learner_policy["task_id"],
+                learner_policy["attempt_number"],
+            )
+            with db.connect() as connection:
+                existing_attempt = connection.execute(
+                    """
+                    SELECT attempt_id FROM attempts
+                    WHERE student_id=? AND task_id=? AND attempt_number=?
+                    """,
+                    learner_identity,
+                ).fetchone()
+            if existing_attempt is not None:
+                raise RuntimeError(
+                    "refusing to seed COW-transfer examiner schema repair: "
+                    "learner attempt identity already exists "
+                    f"{learner_identity!r}"
+                )
+        _ensure_job(
+            jobs,
+            schema_repair_id,
+            "codex_task",
+            "examiner",
+            schema_repair_payload,
+            priority=83,
+            dependencies=[student_revision_id, course_revision_id],
+            max_attempts=2,
+            model="gpt-5.6-sol",
+            reasoning_effort="ultra",
+        )
+        _upgrade_pending_seed_payload(
+            db, schema_repair_id, schema_repair_payload
+        )
+        identifiers["examiner_schema_repair"] = schema_repair_id
     jobs.promote_eligible()
     return identifiers
 

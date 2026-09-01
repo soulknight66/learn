@@ -79,13 +79,25 @@ def file_sha256(path: Path) -> str:
 def repository_revision(root: Path) -> dict[str, Any]:
     """Return bounded Git provenance for the code that produced an artifact."""
 
+    # Git 2.9 predates optional locks, so also disable its legacy diff refresh.
+    environment = os.environ.copy()
+    environment["GIT_OPTIONAL_LOCKS"] = "0"
+
     def run(*arguments: str) -> subprocess.CompletedProcess[str]:
         return subprocess.run(
-            ["git", "-C", str(root), *arguments],
+            [
+                "git",
+                "-c",
+                "diff.autoRefreshIndex=false",
+                "-C",
+                str(root),
+                *arguments,
+            ],
             stdin=subprocess.DEVNULL,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
+            env=environment,
             timeout=5,
             check=False,
         )
@@ -99,17 +111,17 @@ def repository_revision(root: Path) -> dict[str, Any]:
                 "status": "UNVERSIONED",
                 "error": redact(revision.stderr, limit=500).strip(),
             }
-        status = run("status", "--porcelain", "--untracked-files=no")
-        if status.returncode != 0:
+        dirty = run("diff", "--name-only", "HEAD", "--")
+        if dirty.returncode != 0:
             return {
                 "commit": revision.stdout.strip(),
                 "tracked_worktree_clean": False,
                 "status": "STATUS_UNAVAILABLE",
-                "error": redact(status.stderr, limit=500).strip(),
+                "error": redact(dirty.stderr, limit=500).strip(),
             }
         return {
             "commit": revision.stdout.strip(),
-            "tracked_worktree_clean": not bool(status.stdout.strip()),
+            "tracked_worktree_clean": not bool(dirty.stdout.strip()),
             "status": "RECORDED",
         }
     except (OSError, subprocess.SubprocessError) as error:

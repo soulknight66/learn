@@ -677,12 +677,27 @@ class LearnerMemoryTests(unittest.TestCase):
             seeded = seed_initial_jobs(database, jobs)
             examiner = jobs.get(seeded["examiner_revision"])
             assert examiner is not None
-            policy = examiner["payload"]["learner_evidence"]
+            examiner_payload = examiner["payload"]
+            policy = examiner_payload["learner_evidence"]
             self.assertEqual("student-target", policy["student_id"])
             self.assertEqual(seeded["student_revision"], policy["student_job_id"])
             self.assertEqual(
                 "examiner-structured-evidence", policy["schema_validator"]
             )
+            matching_schema_validators = [
+                item
+                for item in examiner_payload["validators"]
+                if item.get("type") == "json_schema"
+                and item.get("name") == "examiner-structured-evidence"
+                and item.get("path") == "evaluation.json"
+                and item.get("schema") == examiner_payload["output_schema"]
+            ]
+            self.assertEqual(1, len(matching_schema_validators))
+            self.assertEqual(
+                ["examiner-output-files", "examiner-structured-evidence"],
+                [item["name"] for item in examiner_payload["validators"]],
+            )
+            self.assertNotIn("examiner_schema_repair", seeded)
             self.assertEqual(
                 [
                     "concurrency-reasoning",
@@ -692,6 +707,62 @@ class LearnerMemoryTests(unittest.TestCase):
                 ],
                 sorted(item["concept"] for item in policy["concepts"]),
             )
+
+            # A v1 definition can predate JSON-schema validation. Recreate v2
+            # from that persisted stale base and prove the revision builder
+            # installs its own schema contract instead of inheriting v1.
+            base_examiner = jobs.get(seeded["examiner"])
+            assert base_examiner is not None
+            stale_base_payload = dict(base_examiner["payload"])
+            stale_base_payload["output_schema"] = {"type": "object"}
+            stale_base_payload["validators"] = [
+                {
+                    "type": "json_fields",
+                    "name": "examiner-structured-evidence",
+                    "path": "evaluation.json",
+                    "required": ["result"],
+                }
+            ]
+            with database.transaction(immediate=True) as connection:
+                connection.execute(
+                    "DELETE FROM events WHERE job_id=?",
+                    (seeded["examiner_revision"],),
+                )
+                connection.execute(
+                    "DELETE FROM jobs WHERE job_id=?",
+                    (seeded["examiner_revision"],),
+                )
+                connection.execute(
+                    "UPDATE jobs SET payload_json=? WHERE job_id=?",
+                    (
+                        canonical_json(stale_base_payload),
+                        seeded["examiner"],
+                    ),
+                )
+            rebuilt_seed = seed_initial_jobs(database, jobs)
+            self.assertNotIn("examiner_schema_repair", rebuilt_seed)
+            rebuilt_examiner = jobs.get(seeded["examiner_revision"])
+            assert rebuilt_examiner is not None
+            rebuilt_payload = rebuilt_examiner["payload"]
+            self.assertEqual(
+                examiner_payload["output_schema"],
+                rebuilt_payload["output_schema"],
+            )
+            self.assertEqual(
+                ["examiner-output-files", "examiner-structured-evidence"],
+                [item["name"] for item in rebuilt_payload["validators"]],
+            )
+            self.assertEqual(
+                1,
+                sum(
+                    item.get("type") == "json_schema"
+                    and item.get("name") == "examiner-structured-evidence"
+                    and item.get("path") == "evaluation.json"
+                    and item.get("schema") == rebuilt_payload["output_schema"]
+                    for item in rebuilt_payload["validators"]
+                ),
+            )
+
             with database.transaction(immediate=True) as connection:
                 stale_payload = json.loads(
                     connection.execute(
@@ -707,7 +778,8 @@ class LearnerMemoryTests(unittest.TestCase):
                         seeded["examiner_revision"],
                     ),
                 )
-            seed_initial_jobs(database, jobs)
+            refreshed_seed = seed_initial_jobs(database, jobs)
+            self.assertNotIn("examiner_schema_repair", refreshed_seed)
             refreshed = jobs.get(seeded["examiner_revision"])
             assert refreshed is not None
             self.assertEqual(
@@ -727,6 +799,51 @@ class LearnerMemoryTests(unittest.TestCase):
                 )
             attempted_payload = dict(refreshed["payload"])
             attempted_payload.pop("learner_evidence")
+            historical_output_schema = {
+                **attempted_payload["output_schema"],
+                "$comment": "historical but internally bound schema",
+                "properties": {
+                    **attempted_payload["output_schema"]["properties"],
+                    "score": {
+                        **attempted_payload["output_schema"]["properties"]["score"],
+                        "maximum": 100,
+                    },
+                },
+            }
+            historical_validator_schema = {
+                **historical_output_schema,
+                "properties": {
+                    **historical_output_schema["properties"],
+                    "score": {
+                        **historical_output_schema["properties"]["score"],
+                        "maximum": 100.0,
+                    },
+                },
+            }
+            self.assertEqual(historical_output_schema, historical_validator_schema)
+            self.assertNotEqual(
+                canonical_json(historical_output_schema),
+                canonical_json(historical_validator_schema),
+            )
+            attempted_payload["output_schema"] = historical_output_schema
+            attempted_payload["validators"] = [
+                {
+                    "type": "forbidden_paths",
+                    "name": "examiner-no-temporary-output",
+                    "paths": ["temporary.txt"],
+                },
+                *[
+                    {
+                        **item,
+                        **(
+                            {"schema": historical_validator_schema}
+                            if item.get("type") == "json_schema"
+                            else {}
+                        ),
+                    }
+                    for item in reversed(attempted_payload["validators"])
+                ],
+            ]
             with database.transaction(immediate=True) as connection:
                 connection.execute(
                     """
@@ -738,7 +855,8 @@ class LearnerMemoryTests(unittest.TestCase):
                         seeded["examiner_revision"],
                     ),
                 )
-            seed_initial_jobs(database, jobs)
+            canonical_attempt_seed = seed_initial_jobs(database, jobs)
+            self.assertNotIn("examiner_schema_repair", canonical_attempt_seed)
             immutable = jobs.get(seeded["examiner_revision"])
             assert immutable is not None
             self.assertNotIn("learner_evidence", immutable["payload"])
@@ -750,6 +868,254 @@ class LearnerMemoryTests(unittest.TestCase):
                         SELECT COUNT(*) FROM events
                         WHERE job_id=? AND type='SEEDED_JOB_PAYLOAD_UPGRADED'
                         """,
+                        (seeded["examiner_revision"],),
+                    ).fetchone()[0],
+                )
+
+            # With the policy present, the historical custom schema remains a
+            # valid runtime binding even though its integer/float encodings and
+            # validator ordering differ from today's seed.
+            historically_bound_payload = dict(immutable["payload"])
+            historically_bound_payload["learner_evidence"] = refreshed["payload"][
+                "learner_evidence"
+            ]
+            historically_bound_serialized = canonical_json(
+                historically_bound_payload
+            )
+            with database.transaction(immediate=True) as connection:
+                connection.execute(
+                    "UPDATE jobs SET payload_json=? WHERE job_id=?",
+                    (
+                        historically_bound_serialized,
+                        seeded["examiner_revision"],
+                    ),
+                )
+            historically_bound_seed = seed_initial_jobs(database, jobs)
+            self.assertNotIn("examiner_schema_repair", historically_bound_seed)
+            with database.connect() as connection:
+                self.assertEqual(
+                    historically_bound_serialized,
+                    connection.execute(
+                        "SELECT payload_json FROM jobs WHERE job_id=?",
+                        (seeded["examiner_revision"],),
+                    ).fetchone()[0],
+                )
+
+            stale_attempted_payload = dict(refreshed["payload"])
+            stale_attempted_payload["validators"] = [
+                {
+                    "type": "required_paths",
+                    "name": "examiner-output-files",
+                    "paths": ["evaluation.json", "evaluation.md"],
+                },
+                {
+                    "type": "json_fields",
+                    "name": "examiner-structured-evidence",
+                    "path": "evaluation.json",
+                    "required": [
+                        "result",
+                        "score",
+                        "evidence",
+                        "transfer_gaps",
+                    ],
+                },
+            ]
+            stale_attempted_serialized = canonical_json(stale_attempted_payload)
+            with database.transaction(immediate=True) as connection:
+                connection.execute(
+                    """
+                    UPDATE jobs SET state='READY',payload_json=?,error=NULL,
+                        failure_kind=NULL
+                    WHERE job_id=? AND state='BLOCKED'
+                    """,
+                    (
+                        stale_attempted_serialized,
+                        seeded["examiner_revision"],
+                    ),
+                )
+
+            ready_seed = seed_initial_jobs(database, jobs)
+            self.assertNotIn("examiner_schema_repair", ready_seed)
+            timestamp = now()
+            with database.transaction(immediate=True) as connection:
+                connection.execute(
+                    """
+                    UPDATE jobs SET state='CLAIMED',owner='schema-repair-test',
+                        lease_token='schema-repair-lease',lease_expires_at=?,
+                        heartbeat_at=?,started_at=?
+                    WHERE job_id=? AND state='READY'
+                    """,
+                    (
+                        timestamp + 600,
+                        timestamp,
+                        timestamp,
+                        seeded["examiner_revision"],
+                    ),
+                )
+            claimed_seed = seed_initial_jobs(database, jobs)
+            self.assertNotIn("examiner_schema_repair", claimed_seed)
+
+            with database.transaction(immediate=True) as connection:
+                connection.execute(
+                    "UPDATE jobs SET state='RUNNING' WHERE job_id=?",
+                    (seeded["examiner_revision"],),
+                )
+            running_seed = seed_initial_jobs(database, jobs)
+            self.assertNotIn("examiner_schema_repair", running_seed)
+
+            with database.transaction(immediate=True) as connection:
+                connection.execute(
+                    """
+                    UPDATE jobs SET state='BLOCKED',owner=NULL,lease_token=NULL,
+                        lease_expires_at=NULL,finished_at=?,error='stale schema',
+                        failure_kind='schema_contract'
+                    WHERE job_id=? AND state='RUNNING'
+                    """,
+                    (now(), seeded["examiner_revision"]),
+                )
+            blocked_seed = seed_initial_jobs(database, jobs)
+            repair_id = blocked_seed["examiner_schema_repair"]
+            self.assertEqual(
+                "job_examiner_cow_transfer_v3_schema_repair", repair_id
+            )
+
+            # Exercise the production FAILED path independently, and prove a
+            # pre-existing learner identity prevents a new repair definition.
+            with database.transaction(immediate=True) as connection:
+                connection.execute(
+                    "DELETE FROM events WHERE job_id=?", (repair_id,)
+                )
+                connection.execute(
+                    "DELETE FROM jobs WHERE job_id=?", (repair_id,)
+                )
+                connection.execute(
+                    """
+                    UPDATE jobs SET state='READY',finished_at=NULL,error=NULL,
+                        failure_kind=NULL
+                    WHERE job_id=? AND state='BLOCKED'
+                    """,
+                    (seeded["examiner_revision"],),
+                )
+                connection.execute(
+                    """
+                    UPDATE jobs SET state='CLAIMED',owner='schema-repair-test',
+                        lease_token='schema-repair-lease',lease_expires_at=?,
+                        heartbeat_at=?
+                    WHERE job_id=? AND state='READY'
+                    """,
+                    (now() + 600, now(), seeded["examiner_revision"]),
+                )
+                connection.execute(
+                    "UPDATE jobs SET state='RUNNING' WHERE job_id=?",
+                    (seeded["examiner_revision"],),
+                )
+                connection.execute(
+                    """
+                    UPDATE jobs SET state='FAILED',owner=NULL,lease_token=NULL,
+                        lease_expires_at=NULL,finished_at=?,error='stale schema',
+                        failure_kind='schema_contract'
+                    WHERE job_id=? AND state='RUNNING'
+                    """,
+                    (now(), seeded["examiner_revision"]),
+                )
+                connection.execute(
+                    """
+                    INSERT INTO attempts(
+                        attempt_id,student_id,task_id,task_type,attempt_number,
+                        start_time
+                    ) VALUES (?,?,?,?,?,?)
+                    """,
+                    (
+                        "attempt_existing_cow_transfer_v2",
+                        "student-target",
+                        "mit-6-s081-cow-transfer-design-v2",
+                        "transfer-design",
+                        1,
+                        now(),
+                    ),
+                )
+            with self.assertRaisesRegex(
+                RuntimeError, "learner attempt identity already exists"
+            ):
+                seed_initial_jobs(database, jobs)
+            with database.connect() as connection:
+                self.assertIsNone(
+                    connection.execute(
+                        "SELECT 1 FROM jobs WHERE job_id=?", (repair_id,)
+                    ).fetchone()
+                )
+            with database.transaction(immediate=True) as connection:
+                connection.execute(
+                    "DELETE FROM attempts WHERE attempt_id=?",
+                    ("attempt_existing_cow_transfer_v2",),
+                )
+
+            repaired_seed = seed_initial_jobs(database, jobs)
+            self.assertEqual(repair_id, repaired_seed["examiner_schema_repair"])
+            self.assertEqual(
+                "job_examiner_cow_transfer_v3_schema_repair", repair_id
+            )
+            with database.connect() as connection:
+                preserved_v2 = connection.execute(
+                    "SELECT payload_json,attempt_count FROM jobs WHERE job_id=?",
+                    (seeded["examiner_revision"],),
+                ).fetchone()
+                repair_dependencies = {
+                    row["depends_on_job_id"]
+                    for row in connection.execute(
+                        """
+                        SELECT depends_on_job_id FROM job_dependencies
+                        WHERE job_id=?
+                        """,
+                        (repair_id,),
+                    )
+                }
+            self.assertEqual(stale_attempted_serialized, preserved_v2["payload_json"])
+            self.assertEqual(1, preserved_v2["attempt_count"])
+            self.assertEqual(
+                {seeded["student_revision"], seeded["course_revision"]},
+                repair_dependencies,
+            )
+
+            repair = jobs.get(repair_id)
+            assert repair is not None
+            repair_payload = repair["payload"]
+            repair_schema_matches = [
+                item
+                for item in repair_payload["validators"]
+                if item.get("type") == "json_schema"
+                and item.get("name") == "examiner-structured-evidence"
+                and item.get("path") == "evaluation.json"
+                and item.get("schema") == repair_payload["output_schema"]
+            ]
+            self.assertEqual(1, len(repair_schema_matches))
+            self.assertEqual(3, repair_payload["revision"]["version"])
+            self.assertEqual(
+                seeded["examiner_revision"],
+                repair_payload["revision"]["supersedes_examiner_job_id"],
+            )
+            self.assertNotEqual(
+                immutable["payload"]["artifact_path"],
+                repair_payload["artifact_path"],
+            )
+            self.assertEqual(
+                seeded["student_revision"],
+                repair_payload["learner_evidence"]["student_job_id"],
+            )
+
+            repeated_seed = seed_initial_jobs(database, jobs)
+            self.assertEqual(repair_id, repeated_seed["examiner_schema_repair"])
+            with database.connect() as connection:
+                self.assertEqual(
+                    1,
+                    connection.execute(
+                        "SELECT COUNT(*) FROM jobs WHERE job_id=?", (repair_id,)
+                    ).fetchone()[0],
+                )
+                self.assertEqual(
+                    stale_attempted_serialized,
+                    connection.execute(
+                        "SELECT payload_json FROM jobs WHERE job_id=?",
                         (seeded["examiner_revision"],),
                     ).fetchone()[0],
                 )

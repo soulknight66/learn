@@ -1,0 +1,55 @@
+{
+  "active_byox_projects": 359,
+  "active_courses": 82,
+  "active_jobs": 0,
+  "active_workers": 0,
+  "baselines": 359,
+  "binding_roles": {
+    "builder": 359,
+    "reviewer": 359
+  },
+  "bindings": 718,
+  "bound_job_profiles": [
+    {
+      "count": 359,
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "ultra",
+      "worker_type": "examiner"
+    },
+    {
+      "count": 359,
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "ultra",
+      "worker_type": "reference_builder"
+    }
+  ],
+  "current_csdiy_cohort_graph_jobs": 246,
+  "current_csdiy_course_role_coverage": 82,
+  "db_sha256": "fa760e23543930393df4384f64238bd82f09870a14a3c2fa00de84c9372b8409",
+  "durable_students": 3,
+  "events": 9162,
+  "foreign_key_violations": 0,
+  "jobs": 1960,
+  "legacy_after_states": {
+    "CANCELLED": 656,
+    "SUCCEEDED": 67
+  },
+  "legacy_before_states": {
+    "BLOCKED": 1,
+    "CANCELLED": 1,
+    "DISCOVERED": 325,
+    "READY": 329,
+    "SUCCEEDED": 67
+  },
+  "legacy_retired": 655,
+  "legacy_retirement_events": 655,
+  "legacy_terminal_preserved": 68,
+  "legacy_total": 723,
+  "paused": true,
+  "preexisting_csdiy_cohort_rows_preserved": 246,
+  "quick_check": [
+    "ok"
+  ],
+  "student_target_course_coverage": 82,
+  "verified_bindings": 718
+}

@@ -1,0 +1,5 @@
+path=/projects/se/pj34000401_refsys/users/yuali01/learn/.integrated-tip-rehearsal.oPJyoxLp/warehouse/cutover-final.db size=40431616 mtime=2026-08-31 22:01:01.567060203 -0500 inode=2227891635 mode=644
+fa760e23543930393df4384f64238bd82f09870a14a3c2fa00de84c9372b8409  /projects/se/pj34000401_refsys/users/yuali01/learn/.integrated-tip-rehearsal.oPJyoxLp/warehouse/cutover-final.db
+events|9162
+max_event|9162
+59990ac7406804fc24eb797b2bbe555c9af5be09be3fb34961f6a81fbbad3979  -

@@ -1,0 +1,31 @@
+version
+001_initial.sql
+002_lease_fencing.sql
+003_artifact_labels.sql
+004_attempt_scoped_evidence.sql
+005_job_id_boundary.sql
+006_framed_tree_hash.sql
+007_legacy_artifact_quarantine.sql
+008_source_snapshot_lifecycle.sql
+009_job_run_transport.sql
+010_course_progression_reservations.sql
+011_job_run_reproducibility.sql
+012_course_progression_revision_reservations.sql
+013_course_progression_revision_blocks.sql
+014_byox_code_presence_audits.sql
+015_scheduler_io_indexes.sql
+016_course_submission_revision_reservations.sql
+017_legacy_learner_evidence_invalidations.sql
+018_scheduler_claim_cursor.sql
+019_byox_baseline_snapshots.sql
+020_job_retry_allowance.sql
+'events'	count(*)
+events	5961
+'baselines'	count(*)
+baselines	0
+'bindings'	count(*)
+bindings	0
+'active_jobs'	count(*)
+active_jobs	0
+'active_workers'	count(*)
+active_workers	0

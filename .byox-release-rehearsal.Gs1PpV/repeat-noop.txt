@@ -1,0 +1,19 @@
+{
+  "after": {
+    "events": 8770,
+    "sha256": "a9769061f8b1f112cf672dbd90e879af59f5d84321eb347a166f3ab950e17d5e"
+  },
+  "before": {
+    "events": 8770,
+    "sha256": "a9769061f8b1f112cf672dbd90e879af59f5d84321eb347a166f3ab950e17d5e"
+  },
+  "managed_write_transaction_calls": 0,
+  "result": {
+    "active_catalog_entries": 359,
+    "covered_entries": 359,
+    "created_builder_jobs": 0,
+    "created_jobs": 0,
+    "created_reviewer_jobs": 0,
+    "deferred_active_legacy": 0
+  }
+}

@@ -1,0 +1,12 @@
+student_id: student-balanced
+persona: balanced
+strengths:
+  - algorithms
+  - programming
+  - basic systems
+  - mathematics
+growth_areas:
+  - advanced systems
+  - production reliability
+  - architecture
+hint_policy: "Give conceptual hints before implementation details."

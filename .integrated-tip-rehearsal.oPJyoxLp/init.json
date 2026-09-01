@@ -1,0 +1,14 @@
+{
+  "database": "/projects/se/pj34000401_refsys/users/yuali01/learn/.integrated-tip-rehearsal.oPJyoxLp/warehouse/cutover-working.db",
+  "migrations_applied": [
+    "015_scheduler_io_indexes.sql",
+    "018_scheduler_claim_cursor.sql",
+    "019_byox_baseline_snapshots.sql",
+    "020_job_retry_allowance.sql"
+  ],
+  "students": [
+    "student-target",
+    "student-balanced",
+    "student-novice"
+  ]
+}

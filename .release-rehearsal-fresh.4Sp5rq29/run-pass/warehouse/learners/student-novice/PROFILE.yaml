@@ -1,0 +1,11 @@
+student_id: student-novice
+persona: novice
+strengths:
+  - basic programming
+growth_areas:
+  - systems
+  - testing
+  - debugging
+  - architecture
+  - operations
+hint_policy: "Use smaller steps, concrete examples, and early environment checks."

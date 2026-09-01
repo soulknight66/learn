@@ -1,0 +1,17 @@
+student_id: student-target
+persona: target
+strengths:
+  - algorithms
+  - data structures
+  - competitive programming
+  - mathematical reasoning
+growth_areas:
+  - production engineering
+  - large codebases
+  - architecture
+  - operations
+  - debugging
+  - deployment
+  - observability
+  - maintainability
+hint_policy: "Prefer diagnostic questions and production tradeoffs; skip elementary algorithm hints."

@@ -1,0 +1,48 @@
+{
+  "baselines": 359,
+  "binding_roles": {
+    "builder": 359,
+    "reviewer": 359
+  },
+  "bindings": 718,
+  "byox_catalog_entries": 359,
+  "course_catalog_entries": 82,
+  "course_cohorts": 82,
+  "course_jobs": 246,
+  "course_units": 394,
+  "created_jobs": 965,
+  "database": "/projects/se/pj34000401_refsys/users/yuali01/learn/.release-rehearsal-fresh.4Sp5rq29/run-final/factory.db",
+  "db_sha256_after_repeat": "d40988fa533105fafb5595a04a892eed28ed7893cd7eb6b17db7c4de1985331b",
+  "db_sha256_before_repeat": "d40988fa533105fafb5595a04a892eed28ed7893cd7eb6b17db7c4de1985331b",
+  "event_count_after_repeat": 2043,
+  "event_count_before_repeat": 2043,
+  "execution_started": false,
+  "foreign_key_check": [],
+  "last_migration": "020_job_retry_allowance.sql",
+  "migrations_applied": 16,
+  "model": "gpt-5.6-sol",
+  "model_policy_jobs_verified": 965,
+  "quick_check": [
+    "ok"
+  ],
+  "reasoning_effort": "ultra",
+  "repeat_control_statements": [
+    "BEGIN",
+    "COMMIT"
+  ],
+  "repeat_created_jobs": 0,
+  "repeat_managed_writer_api_calls": 0,
+  "repeat_write_statements": [],
+  "s2_builders": 359,
+  "s2_graphs": 359,
+  "s2_reviewers": 359,
+  "status": "PASS",
+  "students": [
+    "student-balanced",
+    "student-novice",
+    "student-target"
+  ],
+  "total_jobs": 965,
+  "verified_bindings": 718,
+  "warehouse": "/projects/se/pj34000401_refsys/users/yuali01/learn/.release-rehearsal-fresh.4Sp5rq29/run-final/warehouse"
+}

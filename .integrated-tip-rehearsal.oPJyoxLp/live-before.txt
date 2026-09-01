@@ -1,0 +1,10 @@
+b2abec9ffe94cb02a610952bae2bb522141a8c37
+path=/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/factory.db size=25280512 mtime=2026-08-31 21:51:35.517134579 -0500 inode=1290305881 mode=644
+5b9400c90a45d4ee82b9b6d98adfd53c998d9519be33e802a4e44fcb5340461c  /projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/factory.db
+ok
+0
+paused|true|1788180486.72104
+active_jobs|0
+active_workers|0
+events|5961
+e44f478da1cf1eb84d2f9d23ea2778a23ed26a36aca4b255b32134a67e7f61ba  -

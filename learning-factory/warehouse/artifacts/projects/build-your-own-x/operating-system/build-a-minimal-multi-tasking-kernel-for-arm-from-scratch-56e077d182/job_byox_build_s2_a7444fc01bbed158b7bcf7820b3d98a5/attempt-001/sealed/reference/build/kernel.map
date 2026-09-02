@@ -1,0 +1,257 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/kernel/main.o
+ .data          0x00000000        0x0 build/kernel/main.o
+ .bss           0x00000000        0x0 build/kernel/main.o
+ .comment       0x00000000       0x46 build/kernel/main.o
+ .ARM.attributes
+                0x00000000       0x2c build/kernel/main.o
+ .text          0x00000000        0x0 build/kernel/scheduler.o
+ .data          0x00000000        0x0 build/kernel/scheduler.o
+ .bss           0x00000000        0x0 build/kernel/scheduler.o
+ .text.lf_scheduler_task
+                0x00000000       0x4c build/kernel/scheduler.o
+ .text.lf_scheduler_block_current
+                0x00000000       0x94 build/kernel/scheduler.o
+ .text.lf_scheduler_unblock
+                0x00000000       0x90 build/kernel/scheduler.o
+ .text.lf_scheduler_reap
+                0x00000000       0xa0 build/kernel/scheduler.o
+ .comment       0x00000000       0x46 build/kernel/scheduler.o
+ .ARM.attributes
+                0x00000000       0x2c build/kernel/scheduler.o
+ .text          0x00000000        0x0 build/kernel/vm.o
+ .data          0x00000000        0x0 build/kernel/vm.o
+ .bss           0x00000000        0x0 build/kernel/vm.o
+ .text.lf_vm_unmap
+                0x00000000       0x70 build/kernel/vm.o
+ .comment       0x00000000       0x46 build/kernel/vm.o
+ .ARM.attributes
+                0x00000000       0x2c build/kernel/vm.o
+ .text          0x00000000        0x0 build/kernel/ramfs.o
+ .data          0x00000000        0x0 build/kernel/ramfs.o
+ .bss           0x00000000        0x0 build/kernel/ramfs.o
+ .text.lf_ramfs_unlink
+                0x00000000       0x7c build/kernel/ramfs.o
+ .comment       0x00000000       0x46 build/kernel/ramfs.o
+ .ARM.attributes
+                0x00000000       0x2c build/kernel/ramfs.o
+ .text          0x00000000        0x0 build/kernel/runtime.o
+ .data          0x00000000        0x0 build/kernel/runtime.o
+ .bss           0x00000000        0x0 build/kernel/runtime.o
+ .comment       0x00000000       0x46 build/kernel/runtime.o
+ .ARM.attributes
+                0x00000000       0x2c build/kernel/runtime.o
+ .text          0x00000000        0x0 build/kernel/uart.o
+ .data          0x00000000        0x0 build/kernel/uart.o
+ .bss           0x00000000        0x0 build/kernel/uart.o
+ .comment       0x00000000       0x46 build/kernel/uart.o
+ .ARM.attributes
+                0x00000000       0x2c build/kernel/uart.o
+ .text          0x00000000        0x0 build/arch/arm/mmu.o
+ .data          0x00000000        0x0 build/arch/arm/mmu.o
+ .bss           0x00000000        0x0 build/arch/arm/mmu.o
+ .comment       0x00000000       0x46 build/arch/arm/mmu.o
+ .ARM.attributes
+                0x00000000       0x2c build/arch/arm/mmu.o
+ .text          0x00000000        0x0 build/arch/arm/start.o
+ .data          0x00000000        0x0 build/arch/arm/start.o
+ .bss           0x00000000        0x0 build/arch/arm/start.o
+ .note.GNU-stack
+                0x00000000        0x0 build/arch/arm/start.o
+ .ARM.attributes
+                0x00000000       0x22 build/arch/arm/start.o
+ .text          0x00000000        0x0 build/arch/arm/context.o
+ .data          0x00000000        0x0 build/arch/arm/context.o
+ .bss           0x00000000        0x0 build/arch/arm/context.o
+ .note.GNU-stack
+                0x00000000        0x0 build/arch/arm/context.o
+ .ARM.attributes
+                0x00000000       0x22 build/arch/arm/context.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x00010000                        . = 0x10000
+
+.text           0x00010000     0x14f4
+ *(.text.boot)
+ .text.boot     0x00010000       0x4c build/arch/arm/start.o
+                0x00010000                _start
+ *(.text .text.*)
+ .text.marker_task
+                0x0001004c       0x24 build/kernel/main.o
+ .text.exercise_vm
+                0x00010070      0x144 build/kernel/main.o
+ .text.exercise_ramfs
+                0x000101b4       0xd8 build/kernel/main.o
+ .text.kernel_main
+                0x0001028c      0x16c build/kernel/main.o
+                0x0001028c                kernel_main
+ .text.lf_scheduler_init
+                0x000103f8       0x44 build/kernel/scheduler.o
+                0x000103f8                lf_scheduler_init
+ .text.lf_scheduler_slot_of
+                0x0001043c       0x4c build/kernel/scheduler.o
+                0x0001043c                lf_scheduler_slot_of
+ .text.lf_scheduler_invariant
+                0x00010488      0x11c build/kernel/scheduler.o
+                0x00010488                lf_scheduler_invariant
+ .text.lf_scheduler_spawn
+                0x000105a4       0xb8 build/kernel/scheduler.o
+                0x000105a4                lf_scheduler_spawn
+ .text.lf_scheduler_rotate
+                0x0001065c       0x94 build/kernel/scheduler.o
+                0x0001065c                lf_scheduler_rotate
+ .text.lf_scheduler_exit_current
+                0x000106f0       0x94 build/kernel/scheduler.o
+                0x000106f0                lf_scheduler_exit_current
+ .text.lf_frame_pool_init
+                0x00010784       0x88 build/kernel/vm.o
+                0x00010784                lf_frame_pool_init
+ .text.lf_frame_alloc
+                0x0001080c       0x64 build/kernel/vm.o
+                0x0001080c                lf_frame_alloc
+ .text.lf_frame_retain
+                0x00010870       0x88 build/kernel/vm.o
+                0x00010870                lf_frame_retain
+ .text.lf_frame_release
+                0x000108f8       0x74 build/kernel/vm.o
+                0x000108f8                lf_frame_release
+ .text.lf_frame_refcount
+                0x0001096c       0x54 build/kernel/vm.o
+                0x0001096c                lf_frame_refcount
+ .text.lf_vm_space_init
+                0x000109c0       0x30 build/kernel/vm.o
+                0x000109c0                lf_vm_space_init
+ .text.lf_vm_map
+                0x000109f0      0x118 build/kernel/vm.o
+                0x000109f0                lf_vm_map
+ .text.lf_vm_translate
+                0x00010b08       0xb0 build/kernel/vm.o
+                0x00010b08                lf_vm_translate
+ .text.find_file
+                0x00010bb8       0xc0 build/kernel/ramfs.o
+ .text.lf_ramfs_init
+                0x00010c78       0x54 build/kernel/ramfs.o
+                0x00010c78                lf_ramfs_init
+ .text.lf_ramfs_create
+                0x00010ccc      0x1ec build/kernel/ramfs.o
+                0x00010ccc                lf_ramfs_create
+ .text.lf_ramfs_write
+                0x00010eb8       0xf4 build/kernel/ramfs.o
+                0x00010eb8                lf_ramfs_write
+ .text.lf_ramfs_read
+                0x00010fac       0xbc build/kernel/ramfs.o
+                0x00010fac                lf_ramfs_read
+ .text.lf_ramfs_size
+                0x00011068       0x50 build/kernel/ramfs.o
+                0x00011068                lf_ramfs_size
+ .text.lf_runtime_init
+                0x000110b8       0x64 build/kernel/runtime.o
+                0x000110b8                lf_runtime_init
+ .text.lf_runtime_spawn
+                0x0001111c       0xac build/kernel/runtime.o
+                0x0001111c                lf_runtime_spawn
+ .text.lf_runtime_start
+                0x000111c8       0x8c build/kernel/runtime.o
+                0x000111c8                lf_runtime_start
+ .text.lf_runtime_yield
+                0x00011254       0x84 build/kernel/runtime.o
+                0x00011254                lf_runtime_yield
+ .text.lf_runtime_exit
+                0x000112d8       0x90 build/kernel/runtime.o
+                0x000112d8                lf_runtime_exit
+ .text.task_bootstrap
+                0x00011368       0x28 build/kernel/runtime.o
+ .text.lf_uart_putc
+                0x00011390       0x40 build/kernel/uart.o
+                0x00011390                lf_uart_putc
+ .text.lf_uart_puts
+                0x000113d0       0x60 build/kernel/uart.o
+                0x000113d0                lf_uart_puts
+ .text.lf_mmu_enable_identity
+                0x00011430       0xb8 build/arch/arm/mmu.o
+                0x00011430                lf_mmu_enable_identity
+ .text.context  0x000114e8        0xc build/arch/arm/context.o
+                0x000114e8                lf_arch_context_switch
+
+.glue_7         0x000114f4        0x0
+ .glue_7        0x000114f4        0x0 linker stubs
+
+.glue_7t        0x000114f4        0x0
+ .glue_7t       0x000114f4        0x0 linker stubs
+
+.vfp11_veneer   0x000114f4        0x0
+ .vfp11_veneer  0x000114f4        0x0 linker stubs
+
+.v4_bx          0x000114f4        0x0
+ .v4_bx         0x000114f4        0x0 linker stubs
+
+.iplt           0x000114f4        0x0
+ .iplt          0x000114f4        0x0 build/kernel/main.o
+
+.rodata         0x000114f8       0x98
+ *(.rodata .rodata.*)
+ .rodata.exercise_ramfs.str1.4
+                0x000114f8       0x8d build/kernel/main.o
+                                  0x5 (size before relaxing)
+ .rodata.kernel_main.str1.4
+                0x00011585        0x0 build/kernel/main.o
+                                 0x85 (size before relaxing)
+ *fill*         0x00011585        0x3 
+ .rodata.message.0
+                0x00011588        0x6 build/kernel/main.o
+ .rodata.marker_b.1
+                0x0001158e        0x1 build/kernel/main.o
+ .rodata.marker_a.2
+                0x0001158f        0x1 build/kernel/main.o
+
+.rel.dyn        0x00011590        0x0
+ .rel.iplt      0x00011590        0x0 build/kernel/main.o
+                0x00012000                        . = ALIGN (0x1000)
+
+.data
+ *(.data .data.*)
+
+.igot.plt       0x00012000        0x0
+ .igot.plt      0x00012000        0x0 build/kernel/main.o
+
+.bss            0x00014000     0x8000
+                0x00014000                        __bss_start = .
+ *(.bss .bss.* COMMON)
+ .bss.runtime   0x00014000      0x110 build/kernel/main.o
+ .bss.task_stacks
+                0x00014110      0x800 build/kernel/main.o
+ .bss.active_runtime
+                0x00014910        0x4 build/kernel/runtime.o
+ *fill*         0x00014914     0x36ec 
+ .bss.l1_table  0x00018000     0x4000 build/arch/arm/mmu.o
+                0x0001c000                        __bss_end = ALIGN (0x4)
+                0x0001c000                        . = __bss_end
+
+.stack          0x0001c000     0x4000
+                0x00020000                        . = (. + 0x4000)
+ *fill*         0x0001c000     0x4000 
+                0x00020000                        __stack_top = .
+
+/DISCARD/
+ *(.comment)
+ *(.ARM.attributes)
+ *(.note*)
+LOAD build/kernel/main.o
+LOAD build/kernel/scheduler.o
+LOAD build/kernel/vm.o
+LOAD build/kernel/ramfs.o
+LOAD build/kernel/runtime.o
+LOAD build/kernel/uart.o
+LOAD build/arch/arm/mmu.o
+LOAD build/arch/arm/start.o
+LOAD build/arch/arm/context.o
+OUTPUT(build/kernel.elf elf32-littlearm)
+LOAD linker stubs

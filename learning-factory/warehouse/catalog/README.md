@@ -1,8 +1,18 @@
 # Learning artifact catalog
 
-Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 271.
+Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 272.
 
 The complete searchable records, concepts, languages, provenance, and validation labels are in `catalog.json`.
+
+## byox-challenge-pack — GENERATED+PARTIAL
+
+- Artifact type: `byox-challenge-pack`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/operating-system/build-a-minimal-multi-tasking-kernel-for-arm-from-scratch-56e077d182/job_byox_build_s2_a7444fc01bbed158b7bcf7820b3d98a5/attempt-001`
+- SHA-256: `9d7ef6da5c9e07cc385d35bfd8a75097b2ab60a6c8b60ecf2f780bb0495dac7e`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED, PARTIAL
+- Job: `job_byox_build_s2_a7444fc01bbed158b7bcf7820b3d98a5` (codex_task/reference_builder)
 
 ## byox-independent-review — GENERATED
 

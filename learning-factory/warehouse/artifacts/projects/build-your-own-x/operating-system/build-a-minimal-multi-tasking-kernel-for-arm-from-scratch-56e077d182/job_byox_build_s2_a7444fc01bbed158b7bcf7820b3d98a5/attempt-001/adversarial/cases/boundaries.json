@@ -1,0 +1,36 @@
+{
+  "provenance": "independently generated for project_fc8ca1dbad4baba3bd2d54dbb42c1a98",
+  "validation_label": "UNVALIDATED_ADVERSARIAL_VECTORS",
+  "vectors": [
+    {
+      "case": "pid_terminal_value",
+      "input": {"next_pid": 4294967295},
+      "expect": "one final nonzero PID, then permanent spawn failure"
+    },
+    {
+      "case": "frame_exact_top",
+      "input": {"base": 4294963200, "count": 1},
+      "expect": "accepted"
+    },
+    {
+      "case": "frame_past_top",
+      "input": {"base": 4294963200, "count": 2},
+      "expect": "rejected without mutation"
+    },
+    {
+      "case": "permission_subset",
+      "input": {"mapped": ["READ"], "requested": ["READ", "WRITE"]},
+      "expect": "denied"
+    },
+    {
+      "case": "ramfs_addition_wrap",
+      "input": {"offset": 4294967295, "length": 2},
+      "expect": "range error without mutation"
+    },
+    {
+      "case": "null_zero_read",
+      "input": {"buffer": null, "length": 0},
+      "expect": "zero-byte success for an existing file"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "provenance": "independently generated for project_fc8ca1dbad4baba3bd2d54dbb42c1a98",
+  "validation_label": "UNVALIDATED_ADVERSARIAL_VECTORS",
+  "vectors": [
+    {
+      "case": "pid_terminal_value",
+      "input": {"next_pid": 4294967295},
+      "expect": {"spawn_results": [4294967295, 0], "invariant": true}
+    },
+    {
+      "case": "pid_stale_reuse",
+      "input": {"initial_next_pid": 1},
+      "expect": {"old_pid_absent": true, "replacement_pid": 2, "slot_reused": true}
+    },
+    {
+      "case": "scheduler_duplicate_pid",
+      "input": {"first_slot": 0, "duplicate_slot": 1},
+      "expect": {"invariant": false, "operation_result": 0, "mutation": "none"}
+    },
+    {
+      "case": "scheduler_current_mismatch",
+      "input": {"running_slot": 0, "current_slot": 1},
+      "expect": {"invariant": false, "operation_result": 0, "mutation": "none"}
+    },
+    {
+      "case": "frame_exact_top",
+      "input": {"base": 4294963200, "count": 1},
+      "expect": {"accepted": true, "first_frame": 4294963200}
+    },
+    {
+      "case": "frame_past_top",
+      "input": {"base": 4294963200, "count": 2},
+      "expect": {"accepted": false, "mutation": "none"}
+    },
+    {
+      "case": "permission_subset",
+      "input": {"mapped": ["READ"], "requested": ["READ", "WRITE"]},
+      "expect": {"translated": false, "output": "unchanged"}
+    },
+    {
+      "case": "vm_final_physical_byte",
+      "input": {
+        "virtual_base": 1879048192,
+        "virtual_address": 1879052287,
+        "physical_base": 4294963200,
+        "requested": ["READ"]
+      },
+      "expect": {"translated": true, "physical_address": 4294967295}
+    },
+    {
+      "case": "ramfs_addition_wrap",
+      "input": {"offset": 4294967295, "length": 2},
+      "expect": {"result": "LF_ERR_RANGE", "mutation": "none"}
+    },
+    {
+      "case": "ramfs_full_capacity_create",
+      "input": {"capacity": 8},
+      "expect": {"result": "LF_ERR_NO_SPACE", "mutation": "none"}
+    },
+    {
+      "case": "null_zero_read",
+      "input": {"buffer": null, "length": 0},
+      "expect": {"result": 0}
+    },
+    {
+      "case": "ramfs_scrub_reuse",
+      "input": {"payload_byte": 90, "length": 256},
+      "expect": {"cleared_before_reuse": true, "replacement_data_zero": true}
+    }
+  ]
+}

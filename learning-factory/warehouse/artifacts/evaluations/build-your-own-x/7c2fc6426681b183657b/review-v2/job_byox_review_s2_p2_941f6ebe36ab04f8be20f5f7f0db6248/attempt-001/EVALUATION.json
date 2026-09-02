@@ -1,0 +1,30 @@
+{
+  "builder_job_id": "job_byox_build_s2_92f1729913192a0b80158e00fb6475f4",
+  "checks_run": [
+    "Inventoried all 36 candidate files, checked entry types, and reviewed learner-visible documentation, starter code, tests, and tooling without modifying CANDIDATE.",
+    "Verified configured-tool and host-tool versions, parsed all Python and JSON inputs, reran the structure/credential audit, and checked recorded content hashes.",
+    "Built the starter and sealed reference with the candidate helper and built the reference independently with direct /usr/bin/as and /usr/bin/ld invocations.",
+    "Ran the builder-provided public suite (10/10 passed) and sealed reference suite (13/13 passed).",
+    "Ran 46 independent bounded black-box assertions, including 80 seeded random arithmetic, bitwise, comparison, division, and remainder tuples plus exact and one-past resource cases; all passed after correcting one reviewer-side assertion.",
+    "Ran a QEMU 9.1.1 smoke check with the configured GLib, a small explicitly unvalidated benchmark smoke check, repeated-build comparison, symlink-policy adversarial check, and audit-coverage inspection."
+  ],
+  "evidence": [
+    "The reference directly assembled and linked to a static ELF64 x86-64 executable with global _start and a non-executable GNU_STACK; its smoke output was exactly 144 followed by a newline.",
+    "The candidate's public and sealed suites reproduced the recorded 10/10 and 13/13 passing results, and the independent harness passed 46/46 process assertions under three-second timeouts.",
+    "Two same-input build.py runs produced different SHA-256 values, 168135573ab6c105edea98a0c8c2c0ef3ed1044baf944079634b56129c811896 and 3b212d83269df78e2b9bc0e7fd693f1600f41dd4a5ac37c8c390386347906b1f, because distinct random cinder-build-* object paths were embedded in .strtab.",
+    "build.py returned 0 when source, assembler, and linker were all supplied through symlinks, contradicting its regular non-symlink diagnostic and environment documentation.",
+    "audit.py passed on the current tree but its REQUIRED tuple omits starter/forth.S, starter/Makefile, public_tests/test_cinder.py, environment/build.py, environment/audit.py, and benchmarks/run.py.",
+    "The audit's provenance_binding check compares only snapshot_sha256 and project_id, so it does not integrity-bind the remaining license and source assertions in PROVENANCE.json.",
+    "All builder-recorded candidate content hashes reproduced, and MANIFEST.yaml honestly retains only GENERATED and PARTIAL with independent validation required and productionized false.",
+    "Reviewer scratch binaries, object files, and test symlinks were explicitly removed after evidence capture; the immutable candidate and the three review deliverables remain."
+  ],
+  "limitations": [
+    "The immutable upstream catalog snapshot and linked resource were not available for independent source, license, similarity, or clean-room authentication; those provenance assertions remain inconclusive.",
+    "The sealed tree is readable in this reviewer workspace. Student-view exclusion is an external control-plane property and was not transfer-verified here.",
+    "No pinned x86-64 binutils root was configured, so native builds relied on absolute system paths /usr/bin/as and /usr/bin/ld at the recorded version 2.30-123.el8.",
+    "The configured QEMU binary initially failed without the configured GLib on LD_LIBRARY_PATH, then passed one smoke case with that library path; this is not TRANSFER_VERIFIED evidence.",
+    "No fuzzing, production, or general performance conclusion was attempted; the benchmark smoke result remains explicitly unvalidated."
+  ],
+  "project_id": "project_d667887dddd98fbea55fa17d9b99cf19",
+  "verdict": "REVISE"
+}

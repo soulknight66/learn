@@ -1,0 +1,33 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g2_ab52677867ce960aa8ef23c86d4f761c",
+  "checks_run": [
+    "Inventoried and statically reviewed all 37 candidate files, including the contract, learner material, sealed reference, tests, tooling, provenance, and validation claims.",
+    "Probed every configured toolchain root by absolute path and recorded exact versions; used pinned Python and configured QEMU for validation.",
+    "Ran the structure/credential audit and independently checked manifest/provenance cross-references, canonical provenance digest, file types, and artifact cleanliness.",
+    "Built the sealed reference twice and the learner stub once, compared hashes and bytes, and inspected ELF architecture, linkage, entry point, and GNU_STACK permissions.",
+    "Ran 10 public tests, 14 sealed boundary tests, and 6 build/audit tooling regression tests with bounded subprocesses.",
+    "Ran a deterministic reviewer-authored model and adversarial harness covering 830 modeled operations, 15 targeted failures, all 33 separator bytes, near-numeric names, and 300 seeded arbitrary-byte inputs.",
+    "Compared a nested-control workload natively and under configured qemu-x86_64 and smoke-checked the explicitly unvalidated benchmark harness.",
+    "Verified the intentional starter behavior and rechecked the candidate tree digest before and after validation."
+  ],
+  "evidence": [
+    "Both independent reference builds were byte-identical with SHA-256 b3e847dcfb3579a3a0029836ca3ea590076cad4399d714beae4ac38a95878092; the starter hash was 72a0205dee22854aa726e476e3e61f01886d037a1aa324b2169034e1c3c017ff.",
+    "Public 10/10, sealed 14/14, and tooling 6/6 tests passed with no skips.",
+    "The repaired overflowing-decimal-prefix cases returned status 0 and exact stdout 7\\n8\\n; the complete-token lexical pass and permanent regression cases are present.",
+    "The independent harness passed 830 model assertions, five successful contract programs, 15 expected-error cases, 300 robustness cases, and native/QEMU equivalence.",
+    "The audit reported 37 required regular files, 21 forbidden paths absent, exact manifest and provenance objects, four credential patterns, and no special entries.",
+    "The reference is a static x86-64 ELF with global _start, no dynamic section, and a non-executable RW GNU_STACK.",
+    "Manifest status remains GENERATED with GENERATED and PARTIAL only, productionized is false, benchmark output says UNVALIDATED_MEASUREMENT, and stronger validation labels are explicitly disclaimed.",
+    "The CANDIDATE aggregate digest remained 3b87903277427f07b85d5f03abeb49cb493eec3f2cda8a068b0f452223daaa4e."
+  ],
+  "limitations": [
+    "The immutable source-catalog snapshot and linked upstream resource were unavailable, so source commit, CC0 evidence, NOASSERTION status, similarity, and clean-room authorship could not be independently authenticated.",
+    "Learner-view filtering is an external control-plane property; this review verified organization and absence of obvious leaks outside sealed/, but did not transfer-verify a separately materialized learner view.",
+    "Generated material has a stated personal-educational-use boundary but no top-level license grant; broader reuse rights were not established.",
+    "The x86-64 build uses recorded host /usr/bin/as and /usr/bin/ld.bfd rather than a configured immutable x86 toolchain root, so byte reproducibility was established only in this environment.",
+    "No coverage-guided fuzzing, sanitizer run, validated performance study, production/security review, or broader OS/architecture matrix was performed; the seeded robustness run does not confer a FUZZED label.",
+    "Historical comparisons against PRIOR_BUILD and PRIOR_REVIEW could not be replayed because those inputs are not part of CANDIDATE."
+  ],
+  "project_id": "project_d667887dddd98fbea55fa17d9b99cf19",
+  "verdict": "PASS"
+}

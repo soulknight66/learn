@@ -1,0 +1,30 @@
+{
+  "builder_job_id": "job_byox_build_s2_0aadb1e25ccffd07eeb644fba4d16b87",
+  "checks_run": [
+    "Inspected all 67 submitted files, including the learner contract and scaffold, public tests, sealed reference implementation and tests, exercises, validation scripts, manifest, and provenance record.",
+    "Reran python3 sealed/validation/audit.py and observed exit 0 with all reported structural checks OK and generated-file-count 67.",
+    "Reran python3 sealed/validation/go_balance.py and observed exit 0 with go-lexical-balance OK for 30 Go source files; this was treated only as lexical evidence.",
+    "Independently checked regular-file permissions, symlink absence, learner/sealed path separation, JSON parsing without duplicate keys, canonical JSON digests, and project/source/commit identifier consistency.",
+    "Scanned for unsupported validation-label claims, nonlocal Go module dependencies, credential-like material, TODO/panic/unsafe patterns, and exported scaffold/reference API drift.",
+    "Probed go, gofmt, gccgo, tinygo, and gopls availability, then made 30-second-bounded go test ./... attempts in six documented Go modules."
+  ],
+  "evidence": [
+    "MANIFEST.yaml remains status GENERATED with validation_labels exactly [GENERATED, PARTIAL], independent_validation REQUIRED, and productionized false.",
+    "The candidate's validation record accurately says that Go compilation, tests, fuzzing, CLI execution, and benchmarks did not run; a claim scan found no positive stronger-label claim.",
+    "All 67 candidate files are mode 0444, candidate directories are non-writable, no symlinks were found, and solution/reference material occurs only below a path segment named sealed.",
+    "The manifest and provenance parse as duplicate-key-free JSON; canonical digests are 4e6c88e18008226e3f64c0e2c366ec6aafb2b859f2a5557054fa3feaed6c1c59 and d75f0974ef139507894b6414cedf2feb9bcd216eb787792a7f0c3229c01b15df, matching the audit pins.",
+    "Manifest/provenance project ID, source ID, source commit, and snapshot reference agree internally; the license boundary distinguishes the CC0 catalog record from the linked project's NOASSERTION status.",
+    "Static inspection found a coherent bounded lexer/parser/checker/compiler/verifier/VM design, representative public tests, staged learner guidance, and explicit caveats that checked-in tests and prose are not independent validation."
+  ],
+  "limitations": [
+    "No Go toolchain is installed. Every bounded Go test attempt exited 127, so buildability, formatting, behavior, CLI behavior, race behavior, and cross-platform behavior are inconclusive.",
+    "No fuzz campaign or benchmark ran; checked-in fuzz targets and benchmark functions are not FUZZED or BENCHMARKED evidence.",
+    "The builder-authored Python audits are structural self-checks, not proof of Go syntax, semantics, security, or learner-solution correctness.",
+    "The upstream catalog snapshot and linked repository were unavailable, so the no-copy statement and external license evidence could not be independently compared with source material.",
+    "Only path placement was inspectable for sealed material; the orchestrator must independently prove that its actual learner view excludes every sealed path.",
+    "REQUIREMENTS.md uses the undefined grammar nonterminal string-character, leaving raw newline/control-character policy slightly ambiguous; this should be clarified before relying on edge-case hidden tests.",
+    "The advisory PASS does not establish BUILDS, TESTED, FUZZED, BENCHMARKED, TRANSFER_VERIFIED, PRODUCTIONIZED, or a publishable REVIEWED label."
+  ],
+  "project_id": "project_a3a9553a99ae48fff130ecc16f5a5908",
+  "verdict": "PASS"
+}

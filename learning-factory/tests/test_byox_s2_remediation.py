@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 import learnfactory.byox_remediation as remediation_module
+import learnfactory.handlers as handlers_module
 from learnfactory.backend_policy import with_mass_seed_backend_policy
 from learnfactory.byox_baselines import (
     byox_s2_reviewer_job_id,
@@ -30,7 +31,7 @@ from learnfactory.seeding import (
     _byox_reviewer_payload,
     seed_all_byox_reference_jobs,
 )
-from learnfactory.util import canonical_json, file_sha256, now, tree_sha256
+from learnfactory.util import canonical_json, now, tree_sha256
 from learnfactory.validation import Validator
 from learnfactory.worker import _validation_labels
 import tests.test_byox_remediation as legacy_tests
@@ -328,20 +329,9 @@ class ByoxS2RemediationContractTests(unittest.TestCase):
             destination = str(item["destination"])
             if source.is_dir():
                 target = self.manager.stage_tree(source, workspace, destination)
-                own = {
-                    "path": destination,
-                    "kind": "directory",
-                    "checksum_algorithm": "tree-sha256-v2",
-                    "checksum": tree_sha256(target),
-                }
             else:
                 target = self.manager.stage_file(source, workspace, destination)
-                own = {
-                    "path": destination,
-                    "kind": "file",
-                    "checksum_algorithm": "file-sha256",
-                    "checksum": file_sha256(target),
-                }
+            own = handlers_module._staged_input_record(target, destination)
             staged.append(
                 {
                     **own,
@@ -371,6 +361,11 @@ class ByoxS2RemediationContractTests(unittest.TestCase):
         payload = job["payload"]
         workspace, owner, lease = self._start_job(reviewer_id)
         staged = self._stage_review_inputs(workspace, payload, builder)
+        protected = workspace / "CANDIDATE"
+        protected.chmod(protected.stat().st_mode & ~0o222)
+        integrity = [
+            handlers_module._staged_input_record(protected, "CANDIDATE")
+        ]
         self._write(
             workspace / "EVALUATION.json",
             canonical_json(
@@ -392,7 +387,8 @@ class ByoxS2RemediationContractTests(unittest.TestCase):
             {
                 "type": "input_integrity",
                 "name": "declared-inputs-remained-immutable",
-                "inputs": staged,
+                "inputs": integrity,
+                "require_fresh_inodes": True,
             }
         )
         return self._publish_running_workspace(
@@ -914,6 +910,35 @@ class ByoxS2RemediationContractTests(unittest.TestCase):
         self._add_project(project_id)
         graph = self._complete_negative_s2(project_id)
 
+        runtime_inode_fields = (
+            remediation_module._STAGED_PROVENANCE_RUNTIME_INODE_FIELDS
+        )
+        with self.database.connect() as connection:
+            artifact = connection.execute(
+                "SELECT metadata_json FROM artifacts WHERE job_id=?",
+                (graph["reviewer"],),
+            ).fetchone()
+            integrity = connection.execute(
+                """
+                SELECT evidence_json FROM validations
+                WHERE job_id=? AND validator='declared-inputs-remained-immutable'
+                """,
+                (graph["reviewer"],),
+            ).fetchone()
+        assert artifact is not None and integrity is not None
+        staged_inputs = json.loads(artifact["metadata_json"])["staged_inputs"]
+        self.assertEqual(17, len(staged_inputs))
+        self.assertTrue(
+            all(
+                set(item) & runtime_inode_fields == runtime_inode_fields
+                for item in staged_inputs
+            )
+        )
+        self.assertEqual(
+            {"checked": ["CANDIDATE"], "mismatches": []},
+            json.loads(integrity["evidence_json"]),
+        )
+
         first = self._seed_repairs(project_id)
         repair_id, _ = self._assert_s2_repair_builder(
             result=first,
@@ -952,6 +977,108 @@ class ByoxS2RemediationContractTests(unittest.TestCase):
         self.assertEqual("reviewer", binding.role)
         self.assertEqual(graph["baseline"], binding.baseline_sha256)
         self.assertEqual(repair_id, binding.builder_job_id)
+
+    def test_strict_staged_projection_closes_runtime_inode_schema(self) -> None:
+        expected = {
+            "path": "CANDIDATE/README.md",
+            "kind": "file",
+            "checksum_algorithm": "file-sha256",
+            "checksum": "1" * 64,
+        }
+        runtime = {
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "root_device": 1,
+            "root_inode": 2,
+            "root_change_time_ns": 3,
+            "regular_file_count": 1,
+            "inode_manifest_sha256": "2" * 64,
+        }
+        self.assertEqual(
+            expected,
+            remediation_module._strict_staged_provenance_projection(
+                expected, expected=expected
+            ),
+        )
+        self.assertEqual(
+            expected,
+            remediation_module._strict_staged_provenance_projection(
+                {**expected, **runtime}, expected=expected
+            ),
+        )
+
+        incomplete = {**expected, **runtime}
+        incomplete.pop("root_inode")
+        malformed_policy = {**expected, **runtime, "fresh_inode_policy": "forged"}
+        malformed_integer = {**expected, **runtime, "root_device": True}
+        uppercase_digest = {
+            **expected,
+            **runtime,
+            "inode_manifest_sha256": "A" * 64,
+        }
+        unknown = {**expected, **runtime, "unexpected": True}
+        for name, record in (
+            ("incomplete", incomplete),
+            ("policy", malformed_policy),
+            ("integer", malformed_integer),
+            ("digest", uppercase_digest),
+            ("unknown", unknown),
+        ):
+            with self.subTest(name=name), self.assertRaises(
+                remediation_module.ByoxRemediationError
+            ):
+                remediation_module._strict_staged_provenance_projection(
+                    record, expected=expected
+                )
+
+    def test_s2_review_rejects_partial_runtime_inode_provenance(self) -> None:
+        project_id = "project-s2-partial-inode-provenance"
+        self._add_project(project_id)
+        graph = self._complete_negative_s2(project_id)
+        with self.database.transaction(immediate=True) as connection:
+            artifact = connection.execute(
+                "SELECT artifact_id,metadata_json FROM artifacts WHERE job_id=?",
+                (graph["reviewer"],),
+            ).fetchone()
+            assert artifact is not None
+            metadata = json.loads(artifact["metadata_json"])
+            metadata["staged_inputs"][0].pop("root_inode")
+            connection.execute(
+                "UPDATE artifacts SET metadata_json=? WHERE artifact_id=?",
+                (canonical_json(metadata), artifact["artifact_id"]),
+            )
+
+        self._assert_invalid_without_new_jobs(
+            project_id,
+            expected_statuses={"REMEDIATION_EVIDENCE_INVALID"},
+        )
+
+    def test_s2_review_rejects_leaf_integrity_evidence(self) -> None:
+        project_id = "project-s2-leaf-integrity-evidence"
+        self._add_project(project_id)
+        graph = self._complete_negative_s2(project_id)
+        reviewer = self.jobs.get(str(graph["reviewer"]))
+        assert reviewer is not None
+        leaf_evidence = {
+            "checked": [
+                str(item["destination"])
+                for item in reviewer["payload"]["inputs_from_dependencies"]
+            ],
+            "mismatches": [],
+        }
+        with self.database.transaction(immediate=True) as connection:
+            connection.execute(
+                """
+                UPDATE validations SET evidence_json=?
+                WHERE job_id=? AND validator='declared-inputs-remained-immutable'
+                """,
+                (canonical_json(leaf_evidence), graph["reviewer"]),
+            )
+        self._coherently_rebuild_publication_evidence(str(graph["reviewer"]))
+
+        self._assert_invalid_without_new_jobs(
+            project_id,
+            expected_statuses={"REMEDIATION_EVIDENCE_INVALID"},
+        )
 
     def test_unbound_exact_s2_repair_builder_is_rejected_on_resume(self) -> None:
         project_id = "project-s2-unbound-repair-builder"

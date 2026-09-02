@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+- Reconcile strict BYOX replay with the handler's fresh-inode staging records. Replay now
+  accepts only the exact legacy semantic record or that record plus the complete,
+  structurally valid runtime inode-evidence set; it still reconstructs and exact-compares
+  every durable artifact binding. Independent-review integrity evidence is checked against
+  the canonical protected root rather than synthetic leaf records, and the same projection
+  rule covers repair cutovers. Production-shaped regressions prevent either reader/writer
+  schema from drifting again.
+- Bound the publication-time factory revision probe to the same execution-relevant paths as
+  run provenance. This avoids full-corpus Git scans on NFS, and a later diff failure now
+  retains the already-resolved commit while reporting status as unavailable instead of
+  discarding that evidence.
 - Add a one-shot exact-job scheduler mode, `run --job JOB_ID`. It bypasses
   global READY priority without falling back to another job, suppresses all
   catalog refills, retains pause/dependency/attempt/capacity/validator fences,

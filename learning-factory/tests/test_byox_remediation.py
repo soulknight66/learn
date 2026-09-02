@@ -5404,6 +5404,38 @@ class ByoxRemediationTests(unittest.TestCase):
                 ],
             ),
         )
+        handler_shaped_metadata = self._published_repair_metadata(
+            selection, claim.payload
+        )
+        staged_by_path = {str(item["path"]): item for item in staged}
+        for record in handler_shaped_metadata["staged_inputs"]:
+            observed = staged_by_path[str(record["path"])]
+            record.update(
+                {
+                    field: observed[field]
+                    for field in remediation_module._STAGED_PROVENANCE_RUNTIME_INODE_FIELDS
+                }
+            )
+        self.assertEqual(
+            original_inventory,
+            _validated_repair_inventory(
+                handler_shaped_metadata,
+                claim.payload,
+                artifact_checksum=selection["authoritative_cutover"][
+                    "selected_output_checksum"
+                ],
+            ),
+        )
+        incomplete_inode_metadata = copy.deepcopy(handler_shaped_metadata)
+        incomplete_inode_metadata["staged_inputs"][0].pop("root_inode")
+        with self.assertRaisesRegex(ByoxRemediationError, "inode evidence is incomplete"):
+            _validated_repair_inventory(
+                incomplete_inode_metadata,
+                claim.payload,
+                artifact_checksum=selection["authoritative_cutover"][
+                    "selected_output_checksum"
+                ],
+            )
         with self.assertRaisesRegex(ByoxRemediationError, "bound to publication"):
             _validated_repair_inventory(
                 self._published_repair_metadata(selection, claim.payload),

@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from learnfactory.util import repository_revision
+from learnfactory.util import FACTORY_EXECUTION_PATHS, repository_revision
 
 
 class RepositoryRevisionTests(unittest.TestCase):
@@ -40,8 +40,27 @@ class RepositoryRevisionTests(unittest.TestCase):
             "-C",
             "/factory",
         ]
+        expected_scope = [
+            "src",
+            "migrations",
+            "scripts",
+            "prompts",
+            "skills",
+            "pyproject.toml",
+        ]
+        self.assertEqual(tuple(expected_scope), FACTORY_EXECUTION_PATHS)
         self.assertEqual([*prefix, "rev-parse", "HEAD"], calls[0])
-        self.assertEqual([*prefix, "diff", "--name-only", "HEAD", "--"], calls[1])
+        self.assertEqual(
+            [
+                *prefix,
+                "diff",
+                "--name-only",
+                "HEAD",
+                "--",
+                *expected_scope,
+            ],
+            calls[1],
+        )
         self.assertEqual(
             ["0", "0"],
             [item["GIT_OPTIONAL_LOCKS"] for item in environments],
@@ -71,6 +90,55 @@ class RepositoryRevisionTests(unittest.TestCase):
         self.assertIsNone(result["commit"])
         self.assertEqual("UNVERSIONED", result["status"])
         self.assertFalse(result["tracked_worktree_clean"])
+
+    def test_diff_timeout_preserves_known_revision(self) -> None:
+        calls: list[list[str]] = []
+
+        def completed(
+            argv: list[str], **kwargs: object
+        ) -> subprocess.CompletedProcess[str]:
+            calls.append(argv)
+            if argv[-2:] == ["rev-parse", "HEAD"]:
+                return subprocess.CompletedProcess(argv, 0, "c" * 40 + "\n", "")
+            raise subprocess.TimeoutExpired(argv, timeout=5)
+
+        with patch("learnfactory.util.subprocess.run", side_effect=completed):
+            result = repository_revision(Path("/factory"))
+
+        self.assertEqual("c" * 40, result["commit"])
+        self.assertFalse(result["tracked_worktree_clean"])
+        self.assertEqual("STATUS_UNAVAILABLE", result["status"])
+        self.assertEqual(
+            [
+                "git",
+                "-c",
+                "diff.autoRefreshIndex=false",
+                "-C",
+                "/factory",
+                "diff",
+                "--name-only",
+                "HEAD",
+                "--",
+                *FACTORY_EXECUTION_PATHS,
+            ],
+            calls[1],
+        )
+
+    def test_diff_failure_preserves_known_revision(self) -> None:
+        def completed(
+            argv: list[str], **kwargs: object
+        ) -> subprocess.CompletedProcess[str]:
+            if argv[-2:] == ["rev-parse", "HEAD"]:
+                return subprocess.CompletedProcess(argv, 0, "d" * 40 + "\n", "")
+            return subprocess.CompletedProcess(argv, 128, "", "diff unavailable")
+
+        with patch("learnfactory.util.subprocess.run", side_effect=completed):
+            result = repository_revision(Path("/factory"))
+
+        self.assertEqual("d" * 40, result["commit"])
+        self.assertFalse(result["tracked_worktree_clean"])
+        self.assertEqual("STATUS_UNAVAILABLE", result["status"])
+        self.assertEqual("diff unavailable", result["error"])
 
 
 if __name__ == "__main__":

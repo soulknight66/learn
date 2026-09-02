@@ -20,18 +20,10 @@ from .sandbox_policy import (
     is_csdiy_examiner,
 )
 from .result_channel import RESULT_ALIAS_DIRECTORY, placeholder_result_channel
-from .util import canonical_json, redact
+from .util import FACTORY_EXECUTION_PATHS, canonical_json, redact
 
 
 SCHEMA = "learnfactory-run-provenance-v3"
-_EXECUTION_PATHS = (
-    "src",
-    "migrations",
-    "scripts",
-    "prompts",
-    "skills",
-    "pyproject.toml",
-)
 _MAX_PATHS = 10_000
 _MAX_FILE_BYTES = 16 * 1024 * 1024
 _MAX_TOTAL_BYTES = 128 * 1024 * 1024
@@ -373,7 +365,7 @@ def _hash_selected_files(root: Path, paths: list[str], *, domain: bytes) -> dict
 
 
 def _repository_snapshot(root: Path) -> dict[str, Any]:
-    scope = list(_EXECUTION_PATHS)
+    scope = list(FACTORY_EXECUTION_PATHS)
     try:
         revision = _git(root, "rev-parse", "HEAD")
         if revision.returncode != 0:

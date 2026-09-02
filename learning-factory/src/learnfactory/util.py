@@ -11,6 +11,16 @@ from pathlib import Path
 from typing import Any
 
 
+FACTORY_EXECUTION_PATHS = (
+    "src",
+    "migrations",
+    "scripts",
+    "prompts",
+    "skills",
+    "pyproject.toml",
+)
+
+
 def now() -> float:
     return time.time()
 
@@ -104,26 +114,6 @@ def repository_revision(root: Path) -> dict[str, Any]:
 
     try:
         revision = run("rev-parse", "HEAD")
-        if revision.returncode != 0:
-            return {
-                "commit": None,
-                "tracked_worktree_clean": False,
-                "status": "UNVERSIONED",
-                "error": redact(revision.stderr, limit=500).strip(),
-            }
-        dirty = run("diff", "--name-only", "HEAD", "--")
-        if dirty.returncode != 0:
-            return {
-                "commit": revision.stdout.strip(),
-                "tracked_worktree_clean": False,
-                "status": "STATUS_UNAVAILABLE",
-                "error": redact(dirty.stderr, limit=500).strip(),
-            }
-        return {
-            "commit": revision.stdout.strip(),
-            "tracked_worktree_clean": not bool(dirty.stdout.strip()),
-            "status": "RECORDED",
-        }
     except (OSError, subprocess.SubprocessError) as error:
         return {
             "commit": None,
@@ -131,6 +121,42 @@ def repository_revision(root: Path) -> dict[str, Any]:
             "status": "UNAVAILABLE",
             "error": redact(str(error), limit=500),
         }
+    if revision.returncode != 0:
+        return {
+            "commit": None,
+            "tracked_worktree_clean": False,
+            "status": "UNVERSIONED",
+            "error": redact(revision.stderr, limit=500).strip(),
+        }
+
+    commit = revision.stdout.strip()
+    try:
+        dirty = run(
+            "diff",
+            "--name-only",
+            "HEAD",
+            "--",
+            *FACTORY_EXECUTION_PATHS,
+        )
+    except (OSError, subprocess.SubprocessError) as error:
+        return {
+            "commit": commit,
+            "tracked_worktree_clean": False,
+            "status": "STATUS_UNAVAILABLE",
+            "error": redact(str(error), limit=500),
+        }
+    if dirty.returncode != 0:
+        return {
+            "commit": commit,
+            "tracked_worktree_clean": False,
+            "status": "STATUS_UNAVAILABLE",
+            "error": redact(dirty.stderr, limit=500).strip(),
+        }
+    return {
+        "commit": commit,
+        "tracked_worktree_clean": not bool(dirty.stdout.strip()),
+        "status": "RECORDED",
+    }
 
 
 def tree_sha256_v1(root: Path) -> str:

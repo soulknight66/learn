@@ -220,6 +220,11 @@ not merely the raw payload prompt. A `PARTIAL`, `RACED`, `UNAVAILABLE`, or `CAPT
 evidence of a limitation and must not be interpreted as a complete byte snapshot. Historical runs with
 `{}` and a null digest predate this facility; do not backfill them speculatively.
 
+Artifact metadata also carries a supplementary `factory_revision` snapshot. Its Git dirty check is
+bounded to the same execution-relevant paths as run provenance so the growing corpus and reports do not
+turn publication into a full NFS worktree scan. If the dirty check fails after resolving `HEAD`, retain
+that commit with `STATUS_UNAVAILABLE`; never rewrite an archived artifact to backfill this field.
+
 The scheduler's drain is exception-safe: an unexpected controller-loop error still enters cleanup,
 waits for active children for the configured grace interval, escalates process groups when necessary,
 reaps them, and finalizes bounded redacted logs. The original controller error is preserved; a cleanup

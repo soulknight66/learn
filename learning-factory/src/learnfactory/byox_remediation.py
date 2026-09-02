@@ -216,6 +216,16 @@ BYOX_REPAIR_CONTROL_ROOTS = frozenset(
     }
 )
 _SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+_STAGED_PROVENANCE_RUNTIME_INODE_FIELDS = frozenset(
+    {
+        "fresh_inode_policy",
+        "root_device",
+        "root_inode",
+        "root_change_time_ns",
+        "regular_file_count",
+        "inode_manifest_sha256",
+    }
+)
 # Post-hoc descriptor capture must encompass every tree admitted by the
 # fresh-inode validation cutover.  These are operational snapshot bounds, not
 # additional semantic validators; making them narrower would reject a tree the
@@ -2317,10 +2327,64 @@ def _validate_review_staged_inputs(
                 )
             staged["artifact_inventory"] = builder.artifact_inventory
         expected_staged.append(staged)
-    if not _same_canonical_json(raw_staged, expected_staged):
+    projected_staged = [
+        _strict_staged_provenance_projection(observed, expected=expected)
+        for observed, expected in zip(raw_staged, expected_staged, strict=True)
+    ]
+    if not _same_canonical_json(projected_staged, expected_staged):
         raise ByoxRemediationError(
             "review artifact is not exactly bound to the observed builder artifact"
         )
+
+
+def _strict_staged_provenance_projection(
+    record: object,
+    *,
+    expected: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Project optional runtime inode evidence from strict staged provenance.
+
+    The handler records staging-time inode identities that cannot be recreated
+    from the immutable source artifact after the workspace is retired.  They
+    are permitted only as one complete, closed-schema observation.  Every
+    independently replayable field remains for the caller's exact comparison.
+    """
+
+    if not isinstance(record, dict):
+        raise ByoxRemediationError("staged-input provenance record is not an object")
+    runtime_fields = set(record) & _STAGED_PROVENANCE_RUNTIME_INODE_FIELDS
+    if runtime_fields and runtime_fields != _STAGED_PROVENANCE_RUNTIME_INODE_FIELDS:
+        raise ByoxRemediationError(
+            "staged-input provenance runtime inode evidence is incomplete"
+        )
+    if runtime_fields:
+        integer_fields = (
+            "root_device",
+            "root_inode",
+            "root_change_time_ns",
+            "regular_file_count",
+        )
+        inode_manifest = record.get("inode_manifest_sha256")
+        if (
+            record.get("fresh_inode_policy")
+            != "regular-files-nlink-one-unique-v1"
+            or any(type(record.get(field)) is not int for field in integer_fields)
+            or not isinstance(inode_manifest, str)
+            or _SHA256_RE.fullmatch(inode_manifest) is None
+        ):
+            raise ByoxRemediationError(
+                "staged-input provenance runtime inode evidence is malformed"
+            )
+    projected = {
+        key: value
+        for key, value in record.items()
+        if key not in _STAGED_PROVENANCE_RUNTIME_INODE_FIELDS
+    }
+    if set(projected) != set(expected):
+        raise ByoxRemediationError(
+            "staged-input provenance has unknown or missing semantic fields"
+        )
+    return projected
 
 
 def _snapshot_staged_record(
@@ -3533,11 +3597,7 @@ def _validated_review(
         validator=BYOX_REVIEW_INPUT_INTEGRITY_VALIDATOR,
     )
     expected_integrity_evidence = {
-        "checked": (
-            [str(item["destination"]) for item in expected_inputs]
-            if is_s2_base
-            else ["CANDIDATE"]
-        ),
+        "checked": list(payload["protected_input_roots"]),
         "mismatches": [],
     }
     if integrity_row["evidence_json"] != canonical_json(
@@ -5427,7 +5487,17 @@ def _validate_repair_authoritative_cutover(
             observed_staged=metadata_staged_inputs,
         )
     )
-    if not _same_canonical_json(metadata_staged_inputs, expected_staged):
+    if len(metadata_staged_inputs) != len(expected_staged):
+        raise ByoxRemediationError(
+            "repair authoritative-cutover staging is not the canonical declared input set"
+        )
+    projected_staged_inputs = [
+        _strict_staged_provenance_projection(observed, expected=expected)
+        for observed, expected in zip(
+            metadata_staged_inputs, expected_staged, strict=True
+        )
+    ]
+    if not _same_canonical_json(projected_staged_inputs, expected_staged):
         raise ByoxRemediationError(
             "repair authoritative-cutover staging is not the canonical declared input set"
         )

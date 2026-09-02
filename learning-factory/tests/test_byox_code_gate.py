@@ -337,6 +337,74 @@ class ByoxCodePresenceGateTests(unittest.TestCase):
         finally:
             os.close(source_descriptor)
 
+    def test_cutover_allows_benign_parent_directory_metadata_change(self) -> None:
+        parent = self.root / "changing-parent-metadata"
+        workspace = parent / "workspace"
+        workspace.mkdir(parents=True)
+        self._code_tree(workspace)
+        parent_identity = parent.stat()
+        real_open = handlers_module.os.open
+        changed = False
+
+        def change_parent_metadata(
+            path: object, flags: int, *args: object, **kwargs: object
+        ) -> int:
+            nonlocal changed
+            if (
+                not changed
+                and path == parent.name
+                and kwargs.get("dir_fd") is not None
+            ):
+                (parent / "concurrent-sibling").mkdir()
+                changed = True
+            return real_open(path, flags, *args, **kwargs)  # type: ignore[arg-type]
+
+        with patch.object(
+            handlers_module.os, "open", side_effect=change_parent_metadata
+        ):
+            cutover = _cutover_byox_validation_workspace(workspace)
+
+        self.assertTrue(changed)
+        current_parent_identity = parent.stat()
+        self.assertEqual(
+            (parent_identity.st_dev, parent_identity.st_ino),
+            (current_parent_identity.st_dev, current_parent_identity.st_ino),
+        )
+        self.assertEqual(
+            cutover["validation_snapshot_checksum"], tree_sha256(workspace)
+        )
+
+    def test_cutover_rejects_replaced_parent_directory_component(self) -> None:
+        parent = self.root / "replaced-parent"
+        workspace = parent / "workspace"
+        workspace.mkdir(parents=True)
+        self._code_tree(workspace)
+        displaced = self.root / "displaced-parent"
+        real_open = handlers_module.os.open
+        swapped = False
+
+        def replace_parent(
+            path: object, flags: int, *args: object, **kwargs: object
+        ) -> int:
+            nonlocal swapped
+            if (
+                not swapped
+                and path == parent.name
+                and kwargs.get("dir_fd") is not None
+            ):
+                parent.rename(displaced)
+                parent.mkdir()
+                swapped = True
+            return real_open(path, flags, *args, **kwargs)  # type: ignore[arg-type]
+
+        with patch.object(handlers_module.os, "open", side_effect=replace_parent):
+            with self.assertRaisesRegex(
+                HandlerFailure, "workspace parent cannot be safely opened"
+            ):
+                _cutover_byox_validation_workspace(workspace)
+
+        self.assertTrue(swapped)
+
     def test_structural_byox_cutover_rejects_all_executable_validator_forms(self) -> None:
         workspace = self.root / "executable-validator-contract"
         workspace.mkdir()

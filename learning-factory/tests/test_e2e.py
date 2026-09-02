@@ -76,6 +76,16 @@ def _examiner_final_message(result: str = "PASS") -> str:
 
 class EndToEndWorkerTests(unittest.TestCase):
     def setUp(self) -> None:
+        self.addCleanup(
+            signal.signal,
+            signal.SIGINT,
+            signal.getsignal(signal.SIGINT),
+        )
+        self.addCleanup(
+            signal.signal,
+            signal.SIGTERM,
+            signal.getsignal(signal.SIGTERM),
+        )
         self.temporary = tempfile.TemporaryDirectory(dir=ROOT / "warehouse")
         self.root = Path(self.temporary.name)
         self.config_path = self.root / "factory.toml"
@@ -315,7 +325,7 @@ class EndToEndWorkerTests(unittest.TestCase):
         owner = "workspace-startup-owner"
         claim = self.jobs.claim_next(
             owner,
-            0.25,
+            2,
             max_total=1,
             type_limits={"test": 1},
         )
@@ -375,7 +385,7 @@ class EndToEndWorkerTests(unittest.TestCase):
         owner = "provenance-startup-owner"
         claim = self.jobs.claim_next(
             owner,
-            0.45,
+            2,
             max_total=1,
             type_limits={"test": 1},
         )
@@ -431,6 +441,14 @@ class EndToEndWorkerTests(unittest.TestCase):
         self.assertEqual(0, job["retry_allowance"])
         self.assertIn("HEARTBEAT_DATABASE_CONTENTION", diagnostics)
         self.assertIn("HEARTBEAT_RECOVERED", diagnostics)
+        with self.db.connect() as connection:
+            self.assertEqual(
+                0,
+                connection.execute(
+                    "SELECT COUNT(*) FROM events WHERE job_id=? AND type='LEASE_EXPIRED'",
+                    (job_id,),
+                ).fetchone()[0],
+            )
 
     def test_expiry_during_provenance_is_fenced_before_handler(self) -> None:
         job_id = self.jobs.create(
@@ -2763,9 +2781,10 @@ class EndToEndWorkerTests(unittest.TestCase):
         staged.chmod(staged.stat().st_mode | 0o200)
         source = staged / "src/main.c"
         source.parent.chmod(source.parent.stat().st_mode | 0o200)
+        source_mode = source.stat().st_mode & 0o777
         source.unlink()
         source.write_text("int main(void) { return 0; }\n", encoding="utf-8")
-        source.chmod(0o444)
+        source.chmod(source_mode)
         tampered = validator.run(
             child,
             workspace,

@@ -990,19 +990,22 @@ def _byox_repair_archive_selection(
 ) -> tuple[tuple[str, ...] | None, dict[str, Any] | None]:
     """Declare repair outputs as verified prior roots plus canonical required roots."""
 
-    policy = job.payload.get("seed_policy")
-    is_repair_policy = bool(
-        isinstance(policy, dict)
-        and policy.get("kind") == "byox_reference_repair"
-    )
     from .byox_remediation import (
         BYOX_ARTIFACT_PROFILES,
         BYOX_CANONICAL_DIRECTORY_ROOTS,
         BYOX_REPAIR_ARTIFACT_TYPE,
         BYOX_REPAIR_CONTROL_ROOTS,
+        BYOX_REPAIR_POLICY_KIND,
+        BYOX_REPAIR_S2_POLICY_KIND,
         BYOX_REPAIR_STAGED_ROOTS,
     )
 
+    policy = job.payload.get("seed_policy")
+    policy_kind = policy.get("kind") if isinstance(policy, dict) else None
+    is_repair_policy = bool(
+        isinstance(policy_kind, str)
+        and policy_kind in {BYOX_REPAIR_POLICY_KIND, BYOX_REPAIR_S2_POLICY_KIND}
+    )
     is_repair_type = job.payload.get("artifact_type") == BYOX_REPAIR_ARTIFACT_TYPE
     if not is_repair_policy and not is_repair_type:
         return None, None
@@ -1884,8 +1887,14 @@ def _open_byox_absolute_directory(path: Path) -> int:
             except BaseException:
                 os.close(child)
                 raise
-            if _byox_repair_stat_fingerprint(expected) != (
-                _byox_repair_stat_fingerprint(actual)
+            # The stat/open sandwich only binds the name to the opened inode.
+            # Directory metadata such as link count, size, and timestamps can
+            # legitimately change when another process creates an unrelated
+            # child in a shared ancestor.
+            if not (
+                stat.S_ISDIR(actual.st_mode)
+                and expected.st_dev == actual.st_dev
+                and expected.st_ino == actual.st_ino
             ):
                 os.close(child)
                 raise WorkspaceError("BYOX directory component changed while opening")

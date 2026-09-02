@@ -5232,6 +5232,85 @@ class ByoxRemediationTests(unittest.TestCase):
         with self.assertRaisesRegex(HandlerFailure, "factory-isolated"):
             _enforce_byox_remediation_backend(claim, unsafe_settings)
 
+    def test_s2_repair_policy_uses_the_same_hardened_archive_selection(self) -> None:
+        project_id = "project-handler-s2-policy"
+        self._base_graph(project_id, "REVISE")
+        seed_byox_remediation_jobs(
+            self.database,
+            self.jobs,
+            warehouse=self.settings.warehouse,
+            project_ids=[project_id],
+        )
+        repair_id = repair_builder_job_id(project_id, 1)
+        self.jobs.promote_eligible()
+        claim = self.jobs.claim_next(
+            "handler-s2-policy-test", 30, max_total=1, type_limits={}
+        )
+        assert claim is not None and claim.job_id == repair_id
+        workspace = self.manager.allocate(repair_id, claim.attempt_count)
+        _, provenance = JobHandlers(
+            self.settings, self.database, self.manager
+        )._stage_declared_inputs(claim, workspace)
+        legacy_archive_paths, legacy_selection = _byox_repair_archive_selection(
+            claim, workspace, provenance
+        )
+
+        s2_payload = copy.deepcopy(claim.payload)
+        s2_payload["seed_policy"]["kind"] = (
+            remediation_module.BYOX_REPAIR_S2_POLICY_KIND
+        )
+        archive_paths, selection = _byox_repair_archive_selection(
+            replace(claim, payload=s2_payload), workspace, provenance
+        )
+
+        self.assertIsNotNone(archive_paths)
+        self.assertIsNotNone(selection)
+        self.assertEqual(legacy_archive_paths, archive_paths)
+        self.assertEqual(legacy_selection, selection)
+        assert archive_paths is not None
+        self.assertTrue(BYOX_CANONICAL_CHALLENGE_ROOTS <= set(archive_paths))
+        self.assertNotIn("PRIOR_BUILD", archive_paths)
+        self.assertNotIn("PRIOR_REVIEW", archive_paths)
+
+    def test_repair_archive_selection_rejects_s2_policy_lookalikes(self) -> None:
+        project_id = "project-handler-s2-lookalike"
+        self._base_graph(project_id, "REVISE")
+        seed_byox_remediation_jobs(
+            self.database,
+            self.jobs,
+            warehouse=self.settings.warehouse,
+            project_ids=[project_id],
+        )
+        repair_id = repair_builder_job_id(project_id, 1)
+        self.jobs.promote_eligible()
+        claim = self.jobs.claim_next(
+            "handler-s2-lookalike-test", 30, max_total=1, type_limits={}
+        )
+        assert claim is not None and claim.job_id == repair_id
+        workspace = self.manager.allocate(repair_id, claim.attempt_count)
+        _, provenance = JobHandlers(
+            self.settings, self.database, self.manager
+        )._stage_declared_inputs(claim, workspace)
+
+        for kind in (
+            "byox_reference_repair_s2_suffix",
+            remediation_module.BYOX_REPAIR_REVIEW_S2_POLICY_KIND,
+            [],
+            {},
+        ):
+            with self.subTest(kind=kind):
+                payload = copy.deepcopy(claim.payload)
+                payload["seed_policy"]["kind"] = kind
+                with self.assertRaisesRegex(
+                    HandlerFailure,
+                    "policy and artifact type must be declared together",
+                ) as caught:
+                    _byox_repair_archive_selection(
+                        replace(claim, payload=payload), workspace, provenance
+                    )
+                self.assertEqual("unsafe_archive_projection", caught.exception.kind)
+                self.assertFalse(caught.exception.retryable)
+
     def test_legacy_specialized_profile_excludes_only_controller_root(self) -> None:
         project_id = "project_4b7f4b85b17b06eeba75d235767a898f"
         specialized_files = {

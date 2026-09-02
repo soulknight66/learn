@@ -1,0 +1,32 @@
+{
+  "paths": [
+    "AGENTS.md",
+    "CONCEPTS.md",
+    "DESIGN_QUESTIONS.md",
+    "MANIFEST.yaml",
+    "README.md",
+    "REQUIREMENTS.md",
+    "environment/README.md",
+    "environment/export_student_view.py",
+    "environment/student_view_allowlist.json",
+    "public_tests/README.md",
+    "public_tests/__init__.py",
+    "public_tests/helpers.py",
+    "public_tests/test_engine.py",
+    "public_tests/test_layers.py",
+    "public_tests/test_paths.py",
+    "public_tests/test_runner.py",
+    "starter/README.md",
+    "starter/pydocklet/__init__.py",
+    "starter/pydocklet/__main__.py",
+    "starter/pydocklet/engine.py",
+    "starter/pydocklet/errors.py",
+    "starter/pydocklet/image.py",
+    "starter/pydocklet/layer.py",
+    "starter/pydocklet/models.py",
+    "starter/pydocklet/paths.py",
+    "starter/pydocklet/runner.py",
+    "starter/pydocklet/store.py"
+  ],
+  "schema_version": 1
+}

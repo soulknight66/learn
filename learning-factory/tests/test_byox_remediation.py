@@ -2692,6 +2692,156 @@ class ByoxRemediationTests(unittest.TestCase):
             self._dependencies(repair_builder_job_id(project_id, 2)),
         )
 
+    def test_second_generation_replays_inventory_aware_inputs_exactly(self) -> None:
+        project_id = "project-second-generation-replay"
+        first_builder, _ = self._completed_first_repair_builder(project_id)
+        seed_byox_remediation_jobs(
+            self.database,
+            self.jobs,
+            warehouse=self.settings.warehouse,
+            project_ids=[project_id],
+        )
+        self._complete_repair_review(project_id, 1, "FAIL")
+        seeded = seed_byox_remediation_jobs(
+            self.database,
+            self.jobs,
+            warehouse=self.settings.warehouse,
+            project_ids=[project_id],
+            max_repair_generations=2,
+        )
+        self.assertEqual(
+            "REPAIR_BUILDER_SEEDED", seeded["projects"][project_id]["status"]
+        )
+
+        second_builder = repair_builder_job_id(project_id, 2)
+        second = self.jobs.get(second_builder)
+        assert second is not None
+        trigger_builder = second["payload"]["remediation_snapshot"]["trigger"][
+            "builder"
+        ]
+        trigger_inventory = trigger_builder["artifact_inventory"]
+        [prior_build] = [
+            item
+            for item in second["payload"]["inputs_from_dependencies"]
+            if item.get("artifact_root") is True
+        ]
+        self.assertEqual(first_builder, prior_build["job_id"])
+        self.assertNotIn("artifact_inventory", prior_build)
+
+        second_artifact = self._complete_seeded_job(
+            second_builder,
+            artifact_type=BYOX_REPAIR_ARTIFACT_TYPE,
+            files=self._canonical_pack("repair-two"),
+        )
+        with self.database.connect() as connection:
+            row = connection.execute(
+                "SELECT metadata_json FROM artifacts WHERE artifact_id=?",
+                (second_artifact["artifact_id"],),
+            ).fetchone()
+        assert row is not None
+        metadata = json.loads(row["metadata_json"])
+        selection = metadata["repair_archive_selection"]
+        self.assertEqual(trigger_inventory, selection["source_artifact_inventory"])
+        advanced = seed_byox_remediation_jobs(
+            self.database,
+            self.jobs,
+            warehouse=self.settings.warehouse,
+            project_ids=[project_id],
+            max_repair_generations=2,
+        )
+
+        self.assertEqual("REVIEWER_SEEDED", advanced["projects"][project_id]["status"])
+        reviewer = self.jobs.get(repair_reviewer_job_id(project_id, 2))
+        assert reviewer is not None
+        candidate = reviewer["payload"]["provenance"]["candidate_artifact"]
+        self.assertEqual(
+            selection["artifact_inventory"], candidate["artifact_inventory"]
+        )
+
+    def test_second_generation_inventory_and_input_attacks_fail_closed(self) -> None:
+        project_id = "project-second-generation-input-attacks"
+        self._completed_first_repair_builder(project_id)
+        seed_byox_remediation_jobs(
+            self.database,
+            self.jobs,
+            warehouse=self.settings.warehouse,
+            project_ids=[project_id],
+        )
+        self._complete_repair_review(project_id, 1, "FAIL")
+        seed_byox_remediation_jobs(
+            self.database,
+            self.jobs,
+            warehouse=self.settings.warehouse,
+            project_ids=[project_id],
+            max_repair_generations=2,
+        )
+        second = self.jobs.get(repair_builder_job_id(project_id, 2))
+        assert second is not None
+        payload = second["payload"]
+        source_inventory = copy.deepcopy(
+            payload["remediation_snapshot"]["trigger"]["builder"][
+                "artifact_inventory"
+            ]
+        )
+        observed = [
+            {"checksum": hashlib.sha256(str(index).encode("ascii")).hexdigest()}
+            for index in range(4)
+        ]
+        expected, validation_checksum = (
+            remediation_module._expected_repair_staged_provenance(
+                builder_payload=payload,
+                source_inventory=source_inventory,
+                output_snapshot=None,
+                connection=None,
+                managed_artifact_root=None,
+                observed_staged=observed,
+            )
+        )
+        self.assertEqual(4, len(expected))
+        self.assertEqual(source_inventory, expected[0]["artifact_inventory"])
+        self.assertIsNone(validation_checksum)
+
+        missing_inventory = copy.deepcopy(payload)
+        missing_inventory["remediation_snapshot"]["trigger"]["builder"].pop(
+            "artifact_inventory"
+        )
+        malformed_inventory = copy.deepcopy(payload)
+        malformed_inventory["remediation_snapshot"]["trigger"]["builder"][
+            "artifact_inventory"
+        ] = []
+        mismatched_inventory = copy.deepcopy(payload)
+        mismatched_inventory["remediation_snapshot"]["trigger"]["builder"][
+            "artifact_inventory"
+        ]["profile"] = "forged-profile"
+        injected_input_inventory = copy.deepcopy(payload)
+        injected_input_inventory["inputs_from_dependencies"][0][
+            "artifact_inventory"
+        ] = source_inventory
+        missing_input = copy.deepcopy(payload)
+        missing_input["inputs_from_dependencies"].pop()
+
+        attacks = (
+            ("missing-trigger-inventory", missing_inventory, source_inventory),
+            ("malformed-trigger-inventory", malformed_inventory, source_inventory),
+            ("mismatched-trigger-inventory", mismatched_inventory, source_inventory),
+            ("malformed-source-inventory", payload, []),
+            ("injected-input-inventory", injected_input_inventory, source_inventory),
+            ("missing-input", missing_input, source_inventory),
+        )
+        for name, attacked_payload, attacked_inventory in attacks:
+            with self.subTest(name=name), self.assertRaisesRegex(
+                ByoxRemediationError,
+                "repair declared-input contract is not canonical",
+            ):
+                remediation_module._expected_repair_staged_provenance(
+                    builder_payload=attacked_payload,
+                    source_inventory=attacked_inventory,
+                    output_snapshot=None,
+                    connection=None,
+                    managed_artifact_root=None,
+                    observed_staged=observed,
+                )
+
     def test_validated_pass_stops_without_claiming_workflow_completion(self) -> None:
         project_id = "project-pass"
         self._base_graph(project_id, "REVISE")

@@ -5568,9 +5568,29 @@ def _expected_repair_staged_provenance(
     if not isinstance(builder, dict) or not isinstance(review, dict) or not isinstance(profile, str):
         raise ByoxRemediationError("repair declared-input provenance is malformed")
     declarations = builder_payload.get("inputs_from_dependencies")
+    builder_declaration = dict(builder)
+    missing_inventory = object()
+    builder_inventory = builder_declaration.pop(
+        "artifact_inventory", missing_inventory
+    )
+    if (
+        not isinstance(source_inventory, dict)
+        or (
+            builder.get("artifact_type") == BYOX_REPAIR_ARTIFACT_TYPE
+            and (
+                not isinstance(builder_inventory, dict)
+                or not _same_canonical_json(builder_inventory, source_inventory)
+            )
+        )
+        or (
+            builder.get("artifact_type") != BYOX_REPAIR_ARTIFACT_TYPE
+            and builder_inventory is not missing_inventory
+        )
+    ):
+        raise ByoxRemediationError("repair declared-input contract is not canonical")
     expected_declarations = [
         {
-            **builder,
+            **builder_declaration,
             "artifact_root": True,
             "destination": "PRIOR_BUILD",
             "artifact_profile": profile,
@@ -5587,7 +5607,6 @@ def _expected_repair_staged_provenance(
     if (
         builder_payload.get("protected_input_roots") != list(BYOX_REPAIR_STAGED_ROOTS)
         or not _same_canonical_json(declarations, expected_declarations)
-        or not isinstance(source_inventory, dict)
     ):
         raise ByoxRemediationError("repair declared-input contract is not canonical")
 

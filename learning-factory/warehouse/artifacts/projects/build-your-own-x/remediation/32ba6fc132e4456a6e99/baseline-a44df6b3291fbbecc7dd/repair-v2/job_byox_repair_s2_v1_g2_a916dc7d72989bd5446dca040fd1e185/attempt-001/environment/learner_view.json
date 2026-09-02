@@ -1,0 +1,25 @@
+{
+  "excluded_top_level": [
+    "PROVENANCE.json",
+    "LICENSE_BOUNDARY.md",
+    "VALIDATION.md",
+    "sealed",
+    "adversarial",
+    "debugging",
+    "review_exercises",
+    "benchmarks"
+  ],
+  "included_top_level": [
+    "README.md",
+    "AGENTS.md",
+    "MANIFEST.yaml",
+    "REQUIREMENTS.md",
+    "CONCEPTS.md",
+    "DESIGN_QUESTIONS.md",
+    "starter",
+    "public_tests",
+    "environment"
+  ],
+  "path_policy": "regular-files-and-directories-only",
+  "schema_version": 1
+}

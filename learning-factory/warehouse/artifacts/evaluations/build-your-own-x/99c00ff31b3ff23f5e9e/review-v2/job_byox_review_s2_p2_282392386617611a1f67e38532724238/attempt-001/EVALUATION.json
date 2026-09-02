@@ -1,0 +1,33 @@
+{
+  "builder_job_id": "job_byox_build_s2_420e0f1ce23464564358fc1566993a8c",
+  "checks_run": [
+    "Inspected all 48 submitted files, including learner-facing material, sealed reference code, tests, exercises, metadata, and builder validation claims.",
+    "Parsed MANIFEST.yaml and PROVENANCE.json as strict JSON; checked identifier and source-commit consistency and recomputed both file hashes.",
+    "Probed the toolchain and built the starter and sealed reference from clean state in a writable scratch copy of the immutable submission.",
+    "Ran the public suite against both the intentional starter stub and sealed reference, then ran the sealed reference and adversarial suites.",
+    "Ran an independent seeded oracle and interpreter/compiler differential check over 250 generated bounded expressions.",
+    "Ran independent exact-boundary checks for expression depth, parser nesting, block nesting, and variable count.",
+    "Injected standard-output write failures with /dev/full against the interpreter and a linked generated program.",
+    "Audited subprocess containment, artifact hashing, progressive-disclosure paths, validation-label honesty, and license/provenance boundaries.",
+    "Retried the documented ASan/UBSan build and checked availability of valgrind, alternate compilers, fuzzers, and cross-architecture execution tools."
+  ],
+  "evidence": [
+    "Clean GCC 8.5.0 builds of the starter and sealed reference completed with -Wall -Wextra -Wpedantic -Werror.",
+    "Against the sealed reference, the public suite passed 6/6, the sealed suite passed 10/10, and the adversarial suite passed 7/7; the intentional starter stub failed all six public end-to-end tests as documented.",
+    "The independent seeded sample matched a Python arithmetic oracle and linked native output for all 250 expressions; independently tested 128/129 and 256/257 acceptance boundaries behaved as documented.",
+    "When 1,000 print statements wrote to /dev/full, both eval and the linked generated program returned 0 with empty stderr instead of the writing-failure status 66 required by REQUIREMENTS.md.",
+    "Every Python runner uses subprocess.run with a timeout, but none creates or terminates a process group, so descendants can outlive the direct child and retain captured pipes.",
+    "The sealed reference rejects INT64_MIN % -1 as overflow and the sealed suite requires that result, while the learner-visible requirements specify only the INT64_MIN / -1 overflow case.",
+    "Manifest claims remain limited to GENERATED and PARTIAL, with independent validation required and productionized=false; no unsupported REVIEWED, TESTED, FUZZED, BENCHMARKED, TRANSFER_VERIFIED, or PRODUCTIONIZED label is asserted.",
+    "The artifact verifier passed with 23/23 listed required files and zero detected forbidden paths, special files, or credential hits, but it counted 48 text files rather than the builder record's 49 and pins only MANIFEST.yaml and PROVENANCE.json content hashes."
+  ],
+  "limitations": [
+    "The immutable source baseline and upstream repository were not present, and network access was not used; catalog license evidence, upstream commit/content hashes, and the no-copy/originality assertion could not be independently established.",
+    "ASan/UBSan execution was unavailable because the linker could not find libasan.so.5.0.0 or libubsan.so.1.0.0.",
+    "Valgrind, clang, afl-fuzz, honggfuzz, and qemu-x86_64 were unavailable; no fuzzing, profiling, benchmark, or cross-architecture result is claimed.",
+    "The 250-expression deterministic sample and boundary probes are confidence-building checks, not exhaustive proof.",
+    "git and ripgrep were unavailable, so inventory and static searches used find, grep, and direct file inspection."
+  ],
+  "project_id": "project_bd342fcec50cb8a15740cbb98e57bc1e",
+  "verdict": "REVISE"
+}

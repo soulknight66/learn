@@ -1,8 +1,48 @@
 # Learning artifact catalog
 
-Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 235.
+Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 239.
 
 The complete searchable records, concepts, languages, provenance, and validation labels are in `catalog.json`.
+
+## byox-independent-review — GENERATED
+
+- Artifact type: `byox-independent-review`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/evaluations/build-your-own-x/2af0535ee2e2751f577b/review-v2/job_byox_review_s2_p2_06f4bb6fc57d635189b05b461a5564e3/attempt-001`
+- SHA-256: `5e63f3930f8005f272f46ada53deb033dfb6a2a720b889358ed4123ee0278487`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_byox_review_s2_p2_06f4bb6fc57d635189b05b461a5564e3` (codex_task/examiner)
+
+## byox-independent-review — GENERATED
+
+- Artifact type: `byox-independent-review`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/evaluations/build-your-own-x/99c00ff31b3ff23f5e9e/review-v2/job_byox_review_s2_p2_282392386617611a1f67e38532724238/attempt-001`
+- SHA-256: `eaae0661c0448a6237d5be81adcada1e0bfa887836bdeec6d74e0f24219718ea`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_byox_review_s2_p2_282392386617611a1f67e38532724238` (codex_task/examiner)
+
+## byox-challenge-pack — GENERATED+PARTIAL
+
+- Artifact type: `byox-challenge-pack`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/programming-language/a-journey-explaining-how-to-build-a-compiler-from-scratch-2af0535ee2/job_byox_build_s2_456842804f2378ac6fac70b3792ee7eb/attempt-001`
+- SHA-256: `f23526f144a86cf46e8561a7312f1aa77be8d90a12d12b03702f358f4e69762f`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED, PARTIAL
+- Job: `job_byox_build_s2_456842804f2378ac6fac70b3792ee7eb` (codex_task/reference_builder)
+
+## byox-challenge-pack — GENERATED+PARTIAL
+
+- Artifact type: `byox-challenge-pack`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/programming-language/a-c-and-x86-version-of-the-let-s-build-a-compiler-by-jack-crenshaw-99c00ff31b/job_byox_build_s2_420e0f1ce23464564358fc1566993a8c/attempt-001`
+- SHA-256: `c9085ef701939f2c87129f7d15cdfefc3b2429ed20a744ad6895c63f1bccca99`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED, PARTIAL
+- Job: `job_byox_build_s2_420e0f1ce23464564358fc1566993a8c` (codex_task/reference_builder)
 
 ## byox-independent-review — GENERATED
 

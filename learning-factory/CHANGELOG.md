@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Restore owner access on component-pinned allocated workspaces before removing
+  reserved Codex metadata. This lets validation proceed when a worker preserves a
+  staged read-only root mode onto `.`, atomically quarantines metadata directories,
+  and uses fd-relative, no-cross-device, bounded deletion while leaving ordinary
+  output modes untouched.
 - Expose the exact Arm GNU 15.2.Rel1, QEMU 9.1.1, and QEMU GLib 2.82.1
   installation leaves read-only to tool-enabled isolated workers. Keep the broad
   `/arm` and `/arm/tools` trees denied, and retain absolute-path discovery and

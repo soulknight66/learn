@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import os
 import re
+import secrets
 import shutil
 import stat
 import tempfile
@@ -20,6 +21,126 @@ class WorkspaceError(RuntimeError):
 
 _JOB_ID_RE = re.compile(r"^job_[A-Za-z0-9][A-Za-z0-9_.-]{0,155}$")
 _ATTEMPT_DIRECTORY_RE = re.compile(r"^attempt-[0-9]+$")
+_METADATA_CLEANUP_MAX_ENTRIES = 20_000
+_METADATA_CLEANUP_MAX_DEPTH = 100
+
+
+def _metadata_cleanup_directory_flags() -> int:
+    required_dir_fd = (os.open, os.stat, os.unlink, os.rmdir, os.mkdir, os.rename)
+    if (
+        os.name != "posix"
+        or not hasattr(os, "O_DIRECTORY")
+        or not hasattr(os, "O_NOFOLLOW")
+        or not hasattr(os, "fchmod")
+        or not hasattr(os, "geteuid")
+        or os.scandir not in getattr(os, "supports_fd", set())
+        or os.stat not in getattr(os, "supports_follow_symlinks", set())
+        or any(
+            operation not in getattr(os, "supports_dir_fd", set())
+            for operation in required_dir_fd
+        )
+    ):
+        raise WorkspaceError("descriptor-safe root metadata cleanup is unavailable")
+    return (
+        os.O_RDONLY
+        | os.O_DIRECTORY
+        | os.O_NOFOLLOW
+        | getattr(os, "O_CLOEXEC", 0)
+    )
+
+
+def _open_pinned_directory(
+    parent_descriptor: int, name: str, directory_flags: int
+) -> tuple[int, os.stat_result]:
+    expected = os.stat(name, dir_fd=parent_descriptor, follow_symlinks=False)
+    if not stat.S_ISDIR(expected.st_mode):
+        raise WorkspaceError("allocated workspace path contains a non-directory")
+    descriptor = os.open(name, directory_flags, dir_fd=parent_descriptor)
+    try:
+        opened = os.fstat(descriptor)
+        if (opened.st_dev, opened.st_ino) != (expected.st_dev, expected.st_ino):
+            raise WorkspaceError("allocated workspace path changed while opening")
+        return descriptor, opened
+    except BaseException:
+        os.close(descriptor)
+        raise
+
+
+def _open_absolute_directory(path: Path, directory_flags: int) -> int:
+    """Open an absolute directory component-by-component without following links."""
+
+    absolute = Path(os.path.abspath(path))
+    descriptor = os.open(absolute.anchor, directory_flags)
+    try:
+        for name in absolute.parts[1:]:
+            child, _ = _open_pinned_directory(descriptor, name, directory_flags)
+            os.close(descriptor)
+            descriptor = child
+        return descriptor
+    except BaseException:
+        os.close(descriptor)
+        raise
+
+
+def _discard_metadata_directory(
+    parent_descriptor: int,
+    name: str,
+    directory_flags: int,
+    *,
+    remaining: list[int],
+    expected_device: int,
+    expected_identity: tuple[int, int],
+    depth: int = 0,
+) -> None:
+    """Delete one bounded tree through held directory descriptors only."""
+
+    if depth > _METADATA_CLEANUP_MAX_DEPTH:
+        raise WorkspaceError("root metadata cleanup exceeds its depth bound")
+    descriptor, opened = _open_pinned_directory(
+        parent_descriptor, name, directory_flags
+    )
+    try:
+        if (opened.st_dev, opened.st_ino) != expected_identity:
+            raise WorkspaceError("root metadata directory changed during cleanup")
+        if opened.st_dev != expected_device:
+            raise WorkspaceError("root metadata cleanup crosses a filesystem boundary")
+        os.fchmod(descriptor, stat.S_IMODE(opened.st_mode) | stat.S_IRWXU)
+        children: list[str] = []
+        with os.scandir(descriptor) as iterator:
+            for item in iterator:
+                remaining[0] -= 1
+                if remaining[0] < 0:
+                    raise WorkspaceError(
+                        "root metadata cleanup exceeds its entry bound"
+                    )
+                children.append(item.name)
+        for child_name in children:
+            value = os.stat(
+                child_name, dir_fd=descriptor, follow_symlinks=False
+            )
+            if stat.S_ISDIR(value.st_mode):
+                _discard_metadata_directory(
+                    descriptor,
+                    child_name,
+                    directory_flags,
+                    remaining=remaining,
+                    expected_device=expected_device,
+                    expected_identity=(value.st_dev, value.st_ino),
+                    depth=depth + 1,
+                )
+            else:
+                os.unlink(child_name, dir_fd=descriptor)
+        named_after = os.stat(name, dir_fd=parent_descriptor, follow_symlinks=False)
+        opened_after = os.fstat(descriptor)
+        if (
+            not stat.S_ISDIR(named_after.st_mode)
+            or (named_after.st_dev, named_after.st_ino)
+            != (opened_after.st_dev, opened_after.st_ino)
+        ):
+            raise WorkspaceError("root metadata directory changed during cleanup")
+        os.rmdir(name, dir_fd=parent_descriptor)
+    finally:
+        os.close(descriptor)
 
 
 def safe_relative(value: str) -> Path:
@@ -157,25 +278,155 @@ class WorkspaceManager:
         workspace so callers cannot turn it into a general deletion primitive.
         """
 
+        workspaces = Path(os.path.abspath(self.workspaces))
+        candidate = Path(os.path.abspath(workspace))
+        try:
+            relative_workspace = candidate.relative_to(workspaces)
+        except ValueError as error:
+            raise WorkspaceError(
+                "metadata cleanup requires an allocated workspace"
+            ) from error
         if (
-            workspace.is_symlink()
-            or not workspace.is_dir()
-            or not contained(self.workspaces, workspace)
+            len(relative_workspace.parts) != 2
+            or _JOB_ID_RE.fullmatch(relative_workspace.parts[0]) is None
+            or _ATTEMPT_DIRECTORY_RE.fullmatch(relative_workspace.parts[1]) is None
         ):
             raise WorkspaceError("metadata cleanup requires an allocated workspace")
         relative = safe_relative(name)
         if len(relative.parts) != 1:
             raise WorkspaceError(f"unsafe root metadata name: {name!r}")
-        target = workspace / relative
-        if not target.exists() and not target.is_symlink():
-            return False
-        if target.is_symlink() or target.is_file():
-            target.unlink()
-        elif target.is_dir():
-            shutil.rmtree(target)
-        else:
-            raise WorkspaceError(f"root metadata is a special file: {name!r}")
-        return True
+        directory_flags = _metadata_cleanup_directory_flags()
+        root_descriptor: int | None = None
+        job_descriptor: int | None = None
+        descriptor: int | None = None
+        try:
+            root_descriptor = _open_absolute_directory(
+                workspaces, directory_flags
+            )
+            job_descriptor, _ = _open_pinned_directory(
+                root_descriptor, relative_workspace.parts[0], directory_flags
+            )
+            descriptor, opened = _open_pinned_directory(
+                job_descriptor, relative_workspace.parts[1], directory_flags
+            )
+            if opened.st_uid != os.geteuid():
+                raise WorkspaceError("allocated workspace has an unexpected owner")
+            os.fchmod(descriptor, stat.S_IMODE(opened.st_mode) | stat.S_IRWXU)
+            try:
+                target = os.stat(
+                    relative.name, dir_fd=descriptor, follow_symlinks=False
+                )
+            except FileNotFoundError:
+                return False
+            if stat.S_ISLNK(target.st_mode) or stat.S_ISREG(target.st_mode):
+                os.unlink(relative.name, dir_fd=descriptor)
+            elif stat.S_ISDIR(target.st_mode):
+                metadata_descriptor, opened_metadata = _open_pinned_directory(
+                    descriptor, relative.name, directory_flags
+                )
+                try:
+                    if (
+                        (opened_metadata.st_dev, opened_metadata.st_ino)
+                        != (target.st_dev, target.st_ino)
+                        or opened_metadata.st_dev != opened.st_dev
+                    ):
+                        raise WorkspaceError(
+                            "root metadata directory changed before quarantine"
+                        )
+                    os.fchmod(
+                        metadata_descriptor,
+                        stat.S_IMODE(opened_metadata.st_mode) | stat.S_IRWXU,
+                    )
+                finally:
+                    os.close(metadata_descriptor)
+                quarantine_name = ""
+                quarantine_descriptor: int | None = None
+                moved = False
+                try:
+                    for _ in range(32):
+                        quarantine_name = (
+                            ".factory-metadata-cleanup-" + secrets.token_hex(16)
+                        )
+                        try:
+                            os.mkdir(
+                                quarantine_name,
+                                mode=0o700,
+                                dir_fd=descriptor,
+                            )
+                            break
+                        except FileExistsError:
+                            continue
+                    else:
+                        raise WorkspaceError(
+                            "cannot allocate root metadata cleanup quarantine"
+                        )
+                    quarantine_descriptor, quarantine = _open_pinned_directory(
+                        descriptor, quarantine_name, directory_flags
+                    )
+                    if quarantine.st_uid != os.geteuid():
+                        raise WorkspaceError(
+                            "root metadata cleanup quarantine has an unexpected owner"
+                        )
+                    # A setgid attempt root can make a newly created child setgid
+                    # even when mkdir requested 0700.  Some shared filesystems
+                    # reject directory renames into that inherited mode.
+                    os.fchmod(quarantine_descriptor, stat.S_IRWXU)
+                    os.rename(
+                        relative.name,
+                        "metadata",
+                        src_dir_fd=descriptor,
+                        dst_dir_fd=quarantine_descriptor,
+                    )
+                    moved = True
+                    quarantined = os.stat(
+                        "metadata",
+                        dir_fd=quarantine_descriptor,
+                        follow_symlinks=False,
+                    )
+                    if (
+                        not stat.S_ISDIR(quarantined.st_mode)
+                        or (quarantined.st_dev, quarantined.st_ino)
+                        != (target.st_dev, target.st_ino)
+                    ):
+                        raise WorkspaceError(
+                            "root metadata directory changed before quarantine"
+                        )
+                    _discard_metadata_directory(
+                        quarantine_descriptor,
+                        "metadata",
+                        directory_flags,
+                        remaining=[_METADATA_CLEANUP_MAX_ENTRIES],
+                        expected_device=opened.st_dev,
+                        expected_identity=(
+                            quarantined.st_dev,
+                            quarantined.st_ino,
+                        ),
+                    )
+                    os.rmdir(quarantine_name, dir_fd=descriptor)
+                finally:
+                    if quarantine_descriptor is not None:
+                        os.close(quarantine_descriptor)
+                    if quarantine_name and not moved:
+                        try:
+                            os.rmdir(quarantine_name, dir_fd=descriptor)
+                        except FileNotFoundError:
+                            pass
+            else:
+                raise WorkspaceError(f"root metadata is a special file: {name!r}")
+            return True
+        except WorkspaceError:
+            raise
+        except OSError as error:
+            raise WorkspaceError(
+                f"cannot safely discard root metadata: {name!r}"
+            ) from error
+        finally:
+            if descriptor is not None:
+                os.close(descriptor)
+            if job_descriptor is not None:
+                os.close(job_descriptor)
+            if root_descriptor is not None:
+                os.close(root_descriptor)
 
     def stage_file(self, source: Path, workspace: Path, destination: str) -> Path:
         if source.is_symlink() or not source.is_file():

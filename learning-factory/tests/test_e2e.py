@@ -858,10 +858,16 @@ class EndToEndWorkerTests(unittest.TestCase):
             (workspace / ".git").mkdir()
             (workspace / ".git" / "config").write_text("worker metadata\n", encoding="utf-8")
             (workspace / ".agents").mkdir()
-            (workspace / ".agents" / "state").write_text("worker metadata\n", encoding="utf-8")
+            (workspace / ".agents" / "read-only").mkdir()
+            (workspace / ".agents" / "read-only" / "state").write_text(
+                "worker metadata\n", encoding="utf-8"
+            )
             (workspace / ".codex").mkdir()
             (workspace / ".codex" / "state").write_text("worker metadata\n", encoding="utf-8")
             (workspace / "result.txt").write_text("ok\n", encoding="utf-8")
+            (workspace / ".agents" / "read-only").chmod(0o555)
+            (workspace / ".agents").chmod(0o555)
+            workspace.chmod(0o2555)
             return backend_result
 
         claim = self.jobs.claim_next(
@@ -878,6 +884,16 @@ class EndToEndWorkerTests(unittest.TestCase):
             )
         self.assertEqual(0, exit_code)
         self.assertEqual("SUCCEEDED", self.jobs.get(job_id)["state"])
+        attempt_workspace = (
+            self.settings.warehouse / "workspaces" / job_id / "attempt-001"
+        )
+        self.assertEqual(0o2755, attempt_workspace.stat().st_mode & 0o7777)
+        self.assertFalse(
+            any(
+                path.name.startswith(".factory-metadata-cleanup-")
+                for path in attempt_workspace.iterdir()
+            )
+        )
         with self.db.connect() as connection:
             artifact = connection.execute(
                 "SELECT path,checksum,metadata_json FROM artifacts WHERE job_id=?",

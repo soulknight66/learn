@@ -12,6 +12,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
+import learnfactory.workspace as workspace_module
 from learnfactory.db import Database
 from learnfactory.jobs import JobRepository
 from learnfactory.util import now, tree_sha256, tree_sha256_v1
@@ -639,6 +640,132 @@ class ValidationTests(WorkspaceValidationTestCase):
 
 
 class WorkspaceTests(WorkspaceValidationTestCase):
+    def test_root_metadata_cleanup_repairs_read_only_workspace_safely(self) -> None:
+        workspace = self.manager.allocate("job_read_only_metadata", 1)
+        agents = workspace / ".agents"
+        nested = agents / "read-only"
+        nested.mkdir(parents=True)
+        (nested / "state").write_text("worker metadata\n", encoding="utf-8")
+        outside = self.root / "outside-metadata-target"
+        outside.mkdir()
+        sentinel = outside / "sentinel.txt"
+        sentinel.write_text("keep\n", encoding="utf-8")
+        (workspace / ".codex").symlink_to(outside, target_is_directory=True)
+        result = workspace / "result.txt"
+        result.write_text("unchanged\n", encoding="utf-8")
+        nested.chmod(0o555)
+        agents.chmod(0o555)
+        workspace.chmod(0o2555)
+        restricted_mode = workspace.stat().st_mode & 0o7777
+
+        self.assertTrue(self.manager.discard_root_metadata(workspace, ".agents"))
+        self.assertTrue(self.manager.discard_root_metadata(workspace, ".codex"))
+        self.assertTrue(
+            self.manager.discard_root_metadata(workspace, ".factory-workspace")
+        )
+        self.assertFalse(agents.exists())
+        self.assertFalse((workspace / ".codex").exists())
+        self.assertEqual("keep\n", sentinel.read_text(encoding="utf-8"))
+        self.assertEqual("unchanged\n", result.read_text(encoding="utf-8"))
+        repaired_mode = workspace.stat().st_mode & 0o7777
+        self.assertEqual(0o700, repaired_mode & 0o700)
+        self.assertEqual(restricted_mode & ~0o700, repaired_mode & ~0o700)
+        scratch = Path(tempfile.mkdtemp(prefix=".controller-test-", dir=workspace))
+        scratch.rmdir()
+
+    def test_root_metadata_cleanup_rejects_special_root_entry(self) -> None:
+        workspace = self.manager.allocate("job_special_metadata", 1)
+        special = workspace / ".agents"
+        os.mkfifo(special)
+
+        with self.assertRaisesRegex(WorkspaceError, "special file"):
+            self.manager.discard_root_metadata(workspace, ".agents")
+        self.assertTrue(special.exists())
+
+    def test_root_metadata_cleanup_rejects_symlinked_job_ancestor(self) -> None:
+        workspace = self.manager.allocate("job_metadata_ancestor", 1)
+        original_job_root = workspace.parent
+        retired_job_root = self.root / "retired-job-root"
+        original_job_root.rename(retired_job_root)
+        outside = self.root / "outside-job-root"
+        outside_agents = outside / "attempt-001" / ".agents"
+        outside_agents.mkdir(parents=True)
+        sentinel = outside_agents / "sentinel"
+        sentinel.write_text("keep\n", encoding="utf-8")
+        original_job_root.symlink_to(outside, target_is_directory=True)
+
+        with self.assertRaisesRegex(WorkspaceError, "non-directory"):
+            self.manager.discard_root_metadata(workspace, ".agents")
+        self.assertEqual("keep\n", sentinel.read_text(encoding="utf-8"))
+
+    def test_root_metadata_cleanup_is_entry_bounded_after_quarantine(self) -> None:
+        workspace = self.manager.allocate("job_bounded_metadata", 1)
+        agents = workspace / ".agents"
+        agents.mkdir()
+        (agents / "one").write_text("one\n", encoding="utf-8")
+        (agents / "two").write_text("two\n", encoding="utf-8")
+
+        with patch(
+            "learnfactory.workspace._METADATA_CLEANUP_MAX_ENTRIES", 1
+        ), self.assertRaisesRegex(WorkspaceError, "entry bound"):
+            self.manager.discard_root_metadata(workspace, ".agents")
+
+        quarantines = list(workspace.glob(".factory-metadata-cleanup-*"))
+        self.assertEqual(1, len(quarantines))
+        self.assertEqual(
+            ["one", "two"],
+            sorted(path.name for path in (quarantines[0] / "metadata").iterdir()),
+        )
+
+    def test_root_metadata_cleanup_rejects_quarantined_directory_swap(self) -> None:
+        workspace = self.manager.allocate("job_swapped_metadata", 1)
+        agents = workspace / ".agents"
+        agents.mkdir()
+        (agents / "original").write_text("keep original\n", encoding="utf-8")
+        original_discard = workspace_module._discard_metadata_directory
+        swapped = False
+
+        def swap_then_discard(*args: object, **kwargs: object) -> None:
+            nonlocal swapped
+            if not swapped:
+                quarantine = next(workspace.glob(".factory-metadata-cleanup-*"))
+                (quarantine / "metadata").rename(quarantine / "retired")
+                (quarantine / "metadata").mkdir()
+                (quarantine / "metadata" / "replacement").write_text(
+                    "do not delete\n", encoding="utf-8"
+                )
+                swapped = True
+            original_discard(*args, **kwargs)
+
+        with patch(
+            "learnfactory.workspace._discard_metadata_directory",
+            side_effect=swap_then_discard,
+        ), self.assertRaisesRegex(WorkspaceError, "changed during cleanup"):
+            self.manager.discard_root_metadata(workspace, ".agents")
+
+        quarantine = next(workspace.glob(".factory-metadata-cleanup-*"))
+        self.assertEqual(
+            "keep original\n",
+            (quarantine / "retired" / "original").read_text(encoding="utf-8"),
+        )
+        self.assertEqual(
+            "do not delete\n",
+            (quarantine / "metadata" / "replacement").read_text(
+                encoding="utf-8"
+            ),
+        )
+
+    def test_root_metadata_cleanup_fails_closed_without_fd_support(self) -> None:
+        workspace = self.manager.allocate("job_metadata_capability", 1)
+        agents = workspace / ".agents"
+        agents.mkdir()
+
+        with patch(
+            "learnfactory.workspace.os.supports_fd", frozenset()
+        ), self.assertRaisesRegex(WorkspaceError, "unavailable"):
+            self.manager.discard_root_metadata(workspace, ".agents")
+        self.assertTrue(agents.is_dir())
+
     def test_framed_tree_hash_distinguishes_structural_v1_collision(self) -> None:
         first = self.root / "tree-a"
         second = self.root / "tree-b"

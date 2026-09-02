@@ -1,0 +1,36 @@
+{
+  "builder_job_id": "job_byox_build_s2_73dc6c8565815444ada16dcdccbdb396",
+  "checks_run": [
+    "Read-only requirements-to-artifact inspection of all 42 submitted regular files",
+    "Bash syntax check over starter, public_tests, environment, and sealed scripts: exit 0",
+    "Public contract against sealed reference: 8/8 checks passed",
+    "Sealed deterministic reference suite: 8/8 checks passed",
+    "Adversarial regression suite: 6/6 checks passed",
+    "Intentional starter baseline: exit 1 with 6/8 checks failing",
+    "Host capability probe: exit 0 with unprivileged user namespaces supported",
+    "Bounded real namespace integration: exit 0 with hostname and PID-view checks passing",
+    "Pack audit plus independent inventory, mode, hash, and static unsafe-construct checks",
+    "Deterministic completion-lock contention harness: reproduced a stranded RUNNING state",
+    "Direct starter invalid-name probe: exposed a false-positive public test",
+    "Documentation, progressive-disclosure, provenance, license-boundary, and validation-claim review"
+  ],
+  "evidence": [
+    "CANDIDATE/sealed/reference/tinybox.sh releases the name lock before the runner, then completion uses the same fail-fast acquire path; transient contention can abort completion.",
+    "The completion-contention harness observed PRIMARY_STATUS=3, COMPETITOR_STATUS=3, INSPECT_STATUS=0, status=RUNNING, and an empty exit_code after the runner was released.",
+    "The public traversal check accepts any nonzero create result; the untouched starter returned 70 with 'create is not implemented yet' and was nevertheless reported as rejecting traversal.",
+    "Independent reruns confirmed 8/8 public reference checks, 8/8 sealed checks, 6/6 adversarial checks, and a successful single-host namespace probe.",
+    "CANDIDATE/VALIDATION.md records a successful final live probe, but CANDIDATE/sealed/REVIEW.md still says the runner was not proven runnable on this host.",
+    "The manifest conservatively remains GENERATED + PARTIAL, requires independent validation, and sets productionized=false; fuzzing, benchmarking, transfer, security, and production labels are not claimed.",
+    "Reference answers and hidden tests are structurally placed under sealed paths, and the license boundary clearly treats the linked tutorial as NOASSERTION with no copied linked content."
+  ],
+  "limitations": [
+    "ShellCheck is unavailable; only Bash parsing and runtime/static checks were performed.",
+    "The immutable source catalog and linked upstream repository were not provided and network access is restricted, so source extraction, license evidence, and the no-copy assertion could not be independently re-derived.",
+    "No materialized learner view or transfer validator was provided; exclusion of sealed answers and tests from an actual student view is therefore unverified.",
+    "The live runner result covers one Linux host only and is not portability, containment, fuzzing, benchmark, fault-tolerance, or production evidence.",
+    "The completion race was widened deterministically by delaying the competing controller's metadata read; this demonstrates a valid schedule but does not estimate field frequency.",
+    "The generated material is described as for personal educational use but has no explicit SPDX license or grant, so broader redistribution rights remain unclear."
+  ],
+  "project_id": "project_44e8061be7b19deb5e3e6b2fdef38d1a",
+  "verdict": "REVISE"
+}

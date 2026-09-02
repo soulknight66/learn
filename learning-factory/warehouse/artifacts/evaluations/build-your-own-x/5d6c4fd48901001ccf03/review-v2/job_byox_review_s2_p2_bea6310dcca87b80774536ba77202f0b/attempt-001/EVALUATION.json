@@ -1,0 +1,31 @@
+{
+  "builder_job_id": "job_byox_build_s2_4ba3ac0bd4f83531da934f5baf2f8ba6",
+  "checks_run": [
+    "Static audit of requirements, starter, sealed reference, tests, staged exercises, manifest, provenance, license boundary, and validation claims",
+    "Python 3.11 public suite: 10 tests passed",
+    "Python 3.11 sealed reference suite: 25 tests passed with the opt-in Linux test skipped",
+    "Python 3.11 adversarial suite: 4 tests passed",
+    "Opt-in writable-root Linux namespace smoke test: 1 test passed",
+    "Independent concurrent SQLite claim, illegal-transition, real timeout, and timestamp-boundary probes",
+    "Strict JSON/identity, SHA-256, regular-entry, credential-pattern, AST, and bytecode-hygiene checks",
+    "Default-interpreter, host capability, read-only-root, and debugging-exercise checks"
+  ],
+  "evidence": [
+    "MANIFEST.yaml asserts only GENERATED and PARTIAL, requires independent validation, and keeps productionized false; no prohibited promotion label is claimed.",
+    "Independent reruns reproduced the claimed 10-test public pass, 25-test reference pass with one skip, 4-test adversarial pass, host user-namespace availability, and writable-root integration pass under Python 3.11.5.",
+    "A barrier-synchronized two-connection claim produced exactly one winner and one loser; a corrected direct RUNNING-to-CREATED SQL update was rejected by the trigger and left RUNNING durable.",
+    "A real subprocess timeout returned timed_out true and exit code -9 within two seconds.",
+    "Registry.create accepted week-date, basic-date/time, and arbitrary-separator timestamps that are ISO-8601 forms but not RFC 3339, contradicting R4.",
+    "Project, source, and commit identities agree between manifest and provenance, but the declared provenance_sha256 matches only provenance.snapshot_sha256; the actual PROVENANCE.json digest is 1b00a500c586d122105ac591fbb0868281cb0524f989f607326e0a896d75b611.",
+    "The candidate accurately discloses its Python 3.11 requirement, failed read-only remount, incomplete production controls, lack of fuzzing/transfer review, and exploratory-only benchmark."
+  ],
+  "limitations": [
+    "The immutable upstream snapshot and linked tutorial were unavailable, so the no-copy assertion and upstream license evidence could not be independently compared.",
+    "No generated student-view projection was supplied; directory separation and prose instructions were inspectable, but exclusion of sealed material from an actual learner view remains orchestrator-dependent.",
+    "The default python3 is 3.6.8 and cannot parse the project; checks required the explicitly documented Python 3.11.5 path and a reviewer-owned TMPDIR because system temporary directories were unavailable.",
+    "The default read-only-root integration path returned exit 126 with EPERM on this NFS workspace; only the explicitly non-read-only benign /bin/true path passed.",
+    "No hostile-workload containment, alternate kernel/filesystem matrix, fuzzing, controlled benchmark, crash recovery, or transfer verification was performed."
+  ],
+  "project_id": "project_884ee11fc61abc48b60825556299dae5",
+  "verdict": "REVISE"
+}

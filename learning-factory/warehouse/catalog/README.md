@@ -1,8 +1,48 @@
 # Learning artifact catalog
 
-Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 239.
+Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 243.
 
 The complete searchable records, concepts, languages, provenance, and validation labels are in `catalog.json`.
+
+## byox-independent-review — GENERATED
+
+- Artifact type: `byox-independent-review`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/evaluations/build-your-own-x/5d6c4fd48901001ccf03/review-v2/job_byox_review_s2_p2_bea6310dcca87b80774536ba77202f0b/attempt-001`
+- SHA-256: `216d81e854eac5a28b628b909a2536db9de9752745680ecbac06d45d32d1208d`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_byox_review_s2_p2_bea6310dcca87b80774536ba77202f0b` (codex_task/examiner)
+
+## byox-independent-review — GENERATED
+
+- Artifact type: `byox-independent-review`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/evaluations/build-your-own-x/14976a824cd2b7bae755/review-v2/job_byox_review_s2_p2_65c00df7f8520d76461eaa608f7a35e4/attempt-001`
+- SHA-256: `f9ec4b94441a1a8aceffae342ce69ff5f1d1ba406921bdc65974fcb005187b97`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_byox_review_s2_p2_65c00df7f8520d76461eaa608f7a35e4` (codex_task/examiner)
+
+## byox-challenge-pack — GENERATED+PARTIAL
+
+- Artifact type: `byox-challenge-pack`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/docker/a-workshop-on-linux-containers-rebuild-docker-from-scratch-5d6c4fd489/job_byox_build_s2_4ba3ac0bd4f83531da934f5baf2f8ba6/attempt-001`
+- SHA-256: `3906d98375bdc9ee6ed66db5a59133ac72b3e1c1dc732dfe08826c42ca26ce2f`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED, PARTIAL
+- Job: `job_byox_build_s2_4ba3ac0bd4f83531da934f5baf2f8ba6` (codex_task/reference_builder)
+
+## byox-challenge-pack — GENERATED+PARTIAL
+
+- Artifact type: `byox-challenge-pack`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/docker/docker-implemented-in-around-100-lines-of-bash-14976a824c/job_byox_build_s2_73dc6c8565815444ada16dcdccbdb396/attempt-001`
+- SHA-256: `30fe72d5fe8a6bfc637fee5ff1a83326e902b611db70bfa0a4427844c185d92f`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED, PARTIAL
+- Job: `job_byox_build_s2_73dc6c8565815444ada16dcdccbdb396` (codex_task/reference_builder)
 
 ## byox-independent-review — GENERATED
 

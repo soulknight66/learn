@@ -1,0 +1,33 @@
+{
+  "builder_job_id": "job_byox_build_s2_a7444fc01bbed158b7bcf7820b3d98a5",
+  "checks_run": [
+    "Inventoried and statically reviewed all 95 files in CANDIDATE, including learner-facing, supplemental, and sealed material.",
+    "Strictly parsed MANIFEST.yaml and PROVENANCE.json as JSON and checked their schema keys and cross-file project, source, commit, snapshot, label, and validation-policy fields.",
+    "Clean-cross-built copied starter and sealed reference trees with the configured Arm GNU 15.2.Rel1 toolchain, outside immutable CANDIDATE.",
+    "Ran the public suite against the starter and reference and ran the 400-check sealed reference suite with GCC 15.2.0 AddressSanitizer and UndefinedBehaviorSanitizer.",
+    "Ran a reviewer-authored 28-check sanitizer edge harness covering corrupt scheduler-state rejection, frame-init failure atomicity, combined VM permissions, top-of-address-space translation, output publication, and RAMFS failure atomicity.",
+    "Inspected the rebuilt reference ELF with Arm readelf and nm and ran bounded QEMU 9.1.1 reference and starter boots.",
+    "Compared clean target rebuild products byte-for-byte with submitted ELF and BIN artifacts and inspected the retained host-test executable for reproducibility.",
+    "Scanned file types, symlinks, learner-root solution names, credential patterns, disclosure layout, validation claims, license boundaries, provenance statements, and learner guidance."
+  ],
+  "evidence": [
+    "Both clean ARM builds exited 0; submitted and rebuilt reference/starter ELF and BIN files were byte-identical.",
+    "The reference passed the public suite and all 400 sealed checks under ASan/UBSan; the intentionally incomplete starter produced the documented 37 public-check failures.",
+    "The independent edge harness passed 28/28 checks.",
+    "The reference ELF is ELF32 little-endian ARM EABI5 with entry 0x10000, separate RX/RW LOAD segments, a non-executable GNU stack, and no undefined symbols.",
+    "Bounded QEMU reference execution exited 0 and emitted all six required markers in order; the 75 captured bytes contained six CRLF pairs and no bare LF. The starter emitted no marker and timed out with exit 124 as documented.",
+    "Manifest labels remain exactly GENERATED and PARTIAL, independent validation remains REQUIRED, and productionized remains false; no stronger validation label is self-assigned.",
+    "No symlink, special file, core learner-root solution directory, or credential-pattern match was found.",
+    "adversarial/README.md claims its machine-readable vectors cover stale-PID, corrupt-scheduler, final-byte translation, full-capacity, and scrub/reuse cases that are absent from the six-vector boundaries.json file."
+  ],
+  "limitations": [
+    "The immutable catalog snapshot and linked upstream repository were unavailable, so source-commit authenticity, catalog license evidence, and the assertion that no linked content was copied could not be independently established.",
+    "No orchestrator-rendered student view was provided. The bundle contains 41 files beneath sealed paths, so path layout and prose alone cannot prove that a learner view excludes reference, test, and answer material.",
+    "Only QEMU versatilepb was exercised; no physical ARM board, transfer environment, fuzz campaign, repeated benchmark, security audit, or production workload was run.",
+    "The retained sealed host-test binary is not byte-reproducible across workspace paths because debug information embeds its absolute compilation directory; target ELF/BIN artifacts were byte-reproducible.",
+    "rg and git were unavailable in the review environment, and the artifact had no accessible repository history; bounded find, grep, and direct file inspection were used instead.",
+    "The generated material has a careful provenance boundary but no explicit redistribution license; 'personal educational use' is a purpose statement, not a reusable license grant."
+  ],
+  "project_id": "project_fc8ca1dbad4baba3bd2d54dbb42c1a98",
+  "verdict": "REVISE"
+}

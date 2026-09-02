@@ -1,0 +1,40 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g1_fb171607508a433f846766f8d3726b84",
+  "checks_run": [
+    "Read-only inventory, mode, special-file, hard-link, and credential-pattern inspection",
+    "Manifest/provenance consistency and validation-label review",
+    "Static review of requirements, learner material, reference code, tests, and validation claims",
+    "Configured Python, GCC, Arm GCC/binutils, QEMU, Make, and timeout identity checks",
+    "Environment audit unit tests and allowlisted-source audit",
+    "Reviewer-materialized strict learner-view audit plus negative extra-file and symlink checks",
+    "ASan/UBSan reference tests, adversarial vectors, and public tests against reference and starter",
+    "Reviewer-authored 86-check ASan/UBSan boundary harness",
+    "Clean Arm cross-builds, reproducible artifact hashes, readelf inspection, and undefined-symbol check",
+    "Bounded QEMU runs of the sealed reference and incomplete starter",
+    "Exercise syntax checks and diagnostic benchmark compilation",
+    "Submitted pack_audit.py execution attempt",
+    "Pre/post aggregate hash check proving CANDIDATE was not changed"
+  ],
+  "evidence": [
+    "The candidate contains 101 regular files and 36 directories, with no symlinks, special objects, hard-link groups, credential-pattern matches, or setuid/setgid regular files.",
+    "MANIFEST.yaml remains GENERATED/PARTIAL, requires independent validation, sets productionized=false, and agrees with PROVENANCE.json on project, source, commit, and snapshot identifiers.",
+    "Five learner-view audit unit tests passed; source mode and a reviewer-created strict view both reported 55 entries, 43 regular files, 12 directories, and inventory SHA-256 d1879d8df860f1b346cd3ddfb9d0bdfe8c74bc9e2d52447995b1bdfc858abdfc.",
+    "Strict learner-view mode independently rejected an extra root entry and an in-tree symlink with exit 1.",
+    "With GCC 15.2.0 and ASan/UBSan, sealed reference tests passed 407 checks, adversarial execution passed 12 vectors, public tests passed against the reference, and a reviewer-authored harness passed 86 additional checks.",
+    "The untouched starter independently reproduced the documented 37 public-test failures and exit 2; it is visibly incomplete rather than a disguised solution.",
+    "Fresh Arm GCC 15.2.1 builds of reference and starter exited 0, and all four ELF/bin SHA-256 values exactly matched the submitted validation record.",
+    "The reference ELF is ELF32 little-endian Arm EABI5 with entry 0x10000, separate RX/RW load segments, an RW non-executable GNU stack, and no undefined symbols.",
+    "QEMU 9.1.1 ran the reference to exit 0 with LF-KERNEL boot, mmu: on, vm: ok, ramfs: ok, tasks: ABABAB, and PASS reference in order; the starter produced no marker and timed out at two seconds with exit 124.",
+    "The aggregate submitted-file hash was db46cb9476c1a7960f53a1df35014ad19293f9d360737a40541edb052e2bded9 both before and after review testing."
+  ],
+  "limitations": [
+    "CANDIDATE lacks the external PRIOR_BUILD tree required by sealed/pack_audit.py. The submitted command exits 1 and its shared exception path also emits a spurious manifest-mismatch diagnostic, so prior-path preservation and the builder's reported pack-audit PASS are not independently reproducible here.",
+    "The strict learner policy omits LICENSE_BOUNDARY.md, so the materialized learner view does not carry the full pack's explicit all-rights-reserved and no-redistribution notice.",
+    "Debugging and review exercise prose describes post-attempt disclosure, but no deterministic staged-view policy or audited materializer is supplied for those roots.",
+    "adversarial/run_vectors.py uses argv, capture, and a timeout but does not launch and terminate a process group as required by the workspace subprocess invariant.",
+    "The immutable catalog baseline, upstream repository, network, and physical Arm hardware were unavailable; origin/no-copy assertions and physical-board behavior remain inconclusive.",
+    "No fuzz campaign, repeated benchmark, formal proof, security audit, transfer validation, or production workload was performed. Java, AArch64, Node, Go, NASM, Flex, and Bison were irrelevant and not invoked; rg and git were unavailable."
+  ],
+  "project_id": "project_fc8ca1dbad4baba3bd2d54dbb42c1a98",
+  "verdict": "REVISE"
+}

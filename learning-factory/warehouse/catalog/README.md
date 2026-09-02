@@ -1,8 +1,18 @@
 # Learning artifact catalog
 
-Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 264.
+Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 265.
 
 The complete searchable records, concepts, languages, provenance, and validation labels are in `catalog.json`.
+
+## byox-independent-review — GENERATED
+
+- Artifact type: `byox-independent-review`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/evaluations/build-your-own-x/482ca0b33367311f2d49/baseline-39353427aa15eef2f6b1/repair-v2/review-v1/job_byox_repair_review_s2_v1_g2_a90920a4741b31ba7cca01f43050f186/attempt-001`
+- SHA-256: `bcf26f20a882e4213f4fd6a4145fcb2a602476f4460e33b03b06817eaca54685`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_byox_repair_review_s2_v1_g2_a90920a4741b31ba7cca01f43050f186` (codex_task/examiner)
 
 ## byox-remediated-challenge-pack — GENERATED+PARTIAL
 

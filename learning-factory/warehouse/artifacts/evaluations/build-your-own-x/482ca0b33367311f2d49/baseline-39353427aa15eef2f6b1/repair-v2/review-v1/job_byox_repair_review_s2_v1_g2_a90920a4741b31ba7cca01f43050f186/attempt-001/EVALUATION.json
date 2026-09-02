@@ -1,0 +1,32 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g2_f91003148e88489848f9cf7cd0e46f99",
+  "checks_run": [
+    "Inspected all 60 candidate files for correctness, learner/reference separation, provenance, licensing, validation honesty, and learner usefulness.",
+    "Recorded the configured CPython and OpenJDK paths and versions; compiled all candidate Python sources with bytecode redirected outside CANDIDATE.",
+    "Ran the public suite against the sealed reference, the sealed evaluator suite, and the public suite against the untouched starter under bounded timeouts.",
+    "Ran the learner-view source check, performed an actual export, and independently audited its exact paths, entry types, modes, bytes, and forbidden roots.",
+    "Checked manifest/provenance identity fields and hashes, generated-material terms, regular-entry structure, standard-library imports, risky extraction/process patterns, and obvious secret patterns.",
+    "Ran reviewer-authored probes for compressed layers, whiteout preflight preservation, log-byte boundaries, invalid UTF-8, process-group timeout cleanup, cross-process state claims, cross-process image publication races, cleanup, and CLI domain errors.",
+    "Compared the candidate content inventory before and after validation to confirm it was not modified."
+  ],
+  "evidence": [
+    "Configured /arm/tools/python/python/3.11.5/rhe8-x86_64/bin/python3 reported Python 3.11.5; compileall exited 0.",
+    "Public/reference suite: 11 tests ran and passed; sealed suite: 37 tests ran and passed.",
+    "Untouched starter: 11 tests ran and failed with 17 expected TODO NotImplementedError errors, showing that the learner scaffold was not replaced by the reference.",
+    "Student-view check reported 28 files; the actual export contained exactly the 28 sorted allowlisted regular files, all mode 0644 and byte-identical, with no evaluator roots.",
+    "Reviewer probes observed one winner from two process-level start claims, one winner from two different-content imports for one tag, and two successes sharing one object for concurrent same-content imports; no build/staging leftovers remained.",
+    "Reviewer probes passed compressed tar application, invalid derived-whiteout rejection without mutation, all specified truncation-marker ranges, UTF-8 byte budgeting, descendant process-group termination, and single-line CLI domain-error handling.",
+    "MANIFEST.yaml and PROVENANCE.json identity fields agree; their byte hashes are 4eb8b23f9c116db38a01876763e2e4f97e22c4219c9446bf949bb7e374c43123 and 266aadf01d684512a09ebed6ddd12fdbb424c6b2c27bb676147ce4df18d37705 respectively.",
+    "The candidate inventory digest was f65a641e38836de14a21804480007011b920123b7137c8fe36055f82df17c06b both before and after checks.",
+    "Claims remain limited to GENERATED and PARTIAL; productionized is false and independent validation remains required."
+  ],
+  "limitations": [
+    "No upstream/network access was used, so authorship similarity, the catalog snapshot, linked-resource licensing, and factory-owned baseline/remediation identifiers were not externally corroborated.",
+    "No fuzz campaign, benchmark, profiler, transfer test, deployment, hostile multi-tenant exercise, or kernel namespace/cgroup/seccomp isolation test was performed.",
+    "The runtime is intentionally not a security boundary; subprocess log disk use, hard-crash reconciliation, filesystem/SQLite atomicity, and same-user integrity races remain documented limitations.",
+    "Checks used one POSIX environment with CPython 3.11.5. OpenJDK 21.0.5+11 was available but irrelevant to this Python-only pack.",
+    "This PASS is advisory and does not publish REVIEWED or any other validation label."
+  ],
+  "project_id": "project_d76f888c329de3f5823edf9ffcbe85c3",
+  "verdict": "PASS"
+}

@@ -1,0 +1,30 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g2_70a90b5934bcf838b167251b70a24f39",
+  "checks_run": [
+    "Inventoried the immutable candidate, parsed its manifest and provenance, and independently ran its self-contained pack audit.",
+    "Matched the submitted runtime.c and scheduler.c SHA-256 values to the controller-audited sources and inspected the slot/PID/context ownership path.",
+    "Cross-compiled an independent ARM reentrancy probe outside CANDIDATE and ran it under bounded QEMU 9.1.1.",
+    "Ran the submitted nominal ARM ELF under bounded QEMU, inspected its ELF headers and unresolved symbols, and performed a clean rebuild in a writable review copy.",
+    "Compiled and ran the sanitized 407-check reference suite, 12 adversarial vectors, public reference suite, and bounded-runner unit tests outside CANDIDATE.",
+    "Independently materialized and strictly audited both initial and post-attempt learner views.",
+    "Reviewed progressive disclosure, learner guidance, validation-label honesty, and license/provenance boundaries."
+  ],
+  "evidence": [
+    "controller-audit-sha256:9768c1e824f3afcf1d3668dbf93c7ce0c7ee31a1783e44fc0e7ee791b2461985",
+    "Submitted source hashes match the audit: runtime.c=4bcb6d4619a949e0a395168434db180bc1cc7d41b490cdb65a03c6f62527e919 and scheduler.c=8ba0e4915ed997dacb161212a7b423e927a01126b027621c927b0f0e802aab9c.",
+    "The independent QEMU probe emitted REENTRANT-PROBE, OUTER-RETURN, and BUG-STALE-RETURN-KILLED-REPLACEMENT; it omitted REPLACEMENT-RAN and NO-BUG. Raw UART was 68 bytes with SHA-256 08865798fa3b5544fdfc927e022f64c1d430e9d252feef2077185526f03ae7e7; CRLF-normalized output was 65 bytes with SHA-256 ab9b3fe67c8febba717d224c9c56d79529131bd50ab01051f5babca838bef62a.",
+    "runtime.c derives exit/yield ownership and context-save slots from mutable scheduler.current_slot; an outer physical frame can exit, reap, reuse, and select its own slot, then its stale return marks the replacement zombie before the replacement executes.",
+    "The 407-check reference suite and 12-vector adversarial suite passed, but their Makefiles omit runtime.c and arch/arm/context.S; the nominal ABABAB QEMU path performs no reentrant reap/reuse sequence.",
+    "A clean writable-copy rebuild produced byte-identical submitted artifacts: kernel.elf SHA-256 43dc67083d95cc6316da74f1811bacdd0da4d95c19cbc6244012d8fc70696d73 and kernel.bin SHA-256 b0a152b88f7f284512f82b46453ba20b6d44146841ffe240ea13c49b1b799021.",
+    "Strict materialized learner-view audits passed: initial 58 entries, digest c6f8db62ce0b4ef74cad2045fb59d42c7fdb76379a5cb20e7e14923b94e19f57; post-attempt 68 entries, digest 2745e745a78d8953aff4a481e2830e0a42946b90127a5b394366df83bc96e9bb. Both included LICENSE_BOUNDARY.md and no forbidden path component.",
+    "MANIFEST.yaml remains GENERATED/PARTIAL with independent validation REQUIRED and productionized false; no unsupported validation-label promotion was found."
+  ],
+  "limitations": [
+    "No upstream checkout or network access was available, so independent authorship and the linked repository's license were not compared; only the candidate's internally consistent NOASSERTION boundary was reviewed.",
+    "The prior artifact tree was not supplied in this workspace, so the candidate's historical-preservation comparison was not independently repeated.",
+    "No physical ARM board, transfer environment, preemptive/userspace path, production workload, fuzz campaign, benchmark study, formal proof, or broad security audit was performed.",
+    "git and rg were unavailable in the sandbox; deterministic find, sed, SHA-256, and configured Python tooling were used instead."
+  ],
+  "project_id": "project_fc8ca1dbad4baba3bd2d54dbb42c1a98",
+  "verdict": "REVISE"
+}

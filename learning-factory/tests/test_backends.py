@@ -21,6 +21,7 @@ from unittest import mock
 
 from learnfactory.backends.exec_backend import (
     ExecBackend,
+    _APPROVED_TOOLCHAIN_PREFIXES,
     _DescendantReaper,
     _ResultChannelState,
     _direct_child_pids,
@@ -2138,10 +2139,143 @@ print(json.dumps({'type': 'turn.completed', 'usage': {'input_tokens': 17, 'outpu
         self.assertEqual("factory-isolated", settings.backend.permission_profile)
         self.assertFalse(settings.allow_host_command_validators)
         self.assertEqual(
-            ("/arm/tools/python/python/3.11.5/rhe8-x86_64",),
+            (
+                "/arm/tools/python/python/3.11.5/rhe8-x86_64",
+                "/arm/tools/adoptopenjdk/openjdk/21.0.5_11/linux64/"
+                "jdk-21.0.5+11",
+            ),
             settings.backend.toolchain_read_roots,
         )
         self.assertFalse(hasattr(settings.backend, "sandbox"))
+
+    def test_toolchain_roots_are_discoverable_only_for_tool_enabled_workers(self) -> None:
+        roots = (
+            "/arm/tools/python/example-python",
+            "/arm/tools/adoptopenjdk/example-jdk",
+        )
+        backend = ExecBackend(toolchain_read_roots=roots)
+
+        tool_prompt = backend._effective_prompt_bytes(
+            "build", tools_enabled=True
+        ).decode("utf-8")
+        no_tool_prompt = backend._effective_prompt_bytes(
+            "review", tools_enabled=False
+        ).decode("utf-8")
+
+        self.assertIn("intentionally not added to PATH", tool_prompt)
+        for root in roots:
+            self.assertIn(json.dumps(root), tool_prompt)
+            self.assertNotIn(root, no_tool_prompt)
+        self.assertTrue(tool_prompt.endswith("JOB:\nbuild"))
+        self.assertTrue(no_tool_prompt.endswith("JOB:\nreview"))
+
+    def test_factory_toolchain_roots_render_as_read_permissions(self) -> None:
+        settings = load_settings(ROOT / "config" / "factory.toml")
+        missing = [
+            root
+            for root in settings.backend.toolchain_read_roots
+            if not Path(root).is_dir()
+        ]
+        if missing:
+            self.skipTest(f"configured site toolchains are unavailable: {missing}")
+        self.assertIn(
+            Path("/arm/tools/adoptopenjdk/openjdk"),
+            _APPROVED_TOOLCHAIN_PREFIXES,
+        )
+
+        with tempfile.TemporaryDirectory(prefix="learnfactory-toolchains-") as raw:
+            root = Path(raw)
+            workspace = root / "workspace"
+            logs = root / "logs"
+            workspace.mkdir()
+            executable = root / "fake-codex"
+            executable.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
+            executable.chmod(0o755)
+            manifest = build_sandbox_rule_manifest(
+                workspace=workspace,
+                log_dir=logs,
+                worker_type="test",
+                payload={},
+                result_channel=_private_result_channel(
+                    root, "toolchains", "unit-test"
+                ),
+            )
+            invocation = ExecBackend(
+                str(executable),
+                toolchain_read_roots=settings.backend.toolchain_read_roots,
+            ).invocation_manifest(
+                workspace,
+                prompt="probe",
+                sandbox_manifest=manifest,
+            )
+
+        filesystem = next(
+            invocation["argv"][index + 1]
+            for index, value in enumerate(invocation["argv"])
+            if value == "--config"
+            and invocation["argv"][index + 1].startswith(
+                "permissions.factory-isolated.filesystem="
+            )
+        )
+        for root in settings.backend.toolchain_read_roots:
+            self.assertEqual(1, filesystem.count(json.dumps(root) + '=\"read\"'))
+            self.assertEqual(0, filesystem.count(json.dumps(root) + '=\"write\"'))
+
+    def test_toolchain_permission_is_read_only_and_prefix_scoped(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="learnfactory-toolchain-policy-") as raw:
+            root = Path(raw)
+            approved_prefix = root / "approved"
+            approved = approved_prefix / "tool-v1"
+            sibling = root / "sibling" / "tool-v1"
+            approved.mkdir(parents=True)
+            sibling.mkdir(parents=True)
+            workspace = root / "workspace"
+            logs = root / "logs"
+            workspace.mkdir()
+            executable = root / "fake-codex"
+            executable.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
+            executable.chmod(0o755)
+            manifest = build_sandbox_rule_manifest(
+                workspace=workspace,
+                log_dir=logs,
+                worker_type="test",
+                payload={},
+                result_channel=_private_result_channel(
+                    root, "toolchain-policy", "unit-test"
+                ),
+            )
+            with mock.patch(
+                "learnfactory.backends.exec_backend._APPROVED_TOOLCHAIN_PREFIXES",
+                (approved_prefix,),
+            ):
+                invocation = ExecBackend(
+                    str(executable), toolchain_read_roots=(str(approved),)
+                ).invocation_manifest(
+                    workspace,
+                    prompt="probe",
+                    sandbox_manifest=manifest,
+                )
+                with self.assertRaisesRegex(ValueError, "outside approved tool roots"):
+                    ExecBackend(
+                        str(executable), toolchain_read_roots=(str(sibling),)
+                    ).invocation_manifest(
+                        workspace,
+                        prompt="probe",
+                        sandbox_manifest=manifest,
+                    )
+
+        filesystem = next(
+            invocation["argv"][index + 1]
+            for index, value in enumerate(invocation["argv"])
+            if value == "--config"
+            and invocation["argv"][index + 1].startswith(
+                "permissions.factory-isolated.filesystem="
+            )
+        )
+        self.assertEqual(
+            1, filesystem.count(json.dumps(str(approved)) + '=\"read\"')
+        )
+        self.assertNotIn(json.dumps(str(approved)) + '=\"write\"', filesystem)
 
     def test_command_validator_fence_requires_a_boolean(self) -> None:
         with tempfile.TemporaryDirectory(prefix="learnfactory-config-fence-") as raw:

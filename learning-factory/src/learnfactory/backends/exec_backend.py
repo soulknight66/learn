@@ -124,6 +124,7 @@ _BROAD_READ_ROOTS = frozenset(
 _APPROVED_TOOLCHAIN_PREFIXES = tuple(
     Path(path)
     for path in (
+        "/arm/tools/adoptopenjdk/openjdk",
         "/arm/tools/python",
         "/arm/tools/git/git",
     )
@@ -135,13 +136,40 @@ _PROTECTED_READ_PREFIXES = (
     Path("/arm/ip"),
 )
 
-_LEAF_WORKER_PREFIX = (
+_LEAF_WORKER_PREAMBLE = (
     "You are a leaf execution worker inside a deterministic learning-factory job. "
     "Do not spawn, delegate to, or message other agents. Work directly in the "
     "provided workspace. Once the requested files are complete, stop work and "
     "return a concise final response promptly. The orchestrator, not your response, "
-    "will independently validate completion.\n\nJOB:\n"
+    "will independently validate completion.\n\n"
 )
+
+
+def _leaf_worker_policy(
+    toolchain_read_roots: tuple[str, ...], *, tools_enabled: bool
+) -> str:
+    toolchain_note = ""
+    if tools_enabled and toolchain_read_roots:
+        unique_roots: list[str] = []
+        seen: set[str] = set()
+        for raw_root in toolchain_read_roots:
+            root = os.fspath(raw_root)
+            if not isinstance(root, str):
+                raise TypeError("Codex toolchain read root must resolve to text")
+            if root not in seen:
+                seen.add(root)
+                unique_roots.append(root)
+        rendered_roots = "\n".join(
+            f"- {json.dumps(root, ensure_ascii=True)}" for root in unique_roots
+        )
+        toolchain_note = (
+            "Configured read-only toolchain roots are available at the exact "
+            "JSON-quoted paths below. They are intentionally not added to PATH; "
+            "invoke a useful binary by absolute path and record its exact path "
+            "and version in validation evidence.\n"
+            f"{rendered_roots}\n\n"
+        )
+    return _LEAF_WORKER_PREAMBLE + toolchain_note + "JOB:\n"
 
 
 def _provider_id(value: str | None) -> str | None:
@@ -258,7 +286,9 @@ class ExecBackend:
         persists a nonce-free channel contract.
         """
 
-        prompt_record = self.prompt_manifest(prompt)
+        prompt_record = self.prompt_manifest(
+            prompt, tools_enabled=sandbox_manifest.tools_enabled
+        )
         executable = self._resolve_command()
         self._validate_sandbox_manifest(workspace, sandbox_manifest)
         permission_overrides = self._permission_overrides(executable, sandbox_manifest)
@@ -310,12 +340,18 @@ class ExecBackend:
             },
         }
 
-    def prompt_manifest(self, prompt: str) -> dict[str, Any]:
+    def prompt_manifest(
+        self, prompt: str, *, tools_enabled: bool = True
+    ) -> dict[str, Any]:
         """Fingerprint the effective stdin envelope without retaining its text."""
 
         job_prompt = _bounded_prompt(prompt, self.prompt_limit_bytes)
-        effective_prompt = self._effective_prompt_bytes(prompt)
-        leaf_policy = _LEAF_WORKER_PREFIX.encode("utf-8")
+        effective_prompt = self._effective_prompt_bytes(
+            prompt, tools_enabled=tools_enabled
+        )
+        leaf_policy = _leaf_worker_policy(
+            self.toolchain_read_roots, tools_enabled=tools_enabled
+        ).encode("utf-8")
         return {
             "effective_prompt": {
                 "sha256": hashlib.sha256(effective_prompt).hexdigest(),
@@ -335,9 +371,14 @@ class ExecBackend:
             },
         }
 
-    def _effective_prompt_bytes(self, prompt: str) -> bytes:
+    def _effective_prompt_bytes(
+        self, prompt: str, *, tools_enabled: bool = True
+    ) -> bytes:
         return _bounded_prompt(
-            _LEAF_WORKER_PREFIX + prompt,
+            _leaf_worker_policy(
+                self.toolchain_read_roots, tools_enabled=tools_enabled
+            )
+            + prompt,
             self.prompt_limit_bytes,
         )
 
@@ -397,11 +438,6 @@ class ExecBackend:
             effective_timeout = _positive_timeout(
                 timeout_seconds if timeout_seconds is not None else self.timeout_seconds
             )
-            prompt_bytes = (
-                self._effective_prompt_bytes(prompt)
-                if is_codex_exec
-                else _bounded_prompt(prompt, self.prompt_limit_bytes)
-            )
             resolved_command = self.command
             permission_overrides: list[str] = []
             if is_codex_exec:
@@ -421,6 +457,11 @@ class ExecBackend:
                 permission_overrides = self._permission_overrides(
                     Path(resolved_command), sandbox_manifest
                 )
+                prompt_bytes = self._effective_prompt_bytes(
+                    prompt, tools_enabled=sandbox_manifest.tools_enabled
+                )
+            else:
+                prompt_bytes = _bounded_prompt(prompt, self.prompt_limit_bytes)
         except (TypeError, ValueError) as error:
             self._status = "FAILED"
             message = f"invalid Codex invocation: {error}"

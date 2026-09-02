@@ -220,6 +220,56 @@ class RunProvenanceTests(unittest.TestCase):
         )
         self.assertIn("<external-provider-name-omitted>", rendered)
 
+    def test_unavailable_no_tool_fallback_hashes_the_actual_leaf_policy(self) -> None:
+        toolchain = "/arm/tools/python/unavailable-test-toolchain"
+        settings = replace(
+            self.settings,
+            backend=replace(
+                self.settings.backend,
+                command=str(self.root / "bin" / "missing-codex"),
+                toolchain_read_roots=(toolchain,),
+            ),
+        )
+        payload = {
+            "seed_policy": {
+                "kind": "csdiy_course_cohort",
+                "version": 2,
+                "role": "examiner",
+            },
+            "prompt": "review projected evidence",
+            "output_schema": {"type": "object"},
+            "artifact_type": "independent-course-evaluation",
+        }
+
+        record = capture_run_provenance(
+            settings,
+            job_id="job-no-tool-fallback",
+            job_type="codex_task",
+            worker_type="examiner",
+            payload=payload,
+            dependency_job_ids=[],
+            workspace=self.workspace,
+            log_dir=self.log_dir,
+            effective_model="gpt-5.6-sol",
+            effective_reasoning="ultra",
+        )
+
+        invocation = record.metadata["invocation"]
+        self.assertEqual("UNAVAILABLE", invocation["status"])
+        expected = hashlib.sha256(
+            (
+                "You are a leaf execution worker inside a deterministic "
+                "learning-factory job. Do not spawn, delegate to, or message "
+                "other agents. Work directly in the provided workspace. Once "
+                "the requested files are complete, stop work and return a "
+                "concise final response promptly. The orchestrator, not your "
+                "response, will independently validate completion.\n\n"
+                "JOB:\nreview projected evidence"
+            ).encode("utf-8")
+        ).hexdigest()
+        self.assertEqual(expected, invocation["prompt"]["sha256"])
+        self.assertNotIn(toolchain, json.dumps(record.metadata, sort_keys=True))
+
     def test_frame_hashes_one_length_prefix_and_one_value(self) -> None:
         actual = hashlib.sha256()
         _frame(actual, b"ab")

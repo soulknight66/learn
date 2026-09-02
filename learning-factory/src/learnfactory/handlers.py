@@ -3548,7 +3548,9 @@ class JobHandlers:
             requires_openai_auth=self.settings.backend.requires_openai_auth,
             supports_websockets=self.settings.backend.supports_websockets,
         )
-        runtime_prompt_manifest = backend.prompt_manifest(prompt)
+        runtime_prompt_manifest = backend.prompt_manifest(
+            prompt, tools_enabled=sandbox_manifest.tools_enabled
+        )
         result = backend.start_job(
             prompt,
             workspace,

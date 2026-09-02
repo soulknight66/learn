@@ -857,6 +857,7 @@ def _invocation(
         requires_openai_auth=settings.backend.requires_openai_auth,
         supports_websockets=settings.backend.supports_websockets,
     )
+    tools_enabled = not is_csdiy_examiner(worker_type, payload)
     try:
         # Provenance describes the nonce-free transport contract. The concrete
         # randomized capability exists only in the worker/backend runtime.
@@ -868,6 +869,7 @@ def _invocation(
             payload=payload,
             result_channel=channel,
         )
+        tools_enabled = sandbox_manifest.tools_enabled
         raw_manifest = backend.invocation_manifest(
             workspace,
             prompt=safe_prompt,
@@ -910,7 +912,9 @@ def _invocation(
         }
     if "prompt" not in manifest:
         try:
-            prompt_record = backend.prompt_manifest(safe_prompt)
+            prompt_record = backend.prompt_manifest(
+                safe_prompt, tools_enabled=tools_enabled
+            )
         except (TypeError, ValueError):
             prompt_record = {
                 "effective_prompt": {

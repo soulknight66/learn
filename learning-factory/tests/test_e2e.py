@@ -13,6 +13,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
+import learnfactory.handlers as handlers
 from learnfactory import worker as worker_module
 from learnfactory.backend_policy import (
     MASS_SEED_BACKEND_REQUIREMENT,
@@ -1071,6 +1072,19 @@ class EndToEndWorkerTests(unittest.TestCase):
             },
         )()
         result_capabilities: list[str] = []
+        prompt_tool_modes: list[bool] = []
+        original_prompt_manifest = handlers.ExecBackend.prompt_manifest
+
+        def record_prompt_manifest(
+            backend: handlers.ExecBackend,
+            prompt: str,
+            *,
+            tools_enabled: bool = True,
+        ) -> dict[str, object]:
+            prompt_tool_modes.append(tools_enabled)
+            return original_prompt_manifest(
+                backend, prompt, tools_enabled=tools_enabled
+            )
 
         def fake_start(
             _backend: object,
@@ -1101,6 +1115,9 @@ class EndToEndWorkerTests(unittest.TestCase):
         with patch(
             "learnfactory.result_channel.secrets.token_hex",
             return_value=capability_nonce,
+        ), patch(
+            "learnfactory.backends.exec_backend.ExecBackend.prompt_manifest",
+            new=record_prompt_manifest,
         ), patch("learnfactory.handlers.ExecBackend.start_job", new=fake_start):
             exit_code = run_worker(
                 examiner, "csdiy-submission-e2e", claim.lease_token, self.config_path
@@ -1139,6 +1156,8 @@ class EndToEndWorkerTests(unittest.TestCase):
             parent, metadata["staged_inputs"][0]["job_id"]
         )
         self.assertEqual(1, len(result_capabilities))
+        self.assertTrue(prompt_tool_modes)
+        self.assertEqual({False}, set(prompt_tool_modes))
         raw_capability = result_capabilities[0]
         self.assertIn(capability_nonce, raw_capability)
         with self.db.connect() as connection:

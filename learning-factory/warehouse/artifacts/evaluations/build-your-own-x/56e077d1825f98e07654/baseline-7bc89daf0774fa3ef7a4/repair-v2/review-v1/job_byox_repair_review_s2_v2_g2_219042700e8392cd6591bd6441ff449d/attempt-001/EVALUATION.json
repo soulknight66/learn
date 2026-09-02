@@ -1,0 +1,36 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v2_g2_ba9f7fea43e4c4ec88ead0a44f75ec77",
+  "checks_run": [
+    "Immutable candidate inventory and before/after content digest",
+    "Manifest, provenance, license-boundary, and validation-claim review",
+    "Sanitized host reference, public, adversarial, environment, and pack-audit tests",
+    "Fresh reproducible ARM reference and starter builds",
+    "ELF headers, load permissions, entry point, and undefined-symbol inspection",
+    "Bounded QEMU nominal boot and submitted stale-frame regression",
+    "Reviewer-authored two-runnable stale-frame dispatch probe",
+    "Initial and post-attempt source-selection audits and actual materialization",
+    "Independent learner-view inventory and sealed-answer exclusion inspection",
+    "Validator timeout, process-group, and output-capture implementation review"
+  ],
+  "evidence": [
+    "CANDIDATE contained 109 regular files and remained byte-identical under aggregate SHA-256 5a33247391bdcc87270659fc2fb7c315bcd77268aba355789c220acb7a49f126.",
+    "The manifest is honest: status GENERATED, labels GENERATED and PARTIAL, independent validation REQUIRED, and productionized false.",
+    "Fresh host runs reported reference_tests: PASS (407 checks), public_tests: PASS against the reference, three bounded-runner tests OK, and adversarial_vectors: PASS (12 vectors); the starter's documented 37 failures were reproduced.",
+    "Fresh ARM builds exited 0 without diagnostics and exactly reproduced the four recorded reference/starter ELF and BIN hashes and sizes.",
+    "The reference ELF is ELF32 little-endian ARM EABI5 at 0x10000, has RX and RW load segments plus a non-executable GNU stack, and has no undefined symbols.",
+    "QEMU 9.1.1 emitted all required nominal markers and ABABAB; the submitted repair probe emitted both replacement markers, NO-BUG, and PASS.",
+    "An independent two-ready-task ARM probe emitted SELECTED-FIRST, OTHER-SECOND, and INDEPENDENT-ROTATION-PASS, corroborating that a stale yield dispatches the task already selected by policy without overwriting its reused context.",
+    "Both learner stages were actually materialized and strictly re-audited at the submitted inventory hashes; independent filesystem inspection found only the six intended post-attempt files and four parent directories added, with no sealed answers.",
+    "License text clearly limits CC0 to catalog metadata, records the linked resource as NOASSERTION, grants no generated-material reuse license, and makes no production, fuzz, benchmark, transfer, or review claim.",
+    "Revision is required because sealed/reference_tests/run_runtime_qemu.py calls communicate() before checking its 65536-byte ceiling, so a runaway serial producer can consume unbounded memory during the timeout despite the runner's bounded-capture claim."
+  ],
+  "limitations": [
+    "PRIOR_BUILD and the cited controller audit were not supplied, so historical preservation claims and the bound prior-content digest could not be independently repeated.",
+    "The immutable catalog/upstream snapshot and network access were unavailable; originality and the assertion that linked material was not copied remain provenance claims rather than independently verified facts.",
+    "Execution covered QEMU versatilepb/ARM926 only, not physical hardware, interrupts, userspace, multicore behavior, or production workloads.",
+    "No fuzz campaign, benchmark study, formal proof, broad security audit, or production assessment was performed or claimed.",
+    "Candidate-authored tests and scripts support observations but do not by themselves confer BUILDS, TESTED, TRANSFER_VERIFIED, REVIEWED, or any other promotion label; this verdict is advisory."
+  ],
+  "project_id": "project_fc8ca1dbad4baba3bd2d54dbb42c1a98",
+  "verdict": "REVISE"
+}

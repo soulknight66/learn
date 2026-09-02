@@ -1,8 +1,28 @@
 # Learning artifact catalog
 
-Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 255.
+Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 257.
 
 The complete searchable records, concepts, languages, provenance, and validation labels are in `catalog.json`.
+
+## byox-challenge-pack — GENERATED+PARTIAL
+
+- Artifact type: `byox-challenge-pack`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/docker/a-proof-of-concept-imitation-of-docker-written-in-100-python-482ca0b333/job_byox_build_s2_ae18e3ed06d72b954cbe4a59520504ab/attempt-001`
+- SHA-256: `fa597aa378eaa1736cc6db9c18ed9b6c09a5624b0f81e766b115f4e5c8e70b40`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED, PARTIAL
+- Job: `job_byox_build_s2_ae18e3ed06d72b954cbe4a59520504ab` (codex_task/reference_builder)
+
+## byox-challenge-pack — GENERATED+PARTIAL
+
+- Artifact type: `byox-challenge-pack`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/programming-language/crafting-interpreters-a-handbook-for-making-programming-languages-40bc68c012/job_byox_build_s2_d5738a92867d38332150840e7d7f6214/attempt-001`
+- SHA-256: `a4ec8fa6b9a9f4cc1edb79711e417172fdd2c995768455e25d3c617ef8b35be8`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED, PARTIAL
+- Job: `job_byox_build_s2_d5738a92867d38332150840e7d7f6214` (codex_task/reference_builder)
 
 ## byox-independent-review — GENERATED
 

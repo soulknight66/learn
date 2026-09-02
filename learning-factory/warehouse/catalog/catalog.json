@@ -1,6 +1,1295 @@
 {
   "artifacts": [
     {
+      "artifact_id": "artifact_0204e04ac0474218a6654c65d4c542af",
+      "attempt_number": 1,
+      "checksum": "fa597aa378eaa1736cc6db9c18ed9b6c09a5624b0f81e766b115f4e5c8e70b40",
+      "checksum_algorithm": "tree-sha256-v2",
+      "created_at": 1788365667.355259,
+      "integrity_status": "VERIFIED_V2",
+      "job_id": "job_byox_build_s2_ae18e3ed06d72b954cbe4a59520504ab",
+      "job_type": "codex_task",
+      "metadata": {
+        "archive_projection": {
+          "mode": "complete-workspace",
+          "schema_version": 1,
+          "source_workspace_checksum": "fa597aa378eaa1736cc6db9c18ed9b6c09a5624b0f81e766b115f4e5c8e70b40",
+          "source_workspace_checksum_algorithm": "tree-sha256-v2"
+        },
+        "attempt": 1,
+        "byox_validation_cutover": {
+          "archive_paths": null,
+          "classification": "factory-authoritative-validation-snapshot",
+          "limits": {
+            "max_depth": 101,
+            "max_entries": 100000,
+            "max_file_bytes": 536870912,
+            "max_file_depth": 102,
+            "max_total_bytes": 2147483648,
+            "policy_root_max_directory_depth": 100
+          },
+          "manifest_sha256": "93c18aa14c7ca8d6f2c26497d42b4bbfce2fc4f3691e0e172fbc0252d6e3620f",
+          "policy": "fresh-inode-workspace-replacement-v1",
+          "schema_version": 1,
+          "selected_output_checksum": "fa597aa378eaa1736cc6db9c18ed9b6c09a5624b0f81e766b115f4e5c8e70b40",
+          "selected_output_checksum_algorithm": "tree-sha256-v2",
+          "snapshot_roots": [
+            "AGENTS.md",
+            "CONCEPTS.md",
+            "DESIGN_QUESTIONS.md",
+            "LICENSE_BOUNDARY.md",
+            "MANIFEST.yaml",
+            "PROVENANCE.json",
+            "README.md",
+            "REQUIREMENTS.md",
+            "VALIDATION.md",
+            "adversarial",
+            "benchmarks",
+            "debugging",
+            "environment",
+            "public_tests",
+            "review_exercises",
+            "sealed",
+            "starter"
+          ],
+          "source_disposition": "retired-and-discarded",
+          "summary": {
+            "directories": 18,
+            "entries": 74,
+            "files": 56,
+            "max_depth": 4,
+            "total_bytes": 139406
+          },
+          "validation_snapshot_checksum": "fa597aa378eaa1736cc6db9c18ed9b6c09a5624b0f81e766b115f4e5c8e70b40",
+          "validation_snapshot_checksum_algorithm": "tree-sha256-v2"
+        },
+        "classification": "agent-generated challenge pack bound to immutable source-derived catalog metadata",
+        "factory_revision": {
+          "commit": "9a10cee440f1a3d4c28a24d1666e0933103565ed",
+          "status": "RECORDED",
+          "tracked_worktree_clean": true
+        },
+        "job_id": "job_byox_build_s2_ae18e3ed06d72b954cbe4a59520504ab",
+        "license_boundary": {
+          "catalog_license": "CC0-1.0",
+          "generated_material": "independently generated for personal educational use",
+          "linked_content_copied": false,
+          "linked_resource_license": "NOASSERTION"
+        },
+        "material_baseline_sha256": "39353427aa15eef2f6b16b4e7269d0188c693facd5ed37e1efde8e603b24dcd7",
+        "project": {
+          "category": "Docker",
+          "concepts": [
+            "containers",
+            "namespaces",
+            "filesystems",
+            "process isolation"
+          ],
+          "difficulty": 8.0,
+          "implementation_language": "Python",
+          "metadata": {
+            "catalog_suffix": "",
+            "languages": [
+              "Python"
+            ],
+            "linked_resource_license": "NOASSERTION",
+            "provenance": {
+              "adapter": "build_your_own_x",
+              "classification": "source-derived",
+              "content_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+              "extractor_version": "1.1",
+              "source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+              "source_file": "README.md",
+              "source_line": 161
+            },
+            "scoring": {
+              "basis": "category heuristic",
+              "classification": "inferred",
+              "priority_tier": 1
+            }
+          },
+          "priority_tier": 1,
+          "production_relevance": 8.5,
+          "project_id": "project_d76f888c329de3f5823edf9ffcbe85c3",
+          "slug": "a-proof-of-concept-imitation-of-docker-written-in-100-python",
+          "source_format": "repository",
+          "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+          "title": "A proof-of-concept imitation of Docker, written in 100% Python",
+          "upstream_reference": "https://github.com/tonybaloney/mocker"
+        },
+        "prompt_contexts": [],
+        "removed_root_metadata": [
+          ".factory-workspace"
+        ],
+        "run_id": "run_2af03d18e4a642e297e1cd2ae3d35d34",
+        "run_reproducibility": {
+          "digest": "7a12ea9e75aa591f5ff21d7d678ad39d2f5f0ee7b7b7df0b7f7897e81fd16b95",
+          "record_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/logs/job_byox_build_s2_ae18e3ed06d72b954cbe4a59520504ab/attempt-001/RUN_PROVENANCE.json",
+          "schema": "learnfactory-run-provenance-v3"
+        },
+        "runtime_prompt": {
+          "effective_prompt": {
+            "content_stored": false,
+            "includes_leaf_worker_policy": true,
+            "sha256": "4cf7684f91486b9c4cd793d080e331bf739139765044736419d2b8856f1f86da",
+            "utf8_bytes": 7997
+          },
+          "job_prompt": {
+            "content_stored": false,
+            "sha256": "572261ec260f727e999317b942c5d4d9e7539a0b799366d6a796f79770ad1aa8",
+            "utf8_bytes": 7299
+          },
+          "leaf_worker_policy": {
+            "content_stored": false,
+            "sha256": "cc6665100f11bee63d5df6e06ff01b754938cc4f58ebde2af9dc211494c44711",
+            "utf8_bytes": 698
+          }
+        },
+        "sandbox_rule_manifest": {
+          "declared_outputs": [
+            "AGENTS.md",
+            "CONCEPTS.md",
+            "DESIGN_QUESTIONS.md",
+            "LICENSE_BOUNDARY.md",
+            "MANIFEST.yaml",
+            "PROVENANCE.json",
+            "README.md",
+            "REQUIREMENTS.md",
+            "VALIDATION.md",
+            "adversarial/README.md",
+            "benchmarks/README.md",
+            "debugging/README.md",
+            "environment/README.md",
+            "public_tests/README.md",
+            "review_exercises/README.md",
+            "sealed/DESIGN.md",
+            "sealed/REVIEW.md",
+            "sealed/TRADEOFFS.md",
+            "sealed/alternatives/README.md",
+            "sealed/production/PRODUCTIONIZATION.md",
+            "sealed/reference/README.md",
+            "sealed/reference_tests/README.md",
+            "starter/README.md"
+          ],
+          "result_channel": {
+            "content_stored_in_provenance": false,
+            "fixed_alias_stored": true,
+            "launch_namespace": "fixed-alias-only",
+            "nonce_hash_stored": false,
+            "nonce_stored": false,
+            "outer_cli_output_capability": "parent-procfd-readonly-hold",
+            "output_descriptor_inherited": false,
+            "post_exit_result_retention": "bounded-redacted-output",
+            "private_path_stored": false,
+            "runtime_fd_stored": false,
+            "schema_version": 3,
+            "transport": "outer-cli-parent-held-fixed-alias-inode"
+          },
+          "rules": [],
+          "schema_version": 1,
+          "sha256": "0ad233369ace3768e64b411b914673f4923cd43ffa38aaffe212cbdfee95bb62",
+          "staged_inputs": [],
+          "tools_enabled": true,
+          "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_build_s2_ae18e3ed06d72b954cbe4a59520504ab/attempt-001",
+          "workspace_access": "write"
+        },
+        "schema_version": 1,
+        "snapshot_sha256": "f0e8e2f368bc51cc22d42f5110ca8eb24b407cef1cee1c0db9d70c5e657ce4e3",
+        "source": {
+          "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989",
+          "license": "CC0-1.0",
+          "metadata": {
+            "adapter": "build_your_own_x",
+            "extractor_version": "1.1",
+            "license_evidence": "explicit CC0 waiver declaration",
+            "license_file": "README.md#origins--license",
+            "license_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+            "license_source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+            "linked_resource_license": "NOASSERTION",
+            "snapshot_reader": "git-object-database",
+            "tree_hash": "12e788febc0575ae1bce1de8ad1fc28d7fff7c22"
+          },
+          "name": "Build Your Own X",
+          "observation_fields_excluded": [
+            "active_at_factory_time",
+            "ingested_at"
+          ],
+          "path": "<immutable-byox-baseline>",
+          "snapshot_kind": "immutable-material-baseline",
+          "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+          "type": "project_catalog",
+          "upstream_url": null
+        },
+        "staged_inputs": [],
+        "validated_tree_sha256": "fa597aa378eaa1736cc6db9c18ed9b6c09a5624b0f81e766b115f4e5c8e70b40",
+        "validation_evidence": [
+          {
+            "evidence": {
+              "checked": [
+                "README.md",
+                "AGENTS.md",
+                "MANIFEST.yaml",
+                "PROVENANCE.json",
+                "LICENSE_BOUNDARY.md",
+                "REQUIREMENTS.md",
+                "CONCEPTS.md",
+                "DESIGN_QUESTIONS.md",
+                "VALIDATION.md",
+                "starter/README.md",
+                "public_tests/README.md",
+                "environment/README.md",
+                "sealed/reference/README.md",
+                "sealed/reference_tests/README.md",
+                "sealed/DESIGN.md",
+                "sealed/TRADEOFFS.md",
+                "sealed/REVIEW.md",
+                "sealed/alternatives/README.md",
+                "sealed/production/PRODUCTIONIZATION.md",
+                "adversarial/README.md",
+                "debugging/README.md",
+                "review_exercises/README.md",
+                "benchmarks/README.md"
+              ],
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-challenge-structure"
+          },
+          {
+            "evidence": {
+              "checked": [
+                ".git",
+                ".env",
+                ".venv",
+                "credentials.json",
+                "secrets",
+                "reference",
+                "reference_tests",
+                "hidden_tests",
+                "solution",
+                "solutions",
+                "answers",
+                "starter/sealed",
+                "starter/reference",
+                "starter/reference_tests",
+                "starter/solution",
+                "starter/solutions",
+                "starter/answers",
+                "public_tests/sealed",
+                "public_tests/reference",
+                "public_tests/hidden_tests",
+                "environment/sealed"
+              ],
+              "present": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-progressive-boundary"
+          },
+          {
+            "evidence": {
+              "checked": [
+                "README.md",
+                "AGENTS.md",
+                "MANIFEST.yaml",
+                "PROVENANCE.json",
+                "LICENSE_BOUNDARY.md",
+                "REQUIREMENTS.md",
+                "CONCEPTS.md",
+                "DESIGN_QUESTIONS.md",
+                "VALIDATION.md",
+                "starter/README.md",
+                "public_tests/README.md",
+                "environment/README.md",
+                "sealed/reference/README.md",
+                "sealed/reference_tests/README.md",
+                "sealed/DESIGN.md",
+                "sealed/TRADEOFFS.md",
+                "sealed/REVIEW.md",
+                "sealed/alternatives/README.md",
+                "sealed/production/PRODUCTIONIZATION.md",
+                "adversarial/README.md",
+                "debugging/README.md",
+                "review_exercises/README.md",
+                "benchmarks/README.md"
+              ],
+              "failures": [],
+              "minimum_bytes": 1
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-nonempty-files"
+          },
+          {
+            "evidence": {
+              "entry_count": 20,
+              "forbidden": [
+                ".agents",
+                ".codex",
+                ".env",
+                ".git",
+                ".venv",
+                "answer",
+                "answers",
+                "credential",
+                "credentials",
+                "credentials.json",
+                "hidden",
+                "hidden_tests",
+                "job.md",
+                "reference",
+                "reference_tests",
+                "sealed",
+                "secret",
+                "secrets",
+                "solution",
+                "solutions"
+              ],
+              "limit_failure": null,
+              "max_depth": 100,
+              "max_entries": 20000,
+              "present": [],
+              "present_truncated": 0,
+              "roots": [
+                "starter",
+                "public_tests",
+                "environment"
+              ],
+              "unsafe_entries": [],
+              "unsafe_entries_truncated": 0
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-recursive-progressive-boundary"
+          },
+          {
+            "evidence": {
+              "claims_builds_or_tested": false,
+              "counts": {
+                "bytes": 92689,
+                "entries": 37,
+                "files": 35
+              },
+              "groups": [
+                {
+                  "build_descriptor_count": 0,
+                  "build_descriptors": [],
+                  "missing_or_unsafe_roots": [],
+                  "name": "reference_implementation",
+                  "qualifying_count": 10,
+                  "qualifying_digest": "a1ba310f4697797f8da7434d667e8e0e2665d915c9d9eb90df17f590ccd21ec2",
+                  "qualifying_files": [
+                    {
+                      "path": "sealed/reference/pydocklet/__init__.py",
+                      "sha256": "baa21ae65ddac94f39ebdc48fd0776a78f59b7ba38ce14b095afc08935c680ea",
+                      "size_bytes": 900
+                    },
+                    {
+                      "path": "sealed/reference/pydocklet/__main__.py",
+                      "sha256": "f5634ac52cd92426450fe7f85283d918c59672509e23c9617b7c670979a9fd35",
+                      "size_bytes": 3413
+                    },
+                    {
+                      "path": "sealed/reference/pydocklet/engine.py",
+                      "sha256": "551067597e7e44bcd32a236d08c471623e6fb458e5cd0251323c3ec42d909107",
+                      "size_bytes": 3667
+                    },
+                    {
+                      "path": "sealed/reference/pydocklet/errors.py",
+                      "sha256": "a0af4a5fd2ffd07e43c1761b227d98055763c47674ff0f6408801e2668769885",
+                      "size_bytes": 806
+                    },
+                    {
+                      "path": "sealed/reference/pydocklet/image.py",
+                      "sha256": "ef0038da03e9c3acc9d760fdbfd60a1a02590a721bcbb57925a60c13bc6ebe26",
+                      "size_bytes": 5513
+                    },
+                    {
+                      "path": "sealed/reference/pydocklet/layer.py",
+                      "sha256": "d837ea09ee3e054fc97f3babe93c30170862ebca55c17d12610d96227edb1a8a",
+                      "size_bytes": 10608
+                    },
+                    {
+                      "path": "sealed/reference/pydocklet/models.py",
+                      "sha256": "1412b84d77c42901d5d540f3822da36fd4ffc2232b1182331921ba2c8ec12661",
+                      "size_bytes": 790
+                    },
+                    {
+                      "path": "sealed/reference/pydocklet/paths.py",
+                      "sha256": "dcf0f8eca6b9cdae8c892f42e889a2a38511189b628dd788fa8754cdda13fb6d",
+                      "size_bytes": 1800
+                    },
+                    {
+                      "path": "sealed/reference/pydocklet/runner.py",
+                      "sha256": "99c1996beba1d1dd1533e3bd3148e54060d1f5d2b327b8a0fd21675f0fe20679",
+                      "size_bytes": 4364
+                    },
+                    {
+                      "path": "sealed/reference/pydocklet/store.py",
+                      "sha256": "bb0c93d1ec19aeb3b782c66cbb70d5e2a6af5c22a59dc84c3082794251d8ed0d",
+                      "size_bytes": 16165
+                    }
+                  ],
+                  "qualifying_files_truncated": 0,
+                  "roots": [
+                    "sealed/reference"
+                  ]
+                },
+                {
+                  "build_descriptor_count": 0,
+                  "build_descriptors": [],
+                  "missing_or_unsafe_roots": [],
+                  "name": "learner_starter",
+                  "qualifying_count": 10,
+                  "qualifying_digest": "67b3b785cb08bba0fdc2720cd23e1c8daa7f038a7a4c85a09821f477fcad1c1b",
+                  "qualifying_files": [
+                    {
+                      "path": "starter/pydocklet/__init__.py",
+                      "sha256": "f84cd5db60de7bd0478412e86e4d17db72ea35b772d3ea51c821a1118cc0ba5e",
+                      "size_bytes": 892
+                    },
+                    {
+                      "path": "starter/pydocklet/__main__.py",
+                      "sha256": "41752a2a7f9a3d5cbaf37d53122d8820bf9845a68942933a1c2ade24963e54d5",
+                      "size_bytes": 1688
+                    },
+                    {
+                      "path": "starter/pydocklet/engine.py",
+                      "sha256": "daa91464fde2302fb5446b85e1a63c70cc6db57a000e86fe1457a3069fbb4ab2",
+                      "size_bytes": 1405
+                    },
+                    {
+                      "path": "starter/pydocklet/errors.py",
+                      "sha256": "a0af4a5fd2ffd07e43c1761b227d98055763c47674ff0f6408801e2668769885",
+                      "size_bytes": 806
+                    },
+                    {
+                      "path": "starter/pydocklet/image.py",
+                      "sha256": "39eff5af170ec42dde56dc7f5bedbfee8d41e8812070314bf51a99e48e8ea598",
+                      "size_bytes": 701
+                    },
+                    {
+                      "path": "starter/pydocklet/layer.py",
+                      "sha256": "99c0140f57edf52affe2769a325e88287ab1a39336727b44d4c9e0308b72c405",
+                      "size_bytes": 1003
+                    },
+                    {
+                      "path": "starter/pydocklet/models.py",
+                      "sha256": "1412b84d77c42901d5d540f3822da36fd4ffc2232b1182331921ba2c8ec12661",
+                      "size_bytes": 790
+                    },
+                    {
+                      "path": "starter/pydocklet/paths.py",
+                      "sha256": "1a103093f63d76da839f67d0c6a469dc1e09b8890cfbad40c7f31e71f5be52f1",
+                      "size_bytes": 809
+                    },
+                    {
+                      "path": "starter/pydocklet/runner.py",
+                      "sha256": "dcca31ad590f11acd9d7e71bb781b371368913d95740d36395b4ae06a8f38de9",
+                      "size_bytes": 772
+                    },
+                    {
+                      "path": "starter/pydocklet/store.py",
+                      "sha256": "d495cd6377dad25f58ff82345a8ce8f3631a0613c23e78c41550a94daf4e9359",
+                      "size_bytes": 1699
+                    }
+                  ],
+                  "qualifying_files_truncated": 0,
+                  "roots": [
+                    "starter"
+                  ]
+                },
+                {
+                  "build_descriptor_count": 0,
+                  "build_descriptors": [],
+                  "missing_or_unsafe_roots": [],
+                  "name": "tests",
+                  "qualifying_count": 11,
+                  "qualifying_digest": "38d32b47da97ea202f4bb23f90cd3765505304196e0279e13f2ea03486948dec",
+                  "qualifying_files": [
+                    {
+                      "path": "public_tests/__init__.py",
+                      "sha256": "024d8264b5a650bd002d2143bff9749c7dc63b1dfe063da0103963cca3159093",
+                      "size_bytes": 43
+                    },
+                    {
+                      "path": "public_tests/helpers.py",
+                      "sha256": "4c2166cf8faf5042e26edd255d5cdadf00a7fe02fd0eff28a2a0b657cde79015",
+                      "size_bytes": 1338
+                    },
+                    {
+                      "path": "public_tests/test_engine.py",
+                      "sha256": "5f47f861a78711ea3a8f89194b8f2eb11f81ed84fa7c7fca00f5d65ff4a32c4f",
+                      "size_bytes": 2419
+                    },
+                    {
+                      "path": "public_tests/test_layers.py",
+                      "sha256": "a88615533e4a32b11037af4667c812e5a7721b193ae8ea56e7929e4140eccd36",
+                      "size_bytes": 2522
+                    },
+                    {
+                      "path": "public_tests/test_paths.py",
+                      "sha256": "2c34f456fda8787be86cb5a7bd2e3f5f9d9065df81c7a961373f3eee5e6f8227",
+                      "size_bytes": 1108
+                    },
+                    {
+                      "path": "public_tests/test_runner.py",
+                      "sha256": "18ba9d836a5ba0503f0bc2439819829cc98c12fc1810140813e7d20458f82c67",
+                      "size_bytes": 1454
+                    },
+                    {
+                      "path": "sealed/reference_tests/__init__.py",
+                      "sha256": "0aea5fb532c5441567dd01dc1c2fa4335003ce37779769e93cb4ab0f1d7df965",
+                      "size_bytes": 58
+                    },
+                    {
+                      "path": "sealed/reference_tests/helpers.py",
+                      "sha256": "b9915b7107aaeeddfc21fde1faf5acf3eb22e27d0a4fa4c97849ffb11f936986",
+                      "size_bytes": 1242
+                    },
+                    {
+                      "path": "sealed/reference_tests/test_layers_private.py",
+                      "sha256": "f8323dd343e9bb1128b66eeef57ad7e18b2308415dfa47b58e74c20c7baffa6d",
+                      "size_bytes": 6767
+                    },
+                    {
+                      "path": "sealed/reference_tests/test_runner_engine_cli_private.py",
+                      "sha256": "6f394ce11e97e978c5eda6de31bd76af084d3de191afac3a17a3999f88261a6a",
+                      "size_bytes": 7781
+                    },
+                    {
+                      "path": "sealed/reference_tests/test_state_image_private.py",
+                      "sha256": "009ab133b4b15b57329a9f83309156f4f828a1b84c502ad834e30c94a89dc7be",
+                      "size_bytes": 6993
+                    }
+                  ],
+                  "qualifying_files_truncated": 0,
+                  "roots": [
+                    "public_tests",
+                    "sealed/reference_tests"
+                  ]
+                }
+              ],
+              "limit_failure": null,
+              "limits": {
+                "max_depth": 100,
+                "max_entries": 20000,
+                "max_file_bytes": 33554432,
+                "max_files": 10000,
+                "max_total_bytes": 268435456
+              },
+              "manifest_digest": "a7d66b423e8e1288f0a39468212151175e2f0402eaac51bedc10478a536d93a1",
+              "manifest_version": 1,
+              "missing_groups": [],
+              "oversized_files": [],
+              "oversized_files_truncated": 0,
+              "policy_digest": "96108b83508c5cb8b919635c592c6b33629a029e049a7d69adf1f5e2b0434ec6",
+              "policy_version": 2,
+              "schema_version": 2,
+              "scope": "code-presence-structure-only",
+              "unsafe_entries": [],
+              "unsafe_entries_truncated": 0
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-code-bearing-tree"
+          },
+          {
+            "evidence": {
+              "error_count": 0,
+              "errors": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-manifest"
+          },
+          {
+            "evidence": {
+              "error_count": 0,
+              "errors": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-provenance"
+          }
+        ],
+        "validation_labels": [
+          "GENERATED",
+          "PARTIAL"
+        ],
+        "validation_workspace_tree_sha256": "fa597aa378eaa1736cc6db9c18ed9b6c09a5624b0f81e766b115f4e5c8e70b40"
+      },
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/docker/a-proof-of-concept-imitation-of-docker-written-in-100-python-482ca0b333/job_byox_build_s2_ae18e3ed06d72b954cbe4a59520504ab/attempt-001",
+      "type": "byox-challenge-pack",
+      "validation_labels": [
+        "GENERATED",
+        "PARTIAL"
+      ],
+      "validation_status": "GENERATED+PARTIAL",
+      "worker_type": "reference_builder"
+    },
+    {
+      "artifact_id": "artifact_8f145b8fda8f4402950c756e27b2e887",
+      "attempt_number": 1,
+      "checksum": "a4ec8fa6b9a9f4cc1edb79711e417172fdd2c995768455e25d3c617ef8b35be8",
+      "checksum_algorithm": "tree-sha256-v2",
+      "created_at": 1788365287.1186934,
+      "integrity_status": "VERIFIED_V2",
+      "job_id": "job_byox_build_s2_d5738a92867d38332150840e7d7f6214",
+      "job_type": "codex_task",
+      "metadata": {
+        "archive_projection": {
+          "mode": "complete-workspace",
+          "schema_version": 1,
+          "source_workspace_checksum": "a4ec8fa6b9a9f4cc1edb79711e417172fdd2c995768455e25d3c617ef8b35be8",
+          "source_workspace_checksum_algorithm": "tree-sha256-v2"
+        },
+        "attempt": 1,
+        "byox_validation_cutover": {
+          "archive_paths": null,
+          "classification": "factory-authoritative-validation-snapshot",
+          "limits": {
+            "max_depth": 101,
+            "max_entries": 100000,
+            "max_file_bytes": 536870912,
+            "max_file_depth": 102,
+            "max_total_bytes": 2147483648,
+            "policy_root_max_directory_depth": 100
+          },
+          "manifest_sha256": "880f7730ea8bd80751f3eeb6574e7fffb0669712787d6b6a1762132c2736f496",
+          "policy": "fresh-inode-workspace-replacement-v1",
+          "schema_version": 1,
+          "selected_output_checksum": "a4ec8fa6b9a9f4cc1edb79711e417172fdd2c995768455e25d3c617ef8b35be8",
+          "selected_output_checksum_algorithm": "tree-sha256-v2",
+          "snapshot_roots": [
+            "AGENTS.md",
+            "CONCEPTS.md",
+            "DESIGN_QUESTIONS.md",
+            "LICENSE_BOUNDARY.md",
+            "MANIFEST.yaml",
+            "PROVENANCE.json",
+            "README.md",
+            "REQUIREMENTS.md",
+            "VALIDATION.md",
+            "adversarial",
+            "benchmarks",
+            "debugging",
+            "environment",
+            "public_tests",
+            "review_exercises",
+            "sealed",
+            "starter"
+          ],
+          "source_disposition": "retired-and-discarded",
+          "summary": {
+            "directories": 36,
+            "entries": 100,
+            "files": 64,
+            "max_depth": 9,
+            "total_bytes": 124090
+          },
+          "validation_snapshot_checksum": "a4ec8fa6b9a9f4cc1edb79711e417172fdd2c995768455e25d3c617ef8b35be8",
+          "validation_snapshot_checksum_algorithm": "tree-sha256-v2"
+        },
+        "classification": "agent-generated challenge pack bound to immutable source-derived catalog metadata",
+        "factory_revision": {
+          "commit": "9a10cee440f1a3d4c28a24d1666e0933103565ed",
+          "status": "RECORDED",
+          "tracked_worktree_clean": true
+        },
+        "job_id": "job_byox_build_s2_d5738a92867d38332150840e7d7f6214",
+        "license_boundary": {
+          "catalog_license": "CC0-1.0",
+          "generated_material": "independently generated for personal educational use",
+          "linked_content_copied": false,
+          "linked_resource_license": "NOASSERTION"
+        },
+        "material_baseline_sha256": "b561a5be16bf51e90720356d399af330413ae8172aff21120303c87b83809090",
+        "project": {
+          "category": "Programming Language",
+          "concepts": [
+            "parsing",
+            "interpreters",
+            "compilers",
+            "language design"
+          ],
+          "difficulty": 8.0,
+          "implementation_language": "Java",
+          "metadata": {
+            "catalog_suffix": "",
+            "languages": [
+              "Java"
+            ],
+            "linked_resource_license": "NOASSERTION",
+            "provenance": {
+              "adapter": "build_your_own_x",
+              "classification": "source-derived",
+              "content_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+              "extractor_version": "1.1",
+              "source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+              "source_file": "README.md",
+              "source_line": 333
+            },
+            "scoring": {
+              "basis": "category heuristic",
+              "classification": "inferred",
+              "priority_tier": 1
+            }
+          },
+          "priority_tier": 1,
+          "production_relevance": 8.5,
+          "project_id": "project_d87a4b192af7a71c0932b920abc8cad6",
+          "slug": "crafting-interpreters-a-handbook-for-making-programming-languages",
+          "source_format": "article",
+          "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+          "title": "Crafting interpreters: A handbook for making programming languages",
+          "upstream_reference": "http://www.craftinginterpreters.com/"
+        },
+        "prompt_contexts": [],
+        "removed_root_metadata": [
+          ".factory-workspace"
+        ],
+        "run_id": "run_14466f8db60d443584037756b2282cb3",
+        "run_reproducibility": {
+          "digest": "faf5e9677e1a06c7a1bbce3c94b8b3fee7bc1273a48f12ec37e9dd44a37b64b1",
+          "record_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/logs/job_byox_build_s2_d5738a92867d38332150840e7d7f6214/attempt-001/RUN_PROVENANCE.json",
+          "schema": "learnfactory-run-provenance-v3"
+        },
+        "runtime_prompt": {
+          "effective_prompt": {
+            "content_stored": false,
+            "includes_leaf_worker_policy": true,
+            "sha256": "0f03f56990eb7249417ec243bc7c1832806bc70bd274ddc7e97a8078922f7e87",
+            "utf8_bytes": 8014
+          },
+          "job_prompt": {
+            "content_stored": false,
+            "sha256": "6e3682bb3d99bb4ffe2252f8c6d6184156aff0541e53cb99affa9593d2811a0d",
+            "utf8_bytes": 7316
+          },
+          "leaf_worker_policy": {
+            "content_stored": false,
+            "sha256": "cc6665100f11bee63d5df6e06ff01b754938cc4f58ebde2af9dc211494c44711",
+            "utf8_bytes": 698
+          }
+        },
+        "sandbox_rule_manifest": {
+          "declared_outputs": [
+            "AGENTS.md",
+            "CONCEPTS.md",
+            "DESIGN_QUESTIONS.md",
+            "LICENSE_BOUNDARY.md",
+            "MANIFEST.yaml",
+            "PROVENANCE.json",
+            "README.md",
+            "REQUIREMENTS.md",
+            "VALIDATION.md",
+            "adversarial/README.md",
+            "benchmarks/README.md",
+            "debugging/README.md",
+            "environment/README.md",
+            "public_tests/README.md",
+            "review_exercises/README.md",
+            "sealed/DESIGN.md",
+            "sealed/REVIEW.md",
+            "sealed/TRADEOFFS.md",
+            "sealed/alternatives/README.md",
+            "sealed/production/PRODUCTIONIZATION.md",
+            "sealed/reference/README.md",
+            "sealed/reference_tests/README.md",
+            "starter/README.md"
+          ],
+          "result_channel": {
+            "content_stored_in_provenance": false,
+            "fixed_alias_stored": true,
+            "launch_namespace": "fixed-alias-only",
+            "nonce_hash_stored": false,
+            "nonce_stored": false,
+            "outer_cli_output_capability": "parent-procfd-readonly-hold",
+            "output_descriptor_inherited": false,
+            "post_exit_result_retention": "bounded-redacted-output",
+            "private_path_stored": false,
+            "runtime_fd_stored": false,
+            "schema_version": 3,
+            "transport": "outer-cli-parent-held-fixed-alias-inode"
+          },
+          "rules": [],
+          "schema_version": 1,
+          "sha256": "e7bc085ef396c296826d0e266d048a5cfa757115f255550276c5a0039cbb9467",
+          "staged_inputs": [],
+          "tools_enabled": true,
+          "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_build_s2_d5738a92867d38332150840e7d7f6214/attempt-001",
+          "workspace_access": "write"
+        },
+        "schema_version": 1,
+        "snapshot_sha256": "3d238e481462341641362800952c5e683439b805ac30f55f9888de705ac8df5a",
+        "source": {
+          "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989",
+          "license": "CC0-1.0",
+          "metadata": {
+            "adapter": "build_your_own_x",
+            "extractor_version": "1.1",
+            "license_evidence": "explicit CC0 waiver declaration",
+            "license_file": "README.md#origins--license",
+            "license_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+            "license_source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+            "linked_resource_license": "NOASSERTION",
+            "snapshot_reader": "git-object-database",
+            "tree_hash": "12e788febc0575ae1bce1de8ad1fc28d7fff7c22"
+          },
+          "name": "Build Your Own X",
+          "observation_fields_excluded": [
+            "active_at_factory_time",
+            "ingested_at"
+          ],
+          "path": "<immutable-byox-baseline>",
+          "snapshot_kind": "immutable-material-baseline",
+          "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+          "type": "project_catalog",
+          "upstream_url": null
+        },
+        "staged_inputs": [],
+        "validated_tree_sha256": "a4ec8fa6b9a9f4cc1edb79711e417172fdd2c995768455e25d3c617ef8b35be8",
+        "validation_evidence": [
+          {
+            "evidence": {
+              "checked": [
+                "README.md",
+                "AGENTS.md",
+                "MANIFEST.yaml",
+                "PROVENANCE.json",
+                "LICENSE_BOUNDARY.md",
+                "REQUIREMENTS.md",
+                "CONCEPTS.md",
+                "DESIGN_QUESTIONS.md",
+                "VALIDATION.md",
+                "starter/README.md",
+                "public_tests/README.md",
+                "environment/README.md",
+                "sealed/reference/README.md",
+                "sealed/reference_tests/README.md",
+                "sealed/DESIGN.md",
+                "sealed/TRADEOFFS.md",
+                "sealed/REVIEW.md",
+                "sealed/alternatives/README.md",
+                "sealed/production/PRODUCTIONIZATION.md",
+                "adversarial/README.md",
+                "debugging/README.md",
+                "review_exercises/README.md",
+                "benchmarks/README.md"
+              ],
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-challenge-structure"
+          },
+          {
+            "evidence": {
+              "checked": [
+                ".git",
+                ".env",
+                ".venv",
+                "credentials.json",
+                "secrets",
+                "reference",
+                "reference_tests",
+                "hidden_tests",
+                "solution",
+                "solutions",
+                "answers",
+                "starter/sealed",
+                "starter/reference",
+                "starter/reference_tests",
+                "starter/solution",
+                "starter/solutions",
+                "starter/answers",
+                "public_tests/sealed",
+                "public_tests/reference",
+                "public_tests/hidden_tests",
+                "environment/sealed"
+              ],
+              "present": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-progressive-boundary"
+          },
+          {
+            "evidence": {
+              "checked": [
+                "README.md",
+                "AGENTS.md",
+                "MANIFEST.yaml",
+                "PROVENANCE.json",
+                "LICENSE_BOUNDARY.md",
+                "REQUIREMENTS.md",
+                "CONCEPTS.md",
+                "DESIGN_QUESTIONS.md",
+                "VALIDATION.md",
+                "starter/README.md",
+                "public_tests/README.md",
+                "environment/README.md",
+                "sealed/reference/README.md",
+                "sealed/reference_tests/README.md",
+                "sealed/DESIGN.md",
+                "sealed/TRADEOFFS.md",
+                "sealed/REVIEW.md",
+                "sealed/alternatives/README.md",
+                "sealed/production/PRODUCTIONIZATION.md",
+                "adversarial/README.md",
+                "debugging/README.md",
+                "review_exercises/README.md",
+                "benchmarks/README.md"
+              ],
+              "failures": [],
+              "minimum_bytes": 1
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-nonempty-files"
+          },
+          {
+            "evidence": {
+              "entry_count": 36,
+              "forbidden": [
+                ".agents",
+                ".codex",
+                ".env",
+                ".git",
+                ".venv",
+                "answer",
+                "answers",
+                "credential",
+                "credentials",
+                "credentials.json",
+                "hidden",
+                "hidden_tests",
+                "job.md",
+                "reference",
+                "reference_tests",
+                "sealed",
+                "secret",
+                "secrets",
+                "solution",
+                "solutions"
+              ],
+              "limit_failure": null,
+              "max_depth": 100,
+              "max_entries": 20000,
+              "present": [],
+              "present_truncated": 0,
+              "roots": [
+                "starter",
+                "public_tests",
+                "environment"
+              ],
+              "unsafe_entries": [],
+              "unsafe_entries_truncated": 0
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-recursive-progressive-boundary"
+          },
+          {
+            "evidence": {
+              "claims_builds_or_tested": false,
+              "counts": {
+                "bytes": 92698,
+                "entries": 68,
+                "files": 44
+              },
+              "groups": [
+                {
+                  "build_descriptor_count": 0,
+                  "build_descriptors": [],
+                  "missing_or_unsafe_roots": [],
+                  "name": "reference_implementation",
+                  "qualifying_count": 18,
+                  "qualifying_digest": "0f7efc5adad2d72c533dd28e6b71f58dbd2c55e33e25e3be5e97e741ad4c3fe5",
+                  "qualifying_files": [
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/BytecodeCompiler.java",
+                      "sha256": "1fec65862b42d13c9677b3d0ea85818943c54b94954b15e98b4e635c1010a81c",
+                      "size_bytes": 7749
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/BytecodeProgram.java",
+                      "sha256": "913cd1e4574d9be282089adfcac078643ec4f59cb34da328688a972c0d570db4",
+                      "size_bytes": 429
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/Engine.java",
+                      "sha256": "bbc5858c5e647932b9695eab3088e183d987108bc875b3fadca64f4bec8a6c17",
+                      "size_bytes": 75
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/Environment.java",
+                      "sha256": "11a7071de7129615746b1c4e964c252e6b940c2738e5aaac295257327db8f45f",
+                      "size_bytes": 1172
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/Expr.java",
+                      "sha256": "eaa087ac9ef2e283985a253c2504603aa180f6fe21ffe758667ff3dd8b5c433e",
+                      "size_bytes": 1659
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/Instruction.java",
+                      "sha256": "06643bdbe8e37d7158dad5e0790cdf613d1eea8a73c6bcaf12c81246c0e67dd5",
+                      "size_bytes": 114
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/Interpreter.java",
+                      "sha256": "3170e8698f7c39995bdeb5419beb6fe5db6c4e2f333128ec3964274e97d5953e",
+                      "size_bytes": 8175
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/Lexer.java",
+                      "sha256": "cd0cf1d19be3f697f1f9c79655aacc8c916d5f4a86fda6536f0503c63ae1c96b",
+                      "size_bytes": 6527
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/Main.java",
+                      "sha256": "cdf6bb4a5b6fdca1b9783f17bc489d4aa363eb6e742bbf05b410b635131a13f7",
+                      "size_bytes": 2586
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/Mica.java",
+                      "sha256": "b64d1c127ef7ed14b7fdfdeb9a1736f9219387f8922cbcdcf3c9f904d7530e7a",
+                      "size_bytes": 924
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/MicaException.java",
+                      "sha256": "9652a556325853245e0e9d0339aaa4a30b2d1ab28131365da5fef48c3d08a48e",
+                      "size_bytes": 996
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/OpCode.java",
+                      "sha256": "15cc8822f3e2207c6f3006af01e3a862f90e9c22ec3493ce265d0510ac66125a",
+                      "size_bytes": 334
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/Parser.java",
+                      "sha256": "45637c64b92272a320b329762121fe49a4c200a6851b47571b6fff7a73f7af14",
+                      "size_bytes": 7021
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/Stmt.java",
+                      "sha256": "510c282d39814ec80efa4e832ea5a2c8a21c2557caae942b1255c5089b978dbd",
+                      "size_bytes": 1694
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/Token.java",
+                      "sha256": "1beacaa339d023f2189be7849ea00b27a451d2b30e4dcc07bc20faf8daab97d8",
+                      "size_bytes": 479
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/TokenType.java",
+                      "sha256": "82d631768d2fd5ebc8345a33f3b11f6af58d0ece0c7b26789c7a5e2986583833",
+                      "size_bytes": 351
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/Values.java",
+                      "sha256": "356159daae9579e3ccc7e908ac32ac0fc48c1fb0c0095c551582c40b58e3378a",
+                      "size_bytes": 2240
+                    },
+                    {
+                      "path": "sealed/reference/src/main/java/org/learningfactory/mica/VirtualMachine.java",
+                      "sha256": "30c94972f007d68aea276caf56da1706baea916a1b30621d03c683ab7e0bb72f",
+                      "size_bytes": 12081
+                    }
+                  ],
+                  "qualifying_files_truncated": 0,
+                  "roots": [
+                    "sealed/reference"
+                  ]
+                },
+                {
+                  "build_descriptor_count": 0,
+                  "build_descriptors": [],
+                  "missing_or_unsafe_roots": [],
+                  "name": "learner_starter",
+                  "qualifying_count": 18,
+                  "qualifying_digest": "f9a9a36d3a53791b06e3a2bd5ac91f1a2c6a42524c1d0dd824832ed7cefb8f04",
+                  "qualifying_files": [
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/BytecodeCompiler.java",
+                      "sha256": "787bf2d02601ac3a2a5f8c9b8e3e06122495f1326cd8f4982e6f2053fb836a59",
+                      "size_bytes": 486
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/BytecodeProgram.java",
+                      "sha256": "913cd1e4574d9be282089adfcac078643ec4f59cb34da328688a972c0d570db4",
+                      "size_bytes": 429
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/Engine.java",
+                      "sha256": "b7b7d3e07735e275a2e3b1b4424d47d7e6c30bebb724eaebf7c308baf6b9c3a4",
+                      "size_bytes": 67
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/Environment.java",
+                      "sha256": "3e3b662f2e51024553c70d1bc10561ac97043840ee5113793bef260104507db8",
+                      "size_bytes": 1197
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/Expr.java",
+                      "sha256": "cf073b9cc7992bcdcf4885690eb2e23727199e9077bcc84432e63de0f0394e4e",
+                      "size_bytes": 1342
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/Instruction.java",
+                      "sha256": "43a46da48ff60d7cc7cd197b9ebd2b487ad3d32d07589d4ae7a98c70bf2d3d61",
+                      "size_bytes": 114
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/Interpreter.java",
+                      "sha256": "475ed7af4d4d16a3706c2365cfc75e439e9012224e6c11c2e2ab7d92a9232817",
+                      "size_bytes": 514
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/Lexer.java",
+                      "sha256": "7cff8e9eb7e1d9cd901bd8da7ae93f6db5e4fca80af7bebf0c7a17efdfb10298",
+                      "size_bytes": 572
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/Main.java",
+                      "sha256": "37329ebe433481e3cc0f2fea630fe57cff243b6d97a05faae067e8b54c6f167c",
+                      "size_bytes": 2468
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/Mica.java",
+                      "sha256": "aefede65e206b66e8700330d833ce41e674b40b855e48123edf4e3063cf7ac40",
+                      "size_bytes": 864
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/MicaException.java",
+                      "sha256": "d49839238b592f272515083cf92fce696ed6e18990ef347bfd72cb5d2868d396",
+                      "size_bytes": 972
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/OpCode.java",
+                      "sha256": "30378db67f73b33159cb5e677237d166c66f0a2ac752939a8b629bc701327175",
+                      "size_bytes": 326
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/Parser.java",
+                      "sha256": "50e76cbcc719c5d041ec5e96521295ce0d366fabd27468fd9d154b33521d983d",
+                      "size_bytes": 543
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/Stmt.java",
+                      "sha256": "79771733a98ec8e87c7ebed1752b4c932fd56fc0f153e9cfbbbc33b7b3520267",
+                      "size_bytes": 1318
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/Token.java",
+                      "sha256": "2e55146c89ca1a6723183646eb181db5ece3fbad5a959e46e906d47614868fa2",
+                      "size_bytes": 443
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/TokenType.java",
+                      "sha256": "82d631768d2fd5ebc8345a33f3b11f6af58d0ece0c7b26789c7a5e2986583833",
+                      "size_bytes": 351
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/Values.java",
+                      "sha256": "b0387e07126900bef0f25ed96d651848958ae5e5c401b067753d4fb9e5400274",
+                      "size_bytes": 1298
+                    },
+                    {
+                      "path": "starter/src/main/java/org/learningfactory/mica/VirtualMachine.java",
+                      "sha256": "30bf348e9091f17f59704a5bdd25ebbd3cd90e8bf1c68f39fe2ca402953583be",
+                      "size_bytes": 572
+                    }
+                  ],
+                  "qualifying_files_truncated": 0,
+                  "roots": [
+                    "starter"
+                  ]
+                },
+                {
+                  "build_descriptor_count": 0,
+                  "build_descriptors": [],
+                  "missing_or_unsafe_roots": [],
+                  "name": "tests",
+                  "qualifying_count": 4,
+                  "qualifying_digest": "12e7a83bc52f53bf502c9660e323d0a4aab04bf0c5d1332fcb7e0262504fa01a",
+                  "qualifying_files": [
+                    {
+                      "path": "public_tests/run.sh",
+                      "sha256": "559b79eb7af846452ce63389a75de4f1e01f3c740c6b2c42fd8c465d23d08772",
+                      "size_bytes": 971
+                    },
+                    {
+                      "path": "public_tests/src/test/java/org/learningfactory/mica/MicaPublicTest.java",
+                      "sha256": "dee3c129bcefc9c1225c8b82b2a0df56bb3b86808095660e816bef93e782eada",
+                      "size_bytes": 5589
+                    },
+                    {
+                      "path": "sealed/reference_tests/run.sh",
+                      "sha256": "cbde2a643874116927ec2b7e2b6151c10dc9958366c32c5bfa131d19c10d132a",
+                      "size_bytes": 824
+                    },
+                    {
+                      "path": "sealed/reference_tests/src/test/java/org/learningfactory/mica/MicaReferenceTest.java",
+                      "sha256": "00d760a1a540a29d85b33fe205ce10132c310046b2c44aa50bd3c6b4749a70ee",
+                      "size_bytes": 14745
+                    }
+                  ],
+                  "qualifying_files_truncated": 0,
+                  "roots": [
+                    "public_tests",
+                    "sealed/reference_tests"
+                  ]
+                }
+              ],
+              "limit_failure": null,
+              "limits": {
+                "max_depth": 100,
+                "max_entries": 20000,
+                "max_file_bytes": 33554432,
+                "max_files": 10000,
+                "max_total_bytes": 268435456
+              },
+              "manifest_digest": "5a9d617f2f22496259e3c457a07c46e311dce58917f0fd1082d312aff45a6e01",
+              "manifest_version": 1,
+              "missing_groups": [],
+              "oversized_files": [],
+              "oversized_files_truncated": 0,
+              "policy_digest": "96108b83508c5cb8b919635c592c6b33629a029e049a7d69adf1f5e2b0434ec6",
+              "policy_version": 2,
+              "schema_version": 2,
+              "scope": "code-presence-structure-only",
+              "unsafe_entries": [],
+              "unsafe_entries_truncated": 0
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-code-bearing-tree"
+          },
+          {
+            "evidence": {
+              "error_count": 0,
+              "errors": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-manifest"
+          },
+          {
+            "evidence": {
+              "error_count": 0,
+              "errors": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-provenance"
+          }
+        ],
+        "validation_labels": [
+          "GENERATED",
+          "PARTIAL"
+        ],
+        "validation_workspace_tree_sha256": "a4ec8fa6b9a9f4cc1edb79711e417172fdd2c995768455e25d3c617ef8b35be8"
+      },
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/programming-language/crafting-interpreters-a-handbook-for-making-programming-languages-40bc68c012/job_byox_build_s2_d5738a92867d38332150840e7d7f6214/attempt-001",
+      "type": "byox-challenge-pack",
+      "validation_labels": [
+        "GENERATED",
+        "PARTIAL"
+      ],
+      "validation_status": "GENERATED+PARTIAL",
+      "worker_type": "reference_builder"
+    },
+    {
       "artifact_id": "artifact_8bbd21622ca94febb1da5a5274c3e456",
       "attempt_number": 1,
       "checksum": "5fd74cf898cd2e7d6b69f34357b2e9c4970e2847d386be7a3e1fa62dc6a0d705",
@@ -100612,7 +101901,7 @@
       "topic": "软件工程"
     }
   ],
-  "generated_at": 1788364274.5411355,
+  "generated_at": 1788365688.843693,
   "project_categories": [
     {
       "category": "Uncategorized",

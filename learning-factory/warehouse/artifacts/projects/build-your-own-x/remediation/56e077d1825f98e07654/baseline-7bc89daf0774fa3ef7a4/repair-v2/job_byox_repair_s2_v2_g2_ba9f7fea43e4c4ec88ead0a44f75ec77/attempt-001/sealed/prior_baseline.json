@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "source_job_id": "job_byox_repair_s2_v1_g2_70a90b5934bcf838b167251b70a24f39",
+  "artifact_id": "artifact_c9aa4028b6de41babba9cfa6c64d34d8",
+  "artifact_checksum": "3b4dc34ca41ad7e72504f7c0c9d5f3f7285ad4032b7dab80e344ee3e509d265d",
+  "artifact_checksum_algorithm": "tree-sha256-v2",
+  "content_digest_algorithm": "canonical-path-content-sha256-v1",
+  "content_sha256": "2575be7cf0f50c0a0f6327f11e3a1757173d40016bb3a34d0db11a5fc92c2e13"
+}

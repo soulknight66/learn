@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "stage": "post-attempt-exercises",
+  "exposure_model": "recursive-roots-with-exact-additions",
+  "root_files": [
+    "README.md",
+    "AGENTS.md",
+    "MANIFEST.yaml",
+    "LICENSE_BOUNDARY.md",
+    "REQUIREMENTS.md",
+    "CONCEPTS.md",
+    "DESIGN_QUESTIONS.md"
+  ],
+  "recursive_directories": [
+    "starter",
+    "public_tests",
+    "environment"
+  ],
+  "selected_files": [
+    "debugging/README.md",
+    "debugging/scheduler-stall/README.md",
+    "debugging/scheduler-stall/fixture.c",
+    "review_exercises/README.md",
+    "review_exercises/vm-boundary/README.md",
+    "review_exercises/vm-boundary/candidate.c"
+  ],
+  "selected_directories": [
+    "debugging",
+    "debugging/scheduler-stall",
+    "review_exercises",
+    "review_exercises/vm-boundary"
+  ],
+  "forbidden_path_components": [
+    "sealed",
+    "reference",
+    "reference_tests",
+    "hidden_tests",
+    "solution",
+    "solutions",
+    "answers"
+  ],
+  "allowed_entry_types": [
+    "directory",
+    "regular_file"
+  ],
+  "independent_materialization_validation": "REQUIRED"
+}

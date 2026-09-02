@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Permit exactly one code-reviewed S2 remediation-policy reissue after an independently reproduced
+  runtime counterexample invalidates a structurally successful artifact. Bind the audit to the exact
+  baseline, builder artifact, source hashes, probe, and observed output; require its generation-two
+  reviewer to acknowledge the controller digest and return only `REVISE` or `FAIL`; then admit only the
+  declared policy-v2 generation-two successor. Recheck archived evidence independently, reject
+  counterfeit or forked coordinates and bindings, and retain a hard generation ceiling of two.
 - Restore owner access on component-pinned allocated workspaces before removing
   reserved Codex metadata. This lets validation proceed when a worker preserves a
   staged read-only root mode onto `.`, atomically quarantines metadata directories,

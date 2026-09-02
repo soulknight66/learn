@@ -648,3 +648,24 @@ This change does not make wall-clock leases independent across unsynchronized ho
 catalog refill is globally coordinated across multiple controllers. Operated hosts must keep synchronized
 clocks, the 120-second/60-second margins remain during canarying, and a durable global refill/claim fence is
 a separate control-plane change.
+
+## ADR-037: Reissue a successful remediation only through an exact audited successor
+
+A successful builder publication proves that its declared validators passed; it does not make the
+artifact immune to a later, independently reproduced runtime counterexample. One ARM generation-two
+artifact passed its structural contract but a checksum-bound QEMU probe twice demonstrated that a stale
+physical task frame could kill a replacement task after slot reuse. The successful job and artifact remain
+immutable historical evidence and are never reopened.
+
+The controller instead carries one code-reviewed audit allowlist entry. Its SHA-256 digest is an
+acknowledgement token, not a signature or a general authorization mechanism. The entry binds the exact
+baseline, builder job, attempt, artifact identity and checksum, affected source hashes, probe hash, raw and
+normalized output hashes, markers, finding, and only permitted successor coordinate. The existing
+generation-two review must include that token exactly once and is mechanically constrained to `REVISE` or
+`FAIL`. Archived review bytes and validator evidence are checked again before the successor gains authority.
+
+The remediation graph is keyed by `(generation, policy version)`. For the audited lineage its sole admitted
+path is v1/G1, v1/G2, then v2/G2; the generation ceiling remains two even if an operator requests more.
+Unexpected deterministic identities, malformed rows, extra baseline bindings, counterfeit audits, and
+coordinate forks fail closed. Adding another exception requires a new reviewed code change with equally
+specific evidence; mutable database prose cannot mint reissue authority.

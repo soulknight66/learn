@@ -488,6 +488,70 @@ class ByoxBaselineStoreTests(unittest.TestCase):
             with self.assertRaisesRegex(ByoxBaselineConflict, "conflicting"):
                 insert_or_verify_job(self.database, connection, changed)
 
+    def test_bound_publication_rolls_back_new_job_when_binding_fails(self) -> None:
+        target_id = byox_s2_builder_job_id(self.baseline.baseline_sha256)
+        target = self._definition(target_id)
+        blocker = self._definition("job_conflicting_baseline_binding_holder")
+        with self.database.transaction(immediate=True) as connection:
+            insert_or_verify_baseline(
+                self.database,
+                connection,
+                self.baseline,
+                first_observed_at=10.0,
+            )
+            insert_or_verify_job(
+                self.database,
+                connection,
+                blocker,
+                created_at=20.0,
+            )
+            connection.execute(
+                """
+                INSERT INTO byox_baseline_job_bindings(
+                    job_id,baseline_sha256,role,policy_version,builder_job_id,
+                    definition_sha256,bound_at
+                ) VALUES (?,?,'builder',?,NULL,?,?)
+                """,
+                (
+                    blocker.job_id,
+                    self.baseline.baseline_sha256,
+                    BYOX_SNAPSHOT_JOB_SCHEME_VERSION,
+                    job_definition_sha256(blocker),
+                    21.0,
+                ),
+            )
+            with self.assertRaisesRegex(
+                ByoxBaselineConflict, "binding identity conflicts"
+            ):
+                insert_or_verify_bound_job(
+                    self.database,
+                    connection,
+                    self.baseline,
+                    target,
+                    role="builder",
+                    policy_version=BYOX_SNAPSHOT_JOB_SCHEME_VERSION,
+                    created_at=30.0,
+                    bound_at=31.0,
+                )
+
+        with self.database.connect() as connection:
+            self.assertIsNone(load_job_definition(connection, target_id))
+            self.assertEqual(
+                0,
+                connection.execute(
+                    "SELECT COUNT(*) FROM job_dependencies WHERE job_id=?",
+                    (target_id,),
+                ).fetchone()[0],
+            )
+            self.assertEqual(
+                0,
+                connection.execute(
+                    "SELECT COUNT(*) FROM events WHERE job_id=?",
+                    (target_id,),
+                ).fetchone()[0],
+            )
+            self.assertIsNotNone(load_job_definition(connection, blocker.job_id))
+
     def test_bound_definition_and_dependencies_are_database_immutable(self) -> None:
         definition = self._definition(
             byox_s2_builder_job_id(self.baseline.baseline_sha256)

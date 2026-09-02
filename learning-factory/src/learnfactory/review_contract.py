@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import hashlib
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, Mapping
 
 from .strict_json import StrictJsonError, strict_json_loads
 
@@ -29,6 +29,10 @@ REVIEW_EVALUATION_FIELDS = frozenset(
         *REVIEW_VERDICT_TRIMMED_STRING_ARRAYS,
     }
 )
+REVIEW_VERDICTS = frozenset({"PASS", "REVISE", "FAIL"})
+REVIEW_VERDICT_CONSTRAINT_FIELDS = frozenset(
+    {"allowed_verdicts", "required_evidence_entries"}
+)
 
 
 class ReviewContractError(ValueError):
@@ -36,10 +40,17 @@ class ReviewContractError(ValueError):
 
 
 @dataclass(frozen=True)
+class ReviewVerdictConstraints:
+    allowed_verdicts: tuple[str, ...] | None
+    required_evidence_entries: tuple[str, ...]
+
+
+@dataclass(frozen=True)
 class DeterministicReviewEvaluation:
     project_id: str
     builder_job_id: str
     verdict: str
+    evidence_entries: tuple[str, ...]
     entry_counts: dict[str, int]
     evaluation_sha256: str
 
@@ -83,7 +94,7 @@ def parse_deterministic_review_evaluation(
     if not isinstance(builder_job_id, str) or not builder_job_id:
         raise ReviewContractError("builder_job_id must be a nonempty string")
     verdict = value.get("verdict")
-    if not isinstance(verdict, str) or verdict not in {"PASS", "REVISE", "FAIL"}:
+    if not isinstance(verdict, str) or verdict not in REVIEW_VERDICTS:
         raise ReviewContractError("review verdict must be exactly PASS, REVISE, or FAIL")
 
     entry_counts: dict[str, int] = {}
@@ -107,6 +118,67 @@ def parse_deterministic_review_evaluation(
         project_id=project_id,
         builder_job_id=builder_job_id,
         verdict=verdict,
+        evidence_entries=tuple(value["evidence"]),
         entry_counts=entry_counts,
         evaluation_sha256=hashlib.sha256(raw_evaluation).hexdigest(),
+    )
+
+
+def review_verdict_constraints(
+    specification: Mapping[str, Any],
+) -> ReviewVerdictConstraints:
+    """Parse optional controller-owned review constraints with strict types.
+
+    These constraints narrow a structurally valid contract-v2 review.  They do
+    not alter the review document or its canonical validation-evidence shape.
+    """
+
+    if not isinstance(specification, Mapping):
+        raise ReviewContractError("review verdict specification must be an object")
+
+    missing = object()
+    raw_allowed = specification.get("allowed_verdicts", missing)
+    allowed: tuple[str, ...] | None
+    if raw_allowed is missing:
+        allowed = None
+    else:
+        if (
+            not isinstance(raw_allowed, list)
+            or not raw_allowed
+            or any(
+                not isinstance(value, str) or value not in REVIEW_VERDICTS
+                for value in raw_allowed
+            )
+            or len(set(raw_allowed)) != len(raw_allowed)
+        ):
+            raise ReviewContractError(
+                "allowed_verdicts must be a nonempty duplicate-free array of "
+                "PASS, REVISE, or FAIL"
+            )
+        allowed = tuple(raw_allowed)
+
+    raw_required = specification.get("required_evidence_entries", missing)
+    if raw_required is missing:
+        required: tuple[str, ...] = ()
+    else:
+        if (
+            not isinstance(raw_required, list)
+            or not raw_required
+            or any(
+                not isinstance(value, str)
+                or not value
+                or value.strip() != value
+                for value in raw_required
+            )
+            or len(set(raw_required)) != len(raw_required)
+        ):
+            raise ReviewContractError(
+                "required_evidence_entries must be a nonempty duplicate-free "
+                "array of exactly-trimmed strings"
+            )
+        required = tuple(raw_required)
+
+    return ReviewVerdictConstraints(
+        allowed_verdicts=allowed,
+        required_evidence_entries=required,
     )

@@ -172,6 +172,90 @@ class ByoxReviewSemanticsTests(unittest.TestCase):
             self.assertEqual("FAIL", invalid.status)
             self.assertEqual((), invalid.claims)
 
+    def test_verdict_validator_enforces_exact_controller_constraints(self) -> None:
+        token = "controller-audit-sha256:" + "a" * 64
+        base_evaluation = {
+            "project_id": "project-audited-review",
+            "builder_job_id": "builder-audited-review",
+            "verdict": "REVISE",
+            "evidence": [token, "independent reproduction"],
+            "checks_run": ["bounded qemu reproduction"],
+            "limitations": [],
+        }
+        specification = {
+            "type": "review_verdict",
+            "name": "byox-independent-review-verdict",
+            "path": "EVALUATION.json",
+            "contract_version": BYOX_REVIEW_CONTRACT_VERSION,
+            "allowed_verdicts": ["REVISE", "FAIL"],
+            "required_evidence_entries": [token],
+        }
+
+        cases = {
+            "accepted": (base_evaluation, specification, "PASS"),
+            "pass-verdict": (
+                {**base_evaluation, "verdict": "PASS"},
+                specification,
+                "FAIL",
+            ),
+            "missing-token": (
+                {**base_evaluation, "evidence": ["independent reproduction"]},
+                specification,
+                "FAIL",
+            ),
+            "substring-token": (
+                {
+                    **base_evaluation,
+                    "evidence": [f"prefix {token}", "independent reproduction"],
+                },
+                specification,
+                "FAIL",
+            ),
+            "checks-only-token": (
+                {
+                    **base_evaluation,
+                    "evidence": ["independent reproduction"],
+                    "checks_run": [token],
+                },
+                specification,
+                "FAIL",
+            ),
+            "duplicate-token": (
+                {**base_evaluation, "evidence": [token, token]},
+                specification,
+                "FAIL",
+            ),
+            "duplicate-allowed": (
+                base_evaluation,
+                {**specification, "allowed_verdicts": ["FAIL", "FAIL"]},
+                "ERROR",
+            ),
+            "non-list-required": (
+                base_evaluation,
+                {**specification, "required_evidence_entries": token},
+                "ERROR",
+            ),
+        }
+        for suffix, (evaluation, validator, expected_status) in cases.items():
+            with self.subTest(suffix=suffix):
+                job_id = self._validator_job(f"audited-{suffix}")
+                workspace = self.root / f"audited-{suffix}"
+                workspace.mkdir()
+                (workspace / "EVALUATION.json").write_text(
+                    json.dumps(evaluation) + "\n", encoding="utf-8"
+                )
+                [result] = Validator(self.database).run(
+                    job_id,
+                    workspace,
+                    [validator],
+                    self.root / "logs" / job_id,
+                )
+                self.assertEqual(expected_status, result.status, result.evidence)
+                self.assertEqual((), result.claims)
+                if suffix == "accepted":
+                    self.assertEqual("REVISE", result.evidence["verdict"])
+                    self.assertNotIn("allowed_verdicts", result.evidence)
+
     def test_verdict_contract_rejects_unversioned_empty_or_untrimmed_evidence(self) -> None:
         valid = {
             "project_id": "project-contract",

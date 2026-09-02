@@ -51,6 +51,9 @@ from .review_contract import (
     DETERMINISTIC_REVIEW_VERDICT_CONTRACT_VERSION,
     MAX_REVIEW_EVALUATION_BYTES,
     REVIEW_ARTIFACT_REQUIRED_PATHS,
+    REVIEW_VERDICT_CONSTRAINT_FIELDS,
+    ReviewContractError,
+    review_verdict_constraints,
 )
 from .sandbox_policy import is_csdiy_examiner
 from .scoring import DEFAULT_WEIGHTS, priority_score
@@ -757,6 +760,14 @@ def _has_byox_review_contract(payload: object) -> bool:
         or verdict_specs[0]["contract_version"] != BYOX_REVIEW_CONTRACT_VERSION
     ):
         return False
+    verdict_spec = verdict_specs[0]
+    base_verdict_fields = set(_byox_review_verdict_validator())
+    if set(verdict_spec) - base_verdict_fields - REVIEW_VERDICT_CONSTRAINT_FIELDS:
+        return False
+    try:
+        review_verdict_constraints(verdict_spec)
+    except ReviewContractError:
+        return False
     schema = payload.get("output_schema")
     expected_schema = _byox_review_schema(project_id, builder_job_id)
     try:
@@ -776,10 +787,14 @@ def _has_byox_review_contract(payload: object) -> bool:
         "max_bytes": MAX_REVIEW_EVALUATION_BYTES,
         "schema": expected_schema,
     }
+    expected_verdict = _byox_review_verdict_validator()
+    for field in REVIEW_VERDICT_CONSTRAINT_FIELDS:
+        if field in verdict_spec:
+            expected_verdict[field] = verdict_spec[field]
     expected_validators = [
         required_paths_validator,
         schema_validator,
-        _byox_review_verdict_validator(),
+        expected_verdict,
         _byox_review_acceptance_validator(),
     ]
     try:

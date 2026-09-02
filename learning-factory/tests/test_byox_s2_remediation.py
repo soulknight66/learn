@@ -4,15 +4,19 @@ import copy
 import json
 import shutil
 import unittest
+from dataclasses import replace
 from pathlib import Path
+from types import SimpleNamespace
 from typing import Any
 
 import learnfactory.byox_remediation as remediation_module
 import learnfactory.handlers as handlers_module
 from learnfactory.backend_policy import with_mass_seed_backend_policy
 from learnfactory.byox_baselines import (
+    byox_remediation_binding_policy_version,
     byox_s2_reviewer_job_id,
     insert_or_verify_bound_job,
+    job_definition_sha256,
     load_byox_baseline,
     load_job_definition,
     load_verified_binding,
@@ -32,9 +36,16 @@ from learnfactory.seeding import (
     seed_all_byox_reference_jobs,
 )
 from learnfactory.util import canonical_json, now, tree_sha256
-from learnfactory.validation import Validator
+from learnfactory.validation import (
+    ByoxCodeManifest,
+    ByoxCodeManifestEntry,
+    Validator,
+)
 from learnfactory.worker import _validation_labels
 import tests.test_byox_remediation as legacy_tests
+
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 class ByoxS2RemediationContractTests(unittest.TestCase):
@@ -57,6 +68,517 @@ class ByoxS2RemediationContractTests(unittest.TestCase):
         self.jobs = fixture.jobs
         self.manager = fixture.manager
         self.settings = fixture.settings
+
+    def test_exact_audit_allowlist_binds_only_the_declared_successor(self) -> None:
+        [audit] = remediation_module._s2_audit_reissue_allowlist()
+        audited = audit["audited_builder"]
+        finding = audit["finding"]
+        sources = tuple(
+            ByoxCodeManifestEntry(
+                path=str(item["path"]),
+                kind="file",
+                mode=0o444,
+                size_bytes=1,
+                sha256=str(item["sha256"]),
+            )
+            for item in finding["candidate_sources"]
+        )
+        snapshot = remediation_module._DescriptorTreeSnapshot(
+            checksum=str(audited["artifact_checksum"]),
+            entries=len(sources),
+            files=len(sources),
+            total_bytes=len(sources),
+            required_files={},
+            required_sha256={},
+            paths=tuple(item.path for item in sources),
+            root_kinds={"sealed": "directory"},
+            code_manifest=ByoxCodeManifest(entries=sources, scope="full-tree"),
+        )
+        artifact = remediation_module.ArtifactBinding(
+            job_id=str(audited["job_id"]),
+            artifact_id=str(audited["artifact_id"]),
+            artifact_type=str(audited["artifact_type"]),
+            artifact_checksum=str(audited["artifact_checksum"]),
+            checksum_algorithm=str(audited["checksum_algorithm"]),
+            artifact_attempt=int(audited["artifact_attempt"]),
+            artifact_path=Path("/controller/audited-artifact"),
+            artifact_created_at=1.0,
+            tree_snapshot=snapshot,
+        )
+
+        accepted = remediation_module._require_s2_audited_artifact(
+            audit,
+            artifact,
+            remediation_policy_version=1,
+            generation=2,
+        )
+        self.assertEqual(audit, accepted)
+        self.assertEqual(
+            "9768c1e824f3afcf1d3668dbf93c7ce0c7ee31a1783e44fc0e7ee791b2461985",
+            audit["audit_sha256"],
+        )
+        self.assertIsNone(
+            remediation_module._s2_audit_reissue_for_lineage(
+                "project-not-allowlisted", str(audit["baseline_sha256"])
+            )
+        )
+        self.assertIsNone(
+            remediation_module._s2_audit_reissue_for_lineage(
+                str(audit["project_id"]), "0" * 64
+            )
+        )
+
+        artifact_mutations = (
+            replace(artifact, job_id="job_wrong"),
+            replace(artifact, artifact_id="artifact_wrong"),
+            replace(artifact, artifact_attempt=2),
+            replace(artifact, artifact_checksum="0" * 64),
+            replace(artifact, checksum_algorithm="sha256"),
+            replace(
+                artifact,
+                tree_snapshot=replace(snapshot, checksum="0" * 64),
+            ),
+            replace(
+                artifact,
+                tree_snapshot=replace(
+                    snapshot,
+                    code_manifest=ByoxCodeManifest(
+                        entries=(replace(sources[0], sha256="0" * 64), *sources[1:]),
+                        scope="full-tree",
+                    ),
+                ),
+            ),
+        )
+        for mutated in artifact_mutations:
+            with self.subTest(mutation=mutated):
+                with self.assertRaises(remediation_module.ByoxRemediationError):
+                    remediation_module._require_s2_audited_artifact(
+                        audit,
+                        mutated,
+                        remediation_policy_version=1,
+                        generation=2,
+                    )
+
+        counterfeit = copy.deepcopy(audit)
+        counterfeit["finding"]["probe_source_sha256"] = "0" * 64
+        counterfeit_body = {
+            key: value
+            for key, value in counterfeit.items()
+            if key != "audit_sha256"
+        }
+        counterfeit["audit_sha256"] = remediation_module._s2_audit_sha256(
+            counterfeit_body
+        )
+        with self.assertRaises(remediation_module.ByoxRemediationError):
+            remediation_module._require_s2_audited_artifact(
+                counterfeit,
+                artifact,
+                remediation_policy_version=1,
+                generation=2,
+            )
+
+        baseline = str(audit["baseline_sha256"])
+        project = str(audit["project_id"])
+        self.assertEqual(
+            "job_byox_repair_s2_v2_g2_ba9f7fea43e4c4ec88ead0a44f75ec77",
+            remediation_module.repair_builder_job_id(
+                project,
+                2,
+                baseline_sha256=baseline,
+                remediation_policy_version=2,
+            ),
+        )
+        self.assertEqual(
+            "job_byox_repair_review_s2_v2_g2_219042700e8392cd6591bd6441ff449d",
+            remediation_module.repair_reviewer_job_id(
+                project,
+                2,
+                baseline_sha256=baseline,
+                remediation_policy_version=2,
+            ),
+        )
+        self.assertEqual(2_000_002, byox_remediation_binding_policy_version(2, 2))
+
+    def test_audited_v1_g2_review_feeds_exact_v2_g2_four_input_cutover(self) -> None:
+        [audit] = remediation_module._s2_audit_reissue_allowlist()
+        audited = audit["audited_builder"]
+        sources = tuple(
+            ByoxCodeManifestEntry(
+                path=str(item["path"]),
+                kind="file",
+                sha256=str(item["sha256"]),
+            )
+            for item in audit["finding"]["candidate_sources"]
+        )
+        snapshot = remediation_module._DescriptorTreeSnapshot(
+            checksum=str(audited["artifact_checksum"]),
+            entries=len(sources),
+            files=len(sources),
+            total_bytes=2,
+            required_files={},
+            required_sha256={},
+            paths=tuple(item.path for item in sources),
+            root_kinds={"sealed": "directory"},
+            code_manifest=ByoxCodeManifest(entries=sources, scope="full-tree"),
+        )
+        audited_artifact = remediation_module.ArtifactBinding(
+            job_id=str(audited["job_id"]),
+            artifact_id=str(audited["artifact_id"]),
+            artifact_type=str(audited["artifact_type"]),
+            artifact_checksum=str(audited["artifact_checksum"]),
+            checksum_algorithm=str(audited["checksum_algorithm"]),
+            artifact_attempt=int(audited["artifact_attempt"]),
+            artifact_path=Path("/controller/audited-artifact"),
+            artifact_created_at=1.0,
+            tree_snapshot=snapshot,
+        )
+        project_id = str(audit["project_id"])
+        baseline = str(audit["baseline_sha256"])
+        audit_reviewer = remediation_module._repair_reviewer_spec(
+            project_id=project_id,
+            generation=2,
+            builder_payload={
+                "artifact_profile": "byox-generic-v1",
+                "remediation_snapshot": {"policy_version": 1, "generation": 2},
+            },
+            repaired_artifact=audited_artifact,
+            gate_job_id=CODEX_BACKEND_GATE_JOB_ID,
+            priority=90.0,
+            score_components={"fixture": 1},
+            baseline_sha256=baseline,
+            remediation_policy_version=1,
+            controller_audit=audit,
+        )
+        self.assertEqual(
+            "job_byox_repair_review_s2_v1_g2_50d779aa215424e4d3cd7b0a088ed3be",
+            audit_reviewer.job_id,
+        )
+        verdict_spec = next(
+            item
+            for item in audit_reviewer.payload["validators"]
+            if item["type"] == "review_verdict"
+        )
+        audit_entry = f"controller-audit-sha256:{audit['audit_sha256']}"
+        self.assertEqual(["REVISE", "FAIL"], verdict_spec["allowed_verdicts"])
+        self.assertEqual(
+            [audit_entry], verdict_spec["required_evidence_entries"]
+        )
+
+        review_artifact = replace(
+            audited_artifact,
+            job_id=audit_reviewer.job_id,
+            artifact_id="artifact_audited_review",
+            artifact_type="byox-independent-review",
+            artifact_checksum="1" * 64,
+            artifact_attempt=1,
+        )
+        prior_review = remediation_module.ValidatedReview(
+            project_id=project_id,
+            review_job_id=audit_reviewer.job_id,
+            review_policy_version=102,
+            verdict="REVISE",
+            validation_id="validation_audited_review",
+            validation_evidence_sha256="2" * 64,
+            builder_profile="byox-generic-v1",
+            builder_max_attempts=2,
+            builder=audited_artifact,
+            review=review_artifact,
+            controller_audit=audit,
+        )
+        template = SimpleNamespace(
+            payload={
+                "prompt": "immutable baseline prompt",
+                "validators": [],
+                "provenance": {"baseline_sha256": baseline},
+            },
+            priority=90.0,
+            score_components={"fixture": 1},
+        )
+        successor = remediation_module._repair_builder_spec(
+            project_id=project_id,
+            generation=2,
+            prior_review=prior_review,
+            template=template,
+            gate_job_id=CODEX_BACKEND_GATE_JOB_ID,
+            baseline_sha256=baseline,
+            remediation_policy_version=2,
+        )
+        self.assertEqual(
+            "job_byox_repair_s2_v2_g2_ba9f7fea43e4c4ec88ead0a44f75ec77",
+            successor.job_id,
+        )
+        self.assertEqual(
+            (
+                CODEX_BACKEND_GATE_JOB_ID,
+                str(audited["job_id"]),
+                audit_reviewer.job_id,
+            ),
+            successor.dependencies,
+        )
+        self.assertEqual(
+            [
+                "PRIOR_BUILD",
+                "PRIOR_REVIEW/EVALUATION.json",
+                "PRIOR_REVIEW/REVIEW.md",
+                "PRIOR_REVIEW/VALIDATION.md",
+            ],
+            [
+                item["destination"]
+                for item in successor.payload["inputs_from_dependencies"]
+            ],
+        )
+        self.assertEqual(2, successor.payload["seed_policy"]["version"])
+        supersession = successor.payload["remediation_snapshot"]["supersession"]
+        self.assertEqual(1, supersession["supersedes_remediation_policy_version"])
+        self.assertEqual(2, supersession["supersedes_remediation_generation"])
+        self.assertEqual(
+            audit["audit_sha256"], supersession["controller_audit_sha256"]
+        )
+
+        successor_artifact = replace(
+            audited_artifact,
+            job_id=successor.job_id,
+            artifact_id="artifact_successor",
+            artifact_checksum="3" * 64,
+            tree_snapshot=replace(snapshot, checksum="3" * 64),
+        )
+        successor_reviewer = remediation_module._repair_reviewer_spec(
+            project_id=project_id,
+            generation=2,
+            builder_payload=successor.payload,
+            repaired_artifact=successor_artifact,
+            gate_job_id=CODEX_BACKEND_GATE_JOB_ID,
+            priority=successor.priority,
+            score_components=successor.score_components,
+            baseline_sha256=baseline,
+            remediation_policy_version=2,
+        )
+        self.assertEqual(
+            "job_byox_repair_review_s2_v2_g2_219042700e8392cd6591bd6441ff449d",
+            successor_reviewer.job_id,
+        )
+        self.assertEqual(202, successor_reviewer.payload["seed_policy"]["version"])
+        successor_verdict = next(
+            item
+            for item in successor_reviewer.payload["validators"]
+            if item["type"] == "review_verdict"
+        )
+        self.assertNotIn("allowed_verdicts", successor_verdict)
+        self.assertNotIn("required_evidence_entries", successor_verdict)
+
+    @unittest.skipUnless(
+        (ROOT / "warehouse" / "factory.db").is_file(),
+        "checked-in audited lineage is unavailable",
+    )
+    def test_archived_audit_lineage_converges_once_and_never_creates_g3(self) -> None:
+        target_artifact = self._install_archived_audit_lineage()
+        project_id = "project_fc8ca1dbad4baba3bd2d54dbb42c1a98"
+        baseline = "7bc89daf0774fa3ef7a4a289b88303a0621079ebd035bf47f10009e402340424"
+        v1_builder = str(target_artifact["job_id"])
+        v1_reviewer = (
+            "job_byox_repair_review_s2_v1_g2_50d779aa215424e4d3cd7b0a088ed3be"
+        )
+        v2_builder = (
+            "job_byox_repair_s2_v2_g2_ba9f7fea43e4c4ec88ead0a44f75ec77"
+        )
+        v2_reviewer = (
+            "job_byox_repair_review_s2_v2_g2_219042700e8392cd6591bd6441ff449d"
+        )
+
+        first = self._seed_repairs(project_id)
+        self.assertEqual(1, first["created_jobs"])
+        self.assertEqual(
+            "REVIEWER_SEEDED", first["projects"][project_id]["status"]
+        )
+        self.assertEqual(v1_reviewer, first["projects"][project_id]["reviewer"])
+        again = self._seed_repairs(project_id)
+        self.assertEqual(0, again["created_jobs"])
+        self.assertEqual(
+            "WAITING_FOR_REVIEWER", again["projects"][project_id]["status"]
+        )
+        with self.database.connect() as connection:
+            v1_binding = load_verified_binding(connection, v1_reviewer)
+        self.assertIsNotNone(v1_binding)
+        assert v1_binding is not None
+        self.assertEqual(1_000_002, v1_binding.policy_version)
+
+        audit = remediation_module._s2_audit_reissue_for_lineage(
+            project_id, baseline
+        )
+        self.assertIsNotNone(audit)
+        assert audit is not None
+        token = f"controller-audit-sha256:{audit['audit_sha256']}"
+        self._complete_review(
+            project_id=project_id,
+            reviewer_id=v1_reviewer,
+            builder=target_artifact,
+            verdict="REVISE",
+            evidence_entries=[token, "reproduced stale-return slot reuse"],
+        )
+
+        seeded_v2 = self._seed_repairs(project_id)
+        self.assertEqual(1, seeded_v2["created_jobs"])
+        self.assertEqual(v2_builder, seeded_v2["projects"][project_id]["builder"])
+        self.assertEqual(
+            2, seeded_v2["projects"][project_id]["remediation_policy_version"]
+        )
+        with self.database.connect() as connection:
+            builder_binding = load_verified_binding(connection, v2_builder)
+        self.assertIsNotNone(builder_binding)
+        assert builder_binding is not None
+        self.assertEqual(2_000_002, builder_binding.policy_version)
+        self.assertEqual(
+            {CODEX_BACKEND_GATE_JOB_ID, v1_builder, v1_reviewer},
+            self._dependencies(v2_builder),
+        )
+
+        v2_artifact = self._complete_repair_builder(v2_builder, target_artifact)
+        seeded_reviewer = self._seed_repairs(project_id)
+        self.assertEqual(1, seeded_reviewer["created_jobs"])
+        self.assertEqual(
+            v2_reviewer, seeded_reviewer["projects"][project_id]["reviewer"]
+        )
+        with self.database.connect() as connection:
+            reviewer_binding = load_verified_binding(connection, v2_reviewer)
+        self.assertIsNotNone(reviewer_binding)
+        assert reviewer_binding is not None
+        self.assertEqual(2_000_002, reviewer_binding.policy_version)
+        self.assertEqual(v2_builder, reviewer_binding.builder_job_id)
+
+        self._complete_review(
+            project_id=project_id,
+            reviewer_id=v2_reviewer,
+            builder=v2_artifact,
+            verdict="REVISE",
+        )
+        exhausted = seed_byox_remediation_jobs(
+            self.database,
+            self.jobs,
+            warehouse=self.settings.warehouse,
+            project_ids=[project_id],
+            max_repair_generations=10,
+        )
+        self.assertEqual(0, exhausted["created_jobs"])
+        self.assertEqual(
+            "REPAIR_LIMIT_EXHAUSTED",
+            exhausted["projects"][project_id]["status"],
+        )
+        self.assertEqual(
+            2, exhausted["projects"][project_id]["hard_generation_ceiling"]
+        )
+        for policy_version in (1, 2, 3):
+            self.assertIsNone(
+                self.jobs.get(
+                    remediation_module.repair_builder_job_id(
+                        project_id,
+                        3,
+                        baseline_sha256=baseline,
+                        remediation_policy_version=policy_version,
+                    )
+                    )
+                )
+
+    @unittest.skipUnless(
+        (ROOT / "warehouse" / "factory.db").is_file(),
+        "checked-in audited lineage is unavailable",
+    )
+    def test_malformed_exact_deterministic_g3_builder_poison_audit_lineage(
+        self,
+    ) -> None:
+        self._install_archived_audit_lineage()
+        project_id = "project_fc8ca1dbad4baba3bd2d54dbb42c1a98"
+        baseline = "7bc89daf0774fa3ef7a4a289b88303a0621079ebd035bf47f10009e402340424"
+        generation = 3
+        job_id = remediation_module.repair_builder_job_id(
+            project_id,
+            generation,
+            baseline_sha256=baseline,
+            remediation_policy_version=1,
+        )
+        self.jobs.create(
+            "codex_task",
+            "reference_builder",
+            {
+                "project_id": project_id,
+                "baseline_sha256": baseline,
+                "remediation_generation": generation,
+                "seed_policy": {
+                    "kind": f"{BYOX_REPAIR_S2_POLICY_KIND}_typo",
+                    "version": 1,
+                    "role": "builder",
+                    "generation": generation,
+                    "baseline_sha256": baseline,
+                },
+            },
+            job_id=job_id,
+            max_attempts=2,
+        )
+
+        self._assert_invalid_without_new_jobs(
+            project_id,
+            expected_statuses={
+                "REMEDIATION_EVIDENCE_INVALID",
+                "REMEDIATION_GRAPH_INVALID",
+            },
+        )
+
+    @unittest.skipUnless(
+        (ROOT / "warehouse" / "factory.db").is_file(),
+        "checked-in audited lineage is unavailable",
+    )
+    def test_unexpected_same_baseline_bound_builder_poison_audit_lineage(
+        self,
+    ) -> None:
+        self._install_archived_audit_lineage()
+        project_id = "project_fc8ca1dbad4baba3bd2d54dbb42c1a98"
+        baseline = "7bc89daf0774fa3ef7a4a289b88303a0621079ebd035bf47f10009e402340424"
+        generation = 3
+        job_id = "job_unexpected_same_baseline_bound_builder"
+        self.jobs.create(
+            "codex_task",
+            "reference_builder",
+            {
+                "project_id": project_id,
+                "baseline_sha256": baseline,
+                "remediation_generation": generation,
+                "seed_policy": {
+                    "kind": f"{BYOX_REPAIR_S2_POLICY_KIND}_typo",
+                    "version": 1,
+                    "role": "builder",
+                    "generation": generation,
+                    "baseline_sha256": baseline,
+                },
+            },
+            job_id=job_id,
+            max_attempts=2,
+        )
+        with self.database.transaction(immediate=True) as connection:
+            definition = load_job_definition(connection, job_id)
+            self.assertIsNotNone(definition)
+            assert definition is not None
+            connection.execute(
+                """
+                INSERT INTO byox_baseline_job_bindings(
+                    job_id,baseline_sha256,role,policy_version,builder_job_id,
+                    definition_sha256,bound_at
+                ) VALUES (?,?,'builder',?,NULL,?,?)
+                """,
+                (
+                    job_id,
+                    baseline,
+                    byox_remediation_binding_policy_version(1, generation),
+                    job_definition_sha256(definition),
+                    now(),
+                ),
+            )
+
+        self._assert_invalid_without_new_jobs(
+            project_id,
+            expected_statuses={
+                "REMEDIATION_EVIDENCE_INVALID",
+                "REMEDIATION_GRAPH_INVALID",
+            },
+        )
 
     def _add_project(self, project_id: str, *, title: str | None = None) -> None:
         self.fixture._catalog_project(project_id, title=title)
@@ -321,11 +843,24 @@ class ByoxS2RemediationContractTests(unittest.TestCase):
         source_root = Path(str(builder["path"]))
         declarations = payload["inputs_from_dependencies"]
         assert isinstance(declarations, list)
+        root_inventory: dict[str, object] | None = None
+        if any(
+            isinstance(item, dict) and item.get("artifact_root") is True
+            for item in declarations
+        ):
+            with self.database.connect() as connection:
+                binding = remediation_module._current_artifact(
+                    connection,
+                    str(builder["job_id"]),
+                    expected_type=str(builder["artifact_type"]),
+                    managed_artifact_root=self.settings.warehouse / "artifacts",
+                )
+            root_inventory = binding.artifact_inventory
         staged: list[dict[str, object]] = []
         for item in declarations:
             assert isinstance(item, dict)
-            subpath = str(item["subpath"])
-            source = source_root / subpath
+            subpath = "." if item.get("artifact_root") is True else str(item["subpath"])
+            source = source_root if subpath == "." else source_root / subpath
             destination = str(item["destination"])
             if source.is_dir():
                 target = self.manager.stage_tree(source, workspace, destination)
@@ -343,6 +878,11 @@ class ByoxS2RemediationContractTests(unittest.TestCase):
                     "artifact_checksum_algorithm": builder["checksum_algorithm"],
                     "artifact_attempt": builder["artifact_attempt"],
                     "artifact_subpath": subpath,
+                    **(
+                        {"artifact_inventory": root_inventory}
+                        if root_inventory is not None
+                        else {}
+                    ),
                 }
             )
         return staged
@@ -354,6 +894,7 @@ class ByoxS2RemediationContractTests(unittest.TestCase):
         reviewer_id: str,
         builder: dict[str, object],
         verdict: str = "REVISE",
+        evidence_entries: list[str] | None = None,
     ) -> dict[str, object]:
         job = self.jobs.get(reviewer_id)
         self.assertIsNotNone(job)
@@ -373,7 +914,8 @@ class ByoxS2RemediationContractTests(unittest.TestCase):
                     "project_id": project_id,
                     "builder_job_id": str(builder["job_id"]),
                     "verdict": verdict,
-                    "evidence": ["independent contract fixture finding"],
+                    "evidence": evidence_entries
+                    or ["independent contract fixture finding"],
                     "checks_run": ["bounded deterministic fixture check"],
                     "limitations": [],
                 }
@@ -421,6 +963,107 @@ class ByoxS2RemediationContractTests(unittest.TestCase):
             project_ids=[project_id],
         )
 
+    def _install_archived_audit_lineage(self) -> dict[str, object]:
+        """Copy the checked-in audited lineage into this test's isolated store."""
+
+        source_database = ROOT / "warehouse" / "factory.db"
+        shutil.copy2(source_database, self.settings.database)
+        target_job_id = (
+            "job_byox_repair_s2_v1_g2_70a90b5934bcf838b167251b70a24f39"
+        )
+        job_ids = {target_job_id}
+        frontier = {target_job_id}
+        with self.database.connect() as connection:
+            while frontier:
+                placeholders = ",".join("?" for _value in frontier)
+                dependencies = {
+                    str(row["depends_on_job_id"])
+                    for row in connection.execute(
+                        f"""
+                        SELECT depends_on_job_id FROM job_dependencies
+                        WHERE job_id IN ({placeholders})
+                        """,
+                        tuple(sorted(frontier)),
+                    )
+                }
+                frontier = dependencies - job_ids
+                job_ids.update(frontier)
+            placeholders = ",".join("?" for _value in job_ids)
+            artifacts = connection.execute(
+                f"""
+                SELECT artifact_id,job_id,path FROM artifacts
+                WHERE job_id IN ({placeholders})
+                ORDER BY artifact_id
+                """,
+                tuple(sorted(job_ids)),
+            ).fetchall()
+
+        relocated: dict[str, str] = {}
+        source_artifact_root = (ROOT / "warehouse" / "artifacts").resolve()
+        fixture_root = (self.settings.warehouse / "artifacts").resolve()
+        for row in artifacts:
+            source = Path(str(row["path"])).resolve()
+            destination = fixture_root / source.relative_to(source_artifact_root)
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copytree(source, destination, dirs_exist_ok=True)
+            relocated[str(row["artifact_id"])] = str(destination.resolve())
+        with self.database.transaction(immediate=True) as connection:
+            for artifact_id, path in relocated.items():
+                connection.execute(
+                    "UPDATE artifacts SET path=? WHERE artifact_id=?",
+                    (path, artifact_id),
+                )
+            for job_id in job_ids:
+                row = connection.execute(
+                    "SELECT state,attempt_count FROM jobs WHERE job_id=?",
+                    (job_id,),
+                ).fetchone()
+                if row is not None and row["state"] == "SUCCEEDED":
+                    workspace = (
+                        self.settings.warehouse
+                        / "workspaces"
+                        / job_id
+                        / f"attempt-{int(row['attempt_count']):03d}"
+                    ).resolve()
+                    connection.execute(
+                        "UPDATE jobs SET workspace=? WHERE job_id=?",
+                        (str(workspace), job_id),
+                    )
+            source_warehouse = str((ROOT / "warehouse").resolve())
+            target_warehouse = str(self.settings.warehouse.resolve())
+            connection.execute(
+                """
+                UPDATE validations
+                SET stdout_path=replace(stdout_path, ?, ?),
+                    stderr_path=replace(stderr_path, ?, ?)
+                WHERE job_id=?
+                """,
+                (
+                    source_warehouse,
+                    target_warehouse,
+                    source_warehouse,
+                    target_warehouse,
+                    CODEX_BACKEND_GATE_JOB_ID,
+                ),
+            )
+        with self.database.connect() as connection:
+            row = connection.execute(
+                """
+                SELECT artifact_id,job_id,type,path,checksum,checksum_algorithm,
+                       attempt_number,metadata_json
+                FROM artifacts WHERE job_id=?
+                """,
+                (target_job_id,),
+            ).fetchone()
+        self.assertIsNotNone(row)
+        assert row is not None
+        return {
+            **dict(row),
+            "artifact_type": row["type"],
+            "artifact_checksum": row["checksum"],
+            "artifact_attempt": row["attempt_number"],
+        }
+
     def _assert_s2_repair_builder(
         self,
         *,
@@ -456,9 +1099,9 @@ class ByoxS2RemediationContractTests(unittest.TestCase):
         self.assertEqual(baseline, binding.baseline_sha256)
         return repair_id, repair
 
-    def _tree_files(self, root: Path) -> dict[str, str]:
+    def _tree_files(self, root: Path) -> dict[str, bytes]:
         return {
-            path.relative_to(root).as_posix(): path.read_text(encoding="utf-8")
+            path.relative_to(root).as_posix(): path.read_bytes()
             for path in sorted(root.rglob("*"))
             if path.is_file()
         }

@@ -25,6 +25,7 @@ from .review_contract import (
     MAX_REVIEW_EVALUATION_BYTES,
     ReviewContractError,
     parse_deterministic_review_evaluation,
+    review_verdict_constraints,
 )
 from .strict_json import StrictJsonError, strict_json_loads
 from .util import canonical_json, file_sha256, new_id, now, redact, tree_sha256
@@ -937,6 +938,11 @@ class Validator:
                 },
             )
 
+        try:
+            constraints = review_verdict_constraints(spec)
+        except ReviewContractError as error:
+            return ValidationResult(name, "ERROR", {"error": str(error)})
+
         relative = safe_relative(str(spec.get("path", "EVALUATION.json")))
         path = workspace / relative
         if (
@@ -961,6 +967,36 @@ class Validator:
             evaluation = parse_deterministic_review_evaluation(raw_evaluation)
         except (OSError, ReviewContractError, _DirectoryBoundaryError) as error:
             return ValidationResult(name, "FAIL", {"error": str(error)})
+        if (
+            constraints.allowed_verdicts is not None
+            and evaluation.verdict not in constraints.allowed_verdicts
+        ):
+            return ValidationResult(
+                name,
+                "FAIL",
+                {
+                    "error": "review verdict is outside the controller constraint",
+                    "verdict": evaluation.verdict,
+                    "allowed_verdicts": list(constraints.allowed_verdicts),
+                },
+            )
+        invalid_evidence_counts = [
+            entry
+            for entry in constraints.required_evidence_entries
+            if evaluation.evidence_entries.count(entry) != 1
+        ]
+        if invalid_evidence_counts:
+            return ValidationResult(
+                name,
+                "FAIL",
+                {
+                    "error": (
+                        "review must contain every required exact evidence entry "
+                        "exactly once"
+                    ),
+                    "invalid_evidence_entries": invalid_evidence_counts,
+                },
+            )
         return ValidationResult(
             name,
             "PASS",

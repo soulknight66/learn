@@ -12,6 +12,7 @@ import sqlite3
 import tempfile
 import threading
 import unittest
+from collections.abc import Mapping
 from dataclasses import replace
 from pathlib import Path
 from unittest.mock import patch
@@ -215,7 +216,7 @@ class ByoxRemediationTests(unittest.TestCase):
     def _artifact_tree(
         self,
         job_id: str,
-        files: dict[str, str],
+        files: Mapping[str, str | bytes],
         *,
         attempt: int = 1,
         semantic_path: str | None = None,
@@ -231,14 +232,17 @@ class ByoxRemediationTests(unittest.TestCase):
         for relative, content in files.items():
             target = path / relative
             target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_text(content, encoding="utf-8")
+            if isinstance(content, bytes):
+                target.write_bytes(content)
+            else:
+                target.write_text(content, encoding="utf-8")
         return path
 
     def _materialize_builder_fixture_files(
         self,
-        files: dict[str, str],
+        files: Mapping[str, str | bytes],
         payload: dict[str, object],
-    ) -> dict[str, str]:
+    ) -> dict[str, str | bytes]:
         """Fill controller-declared pure inputs for an otherwise terse pack."""
 
         materialized = dict(files)
@@ -356,7 +360,7 @@ class ByoxRemediationTests(unittest.TestCase):
         payload: dict[str, object],
         *,
         artifact_type: str,
-        files: dict[str, str],
+        files: Mapping[str, str | bytes],
         metadata: dict[str, object] | None = None,
         dependencies: tuple[str, ...] = (),
         job_type: str = "codex_task",
@@ -685,7 +689,7 @@ class ByoxRemediationTests(unittest.TestCase):
         job_id: str,
         *,
         artifact_type: str,
-        files: dict[str, str],
+        files: Mapping[str, str | bytes],
         metadata: dict[str, object] | None = None,
     ) -> dict[str, object]:
         seeded = self.jobs.get(job_id)
@@ -865,7 +869,7 @@ class ByoxRemediationTests(unittest.TestCase):
     def _repair_artifact_metadata(
         self,
         job_id: str,
-        files: dict[str, str],
+        files: Mapping[str, str | bytes],
         *,
         artifact_checksum: str,
         artifact_path: Path,

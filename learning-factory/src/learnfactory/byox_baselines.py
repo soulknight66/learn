@@ -945,23 +945,31 @@ def insert_or_verify_bound_job(
 ) -> ByoxBoundJobPublication:
     """Atomically publish or exact-verify a job and its immutable binding."""
 
-    created = insert_or_verify_job(
-        db,
-        connection,
-        definition,
-        created_at=created_at,
-        secret_value_provider=secret_value_provider,
-    )
-    bound = insert_or_verify_binding(
-        db,
-        connection,
-        baseline,
-        definition,
-        role=role,
-        policy_version=policy_version,
-        builder_job_id=builder_job_id,
-        bound_at=bound_at,
-    )
+    _require_transaction(connection)
+    connection.execute("SAVEPOINT byox_bound_job_publication")
+    try:
+        created = insert_or_verify_job(
+            db,
+            connection,
+            definition,
+            created_at=created_at,
+            secret_value_provider=secret_value_provider,
+        )
+        bound = insert_or_verify_binding(
+            db,
+            connection,
+            baseline,
+            definition,
+            role=role,
+            policy_version=policy_version,
+            builder_job_id=builder_job_id,
+            bound_at=bound_at,
+        )
+    except BaseException:
+        connection.execute("ROLLBACK TO byox_bound_job_publication")
+        connection.execute("RELEASE byox_bound_job_publication")
+        raise
+    connection.execute("RELEASE byox_bound_job_publication")
     return ByoxBoundJobPublication(created, bound)
 
 

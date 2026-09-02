@@ -1,8 +1,28 @@
 # Learning artifact catalog
 
-Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 253.
+Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 255.
 
 The complete searchable records, concepts, languages, provenance, and validation labels are in `catalog.json`.
+
+## byox-independent-review — GENERATED
+
+- Artifact type: `byox-independent-review`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/evaluations/build-your-own-x/32ba6fc132e4456a6e99/baseline-a44df6b3291fbbecc7dd/repair-v2/review-v1/job_byox_repair_review_s2_v1_g2_42d61bfd8337a59aec7202cb820bac02/attempt-001`
+- SHA-256: `5fd74cf898cd2e7d6b69f34357b2e9c4970e2847d386be7a3e1fa62dc6a0d705`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_byox_repair_review_s2_v1_g2_42d61bfd8337a59aec7202cb820bac02` (codex_task/examiner)
+
+## byox-independent-review — GENERATED
+
+- Artifact type: `byox-independent-review`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/evaluations/build-your-own-x/5bbc84338b3f660eee4d/baseline-242f720b83f1b063e669/repair-v2/review-v1/job_byox_repair_review_s2_v1_g2_4ecaa2212d873c38c01bf4e0d78d3901/attempt-001`
+- SHA-256: `f776597b3bc188db11717f6f74825dc8274b05924b9a90395ad9ef39a3f6eaa9`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_byox_repair_review_s2_v1_g2_4ecaa2212d873c38c01bf4e0d78d3901` (codex_task/examiner)
 
 ## byox-remediated-challenge-pack — GENERATED+PARTIAL
 

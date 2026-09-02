@@ -1,0 +1,33 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g2_f3f0e70e12a4a2de6f1365ecdf6a5685",
+  "checks_run": [
+    "Inspected all 64 submitted files, including learner guidance, starter scaffold, public tests, sealed reference, sealed tests, exercises, manifest, provenance, and builder validation evidence.",
+    "Verified the configured Python and Java binaries by exact absolute path and recorded their versions.",
+    "Recomputed manifest, provenance, full-tree, and validation-excluded content digests from immutable CANDIDATE.",
+    "Ran the runtime preflight, 24 public tests, and 66 sealed tests from a byte-identical writable scratch copy under outer timeouts.",
+    "Ran 52 reviewer-authored assertions covering reader limits, evaluation semantics, error translation, tail calls, compiler/VM behavior, and the repaired empty? contract.",
+    "Materialized and independently audited the learner view from immutable CANDIDATE, including its allowlist, modes, byte identity, label boundary, and no-overwrite behavior.",
+    "Performed AST, import, dangerous-call, credential-pattern, symlink/special-entry, hard-link, and provenance-consistency audits.",
+    "Confirmed the incomplete starter fails its public baseline as documented and confirmed CANDIDATE remained byte-for-byte unchanged after review."
+  ],
+  "evidence": [
+    "Python /arm/tools/python/python/3.11.5/rhe8-x86_64/bin/python3 reported Python 3.11.5; Java /arm/tools/adoptopenjdk/openjdk/21.0.5_11/linux64/jdk-21.0.5+11/bin/java reported Temurin OpenJDK 21.0.5.",
+    "Public reference run: 24 tests in 0.504s, OK, exit 0; sealed reference run: 66 tests in 1.118s, OK, exit 0.",
+    "Reviewer-authored contract probe: independent_assertions=52 status=OK, exit 0, including 5,500 mutually tail-recursive calls and tail positions through let/do.",
+    "Learner export contained 20 files under exactly the nine allowlisted top-level entries, with zero instructor entries, byte mismatches, or bad modes; a second export refused overwrite with exit 2.",
+    "Manifest canonical SHA-256 0a134783939d3d2bd9fc51f0ab33ef43cb40e4c86dc52feceb41248b0886b18e, provenance canonical SHA-256 17238e9005ea6ad305702b2fd5f18b9693608e3ccf4bf89881f929bb46002422, and content fingerprint f4934ef895e2ce82db31668cbd61191dc0ac27a179cb069f6a4e244eba64842b matched recorded evidence.",
+    "AST audit parsed 33 of 33 Python files and found only standard-library implementation imports, no dangerous implementation execution calls, no shell=True, no credential-pattern hits, and no unusual filesystem entries.",
+    "The pre/post aggregate digest of all 64 immutable candidate files was unchanged at 84d83f6ba2b7ff94bdfdf50687ebb16143544083d13150a143a8acb27f903033.",
+    "MANIFEST.yaml remains GENERATED/PARTIAL with independent_validation REQUIRED and productionized false; candidate prose explicitly disclaims independent, fuzz, benchmark, transfer, security, and production validation."
+  ],
+  "limitations": [
+    "CANDIDATE is intentionally read-only in the review workspace, so its documented TMPDIR=environment preflight exited 2 there; executable checks used a byte-identical writable scratch copy, and direct learner export from immutable CANDIDATE succeeded.",
+    "No network or immutable upstream source snapshot was available, so the source commit, catalog license evidence, linked-resource NOASSERTION classification, baseline hashes, and independent-generation/non-copy claim were checked only for internal consistency.",
+    "The PRIOR_BUILD input cited by the builder's preservation comparison is not included in CANDIDATE, so that historical comparison could not be independently rerun.",
+    "No fuzzing campaign, benchmark, profiler, external security review, transfer validation, or production validation was performed; Java was available but irrelevant to this Python pack.",
+    "The combined pack contains sealed solutions and is safe for learners only when a harness distributes the audited learner-view output; the exporter itself cannot enforce external access controls.",
+    "rg and git were unavailable on PATH, so bounded find, grep, and Python standard-library audits were used instead."
+  ],
+  "project_id": "project_d49f1492abb05519b3c18d8a793d37a2",
+  "verdict": "PASS"
+}

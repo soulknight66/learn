@@ -1,0 +1,34 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g2_a916dc7d72989bd5446dca040fd1e185",
+  "checks_run": [
+    "Pinned Python 3.11.5 and Temurin Java/javac 21.0.5+11 version checks",
+    "Static requirements-to-implementation review of R1 through R7, runners, tests, documentation, manifest, provenance, and learner-view policy",
+    "Bounded sealed reference compilation plus public and 15-case sealed Java execution",
+    "Bounded intentionally incomplete starter compilation and public milestone baseline execution",
+    "Reviewer-controlled direct-Java ownership, rollback, durable-byte atomicity, fencing, commit-visibility, and close/release scenario",
+    "Four Python harness regressions covering projection and process-group timeout cleanup",
+    "Strict layout, metadata linkage, file-type, credential-pattern, and independent boundary checks",
+    "Actual learner-view projection, projected inventory verification, and projected starter execution",
+    "Before/after candidate aggregate hash and generated-residue checks"
+  ],
+  "evidence": [
+    "Configured toolchains were available at the required absolute paths: Python 3.11.5, OpenJDK Runtime Environment Temurin-21.0.5+11, and javac 21.0.5.",
+    "The sealed runner exited 0: the reference implementation passed the public suite 6/6 and the sealed suite 15/15, including the repaired partition ownership and atomicity case.",
+    "A reviewer-controlled harness with source SHA-256 6b4bdee94a9dadedc3ebcc6d149a5a7cd5c1a2c594467809fe8ddc1c44865431 exited 0 after independently checking failed-constructor rollback, retained-alias rejection, unchanged durable bytes on rejected calls, aligned append, majority visibility, and close/release behavior.",
+    "The starter compiled, then exited 1 with the documented 1/6 baseline and five explicit TODO milestone failures; this was treated as an expected pedagogical baseline, not a passing-suite or validation-label claim.",
+    "The Python harness ran 4 tests in 2.664 seconds and exited 0; its intentional timeout returned 124 and the descendant cleanup assertion passed.",
+    "The layout check exited 0 with 23 required files, 21 forbidden paths absent, 108 regular generated paths/directories, and 56 files scanned for credential patterns.",
+    "A real projection contained exactly 9 allowlisted top-level entries and 23 regular files, with aggregate SHA-256 4ac3d2d7d8c82bc60a2fcd79ae07c5b553b0573330bc816e8439e649ec2c713d; evaluator-only top-level roots were absent.",
+    "The candidate contained 56 files and retained reviewer-defined aggregate SHA-256 c411da65abbd82b7336993bfa6544c8f1028b816ab6ae26e45c3fa1b0e8c52e5 before and after review, with no class, pyc, log, __pycache__, or runner-temp residue.",
+    "MANIFEST.yaml remains limited to GENERATED and PARTIAL, productionized is false, and independent validation is required; no stronger label was inferred or written."
+  ],
+  "limitations": [
+    "The upstream URL and unavailable immutable catalog baseline were not accessed, so source commit, source-line, snapshot-hash, non-copying, and license assertions were checked only for internal consistency, not independently corroborated.",
+    "The linked resource remains NOASSERTION and the generated material states personal educational use rather than a general SPDX license grant; no broader redistribution right is inferred.",
+    "Projection and inventory were verified, but source-pack unreadability cannot be established inside this shared workspace; TRANSFER_VERIFIED requires the separate acceptance harness.",
+    "No fuzzing, benchmark execution, profiler, process-crash campaign, filesystem fault injection, network/security audit, deployment, or production-readiness validation was performed.",
+    "Only the configured Temurin JDK was exercised; alternate-JDK portability is unverified."
+  ],
+  "project_id": "project_7fc5b6faee61f34679ec47f9c4964256",
+  "verdict": "PASS"
+}

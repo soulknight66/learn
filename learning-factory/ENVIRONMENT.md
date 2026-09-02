@@ -5,7 +5,9 @@
 - Python: 3.11.5; SQLite runtime/CLI 3.26.0. PyYAML exists, but the runtime has no external dependency.
 - Tests: standard-library `unittest`; pytest/Hypothesis are not installed.
 - Git: 2.9.3. GCC/G++ 8.5, Make 4.2.1, CMake 3.26.5.
-- Missing: Go, Rust, Java, Node, Docker/Podman, clang, valgrind, gdb.
+- Missing from the host PATH: Go, Rust, Java, Node, Docker/Podman, clang, valgrind, gdb.
+  Versioned read-only worker roots provide JDK 21, Arm GNU 15.2.Rel1, and QEMU 9.1.1;
+  QEMU uses its exact GLib 2.82.1 runtime leaf.
 - Isolation: Codex's beta Linux permission-profile runner is installed and host-tested; bubblewrap 0.4.0
   and user/PID/network namespaces work underneath the available tooling, but no container runtime exists.
 - Codex: CLI 0.146.0; stable `codex exec --json`, resume, output schema, and last-message output.
@@ -37,7 +39,8 @@ and supersedes that history.
 
 New Codex jobs use `factory-isolated` instead of the legacy `--sandbox` flag. The strict invocation
 denies the root and `CODEX_HOME`, grants workspace-only writes and reads only a minimal runtime plus
-`/arm/tools/python/python/3.11.5/rhe8-x86_64`, disables tool networking and environment inheritance, and
+the versioned Python 3.11, JDK 21, Arm GNU 15.2.Rel1, QEMU 9.1.1, and QEMU GLib 2.82.1
+installation leaves, disables tool networking and environment inheritance, and
 turns off hosted/web, MCP, browser/computer-use, plugin, hook, skill, and native subagent surfaces. The
 host probe confirms sibling-file, auth-file, environment, and socket denial. The runner is beta and the
 requested `/proc` denial is not treated as complete because the backend itself uses an inherited

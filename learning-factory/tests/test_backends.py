@@ -2143,6 +2143,10 @@ print(json.dumps({'type': 'turn.completed', 'usage': {'input_tokens': 17, 'outpu
                 "/arm/tools/python/python/3.11.5/rhe8-x86_64",
                 "/arm/tools/adoptopenjdk/openjdk/21.0.5_11/linux64/"
                 "jdk-21.0.5+11",
+                "/arm/tools/arm/arm-gnu-toolchain-arm-none-eabi/15.2.rel1/"
+                "linux64",
+                "/arm/tools/qemu/qemu/9.1.1/linux64",
+                "/arm/tools/gnu/glib/2.82.1/rhe8-x86_64/lib64",
             ),
             settings.backend.toolchain_read_roots,
         )
@@ -2180,6 +2184,13 @@ print(json.dumps({'type': 'turn.completed', 'usage': {'input_tokens': 17, 'outpu
             self.skipTest(f"configured site toolchains are unavailable: {missing}")
         self.assertIn(
             Path("/arm/tools/adoptopenjdk/openjdk"),
+            _APPROVED_TOOLCHAIN_PREFIXES,
+        )
+        self.assertIn(
+            Path(
+                "/arm/tools/arm/arm-gnu-toolchain-arm-none-eabi/15.2.rel1/"
+                "linux64"
+            ),
             _APPROVED_TOOLCHAIN_PREFIXES,
         )
 
@@ -2220,6 +2231,38 @@ print(json.dumps({'type': 'turn.completed', 'usage': {'input_tokens': 17, 'outpu
         for root in settings.backend.toolchain_read_roots:
             self.assertEqual(1, filesystem.count(json.dumps(root) + '=\"read\"'))
             self.assertEqual(0, filesystem.count(json.dumps(root) + '=\"write\"'))
+
+    def test_arm_toolchain_approvals_are_versioned_leaf_scoped(self) -> None:
+        approved = (
+            Path(
+                "/arm/tools/arm/arm-gnu-toolchain-arm-none-eabi/15.2.rel1/"
+                "linux64"
+            ),
+            Path("/arm/tools/qemu/qemu/9.1.1/linux64"),
+            Path("/arm/tools/gnu/glib/2.82.1/rhe8-x86_64/lib64"),
+        )
+
+        def is_approved(path: Path) -> bool:
+            return any(
+                path == prefix or prefix in path.parents
+                for prefix in _APPROVED_TOOLCHAIN_PREFIXES
+            )
+
+        for path in approved:
+            self.assertTrue(is_approved(path), path)
+        for path in (
+            Path("/arm"),
+            Path("/arm/tools"),
+            Path("/arm/tools/arm"),
+            Path("/arm/tools/arm/arm-gnu-toolchain-arm-none-eabi"),
+            Path(
+                "/arm/tools/arm/arm-gnu-toolchain-arm-none-eabi/14.3.rel1/"
+                "linux64"
+            ),
+            Path("/arm/tools/qemu/qemu/10.2.2/rhe8-x86_64"),
+            Path("/arm/tools/gnu/glib/2.82.1"),
+        ):
+            self.assertFalse(is_approved(path), path)
 
     def test_toolchain_permission_is_read_only_and_prefix_scoped(self) -> None:
         with tempfile.TemporaryDirectory(prefix="learnfactory-toolchain-policy-") as raw:
@@ -2349,6 +2392,112 @@ print(json.dumps({'type': 'turn.completed', 'usage': {'input_tokens': 17, 'outpu
             self.assertEqual(2, unapproved.exit_code)
             self.assertIn("outside approved tool roots", unapproved.stderr_tail)
             self.assertFalse(marker.exists())
+
+    @unittest.skipUnless(
+        sys.platform.startswith("linux")
+        and shutil.which("codex") is not None
+        and shutil.which("bwrap") is not None,
+        "installed Codex Linux permission-profile runner is required",
+    )
+    def test_installed_arm_toolchain_executes_inside_permission_profile(self) -> None:
+        compiler_root = Path(
+            "/arm/tools/arm/arm-gnu-toolchain-arm-none-eabi/15.2.rel1/linux64"
+        )
+        qemu_root = Path("/arm/tools/qemu/qemu/9.1.1/linux64")
+        glib_root = Path("/arm/tools/gnu/glib/2.82.1/rhe8-x86_64/lib64")
+        roots = (compiler_root, qemu_root, glib_root)
+        missing = [str(path) for path in roots if not path.is_dir()]
+        if missing:
+            self.skipTest(f"configured ARM toolchain roots are unavailable: {missing}")
+
+        with tempfile.TemporaryDirectory(prefix="learnfactory-arm-profile-") as raw:
+            root = Path(raw)
+            workspace = root / "workspace"
+            logs = root / "logs"
+            workspace.mkdir()
+            logs.mkdir()
+            codex = Path(shutil.which("codex") or "").resolve(strict=True)
+            backend = ExecBackend(
+                str(codex),
+                toolchain_read_roots=tuple(str(path) for path in roots),
+                timeout_seconds=5,
+            )
+            manifest = build_sandbox_rule_manifest(
+                workspace=workspace,
+                log_dir=logs,
+                worker_type="reference_builder",
+                payload={},
+                result_channel=_private_result_channel(
+                    root, "installed-arm-profile", "profile"
+                ),
+            )
+            command = [
+                str(codex),
+                "sandbox",
+                "--cd",
+                str(workspace),
+                "--permission-profile",
+                backend.permission_profile,
+            ]
+            for override in backend._permission_overrides(codex, manifest):
+                command.extend(["--config", override])
+            probe = r"""
+set -eu
+test -z "${FACTORY_PROBE_SENTINEL+x}"
+test -z "${LD_LIBRARY_PATH+x}"
+cat > kernel.c <<'EOF'
+__attribute__((naked, noreturn)) void _start(void) {
+    for (;;) {
+        __asm__ volatile ("wfi");
+    }
+}
+EOF
+"$1/bin/arm-none-eabi-gcc" -pipe -mcpu=cortex-a15 -marm \
+    -ffreestanding -nostdlib -Wl,-Ttext=0x40010000 -Wl,-e,_start \
+    kernel.c -o kernel.elf
+"$1/bin/arm-none-eabi-readelf" -h kernel.elf | /usr/bin/grep -q 'Machine:.*ARM'
+/usr/bin/env "LD_LIBRARY_PATH=$3" "$2/bin/qemu-system-arm" --version \
+    | /usr/bin/grep -q 'version 9.1.1'
+set +e
+/usr/bin/env "LD_LIBRARY_PATH=$3" /usr/bin/timeout 1 \
+    "$2/bin/qemu-system-arm" -machine virt -cpu cortex-a15 -accel tcg \
+    -nic none -display none -monitor none -serial none
+qemu_status=$?
+set -e
+test "$qemu_status" -eq 124
+printf arm-profile-ok
+"""
+            command.extend(
+                [
+                    "--",
+                    "/bin/bash",
+                    "-c",
+                    probe,
+                    "probe",
+                    str(compiler_root),
+                    str(qemu_root),
+                    str(glib_root),
+                ]
+            )
+            env = os.environ.copy()
+            env["FACTORY_PROBE_SENTINEL"] = "must-not-leak"
+            completed = subprocess.run(
+                command,
+                cwd=workspace,
+                env=env,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                timeout=20,
+                check=False,
+            )
+
+        self.assertEqual(
+            0,
+            completed.returncode,
+            msg=f"stdout={completed.stdout}\nstderr={completed.stderr}",
+        )
+        self.assertEqual("arm-profile-ok", completed.stdout)
 
     @unittest.skipUnless(
         sys.platform.startswith("linux")

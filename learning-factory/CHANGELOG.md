@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Expose the exact Arm GNU 15.2.Rel1, QEMU 9.1.1, and QEMU GLib 2.82.1
+  installation leaves read-only to tool-enabled isolated workers. Keep the broad
+  `/arm` and `/arm/tools` trees denied, and retain absolute-path discovery and
+  provenance for every configured root.
 - Reconcile strict BYOX replay with the handler's fresh-inode staging records. Replay now
   accepts only the exact legacy semantic record or that record plus the complete,
   structurally valid runtime inode-evidence set; it still reconstructs and exact-compares

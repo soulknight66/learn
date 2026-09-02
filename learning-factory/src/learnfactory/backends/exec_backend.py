@@ -127,6 +127,9 @@ _APPROVED_TOOLCHAIN_PREFIXES = tuple(
         "/arm/tools/adoptopenjdk/openjdk",
         "/arm/tools/python",
         "/arm/tools/git/git",
+        "/arm/tools/arm/arm-gnu-toolchain-arm-none-eabi/15.2.rel1/linux64",
+        "/arm/tools/qemu/qemu/9.1.1/linux64",
+        "/arm/tools/gnu/glib/2.82.1/rhe8-x86_64/lib64",
     )
 )
 _PROTECTED_READ_PREFIXES = (

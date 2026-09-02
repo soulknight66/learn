@@ -1,0 +1,29 @@
+{
+  "builder_job_id": "job_byox_build_s2_d5738a92867d38332150840e7d7f6214",
+  "checks_run": [
+    "Inventoried all 64 regular files, inspected learner, sealed, provenance, manifest, audit, runner, test, starter, and reference materials, and confirmed the aggregate candidate checksum before and after review.",
+    "Recorded the exact configured Python, Java, and javac paths and versions.",
+    "Parsed MANIFEST.yaml and PROVENANCE.json and reran environment/audit.py with the pinned Python toolchain.",
+    "Compiled the starter with javac -Xlint:all -Werror and reran the public and sealed suites with the pinned JDK under external timeouts in a writable scratch replica.",
+    "Reviewed lexer, parser, interpreter, compiler, VM, CLI, tests, documentation, validation claims, progressive-disclosure layout, and license/provenance boundary.",
+    "Compiled and ran an independent bounded Java probe for numeric underflow, finite and infinite engine-budget parity, malformed-bytecode rejection, and CLI behavior."
+  ],
+  "evidence": [
+    "The claimed packaging audit reproduced: 23/23 required files, 21/21 forbidden paths absent, 64 regular files, no symlinks/special files, and zero credential-pattern hits.",
+    "The starter compiled; the public suite passed 9/9 against the sealed reference; the sealed suite passed 16/16. The intentionally incomplete starter failed 0/9 with disclosed TODO exceptions.",
+    "A valid finite program completed under TREE with [6000] but VM raised LIMIT at 3:247 because its raw-instruction guard preempted the shared semantic budget.",
+    "An infinite compiler-produced program raised LIMIT at 2:14 under TREE and 3:267 under VM, violating required error-location parity.",
+    "The nonzero literal formed as 0. followed by 400 zeroes and 1 was accepted as 0.0 instead of raising the required out-of-range LEX error.",
+    "A BytecodeProgram containing HALT followed by a null instruction returned [] instead of rejecting malformed bytecode.",
+    "Validation labeling is otherwise candid: the manifest remains GENERATED and PARTIAL, and fuzzing, benchmarking, transfer verification, productionization, and stronger validation labels are explicitly not claimed.",
+    "The aggregate candidate checksum was d4df8869e21fb0eb2568acbb5a88ca610f4544afa2c2defa5bcb44abb4a82faa both before and after review."
+  ],
+  "limitations": [
+    "The immutable upstream catalog snapshot and linked resource were unavailable, so source hashes, CC0 evidence, and the no-copy assertion could only be checked for internal consistency.",
+    "The full candidate physically contains sealed reference code and tests; no independently captured learner-view export was available to prove those paths are excluded.",
+    "CANDIDATE was mounted read-only, so runners that create local build directories were exercised in a scratch replica; the submitted tree itself was not modified.",
+    "No fuzzing, benchmark, transfer, production, or orchestrator acceptance validation was performed, and no such label is awarded by this advisory review."
+  ],
+  "project_id": "project_d87a4b192af7a71c0932b920abc8cad6",
+  "verdict": "REVISE"
+}

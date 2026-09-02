@@ -1,0 +1,42 @@
+{
+  "builder_job_id": "job_byox_build_s2_ae18e3ed06d72b954cbe4a59520504ab",
+  "checks_run": [
+    "Inspected all 56 submitted files, including learner material, sealed reference code, private tests, review answers, validation claims, manifest, and provenance.",
+    "Invoked /arm/tools/python/python/3.11.5/rhe8-x86_64/bin/python3 --version and observed Python 3.11.5 with exit code 0.",
+    "Invoked /arm/tools/adoptopenjdk/openjdk/21.0.5_11/linux64/jdk-21.0.5+11/bin/java -version and observed Temurin OpenJDK 21.0.5+11 with exit code 0; Java was not otherwise used by this Python-only submission.",
+    "Compiled starter, public tests, sealed reference, and sealed tests with an external PYTHONPYCACHEPREFIX; compileall exited 0 with no diagnostics.",
+    "Ran public_tests against sealed/reference with a writable TMPDIR: 11 tests ran and passed.",
+    "Ran sealed/reference_tests against sealed/reference in the immutable submission: 24 of 25 passed and the CLI flow returned 125 because its scrubbed environment had no writable default temporary location.",
+    "Ran sealed/reference_tests from a writable, content-identical scratch copy: 25 tests ran and passed.",
+    "Ran public_tests against the untouched starter: 11 tests ran with the expected 17 explicit TODO NotImplementedError errors.",
+    "Ran six bounded independent requirement probes covering layer containment/preflight, image integrity/publication, and output bounds; all six exposed contract failures.",
+    "Parsed MANIFEST.yaml and PROVENANCE.json, checked their identity fields, and computed their byte hashes.",
+    "Scanned for non-regular entries, credential-like patterns, TarFile.extract/extractall calls, and shell=True in Python source.",
+    "Compared sorted relative-path/per-file SHA-256 inventories before and after review to verify CANDIDATE was not modified."
+  ],
+  "evidence": [
+    "CANDIDATE/README.md says sealed material is evaluator-only, but readable reference code, private tests, and evaluator answers are present under the same learner-facing root; AGENTS.md supplies only a prose prohibition.",
+    "Using PYTHONPATH=sealed/reference directly from the submitted tree made all 11 public tests pass, demonstrating that the shipped reference can bypass the learner exercise if this tree is the student view.",
+    "The public/reference suite independently completed with exit code 0: Ran 11 tests in 0.485s, OK.",
+    "The sealed suite independently completed in the writable identical-content copy with exit code 0: Ran 25 tests in 3.625s, OK.",
+    "A symlink-parent probe passed destination alias/rootfs to LayerApplier; no domain error was raised and payload was created beneath the symlink target, contrary to REQUIREMENTS.md:29.",
+    "A valid layer containing .wh.victim followed by an opaque marker below an existing regular file raised InvalidLayer only after victim had been deleted, contradicting the reference's claimed pre-mutation target validation.",
+    "A hash/apply race probe retained the original layer SHA-256 in ImageRecord while the published rootfs contained bytes from a replacement tar.",
+    "Two coordinated imports of different content to one unused tag produced one success and one Conflict but left two published image directories, contrary to REQUIREMENTS.md:39-40.",
+    "After a caller changed a returned published image file from original to tampered, a newly created container copied tampered, so published image content is not immutable in practice.",
+    "ProcessRunner(max_output_bytes=5) returned 21 UTF-8 bytes for six bytes of stdout because it kept five bytes and appended the truncation marker, contrary to the unqualified bound in REQUIREMENTS.md:64-66.",
+    "Syntax compilation exited 0; the submission contains 56 regular files and 19 directories, no special entries, no scanned credential pattern, and no Python call matching extract/extractall or shell=True.",
+    "Manifest/provenance project, source, commit, and snapshot identity fields agree. MANIFEST.yaml SHA-256 is 4eb8b23f9c116db38a01876763e2e4f97e22c4219c9446bf949bb7e374c43123; PROVENANCE.json file SHA-256 is 266aadf01d684512a09ebed6ddd12fdbb424c6b2c27bb676147ce4df18d37705.",
+    "The sorted relative-path/per-file candidate inventory aggregates to 0bcf7f690a648a5c49efe5f6f623e35b258b00a8eb567bbec9aab1db9512bf7b.",
+    "The manifest remains honest and conservative: status GENERATED, labels GENERATED and PARTIAL, productionized false, and independent validation REQUIRED."
+  ],
+  "limitations": [
+    "Network access and the immutable source snapshot were unavailable, so the upstream commit, catalog CC0 evidence, linked-resource license, and no-copy assertion could not be independently verified.",
+    "The exact sealed-suite command is sensitive to scratch permissions: this review sandbox has no writable system temporary directory and keeps CANDIDATE read-only; an identical-content writable copy was required to corroborate the 25-test result.",
+    "No fuzz campaign, benchmark, profiler run, namespace/cgroup/seccomp test, elevated execution, transfer test, deployment, or production security review was performed.",
+    "Credential-pattern and forbidden-call scans cover obvious textual forms only and are not proofs of absence or behavioral safety.",
+    "The JDK was version-probed because it was configured, but it is irrelevant to the Python artifact and does not add validation coverage."
+  ],
+  "project_id": "project_d76f888c329de3f5823edf9ffcbe85c3",
+  "verdict": "REVISE"
+}

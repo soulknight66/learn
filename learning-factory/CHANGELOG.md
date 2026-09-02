@@ -7,10 +7,13 @@
   staged read-only root mode onto `.`, atomically quarantines metadata directories,
   and uses fd-relative, no-cross-device, bounded deletion while leaving ordinary
   output modes untouched.
-- Expose the exact Arm GNU 15.2.Rel1, QEMU 9.1.1, and QEMU GLib 2.82.1
-  installation leaves read-only to tool-enabled isolated workers. Keep the broad
-  `/arm` and `/arm/tools` trees denied, and retain absolute-path discovery and
-  provenance for every configured root.
+- Expose exact versioned installation leaves for Python 3.11.5, OpenJDK 21.0.5+11,
+  Arm GNU 15.2.Rel1 Arm and AArch64 bare-metal toolchains, QEMU 9.1.1 with GLib
+  2.82.1, Node.js 22.21.0, Go 1.27.0, NASM 2.16.03, GCC 15.2.0, GNU Binutils
+  2.43, Flex 2.6.4, and Bison 3.6.2 read-only to tool-enabled isolated workers.
+  Keep the broad `/arm` and `/arm/tools` trees denied, never add the leaves to
+  `PATH`, and retain absolute-path discovery and provenance for every configured
+  root.
 - Reconcile strict BYOX replay with the handler's fresh-inode staging records. Replay now
   accepts only the exact legacy semantic record or that record plus the complete,
   structurally valid runtime inode-evidence set; it still reconstructs and exact-compares

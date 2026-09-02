@@ -20,6 +20,14 @@ toolchain_read_roots = [
   "/arm/tools/arm/arm-gnu-toolchain-arm-none-eabi/15.2.rel1/linux64",
   "/arm/tools/qemu/qemu/9.1.1/linux64",
   "/arm/tools/gnu/glib/2.82.1/rhe8-x86_64/lib64",
+  "/arm/tools/nodejs/node/22.21.0/linux64/bin/node",
+  "/arm/tools/google/golang/1.27.0/linux64",
+  "/arm/tools/arm/arm-gnu-toolchain-aarch64-none-elf/15.2.rel1/linux64",
+  "/arm/tools/nasm/nasm/2.16.03/rhe8-x86_64/bin/nasm",
+  "/arm/tools/gnu/gcc/15.2.0/rhe8-x86_64",
+  "/arm/tools/gnu/binutils/2.43/rhe8-x86_64",
+  "/arm/tools/gnu/flex/2.6.4/rhe7-x86_64",
+  "/arm/tools/gnu/bison/3.6.2/rhe8-x86_64",
 ]
 timeout_seconds = 1800
 model = "gpt-5.6-sol"

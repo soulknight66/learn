@@ -6,8 +6,8 @@
 - Tests: standard-library `unittest`; pytest/Hypothesis are not installed.
 - Git: 2.9.3. GCC/G++ 8.5, Make 4.2.1, CMake 3.26.5.
 - Missing from the host PATH: Go, Rust, Java, Node, Docker/Podman, clang, valgrind, gdb.
-  Versioned read-only worker roots provide JDK 21, Arm GNU 15.2.Rel1, and QEMU 9.1.1;
-  QEMU uses its exact GLib 2.82.1 runtime leaf.
+  Versioned read-only worker roots provide the additional tools listed below, but those roots are
+  intentionally not added to `PATH`.
 - Isolation: Codex's beta Linux permission-profile runner is installed and host-tested; bubblewrap 0.4.0
   and user/PID/network namespaces work underneath the available tooling, but no container runtime exists.
 - Codex: CLI 0.146.0; stable `codex exec --json`, resume, output schema, and last-message output.
@@ -20,6 +20,28 @@
   students, and three examiners for the principal graph; a continuous `run --until-idle` controller is
   active.
 - `/tmp` is capacity-constrained; durable state stays in the project warehouse and scratch is bounded.
+
+## Isolated worker toolchains
+
+Tool-enabled isolated workers may read only these configured, version-pinned installation leaves; the
+broad `/arm` and `/arm/tools` parents remain denied. The factory does not add any leaf to `PATH`, so jobs
+discover and invoke tools by their explicit absolute paths.
+
+| Tool and version | Exact read-only root |
+|---|---|
+| Python 3.11.5 | `/arm/tools/python/python/3.11.5/rhe8-x86_64` |
+| OpenJDK 21.0.5+11 | `/arm/tools/adoptopenjdk/openjdk/21.0.5_11/linux64/jdk-21.0.5+11` |
+| Arm GNU Toolchain 15.2.Rel1, Arm none-eabi | `/arm/tools/arm/arm-gnu-toolchain-arm-none-eabi/15.2.rel1/linux64` |
+| QEMU 9.1.1 | `/arm/tools/qemu/qemu/9.1.1/linux64` |
+| GLib 2.82.1 QEMU runtime | `/arm/tools/gnu/glib/2.82.1/rhe8-x86_64/lib64` |
+| Node.js 22.21.0 executable | `/arm/tools/nodejs/node/22.21.0/linux64/bin/node` |
+| Go 1.27.0 | `/arm/tools/google/golang/1.27.0/linux64` |
+| Arm GNU Toolchain 15.2.Rel1, AArch64 none-elf | `/arm/tools/arm/arm-gnu-toolchain-aarch64-none-elf/15.2.rel1/linux64` |
+| NASM 2.16.03 executable | `/arm/tools/nasm/nasm/2.16.03/rhe8-x86_64/bin/nasm` |
+| GCC 15.2.0 | `/arm/tools/gnu/gcc/15.2.0/rhe8-x86_64` |
+| GNU Binutils 2.43 | `/arm/tools/gnu/binutils/2.43/rhe8-x86_64` |
+| Flex 2.6.4 | `/arm/tools/gnu/flex/2.6.4/rhe7-x86_64` |
+| Bison 3.6.2 | `/arm/tools/gnu/bison/3.6.2/rhe8-x86_64` |
 
 ## Verified Codex route and current operation
 
@@ -39,8 +61,8 @@ and supersedes that history.
 
 New Codex jobs use `factory-isolated` instead of the legacy `--sandbox` flag. The strict invocation
 denies the root and `CODEX_HOME`, grants workspace-only writes and reads only a minimal runtime plus
-the versioned Python 3.11, JDK 21, Arm GNU 15.2.Rel1, QEMU 9.1.1, and QEMU GLib 2.82.1
-installation leaves, disables tool networking and environment inheritance, and
+the exact versioned read-only installation leaves above, without adding them to `PATH`, disables tool
+networking and environment inheritance, and
 turns off hosted/web, MCP, browser/computer-use, plugin, hook, skill, and native subagent surfaces. The
 host probe confirms sibling-file, auth-file, environment, and socket denial. The runner is beta and the
 requested `/proc` denial is not treated as complete because the backend itself uses an inherited

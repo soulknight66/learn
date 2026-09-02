@@ -2147,6 +2147,15 @@ print(json.dumps({'type': 'turn.completed', 'usage': {'input_tokens': 17, 'outpu
                 "linux64",
                 "/arm/tools/qemu/qemu/9.1.1/linux64",
                 "/arm/tools/gnu/glib/2.82.1/rhe8-x86_64/lib64",
+                "/arm/tools/nodejs/node/22.21.0/linux64/bin/node",
+                "/arm/tools/google/golang/1.27.0/linux64",
+                "/arm/tools/arm/arm-gnu-toolchain-aarch64-none-elf/"
+                "15.2.rel1/linux64",
+                "/arm/tools/nasm/nasm/2.16.03/rhe8-x86_64/bin/nasm",
+                "/arm/tools/gnu/gcc/15.2.0/rhe8-x86_64",
+                "/arm/tools/gnu/binutils/2.43/rhe8-x86_64",
+                "/arm/tools/gnu/flex/2.6.4/rhe7-x86_64",
+                "/arm/tools/gnu/bison/3.6.2/rhe8-x86_64",
             ),
             settings.backend.toolchain_read_roots,
         )
@@ -2178,7 +2187,7 @@ print(json.dumps({'type': 'turn.completed', 'usage': {'input_tokens': 17, 'outpu
         missing = [
             root
             for root in settings.backend.toolchain_read_roots
-            if not Path(root).is_dir()
+            if not (Path(root).is_file() or Path(root).is_dir())
         ]
         if missing:
             self.skipTest(f"configured site toolchains are unavailable: {missing}")
@@ -2240,6 +2249,17 @@ print(json.dumps({'type': 'turn.completed', 'usage': {'input_tokens': 17, 'outpu
             ),
             Path("/arm/tools/qemu/qemu/9.1.1/linux64"),
             Path("/arm/tools/gnu/glib/2.82.1/rhe8-x86_64/lib64"),
+            Path("/arm/tools/nodejs/node/22.21.0/linux64/bin/node"),
+            Path("/arm/tools/google/golang/1.27.0/linux64"),
+            Path(
+                "/arm/tools/arm/arm-gnu-toolchain-aarch64-none-elf/"
+                "15.2.rel1/linux64"
+            ),
+            Path("/arm/tools/nasm/nasm/2.16.03/rhe8-x86_64/bin/nasm"),
+            Path("/arm/tools/gnu/gcc/15.2.0/rhe8-x86_64"),
+            Path("/arm/tools/gnu/binutils/2.43/rhe8-x86_64"),
+            Path("/arm/tools/gnu/flex/2.6.4/rhe7-x86_64"),
+            Path("/arm/tools/gnu/bison/3.6.2/rhe8-x86_64"),
         )
 
         def is_approved(path: Path) -> bool:
@@ -2249,7 +2269,11 @@ print(json.dumps({'type': 'turn.completed', 'usage': {'input_tokens': 17, 'outpu
             )
 
         for path in approved:
-            self.assertTrue(is_approved(path), path)
+            with self.subTest(path=path):
+                self.assertTrue(is_approved(path), path)
+                self.assertFalse(is_approved(path.parent), path.parent)
+                adjacent = path.with_name(path.name + "-adjacent")
+                self.assertFalse(is_approved(adjacent), adjacent)
         for path in (
             Path("/arm"),
             Path("/arm/tools"),
@@ -2263,6 +2287,72 @@ print(json.dumps({'type': 'turn.completed', 'usage': {'input_tokens': 17, 'outpu
             Path("/arm/tools/gnu/glib/2.82.1"),
         ):
             self.assertFalse(is_approved(path), path)
+
+    def test_exact_executable_file_toolchain_root_is_read_only(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="learnfactory-toolchain-file-") as raw:
+            root = Path(raw)
+            approved = root / "approved" / "bin" / "tool"
+            adjacent = approved.with_name("tool-adjacent")
+            approved.parent.mkdir(parents=True)
+            approved.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
+            approved.chmod(0o755)
+            adjacent.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
+            adjacent.chmod(0o755)
+            workspace = root / "workspace"
+            logs = root / "logs"
+            workspace.mkdir()
+            codex = root / "fake-codex"
+            codex.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
+            codex.chmod(0o755)
+            manifest = build_sandbox_rule_manifest(
+                workspace=workspace,
+                log_dir=logs,
+                worker_type="test",
+                payload={},
+                result_channel=_private_result_channel(
+                    root, "toolchain-file", "unit-test"
+                ),
+            )
+
+            with mock.patch(
+                "learnfactory.backends.exec_backend._APPROVED_TOOLCHAIN_PREFIXES",
+                (approved,),
+            ):
+                invocation = ExecBackend(
+                    str(codex), toolchain_read_roots=(str(approved),)
+                ).invocation_manifest(
+                    workspace,
+                    prompt="probe",
+                    sandbox_manifest=manifest,
+                )
+                for rejected in (approved.parent, adjacent):
+                    with self.subTest(rejected=rejected):
+                        with self.assertRaisesRegex(
+                            ValueError, "outside approved tool roots"
+                        ):
+                            ExecBackend(
+                                str(codex),
+                                toolchain_read_roots=(str(rejected),),
+                            ).invocation_manifest(
+                                workspace,
+                                prompt="probe",
+                                sandbox_manifest=manifest,
+                            )
+
+        filesystem = next(
+            invocation["argv"][index + 1]
+            for index, value in enumerate(invocation["argv"])
+            if value == "--config"
+            and invocation["argv"][index + 1].startswith(
+                "permissions.factory-isolated.filesystem="
+            )
+        )
+        self.assertEqual(
+            1, filesystem.count(json.dumps(str(approved)) + '=\"read\"')
+        )
+        self.assertNotIn(json.dumps(str(approved.parent)), filesystem)
+        self.assertNotIn(json.dumps(str(adjacent)), filesystem)
+        self.assertNotIn(json.dumps(str(approved)) + '=\"write\"', filesystem)
 
     def test_toolchain_permission_is_read_only_and_prefix_scoped(self) -> None:
         with tempfile.TemporaryDirectory(prefix="learnfactory-toolchain-policy-") as raw:
@@ -2498,6 +2588,191 @@ printf arm-profile-ok
             msg=f"stdout={completed.stdout}\nstderr={completed.stderr}",
         )
         self.assertEqual("arm-profile-ok", completed.stdout)
+
+    @unittest.skipUnless(
+        sys.platform.startswith("linux")
+        and shutil.which("codex") is not None
+        and shutil.which("bwrap") is not None,
+        "installed Codex Linux permission-profile runner is required",
+    )
+    def test_installed_future_toolchains_execute_inside_permission_profile(self) -> None:
+        node = Path("/arm/tools/nodejs/node/22.21.0/linux64/bin/node")
+        go_root = Path("/arm/tools/google/golang/1.27.0/linux64")
+        aarch64_root = Path(
+            "/arm/tools/arm/arm-gnu-toolchain-aarch64-none-elf/"
+            "15.2.rel1/linux64"
+        )
+        nasm = Path("/arm/tools/nasm/nasm/2.16.03/rhe8-x86_64/bin/nasm")
+        gcc_root = Path("/arm/tools/gnu/gcc/15.2.0/rhe8-x86_64")
+        binutils_root = Path("/arm/tools/gnu/binutils/2.43/rhe8-x86_64")
+        flex_root = Path("/arm/tools/gnu/flex/2.6.4/rhe7-x86_64")
+        bison_root = Path("/arm/tools/gnu/bison/3.6.2/rhe8-x86_64")
+        roots = (
+            node,
+            go_root,
+            aarch64_root,
+            nasm,
+            gcc_root,
+            binutils_root,
+            flex_root,
+            bison_root,
+        )
+        missing = [
+            str(path)
+            for path in roots
+            if not (path.is_file() or path.is_dir())
+        ]
+        if missing:
+            self.skipTest(
+                f"configured future toolchain roots are unavailable: {missing}"
+            )
+
+        with tempfile.TemporaryDirectory(
+            prefix="learnfactory-future-toolchains-profile-"
+        ) as raw:
+            root = Path(raw)
+            workspace = root / "workspace"
+            logs = root / "logs"
+            workspace.mkdir()
+            logs.mkdir()
+            codex = Path(shutil.which("codex") or "").resolve(strict=True)
+            backend = ExecBackend(
+                str(codex),
+                toolchain_read_roots=tuple(str(path) for path in roots),
+                timeout_seconds=5,
+            )
+            manifest = build_sandbox_rule_manifest(
+                workspace=workspace,
+                log_dir=logs,
+                worker_type="reference_builder",
+                payload={},
+                result_channel=_private_result_channel(
+                    root, "installed-future-toolchains-profile", "profile"
+                ),
+            )
+            command = [
+                str(codex),
+                "sandbox",
+                "--cd",
+                str(workspace),
+                "--permission-profile",
+                backend.permission_profile,
+            ]
+            for override in backend._permission_overrides(codex, manifest):
+                command.extend(["--config", override])
+            probe = r"""
+set -eu
+test -z "${FACTORY_PROBE_SENTINEL+x}"
+/usr/bin/mkdir -p .cache/go-build .cache/go-mod .home .tmp/go
+HOME="$PWD/.home"
+XDG_CACHE_HOME="$PWD/.cache"
+TMPDIR="$PWD/.tmp"
+export HOME XDG_CACHE_HOME TMPDIR
+
+"$1" --version | /usr/bin/grep -Fxq 'v22.21.0'
+"$1" -e "process.stdout.write('node-ok\n')" \
+    | /usr/bin/grep -Fxq 'node-ok'
+
+/usr/bin/env GOCACHE="$PWD/.cache/go-build" \
+    GOMODCACHE="$PWD/.cache/go-mod" GOTMPDIR="$PWD/.tmp/go" \
+    GOENV=off GOTELEMETRY=off GOTOOLCHAIN=local GOPROXY=off GOSUMDB=off \
+    CGO_ENABLED=0 "$2/bin/go" version \
+    | /usr/bin/grep -Fxq 'go version go1.27.0 linux/amd64'
+/usr/bin/cat > go-probe.go <<'EOF'
+package main
+import "fmt"
+func main() { fmt.Println("go-ok") }
+EOF
+/usr/bin/env GOCACHE="$PWD/.cache/go-build" \
+    GOMODCACHE="$PWD/.cache/go-mod" GOTMPDIR="$PWD/.tmp/go" \
+    GOENV=off GOTELEMETRY=off GOTOOLCHAIN=local GOPROXY=off GOSUMDB=off \
+    CGO_ENABLED=0 "$2/bin/go" run go-probe.go \
+    | /usr/bin/grep -Fxq 'go-ok'
+
+"$3/bin/aarch64-none-elf-gcc" --version \
+    | /usr/bin/grep -Fq 'Arm GNU Toolchain 15.2.Rel1'
+/usr/bin/cat > aarch64-probe.c <<'EOF'
+void aarch64_probe(void) {}
+EOF
+"$3/bin/aarch64-none-elf-gcc" -mcpu=cortex-a53 -ffreestanding \
+    -fno-stack-protector -c aarch64-probe.c -o aarch64-probe.o
+"$3/bin/aarch64-none-elf-readelf" -h aarch64-probe.o \
+    | /usr/bin/grep -q 'Machine:.*AArch64'
+
+"$4" -v | /usr/bin/grep -Fq 'NASM version 2.16.03'
+/usr/bin/cat > nasm-probe.asm <<'EOF'
+bits 64
+global nasm_probe
+section .text
+nasm_probe:
+    ret
+EOF
+"$4" -f elf64 nasm-probe.asm -o nasm-probe.o
+"$6/bin/readelf" -s nasm-probe.o | /usr/bin/grep -q 'nasm_probe'
+
+"$5/bin/gcc" --version | /usr/bin/grep -Fq 'gcc (GCC) 15.2.0'
+"$6/bin/readelf" --version \
+    | /usr/bin/grep -Fq 'GNU readelf (GNU Binutils) 2.43'
+/usr/bin/cat > native-probe.c <<'EOF'
+int native_probe(void) { return 42; }
+EOF
+"$5/bin/gcc" -B"$6/bin/" -std=c11 -O2 -Wall -Wextra -Werror \
+    -c native-probe.c -o native-probe.o
+"$6/bin/readelf" -s native-probe.o | /usr/bin/grep -q 'native_probe'
+
+"$7/bin/flex" --version | /usr/bin/grep -Fxq 'flex 2.6.4'
+/usr/bin/cat > lexer.l <<'EOF'
+%option noyywrap nounput noinput nodefault
+%%
+[a-z]+    return 1;
+[ \t\n]+  ;
+.         return 2;
+%%
+EOF
+"$7/bin/flex" -o lexer.c lexer.l
+/usr/bin/test -s lexer.c
+
+"$8/bin/bison" --version | /usr/bin/grep -Fq 'bison (GNU Bison) 3.6.2'
+/usr/bin/cat > parser.y <<'EOF'
+%token WORD
+%%
+input: %empty | input WORD ;
+%%
+EOF
+"$8/bin/bison" -d -o parser.c parser.y
+/usr/bin/test -s parser.c
+/usr/bin/test -s parser.h
+/usr/bin/printf future-toolchains-profile-ok
+"""
+            command.extend(
+                [
+                    "--",
+                    "/bin/bash",
+                    "-c",
+                    probe,
+                    "probe",
+                    *(str(path) for path in roots),
+                ]
+            )
+            env = os.environ.copy()
+            env["FACTORY_PROBE_SENTINEL"] = "must-not-leak"
+            completed = subprocess.run(
+                command,
+                cwd=workspace,
+                env=env,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                timeout=60,
+                check=False,
+            )
+
+        self.assertEqual(
+            0,
+            completed.returncode,
+            msg=f"stdout={completed.stdout}\nstderr={completed.stderr}",
+        )
+        self.assertEqual("future-toolchains-profile-ok", completed.stdout)
 
     @unittest.skipUnless(
         sys.platform.startswith("linux")

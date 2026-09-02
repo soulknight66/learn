@@ -1,0 +1,34 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g1_13ce421f86c7a98ed2012e2b5efe4489",
+  "checks_run": [
+    "Verified the configured Python 3.11.5 and OpenJDK 21.0.5 binaries by absolute path",
+    "Inventoried and fingerprinted all 64 candidate files before and after testing",
+    "Parsed all 33 Python files and performed an AST scan for eval, exec, compile, and shell=True",
+    "Validated manifest and provenance JSON plus their documented canonical SHA-256 digests",
+    "Ran the runtime preflight and 23 public tests against the sealed reference in an isolated writable copy",
+    "Ran all 63 sealed reference tests in the isolated copy",
+    "Ran independent deterministic probes for tail positions, integer limits, error boundaries, and empty? operands",
+    "Materialized and audited the 20-file learner view for byte fidelity, modes, forbidden paths, and documentation references",
+    "Confirmed the starter is intentionally incomplete and reviewed validation-label honesty, license boundaries, and credential patterns"
+  ],
+  "evidence": [
+    "Public reference suite: Ran 23 tests in 0.547s, OK, exit 0",
+    "Sealed reference suite: Ran 63 tests in 1.057s, OK, exit 0",
+    "A 5,500-call loop crossing fn, do, let, and if tail positions returned 0 without changing Python's recursion limit",
+    "The 10,000-digit boundary round-tripped, 10,001 digits raised ReaderError, and Python's integer-conversion setting remained unchanged",
+    "Direct probes showed (empty? 1), (empty? false), (empty? \"\"), and (empty? +) all return false rather than raising EvalError",
+    "The learner export contained the exact nine allowlisted roots, 20 byte-identical files, normalized modes, and no sealed/reference/answer path",
+    "The exported README points to PROVENANCE.json and LICENSE_BOUNDARY.md, but neither file exists in that learner view",
+    "Manifest remains GENERATED/PARTIAL with productionized false; no independent validation label is claimed",
+    "Candidate content-tree fingerprint was unchanged at 0aac23585bf049ec3fad2e031d9aa4d140660bb8711cdf03118a53f2f63e340f"
+  ],
+  "limitations": [
+    "Network access was not used, so upstream content, commit, catalog snapshot, and license assertions were not independently revalidated",
+    "The combined-pack-to-learner delivery boundary was tested only through the supplied exporter; an external harness transfer was not observable",
+    "No fuzzing, benchmark, performance, security, concurrency, production, or transfer validation was performed or inferred",
+    "The prior-build preservation audit in the builder's VALIDATION.md could not be repeated because PRIOR_BUILD is not present in this review workspace",
+    "The intentionally incomplete starter was not treated as a completed learner solution"
+  ],
+  "project_id": "project_d49f1492abb05519b3c18d8a793d37a2",
+  "verdict": "REVISE"
+}

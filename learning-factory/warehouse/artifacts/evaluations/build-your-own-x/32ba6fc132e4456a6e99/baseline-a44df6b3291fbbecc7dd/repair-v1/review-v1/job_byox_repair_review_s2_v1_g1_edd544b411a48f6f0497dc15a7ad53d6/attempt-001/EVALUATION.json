@@ -1,0 +1,39 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g1_8f782380bd318d88d9708736614821c6",
+  "checks_run": [
+    "Configured Python and JDK version capture by absolute path",
+    "Read-only candidate inventory, file-type, symlink, and build-residue scans",
+    "Strict metadata parsing, identity/status linkage, and SHA-256 checks",
+    "Manifest, provenance, license-boundary, learner-view, and validation-claim review",
+    "Starter compilation and public-suite execution",
+    "Sealed reference compilation plus public and sealed-suite execution",
+    "Process-runner unittest execution",
+    "Layout and credential-pattern validator execution",
+    "Static review of the R1-R7 contract, reference implementation, and test coverage",
+    "Independent Java edge probes, including partition-component aliasing",
+    "Starter/reference public API comparison with javap",
+    "Standard-library, wall-clock, and subprocess-pattern scans"
+  ],
+  "evidence": [
+    "Absolute-path tools reported Python 3.11.5, OpenJDK Runtime Temurin 21.0.5+11, and javac 21.0.5.",
+    "The candidate has 53 regular files and 53 directories, no symlinks or special files, and no committed class, pyc, or log residue.",
+    "Strict independent metadata checks passed; MANIFEST.yaml SHA-256 is 4992856bf7771de8cafbeb472131a6808085ef91caab9b0a0c3bc6e391e957fa and PROVENANCE.json SHA-256 is 7f108057b84fe64c15150aa4ab2a8773c88d2479eff9897789e9827401b2ecb2.",
+    "The starter compiled and produced the documented non-passing baseline: exit 1, RESULT 1/5 passed, with four explicit TODO failures.",
+    "The sealed reference runner exited 0 and reported public RESULT 5/5 passed and sealed RESULT 15/15 passed.",
+    "The process-runner suite exited 0 with 2 tests; the layout validator exited 0 for 23 required files, 21 forbidden paths, 105 generated paths, and 53 credential-scanned files.",
+    "Six additional reviewer checks passed for key encoding, validation-before-rotation, oversize-segment behavior, five-replica quorum boundaries, stale-position contact refresh, and partial-header recovery.",
+    "Independent probes exposed partial durable mutation: after a caller advanced the still-aliased ReplicationTracker from end offset 0 to 2, PartitionLeader.append wrote local offset 0 and then threw while trying to regress tracker progress; the live and reopened log ended at 1 while the tracker stayed at 2.",
+    "The manifest and prose consistently retain GENERATED/PARTIAL, productionized=false, and independent validation required; they explicitly disclaim BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, and PRODUCTIONIZED promotion.",
+    "Starter and reference public source signatures matched; the only raw javap difference was the reference implementation's synchronized modifier on SegmentedLog methods."
+  ],
+  "limitations": [
+    "The immutable upstream catalog snapshot and linked tutorial were not available and the provenance URL was intentionally not fetched, so CC0 evidence, authorship, and the no-copy assertion were not independently established.",
+    "No orchestrator-produced learner view was supplied. The pack contains readable sealed sources, tests, and answers, while its learner-visible allowlist is described only in prose; transfer isolation remains inconclusive.",
+    "No fuzzing, benchmark, profiler, process-crash campaign, filesystem fault injection, network test, security audit, deployment, or transfer verification was performed.",
+    "FileChannel short-operation and write-failure paths were reviewed statically but not forced with an instrumented filesystem.",
+    "Dynamic checks covered one Linux environment and the configured Temurin JDK only.",
+    "git and rg were unavailable on PATH; deterministic find, grep, javap, sha256sum, Python, and JDK fallbacks were used."
+  ],
+  "project_id": "project_7fc5b6faee61f34679ec47f9c4964256",
+  "verdict": "REVISE"
+}

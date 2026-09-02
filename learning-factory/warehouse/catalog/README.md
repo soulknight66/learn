@@ -1,8 +1,48 @@
 # Learning artifact catalog
 
-Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 243.
+Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 247.
 
 The complete searchable records, concepts, languages, provenance, and validation labels are in `catalog.json`.
+
+## byox-independent-review — GENERATED
+
+- Artifact type: `byox-independent-review`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/evaluations/build-your-own-x/32ba6fc132e4456a6e99/review-v2/job_byox_review_s2_p2_1be16451d4292c611c690bdd3468c657/attempt-001`
+- SHA-256: `fa2ddba390696e7cbcc8ddb88a30163c27d1b81efa2dde7b36e9360e8ab8b99e`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_byox_review_s2_p2_1be16451d4292c611c690bdd3468c657` (codex_task/examiner)
+
+## byox-independent-review — GENERATED
+
+- Artifact type: `byox-independent-review`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/evaluations/build-your-own-x/5bbc84338b3f660eee4d/review-v2/job_byox_review_s2_p2_e259635c9ca154ffeb4a44bd545f0c63/attempt-001`
+- SHA-256: `ec94e5ce413b1051a5d18c72828d598333a8624506a5928f72e6c2f41d214474`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_byox_review_s2_p2_e259635c9ca154ffeb4a44bd545f0c63` (codex_task/examiner)
+
+## byox-challenge-pack — GENERATED+PARTIAL
+
+- Artifact type: `byox-challenge-pack`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/distributed-systems/building-your-own-kafka-like-system-from-scratch-a-step-by-step-guide-32ba6fc132/job_byox_build_s2_7eee0eaf799ab254ef7dbb90d5dd53d3/attempt-001`
+- SHA-256: `c1e466307ae3363a5de55efcd3674903d58759b32559e373fea048469c1062c9`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED, PARTIAL
+- Job: `job_byox_build_s2_7eee0eaf799ab254ef7dbb90d5dd53d3` (codex_task/reference_builder)
+
+## byox-challenge-pack — GENERATED+PARTIAL
+
+- Artifact type: `byox-challenge-pack`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/programming-language/mal-make-a-lisp-5bbc84338b/job_byox_build_s2_8949bd3a7c89916f517bc30e41b57243/attempt-001`
+- SHA-256: `8780fb4c8b7185ccfe7710e7d4579526a5911b02ec89ff1db26464d75d77e1e3`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED, PARTIAL
+- Job: `job_byox_build_s2_8949bd3a7c89916f517bc30e41b57243` (codex_task/reference_builder)
 
 ## byox-independent-review — GENERATED
 

@@ -1,0 +1,77 @@
+{
+  "classification": "agent-generated challenge pack bound to immutable source-derived catalog metadata",
+  "license_boundary": {
+    "catalog_license": "CC0-1.0",
+    "generated_material": "independently generated for personal educational use",
+    "linked_content_copied": false,
+    "linked_resource_license": "NOASSERTION"
+  },
+  "material_baseline_sha256": "242f720b83f1b063e669e61c3409b93b95071dfdda1aca1217a92728f1bc0673",
+  "project": {
+    "category": "Programming Language",
+    "concepts": [
+      "parsing",
+      "interpreters",
+      "compilers",
+      "language design"
+    ],
+    "difficulty": 8.0,
+    "implementation_language": "(any)",
+    "metadata": {
+      "catalog_suffix": "",
+      "languages": [
+        "(any)"
+      ],
+      "linked_resource_license": "NOASSERTION",
+      "provenance": {
+        "adapter": "build_your_own_x",
+        "classification": "source-derived",
+        "content_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+        "extractor_version": "1.1",
+        "source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+        "source_file": "README.md",
+        "source_line": 314
+      },
+      "scoring": {
+        "basis": "category heuristic",
+        "classification": "inferred",
+        "priority_tier": 1
+      }
+    },
+    "priority_tier": 1,
+    "production_relevance": 8.5,
+    "project_id": "project_d49f1492abb05519b3c18d8a793d37a2",
+    "slug": "mal-make-a-lisp",
+    "source_format": "repository",
+    "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+    "title": "mal - Make a Lisp",
+    "upstream_reference": "https://github.com/kanaka/mal#mal---make-a-lisp"
+  },
+  "schema_version": 1,
+  "snapshot_sha256": "7b06f5c8326e5b149cb21eca38df244194501c4ffb93c9a997e5e2f897a561bc",
+  "source": {
+    "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989",
+    "license": "CC0-1.0",
+    "metadata": {
+      "adapter": "build_your_own_x",
+      "extractor_version": "1.1",
+      "license_evidence": "explicit CC0 waiver declaration",
+      "license_file": "README.md#origins--license",
+      "license_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+      "license_source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+      "linked_resource_license": "NOASSERTION",
+      "snapshot_reader": "git-object-database",
+      "tree_hash": "12e788febc0575ae1bce1de8ad1fc28d7fff7c22"
+    },
+    "name": "Build Your Own X",
+    "observation_fields_excluded": [
+      "active_at_factory_time",
+      "ingested_at"
+    ],
+    "path": "<immutable-byox-baseline>",
+    "snapshot_kind": "immutable-material-baseline",
+    "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+    "type": "project_catalog",
+    "upstream_url": null
+  }
+}

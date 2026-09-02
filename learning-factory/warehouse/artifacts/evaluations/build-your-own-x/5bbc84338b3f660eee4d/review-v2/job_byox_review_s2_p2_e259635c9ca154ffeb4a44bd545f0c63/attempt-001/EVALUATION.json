@@ -1,0 +1,38 @@
+{
+  "builder_job_id": "job_byox_build_s2_8949bd3a7c89916f517bc30e41b57243",
+  "checks_run": [
+    "Invoked the configured Python binary by absolute path; it reported Python 3.11.5 and exited 0.",
+    "Invoked the configured Java binary by absolute path; it reported Temurin OpenJDK 21.0.5+11 and exited 0. Java is not used by the candidate.",
+    "Compiled all 29 submitted Python files in memory with the configured Python 3.11.5 interpreter; all had valid syntax.",
+    "Ran the 49 sealed reference tests with PYTHONPATH=sealed/reference; all passed in 0.669 seconds.",
+    "Ran the 19 public tests against the sealed reference. The builder's command encountered one environment-level tempfile error because no default writable temp directory exists; with TMPDIR=.., all 19 passed in 0.402 seconds.",
+    "Ran the sealed-reference CLI smoke expression; it printed 42 and exited 0.",
+    "Ran the learner-facing generic python3 command path; python3 resolved to Python 3.6.8 and the public suite failed before exercising the starter contract.",
+    "Ran independent valid-input boundary probes for a 5,000-digit integer, 1,100 nested lists, empty? on an integer, and malformed conditional bytecode.",
+    "Ran an independent CLI probe with a 5,000-digit integer; it exited 1 and emitted a Python traceback rather than a controlled error with status 2.",
+    "Recomputed canonical manifest and provenance JSON digests, checked identifier linkage, scanned Python imports and dangerous builtin calls, inspected artifact types, and inspected learner/sealed file readability.",
+    "Reviewed every submitted source, test, exercise, answer, learner document, validation claim, production caveat, license statement, and provenance record without modifying CANDIDATE."
+  ],
+  "evidence": [
+    "Positive baseline: the independently rerun sealed suite reported Ran 49 tests, OK; the public suite reported Ran 19 tests, OK when given a writable TMPDIR; the CLI smoke printed 42.",
+    "Contract defect: read_one('9' * 5000) raised raw ValueError at Python's 4,300-digit conversion limit even though REQUIREMENTS.md requires arbitrary-precision base-10 integers.",
+    "Boundary defect: the same 5,000-digit source through pebble.cli returned 1, lacked the required error: prefix, and included Traceback, contrary to the documented status-2/no-traceback CLI contract.",
+    "Host-error defect: a syntactically valid value nested 1,100 lists deep raised raw RecursionError; the candidate discloses recursive-depth risk but its normative API contract says raw host exceptions must not cross for well-formed calls.",
+    "Progressive-disclosure defect: the submitted tree contains readable sealed/reference, sealed/reference_tests, sealed answers, and review answers. The inspected starter, reference implementation, and answer files all had the same readable file mode, and no deterministic learner-view export/filter is supplied.",
+    "Reproducibility defect: the documented python3 command resolves to Python 3.6.8 in the provided environment, while the code requires Python 3.11+; failures included unsupported PEP 604 annotations and subprocess.run(text=...).",
+    "Optional-VM defect: an untaken JUMP_IF_FALSE with target 99 returned 42 instead of rejecting the invalid target, despite sealed/DESIGN.md claiming jump targets are validated.",
+    "Learner-usefulness issue: review_exercises/tail_position/candidate.py also uses Python truthiness and mishandles the optional if else and empty do, but its sealed review discusses only host-stack growth.",
+    "Provenance identifiers and commits agree across MANIFEST.yaml and PROVENANCE.json. Canonical SHA-256 values reproduced as 0a134783939d3d2bd9fc51f0ab33ef43cb40e4c86dc52feceb41248b0886b18e for the manifest and 17238e9005ea6ad305702b2fd5f18b9693608e3ccf4bf89881f929bb46002422 for the provenance document.",
+    "Static audit found no non-standard-library import roots, direct calls to builtin eval/exec/compile, or shell=True calls in submitted Python.",
+    "Validation-label honesty is good: MANIFEST.yaml remains GENERATED/PARTIAL, productionized is false, and VALIDATION.md explicitly disclaims independent BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, and PRODUCTIONIZED labels."
+  ],
+  "limitations": [
+    "The immutable source/catalog snapshot and linked resource were not available and network access was not used, so the asserted independent origin, source commit contents, catalog CC0 evidence, and linked-content non-copying claim could not be externally verified.",
+    "The manifest provenance_sha256 equals PROVENANCE.json's snapshot_sha256 field, not the byte or canonical digest of PROVENANCE.json; the source snapshot and its digest procedure are absent, so that snapshot hash could only be checked for internal consistency.",
+    "This workspace shows the submitted combined tree, not a separately materialized learner view. An external orchestrator might filter sealed paths, but no such rule or acceptance evidence is included in CANDIDATE.",
+    "The builder's exact public-suite command was inconclusive for one file-mode test in this sandbox because /tmp, /var/tmp, /usr/tmp, and CANDIDATE were not writable. The same suite passed after setting TMPDIR to the writable attempt root.",
+    "No fuzz, benchmark, transfer, security, production, or network-dependent check was performed; the candidate does not claim those labels."
+  ],
+  "project_id": "project_d49f1492abb05519b3c18d8a793d37a2",
+  "verdict": "REVISE"
+}

@@ -1,0 +1,31 @@
+{
+  "builder_job_id": "job_byox_build_s2_7eee0eaf799ab254ef7dbb90d5dd53d3",
+  "checks_run": [
+    "Inspected all 49 submitted regular files, including learner-visible documentation and starter code, public tests, harness scripts, sealed rationale, reference implementation, reference tests, review exercises, benchmark harness, manifest, provenance, and generation-time validation claims.",
+    "Invoked the configured Python 3.11.5, Java 21.0.5, and javac 21.0.5 binaries by absolute path and recorded their versions.",
+    "Independently checked metadata shape, conservative labels, project identity, provenance linkage, file types, raw metadata hashes, and an aggregate candidate-tree hash.",
+    "Replayed the submitted layout validator and both documented test-runner commands exactly.",
+    "Repeated the public and reference runners with an explicit writable TMPDIR to isolate harness portability from Java compilation and test behavior.",
+    "Ran bounded, independently authored Java probes against the sealed reference for plausible length-prefix corruption and non-Latin default FORMAT locale behavior.",
+    "Compared the learner-visible requirements and progressive milestone guidance with the starter API, public tests, sealed expectations, and claimed adversarial inventory.",
+    "Reviewed license and provenance boundary statements without accessing the upstream URL."
+  ],
+  "evidence": [
+    "The exact documented public and reference commands each exited 1 before compilation because tempfile.TemporaryDirectory found no usable directory; neither runner accepts a temp-root argument nor records a required TMPDIR setting.",
+    "With a writable TMPDIR, the starter compiled and produced the claimed intentional result of 1/5 public tests passing; the sealed reference compiled and produced 5/5 public plus 11/11 sealed tests passing.",
+    "An independent probe changed only a complete final frame's plausible length prefix from 37 to 38. Reopen silently truncated the 41-byte segment to 0 and returned endOffset 0 instead of rejecting corruption, contradicting R2/R3 evidence-preservation requirements.",
+    "An independent Arabic FORMAT-locale probe caused the reference to create a segment named with Arabic-Indic digits and then reject that same filename on reopen because generation is locale-sensitive while discovery accepts only ASCII digits.",
+    "Static inspection found advertised adversarial cases that are absent from the executable suites, including a partial length field, a record-offset gap, and a current-term over-leader acknowledgement; the suites also miss both independently reproduced failures.",
+    "MANIFEST.yaml remains conservative: GENERATED and PARTIAL only, productionized=false, and independent_validation=REQUIRED. No unsupported benchmark, fuzz, transfer-verification, or production label is asserted.",
+    "MANIFEST.yaml and PROVENANCE.json parsed, linked to project_7fc5b6faee61f34679ec47f9c4964256, and retained recorded raw SHA-256 values 4992856bf7771de8cafbeb472131a6808085ef91caab9b0a0c3bc6e391e957fa and 7f108057b84fe64c15150aa4ab2a8773c88d2479eff9897789e9827401b2ecb2.",
+    "The candidate-tree aggregate was 000b65b2911908c2a9971db4aa53c5723f33a3da18aee14e7baf16d938140350 before and after review; no generated class, log, cache, symlink, or special-file artifact was left in CANDIDATE."
+  ],
+  "limitations": [
+    "The immutable catalog baseline, git object database, and linked upstream tutorial were not available in this workspace and the URL was intentionally not fetched, so source commit, snapshot hashes, CC0 evidence, and the no-copy authorship assertion could be checked only for internal consistency, not independently substantiated.",
+    "This reviewer workspace exposes evaluator material by design. No learner-view materialization or transfer mechanism was available, so actual exclusion of sealed, adversarial, debugging, review-exercise, and benchmark-support content could not be transfer-verified.",
+    "Candidate-owned passing tests establish only the observed behavior of those cases; they do not prove TESTED, REVIEWED, TRANSFER_VERIFIED, or any stronger validation label.",
+    "No fuzzing, performance benchmark, profiler, filesystem fault injection, process-crash test, network test, security audit, or production deployment was performed."
+  ],
+  "project_id": "project_7fc5b6faee61f34679ec47f9c4964256",
+  "verdict": "REVISE"
+}

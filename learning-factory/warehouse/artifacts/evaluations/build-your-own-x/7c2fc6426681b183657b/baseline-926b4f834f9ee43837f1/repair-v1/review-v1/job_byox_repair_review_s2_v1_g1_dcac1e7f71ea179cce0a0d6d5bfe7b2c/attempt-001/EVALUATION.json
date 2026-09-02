@@ -1,0 +1,31 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g1_33afd8241e9eb0dca90df3baa3c98636",
+  "checks_run": [
+    "Inspected all 37 candidate files and mapped learner-visible, evaluator-only, provenance, build, test, benchmark, and validation material.",
+    "Parsed both JSON documents, compiled all 6 Python files in memory, and independently ran the structural audit.",
+    "Built the sealed reference twice, built the starter, checked path-independent build output, compared hashes, and inspected the ELF headers, symbols, segments, and dynamic section.",
+    "Ran the 10 public tests, 13 sealed boundary tests, and 6 build/audit regression tests with pinned Python and no skipped tests.",
+    "Ran native, QEMU, starter-stub, benchmark-smoke, and reviewer-designed behavioral checks with bounded subprocesses.",
+    "Ran 22 reviewer-designed conformance cases, including one deterministic program whose 880 arithmetic, division, remainder, comparison, and bitwise results were computed by an independent Python model.",
+    "Reviewed validation-label honesty, progressive-disclosure layout, learner guidance, license boundaries, provenance bindings, special entry absence, and credential-pattern results."
+  ],
+  "evidence": [
+    "REVISE: valid 20- and 21-byte nonnumeric definition names ending in x after an overflowing decimal prefix were rejected with status 2 and 'error: invalid definition'.",
+    "REQUIREMENTS.md permits any 1-31 byte name except a token having the complete integer shape; the failing names do not have that shape.",
+    "sealed/reference/forth.S returns overflow before scanning the remaining token bytes, and begin_definition rejects every nonzero parser state; the sealed suite lacks an overflow-prefix-plus-suffix case.",
+    "The reviewer suite passed 20 of 22 cases and matched all 880 independently modeled arithmetic results; only the two positive/negative overflow-prefix name cases failed.",
+    "Two reference builds and a third build from a copied source at a different output path were byte-identical with SHA-256 5b73caee22ee3e317b10049367130fcfb23a4973bff821c38f928cf2b9218e98.",
+    "Public tests passed 10/10, sealed tests passed 13/13, and tooling regressions passed 6/6 with no skips; the independent audit reported all 37 required regular files and exact manifest/provenance objects.",
+    "The manifest honestly remains GENERATED/PARTIAL, productionized=false, and independent_validation=REQUIRED; benchmark output is explicitly UNVALIDATED_MEASUREMENT and no stronger label is claimed.",
+    "Evaluator implementations and answers are confined to sealed/, while the nonsealed surface provides a buildable stub, staged guidance, concepts, design questions, requirements, and black-box examples."
+  ],
+  "limitations": [
+    "The immutable source snapshot and linked Jonesforth material were unavailable, so catalog license evidence, source hashes, similarity, and the clean-room claim could not be independently authenticated.",
+    "Learner-view exclusion of sealed/ is an external control-plane property and was not transfer-verified in this reviewer workspace.",
+    "QEMU 9.1.1 worked with the configured GLib library path, but two non-strace 3-second smoke attempts timed out while later attempts passed; QEMU execution at that bound is inconclusive and is not transfer verification.",
+    "No fuzzing, coverage measurement, validated benchmarking, production review, or non-x86 platform validation was performed.",
+    "The configured JDK and Arm bare-metal toolchain were available but inapplicable to this x86-64 assembly artifact; host /usr/bin/as and /usr/bin/ld.bfd were required because no configured x86-64 binutils root was supplied."
+  ],
+  "project_id": "project_d667887dddd98fbea55fa17d9b99cf19",
+  "verdict": "REVISE"
+}

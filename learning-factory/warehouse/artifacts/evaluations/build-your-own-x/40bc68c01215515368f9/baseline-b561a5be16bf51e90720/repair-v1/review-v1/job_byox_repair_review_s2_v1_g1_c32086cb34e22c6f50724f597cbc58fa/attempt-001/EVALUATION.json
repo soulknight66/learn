@@ -1,0 +1,37 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g1_ec7f6cd87bd8b8d0c42fc38d0df807d4",
+  "checks_run": [
+    "Read-only review of all candidate documentation, manifests, scripts, Java sources, and tests",
+    "Configured Python, Java, javac, and timeout identity checks",
+    "Independent JSON, metadata-hash, file-type, path-isolation, and credential-signature checks",
+    "Clean starter compilation with javac -Xlint:all -Werror",
+    "Clean sealed-reference compilation and independent execution of the 9-case public suite",
+    "Clean sealed-reference compilation and independent execution of the 18-case reference suite",
+    "Ten reviewer-authored source-language semantic and diagnostic probes on both engines",
+    "Five reviewer-authored malformed-bytecode and execution-guard probes",
+    "Two clean compilations compared for byte-for-byte class-file reproducibility",
+    "Progressive-disclosure, learner-usefulness, provenance-boundary, and validation-claim review",
+    "Candidate tree digest before and after validation"
+  ],
+  "evidence": [
+    "The configured toolchains were available at their exact paths: Python 3.11.5 and Temurin Java/javac 21.0.5+11; GNU timeout was 8.30.",
+    "The intentionally unfinished starter compiled cleanly with all javac warnings treated as errors.",
+    "The public suite independently compiled and reported 9 passed, 0 failed against the sealed reference.",
+    "The reference suite independently compiled and reported 18 passed, 0 failed.",
+    "Reviewer-authored probes reported 10 passed, 0 failed for engine parity, exact statement-budget boundaries, scope/control behavior, and controlled diagnostics.",
+    "Reviewer-authored malformed-bytecode probes reported 5 passed, 0 failed, including unreachable invalid entries and a tick-free cycle.",
+    "Two clean builds each produced 47 class files with identical aggregate SHA-256 d92d928ded6e400d572133dfe5382c8a8a181d90ae7bbac073b49ead96d39c9a.",
+    "Independent inventory found 64 regular candidate files, no symlinks or special files, and no solution-named paths inside starter, public_tests, or environment.",
+    "Current PROVENANCE.json, MANIFEST.yaml, and LICENSE_BOUNDARY.md hashes matched the values recorded by the builder; the manifest remains GENERATED/PARTIAL, requires independent validation, and claims no fuzzing, benchmark, transfer, review, or production label.",
+    "CANDIDATE remained unchanged at 64 files and aggregate tree SHA-256 168b49a03a68644f49b46e3767d219746d0c3a852541b552e5d9cfa73b739ad5."
+  ],
+  "limitations": [
+    "CANDIDATE is deliberately read-only in this review workspace, so the supplied run.sh files could not create their relative temporary directories; their javac/java steps were reproduced in guarded reviewer-owned temporary directories instead.",
+    "No exported learner view or orchestrator-controlled transfer validator was available. The full candidate contains sealed material and must not itself be delivered as the learner view.",
+    "The immutable upstream snapshot, PRIOR_BUILD, network, and external license evidence were unavailable, so source-commit, catalog-license, no-copy, and prior-build identity statements were checked only for present-file integrity and internal consistency.",
+    "No fuzzing, benchmark, mutation, profiler, production, or independent acceptance-label validator was run; none of those claims is promoted by this review.",
+    "The credential check covers a small high-confidence signature set rather than proving that arbitrary secrets are absent, and resource-exhaustion behavior remains subject to the limits disclosed by the candidate."
+  ],
+  "project_id": "project_d87a4b192af7a71c0932b920abc8cad6",
+  "verdict": "PASS"
+}

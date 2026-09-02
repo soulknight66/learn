@@ -1,0 +1,33 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g1_cc8de6d3cc76aef0847c417c0bed16ee",
+  "checks_run": [
+    "Verified the configured Python and Java binaries by absolute path and recorded their versions.",
+    "Parsed MANIFEST.yaml, PROVENANCE.json, and the student-view allowlist; hashed all 59 candidate files before and after review.",
+    "Compiled starter, public tests, sealed reference, sealed tests, and the exporter with bytecode redirected outside CANDIDATE (exit 0).",
+    "Ran the public suite against the sealed reference: 11 tests passed (exit 0).",
+    "Ran the sealed reference suite: 34 tests passed (exit 0).",
+    "Ran the public suite against the untouched starter: 11 tests ran with 17 expected TODO errors (exit 1).",
+    "Checked and actually exported the exact student view; compared all exported paths and bytes and reran its self-check.",
+    "Ran two independent layer regressions for derived whiteout safety and restrictive-umask directory normalization; both exposed contract failures.",
+    "Audited dangerous extraction/shell APIs, common credential patterns, nonregular entries, cache residue, learner/reference separation, licensing, and validation reproducibility."
+  ],
+  "evidence": [
+    "A layer containing .wh.victim followed by .wh... raised PathEscape only after deleting victim (exception=PathEscape victim_exists=False), contradicting the preflight/no-mutation contract.",
+    "Applying a file at implicit/file under umask 077 created both the destination and implicit directory as 0700, not the required normalized 0755.",
+    "The real learner export contained exactly 27 allowlisted regular files, had zero byte mismatches and no evaluator roots, and passed its own check.",
+    "The same learner export contained no license/provenance-named file or explicit generated-material grant, although LICENSE_BOUNDARY.md requires PROVENANCE.json and that notice to accompany any such copy.",
+    "VALIDATION.md deletes environment/.validation-tmp before later commands name it as TMPDIR; with that path absent in this immutable artifact, the configured interpreter exited 1 with no usable temporary directory.",
+    "Reference suites otherwise reproduced successfully: public 11/11 and sealed 34/34; syntax compilation and exporter checks also exited 0.",
+    "MANIFEST.yaml and PROVENANCE.json byte hashes match the candidate's recorded values; the manifest remains honestly limited to GENERATED/PARTIAL with productionized=false.",
+    "The 59-file candidate inventory SHA-256 was unchanged before and after review: 5baec46c6f5662b5e0808f8552de00759cbc69c01da0667de2a56fbace3ec0a0."
+  ],
+  "limitations": [
+    "Network access and the immutable upstream/source snapshot were unavailable, so the no-copy assertion and linked-resource license status were not independently compared with upstream content.",
+    "The factory-owned artifact inventory is outside this workspace, so the material-baseline and remediation-snapshot identifiers could not be independently recomputed.",
+    "No fuzz campaign, benchmark, hostile multi-tenant execution, namespace/cgroup/seccomp test, cross-host transfer verification, or production security review was performed.",
+    "Java 21.0.5 was available but is not useful for this Python-only candidate; git and ripgrep were unavailable, so filesystem hashing and find/grep were used instead.",
+    "The wrapper emitted unrelated numeric UID/GID lookup warnings before commands; child exit codes and substantive output were still captured."
+  ],
+  "project_id": "project_d76f888c329de3f5823edf9ffcbe85c3",
+  "verdict": "REVISE"
+}

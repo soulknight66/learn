@@ -1,0 +1,33 @@
+{
+  "builder_job_id": "job_byox_build_s2_3f46cbaf65ec2624f55f3185f63cade5",
+  "checks_run": [
+    "Inspected all 48 candidate files, including learner-facing material, the sealed reference implementation and tests, exercises and answers, the bytecode alternative, the limits wrapper, validation claims, manifest, provenance, and license boundary.",
+    "Probed the review environment: Node.js and npm were absent; GJS 1.56.2 and Python 3.6.8 were available.",
+    "Ran the submitted artifact checker under a 15-second timeout: exit 0 with ARTIFACT_CHECK_OK, 23 required paths, 21 forbidden paths absent, 48 generated files, and zero credential matches. This was treated as corroboration, not self-proving evidence.",
+    "Ran the submitted GJS smoke suite under a 20-second timeout: exit 0 with GJS_SMOKE_PASS assertions=35. This was treated as corroboration, not a substitute for the target Node suites.",
+    "Parsed every one of the 19 JavaScript files as a function body with GJS under a 30-second aggregate timeout: exit 0 for all files.",
+    "Ran a reviewer-authored GJS differential matrix comparing interpretation with optimized and unoptimized generated execution across 832 literal/operator combinations and four targeted programs, plus diagnostics, locations, optimizer purity, and hostile handcrafted identifier lowering: 1,680 checks passed.",
+    "Ran reviewer-authored limits-wrapper and bytecode checks: all 16 checks passed, including all four deterministic size limits, malformed limit settings, short-circuit bytecode, and the bytecode step budget.",
+    "Ran reviewer-authored adversarial checks over all 128 ASCII code points and a 1,500-term expression through parse, interpret, and compile: exit 0.",
+    "Independently checked strict JSON parsing without duplicate keys, canonical provenance hashing, manifest/provenance linkage, regular-file types, absence of symlinks and special paths, external URLs, and common credential signatures."
+  ],
+  "evidence": [
+    "The reviewer-authored semantic run reported INDEPENDENT_GJS_CHECK_PASS checks=1680 programs=836.",
+    "The reviewer-authored boundary runs reported INDEPENDENT_LIMIT_BYTECODE_PASS checks=16 and INDEPENDENT_ADVERSARIAL_PASS ascii=128 flat_terms=1500.",
+    "Static inspection found distinct scanner, parser, analyzer, optimizer, generator, and interpreter stages; generated bindings derive from semantic integer IDs, builtin callees come from a closed table, strings are JSON-escaped, logical operators short-circuit, and the interpreter does not evaluate generated code.",
+    "The manifest remains status GENERATED with labels GENERATED and PARTIAL, requires independent validation, and sets productionized to false; no stronger validation label or benchmark result is claimed.",
+    "MANIFEST.yaml and PROVENANCE.json parsed strictly with no duplicate keys; the manifest snapshot identifier equals PROVENANCE.json snapshot_sha256, and the canonical provenance object hash was 00c0f1953c40ad885d5f54109afec5975f816ee6403ff8414d7e81639bade85e.",
+    "Learner-facing requirements, milestones, concepts, public examples, design questions, and focused debugging/review exercises form a coherent progression, while reference answers and validators are consistently placed below sealed path segments.",
+    "The license boundary clearly distinguishes the CC0 catalog snapshot from the linked project whose license is NOASSERTION; the only HTTP(S) reference found was the provenance-only upstream project URL.",
+    "The candidate tree digest was b09fd18b239aeaaff83e43fbb5c083e5ed7e9273d9dfa86dcd7ce67a79a65457 before and after review artifact creation, confirming CANDIDATE was not modified."
+  ],
+  "limitations": [
+    "Node.js 18+ was unavailable, so the authoritative public and sealed node:test suites, CommonJS integration under Node, and the CLI were not executed. GJS is useful independent behavioral evidence but is not the target runtime and cannot justify BUILDS or TESTED labels.",
+    "The immutable catalog/source baseline and upstream project contents were unavailable in this isolated workspace. Internal provenance consistency was checked, but the recorded source hashes, license evidence, and no-copy assertion could not be externally re-derived.",
+    "Sealed references, hidden tests, and exercise answers are physically readable in the reviewer copy. Their path separation is sound, but actual progressive disclosure depends on the learning harness recursively excluding sealed path segments and cannot be proven from this artifact alone.",
+    "No randomized fuzz campaign, benchmark run, profiler run, network fetch, deployment, transfer test, or production-security validation was performed. The candidate honestly claims none of these.",
+    "This PASS is advisory only; it does not publish REVIEWED or any stronger label. A separate orchestrator-captured acceptance validator must decide promotion."
+  ],
+  "project_id": "project_77599834cfe38f15a3b1a4564b1c5efb",
+  "verdict": "PASS"
+}

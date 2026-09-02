@@ -1,0 +1,5 @@
+// Ripple keeps declarations intentionally simple.
+let side = 5;
+let area = pow(side, 2);
+emit "area";
+emit area;

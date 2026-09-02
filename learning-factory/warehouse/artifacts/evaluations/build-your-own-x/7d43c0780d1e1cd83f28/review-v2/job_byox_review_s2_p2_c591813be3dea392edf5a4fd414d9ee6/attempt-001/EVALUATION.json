@@ -1,0 +1,36 @@
+{
+  "builder_job_id": "job_byox_build_s2_317d3714a9b3ace59a6419e4f3998f05",
+  "checks_run": [
+    "Inventoried all submitted files, special entries, evaluator-only paths, and completion-label claims.",
+    "Established and later compared a SHA-256 aggregate over the sorted per-file hashes in CANDIDATE.",
+    "Read the learner contract, scaffold, public tests, concepts, design prompts, environment guidance, validation record, enrichment exercises, sealed reference, sealed tests, benchmark harness, productionization notes, manifest, provenance, and license boundary.",
+    "Compared the sealed reference statically against requirements R1 through R8 and inspected the public and sealed coverage for determinism and omitted cases.",
+    "Ran the prescribed public suite, public suite against the reference, and sealed suite; each invocation was blocked before execution because node is unavailable.",
+    "Ran the candidate structural verifier, an independent no-write Python syntax check, JSON parsing, metadata cross-link and canonical-hash checks, dependency/import inspection, and evaluator-material exposure count.",
+    "Checked Node, npm, git, rg, and alternate Python JavaScript parser availability.",
+    "Reviewed the validation labels and prose for unsupported BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, and PRODUCTIONIZED claims."
+  ],
+  "evidence": [
+    "REVISE: sealed/reference/src/application.js:173-183 emits 405 whenever any route matches the path, without checking whether the request method is already in Allow. A matching GET route that delegates with no later response is therefore reported as Method Not Allowed even though GET is supported, contrary to R3.",
+    "REVISE: sealed/reference/src/body-json.js:38-110 checks readableEnded before installing abort/close/error listeners but does not check an already-aborted or already-destroyed request. If an earlier asynchronous layer delays entry until those events have fired, readBody can remain pending instead of producing the required 400.",
+    "REVISE: the submitted tree directly exposes 18 evaluator or answer files, including sealed/reference, sealed/reference_tests, and two sealed ANSWER.md files. README.md and AGENTS.md only instruct learners not to read them; no materialized learner-view isolation or transfer validation is supplied.",
+    "The manifest is candid: validation_labels is exactly [GENERATED, PARTIAL], productionized is false, and independent_validation is REQUIRED. The prose expressly disclaims every stronger completion label.",
+    "The candidate verifier reproduced its claimed structural output: 23/23 required paths, 50 regular files, 18 artifact directories, no special entries, canonical metadata values, and no matches from its credential patterns. This is structural evidence, not proof of JavaScript correctness.",
+    "Independent metadata checks found consistent project, source, and commit identifiers and no dependency fields in either package.json. Source inspection found only Node built-ins and relative module imports.",
+    "Learner-facing material is otherwise useful: the normative contract is explicit, concepts and design questions support staged reasoning, the starter has localized TODOs, public tests use loopback servers and finally-based closure, and benchmark/production notes avoid unsupported claims.",
+    "The provenance boundary correctly distinguishes the CC0 catalog snapshot from the linked tutorial whose license is NOASSERTION, but generated_material is described only as independently generated for personal educational use and no explicit reuse license is granted.",
+    "Reproducibility metadata does not bind the generated tree: MANIFEST.yaml provenance_sha256 equals PROVENANCE.json snapshot_sha256 (b4a3f7...), while the raw and canonical PROVENANCE.json hashes are 0b89a7... and 8830de..., and no whole-artifact digest is published in the candidate.",
+    "The before/after aggregate of sorted CANDIDATE per-file SHA-256 records remained 5852d9696068e6434950100e5c5a01b3ec09d711b3310e61cdb6a144dcac8d48; the final inventory remained 50 files with no special entries."
+  ],
+  "limitations": [
+    "node and npm are unavailable (exit 127), so no JavaScript source, public test, sealed test, fuzz case, or benchmark executed; BUILDS and TESTED remain unestablished.",
+    "No alternate JavaScript parser was installed among esprima, tree_sitter, pyjsparser, quickjs, and js2py, so syntax received only manual static review.",
+    "git and rg are unavailable; find, grep, JSON parsing, and before/after SHA-256 inventories were used instead.",
+    "The immutable source snapshot and linked tutorial are not present and network access is restricted, so source-license evidence, upstream commit contents, and the no-copy/originality assertion could not be independently verified.",
+    "No materialized student view or harness-captured transfer check was supplied, so evaluator-material exclusion is not demonstrated.",
+    "Static review cannot resolve Node-version-specific HTTP, stream-abort, socket, or parser behavior; a separate validator on Node.js 18 or newer must execute repaired code and adversarial regressions.",
+    "Candidate-authored scripts and prose were treated only as inspectable inputs and never as evidence for a promotion label."
+  ],
+  "project_id": "project_a35390ae473c6dda128f34db394c3f87",
+  "verdict": "REVISE"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "tiny-network-framework-reference",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sealed dependency-free reference for the HTTP framework challenge",
+  "main": "index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test ../reference_tests/*.test.js"
+  }
+}

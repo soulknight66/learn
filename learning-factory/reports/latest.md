@@ -1,6 +1,6 @@
 # Learning Factory checkpoint
 
-Generated: 2026-09-03T03:45:05.220608+00:00
+Generated: 2026-09-03T04:17:10.162330+00:00
 Paused: True
 
 ## Health
@@ -12,7 +12,7 @@ Paused: True
 | DISCOVERED | 442 |
 | FAILED | 11 |
 | READY | 447 |
-| SUCCEEDED | 293 |
+| SUCCEEDED | 295 |
 
 ## Corpus
 
@@ -23,13 +23,13 @@ Paused: True
 | course_units | 394 |
 | projects | 359 |
 | students | 3 |
-| artifacts | 293 |
-| validations | 1523 |
-| events | 10851 |
+| artifacts | 295 |
+| validations | 1536 |
+| events | 10894 |
 
 ## Scale-out coverage
 
-- BYOX: 359/359 entries planned; builders 359, reviewers 359, graph-complete pairs 359, review outputs succeeded 31, verdict-accepted pairs 0, review outcomes `{"AMBIGUOUS": 0, "FAIL": 0, "PASS": 0, "REVISE": 3, "UNKNOWN": 356}`, specialized builders 4; states `builder={"CANCELLED": 326, "FAILED": 7, "READY": 346, "SUCCEEDED": 34}` `reviewer={"CANCELLED": 330, "DISCOVERED": 346, "SUCCEEDED": 31}`.
+- BYOX: 359/359 entries planned; builders 359, reviewers 359, graph-complete pairs 359, review outputs succeeded 31, verdict-accepted pairs 0, review outcomes `{"AMBIGUOUS": 0, "FAIL": 0, "PASS": 0, "REVISE": 2, "UNKNOWN": 357}`, specialized builders 4; states `builder={"CANCELLED": 326, "FAILED": 7, "READY": 346, "SUCCEEDED": 34}` `reviewer={"CANCELLED": 330, "DISCOVERED": 346, "SUCCEEDED": 31}`.
 - CSDIY: 82/82 courses planned; managers 82, students 82, examiners 82, graph-complete cohorts 82, workflow-succeeded cohorts 0, archived-output cohorts 20, remediated cohorts 82, superseded legacy jobs 64, active-contract complete/archive 82/0, examiner outcomes `{"AMBIGUOUS": 16, "FAIL": 0, "PASS": 0, "REVISE": 0, "UNKNOWN": 4}`, invalid kickoff revision chains 16; states `{"examiner": {"BLOCKED": 4, "CANCELLED": 62, "DISCOVERED": 78, "SUCCEEDED": 20}, "manager": {"READY": 18, "SUCCEEDED": 64}, "student": {"CANCELLED": 62, "DISCOVERED": 18, "FAILED": 3, "READY": 61, "SUCCEEDED": 20}}`.
 
 ## Active workers
@@ -65,6 +65,6 @@ None.
 ## Operational metrics
 
 - Persisted retries: 43
-- Median finished-job duration: 535.445105433464
-- Completed by type: `{"allocator_vertical_slice": 1, "bytecode_vertical_slice": 1, "catalog_synthesis": 2, "codex_task": 277, "course_vertical_slice": 2, "event_service_vertical_slice": 1, "http_service_vertical_slice": 1, "project_vertical_slice": 2, "source_ingest": 6}`
-- Artifact labels: `{"BENCHMARKED": 6, "BUILDS": 8, "FUZZED": 5, "GENERATED": 293, "PARTIAL": 87, "REVIEWED": 4, "TESTED": 10, "TRANSFER_VERIFIED": 2}`
+- Median finished-job duration: 537.3099817037582
+- Completed by type: `{"allocator_vertical_slice": 1, "bytecode_vertical_slice": 1, "catalog_synthesis": 2, "codex_task": 279, "course_vertical_slice": 2, "event_service_vertical_slice": 1, "http_service_vertical_slice": 1, "project_vertical_slice": 2, "source_ingest": 6}`
+- Artifact labels: `{"BENCHMARKED": 6, "BUILDS": 8, "FUZZED": 5, "GENERATED": 295, "PARTIAL": 88, "REVIEWED": 4, "TESTED": 10, "TRANSFER_VERIFIED": 2}`

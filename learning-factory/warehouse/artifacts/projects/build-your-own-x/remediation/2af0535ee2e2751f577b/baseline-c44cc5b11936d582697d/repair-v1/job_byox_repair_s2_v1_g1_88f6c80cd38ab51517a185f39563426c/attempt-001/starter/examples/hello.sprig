@@ -1,0 +1,5 @@
+# The complete implementation prints 42 and then 8.
+let width = 6;
+let area = width * 7;
+print area;
+print -(area - 50);

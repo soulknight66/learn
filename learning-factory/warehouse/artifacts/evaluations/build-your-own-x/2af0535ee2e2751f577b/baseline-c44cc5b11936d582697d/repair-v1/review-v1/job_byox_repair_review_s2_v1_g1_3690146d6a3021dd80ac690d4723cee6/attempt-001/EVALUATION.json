@@ -1,0 +1,35 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g1_88f6c80cd38ab51517a185f39563426c",
+  "checks_run": [
+    "Static review of all 49 submitted files for contract correctness, learner usefulness, progressive disclosure, provenance boundaries, and validation honesty",
+    "Filesystem inventory, special-file and symlink inspection, credential-pattern audit replay, and SHA-256 integrity checks",
+    "Exact GCC, Binutils, Python, and Make version probes plus the submitted C11 environment probe",
+    "Strict warning-as-error builds of the starter, sealed reference, and direct VM safety target in an external scratch copy",
+    "Eleven public reference tests, twenty-two sealed black-box tests, twelve direct VM safety tests, and the documented starter baseline",
+    "Independent 576-case int64 arithmetic matrix, 160 fixed-seed expression cases, exact resource boundaries, modes, diagnostics, and output-failure checks",
+    "Deterministic adversarial-corpus regeneration and execution of all ten generated cases",
+    "UndefinedBehaviorSanitizer rebuild and rerun of the sealed, differential, and direct VM checks",
+    "Three same-input optimized rebuilds and byte-for-byte binary comparison",
+    "Bounded benchmark-harness smoke run without promoting a benchmark label"
+  ],
+  "evidence": [
+    "GCC 15.2.0 strict builds completed without diagnostics; the reference passed 11/11 public, 22/22 sealed, and 12/12 direct VM tests.",
+    "The intentionally incomplete starter reproduced its documented baseline: 3 public tests passed and 8 failed at the compiler stub.",
+    "The independent differential harness passed 757 invocations, including 576 arithmetic combinations checked against Python big integers and 160 deterministic generated expressions.",
+    "The same independent checks, all 22 sealed tests, and all 12 direct VM cases passed under UndefinedBehaviorSanitizer with no sanitizer diagnostic.",
+    "Three optimized reference builds were byte-identical with SHA-256 494ba8d100328e7dc50fe2f17edd8918f96d56186bdbd3355c7a98742f331583.",
+    "The regenerated adversarial corpora were identical, and all ten cases produced their specified success or error class.",
+    "The learner allowlist contains only guidance, stubs, public tests, and environment helpers; solution implementations, answers, and maintainer tests are segregated under sealed paths.",
+    "MANIFEST.yaml honestly limits status to GENERATED and PARTIAL, requires independent validation, and sets productionized=false; the prose consistently disclaims fuzzing, benchmark evidence, transfer, security, production, and acceptance labels.",
+    "The reviewed CANDIDATE checksum stream has SHA-256 856fe4df7e21164c32d17b7bae240e7668c3b699f40f5b47a9c5a65135e5e938, and post-test comparison found no submitted-content mutation."
+  ],
+  "limitations": [
+    "The immutable catalog baseline and linked upstream repository were unavailable, so source-commit, CC0 catalog evidence, and the claimed absence of copied linked content could only be checked for internal consistency.",
+    "Actual student-view projection is orchestrator-controlled; this review verified the declared allowlist and on-disk segregation but could not exercise publication-layer access controls.",
+    "The historical no--B linker failure in the candidate validation record did not reproduce because /usr/bin/ld 2.30 was available; the positive, explicitly pinned Binutils 2.43 build did reproduce.",
+    "No exhaustive fuzzing, cross-platform transfer, production-readiness, or security certification was performed, and none is claimed.",
+    "The benchmark invocation was only a bounded harness smoke check and does not support BENCHMARKED status."
+  ],
+  "project_id": "project_ef449ee88f318bad30bec20a8941022d",
+  "verdict": "PASS"
+}

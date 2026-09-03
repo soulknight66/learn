@@ -1,8 +1,28 @@
 # Learning artifact catalog
 
-Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 305.
+Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 307.
 
 The complete searchable records, concepts, languages, provenance, and validation labels are in `catalog.json`.
+
+## byox-independent-review — GENERATED
+
+- Artifact type: `byox-independent-review`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/evaluations/build-your-own-x/e2688c6c956a61b0a4f6/review-v2/job_byox_review_s2_p2_2684b3acfc60544e7cc211e6a42de318/attempt-001`
+- SHA-256: `1bf1c45b2f7e3111e950f903b5f07992530bd49da188013ce04ce11511e87ab8`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_byox_review_s2_p2_2684b3acfc60544e7cc211e6a42de318` (codex_task/examiner)
+
+## byox-challenge-pack — GENERATED+PARTIAL
+
+- Artifact type: `byox-challenge-pack`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/operating-system/learning-operating-system-development-using-linux-kernel-and-raspberry-p-e2688c6c95/job_byox_build_s2_ba221d88a6239f0ddccba7702fae178f/attempt-001`
+- SHA-256: `04b7014f033977016994d0172476e52332d144043cc600a9741ca4ef5ec129c4`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED, PARTIAL
+- Job: `job_byox_build_s2_ba221d88a6239f0ddccba7702fae178f` (codex_task/reference_builder)
 
 ## byox-independent-review — GENERATED
 

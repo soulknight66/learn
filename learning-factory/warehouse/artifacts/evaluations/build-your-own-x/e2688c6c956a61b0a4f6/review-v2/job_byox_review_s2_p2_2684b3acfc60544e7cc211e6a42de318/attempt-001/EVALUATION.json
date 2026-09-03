@@ -1,0 +1,34 @@
+{
+  "builder_job_id": "job_byox_build_s2_ba221d88a6239f0ddccba7702fae178f",
+  "checks_run": [
+    "Inspected all 47 submitted regular files, including requirements, starter, public tests, sealed reference material, metadata, license boundary, and submitted validation evidence.",
+    "Identified GCC 15.2.0, AArch64 GCC 15.2.1, QEMU 9.1.1, Python 3.11.5, GNU Make 4.2.1, configured GNU Binutils 2.43, and the implicitly selected system GNU ld 2.30 by exact command/path.",
+    "Reproduced the candidate structure scan and independently checked archive types, credential signatures, metadata linkage, conservative labels, and sealed placement.",
+    "Ran bounded starter compile and public-test targets in a writable copy of the immutable candidate.",
+    "Ran a bounded clean hosted reference build, deterministic sequence suite, freestanding AArch64 build, and QEMU boot in the writable copy.",
+    "Compiled and ran a reviewer-authored semantic boundary/atomicity suite normally and with AddressSanitizer plus UndefinedBehaviorSanitizer.",
+    "Compiled and ran a reviewer-authored full-object deterministic-initialization check against the reference RAMFS.",
+    "Probed hosted linker selection with and without PATH and with the configured Binutils directory.",
+    "Compared the learner and reference headers and verified the original candidate content digest before and after testing."
+  ],
+  "evidence": [
+    "Starter compile exited 0; its intentionally incomplete public suite exited 2 with exactly 1/5 checks passing, matching the submitted transcript.",
+    "The sealed build exited 0: 7/7 hosted contract groups passed, each subsystem completed 4,000 deterministic operations, the AArch64 ELF had no undefined symbols, and QEMU printed MINIOS: PASS.",
+    "The reviewer-authored semantic suite passed process, VM, and filesystem checks both normally and under ASan/UBSan with leak detection disabled.",
+    "The deterministic-initialization check failed: on the configured x86_64 ABI sizeof(fs_file_t) is 304 and offsetof(size) is 296; two ramfs_t values prefilled with 0xa5 and 0x5a still differed first at byte 289 after fs_init. Seven padding bytes per file are never cleared by either starter or reference initialization.",
+    "The published contract says initializers fully establish deterministic state from arbitrary bytes, while the starter and reference clear only named RAMFS members; existing public and sealed initializer assertions do not inspect padding.",
+    "The reference accepts fs_write with data == NULL when count == 0 and the sealed suite requires it, but REQUIREMENTS.md only states that exception explicitly for fs_read, leaving a learner-visible behavioral ambiguity.",
+    "A normal hosted link selected /usr/bin/ld 2.30-123.el8, which is absent from toolchain.mk and the submitted tool list. With PATH removed, the absolute GCC command failed because it could not find ld; supplying the configured Binutils 2.43 directory made the link pass.",
+    "Independent archive inspection found 18 answer-bearing/reference files and all were under a sealed path; only starter sources and the public test were non-sealed C files. Manifest labels remain GENERATED and PARTIAL with independent validation REQUIRED and productionized false.",
+    "The original 47-file candidate aggregate digest was unchanged at f1ac86abff490ab1d3fc20ed45bf5478d61ec536ab398417f3f989e01b79f3d5."
+  ],
+  "limitations": [
+    "The immutable upstream snapshot and network were unavailable, so the assertion that no linked upstream material was copied and the upstream license metadata could not be independently compared; only internal provenance consistency was checked.",
+    "No actual learner-view projection was provided. Path placement supports progressive disclosure, but end-to-end exclusion of sealed files from a student view was not transfer-verified.",
+    "LeakSanitizer cannot run under this workspace's ptrace restrictions; leak detection was disabled for the successful ASan/UBSan run.",
+    "No physical Raspberry Pi, independent coverage-guided fuzzing, benchmarking, production assessment, or transfer validation was performed. The candidate honestly makes none of those claims.",
+    "This advisory review does not publish or promote a REVIEWED, TESTED, BUILDS, FUZZED, BENCHMARKED, TRANSFER_VERIFIED, or PRODUCTIONIZED label."
+  ],
+  "project_id": "project_ce9cae8ab2c9c820ceec425c2639e501",
+  "verdict": "REVISE"
+}

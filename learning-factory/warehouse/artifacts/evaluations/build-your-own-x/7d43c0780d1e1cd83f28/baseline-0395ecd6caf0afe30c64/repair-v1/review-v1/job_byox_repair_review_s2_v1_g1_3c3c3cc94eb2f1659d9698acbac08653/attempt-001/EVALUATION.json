@@ -1,0 +1,30 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g1_4ffb33389e336f3a5ae696048c27d820",
+  "checks_run": [
+    "Read-only inspection of the 54 submitted regular files, including learner material, sealed reference code and tests, validation prose, provenance, exercises, and the benchmark harness",
+    "Configured Node.js and Python version checks by absolute toolchain path",
+    "JavaScript syntax checks across 22 files and JSON parsing/canonical metadata coherence checks",
+    "Independent execution of the artifact verifier, learner-inventory inspection, and learner-view unit tests",
+    "Independent execution of five socket-free regression tests, four filtered reference tests, and the socket-free public API test",
+    "Bounded attempts of the reference public HTTP suite and raw-socket abort test",
+    "Bounded synthetic checks for body-stream destruction, error-response framing, bodyless entity headers, and identity Content-Encoding lists"
+  ],
+  "evidence": [
+    "Node.js /arm/tools/nodejs/node/22.21.0/linux64/bin/node reported v22.21.0; Python /arm/tools/python/python/3.11.5/rhe8-x86_64/bin/python3 reported Python 3.11.5",
+    "All 22 JavaScript files passed node --check; the artifact verifier exited 0 with 24/24 required paths, 54 regular files, no special entries, 21 learner-projected files, canonical metadata matches, and its configured credential scan passing",
+    "The socket-free JavaScript regression file reported 5/5 passing, the filtered reference file reported 4/4 passing, the learner-view Python suite reported 3/3 passing, and the public export check reported 1/1 passing",
+    "The raw-socket test independently reproduced listen EPERM on 127.0.0.1, consistent with the candidate's PARTIAL validation narrative",
+    "The destruction check exited 1 with 'destroy_before_end: FAIL pending' when a complete-marked stream was destroyed after parser attachment but before readable end",
+    "A native ServerResponse check exited 1 with 'native_error_framing: FAIL TE+CL and stale gzip emitted'",
+    "The bodyless-response check exited 1 because Content-Encoding: gzip remained on a 204, and the identity-list check exited 1 because 'identity, identity' was rejected with 415"
+  ],
+  "limitations": [
+    "Loopback listeners are prohibited in this workspace, so the public/reference HTTP integration suites, real-socket abort behavior, and app.listen behavior are inconclusive",
+    "No fuzzing, benchmark execution, load test, active-handle audit, or cross-version Node.js testing was performed",
+    "No external learner view was transferred or validator-inventoried; source selection and comparison logic were checked only in place",
+    "The immutable catalog baseline and linked NOASSERTION-licensed repository were not present, so source authenticity, originality, and upstream licensing could not be independently re-established",
+    "The PRIOR_BUILD staging tree cited in the builder validation record is absent from this review workspace, so its 50-of-50 preservation observation is not reproducible here"
+  ],
+  "project_id": "project_a35390ae473c6dda128f34db394c3f87",
+  "verdict": "REVISE"
+}

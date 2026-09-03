@@ -1,0 +1,34 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g1_769d13fe731db3c79f45c8ef3db2df2c",
+  "checks_run": [
+    "Static contract-to-reference review, including the repaired process-entry invariant",
+    "Pinned tool version capture using configured absolute paths",
+    "Independent archive-type, metadata-relationship, and credential-shape checks",
+    "Fresh strict hosted and freestanding builds in an isolated writable copy",
+    "SHA-256 comparison of 14 shipped non-sanitized artifacts with fresh builds",
+    "Independent execution of focused, public, and deterministic adversarial test drivers",
+    "Reviewer-authored process-entry boundary regression under strict flags and ASan/UBSan",
+    "Builder sanitizer targets and GCC static analyzer",
+    "Undefined-symbol and ELF-header inspection plus bounded QEMU boot",
+    "Learner progression, progressive-disclosure, provenance, and validation-claim review"
+  ],
+  "evidence": [
+    "REQUIREMENTS.md requires every non-empty entry to be below CAIRN_USER_TOP; sealed/reference/src/cairn.c rejects entry >= CAIRN_USER_TOP in both spawn and validation.",
+    "The reviewer-authored regression exited 0 in strict and ASan/UBSan builds after testing transactional spawn rejection and READY, RUNNING, BLOCKED, and EXITED validator cases.",
+    "Fresh GCC 15.2.0/NASM 2.16.03/Binutils 2.43 starter and reference host+ELF32 builds exited 0 with -Werror; all 14 compared shipped artifacts matched their fresh SHA-256 digests.",
+    "The focused suite reported 10 passed, the public suite reported 4 passed against the reference, and the deterministic driver completed 25,000 operations with invariants preserved; sanitizer reruns also exited 0.",
+    "GCC -fanalyzer emitted no diagnostics; nm reported no undefined core symbols; readelf reported ELF32 Intel 80386 with entry 0x101000.",
+    "QEMU 9.1.1 printed CAIRNOS: PASS and returned documented isa-debug-exit status 33.",
+    "Manifest and provenance identifiers agree, the canonical provenance digest is 3a63c214aa56565c201a800f6c96425588bd25768e91224a6ef7283667eadc4c, all 65 entries are regular files/directories, and an independent bounded scan found zero credential-shaped hit files among 49 non-build files.",
+    "The learner material clearly distinguishes the compilable TODO starter, incomplete public examples, adversarial prompts, sealed resolutions, and production limits; the manifest remains GENERATED/PARTIAL and makes no elevated validation claim."
+  ],
+  "limitations": [
+    "The immutable upstream catalog/source snapshot and linked repository were unavailable, so authorship and no-copy assertions could only be checked for internal consistency, not externally authenticated.",
+    "Static separation of sealed material was inspectable, but enforcement by the factory's learner-view projection was outside this workspace; sealed/ must remain excluded until the intended reveal stage.",
+    "LeakSanitizer was disabled as declared because process inspection is unavailable; AddressSanitizer and UndefinedBehaviorSanitizer were exercised, and the core allocates no memory.",
+    "QEMU is an emulator smoke test, not real-hardware, security-boundary, transfer-verification, or production evidence.",
+    "Git and ripgrep were unavailable on PATH; the candidate intentionally contains no .git directory, and bounded find/grep/hash checks were used instead. Unrelated Java, Arm/AArch64, Node, Go, flex, and bison toolchains were not exercised."
+  ],
+  "project_id": "project_9f93e5b30db7d5e4adf5244cd9ccb1b0",
+  "verdict": "PASS"
+}

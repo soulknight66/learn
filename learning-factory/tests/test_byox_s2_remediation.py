@@ -370,7 +370,9 @@ class ByoxS2RemediationContractTests(unittest.TestCase):
         (ROOT / "warehouse" / "factory.db").is_file(),
         "checked-in audited lineage is unavailable",
     )
-    def test_archived_audit_lineage_converges_once_and_never_creates_g3(self) -> None:
+    def test_archived_audit_lineage_is_terminal_idempotent_and_has_no_g3(
+        self,
+    ) -> None:
         target_artifact = self._install_archived_audit_lineage()
         project_id = "project_fc8ca1dbad4baba3bd2d54dbb42c1a98"
         baseline = "7bc89daf0774fa3ef7a4a289b88303a0621079ebd035bf47f10009e402340424"
@@ -386,42 +388,26 @@ class ByoxS2RemediationContractTests(unittest.TestCase):
         )
 
         first = self._seed_repairs(project_id)
-        self.assertEqual(1, first["created_jobs"])
+        self.assertEqual(0, first["created_jobs"])
         self.assertEqual(
-            "REVIEWER_SEEDED", first["projects"][project_id]["status"]
+            "REPAIR_LIMIT_EXHAUSTED", first["projects"][project_id]["status"]
         )
-        self.assertEqual(v1_reviewer, first["projects"][project_id]["reviewer"])
+        self.assertEqual(2, first["projects"][project_id]["generation"])
+        self.assertEqual(v2_reviewer, first["projects"][project_id]["reviewer"])
+        self.assertEqual("REVISE", first["projects"][project_id]["verdict"])
+        self.assertEqual(
+            2, first["projects"][project_id]["hard_generation_ceiling"]
+        )
+
         again = self._seed_repairs(project_id)
         self.assertEqual(0, again["created_jobs"])
-        self.assertEqual(
-            "WAITING_FOR_REVIEWER", again["projects"][project_id]["status"]
-        )
+        self.assertEqual(first["projects"], again["projects"])
+
         with self.database.connect() as connection:
             v1_binding = load_verified_binding(connection, v1_reviewer)
         self.assertIsNotNone(v1_binding)
         assert v1_binding is not None
         self.assertEqual(1_000_002, v1_binding.policy_version)
-
-        audit = remediation_module._s2_audit_reissue_for_lineage(
-            project_id, baseline
-        )
-        self.assertIsNotNone(audit)
-        assert audit is not None
-        token = f"controller-audit-sha256:{audit['audit_sha256']}"
-        self._complete_review(
-            project_id=project_id,
-            reviewer_id=v1_reviewer,
-            builder=target_artifact,
-            verdict="REVISE",
-            evidence_entries=[token, "reproduced stale-return slot reuse"],
-        )
-
-        seeded_v2 = self._seed_repairs(project_id)
-        self.assertEqual(1, seeded_v2["created_jobs"])
-        self.assertEqual(v2_builder, seeded_v2["projects"][project_id]["builder"])
-        self.assertEqual(
-            2, seeded_v2["projects"][project_id]["remediation_policy_version"]
-        )
         with self.database.connect() as connection:
             builder_binding = load_verified_binding(connection, v2_builder)
         self.assertIsNotNone(builder_binding)
@@ -431,41 +417,18 @@ class ByoxS2RemediationContractTests(unittest.TestCase):
             {CODEX_BACKEND_GATE_JOB_ID, v1_builder, v1_reviewer},
             self._dependencies(v2_builder),
         )
-
-        v2_artifact = self._complete_repair_builder(v2_builder, target_artifact)
-        seeded_reviewer = self._seed_repairs(project_id)
-        self.assertEqual(1, seeded_reviewer["created_jobs"])
-        self.assertEqual(
-            v2_reviewer, seeded_reviewer["projects"][project_id]["reviewer"]
-        )
         with self.database.connect() as connection:
             reviewer_binding = load_verified_binding(connection, v2_reviewer)
         self.assertIsNotNone(reviewer_binding)
         assert reviewer_binding is not None
         self.assertEqual(2_000_002, reviewer_binding.policy_version)
         self.assertEqual(v2_builder, reviewer_binding.builder_job_id)
+        for job_id in (v1_builder, v1_reviewer, v2_builder, v2_reviewer):
+            job = self.jobs.get(job_id)
+            self.assertIsNotNone(job)
+            assert job is not None
+            self.assertEqual("SUCCEEDED", job["state"])
 
-        self._complete_review(
-            project_id=project_id,
-            reviewer_id=v2_reviewer,
-            builder=v2_artifact,
-            verdict="REVISE",
-        )
-        exhausted = seed_byox_remediation_jobs(
-            self.database,
-            self.jobs,
-            warehouse=self.settings.warehouse,
-            project_ids=[project_id],
-            max_repair_generations=10,
-        )
-        self.assertEqual(0, exhausted["created_jobs"])
-        self.assertEqual(
-            "REPAIR_LIMIT_EXHAUSTED",
-            exhausted["projects"][project_id]["status"],
-        )
-        self.assertEqual(
-            2, exhausted["projects"][project_id]["hard_generation_ceiling"]
-        )
         for policy_version in (1, 2, 3):
             self.assertIsNone(
                 self.jobs.get(
@@ -971,8 +934,13 @@ class ByoxS2RemediationContractTests(unittest.TestCase):
         target_job_id = (
             "job_byox_repair_s2_v1_g2_70a90b5934bcf838b167251b70a24f39"
         )
-        job_ids = {target_job_id}
-        frontier = {target_job_id}
+        job_ids = {
+            target_job_id,
+            "job_byox_repair_review_s2_v1_g2_50d779aa215424e4d3cd7b0a088ed3be",
+            "job_byox_repair_s2_v2_g2_ba9f7fea43e4c4ec88ead0a44f75ec77",
+            "job_byox_repair_review_s2_v2_g2_219042700e8392cd6591bd6441ff449d",
+        }
+        frontier = set(job_ids)
         with self.database.connect() as connection:
             while frontier:
                 placeholders = ",".join("?" for _value in frontier)

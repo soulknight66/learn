@@ -1,0 +1,35 @@
+{
+  "builder_job_id": "job_byox_build_s2_f8c33d02dd9481f2eaed146a0d7edd33",
+  "checks_run": [
+    "Inspected all 50 submitted files, including the learner contract, starter, public tests, sealed reference, sealed tests, exercises, validation claims, manifest, provenance, and license boundary.",
+    "Ran the structural audit and independently checked metadata consistency, regular-file-only structure, learner-facing path separation, and immutable candidate hashes.",
+    "Built the starter with configured GCC 15.2.0 and confirmed its deliberately incomplete public baseline fails with 15 checks.",
+    "Built the sealed reference and independently reran the public and sealed unit, CLI, descriptor-pressure, process-group, and PTY suites under external timeouts.",
+    "Ran a reviewer-authored black-box suite with 12 assertions for lexical boundaries, recovery, status propagation, redirection, line limits, built-ins, background notification, and prompt suppression.",
+    "Ran a reviewer-authored closed-standard-descriptor redirection probe.",
+    "Compiled and ran the sealed unit target with AddressSanitizer and UndefinedBehaviorSanitizer, attempted LeakSanitizer, and ran focused GCC static analysis.",
+    "Reviewed progressive disclosure, learner usefulness, claim wording, provenance, and license separation manually."
+  ],
+  "evidence": [
+    "CANDIDATE contained 50 regular files and no symlinks or special entries; its aggregate content digest was unchanged at 1aee76bbf7bd57e2c7f08fc11fa67bba8e44ebe5ded25ff58390e8de2ff73e46.",
+    "The pack audit exited 0: 23 required files present, 21 forbidden paths absent, and 50 text files scanned.",
+    "Starter build exited 0; its public suite exited 1 with the documented 15 failures.",
+    "The reference public suite exited 0 with core and CLI PASS; the sealed suite exited 0 with unit, CLI, and PTY PASS.",
+    "The reviewer-authored normal-edge suite exited 0 with 12 assertions passing.",
+    "A valid edge case failed: when minish inherited stdout closed, output redirection exited 1, created a zero-byte target, and printf reported Bad file descriptor.",
+    "Focused GCC 15.2.0 analysis exited 1 and identified the EINTR close retry as a possible double-close.",
+    "ASan/UBSan execution exited 0 with no diagnostic when leak detection was disabled; LeakSanitizer exited 1 because it cannot operate under the host ptrace environment.",
+    "Manifest status remains GENERATED with GENERATED/PARTIAL labels, independent validation REQUIRED, and productionized false; no stronger label is claimed.",
+    "Catalog metadata is marked CC0-1.0 while the linked tutorial remains NOASSERTION and is explicitly excluded from copied/generated content."
+  ],
+  "limitations": [
+    "The source catalog snapshot, material-baseline digest, and non-copying assertion could not be compared with upstream material because no source snapshot was supplied and network access was unavailable.",
+    "LeakSanitizer was inconclusive under ptrace.",
+    "No fuzzing, benchmark, coverage threshold, deterministic allocation/syscall failure injection, broad PTY matrix, or long-duration race campaign was performed.",
+    "The review exercised the relevant Linux host GCC and Python toolchains only; unrelated configured Java, Node, Go, ARM, QEMU, NASM, flex, and bison roots were not applicable.",
+    "Sealed-view isolation was assessed structurally; the external student-view publication/filtering mechanism was not available to exercise.",
+    "This REVISE verdict is advisory and does not assign or publish the REVIEWED label."
+  ],
+  "project_id": "project_a39dec7bd5caf7524c0e9df3e14a2c8b",
+  "verdict": "REVISE"
+}

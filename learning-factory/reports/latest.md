@@ -1,6 +1,6 @@
 # Learning Factory checkpoint
 
-Generated: 2026-09-03T00:42:43.051927+00:00
+Generated: 2026-09-03T00:57:24.847473+00:00
 Paused: True
 
 ## Health
@@ -25,11 +25,11 @@ Paused: True
 | students | 3 |
 | artifacts | 282 |
 | validations | 1453 |
-| events | 10624 |
+| events | 10625 |
 
 ## Scale-out coverage
 
-- BYOX: 359/359 entries planned; builders 359, reviewers 359, graph-complete pairs 359, review outputs succeeded 31, verdict-accepted pairs 0, review outcomes `{"AMBIGUOUS": 0, "FAIL": 1, "PASS": 0, "REVISE": 11, "UNKNOWN": 347}`, specialized builders 4; states `builder={"CANCELLED": 326, "FAILED": 7, "READY": 346, "SUCCEEDED": 34}` `reviewer={"CANCELLED": 330, "DISCOVERED": 346, "SUCCEEDED": 31}`.
+- BYOX: 359/359 entries planned; builders 359, reviewers 359, graph-complete pairs 359, review outputs succeeded 31, verdict-accepted pairs 0, review outcomes `{"AMBIGUOUS": 0, "FAIL": 0, "PASS": 0, "REVISE": 6, "UNKNOWN": 353}`, specialized builders 4; states `builder={"CANCELLED": 326, "FAILED": 7, "READY": 346, "SUCCEEDED": 34}` `reviewer={"CANCELLED": 330, "DISCOVERED": 346, "SUCCEEDED": 31}`.
 - CSDIY: 82/82 courses planned; managers 82, students 82, examiners 82, graph-complete cohorts 82, workflow-succeeded cohorts 0, archived-output cohorts 20, remediated cohorts 82, superseded legacy jobs 64, active-contract complete/archive 82/0, examiner outcomes `{"AMBIGUOUS": 16, "FAIL": 0, "PASS": 0, "REVISE": 0, "UNKNOWN": 4}`, invalid kickoff revision chains 16; states `{"examiner": {"BLOCKED": 4, "CANCELLED": 62, "DISCOVERED": 78, "SUCCEEDED": 20}, "manager": {"READY": 18, "SUCCEEDED": 64}, "student": {"CANCELLED": 62, "DISCOVERED": 18, "FAILED": 3, "READY": 61, "SUCCEEDED": 20}}`.
 
 ## Active workers

@@ -1,0 +1,29 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g1_4e35980a5405f3517b720ddc606ed850",
+  "checks_run": [
+    "Inventoried and manually reviewed all 42 candidate files, including learner, sealed, provenance, license, and validation material",
+    "Parsed every shell file with GNU Bash 4.4.20 and independently checked strict manifest/provenance JSON and identifier consistency",
+    "Re-ran the public 8-check, sealed 9-check, adversarial 6-check, environment, real-runner, and starter-baseline checks under bounded timeouts, plus the structural pack check with configured Python",
+    "Ran an independently authored controller probe for argv preservation, lifecycle status, sorting, invalid-name rejection, and deletion scope",
+    "Built and ran an independently authored namespace probe with GCC 15.2.0 to check PID, UID mapping, hostname, cwd, proc visibility, and argv boundaries",
+    "Reviewed progressive-disclosure layout, license/provenance boundaries, learner guidance, and validation-label honesty"
+  ],
+  "evidence": [
+    "All candidate shell files passed bash -n; the public, sealed, and adversarial suites exited 0 with 8/8, 9/9, and 6/6 checks respectively",
+    "The real namespace integration exited 0, and the independent compiled probe observed PID=1, UID=0, HOSTNAME=reviewhost, CWD=/, readable /proc, and exact unusual argv elements",
+    "The independent controller probe observed exact argv boundaries, exit codes 0 and 1 persisted as EXITED, bytewise alpha/beta listing, status 3 for ../escape, and preservation of an out-of-container directory during deletion",
+    "MANIFEST.yaml and PROVENANCE.json are strict duplicate-free JSON; project, source, and commit identifiers agree, and the manifest claims only GENERATED and PARTIAL with productionized=false and independent_validation=REQUIRED",
+    "The candidate's recorded command outcomes, hashes, host-warning explanation, starter failures, and stated limitations reproduced materially exactly",
+    "Starter and public areas contain no sealed/reference directories; conceptual material, staged TODOs, public tests, sealed answers, and production caveats are clearly separated"
+  ],
+  "limitations": [
+    "Candidate-supplied suites and pack scripts are supporting observations only and do not by themselves establish any validation label",
+    "The immutable catalog baseline and linked upstream material were not available, so source snapshot, originality, and linked-resource license claims could not be independently re-derived",
+    "Only the full reviewer pack was supplied; downstream learner-view exclusion of sealed material was inspected structurally but not transfer-verified",
+    "No fuzzing, benchmark, cross-kernel matrix, crash-recovery campaign, hostile-containment review, or production qualification was performed",
+    "ShellCheck, rg, and git were unavailable; a first static GCC link also failed because static libc was unavailable, after which the independent probe succeeded with dynamic dependencies",
+    "Because CANDIDATE is intentionally read-only, runtime checks used the writable parent workspace as TMPDIR instead of the candidate-local paths in the builder record"
+  ],
+  "project_id": "project_44e8061be7b19deb5e3e6b2fdef38d1a",
+  "verdict": "PASS"
+}

@@ -1,0 +1,38 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g3_cc445e21b82fd9167af4c9ac42168fc5",
+  "checks_run": [
+    "Inspected all 72 submitted files against REQUIREMENTS.md, with emphasis on correctness, disclosure boundaries, provenance, licensing, reproducibility, learner workflow, and validation-claim honesty.",
+    "Invoked /arm/tools/python/python/3.11.5/rhe8-x86_64/bin/python3 --version and /usr/bin/unshare --version; observed Python 3.11.5 and util-linux unshare 2.32.1.",
+    "Independently inventoried and hashed CANDIDATE before and after review; both inventories contained 72 regular files, 19 directories, no symlinks/special entries, and framed digest f16614c71ef5400c5b289905e79bb0fcc747d9b539006307a149f22618bf804a.",
+    "Verified the PROVENANCE.json byte digest and ran environment/verify_pack.py under a 30-second timeout; both exited 0.",
+    "Parsed all 43 Python files with ast.parse; exited 0.",
+    "Ran starter public discovery (10 passed), sealed-reference checkpoints (4 passed), sealed discovery (42 passed, 2 opt-in skips), and adversarial discovery (4 passed) with bounded timeouts.",
+    "Ran untouched-starter checkpoints separately; reproduced the documented initial-red result: exit 1 with 1 failure and 3 errors.",
+    "Created learner/instructor views outside CANDIDATE, verified both, independently recomputed the learner manifest, and reran the learner public suite; all checks exited 0.",
+    "Ran the host probe, opt-in Linux integration, and setup-only read-only probe; user namespaces were available, 2 benign integration tests passed, and read-only setup returned the documented actionable fail-closed result.",
+    "Ran independent boundary probes for huge numeric timeouts, non-finite JSON numbers, overlong rootfs paths, and simultaneous SQLite claims.",
+    "Smoke-ran the benchmark harness for 20 iterations only to check executability; no BENCHMARKED conclusion was drawn."
+  ],
+  "evidence": [
+    "MANIFEST.yaml remains GENERATED/PARTIAL, requires independent validation, sets productionized=false, and asserts none of BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED.",
+    "PROVENANCE.json SHA-256 was 1b00a500c586d122105ac591fbb0868281cb0524f989f607326e0a896d75b611 and matched environment/PROVENANCE.sha256.",
+    "Reference tests independently reproduced the builder's counts: checkpoints 4/4, sealed suite 42 passed with 2 skips, and adversarial suite 4/4.",
+    "The learner export contained exactly 27 payload files under nine allowlisted roots, no instructor/evaluator roots, and a manifest matching independently recomputed paths, sizes, hashes, and directories; its manifest SHA-256 was 5188d9ae990d4a73176a5d0075713d5cbb41a95c59e0fdb7402500325b5570f2.",
+    "The instructor export contained 72 payload files and had manifest SHA-256 da378e67aaecac51db550db98abd6a5d8180f3b5676c814e25496afe0e76ab41.",
+    "A simultaneous two-connection registry probe produced one winner and one TransitionError and persisted the winning PID.",
+    "Both starter/minictr/spec.py and sealed/reference/minictr/spec.py raised OverflowError, not ValidationError, for timeout_seconds=10**400.",
+    "Runner launched its injected process for NaN, Infinity, -Infinity, and 1e1000000; the wire values included non-standard NaN/Infinity tokens.",
+    "validate_rootfs(Path('/' + 'x'*5000)) leaked OSError(36, 'File name too long') rather than ValidationError.",
+    "The only distributable learner view omits LICENSE_BOUNDARY.md and PROVENANCE.json, so its recipient does not receive the pack's linked-license boundary or generated-material redistribution caution."
+  ],
+  "limitations": [
+    "The workspace filesystem rejected default read-only remount setup; the fail-closed path was verified, but successful read-only execution was not.",
+    "Linux integration used a disposable benign /bin/true rootfs and cannot establish hostile-workload isolation, cross-kernel portability, or production readiness.",
+    "The immutable source baseline and network were unavailable, so linked_content_copied=false, source lineage, and the upstream NOASSERTION license could only be checked for internal consistency, not externally proven.",
+    "Candidate-controlled scripts and tests were treated as corroborating evidence only; independent probes exposed failures that those suites omit.",
+    "Only the relevant configured Python 3.11.5 toolchain was exercised; the other supplied language/toolchain roots are not applicable to this Python-only pack.",
+    "rg was unavailable, so file discovery used find and direct inspection."
+  ],
+  "project_id": "project_884ee11fc61abc48b60825556299dae5",
+  "verdict": "REVISE"
+}

@@ -1,0 +1,33 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g2_d325122b7e58c4c25abe240450e2ead6",
+  "checks_run": [
+    "Manual review of manifest, provenance, license boundary, learner material, sealed material, implementation, tests, and validation claims",
+    "Exact-path GCC 15.2.0, GNU ld 2.43, Python 3.11.5, and GNU Make 4.2.1 version capture",
+    "Clean-environment linker resolution and C17 compile/link/execute probe",
+    "Strict C17 builds of starter, sealed reference, and direct VM tests in a writable copy",
+    "Submitted lexer, public, private, VM, and archive-verifier test suites under bounded timeouts",
+    "Reviewer-controlled black-box language and deterministic-limit assertions",
+    "Reviewer-controlled malformed-bytecode and VM boundary assertions",
+    "GCC -fanalyzer review of all sealed reference C translation units",
+    "Reviewer-controlled AddressSanitizer and UndefinedBehaviorSanitizer rerun with leak detection disabled",
+    "Independent archive entry, credential-pattern, manifest/provenance coherence, digest, and verifier mutation checks"
+  ],
+  "evidence": [
+    "environment/check.sh exited 0 and resolved GCC to /arm/tools/gnu/binutils/2.43/rhe8-x86_64/bin/ld; all three strict builds exited 0",
+    "The starter lexer run passed 2 tests with 8 intentional milestone skips; the reference passed all 10 public tests; the sealed runner passed 26 direct VM checks and 21 Python methods",
+    "Reviewer-owned harnesses passed 21 black-box assertions and 9 direct VM assertions, including exact source, bytecode, depth, local, identifier, stack, jump, metadata, and instruction-budget boundaries",
+    "All four reference translation units passed GCC -fanalyzer; the same 30 reviewer assertions passed ASan+UBSan with no sanitizer diagnostic",
+    "The submitted archive verifier passed; 16 independent archive assertions also passed, including rejection of an unexpected directory, nested and required-file symlinks, a FIFO, a credential-like fixture, and a changed manifest",
+    "PROVENANCE.json SHA-256 is 3dc7fc913794fd6c9205f6d0588d0a9c4370fb639ae6991b97b4f28aaff9d57a and MANIFEST.yaml SHA-256 is 65467d58c5d0aafa3bcc9160d5ebb6aa7a78416e57137d07672277ff4dea4586",
+    "MANIFEST.yaml remains GENERATED/PARTIAL, requires independent validation, and does not claim productionization",
+    "CANDIDATE/sealed/reference_tests/README.md states that checks run in a documented sanitizer rerun, while CANDIDATE/VALIDATION.md explicitly states that no sanitizer was run in generation 2"
+  ],
+  "limitations": [
+    "The immutable catalog/source snapshot and linked upstream repository were unavailable, so provenance and non-copying assertions were checked only for internal consistency and recorded digests",
+    "No orchestrator-produced learner projection was supplied; the full builder archive contains sealed reference, tests, and answers and must not be distributed as a learner view",
+    "No network, cross-platform, cross-compiler, fuzzing, benchmark, leak-detection, learner-transfer, or production-readiness validation was performed",
+    "The reviewer checks were bounded samples and cannot establish exhaustive language or security correctness"
+  ],
+  "project_id": "project_4b62c869e81606deb9eb1148a914808f",
+  "verdict": "REVISE"
+}

@@ -1,0 +1,43 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g1_4f89d5c495e9764a76bbc61a5b688d33",
+  "checks_run": [
+    "Manual contract-to-reference implementation review",
+    "Manifest, provenance, license-boundary, and validation-claim audit",
+    "Progressive-disclosure and learner-material inspection",
+    "Configured tool identity and pinned assembler/linker checks",
+    "Structure, archive-type, credential-pattern, and metadata checks",
+    "Starter warning-clean compile and expected public-test baseline",
+    "Hosted reference contract and deterministic adversarial suites",
+    "Reviewer-authored boundary and failure-atomicity tests under ASan/UBSan",
+    "PATH-independent hosted reference build",
+    "GCC static analyzer build",
+    "Freestanding AArch64 build, QEMU boot, and undefined-symbol check",
+    "Two-clean-build artifact determinism comparison",
+    "Candidate pre/post immutability comparison"
+  ],
+  "evidence": [
+    "The reference implementation matched the published validation order, state transitions, bounds, permission, output-clearing, and failed-operation atomicity contracts during manual review.",
+    "GCC 15.2.0, Binutils 2.43, Arm GCC 15.2.1, QEMU 9.1.1, Python 3.11.5, and GNU Make 4.2.1 matched the documented identities when invoked by exact path.",
+    "The starter compiled with -Wall -Wextra -Werror -pedantic and reproduced the documented intentional baseline: initializers passed, the four TODO-dependent groups failed, 1/5 total, make exit 2.",
+    "The hosted reference suite passed 7/7 groups and the deterministic adversarial suite passed 4,000 operations for each of processes, VM, and filesystem.",
+    "A reviewer-authored sanitizer harness passed process, VM, and filesystem boundary groups, including full-object initialization, validation precedence, slot-7 scheduling, PID exhaustion, combined permissions, SIZE_MAX file ranges, and byte-identical rejection checks.",
+    "The reference suite and reviewer harness emitted no AddressSanitizer or UndefinedBehaviorSanitizer diagnostics with leak detection disabled for the documented host constraint.",
+    "A hosted reference executable compiled with PATH removed; GCC reported the configured Binutils assembler and linker paths.",
+    "The freestanding ELF was AArch64, had no undefined symbols, and produced all three subsystem success lines plus MINIOS: PASS under QEMU.",
+    "Two clean builds produced the same aggregate SHA-256 for the two hosted test executables and AArch64 ELF: 47dac797483349bdce20dfb995c78e3f7a405d6cc298fe9efe99fcd21680de73.",
+    "Metadata cross-links were consistent, labels remained GENERATED and PARTIAL, productionized was false, and independent validation remained REQUIRED.",
+    "Implementation-bearing references and answer keys were confined to directories named sealed; the nonsealed starter remained an explicit warning-clean TODO scaffold.",
+    "The CANDIDATE aggregate content hash was unchanged before and after review: 6945becdad7e283412fe7721ea0bde83980eb04f8ac16a94447ca6f3b587eeef."
+  ],
+  "limitations": [
+    "No physical Raspberry Pi test, independent coverage-guided fuzzing, benchmark, production assessment, or learner transfer study was performed; the candidate does not claim those labels.",
+    "The immutable upstream catalog snapshot and linked Raspberry Pi tutorial were not present, and network access was restricted, so provenance was checked for internal consistency and explicit boundaries but not independently matched to upstream content.",
+    "The review workspace exposed the complete evaluator artifact. Path-based sealed separation was inspected, but an actual harness-generated student view was unavailable, so transfer isolation remains unverified.",
+    "The PRIOR_BUILD tree cited by the repair preservation evidence is not part of the submitted candidate, so those historical byte-comparisons could not be repeated.",
+    "Credential scans cover recognizable patterns and cannot prove the absence of every possible secret.",
+    "The generated material states a personal educational-use boundary but supplies no standard license grant, so broader redistribution rights cannot be inferred.",
+    "The sealed qemu-test recipe has no internal timeout; this review bounded make externally, and a regressed direct make all invocation could otherwise wait indefinitely."
+  ],
+  "project_id": "project_ce9cae8ab2c9c820ceec425c2639e501",
+  "verdict": "PASS"
+}

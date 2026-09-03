@@ -259,6 +259,7 @@ class ScaleoutReportingTests(unittest.TestCase):
                     "UNKNOWN": 0,
                     "AMBIGUOUS": 0,
                 },
+                "selected_reviews": {},
                 "builder_states": expected_states,
                 "reviewer_states": expected_states,
                 "orphaned_entries": 0,

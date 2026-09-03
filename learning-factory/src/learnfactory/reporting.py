@@ -27,6 +27,17 @@ _BYOX_REVIEW_POLICIES = {
 _BYOX_REVIEW_VERDICT_VALIDATOR = "byox-independent-review-verdict"
 _BYOX_REVIEW_ACCEPTANCE_VALIDATOR = "byox-independent-review-acceptance"
 _BYOX_REVIEW_ARTIFACT_TYPE = "byox-independent-review"
+_BYOX_REMEDIATION_REVIEW_VERSION_BASE = 100
+_BYOX_REVIEW_FAMILY_RANK = {
+    "legacy": 0,
+    "s2-base": 1,
+    "s2-remediation": 2,
+}
+_BYOX_REVIEW_FAMILY_REASON = {
+    "legacy": "legacy-fallback-highest-version-within-family",
+    "s2-base": "baseline-bound-s2-base-precedes-legacy",
+    "s2-remediation": "explicitly-linked-s2-remediation-precedes-s2-base",
+}
 _CSDIY_COHORT_POLICY = "csdiy_course_cohort"
 _CSDIY_EXAMINER_ARTIFACT_TYPE = "independent-course-evaluation"
 
@@ -149,6 +160,80 @@ def _linked_byox_builder_project(row: sqlite3.Row) -> tuple[str, bool] | None:
     ):
         return project_id, True
     return None
+
+
+def _review_policy_version(policy: dict[str, Any]) -> int:
+    value = policy.get("version", 0)
+    return value if type(value) is int and value >= 0 else 0
+
+
+def _baseline_sha256(payload: dict[str, Any], policy: dict[str, Any]) -> str | None:
+    value = policy.get("baseline_sha256")
+    if (
+        not isinstance(value, str)
+        or len(value) != 64
+        or any(character not in "0123456789abcdef" for character in value)
+        or payload.get("baseline_sha256") != value
+    ):
+        return None
+    return value
+
+
+def _byox_review_selection_candidate(
+    payload: dict[str, Any],
+    policy: dict[str, Any],
+    builder_payload: dict[str, Any],
+) -> tuple[str, int] | None:
+    """Classify one review without comparing unrelated version namespaces."""
+
+    kind = policy.get("kind")
+    version = _review_policy_version(policy)
+    if kind in {"byox_reference_review", "byox_reference_build", "byox_reference_repair"}:
+        return "legacy", version
+
+    builder_policy = builder_payload.get("seed_policy")
+    if not isinstance(builder_policy, dict):
+        return None
+    baseline = _baseline_sha256(payload, policy)
+    if baseline is None or _baseline_sha256(builder_payload, builder_policy) != baseline:
+        return None
+
+    if kind in {"byox_reference_review_s2", "byox_reference_build_s2"}:
+        if builder_policy.get("kind") != "byox_reference_build_s2":
+            return None
+        return "s2-base", version
+
+    if kind not in {
+        "byox_reference_repair_review_s2",
+        "byox_reference_repair_s2",
+    }:
+        return None
+    if builder_policy.get("kind") != "byox_reference_repair_s2":
+        return None
+
+    generation = policy.get("remediation_generation", policy.get("generation"))
+    remediation_version = policy.get("remediation_policy_version")
+    builder_generation = builder_policy.get("generation")
+    builder_remediation_version = builder_policy.get(
+        "remediation_policy_version", builder_policy.get("version")
+    )
+    if (
+        type(generation) is not int
+        or generation < 1
+        or payload.get("remediation_generation") != generation
+        or type(remediation_version) is not int
+        or remediation_version < 1
+        or version
+        != _BYOX_REMEDIATION_REVIEW_VERSION_BASE * remediation_version
+        + generation
+        or type(builder_generation) is not int
+        or builder_generation != generation
+        or builder_payload.get("remediation_generation") != generation
+        or type(builder_remediation_version) is not int
+        or builder_remediation_version != remediation_version
+    ):
+        return None
+    return "s2-remediation", version
 
 
 def _current_byox_review_outcomes(
@@ -457,8 +542,12 @@ def _scaleout_coverage(connection: sqlite3.Connection) -> dict[str, Any]:
     csdiy_orphans: set[str] = set()
     specialized_builders: set[str] = set()
     review_job_succeeded_pairs: set[str] = set()
-    review_outcomes_by_project: dict[str, dict[int, set[str]]] = {}
-    seeded_review_versions_by_project: dict[str, set[int]] = {}
+    review_outcomes_by_project: dict[
+        str, dict[str, dict[int, set[str]]]
+    ] = {}
+    review_candidates_by_project: dict[
+        str, dict[str, dict[int, dict[str, dict[str, str]]]]
+    ] = {}
     byox_unattributed = 0
     csdiy_unattributed = 0
     current_review_outcomes = _current_byox_review_outcomes(connection)
@@ -512,17 +601,6 @@ def _scaleout_coverage(connection: sqlite3.Connection) -> dict[str, Any]:
             elif project_id in byox_catalog:
                 byox_states[byox_role][state].add(project_id)
                 if byox_role == "reviewer":
-                    raw_version = policy.get("version", 0)
-                    policy_version = (
-                        raw_version
-                        if isinstance(raw_version, int)
-                        and not isinstance(raw_version, bool)
-                        and raw_version >= 0
-                        else 0
-                    )
-                    seeded_review_versions_by_project.setdefault(
-                        project_id, set()
-                    ).add(policy_version)
                     builder_job_id = payload.get("builder_job_id")
                     builder_row = (
                         jobs_by_id.get(builder_job_id)
@@ -532,24 +610,46 @@ def _scaleout_coverage(connection: sqlite3.Connection) -> dict[str, Any]:
                     if builder_row is not None:
                         linked = _linked_byox_builder_project(builder_row)
                         builder_state = str(builder_row["state"])
+                        builder_payload = json_value(
+                            builder_row["payload_json"], {}
+                        )
                         if (
                             linked is not None
                             and linked[0] == project_id
                             and builder_state in _JOB_STATES
+                            and isinstance(builder_payload, dict)
                         ):
                             byox_states["builder"][builder_state].add(project_id)
                             if linked[1]:
                                 specialized_builders.add(project_id)
-                            if (
+                            pair_succeeded = (
                                 state == JobState.SUCCEEDED.value
                                 and builder_state == JobState.SUCCEEDED.value
                                 and str(builder_job_id)
                                 in verified_current_artifact_jobs
-                            ):
+                            )
+                            if pair_succeeded:
                                 review_job_succeeded_pairs.add(project_id)
+                            selection = _byox_review_selection_candidate(
+                                payload, policy, builder_payload
+                            )
+                            if selection is None:
+                                continue
+                            family, policy_version = selection
+                            review_candidates_by_project.setdefault(
+                                project_id, {}
+                            ).setdefault(family, {}).setdefault(
+                                policy_version, {}
+                            )[str(row["job_id"])] = {
+                                "policy_kind": str(kind),
+                                "state": state,
+                            }
+                            if pair_succeeded:
                                 review_outcomes_by_project.setdefault(
                                     project_id, {}
-                                ).setdefault(policy_version, set()).add(
+                                ).setdefault(family, {}).setdefault(
+                                    policy_version, set()
+                                ).add(
                                     current_review_outcomes.get(
                                         str(row["job_id"]), "UNKNOWN"
                                     )
@@ -590,13 +690,37 @@ def _scaleout_coverage(connection: sqlite3.Connection) -> dict[str, Any]:
     reviewer_ids = _role_ids(byox_states["reviewer"])
     byox_planned = builder_ids | reviewer_ids
     complete_pairs = builder_ids & reviewer_ids
-    authoritative_review_outcomes = {
-        project_id: review_outcomes_by_project.get(project_id, {}).get(
-            max(versions), {"UNKNOWN"}
+    selected_review_keys: dict[str, tuple[str, int]] = {}
+    for project_id, families in review_candidates_by_project.items():
+        family = max(families, key=_BYOX_REVIEW_FAMILY_RANK.__getitem__)
+        selected_review_keys[project_id] = (family, max(families[family]))
+    authoritative_review_outcomes: dict[str, set[str]] = {}
+    for project_id, (family, version) in selected_review_keys.items():
+        candidates = review_candidates_by_project[project_id][family][version]
+        authoritative_review_outcomes[project_id] = (
+            review_outcomes_by_project.get(project_id, {})
+            .get(family, {})
+            .get(version, {"UNKNOWN"})
+            if len(candidates) == 1
+            else set()
         )
-        for project_id, versions in seeded_review_versions_by_project.items()
-        if versions
-    }
+    selected_reviews: dict[str, dict[str, Any]] = {}
+    for project_id, (family, version) in sorted(selected_review_keys.items()):
+        candidates = review_candidates_by_project[project_id][family][version]
+        job_ids = sorted(candidates)
+        outcomes = authoritative_review_outcomes[project_id]
+        selected_reviews[project_id] = {
+            "job_id": job_ids[0] if len(job_ids) == 1 else None,
+            "job_ids": job_ids,
+            "outcome": next(iter(outcomes)) if len(outcomes) == 1 else "AMBIGUOUS",
+            "policy_family": family,
+            "policy_kinds": sorted(
+                {candidates[job_id]["policy_kind"] for job_id in job_ids}
+            ),
+            "policy_version": version,
+            "selection_reason": _BYOX_REVIEW_FAMILY_REASON[family],
+            "states": sorted({candidates[job_id]["state"] for job_id in job_ids}),
+        }
     succeeded_pairs = {
         project_id
         for project_id, verdicts in authoritative_review_outcomes.items()
@@ -740,6 +864,7 @@ def _scaleout_coverage(connection: sqlite3.Connection) -> dict[str, Any]:
             "review_job_succeeded_pairs": len(review_job_succeeded_pairs),
             "succeeded_pairs": len(succeeded_pairs),
             "review_outcomes": review_outcome_counts,
+            "selected_reviews": selected_reviews,
             "builder_states": _state_counts(byox_states["builder"]),
             "reviewer_states": _state_counts(byox_states["reviewer"]),
             "orphaned_entries": len(byox_orphans),

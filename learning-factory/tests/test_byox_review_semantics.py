@@ -673,23 +673,57 @@ class ByoxReviewSemanticsTests(unittest.TestCase):
         builder_id: str,
         verdict: str,
         *,
+        job_suffix: str | None = None,
+        policy_kind: str = "byox_reference_review",
         policy_version: int = 1,
+        baseline_sha256: str | None = None,
+        remediation_generation: int | None = None,
+        remediation_policy_version: int | None = None,
         verdict_contract: bool = True,
         acceptance_command: bool = False,
     ) -> str:
         suffix = "" if policy_version == 1 else f"_v{policy_version}"
-        reviewer_id = f"job_reviewer{suffix}_{project_id}"
+        reviewer_id = (
+            f"job_reviewer_{job_suffix}"
+            if job_suffix is not None
+            else f"job_reviewer{suffix}_{project_id}"
+        )
+        seed_policy = {
+            "kind": policy_kind,
+            "version": policy_version,
+            "role": "reviewer",
+            **(
+                {"baseline_sha256": baseline_sha256}
+                if baseline_sha256 is not None
+                else {}
+            ),
+            **(
+                {
+                    "remediation_generation": remediation_generation,
+                    "remediation_policy_version": remediation_policy_version,
+                }
+                if remediation_generation is not None
+                and remediation_policy_version is not None
+                else {}
+            ),
+        }
         self.jobs.create(
             "fake",
             "test",
             {
-                "seed_policy": {
-                    "kind": "byox_reference_review",
-                    "version": policy_version,
-                    "role": "reviewer",
-                },
+                "seed_policy": seed_policy,
                 "project_id": project_id,
                 "builder_job_id": builder_id,
+                **(
+                    {"baseline_sha256": baseline_sha256}
+                    if baseline_sha256 is not None
+                    else {}
+                ),
+                **(
+                    {"remediation_generation": remediation_generation}
+                    if remediation_generation is not None
+                    else {}
+                ),
                 "files": {
                     "EVALUATION.json": json.dumps(
                         {
@@ -750,26 +784,53 @@ class ByoxReviewSemanticsTests(unittest.TestCase):
         )
         return reviewer_id
 
-    def _review_pair(
+    def _builder_job(
         self,
         project_id: str,
-        verdict: str,
         *,
-        verdict_contract: bool = True,
-        acceptance_command: bool = False,
-    ) -> tuple[str, str]:
-        self._catalog_project(project_id)
-        builder_id = f"job_builder_{project_id}"
+        job_suffix: str | None = None,
+        policy_kind: str = "byox_reference_build",
+        policy_version: int = 1,
+        baseline_sha256: str | None = None,
+        remediation_generation: int | None = None,
+        remediation_policy_version: int | None = None,
+    ) -> str:
+        builder_id = f"job_builder_{job_suffix or project_id}"
+        seed_policy = {
+            "kind": policy_kind,
+            "version": policy_version,
+            "role": "builder",
+            **(
+                {"baseline_sha256": baseline_sha256}
+                if baseline_sha256 is not None
+                else {}
+            ),
+            **(
+                {
+                    "generation": remediation_generation,
+                    "remediation_policy_version": remediation_policy_version,
+                }
+                if remediation_generation is not None
+                and remediation_policy_version is not None
+                else {}
+            ),
+        }
         self.jobs.create(
             "fake",
             "test",
             {
-                "seed_policy": {
-                    "kind": "byox_reference_build",
-                    "version": 1,
-                    "role": "builder",
-                },
+                "seed_policy": seed_policy,
                 "project_id": project_id,
+                **(
+                    {"baseline_sha256": baseline_sha256}
+                    if baseline_sha256 is not None
+                    else {}
+                ),
+                **(
+                    {"remediation_generation": remediation_generation}
+                    if remediation_generation is not None
+                    else {}
+                ),
                 "files": {"README.md": f"candidate {project_id}\n"},
                 "validators": [
                     {
@@ -779,11 +840,23 @@ class ByoxReviewSemanticsTests(unittest.TestCase):
                     }
                 ],
                 "artifact_type": "byox-challenge-pack",
-                "artifact_path": f"tests/builders/{project_id}",
+                "artifact_path": f"tests/builders/{builder_id}",
             },
             max_attempts=1,
             job_id=builder_id,
         )
+        return builder_id
+
+    def _review_pair(
+        self,
+        project_id: str,
+        verdict: str,
+        *,
+        verdict_contract: bool = True,
+        acceptance_command: bool = False,
+    ) -> tuple[str, str]:
+        self._catalog_project(project_id)
+        builder_id = self._builder_job(project_id)
         reviewer_id = self._review_job(
             project_id,
             builder_id,
@@ -958,6 +1031,312 @@ class ByoxReviewSemanticsTests(unittest.TestCase):
         after = status_snapshot(self.database)["metrics"]["scaleout_coverage"]["byox"]
         self.assertEqual(0, after["succeeded_pairs"])
         self.assertEqual(1, after["review_outcomes"]["UNKNOWN"])
+
+    def test_s2_base_review_precedes_legacy_version_namespace_in_any_order(
+        self,
+    ) -> None:
+        expected: dict[str, tuple[str, str]] = {}
+        job_count = 0
+        cases = (
+            ("accepted-legacy-first", ("legacy", "s2"), True, "PASS"),
+            ("accepted-s2-first", ("s2", "legacy"), True, "PASS"),
+            ("advisory-legacy-first", ("legacy", "s2"), False, "UNKNOWN"),
+            ("advisory-s2-first", ("s2", "legacy"), False, "UNKNOWN"),
+        )
+        for index, (project_id, order, acceptance_command, outcome) in enumerate(
+            cases, start=10
+        ):
+            self._catalog_project(project_id)
+            baseline_sha256 = f"{index:x}" * 64
+            selected_job_id = ""
+            for family in order:
+                if family == "legacy":
+                    builder_id = self._builder_job(
+                        project_id, job_suffix=f"{project_id}_legacy"
+                    )
+                    self._review_job(
+                        project_id,
+                        builder_id,
+                        "REVISE",
+                        policy_version=101,
+                    )
+                else:
+                    builder_id = self._builder_job(
+                        project_id,
+                        job_suffix=f"{project_id}_s2",
+                        policy_kind="byox_reference_build_s2",
+                        policy_version=2,
+                        baseline_sha256=baseline_sha256,
+                    )
+                    selected_job_id = self._review_job(
+                        project_id,
+                        builder_id,
+                        "PASS",
+                        policy_kind="byox_reference_review_s2",
+                        policy_version=2,
+                        baseline_sha256=baseline_sha256,
+                        acceptance_command=acceptance_command,
+                    )
+                job_count += 2
+            expected[project_id] = (selected_job_id, outcome)
+
+        self.jobs.promote_eligible()
+        dispatched = asyncio.run(
+            run_scheduler(
+                self.settings,
+                self.database,
+                until_idle=True,
+                max_jobs=job_count,
+            )
+        )
+        self.assertEqual(job_count, dispatched)
+        self._bind_review_artifacts_to_current_builders()
+
+        byox = status_snapshot(self.database)["metrics"]["scaleout_coverage"]["byox"]
+        self.assertEqual(2, byox["succeeded_pairs"])
+        self.assertEqual(
+            {
+                "PASS": 2,
+                "REVISE": 0,
+                "FAIL": 0,
+                "UNKNOWN": 2,
+                "AMBIGUOUS": 0,
+            },
+            byox["review_outcomes"],
+        )
+        for project_id, (selected_job_id, outcome) in expected.items():
+            with self.subTest(project_id=project_id):
+                selected = byox["selected_reviews"][project_id]
+                self.assertEqual(selected_job_id, selected["job_id"])
+                self.assertEqual([selected_job_id], selected["job_ids"])
+                self.assertEqual(outcome, selected["outcome"])
+                self.assertEqual("s2-base", selected["policy_family"])
+                self.assertEqual(
+                    ["byox_reference_review_s2"], selected["policy_kinds"]
+                )
+                self.assertEqual(2, selected["policy_version"])
+                self.assertEqual(
+                    "baseline-bound-s2-base-precedes-legacy",
+                    selected["selection_reason"],
+                )
+                self.assertEqual(["SUCCEEDED"], selected["states"])
+
+    def test_pending_s2_base_review_masks_accepted_legacy_review(self) -> None:
+        project_id = "project-pending-s2"
+        baseline_sha256 = "e" * 64
+        self._catalog_project(project_id)
+        legacy_builder = self._builder_job(
+            project_id, job_suffix=f"{project_id}_legacy"
+        )
+        self._review_job(
+            project_id,
+            legacy_builder,
+            "PASS",
+            policy_version=101,
+            acceptance_command=True,
+        )
+        self.jobs.promote_eligible()
+        asyncio.run(
+            run_scheduler(self.settings, self.database, until_idle=True, max_jobs=2)
+        )
+        self._bind_review_artifacts_to_current_builders()
+        before = status_snapshot(self.database)["metrics"]["scaleout_coverage"]["byox"]
+        self.assertEqual(1, before["succeeded_pairs"])
+
+        s2_builder = self._builder_job(
+            project_id,
+            job_suffix=f"{project_id}_s2",
+            policy_kind="byox_reference_build_s2",
+            policy_version=2,
+            baseline_sha256=baseline_sha256,
+        )
+        s2_reviewer = self._review_job(
+            project_id,
+            s2_builder,
+            "PASS",
+            policy_kind="byox_reference_review_s2",
+            policy_version=2,
+            baseline_sha256=baseline_sha256,
+            acceptance_command=True,
+        )
+
+        after = status_snapshot(self.database)["metrics"]["scaleout_coverage"]["byox"]
+        self.assertEqual(0, after["succeeded_pairs"])
+        self.assertEqual(1, after["review_outcomes"]["UNKNOWN"])
+        self.assertEqual(
+            {
+                "job_id": s2_reviewer,
+                "job_ids": [s2_reviewer],
+                "outcome": "UNKNOWN",
+                "policy_family": "s2-base",
+                "policy_kinds": ["byox_reference_review_s2"],
+                "policy_version": 2,
+                "selection_reason": "baseline-bound-s2-base-precedes-legacy",
+                "states": ["DISCOVERED"],
+            },
+            after["selected_reviews"][project_id],
+        )
+
+    def test_tied_s2_family_and_version_fails_closed(self) -> None:
+        project_id = "project-s2-tie"
+        self._catalog_project(project_id)
+        accepted_builder = self._builder_job(
+            project_id,
+            job_suffix=f"{project_id}_accepted",
+            policy_kind="byox_reference_build_s2",
+            policy_version=2,
+            baseline_sha256="a" * 64,
+        )
+        accepted_reviewer = self._review_job(
+            project_id,
+            accepted_builder,
+            "PASS",
+            policy_kind="byox_reference_review_s2",
+            policy_version=2,
+            baseline_sha256="a" * 64,
+            acceptance_command=True,
+        )
+        self.jobs.promote_eligible()
+        asyncio.run(
+            run_scheduler(self.settings, self.database, until_idle=True, max_jobs=2)
+        )
+        self._bind_review_artifacts_to_current_builders()
+        before = status_snapshot(self.database)["metrics"]["scaleout_coverage"]["byox"]
+        self.assertEqual(1, before["succeeded_pairs"])
+
+        pending_builder = self._builder_job(
+            project_id,
+            job_suffix=f"{project_id}_pending",
+            policy_kind="byox_reference_build_s2",
+            policy_version=2,
+            baseline_sha256="b" * 64,
+        )
+        pending_reviewer = self._review_job(
+            project_id,
+            pending_builder,
+            "PASS",
+            job_suffix=f"{project_id}_pending",
+            policy_kind="byox_reference_review_s2",
+            policy_version=2,
+            baseline_sha256="b" * 64,
+            acceptance_command=True,
+        )
+
+        after = status_snapshot(self.database)["metrics"]["scaleout_coverage"]["byox"]
+        self.assertEqual(0, after["succeeded_pairs"])
+        self.assertEqual(1, after["review_outcomes"]["AMBIGUOUS"])
+        selected = after["selected_reviews"][project_id]
+        self.assertIsNone(selected["job_id"])
+        self.assertEqual(
+            sorted([accepted_reviewer, pending_reviewer]), selected["job_ids"]
+        )
+        self.assertEqual("AMBIGUOUS", selected["outcome"])
+        self.assertEqual(["DISCOVERED", "SUCCEEDED"], selected["states"])
+
+    def test_linked_s2_remediation_precedes_base_and_rejects_mismatch(self) -> None:
+        project_id = "project-s2-remediation"
+        baseline_sha256 = "f" * 64
+        self._catalog_project(project_id)
+        base_builder = self._builder_job(
+            project_id,
+            job_suffix=f"{project_id}_base",
+            policy_kind="byox_reference_build_s2",
+            policy_version=2,
+            baseline_sha256=baseline_sha256,
+        )
+        self._review_job(
+            project_id,
+            base_builder,
+            "PASS",
+            policy_kind="byox_reference_review_s2",
+            policy_version=2,
+            baseline_sha256=baseline_sha256,
+            acceptance_command=True,
+        )
+        repair_builder = self._builder_job(
+            project_id,
+            job_suffix=f"{project_id}_repair",
+            policy_kind="byox_reference_repair_s2",
+            policy_version=1,
+            baseline_sha256=baseline_sha256,
+            remediation_generation=1,
+            remediation_policy_version=1,
+        )
+        repair_reviewer = self._review_job(
+            project_id,
+            repair_builder,
+            "REVISE",
+            policy_kind="byox_reference_repair_review_s2",
+            policy_version=101,
+            baseline_sha256=baseline_sha256,
+            remediation_generation=1,
+            remediation_policy_version=1,
+        )
+        self.jobs.promote_eligible()
+        asyncio.run(
+            run_scheduler(self.settings, self.database, until_idle=True, max_jobs=4)
+        )
+        self._bind_review_artifacts_to_current_builders()
+
+        mismatched_reviewer = self._review_job(
+            project_id,
+            repair_builder,
+            "PASS",
+            policy_kind="byox_reference_repair_review_s2",
+            policy_version=102,
+            baseline_sha256=baseline_sha256,
+            remediation_generation=2,
+            remediation_policy_version=1,
+            acceptance_command=True,
+        )
+        self.assertEqual("DISCOVERED", self.jobs.get(mismatched_reviewer)["state"])
+
+        byox = status_snapshot(self.database)["metrics"]["scaleout_coverage"]["byox"]
+        self.assertEqual(0, byox["succeeded_pairs"])
+        self.assertEqual(1, byox["review_outcomes"]["REVISE"])
+        selected = byox["selected_reviews"][project_id]
+        self.assertEqual(repair_reviewer, selected["job_id"])
+        self.assertNotIn(mismatched_reviewer, selected["job_ids"])
+        self.assertEqual("REVISE", selected["outcome"])
+        self.assertEqual("s2-remediation", selected["policy_family"])
+        self.assertEqual(
+            ["byox_reference_repair_review_s2"], selected["policy_kinds"]
+        )
+        self.assertEqual(101, selected["policy_version"])
+        self.assertEqual(
+            "explicitly-linked-s2-remediation-precedes-s2-base",
+            selected["selection_reason"],
+        )
+        self.assertEqual(["SUCCEEDED"], selected["states"])
+
+    def test_unclassified_review_keeps_raw_succeeded_pair_metric(self) -> None:
+        project_id = "project-unclassified-s2"
+        self._catalog_project(project_id)
+        builder_id = self._builder_job(
+            project_id,
+            policy_kind="byox_reference_build_s2",
+            policy_version=2,
+            baseline_sha256="a" * 64,
+        )
+        self._review_job(
+            project_id,
+            builder_id,
+            "REVISE",
+            policy_kind="byox_reference_review_s2",
+            policy_version=2,
+            baseline_sha256="b" * 64,
+        )
+        self.jobs.promote_eligible()
+        asyncio.run(
+            run_scheduler(self.settings, self.database, until_idle=True, max_jobs=2)
+        )
+        self._bind_review_artifacts_to_current_builders()
+
+        byox = status_snapshot(self.database)["metrics"]["scaleout_coverage"]["byox"]
+        self.assertEqual(1, byox["review_job_succeeded_pairs"])
+        self.assertEqual(0, byox["succeeded_pairs"])
+        self.assertNotIn(project_id, byox["selected_reviews"])
+        self.assertEqual(0, sum(byox["review_outcomes"].values()))
 
     def test_reviewer_pass_without_acceptance_gate_fails_closed(self) -> None:
         _, reviewer_id = self._review_pair("project-ungated-pass", "PASS")

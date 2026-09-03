@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "base-learner-view",
+  "selection": "strict-top-level-allowlist",
+  "include": {
+    "files": [
+      "README.md",
+      "AGENTS.md",
+      "MANIFEST.yaml",
+      "REQUIREMENTS.md",
+      "CONCEPTS.md",
+      "DESIGN_QUESTIONS.md"
+    ],
+    "directories": [
+      "starter",
+      "public_tests",
+      "environment"
+    ]
+  },
+  "exclude": {
+    "top_level": [
+      "PROVENANCE.json",
+      "LICENSE_BOUNDARY.md",
+      "VALIDATION.md",
+      "sealed",
+      "adversarial",
+      "benchmarks",
+      "debugging",
+      "review_exercises"
+    ],
+    "path_components": [
+      "sealed",
+      "reference",
+      "reference_tests",
+      "hidden_tests",
+      "solution",
+      "solutions",
+      "answers"
+    ]
+  }
+}

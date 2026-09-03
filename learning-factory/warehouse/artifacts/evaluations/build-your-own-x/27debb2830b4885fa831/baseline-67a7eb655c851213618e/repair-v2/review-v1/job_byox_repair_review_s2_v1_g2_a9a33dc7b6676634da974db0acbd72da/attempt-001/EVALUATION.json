@@ -1,0 +1,28 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g2_35e8fff6296915ff1ce18d77eeb3c510",
+  "checks_run": [
+    "Inspected all 61 submitted files against REQUIREMENTS.md, the learner-view policy, and the manifest claims.",
+    "Ran JavaScript syntax checks and the submitted reference, adversarial, learner-view, and public test suites with pinned Node.js.",
+    "Ran an independent 1620-check semantic oracle/backend matrix and focused input-mutation and VM bytecode probes.",
+    "Materialized the allowlisted learner projection in a sibling scratch directory and compared it by path and content.",
+    "Checked manifest/provenance consistency, file hashes, special-file absence, imports, forbidden API patterns, CLI behavior, and candidate immutability."
+  ],
+  "evidence": [
+    "Pinned runtime /arm/tools/nodejs/node/22.21.0/linux64/bin/node reported v22.21.0.",
+    "Reference tests passed 14/14, adversarial tests passed 6/6, learner-view tests passed 4/4, and all submitted .mjs files passed node --check.",
+    "The independent semantic matrix passed 1620 checks; a separate VM probe rejected 20 malformed chunks, invoked zero accessor getters, and accepted its valid control-flow chunk.",
+    "The separately materialized learner view passed exact comparison with 25 files, 4 directories, inventory SHA-256 9122c9f6206a5d3df1964ed50dd261272b9dbf00bc5d6b8957b8b52134790d43, and no selected sealed component.",
+    "The pack audit reported PASS over 61 files; MANIFEST.yaml and PROVENANCE.json hashed to 4d0c9b613b4efbce749d94fb1f337fc1ae861801802d16c7b174389f6af0d661 and be80da9777a7b3f1b6a4d2d40a2f3cde0f9212467b828a636140bc281ff94bdc.",
+    "Both sealed-reference CLI backends printed 12; the learner starter exited 1 at its documented parser TODO, and the public baseline likewise failed only the intentionally incomplete parser/execution suites.",
+    "The candidate inventory digest was e68dd5a1574d00470f94c8bd4110254e98f7267d91b10997318c533e345ee9f5 before and after review."
+  ],
+  "limitations": [
+    "The linked upstream resource and immutable catalog/source baseline were unavailable for comparison, so authorship, no-copy, and external provenance assertions remain independently inconclusive despite internal hash consistency.",
+    "The generated material has no affirmative redistribution license; publication or transfer remains blocked exactly as LICENSE_BOUNDARY.md states.",
+    "Validation covered only pinned Node.js v22.21.0 on this host; no cross-version or cross-platform matrix ran.",
+    "No fuzzing qualification, benchmark qualification, formal verification, security certification, resource-exhaustion testing, transfer acceptance, or production-readiness assessment was performed.",
+    "The materialized learner projection was a reviewer-created scratch comparison, not an orchestrator-captured publication or transfer validator."
+  ],
+  "project_id": "project_c305a6b70f268e23e2e48694e3604f28",
+  "verdict": "PASS"
+}

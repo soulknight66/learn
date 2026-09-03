@@ -1,0 +1,3 @@
+let width = 3;
+let height = 4;
+print width * height;

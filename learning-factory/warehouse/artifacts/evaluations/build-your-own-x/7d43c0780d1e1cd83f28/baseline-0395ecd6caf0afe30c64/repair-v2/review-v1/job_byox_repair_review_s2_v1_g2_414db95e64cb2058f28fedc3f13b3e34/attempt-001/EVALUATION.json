@@ -1,0 +1,34 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g2_9e8c5be9ccc9e665cada2943439a5777",
+  "checks_run": [
+    "Inspected all 54 regular files in CANDIDATE, including learner materials, starter scaffold, sealed reference implementation, public and sealed tests, projection tooling, manifest, provenance, license boundary, and builder validation record.",
+    "Invoked the configured Node.js and Python toolchains by absolute path and recorded their versions.",
+    "Checked JavaScript syntax for 22 files and Python syntax for 3 files.",
+    "Executed the socket-free JavaScript regression suite (9/9 passed), the targeted socket-free reference subset (4/4 passed), the public API subset (1/1 passed), and the learner-view unit suite (3/3 passed).",
+    "Executed reviewer-authored socket-free contract probes covering routing, method selection, request state, response framing, HEAD behavior, error translation, bodyless statuses, JSON parsing, stream cleanup, and the four documented repair scenarios; all passed.",
+    "Attempted the bounded starter-public, reference-public, full sealed JavaScript, and direct raw-socket suites; listener-dependent cases failed before protocol assertions because listen on 127.0.0.1 returned EPERM.",
+    "Materialized and exactly verified a scratch learner projection, independently inventoried it, confirmed evaluator roots were absent, and confirmed extra, existing-destination, and overlapping-destination cases were rejected.",
+    "Independently checked metadata parsing and cross-links, raw and canonical metadata hashes, regular-file/special-entry boundaries, dependency scope, and credential-like patterns.",
+    "Compared a deterministic 54-file aggregate SHA-256 before and after review to confirm CANDIDATE was not modified."
+  ],
+  "evidence": [
+    "Node.js /arm/tools/nodejs/node/22.21.0/linux64/bin/node reported v22.21.0; Python /arm/tools/python/python/3.11.5/rhe8-x86_64/bin/python3 reported Python 3.11.5.",
+    "JavaScript syntax passed for 22/22 files; Python source compilation passed for 3/3 files.",
+    "Socket-free executable evidence passed: regressions 9/9, targeted reference tests 4/4, public export test 1/1, and learner-view unit tests 3/3.",
+    "All four repair probes reproduced their documented PASS outcomes: destroy-before-end rejection, native error-framing sanitization, bodyless entity-header removal, and identity coding-list acceptance.",
+    "The materialized learner view contained exactly 20 regular files and 4 directories; an injected sealed directory caused the expected exact-verification failure.",
+    "Manifest and provenance project/source/commit/snapshot links were internally consistent; status remained GENERATED, labels remained exactly GENERATED and PARTIAL, and productionized remained false.",
+    "Independent credential-pattern scanning found no hits in 54 files, and independent special-entry enumeration found no symlinks or other non-file/non-directory entries.",
+    "The 54-file aggregate SHA-256 was a5a9c85e0bc68023d18148089ce41f3d19f80cec256eccec1af62e6ebd49e761 both before and after review; all submitted files were mode 0444.",
+    "The artifact explicitly disclaims BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, and PRODUCTIONIZED; no validation claim was promoted by this review."
+  ],
+  "limitations": [
+    "The sandbox denies loopback listener creation with EPERM, so real HTTP integration, app.listen behavior, real-socket abort handling, and benchmark execution remain inconclusive.",
+    "Only the configured Node.js 22.21.0 runtime was available for relevant JavaScript execution; compatibility across the full declared Node.js >=18 range was not tested.",
+    "The linked tutorial, immutable source baseline, and source repository are unavailable under this workspace/network profile, so originality, upstream license, source commit, and source-derived digest claims could not be independently authenticated.",
+    "PRIOR_BUILD is not part of the submitted workspace, so the historical preservation comparisons recorded by the builder could not be rerun.",
+    "No independent fuzzing, performance benchmark, production-readiness exercise, or harness-captured learner transfer was performed; the credential scan was heuristic rather than proof that no secret exists."
+  ],
+  "project_id": "project_a35390ae473c6dda128f34db394c3f87",
+  "verdict": "PASS"
+}

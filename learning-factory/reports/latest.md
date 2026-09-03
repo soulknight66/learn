@@ -1,6 +1,6 @@
 # Learning Factory checkpoint
 
-Generated: 2026-09-03T12:06:13.552461+00:00
+Generated: 2026-09-03T12:15:27.376072+00:00
 Paused: True
 
 ## Health
@@ -12,7 +12,7 @@ Paused: True
 | DISCOVERED | 436 |
 | FAILED | 11 |
 | READY | 441 |
-| SUCCEEDED | 323 |
+| SUCCEEDED | 324 |
 
 ## Corpus
 
@@ -23,9 +23,9 @@ Paused: True
 | course_units | 394 |
 | projects | 359 |
 | students | 3 |
-| artifacts | 323 |
-| validations | 1712 |
-| events | 11438 |
+| artifacts | 324 |
+| validations | 1720 |
+| events | 11460 |
 
 ## Scale-out coverage
 
@@ -65,6 +65,6 @@ None.
 ## Operational metrics
 
 - Persisted retries: 44
-- Median finished-job duration: 556.1948008537292
-- Completed by type: `{"allocator_vertical_slice": 1, "bytecode_vertical_slice": 1, "catalog_synthesis": 2, "codex_task": 307, "course_vertical_slice": 2, "event_service_vertical_slice": 1, "http_service_vertical_slice": 1, "project_vertical_slice": 2, "source_ingest": 6}`
-- Artifact labels: `{"BENCHMARKED": 6, "BUILDS": 8, "FUZZED": 5, "GENERATED": 323, "PARTIAL": 102, "REVIEWED": 4, "TESTED": 10, "TRANSFER_VERIFIED": 2}`
+- Median finished-job duration: 554.6177732944489
+- Completed by type: `{"allocator_vertical_slice": 1, "bytecode_vertical_slice": 1, "catalog_synthesis": 2, "codex_task": 308, "course_vertical_slice": 2, "event_service_vertical_slice": 1, "http_service_vertical_slice": 1, "project_vertical_slice": 2, "source_ingest": 6}`
+- Artifact labels: `{"BENCHMARKED": 6, "BUILDS": 8, "FUZZED": 5, "GENERATED": 324, "PARTIAL": 103, "REVIEWED": 4, "TESTED": 10, "TRANSFER_VERIFIED": 2}`

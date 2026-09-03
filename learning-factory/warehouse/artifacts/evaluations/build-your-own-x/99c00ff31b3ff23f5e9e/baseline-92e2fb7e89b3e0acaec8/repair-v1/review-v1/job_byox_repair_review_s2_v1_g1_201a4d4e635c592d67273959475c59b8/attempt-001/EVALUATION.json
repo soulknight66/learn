@@ -1,0 +1,37 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g1_ffac71c598e30a0795bcea3da3445423",
+  "checks_run": [
+    "Read all 53 submitted files and audited the requirements, implementation, runners, tests, teaching progression, validation prose, manifest, provenance, and license boundary.",
+    "Copied CANDIDATE byte-for-byte to a writable review scratch directory and performed all builds there; the original relative-path aggregate SHA-256 remained bb98aa9da367ff50487f08455dd48110f4624e5e62b516ed4a49a58aacfb942d.",
+    "Built the sealed reference and intentionally incomplete starter with GCC 15.2.0, C11, -Wall, -Wextra, -Wpedantic, and -Werror.",
+    "Ran the supplied reference, public, and adversarial suites against the rebuilt reference, and ran the reference suite under both Python 3.11.5 and Python 3.6.8.",
+    "Ran reviewer-authored deterministic tests covering 80 independently evaluated arithmetic expressions in eval and compiled modes, 11 exact semantic/resource boundaries, and 2 hostile process-runner cases.",
+    "Rebuilt with AddressSanitizer and UndefinedBehaviorSanitizer and reran the 13-method reference suite and reviewer-authored arithmetic/boundary checks.",
+    "Built and smoke-tested with the advertised system GCC 8.5.0/Python 3.6.8 environment.",
+    "Independently checked strict metadata parsing, cross-file identifiers, submitted metadata hashes, file types/count, learner-root path boundaries, and high-confidence credential patterns.",
+    "Generated the same assembly twice and compared it byte-for-byte; smoke-ran the benchmark harness without treating it as benchmark evidence.",
+    "Attempted LeakSanitizer with leak detection enabled and recorded the sandbox limitation."
+  ],
+  "evidence": [
+    "Strict GCC 15.2.0 builds of both reference and starter exited 0; the strict system GCC 8.5.0 reference build also exited 0.",
+    "The rebuilt reference passed 13/13 reference methods, 6/6 public methods, and 7/7 adversarial methods; the 13-method suite also passed under Python 3.6.8.",
+    "All 80 reviewer-generated oracle cases agreed exactly in exit status, stdout, and stderr for interpreter and compiled-native execution; all 11 exact-boundary and 2 process-containment cases passed.",
+    "The ASan/UBSan build passed all 13 supplied methods and the 80 oracle plus 11 boundary checks with leak checking disabled and emitted no sanitizer diagnostic.",
+    "The incomplete starter failed 6/6 end-to-end public methods and its lexer milestone exactly as documented, consistent with GENERATED/PARTIAL rather than a false success claim.",
+    "Two independent compilations of starter/examples/count.pb emitted identical assembly with SHA-256 e3b715942409fc384005fecd7bb9e77c9f0af05f6474441b4a4f7cc6e09ea4cf.",
+    "Manifest and provenance identifiers agree; MANIFEST.yaml and PROVENANCE.json byte hashes match the submitted record; 53 regular files, zero symlink/special entries, zero forbidden-name leaks under learner roots, and zero high-confidence credential hits were observed.",
+    "The manifest claims only GENERATED and PARTIAL, requires independent validation, and sets productionized=false; the benchmark prose and result explicitly avoid a BENCHMARKED claim.",
+    "Learner material provides a clear contract, staged lexer milestone, concepts, design questions, disclosed smoke tests, and explicit warnings that public tests are incomplete."
+  ],
+  "limitations": [
+    "LeakSanitizer cannot run under this ptrace-based sandbox: detect_leaks=1 produced the expected program output and then exited 1 with 'LeakSanitizer does not work under ptrace'. Leak freedom is therefore inconclusive.",
+    "The immutable upstream/catalog snapshot and network were unavailable, so the source commit, CC0 catalog assertion, linked-resource NOASSERTION status, and no-copy statement could be checked only for internal consistency, not externally corroborated.",
+    "The factory content-addressed payload inventory was not present in the review workspace, so external transfer integrity was not verified.",
+    "Validator-only files are cleanly partitioned under sealed/adversarial paths, but no actual learner-facing export was supplied; enforcement that those paths are absent from a student view remains an orchestrator responsibility.",
+    "No fuzzing, performance threshold, profiling, cross-architecture execution, production hardening, or independent transfer validation was performed or inferred.",
+    "JDK, ARM/AArch64 cross-compilers, QEMU, GLib, Node, Go, NASM, standalone binutils, flex, and bison were not exercised because the reviewed Linux x86-64 C/Python artifact did not require them.",
+    "The generated material intentionally grants no public redistribution license; its own boundary document requires authorization before publication or redistribution."
+  ],
+  "project_id": "project_bd342fcec50cb8a15740cbb98e57bc1e",
+  "verdict": "PASS"
+}

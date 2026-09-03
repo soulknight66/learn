@@ -1,0 +1,77 @@
+{
+  "classification": "agent-generated challenge pack bound to immutable source-derived catalog metadata",
+  "license_boundary": {
+    "catalog_license": "CC0-1.0",
+    "generated_material": "independently generated for personal educational use",
+    "linked_content_copied": false,
+    "linked_resource_license": "NOASSERTION"
+  },
+  "material_baseline_sha256": "6467c3275d9c0632ad7ee6ec36b19e38f5c4ca9c32456e8e0028d38b46a9e758",
+  "project": {
+    "category": "Operating System",
+    "concepts": [
+      "operating systems",
+      "processes",
+      "virtual memory",
+      "filesystems"
+    ],
+    "difficulty": 8.0,
+    "implementation_language": "C",
+    "metadata": {
+      "catalog_suffix": "",
+      "languages": [
+        "C"
+      ],
+      "linked_resource_license": "NOASSERTION",
+      "provenance": {
+        "adapter": "build_your_own_x",
+        "classification": "source-derived",
+        "content_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+        "extractor_version": "1.1",
+        "source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+        "source_file": "README.md",
+        "source_line": 287
+      },
+      "scoring": {
+        "basis": "category heuristic",
+        "classification": "inferred",
+        "priority_tier": 1
+      }
+    },
+    "priority_tier": 1,
+    "production_relevance": 8.5,
+    "project_id": "project_9f93e5b30db7d5e4adf5244cd9ccb1b0",
+    "slug": "how-to-create-an-os-from-scratch",
+    "source_format": "repository",
+    "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+    "title": "How to create an OS from scratch",
+    "upstream_reference": "https://github.com/cfenollosa/os-tutorial"
+  },
+  "schema_version": 1,
+  "snapshot_sha256": "cd887247599d1200896aeb7cfb934318c6e53932e89be8bb7fbc18785fc1643a",
+  "source": {
+    "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989",
+    "license": "CC0-1.0",
+    "metadata": {
+      "adapter": "build_your_own_x",
+      "extractor_version": "1.1",
+      "license_evidence": "explicit CC0 waiver declaration",
+      "license_file": "README.md#origins--license",
+      "license_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+      "license_source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+      "linked_resource_license": "NOASSERTION",
+      "snapshot_reader": "git-object-database",
+      "tree_hash": "12e788febc0575ae1bce1de8ad1fc28d7fff7c22"
+    },
+    "name": "Build Your Own X",
+    "observation_fields_excluded": [
+      "active_at_factory_time",
+      "ingested_at"
+    ],
+    "path": "<immutable-byox-baseline>",
+    "snapshot_kind": "immutable-material-baseline",
+    "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+    "type": "project_catalog",
+    "upstream_url": null
+  }
+}

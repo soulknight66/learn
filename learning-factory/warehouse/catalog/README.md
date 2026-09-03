@@ -1,8 +1,28 @@
 # Learning artifact catalog
 
-Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 301.
+Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 303.
 
 The complete searchable records, concepts, languages, provenance, and validation labels are in `catalog.json`.
+
+## byox-independent-review — GENERATED
+
+- Artifact type: `byox-independent-review`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/evaluations/build-your-own-x/460bbc0b053bcf30159c/review-v2/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001`
+- SHA-256: `b169f2be5af57272259aecf1692fcb6f6b2dab43cd825225b3464264a33770b7`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68` (codex_task/examiner)
+
+## byox-challenge-pack — GENERATED+PARTIAL
+
+- Artifact type: `byox-challenge-pack`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/operating-system/how-to-create-an-os-from-scratch-460bbc0b05/job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4/attempt-001`
+- SHA-256: `de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED, PARTIAL
+- Job: `job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4` (codex_task/reference_builder)
 
 ## byox-independent-review — GENERATED
 

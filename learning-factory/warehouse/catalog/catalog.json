@@ -1,6 +1,1250 @@
 {
   "artifacts": [
     {
+      "artifact_id": "artifact_5951b9912c7e4f37bcba46ed5c862079",
+      "attempt_number": 1,
+      "checksum": "b169f2be5af57272259aecf1692fcb6f6b2dab43cd825225b3464264a33770b7",
+      "checksum_algorithm": "tree-sha256-v2",
+      "created_at": 1788415915.1669552,
+      "integrity_status": "VERIFIED_V2",
+      "job_id": "job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68",
+      "job_type": "codex_task",
+      "metadata": {
+        "archive_projection": {
+          "mode": "declared-worker-outputs",
+          "paths": [
+            "EVALUATION.json",
+            "REVIEW.md",
+            "VALIDATION.md"
+          ],
+          "projected_tree_checksum": "b169f2be5af57272259aecf1692fcb6f6b2dab43cd825225b3464264a33770b7",
+          "projected_tree_checksum_algorithm": "tree-sha256-v2",
+          "schema_version": 1,
+          "source_workspace_checksum": "77051a09c9eebab704d01d5053052197cd9e8cdf4ce44fefe28f6363030a84e9",
+          "source_workspace_checksum_algorithm": "tree-sha256-v2",
+          "staged_inputs_excluded": true
+        },
+        "attempt": 1,
+        "builder_job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+        "builder_provenance": {
+          "classification": "agent-generated challenge pack bound to immutable source-derived catalog metadata",
+          "license_boundary": {
+            "catalog_license": "CC0-1.0",
+            "generated_material": "independently generated for personal educational use",
+            "linked_content_copied": false,
+            "linked_resource_license": "NOASSERTION"
+          },
+          "material_baseline_sha256": "6467c3275d9c0632ad7ee6ec36b19e38f5c4ca9c32456e8e0028d38b46a9e758",
+          "project": {
+            "category": "Operating System",
+            "concepts": [
+              "operating systems",
+              "processes",
+              "virtual memory",
+              "filesystems"
+            ],
+            "difficulty": 8.0,
+            "implementation_language": "C",
+            "metadata": {
+              "catalog_suffix": "",
+              "languages": [
+                "C"
+              ],
+              "linked_resource_license": "NOASSERTION",
+              "provenance": {
+                "adapter": "build_your_own_x",
+                "classification": "source-derived",
+                "content_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+                "extractor_version": "1.1",
+                "source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+                "source_file": "README.md",
+                "source_line": 287
+              },
+              "scoring": {
+                "basis": "category heuristic",
+                "classification": "inferred",
+                "priority_tier": 1
+              }
+            },
+            "priority_tier": 1,
+            "production_relevance": 8.5,
+            "project_id": "project_9f93e5b30db7d5e4adf5244cd9ccb1b0",
+            "slug": "how-to-create-an-os-from-scratch",
+            "source_format": "repository",
+            "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+            "title": "How to create an OS from scratch",
+            "upstream_reference": "https://github.com/cfenollosa/os-tutorial"
+          },
+          "schema_version": 1,
+          "snapshot_sha256": "cd887247599d1200896aeb7cfb934318c6e53932e89be8bb7fbc18785fc1643a",
+          "source": {
+            "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989",
+            "license": "CC0-1.0",
+            "metadata": {
+              "adapter": "build_your_own_x",
+              "extractor_version": "1.1",
+              "license_evidence": "explicit CC0 waiver declaration",
+              "license_file": "README.md#origins--license",
+              "license_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+              "license_source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+              "linked_resource_license": "NOASSERTION",
+              "snapshot_reader": "git-object-database",
+              "tree_hash": "12e788febc0575ae1bce1de8ad1fc28d7fff7c22"
+            },
+            "name": "Build Your Own X",
+            "observation_fields_excluded": [
+              "active_at_factory_time",
+              "ingested_at"
+            ],
+            "path": "<immutable-byox-baseline>",
+            "snapshot_kind": "immutable-material-baseline",
+            "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+            "type": "project_catalog",
+            "upstream_url": null
+          }
+        },
+        "classification": "independent agent evaluation of a provenance-bound builder artifact",
+        "factory_revision": {
+          "commit": "d11d40de6c0b3e7cc611c63b794550369c0199e2",
+          "status": "RECORDED",
+          "tracked_worktree_clean": true
+        },
+        "job_id": "job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68",
+        "policy_version": 2,
+        "project_id": "project_9f93e5b30db7d5e4adf5244cd9ccb1b0",
+        "prompt_contexts": [],
+        "removed_root_metadata": [
+          ".factory-workspace"
+        ],
+        "run_id": "run_8b6242cf865d4c44a8f16ae2d1fe29e0",
+        "run_reproducibility": {
+          "digest": "df369d862915e0686d7d7ce5d7edc5c059ae506fb7b09035edadab22562b4e40",
+          "record_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/logs/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/RUN_PROVENANCE.json",
+          "schema": "learnfactory-run-provenance-v3"
+        },
+        "runtime_prompt": {
+          "effective_prompt": {
+            "content_stored": false,
+            "includes_leaf_worker_policy": true,
+            "sha256": "015de56f0c6b67f276ead42a9c6d2a9be2fd3f1365744e56fc8a134d1159a79e",
+            "utf8_bytes": 2142
+          },
+          "job_prompt": {
+            "content_stored": false,
+            "sha256": "c5c7bcf50c31ec8c71bd0546bcab7b71ac89b3a2ef45da3ab3cac1d4966cc8a9",
+            "utf8_bytes": 893
+          },
+          "leaf_worker_policy": {
+            "content_stored": false,
+            "sha256": "f6f4d52d59532c35bc9e313a2b3012caeb9757213e9587b10d6599ea97df6e17",
+            "utf8_bytes": 1249
+          }
+        },
+        "sandbox_rule_manifest": {
+          "declared_outputs": [
+            "EVALUATION.json",
+            "REVIEW.md",
+            "VALIDATION.md"
+          ],
+          "result_channel": {
+            "content_stored_in_provenance": false,
+            "fixed_alias_stored": true,
+            "launch_namespace": "fixed-alias-only",
+            "nonce_hash_stored": false,
+            "nonce_stored": false,
+            "outer_cli_output_capability": "parent-procfd-readonly-hold",
+            "output_descriptor_inherited": false,
+            "post_exit_result_retention": "bounded-redacted-output",
+            "private_path_stored": false,
+            "runtime_fd_stored": false,
+            "schema_version": 3,
+            "transport": "outer-cli-parent-held-fixed-alias-inode"
+          },
+          "rules": [
+            {
+              "access": "read",
+              "kind": "staged-input-ancestor",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input-ancestor",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/AGENTS.md"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/CONCEPTS.md"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/DESIGN_QUESTIONS.md"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/LICENSE_BOUNDARY.md"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/MANIFEST.yaml"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/PROVENANCE.json"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/README.md"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/REQUIREMENTS.md"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/VALIDATION.md"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/adversarial"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/benchmarks"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/debugging"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/environment"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/public_tests"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/review_exercises"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/sealed"
+            },
+            {
+              "access": "read",
+              "kind": "staged-input",
+              "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001/CANDIDATE/starter"
+            }
+          ],
+          "schema_version": 1,
+          "sha256": "24d55431b2512294436ec589db51736c0d356883c8ea601c66410bf67456bd2f",
+          "staged_inputs": [
+            "CANDIDATE/AGENTS.md",
+            "CANDIDATE/CONCEPTS.md",
+            "CANDIDATE/DESIGN_QUESTIONS.md",
+            "CANDIDATE/LICENSE_BOUNDARY.md",
+            "CANDIDATE/MANIFEST.yaml",
+            "CANDIDATE/PROVENANCE.json",
+            "CANDIDATE/README.md",
+            "CANDIDATE/REQUIREMENTS.md",
+            "CANDIDATE/VALIDATION.md",
+            "CANDIDATE/adversarial",
+            "CANDIDATE/benchmarks",
+            "CANDIDATE/debugging",
+            "CANDIDATE/environment",
+            "CANDIDATE/public_tests",
+            "CANDIDATE/review_exercises",
+            "CANDIDATE/sealed",
+            "CANDIDATE/starter"
+          ],
+          "tools_enabled": true,
+          "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001",
+          "workspace_access": "write"
+        },
+        "specialized_builder_reused": false,
+        "staged_inputs": [
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "README.md",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "d8aa4ab10c8dba4e289c9f20c5f0756c7b2e360e0ce4069ef2b9b6d810fb2578",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "0e1be9b0d481017e26ea15ba576ca15385fd6f61966dd8277986f4ca79f7e50a",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/README.md",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788415268792888923,
+            "root_device": 1048590,
+            "root_inode": 1689327181
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "MANIFEST.yaml",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "ccf28fe3e72f7a87cd52ac5302e47b86a8703bd77f7d0556ca0dc6e5a27a235c",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "933e2aea44c7505d9eef322533ab9398fe1c2df574e2ea7aa2f60302c6490563",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/MANIFEST.yaml",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788415268801838798,
+            "root_device": 1048590,
+            "root_inode": 78825879
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "PROVENANCE.json",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "97c34501a026a5ecd3bfa254ddb45f5e3d58296c6fdf4fe86e7db9f86c4d4b41",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "3b5085c7486dab83ccc10a99c31238f486bc2fccf3302d4f76cddccb13b30c33",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/PROVENANCE.json",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788415268807887295,
+            "root_device": 1048590,
+            "root_inode": 1959505808
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "REQUIREMENTS.md",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "e1a901fd05d5296623491bc2d649eb6af857d5f13fb0338ed1db9d3757b60b65",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "477a9612df80833ccef7e5b0f2358efd4ccccee317cc0fa2ef4788ed8c629853",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/REQUIREMENTS.md",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788415268813835889,
+            "root_device": 1048590,
+            "root_inode": 750835185
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "CONCEPTS.md",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "8f8f645ab977e5c2486525b38f0676fa9188d130e746d5f3acac3e9791c62278",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "3ac280c079c52a46553ffda91c279ff6401a96c2db7de004b0ceec66cb7e52a7",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/CONCEPTS.md",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788415268822402673,
+            "root_device": 1048590,
+            "root_inode": 1153893547
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "DESIGN_QUESTIONS.md",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "5b4e5db2912eb05f9e9e83a644ebdc76d5c98899d654ed10fd7b14edbbfbbaed",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "fb0e51417a9fde81c6510ee83ecfa0a86d218d49d6771380be90e15fe03db9fb",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/DESIGN_QUESTIONS.md",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788415268827883530,
+            "root_device": 1048590,
+            "root_inode": 1826542074
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "starter",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "e89eb6e73fa0ec136519bb73813318a4f7149c0b5d1f3660397454451c266a59",
+            "checksum_algorithm": "tree-sha256-v2",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "0d444974d73a513dde7122aa111af01d65e12a9696a53c7a290393d268c2e3f6",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "directory",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/starter",
+            "regular_file_count": 13,
+            "root_change_time_ns": 1788415268905402214,
+            "root_device": 1048590,
+            "root_inode": 1153893555
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "public_tests",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "03751e362d3e971dff9cfb3dfee83cba1f4d3081bb04a3c6b196b8b4ad8137e2",
+            "checksum_algorithm": "tree-sha256-v2",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "cfba46a9563c7f456dddc6756d82a6612ec661ae4da21a250dc25af11a64c2f5",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "directory",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/public_tests",
+            "regular_file_count": 3,
+            "root_change_time_ns": 1788415268948862299,
+            "root_device": 1048590,
+            "root_inode": 1826541575
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "environment",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "c95b6c6b49e15f0d4b223f7a5996b4088f8509f099209321a5174420604accc0",
+            "checksum_algorithm": "tree-sha256-v2",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "0dbd289ee7ae2f69447b990aa056f33a5dc18eb1289cbdcc0178dcc6f8a72198",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "directory",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/environment",
+            "regular_file_count": 2,
+            "root_change_time_ns": 1788415268968368694,
+            "root_device": 1048590,
+            "root_inode": 2363211914
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "sealed",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "1c42566b66b7ab93913e52c5571d750eaa856bf70a19557d12e888ea23d158f3",
+            "checksum_algorithm": "tree-sha256-v2",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "f93dfdddc30eef14f5e46a8c933551a66c6982ce07e7fa5f7c5d411f7d641ff3",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "directory",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/sealed",
+            "regular_file_count": 34,
+            "root_change_time_ns": 1788415269248297916,
+            "root_device": 1048590,
+            "root_inode": 2763487862
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "adversarial",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "ae4cc7c1031692f0114c3180ded347c4614412033a54585c77cc3c98671d49f0",
+            "checksum_algorithm": "tree-sha256-v2",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "6dfbb8600bf93e5045186c0904c2984e27ef8dcdc4727a32162ae984732014f8",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "directory",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/adversarial",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788415269334742579,
+            "root_device": 1048590,
+            "root_inode": 213133285
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "debugging",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "21ffcaeed3c7f3ba3986a3fd7cf6a7284abff53dbb3609e828ffe0d5d65c3b62",
+            "checksum_algorithm": "tree-sha256-v2",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "acc5fbc63db12935daec1d9b5198dbe1d04b320eecd907bb9a06a33aa52cbcf0",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "directory",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/debugging",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788415269346633960,
+            "root_device": 1048590,
+            "root_inode": 2227918207
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "review_exercises",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "f9081991d0377b42cea5997e5bc9c13ab6251a2ff6037d52f44ab26d530fc5e1",
+            "checksum_algorithm": "tree-sha256-v2",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "1913c7a73fe0ac1371a346d7ac2801565e6596bcc0af4df5965684d609512b7b",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "directory",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/review_exercises",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788415269358738790,
+            "root_device": 1048590,
+            "root_inode": 886810806
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "benchmarks",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "07b5ba5ca9c1d3d4bab8b612bdae8b5b64cfa8a3246343502bbc465ceb400808",
+            "checksum_algorithm": "tree-sha256-v2",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "1f871c401732c6c79d7ff4d022c4b425727bc55a21622b3b8e6aa39124286335",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "directory",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/benchmarks",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788415269372629064,
+            "root_device": 1048590,
+            "root_inode": 2496628398
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "AGENTS.md",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "edfaa397592d0e7c86ccbcee202a678f68dcc0bf30b759362299420ffa236468",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "bed62b7be70419386253a84ea1a748730ae872089630e9b5253409d6994a0eab",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/AGENTS.md",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788415269379736489,
+            "root_device": 1048590,
+            "root_inode": 752822542
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "LICENSE_BOUNDARY.md",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "cbacb575b791fc8ec9193a4b6addb6b894a9ef296ea02af22b7caeec90daed08",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "aec4c76faf11f4cb2367b6277ac97b5c5ed29954f58056dffa9a43bcf17da53f",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/LICENSE_BOUNDARY.md",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788415269384733979,
+            "root_device": 1048590,
+            "root_inode": 752822580
+          },
+          {
+            "artifact_attempt": 1,
+            "artifact_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+            "artifact_checksum_algorithm": "tree-sha256-v2",
+            "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+            "artifact_subpath": "VALIDATION.md",
+            "artifact_type": "byox-challenge-pack",
+            "checksum": "511a2dfc5eb4d6ee5d7c6644ae99c8f130a19658f1ef31cce6df9bcc16755dd5",
+            "checksum_algorithm": "file-sha256",
+            "fresh_inode_policy": "regular-files-nlink-one-unique-v1",
+            "inode_manifest_sha256": "186144fd162d9cfa3fb7f6bf941cbc98f9ba2245d7be6a90edfa43178ec8e0e7",
+            "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+            "kind": "file",
+            "origin": "dependency-artifact",
+            "path": "CANDIDATE/VALIDATION.md",
+            "regular_file_count": 1,
+            "root_change_time_ns": 1788415269395731461,
+            "root_device": 1048590,
+            "root_inode": 752822588
+          }
+        ],
+        "validated_tree_sha256": "b169f2be5af57272259aecf1692fcb6f6b2dab43cd825225b3464264a33770b7",
+        "validation_evidence": [
+          {
+            "evidence": {
+              "checked": [
+                "EVALUATION.json",
+                "REVIEW.md",
+                "VALIDATION.md"
+              ],
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "byox-independent-review-files"
+          },
+          {
+            "evidence": {
+              "error_count": 0,
+              "errors": []
+            },
+            "status": "PASS",
+            "validator": "byox-independent-review-schema"
+          },
+          {
+            "evidence": {
+              "builder_job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+              "contract_version": 2,
+              "entry_counts": {
+                "checks_run": 6,
+                "evidence": 7,
+                "limitations": 5
+              },
+              "evaluation_sha256": "28a1d376915520b35e8d249865a10a2ed37fc38e26b977632edab33bd9a11924",
+              "path": "EVALUATION.json",
+              "project_id": "project_9f93e5b30db7d5e4adf5244cd9ccb1b0",
+              "reviewer_recommends_acceptance": false,
+              "verdict": "REVISE",
+              "workflow_accepted": false
+            },
+            "status": "PASS",
+            "validator": "byox-independent-review-verdict"
+          },
+          {
+            "evidence": {
+              "acceptance_authority": "orchestrator",
+              "mode": "closed",
+              "reason": "no independent acceptance command configured",
+              "workflow_accepted": false
+            },
+            "status": "PASS",
+            "validator": "byox-independent-review-acceptance"
+          },
+          {
+            "evidence": {
+              "checked": [
+                "CANDIDATE"
+              ],
+              "mismatches": []
+            },
+            "status": "PASS",
+            "validator": "declared-inputs-remained-immutable"
+          }
+        ],
+        "validation_labels": [
+          "GENERATED"
+        ],
+        "validation_workspace_tree_sha256": "77051a09c9eebab704d01d5053052197cd9e8cdf4ce44fefe28f6363030a84e9"
+      },
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/evaluations/build-your-own-x/460bbc0b053bcf30159c/review-v2/job_byox_review_s2_p2_7fcfe17b8f513c8e6acf698df45f2e68/attempt-001",
+      "type": "byox-independent-review",
+      "validation_labels": [
+        "GENERATED"
+      ],
+      "validation_status": "GENERATED",
+      "worker_type": "examiner"
+    },
+    {
+      "artifact_id": "artifact_ce6b1059617e485b89826920fcd33eca",
+      "attempt_number": 1,
+      "checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+      "checksum_algorithm": "tree-sha256-v2",
+      "created_at": 1788415105.9013891,
+      "integrity_status": "VERIFIED_V2",
+      "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+      "job_type": "codex_task",
+      "metadata": {
+        "archive_projection": {
+          "mode": "complete-workspace",
+          "schema_version": 1,
+          "source_workspace_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+          "source_workspace_checksum_algorithm": "tree-sha256-v2"
+        },
+        "attempt": 1,
+        "byox_validation_cutover": {
+          "archive_paths": null,
+          "classification": "factory-authoritative-validation-snapshot",
+          "limits": {
+            "max_depth": 101,
+            "max_entries": 100000,
+            "max_file_bytes": 536870912,
+            "max_file_depth": 102,
+            "max_total_bytes": 2147483648,
+            "policy_root_max_directory_depth": 100
+          },
+          "manifest_sha256": "56d9d98708c6223584c55a1893324a9df2b6270478d70de46c8a7d5a4e43b540",
+          "policy": "fresh-inode-workspace-replacement-v1",
+          "schema_version": 1,
+          "selected_output_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+          "selected_output_checksum_algorithm": "tree-sha256-v2",
+          "snapshot_roots": [
+            "AGENTS.md",
+            "CONCEPTS.md",
+            "DESIGN_QUESTIONS.md",
+            "LICENSE_BOUNDARY.md",
+            "MANIFEST.yaml",
+            "PROVENANCE.json",
+            "README.md",
+            "REQUIREMENTS.md",
+            "VALIDATION.md",
+            "adversarial",
+            "benchmarks",
+            "debugging",
+            "environment",
+            "public_tests",
+            "review_exercises",
+            "sealed",
+            "starter"
+          ],
+          "source_disposition": "retired-and-discarded",
+          "summary": {
+            "directories": 29,
+            "entries": 94,
+            "files": 65,
+            "max_depth": 5,
+            "total_bytes": 770735
+          },
+          "validation_snapshot_checksum": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+          "validation_snapshot_checksum_algorithm": "tree-sha256-v2"
+        },
+        "classification": "agent-generated challenge pack bound to immutable source-derived catalog metadata",
+        "factory_revision": {
+          "commit": "d11d40de6c0b3e7cc611c63b794550369c0199e2",
+          "status": "RECORDED",
+          "tracked_worktree_clean": true
+        },
+        "job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+        "license_boundary": {
+          "catalog_license": "CC0-1.0",
+          "generated_material": "independently generated for personal educational use",
+          "linked_content_copied": false,
+          "linked_resource_license": "NOASSERTION"
+        },
+        "material_baseline_sha256": "6467c3275d9c0632ad7ee6ec36b19e38f5c4ca9c32456e8e0028d38b46a9e758",
+        "project": {
+          "category": "Operating System",
+          "concepts": [
+            "operating systems",
+            "processes",
+            "virtual memory",
+            "filesystems"
+          ],
+          "difficulty": 8.0,
+          "implementation_language": "C",
+          "metadata": {
+            "catalog_suffix": "",
+            "languages": [
+              "C"
+            ],
+            "linked_resource_license": "NOASSERTION",
+            "provenance": {
+              "adapter": "build_your_own_x",
+              "classification": "source-derived",
+              "content_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+              "extractor_version": "1.1",
+              "source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+              "source_file": "README.md",
+              "source_line": 287
+            },
+            "scoring": {
+              "basis": "category heuristic",
+              "classification": "inferred",
+              "priority_tier": 1
+            }
+          },
+          "priority_tier": 1,
+          "production_relevance": 8.5,
+          "project_id": "project_9f93e5b30db7d5e4adf5244cd9ccb1b0",
+          "slug": "how-to-create-an-os-from-scratch",
+          "source_format": "repository",
+          "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+          "title": "How to create an OS from scratch",
+          "upstream_reference": "https://github.com/cfenollosa/os-tutorial"
+        },
+        "prompt_contexts": [],
+        "removed_root_metadata": [
+          ".factory-workspace"
+        ],
+        "run_id": "run_658e30a88c93499695c8cc8768301efb",
+        "run_reproducibility": {
+          "digest": "4bb001513c8bf35ee105d384844066431eeeab47dd9353ac2cbd5640e8609e0f",
+          "record_path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/logs/job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4/attempt-001/RUN_PROVENANCE.json",
+          "schema": "learnfactory-run-provenance-v3"
+        },
+        "runtime_prompt": {
+          "effective_prompt": {
+            "content_stored": false,
+            "includes_leaf_worker_policy": true,
+            "sha256": "6f9b42de7741fa6948bd49aa330cbd12dc78778ed149801ffd63c04716305d04",
+            "utf8_bytes": 8479
+          },
+          "job_prompt": {
+            "content_stored": false,
+            "sha256": "7a6cc16b9d8413ade6489416f37def171a1a3ea62c9a105880d21c2cda733491",
+            "utf8_bytes": 7230
+          },
+          "leaf_worker_policy": {
+            "content_stored": false,
+            "sha256": "f6f4d52d59532c35bc9e313a2b3012caeb9757213e9587b10d6599ea97df6e17",
+            "utf8_bytes": 1249
+          }
+        },
+        "sandbox_rule_manifest": {
+          "declared_outputs": [
+            "AGENTS.md",
+            "CONCEPTS.md",
+            "DESIGN_QUESTIONS.md",
+            "LICENSE_BOUNDARY.md",
+            "MANIFEST.yaml",
+            "PROVENANCE.json",
+            "README.md",
+            "REQUIREMENTS.md",
+            "VALIDATION.md",
+            "adversarial/README.md",
+            "benchmarks/README.md",
+            "debugging/README.md",
+            "environment/README.md",
+            "public_tests/README.md",
+            "review_exercises/README.md",
+            "sealed/DESIGN.md",
+            "sealed/REVIEW.md",
+            "sealed/TRADEOFFS.md",
+            "sealed/alternatives/README.md",
+            "sealed/production/PRODUCTIONIZATION.md",
+            "sealed/reference/README.md",
+            "sealed/reference_tests/README.md",
+            "starter/README.md"
+          ],
+          "result_channel": {
+            "content_stored_in_provenance": false,
+            "fixed_alias_stored": true,
+            "launch_namespace": "fixed-alias-only",
+            "nonce_hash_stored": false,
+            "nonce_stored": false,
+            "outer_cli_output_capability": "parent-procfd-readonly-hold",
+            "output_descriptor_inherited": false,
+            "post_exit_result_retention": "bounded-redacted-output",
+            "private_path_stored": false,
+            "runtime_fd_stored": false,
+            "schema_version": 3,
+            "transport": "outer-cli-parent-held-fixed-alias-inode"
+          },
+          "rules": [],
+          "schema_version": 1,
+          "sha256": "9f7f652556517f7468e93a539c13bf088dd4ae837c78666aa30c8636a70ac60e",
+          "staged_inputs": [],
+          "tools_enabled": true,
+          "workspace": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/workspaces/job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4/attempt-001",
+          "workspace_access": "write"
+        },
+        "schema_version": 1,
+        "snapshot_sha256": "cd887247599d1200896aeb7cfb934318c6e53932e89be8bb7fbc18785fc1643a",
+        "source": {
+          "commit_hash": "aa17439b62f384511a5561ce308e9598b94d8989",
+          "license": "CC0-1.0",
+          "metadata": {
+            "adapter": "build_your_own_x",
+            "extractor_version": "1.1",
+            "license_evidence": "explicit CC0 waiver declaration",
+            "license_file": "README.md#origins--license",
+            "license_sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+            "license_source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+            "linked_resource_license": "NOASSERTION",
+            "snapshot_reader": "git-object-database",
+            "tree_hash": "12e788febc0575ae1bce1de8ad1fc28d7fff7c22"
+          },
+          "name": "Build Your Own X",
+          "observation_fields_excluded": [
+            "active_at_factory_time",
+            "ingested_at"
+          ],
+          "path": "<immutable-byox-baseline>",
+          "snapshot_kind": "immutable-material-baseline",
+          "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+          "type": "project_catalog",
+          "upstream_url": null
+        },
+        "staged_inputs": [],
+        "validated_tree_sha256": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2",
+        "validation_evidence": [
+          {
+            "evidence": {
+              "checked": [
+                "README.md",
+                "AGENTS.md",
+                "MANIFEST.yaml",
+                "PROVENANCE.json",
+                "LICENSE_BOUNDARY.md",
+                "REQUIREMENTS.md",
+                "CONCEPTS.md",
+                "DESIGN_QUESTIONS.md",
+                "VALIDATION.md",
+                "starter/README.md",
+                "public_tests/README.md",
+                "environment/README.md",
+                "sealed/reference/README.md",
+                "sealed/reference_tests/README.md",
+                "sealed/DESIGN.md",
+                "sealed/TRADEOFFS.md",
+                "sealed/REVIEW.md",
+                "sealed/alternatives/README.md",
+                "sealed/production/PRODUCTIONIZATION.md",
+                "adversarial/README.md",
+                "debugging/README.md",
+                "review_exercises/README.md",
+                "benchmarks/README.md"
+              ],
+              "missing": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-challenge-structure"
+          },
+          {
+            "evidence": {
+              "checked": [
+                ".git",
+                ".env",
+                ".venv",
+                "credentials.json",
+                "secrets",
+                "reference",
+                "reference_tests",
+                "hidden_tests",
+                "solution",
+                "solutions",
+                "answers",
+                "starter/sealed",
+                "starter/reference",
+                "starter/reference_tests",
+                "starter/solution",
+                "starter/solutions",
+                "starter/answers",
+                "public_tests/sealed",
+                "public_tests/reference",
+                "public_tests/hidden_tests",
+                "environment/sealed"
+              ],
+              "present": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-progressive-boundary"
+          },
+          {
+            "evidence": {
+              "checked": [
+                "README.md",
+                "AGENTS.md",
+                "MANIFEST.yaml",
+                "PROVENANCE.json",
+                "LICENSE_BOUNDARY.md",
+                "REQUIREMENTS.md",
+                "CONCEPTS.md",
+                "DESIGN_QUESTIONS.md",
+                "VALIDATION.md",
+                "starter/README.md",
+                "public_tests/README.md",
+                "environment/README.md",
+                "sealed/reference/README.md",
+                "sealed/reference_tests/README.md",
+                "sealed/DESIGN.md",
+                "sealed/TRADEOFFS.md",
+                "sealed/REVIEW.md",
+                "sealed/alternatives/README.md",
+                "sealed/production/PRODUCTIONIZATION.md",
+                "adversarial/README.md",
+                "debugging/README.md",
+                "review_exercises/README.md",
+                "benchmarks/README.md"
+              ],
+              "failures": [],
+              "minimum_bytes": 1
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-nonempty-files"
+          },
+          {
+            "evidence": {
+              "entry_count": 22,
+              "forbidden": [
+                ".agents",
+                ".codex",
+                ".env",
+                ".git",
+                ".venv",
+                "answer",
+                "answers",
+                "credential",
+                "credentials",
+                "credentials.json",
+                "hidden",
+                "hidden_tests",
+                "job.md",
+                "reference",
+                "reference_tests",
+                "sealed",
+                "secret",
+                "secrets",
+                "solution",
+                "solutions"
+              ],
+              "limit_failure": null,
+              "max_depth": 100,
+              "max_entries": 20000,
+              "present": [],
+              "present_truncated": 0,
+              "roots": [
+                "starter",
+                "public_tests",
+                "environment"
+              ],
+              "unsafe_entries": [],
+              "unsafe_entries_truncated": 0
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-recursive-progressive-boundary"
+          },
+          {
+            "evidence": {
+              "claims_builds_or_tested": false,
+              "counts": {
+                "bytes": 728161,
+                "entries": 50,
+                "files": 40
+              },
+              "groups": [
+                {
+                  "build_descriptor_count": 1,
+                  "build_descriptors": [
+                    "sealed/reference/Makefile"
+                  ],
+                  "missing_or_unsafe_roots": [],
+                  "name": "reference_implementation",
+                  "qualifying_count": 5,
+                  "qualifying_digest": "4e9702808ba773a10f06f6fb0b0bd20b14e0cf8985a356b4bd0840b2292b8bc1",
+                  "qualifying_files": [
+                    {
+                      "path": "sealed/reference/boot/boot.asm",
+                      "sha256": "b8e214f84a5d5d7365799d377a560474d3250ecc637f2adfc2d04efe4ea565c1",
+                      "size_bytes": 389
+                    },
+                    {
+                      "path": "sealed/reference/boot/kernel.c",
+                      "sha256": "4f82b1e7f6b482d66fbd37e1671008f8fe41e267d907b83e22ec53dfdde6a0d3",
+                      "size_bytes": 2933
+                    },
+                    {
+                      "path": "sealed/reference/include/cairn.h",
+                      "sha256": "e32556f1792ad2e853a7f6132962220aef19c25438701f569c61a23011132ff9",
+                      "size_bytes": 3299
+                    },
+                    {
+                      "path": "sealed/reference/src/cairn.c",
+                      "sha256": "c776126786d111f826a18928489668c573fa52054bc193db5239dc7884fb9c98",
+                      "size_bytes": 23723
+                    },
+                    {
+                      "path": "sealed/reference/src/demo.c",
+                      "sha256": "a0df28289b57399f5ca2dd3fd9dfb808d956dc1c61ab32dc40808a6b745fdff6",
+                      "size_bytes": 1125
+                    }
+                  ],
+                  "qualifying_files_truncated": 0,
+                  "roots": [
+                    "sealed/reference"
+                  ]
+                },
+                {
+                  "build_descriptor_count": 1,
+                  "build_descriptors": [
+                    "starter/Makefile"
+                  ],
+                  "missing_or_unsafe_roots": [],
+                  "name": "learner_starter",
+                  "qualifying_count": 5,
+                  "qualifying_digest": "adf686c96a4d78a86d2838f95d17b4129a27a8eb986af0bbfb4307f921f13576",
+                  "qualifying_files": [
+                    {
+                      "path": "starter/boot/boot.asm",
+                      "sha256": "0460fcdfd3070836a9dcd40b9dd9c5065f867976ee3c36685a35013e2afd8ee0",
+                      "size_bytes": 389
+                    },
+                    {
+                      "path": "starter/boot/kernel.c",
+                      "sha256": "1f2bf3e577d3d3becdc4bc168896333123d79703f1b7897dca74348fa07b523a",
+                      "size_bytes": 1184
+                    },
+                    {
+                      "path": "starter/include/cairn.h",
+                      "sha256": "e32556f1792ad2e853a7f6132962220aef19c25438701f569c61a23011132ff9",
+                      "size_bytes": 3299
+                    },
+                    {
+                      "path": "starter/src/cairn.c",
+                      "sha256": "5c51597297a74a519fc6653e6d6bc52274d398d6868bea21c62ea307cfaf1e8a",
+                      "size_bytes": 3784
+                    },
+                    {
+                      "path": "starter/src/demo.c",
+                      "sha256": "b5621925ab4e57332aed7f371051e0f390857c5fdb4d6250c63fd1f3096a7780",
+                      "size_bytes": 550
+                    }
+                  ],
+                  "qualifying_files_truncated": 0,
+                  "roots": [
+                    "starter"
+                  ]
+                },
+                {
+                  "build_descriptor_count": 2,
+                  "build_descriptors": [
+                    "public_tests/Makefile",
+                    "sealed/reference_tests/Makefile"
+                  ],
+                  "missing_or_unsafe_roots": [],
+                  "name": "tests",
+                  "qualifying_count": 4,
+                  "qualifying_digest": "ddc50945df57f266698519438eeb34cff50d6951a1df167c45afc8478e9dd58e",
+                  "qualifying_files": [
+                    {
+                      "path": "public_tests/test_public.c",
+                      "sha256": "2a5c96a87c2c0ad1ace85510ab16ec3c5083d8ffb7ae51554e13422b5d78a1c6",
+                      "size_bytes": 4364
+                    },
+                    {
+                      "path": "sealed/reference_tests/benchmark.c",
+                      "sha256": "d47a878d98288410c100af25ee26192f9f5be76d8b2f653d0fd5fe013aaeb49b",
+                      "size_bytes": 1028
+                    },
+                    {
+                      "path": "sealed/reference_tests/test_adversarial.c",
+                      "sha256": "330d9e1c173cdfbc6a57e14761cc6d11319da41e4238ff4077091858ac855d13",
+                      "size_bytes": 3969
+                    },
+                    {
+                      "path": "sealed/reference_tests/test_reference.c",
+                      "sha256": "7d64fac964439e30fb3bc769f25e7c371bdf485a7bf2450f82b84a7ae5d2f727",
+                      "size_bytes": 13230
+                    }
+                  ],
+                  "qualifying_files_truncated": 0,
+                  "roots": [
+                    "public_tests",
+                    "sealed/reference_tests"
+                  ]
+                }
+              ],
+              "limit_failure": null,
+              "limits": {
+                "max_depth": 100,
+                "max_entries": 20000,
+                "max_file_bytes": 33554432,
+                "max_files": 10000,
+                "max_total_bytes": 268435456
+              },
+              "manifest_digest": "59e6f8e1fd2a7d5af36b58d3c0ebb52f9e0264c2e66bd5010aaf0efe9d39b750",
+              "manifest_version": 1,
+              "missing_groups": [],
+              "oversized_files": [],
+              "oversized_files_truncated": 0,
+              "policy_digest": "96108b83508c5cb8b919635c592c6b33629a029e049a7d69adf1f5e2b0434ec6",
+              "policy_version": 2,
+              "schema_version": 2,
+              "scope": "code-presence-structure-only",
+              "unsafe_entries": [],
+              "unsafe_entries_truncated": 0
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-code-bearing-tree"
+          },
+          {
+            "evidence": {
+              "error_count": 0,
+              "errors": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-manifest"
+          },
+          {
+            "evidence": {
+              "error_count": 0,
+              "errors": []
+            },
+            "status": "PASS",
+            "validator": "byox-authoritative-provenance"
+          }
+        ],
+        "validation_labels": [
+          "GENERATED",
+          "PARTIAL"
+        ],
+        "validation_workspace_tree_sha256": "de596f3c97e337cf559d74394c114fb14b38c620d12b55f1e911a64352e52ea2"
+      },
+      "path": "/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/operating-system/how-to-create-an-os-from-scratch-460bbc0b05/job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4/attempt-001",
+      "type": "byox-challenge-pack",
+      "validation_labels": [
+        "GENERATED",
+        "PARTIAL"
+      ],
+      "validation_status": "GENERATED+PARTIAL",
+      "worker_type": "reference_builder"
+    },
+    {
       "artifact_id": "artifact_b4a48ba5c3d54652a80be7b446596122",
       "attempt_number": 1,
       "checksum": "a75b825ec2276594bfd8972c4dfe288ebe51686933abaaf8ccaeb5eb4421814a",
@@ -139303,7 +140547,7 @@
       "topic": "软件工程"
     }
   ],
-  "generated_at": 1788413985.9002376,
+  "generated_at": 1788416093.2679694,
   "project_categories": [
     {
       "category": "Uncategorized",

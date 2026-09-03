@@ -1,0 +1,29 @@
+{
+  "builder_job_id": "job_byox_build_s2_b22b0135aea26906a97ed3a33da9efd4",
+  "checks_run": [
+    "Inspected all 65 candidate files, including contracts, starter, reference implementation, tests, boot code, staged learning material, manifest, provenance, and validation claims.",
+    "Invoked the relevant pinned GCC, NASM, Binutils, QEMU, GLib runtime, and Python toolchains by absolute path and recorded their versions.",
+    "Rebuilt hosted, sanitizer, and freestanding targets outside CANDIDATE with strict flags; compared rebuilt artifacts with the submitted artifacts.",
+    "Ran the reference demo, public tests, focused reference tests, deterministic adversarial driver, sanitizer variants, starter negative control, timing probe, and emulator boot checks under bounded timeouts.",
+    "Ran the structural verifier, independent metadata digests, all-file secret-shape scan, GCC static analyzer, 100000 arbitrary-byte validator calls, and a reviewer-authored entry-boundary mutation check.",
+    "Recomputed the aggregate candidate digest after testing to check that CANDIDATE remained unchanged."
+  ],
+  "evidence": [
+    "All strict hosted and freestanding compilations exited 0; the freestanding core had no undefined symbols and no SSE/MMX instruction matches.",
+    "Public reference tests passed 4/4, focused reference tests passed 9/9, and the deterministic adversarial driver preserved invariants for 25000 operations; ASan+UBSan repeats emitted no diagnostics.",
+    "The independently rebuilt reference kernel printed CAIRNOS: PASS under QEMU 9.1.1 and exited with the documented debug-exit status 33; the incomplete starter printed its expected diagnostic and exited 35.",
+    "Documented source-relative rebuilds reproduced the submitted starter and reference host/object/kernel artifacts bit-for-bit.",
+    "The candidate stayed byte-for-byte unchanged at aggregate SHA-256 e6c88792ecdeebca65f8411f6a095d04828c98d253093a22bafc25b15271a801.",
+    "A reviewer-authored mutation check observed baseline=0, invalid_entry=0, invalid_mapping_flag=-9: cairn_validate rejects the invalid mapping flag but accepts a live process entry equal to CAIRN_USER_TOP, despite the entry range and all-structural-facts language in REQUIREMENTS.md.",
+    "MANIFEST.yaml remains GENERATED + PARTIAL, and the validation prose consistently disclaims independent labels, fuzzing, benchmarking, transfer verification, hardware coverage, and production readiness."
+  ],
+  "limitations": [
+    "LeakSanitizer cannot run under the sandbox process-inspection policy; enabling it independently produced the documented fatal ptrace limitation. AddressSanitizer and UndefinedBehaviorSanitizer were available.",
+    "No real hardware, concurrency, persistent storage, privilege boundary, coverage measurement, security audit, or transfer/deployment check was performed.",
+    "The isolated workspace cannot authenticate the external source commit, upstream license evidence, or the claim of independent authorship; only internal provenance consistency was checked.",
+    "The full reviewer bundle intentionally exposes sealed material. Its path separation was inspected, but creation of the orchestrator's filtered learner view was not available to test.",
+    "The deterministic mixed-operation and arbitrary-byte runs are bounded tests, not exhaustive verification or coverage-guided fuzzing."
+  ],
+  "project_id": "project_9f93e5b30db7d5e4adf5244cd9ccb1b0",
+  "verdict": "REVISE"
+}

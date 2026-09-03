@@ -1,0 +1,35 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g1_705c71294e14a79e856ac563343830bd",
+  "checks_run": [
+    "Configured interpreter preflight: /arm/tools/python/python/3.11.5/rhe8-x86_64/bin/python3 --version exited 0 and reported Python 3.11.5.",
+    "Literal replay of the submitted public-suite command from CANDIDATE/VALIDATION.md line 52 exited 127 because /usr/bin/env attempted to execute a literal + token.",
+    "Corrected starter public discovery exited 0: 10 tests ran and passed.",
+    "Corrected untouched-starter checkpoints exited 1 as documented: 4 tests ran with 1 failure and 3 errors at the intended TODO boundaries.",
+    "Corrected sealed-reference checkpoints exited 0: 4 tests ran and passed.",
+    "Corrected sealed reference discovery exited 0: 29 tests ran, 28 passed, and the opt-in Linux integration test was skipped.",
+    "Corrected adversarial reference discovery exited 0: 4 tests ran and passed.",
+    "The packaging verifier exited 0, all 37 Python files parsed as ASTs, and sha256sum verified the provenance sidecar.",
+    "The host probe reported Linux, /usr/bin/unshare, and an available user namespace; /usr/bin/unshare reported util-linux 2.32.1.",
+    "The supplied opt-in writable-root Linux smoke test exited 0: 1 test ran and passed.",
+    "An independent default read-only-root /bin/true smoke exited 1 at the harness level because the child returned 126 with EPERM while remounting the rootfs read-only.",
+    "Static review covered correctness, learner staging, disclosure boundaries, provenance/license statements, manifest labels, verifier scope, and builder validation claims."
+  ],
+  "evidence": [
+    "The corrected deterministic results substantively reproduce the builder's test counts, but the submitted bash transcripts at VALIDATION.md lines 52, 61, 72, 78, 86, 97, 168, 178, 186, and 196 are not executable as written because they contain literal + separators.",
+    "The artifact exposes the complete sealed reference, sealed tests, design answers, debugging answers, review answers, and adversarial tests in the same readable tree; AGENTS.md merely instructs learners not to read them, and environment/verify_pack.py requires several sealed paths.",
+    "readonly_root defaults to true, while the only submitted kernel integration test forces it false; on this supplied host the corresponding true-mode smoke returned child exit 126 and PermissionError EPERM.",
+    "MANIFEST.yaml conservatively remains GENERATED and PARTIAL, requires independent validation, sets productionized false, and asserts none of BUILDS, TESTED, FUZZED, BENCHMARKED, REVIEWED, TRANSFER_VERIFIED, or PRODUCTIONIZED.",
+    "The reference uses argv launch, bounded canonical input, a fresh process session, process-group timeout cleanup, parameterized SQL, explicit transactions, BEGIN IMMEDIATE claims, and a database transition trigger.",
+    "The exact PROVENANCE.json byte digest is internally consistent, and the license boundary distinguishes CC0 catalog metadata from the NOASSERTION linked tutorial.",
+    "The pack verifier's 24 required paths omit the Python implementation and test files and there is no complete generated-artifact digest inventory, so verifier success does not establish artifact completeness or code integrity."
+  ],
+  "limitations": [
+    "Network access and the immutable upstream baseline were unavailable, so the linked-resource license, source commit contents, and no-copy/no-close-paraphrase assertion were not independently verified.",
+    "The read-only remount failure is conclusive for this allocated NFS-backed host but may differ on other kernels and filesystems.",
+    "No hostile-workload containment, alternate-kernel/filesystem matrix, crash recovery, output-bound, fuzzing, controlled benchmark, or transfer-verification check was performed.",
+    "rg and git were unavailable in the review environment; inventory used find and direct reads instead.",
+    "This verdict is advisory and does not confer or publish the REVIEWED label."
+  ],
+  "project_id": "project_884ee11fc61abc48b60825556299dae5",
+  "verdict": "REVISE"
+}

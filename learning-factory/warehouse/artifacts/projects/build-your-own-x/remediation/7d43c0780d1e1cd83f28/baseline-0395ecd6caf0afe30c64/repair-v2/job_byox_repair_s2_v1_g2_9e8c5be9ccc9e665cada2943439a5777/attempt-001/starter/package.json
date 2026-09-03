@@ -1,0 +1,14 @@
+{
+  "name": "tiny-network-framework-starter",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Starter for a dependency-free Express-like Node.js framework",
+  "main": "index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test ../public_tests/*.test.js"
+  }
+}

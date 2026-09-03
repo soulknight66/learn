@@ -1,0 +1,32 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g1_57b2e3e7cedd5313f5371df7f0f61137",
+  "checks_run": [
+    "Immutable candidate inventory, type, and aggregate SHA-256 checks",
+    "Strict manifest/provenance parsing and direct provenance-file SHA-256 check",
+    "Copied-tree GCC 15.2.0 builds of the starter and sealed reference",
+    "Public, sealed-reference, adversarial, and intentionally incomplete starter test suites",
+    "GCC -fanalyzer and ASan/UBSan builds plus all three reference suites",
+    "Reviewer-authored 1 MiB boundary and inherited-signal-mask checks",
+    "Reviewer-authored subprocess-descendant containment probe",
+    "Learner-facing make check invocation with the managed PATH",
+    "Manual review of correctness, progressive disclosure, provenance, licensing, pedagogy, and claim honesty"
+  ],
+  "evidence": [
+    "The reference and starter both built warning-clean from an isolated copy with the pinned GCC 15.2.0; -fanalyzer also exited 0.",
+    "The reference passed 11/11 public, 16/16 sealed, and 4/4 adversarial checks normally and under ASan/UBSan; the disclosed starter outcome reproduced as 2 passes and 9 failures.",
+    "A reviewer check blocked SIGINT before exec, ran a foreground sleep through a PTY, sent Ctrl-C, and received no prompt within 1 second; child_signal_defaults resets dispositions but never unblocks inherited masks.",
+    "A reviewer check showed that a newline-delimited command containing exactly 1 MiB before LF returns 2, while the same bytes at EOF return 0; the implementation counts the delimiter before enforcing the limit.",
+    "A containment probe observed descendant_alive=True after public_tests.run_command raised its 0.3-second timeout; ordinary harness subprocesses are not placed in or cleaned up by process group.",
+    "make -C starter check selected /usr/bin/python3 3.6.8 and all 11 tests errored on unsupported Python APIs, despite the pinned Python 3.11.5 being available outside PATH.",
+    "Metadata is internally consistent, PROVENANCE.json hashes to 8aa702b8b64241bda70f3a63e3d1b9a681e7dc87f4d5930b9b4f764f584e5dad, and the manifest conservatively remains GENERATED/PARTIAL with independent validation required and productionized=false.",
+    "The 41-file CANDIDATE tree had no symlinks or special entries and retained aggregate digest 466ca2eb284c88e7e4a5205ff605bcc4e4557422c04c8cfedd32bedaf029cc6c before and after review."
+  ],
+  "limitations": [
+    "The immutable catalog baseline and linked external repository were not available, so source snapshot hashes, non-copying assertions, and the linked resource's NOASSERTION license could not be independently established.",
+    "No orchestrator-created learner view or transfer artifact was provided, so actual sealed-material exclusion and TRANSFER_VERIFIED status remain inconclusive.",
+    "Checks ran on one managed POSIX/Linux host; allocation/fork fault injection, cross-platform behavior, coverage-guided fuzzing, benchmarking, LeakSanitizer, and production readiness were not established.",
+    "The configured GCC and Python toolchains needed for review were available; other configured cross, Java, Node, Go, QEMU, assembler, parser-generator, and GLib toolchains were irrelevant and not invoked. rg and git were absent from the managed PATH but did not block review."
+  ],
+  "project_id": "project_88e5a9a922f8f9e2166223c1333f28f9",
+  "verdict": "REVISE"
+}

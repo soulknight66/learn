@@ -1,0 +1,38 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g1_380db296a2d9a34c51ea2f2e5e2699cb",
+  "checks_run": [
+    "Manual contract, implementation, test, documentation, and progressive-disclosure review",
+    "Pinned Node.js version check and syntax check of all submitted .mjs files",
+    "Independent aggregate and direct replay of sealed reference and adversarial tests",
+    "Independent 514-execution semantic/operator oracle matrix across tree and VM backends",
+    "Input non-mutation and malformed-bytecode boundary probes",
+    "Public starter baseline replay",
+    "Reference CLI parity replay and documented learner CLI command replay",
+    "Pack audit, SHA-256 capture, and manifest/provenance internal-consistency check",
+    "Static import, forbidden-API, symlink/special-file, and path-boundary inspection",
+    "Unicode span-unit observation"
+  ],
+  "evidence": [
+    "The configured /arm/tools/nodejs/node/22.21.0/linux64/bin/node reported v22.21.0; all submitted JavaScript modules passed node --check.",
+    "The sealed suite passed as two file suites; direct execution passed 13/13 reference tests and 6/6 adversarial tests.",
+    "An independent direct-oracle matrix completed 514 tree/VM executions covering 250 numeric operator pairs and seven semantic programs with no mismatch.",
+    "Independent boundary probes confirmed no input mutation and controlled E_INVALID_BYTECODE rejection for accessor-backed, inherited, sparse-array, and malformed-span inputs; the tested getter was not invoked.",
+    "The public starter baseline exited 1 with lexer.test.mjs passing and parser.test.mjs plus execution.test.mjs failing, exactly as the candidate discloses for its TODO starter.",
+    "The pack audit reported PASS with 23 required files, 57 scanned files, zero forbidden paths, zero symlinks/special files, and zero credential-pattern matches; metadata identifiers and GENERATED/PARTIAL labels were internally consistent.",
+    "Reference CLI tree and VM stdin smoke runs both exited 0 and printed 8; the builder's material validation claims replayed without contradiction.",
+    "README.md advertises examples.mica, but no such file exists; the exact documented tree command exited 1 with ENOENT.",
+    "Sealed references, hidden-side tests, and exercise answers are readable in the same submitted tree, while the candidate supplies only naming/prose conventions and no independently verifiable learner-view projection.",
+    "REQUIREMENTS.md calls source Unicode but does not define whether offset/column count UTF-16 code units, code points, or graphemes; the supplied lexer uses UTF-16 units (PRINT after an emoji began at offset 6, column 7).",
+    "License and provenance prose clearly separates CC0 catalog metadata from the NOASSERTION linked resource and makes no production, fuzzing, benchmark, transfer, or stronger validation claim."
+  ],
+  "limitations": [
+    "No orchestrator-produced learner view was supplied, so actual exclusion of every sealed path is inconclusive; if the harness already enforces and validates that projection, the disclosure finding is satisfied externally.",
+    "The immutable upstream baseline and linked repository were not available and network access was restricted, so source hashes, license evidence, and the no-copy claim could not be independently compared with upstream material.",
+    "Execution was limited to the pinned Node.js v22.21.0 runtime; no cross-runtime or cross-platform compatibility matrix was run.",
+    "The bounded example, matrix, and adversarial checks are not fuzzing, formal verification, a security certification, benchmarking, transfer verification, or production-readiness evidence.",
+    "The submitted starter is intentionally incomplete, so no completed learner implementation was available for acceptance testing.",
+    "rg and git were unavailable on PATH; bounded find and grep inspection was used instead, and neither missing utility blocked the JavaScript checks."
+  ],
+  "project_id": "project_c305a6b70f268e23e2e48694e3604f28",
+  "verdict": "REVISE"
+}

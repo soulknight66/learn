@@ -1,0 +1,84 @@
+# Independent review
+
+Verdict: REVISE.
+
+Candidate path references below are relative to CANDIDATE/.
+
+The pack is unusually careful about scope, disclosure, and validation honesty, and most builder
+observations reproduced. It is not ready for an advisory PASS because the sealed reference violates
+two mandatory acceptance-contract boundaries and one recorded command is not reproducible under the
+environment condition it claims to handle.
+
+## Prioritized findings
+
+1. High — the database does not enforce the fixed R4 transition set.
+
+   REQUIREMENTS.md:56-68 permits only CREATED to RUNNING, then RUNNING to EXITED or FAILED, and says
+   schema checks or triggers must reject every other state change. In
+   sealed/reference/minictr/registry.py:28-44 the trigger trusts rows in a writable
+   allowed_transitions table, while lines 107-110 merely insert the expected rows. A reviewer
+   inserted (CREATED, EXITED), directly updated a CREATED row, and read back EXITED. The candidate
+   self-review candidly identifies the mutable table, but calling it a production-only trust issue
+   does not satisfy the stated R4 acceptance rule.
+
+   Constrain the policy table to exactly the three legal pairs, make it immutable to ordinary
+   registry operations, or encode the fixed predicate directly in the trigger. Initialization
+   should reject unexpected existing policy rows. Add a deterministic test that attempts policy-row
+   insertion before an invalid state update.
+
+2. Medium — malformed configuration can escape the required ValidationError API.
+
+   REQUIREMENTS.md:3-5 requires every configuration-boundary error to be ValidationError.
+   validate_rootfs calls path.is_absolute before checking the input type
+   (sealed/reference/minictr/paths.py:8-10), so validate_rootfs(".") raises AttributeError.
+   Runner catches only UnicodeDecodeError and JSONDecodeError around JSON decoding
+   (sealed/reference/minictr/runner.py:35-48); a sub-1-MiB payload with 2,000 nested arrays raises
+   RecursionError before launch. These unstable exception types make learner and evaluator behavior
+   interpreter-dependent.
+
+   Reject non-Path root arguments explicitly and translate bounded-parser resource/value failures
+   into ValidationError. Add tests for wrong root types, excessive JSON nesting, and oversized
+   integer tokens while proving the process factory is never called.
+
+3. Medium — the recorded direct preflight command is not replayable with read-only system temp.
+
+   VALIDATION.md:21-33 says system temporary directories are not assumed writable and every command
+   is directly replayable. The heredoc command at lines 126-159 sets TMPDIR only in the environment
+   of Python. Bash must materialize the heredoc before starting that command, so the replay failed
+   with “cannot create temp file for here-document: Read-only file system.” The equivalent probe run
+   from a workspace-local script did execute and returned the documented actionable exit 69.
+
+   Export TMPDIR in the invoking shell before parsing the heredoc, use Python -c, or place a bounded
+   probe script in workspace scratch. Then rerun and record the exact replayable form.
+
+4. Low — RFC 3339 leap-second validation accepts impossible instants.
+
+   registry.py:47-50 accepts second 60 at every date and time, and lines 72-75 replace it with 59 for
+   calendar validation. Consequently 2026-01-02T03:04:60Z was accepted and stored. At UTC, an RFC
+   3339 leap second can occur only at a declared end-of-month boundary, not at that instant.
+
+   Deterministically reject second 60, or validate it against a clearly documented leap-second
+   policy and UTC boundary rules.
+
+## Verified strengths
+
+- Builder test counts and statuses reproduced exactly: public 10/10, reference checkpoints 4/4,
+  sealed discovery 36 passes plus two opt-in skips, and adversarial 4/4. The untouched starter also
+  fails at exactly its four documented checkpoint boundaries.
+- The two opt-in Linux smoke tests passed. A separate real-process timeout killed a forked process
+  group and returned -9 promptly; concurrent SQLite claimers produced one winner and one rejection.
+- The generated learner view is a real separated artifact, not an honor-system directory. All 27
+  payload hashes/sizes and directories independently matched its manifest, its top-level allowlist
+  was exact, and evaluator/answer roots were absent.
+- Provenance and manifest digests are internally consistent. The linked resource remains
+  NOASSERTION, generated material has a stated personal-educational-use boundary, and no linked code
+  is represented as reusable.
+- Validation labels are conservative and honest. The manifest remains GENERATED/PARTIAL with
+  productionized false, and the documentation explicitly disclaims hostile-workload safety,
+  fuzzing, benchmarking, transfer verification, and production readiness.
+- CANDIDATE remained immutable: its pre/post aggregate digest was identical, with 70 regular files,
+  no symlinks, and no generated bytecode.
+
+The disclosed production limitations are appropriate for this workshop and are not themselves
+reasons for REVISE. The verdict is driven by the R4 bypass, unstable boundary exceptions, and the
+reproducibility defect above.

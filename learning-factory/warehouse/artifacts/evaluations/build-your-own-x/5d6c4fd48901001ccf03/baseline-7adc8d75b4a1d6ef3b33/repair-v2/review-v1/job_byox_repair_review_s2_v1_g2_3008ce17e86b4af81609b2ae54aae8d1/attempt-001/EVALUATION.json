@@ -1,0 +1,35 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g2_3a2dd7bc222fd644b4824b4780578a66",
+  "checks_run": [
+    "Static audit of requirements, implementation, tests, learner guidance, validation claims, provenance, license boundary, and production disclosures.",
+    "Configured Python and util-linux version checks plus the bounded host namespace probe.",
+    "Public discovery, expected-red starter checkpoints, reference checkpoints, sealed reference discovery, adversarial discovery, AST parsing, provenance digest, and source-pack verification.",
+    "Learner/instructor export creation, both view verifiers, both pack verifiers, independent learner manifest recomputation, learner inventory inspection, and exported learner public tests.",
+    "Opt-in disposable-rootfs Linux integration tests and a direct read-only preflight probe.",
+    "Reviewer-authored checks for real process-group timeout cleanup, concurrent SQLite claims, transition-policy tampering, malformed boundary inputs, and RFC 3339 handling.",
+    "Pre/post candidate tree digest, symlink, generated-bytecode, and file-count checks."
+  ],
+  "evidence": [
+    "The exact configured interpreter /arm/tools/python/python/3.11.5/rhe8-x86_64/bin/python3 reported Python 3.11.5; /usr/bin/unshare reported util-linux 2.32.1 and the user-namespace probe returned AVAILABLE.",
+    "Public tests passed 10/10; the untouched starter produced the documented one failure and three errors; reference checkpoints passed 4/4; sealed reference discovery ran 38 tests with 36 passes and two expected opt-in skips; adversarial tests passed 4/4.",
+    "Both opt-in Linux integration tests passed. On this filesystem the separate default read-only preflight failed closed with exit 69, no timeout, an UNSUPPORTED read-only setup message, and an explicit statement that the workload was not started.",
+    "An actual forked subprocess supervision probe returned timed_out=true and exit_code=-9 in under five seconds after process-group SIGKILL; an actual two-thread/two-connection registry probe produced exactly one successful claim and one rejection.",
+    "Source verification reported 70 canonical files. Independent export produced 27 learner payload files and 70 instructor payload files; learner manifest hash 39b2ea17760f674f2a3749df51d48bff8f42b3342b25c0dbd2bb8a37475b1ab7 and instructor manifest hash bd42353e73f14ae9f1c8c7865978ea188f4ea23f066a5d46a6ce77c731a8b2cd.",
+    "Independent learner-manifest recomputation matched all 27 file paths, sizes, SHA-256 values, and all directories. The learner top level contained only the nine declared roots and no sealed, reference, answer, adversarial, debugging, review, or benchmark directory.",
+    "PROVENANCE.json SHA-256 was 1b00a500c586d122105ac591fbb0868281cb0524f989f607326e0a896d75b611 and matched environment/PROVENANCE.sha256. The candidate tree digest remained 593e40fc2af6449f3d2e0a31d3ff982f7b486fb658f900f9da55e91c80381413 before and after review.",
+    "The manifest asserts only GENERATED and PARTIAL, requires independent validation, and keeps productionized false; benchmark, fuzz, transfer, review, test, build, and production labels are not asserted.",
+    "A reviewer inserted CREATED-to-EXITED into allowed_transitions and the schema then accepted that forbidden direct state update, contradicting R4's fixed transition set.",
+    "Reviewer boundary inputs caused AttributeError from validate_rootfs with a string and RecursionError from deeply nested JSON in Runner rather than the contractually required ValidationError; the launcher was not reached.",
+    "Registry accepted 2026-01-02T03:04:60Z even though that UTC time cannot be a valid RFC 3339 leap-second instant.",
+    "The validation record's Python heredoc form failed before Python with 'cannot create temp file for here-document: Read-only file system' because its per-command TMPDIR does not configure the invoking shell."
+  ],
+  "limitations": [
+    "The immutable catalog baseline and linked upstream repository were not available for independent textual comparison, so no-copy and upstream-license claims were checked only for internal consistency and clear boundary disclosure.",
+    "Kernel execution covered one host, util-linux version, filesystem policy, architecture, and benign /bin/true fixture. The default read-only mount was rejected on this filesystem, so no successful read-only workload was observed.",
+    "No fuzzing, controlled benchmark, transfer verification, hostile-workload security assessment, or production-readiness test was performed; the candidate explicitly disclaims all corresponding labels.",
+    "rg and git were unavailable in PATH, so direct find, grep, sed, hashes, and Python inspection were used instead; no relevant configured language toolchain was unavailable.",
+    "This REVISE verdict is advisory and does not publish REVIEWED or any other validation label."
+  ],
+  "project_id": "project_884ee11fc61abc48b60825556299dae5",
+  "verdict": "REVISE"
+}

@@ -1,8 +1,28 @@
 # Learning artifact catalog
 
-Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 295.
+Sources: 2. Courses: 82. Build projects: 359. Validated artifacts: 297.
 
 The complete searchable records, concepts, languages, provenance, and validation labels are in `catalog.json`.
+
+## byox-independent-review — GENERATED
+
+- Artifact type: `byox-independent-review`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/evaluations/build-your-own-x/27debb2830b4885fa831/review-v2/job_byox_review_s2_p2_49c3195716a7189a0772b52d5f3cb1e2/attempt-001`
+- SHA-256: `c4f3e7e2485a354fe96ac84c02600971a8e7cfb19a178bd824d25bdda6fc582e`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED
+- Job: `job_byox_review_s2_p2_49c3195716a7189a0772b52d5f3cb1e2` (codex_task/examiner)
+
+## byox-challenge-pack — GENERATED+PARTIAL
+
+- Artifact type: `byox-challenge-pack`
+- Path: `/projects/se/pj34000401_refsys/users/yuali01/learn/learning-factory/warehouse/artifacts/projects/build-your-own-x/programming-language/the-super-tiny-interpreter-27debb2830/job_byox_build_s2_aace1e25a85a7f45f3e8b88474341820/attempt-001`
+- SHA-256: `70adbe79dd01d8507baf968b88e99ac097d08649c98e68d6dfa8d1d6a7f8fcf1`
+- Hash format: `tree-sha256-v2`
+- Integrity: `VERIFIED_V2`
+- Labels: GENERATED, PARTIAL
+- Job: `job_byox_build_s2_aace1e25a85a7f45f3e8b88474341820` (codex_task/reference_builder)
 
 ## byox-independent-review — GENERATED
 

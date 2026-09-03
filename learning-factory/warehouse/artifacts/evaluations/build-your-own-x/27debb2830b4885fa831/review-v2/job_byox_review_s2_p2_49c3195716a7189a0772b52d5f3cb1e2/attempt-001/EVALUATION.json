@@ -1,0 +1,30 @@
+{
+  "builder_job_id": "job_byox_build_s2_aace1e25a85a7f45f3e8b88474341820",
+  "checks_run": [
+    "Inspected all 57 submitted files, including learner material, sealed reference code and tests, exercise answers, manifest, provenance, license boundary, and builder validation claims.",
+    "Ran a syntax check over every submitted JavaScript module with the pinned Node.js runtime.",
+    "Independently reran the public baseline, sealed reference suites, direct reference and adversarial tests, CLI parity smoke test, and pack audit.",
+    "Ran an independent 99-assertion matrix covering valid tree/VM behavior, runtime-error parity, syntax diagnostics, and ordinary malformed chunks.",
+    "Checked that parse, interpret, compile, and run do not mutate representative token, AST, or chunk inputs.",
+    "Probed the public VM with hostile opcode values and malformed span metadata.",
+    "Reviewed imports and source for external dependencies, eval, Function construction, network APIs, and subprocess APIs.",
+    "Checked manifest/provenance linkage, declared labels, file count, symlinks, and a before/after candidate-tree digest."
+  ],
+  "evidence": [
+    "Pinned /arm/tools/nodejs/node/22.21.0/linux64/bin/node reports v22.21.0, and all submitted .mjs files pass node --check.",
+    "The intentionally incomplete public baseline exits 1 with 1 of 3 file suites passing; the sealed suite passes 2 of 2, with direct runs passing 13 of 13 reference tests and 3 of 3 adversarial tests.",
+    "Both sealed CLI backends exit 0 and print 8 for the recorded smoke program; environment/verify-pack.mjs reports PASS over 57 files with no forbidden paths, special files, symlinks, or credential-pattern matches.",
+    "The independent matrix passes 99 assertions across 28 successful backend executions, 14 runtime-error backend executions, 6 syntax-error programs, and 12 malformed chunks.",
+    "The sealed VM violates its malformed-chunk contract: a Symbol opcode escapes as TypeError, an opcode coercion hook executes and escapes as Error, and a string-valued span is accepted and propagated on MicaRuntimeError instead of being rejected as E_INVALID_BYTECODE.",
+    "Manifest and provenance project IDs, source IDs, source commits, and snapshot link agree; labels remain GENERATED and PARTIAL, productionized is false, and independent validation is REQUIRED.",
+    "The candidate tree digest remained 3fbf6052f35643da7d15f335abd14c661443545ef3bbccac788746e2b6124ccf throughout review."
+  ],
+  "limitations": [
+    "The immutable upstream/catalog baseline is not present and network access is restricted, so the source hashes and no-copy claim cannot be independently recomputed or compared.",
+    "The full reviewer bundle contains sealed material; no separately materialized student view was supplied, so enforcement of sealed-file exclusion is outside this check even though the directory structure is logically separated.",
+    "No fuzzing, benchmark qualification, transfer verification, production-readiness assessment, or cross-platform/runtime matrix was performed or inferred.",
+    "git and rg are unavailable on PATH; deterministic file hashes, find, grep, and direct file inspection were used instead."
+  ],
+  "project_id": "project_c305a6b70f268e23e2e48694e3604f28",
+  "verdict": "REVISE"
+}

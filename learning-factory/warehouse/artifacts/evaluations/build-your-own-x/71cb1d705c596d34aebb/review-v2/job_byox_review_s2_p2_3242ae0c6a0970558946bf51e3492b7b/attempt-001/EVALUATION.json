@@ -1,0 +1,36 @@
+{
+  "builder_job_id": "job_byox_build_s2_d6d8903610981a8e77f457c74e3f305d",
+  "checks_run": [
+    "Inspected all 41 regular files in CANDIDATE, including learner material, sealed reference code, tests, provenance, validation claims, and production limitations.",
+    "Verified file types, searched learner-facing roots for sealed-reference leakage and credential patterns, parsed metadata independently, and hashed the immutable candidate tree before and after review.",
+    "Ran the pinned GCC 15.2.0 and Python 3.11.5 environment check and the submitted packaging audit.",
+    "Built the starter and sealed reference in a separate writable scratch copy with GCC 15.2.0 and -Wall -Wextra -Wpedantic -Werror.",
+    "Ran the public, sealed reference, and adversarial suites against the reference and the public suite against the intentionally incomplete starter.",
+    "Ran 25 additional bounded black-box contract checks covering invocation, parsing, syntax atomicity, statuses, redirections, long pipelines, built-ins, jobs, fg, and process groups.",
+    "Ran focused probes for carriage-return tokenization, closed standard descriptors, inherited SIGCHLD disposition, and exit operand validation.",
+    "Ran GCC -fanalyzer and repeated all three submitted suites under AddressSanitizer and UndefinedBehaviorSanitizer with leak detection disabled.",
+    "Reviewed test timeout and cleanup paths, public milestone coverage, progressive-disclosure structure, and license/provenance boundaries."
+  ],
+  "evidence": [
+    "The immutable CANDIDATE aggregate SHA-256 was 076abc6af3de93b50a3a95bee319845ba35c2198f401b36aaa2f93638b664383 both before and after review; no candidate file was edited.",
+    "Both normal builds succeeded warning-clean. The reference passed 9/9 public, 12/12 sealed, and 4/4 adversarial tests; the disclosed-incomplete starter passed 2/9 and failed 7/9 public tests.",
+    "The ASan/UBSan build passed the same 9, 12, and 4 tests with no sanitizer diagnostic. LeakSanitizer independently failed under ptrace as disclosed.",
+    "All 25 additional ordinary-environment contract checks passed, including a 41-stage EOF pipeline and verification that pipeline children shared a new process group.",
+    "REQUIREMENTS.md permits only unquoted spaces and tabs as separators, but reference lexer line 173 also treats carriage return as whitespace: the argument bytes a\\rb produced two arguments and output <a> then <b>, rather than one argument containing carriage return.",
+    "Reference child redirection lines 778-794 unconditionally close the descriptor after dup2. With inherited fd 0 or fd 1 closed, open returns the target descriptor, dup2 is a no-op, and close invalidates it; input and output probes returned 1 with EBADF.",
+    "When the shell inherited SIGCHLD=SIG_IGN, a child exiting 7 was automatically reaped and the reference returned 0. Initialization does not normalize SIGCHLD and the ECHILD path returns an uninitialized stored status.",
+    "The sealed PTY test uses blocking waitpid(child, 0) after its read deadline and kills only the shell PID on failure, contrary to the repository guidance requiring bounded tests and process-group cleanup.",
+    "Project, source, and commit identities agree across the manifest and provenance document, and labels remain conservatively GENERATED plus PARTIAL with independent validation required and productionized false.",
+    "The manifest value named provenance_sha256 equals the self-declared snapshot_sha256 but not the SHA-256 of PROVENANCE.json, which is 8aa702b8b64241bda70f3a63e3d1b9a681e7dc87f4d5930b9b4f764f584e5dad; the submitted audit checks equality of fields, not a tamper-evident document digest.",
+    "Learner-facing roots contained no sealed implementation or answer-key paths, and the only discovered URL was the declared upstream provenance link. The public suite nevertheless has no positive background, fg, or PTY job-control case."
+  ],
+  "limitations": [
+    "LeakSanitizer could not run under the ptrace-based harness; ASan and UBSan ran with detect_leaks=0.",
+    "The immutable upstream catalog snapshot, source Git object database, and external tutorial were not present and network access was not used, so source hashes, CC0 evidence, and the no-copy assertion could not be independently recomputed.",
+    "Only static directory separation could be checked here; enforcement of the actual learner view is controlled by the external factory.",
+    "No benchmark, coverage-guided fuzzing, portability matrix, or production-readiness check was performed; the candidate explicitly makes none of those claims.",
+    "The inherited-signal and closed-standard-descriptor probes exercise uncommon but contractually unexcluded launch environments."
+  ],
+  "project_id": "project_88e5a9a922f8f9e2166223c1333f28f9",
+  "verdict": "REVISE"
+}

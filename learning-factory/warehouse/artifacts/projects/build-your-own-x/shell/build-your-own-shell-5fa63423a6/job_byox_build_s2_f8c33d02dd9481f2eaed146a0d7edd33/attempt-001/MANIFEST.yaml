@@ -1,0 +1,14 @@
+{
+  "independent_validation": "REQUIRED",
+  "productionized": false,
+  "project_id": "project_a39dec7bd5caf7524c0e9df3e14a2c8b",
+  "provenance_sha256": "0ecf54a73c5abbc7f8076dcea9d02c6e201b04eb9ba65afba16b51915648ecd2",
+  "schema_version": 1,
+  "source_commit": "aa17439b62f384511a5561ce308e9598b94d8989",
+  "source_id": "source_eac489a34bed5db9a1f2a580b457bcef",
+  "status": "GENERATED",
+  "validation_labels": [
+    "GENERATED",
+    "PARTIAL"
+  ]
+}

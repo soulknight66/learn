@@ -1,0 +1,34 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g1_47ecffe243a9f81ffa0b0700305cd7bd",
+  "checks_run": [
+    "Inspected every submitted document, script, test, starter source, sealed reference source, and manifest/provenance file.",
+    "Recorded exact configured GCC 15.2.0, Python 3.11.5, GNU ld 2.43, and GNU Make 4.2.1 paths and versions.",
+    "Attempted the documented clean starter and sealed-reference builds in a writable byte-for-byte copy of CANDIDATE.",
+    "Repeated strict normal builds with the configured Binutils directory explicitly supplied to GCC, then ran the starter lexer suite, public suite, direct VM suite, private suite, tower, and diagnostic probes under timeouts.",
+    "Ran nine independent boundary checks for identifiers, locals, short-circuit behavior, instruction budgets, non-ASCII input, source size, and bytecode size.",
+    "Rebuilt the reference and VM test with AddressSanitizer and UndefinedBehaviorSanitizer and reran 26 direct VM checks, 10 public tests, and 18 private test methods.",
+    "Parsed and cross-checked manifest/provenance JSON, hashed the submission, scanned entry types/artifacts/credential patterns, and ran the pack verifier.",
+    "Adversarially tested verifier coverage by adding and then removing a credential-like unexpected top-level fixture only in the scratch copy.",
+    "Reviewed progressive-disclosure, license/provenance, learner-usefulness, and validation-label boundaries."
+  ],
+  "evidence": [
+    "The documented make -C starter clean all and make -C sealed/reference clean all commands each exited 2 at link time with collect2: fatal error: cannot find 'ld'. GCC reports its unqualified linker as 'ld'.",
+    "Adding -B/arm/tools/gnu/binutils/2.43/rhe8-x86_64/bin/ made both strict C17 builds succeed; the starter suite then passed 2 lexer tests with 8 intentional skips, and the reference passed 10 public tests, 26 direct VM checks, and 18 private test methods.",
+    "The tower exited 0 with exactly 4242 followed by a newline; overflow and zero-budget probes each exited 1 with the required source-located single-line runtime diagnostic.",
+    "All nine reviewer-authored boundary checks passed.",
+    "The sanitizer rerun completed without an ASan or UBSan diagnostic; leak detection was explicitly disabled.",
+    "PROVENANCE.json is strict JSON with SHA-256 3dc7fc913794fd6c9205f6d0588d0a9c4370fb639ae6991b97b4f28aaff9d57a, and project/source/commit/snapshot cross-fields agree with MANIFEST.yaml.",
+    "The submitted tree had no symlinks, build directories, bytecode caches, object files, or credential-pattern hits, and its aggregate file digest remained d054d2bea356dc282bc4b8dec13116454915dab93901a6cee1137924ff0f789c after review.",
+    "verify_pack.py still printed credential-pattern scan: PASS after an unexpected credential-like top-level file was inserted in the scratch copy, because managed_paths() never traverses unexpected top-level entries.",
+    "MANIFEST.yaml honestly retains only GENERATED and PARTIAL labels, independent_validation REQUIRED, and productionized false; VALIDATION.md explicitly disclaims fuzzing, benchmarking, leak checking, transfer verification, and factory validation labels."
+  ],
+  "limitations": [
+    "Network and the immutable upstream baseline were unavailable, so the source commit, catalog snapshot, linked-resource license, and independent-authorship assertions could only be checked for internal artifact consistency.",
+    "No orchestrator-captured learner projection was supplied. The full builder archive contains sealed reference, answer, and private-test material and must not be published as a learner view.",
+    "No independent fuzzing, benchmark, leak-detection, transfer, production, or cross-platform validation was performed; the candidate does not claim those labels.",
+    "Only the relevant configured x86_64 GCC, Binutils, and Python toolchains were exercised; the other listed cross-compilers, QEMU, Java, Node, Go, NASM, GLib, Flex, and Bison roots were not needed.",
+    "rg and git were unavailable in the restricted environment; /usr/bin/find, /usr/bin/grep, and cryptographic hashes were used for read-only inventory checks."
+  ],
+  "project_id": "project_4b62c869e81606deb9eb1148a914808f",
+  "verdict": "REVISE"
+}

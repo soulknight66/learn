@@ -1,0 +1,35 @@
+{
+  "builder_job_id": "job_byox_repair_s2_v1_g2_40e84b613b5a0b0bdb0a4207727452c3",
+  "checks_run": [
+    "Verified pinned GCC, Python, and Make identities and ran the candidate environment and metadata audits",
+    "Built the starter and sealed reference in an isolated writable copy with the pinned GCC and warning-as-error flags",
+    "Ran public, sealed reference, and adversarial suites against the reference in normal and ASan/UBSan builds",
+    "Ran GCC -fanalyzer against the sealed reference",
+    "Ran both Makefile check targets and a one-iteration benchmark-driver smoke check",
+    "Ran 21 independent edge assertions covering invocation, status, redirection mode, built-in context, process groups, jobs, and fg",
+    "Exercised bounded SIGKILL escalation against a SIGTERM-ignoring same-group descendant",
+    "Reviewed source, tests, learner documentation, progressive-disclosure boundaries, provenance/license statements, and validation-label claims",
+    "Checked submission integrity before and after testing and removed the isolated scratch build"
+  ],
+  "evidence": [
+    "Observed gcc (GCC) 15.2.0 at /arm/tools/gnu/gcc/15.2.0/rhe8-x86_64/bin/gcc, Python 3.11.5 at /arm/tools/python/python/3.11.5/rhe8-x86_64/bin/python3, and GNU Make 4.2.1",
+    "Normal warning-clean builds succeeded; public 11/11, sealed 17/17, and adversarial 6/6 tests passed",
+    "GCC -fanalyzer exited 0 without diagnostics; ASan/UBSan runs passed the same 34 tests without sanitizer diagnostics, with leak detection explicitly disabled",
+    "All 21 independent edge assertions passed, including equal pipeline PGIDs and announced PGID, umask-filtered mode 0640, monotonic job IDs, and default fg selection",
+    "The timeout harness removed a SIGTERM-ignoring descendant through bounded SIGKILL escalation in 0.704 seconds",
+    "The packaging audit reported 23 required files, 0 forbidden paths, 57 audited entries, 42 scanned regular files, strict metadata consistency, and a verified provenance-document digest",
+    "The provenance document SHA-256 was 8aa702b8b64241bda70f3a63e3d1b9a681e7dc87f4d5930b9b4f764f584e5dad; the 42-file aggregate was unchanged at b6e6cb39b1c6905f1d192fdbafdecd41a67eb34e531de14040cd9d79172b2099",
+    "MANIFEST.yaml remains GENERATED/PARTIAL with independent validation REQUIRED and productionized false; builder prose explicitly disclaims promoted validation labels",
+    "Learner-facing requirements, concepts, questions, starter, and public tests are separated from clearly marked sealed and harness-only material; the reference documents its non-production gaps"
+  ],
+  "limitations": [
+    "The immutable upstream catalog object database and linked tutorial were unavailable and network access was not used, so source hashes, upstream license evidence, and the no-copy assertion were not independently recomputed",
+    "No orchestrator-created learner view was available, so actual transfer-time exclusion of sealed and harness-only material was not verified",
+    "Validation covered one Linux/POSIX host with Python 3.11.5 and GCC 15.2.0; it did not cover the stated Python 3.9 minimum, other POSIX systems, fault injection, coverage-guided fuzzing, or production readiness",
+    "LeakSanitizer was not exercised, and the benchmark was only a driver smoke check with no acceptance threshold",
+    "environment/check.sh validates fewer runtime fixtures than the supplied suites use, so its prerequisites-present message is not a complete portability preflight",
+    "The first isolated-copy build attempt was inconclusive because cp -a preserved the submission's read-only modes; changing only scratch-copy modes produced the successful results reported above"
+  ],
+  "project_id": "project_88e5a9a922f8f9e2166223c1333f28f9",
+  "verdict": "PASS"
+}
